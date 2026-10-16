@@ -6,7 +6,7 @@
 - `STAGE_REPORT_CN.md` — 本轮 C0/C1 详细报告、真实回归与精度阻塞
 - `cherchi_input_precision_guard.py` — 精确有理坐标→binary64 的别名顶点和退化三角形拒绝检查器
 
-独立审阅包：`Noodles_v6_Cherchi_C0_C1_stage_review_20261016.zip`（5,799,123 bytes，32 文件）。由于当前 GitHub 接口未成功接入本地二进制，这个 ZIP **尚未上传**；其中大量完整 JSON 原生边界审计文件也不能因报告上传就视为备份完成。
+独立审阅包：`Noodles_v6_Cherchi_C0_C1_stage_review_20261016.zip`（5,799,123 bytes，32 文件，SHA-256: `71da387edf3cc8d086fc70c842659b73dbdaf0c4cc75e79e895b579e6ee21fb5`；本地 ZIP 已通过完整 CRC 检查）。由于当前 GitHub 接口未成功接入本地二进制，这个 ZIP **尚未上传**；其中大量完整 JSON 原生边界审计文件也不能因报告上传就视为备份完成。
 
 C0：6 项 Cherchi 与 CGAL 盒体交叉对照、2 项 v6 原始椭球/单管交叉对照。
 C1：六输入实体原生合法性检查；三项独立精确有向表面链等式。
