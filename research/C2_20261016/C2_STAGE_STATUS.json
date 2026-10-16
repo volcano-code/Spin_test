@@ -1,0 +1,82 @@
+{
+  "schema": "noodles-v6-C2a-C2b-repair-stage-status-v1",
+  "status": "C2A_PASS_C2B_STATIC_PASS_C2C_FLOAT_STATIC_PARTITION_NOT_EXACT",
+  "github_write_performed": false,
+  "source_baseline": "b0a13e3f7050630e84e3fbe19e7cf4004540a06e native checkpoint, not rebuilt from latest a17ff49",
+  "geometry_repair": {
+    "design": {
+      "source_sha256": "a7671c75a427e7c182dd5fcce2a4178dfce58dfce9dcf56c79cded11fc277efc",
+      "output_sha256": "437ad8a2d8343c7c9f4886eb9dcade987e345f03fdf2fac568e8ee7f64f08409",
+      "old_vertices": 41384,
+      "new_vertices": 41360,
+      "old_faces": 83408,
+      "new_faces": 83360,
+      "exact_chain_equal": true,
+      "float_aliases_after": 0,
+      "float_zero_areas_after": 0
+    },
+    "fixed": {
+      "source_sha256": "6548b859f9f919c868f239b885eefaa64c28b3a30d5d9d6e98b2c79ab206e7c7",
+      "output_sha256": "070eef7fe73afcc8513e90cf0a789d9638ab5c2a818f8e938b25db3c760023c0",
+      "old_vertices": 46344,
+      "new_vertices": 46332,
+      "old_faces": 92692,
+      "new_faces": 92668,
+      "exact_chain_equal": true,
+      "float_aliases_after": 0,
+      "float_zero_areas_after": 0
+    },
+    "initial": {
+      "source_sha256": "7f0a985cb34a0be418801195725a1d98f9d71b1a2a6de9c31a21b18a704d2559",
+      "output_sha256": "c1ca72db6a4b3adc0308fe7a715ee96271b1f3f97c17d438fb4bd449bb4486d5",
+      "old_vertices": 16092,
+      "new_vertices": 16080,
+      "old_faces": 32180,
+      "new_faces": 32156,
+      "exact_chain_equal": true,
+      "float_aliases_after": 0,
+      "float_zero_areas_after": 0
+    }
+  },
+  "native_float_validation": {
+    "passed": true,
+    "seconds": 85.31996611700015,
+    "native_bin_sha256": "24386389631f9bbeaa3a331fe14dce43eda150f020c7d1d07e9784dc4e63208f",
+    "input_digest": "50b1b9d7d25b38eb9c529a94076c408dd86f7e9d41e86d375d8e7cff4d9ef2cb",
+    "self_intersection_completed": true
+  },
+  "cherchi_static_results": {
+    "intersection": {
+      "passed": true,
+      "exact_chain_equal": true,
+      "ten_moments_equal": true,
+      "cherchi_faces": 52784,
+      "cgal_faces": 52784,
+      "nonzero_support_planes": 0,
+      "nonzero_moment_differences": 0
+    },
+    "difference": {
+      "passed": true,
+      "exact_chain_equal": true,
+      "ten_moments_equal": true,
+      "cherchi_faces": 34912,
+      "cgal_faces": 34912,
+      "nonzero_support_planes": 0,
+      "nonzero_moment_differences": 0
+    }
+  },
+  "joint_float_static_partition": {
+    "exact_equal": false,
+    "nonzero_support_planes": 18445,
+    "nonzero_ten_moments": 10,
+    "mass_difference_kg": 6.511669978944462e-21,
+    "interpretation": "Nonzero even though small; requires explicit C3 numerical contract and set-error bound."
+  },
+  "not_completed": [
+    "moving quadric construction provenance",
+    "Jacobian",
+    "Newton",
+    "terminal 3D material",
+    "spin dynamics"
+  ]
+}
