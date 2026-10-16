@@ -1,0 +1,37 @@
+name: Backup original Spin branch into Spin_test
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/backup-spin-upstream.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  mirror-original:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Fetch original branch with its complete reachable Git history
+        run: |
+          set -euo pipefail
+          git clone --single-branch --branch spin-it-strict-computational-v2 https://github.com/volcano-code/Spin.git upstream
+          actual="$(git -C upstream rev-parse HEAD)"
+          echo "Original HEAD: $actual"
+          test "$actual" = "a17ff49cd8a1e6e8b388bc591410bda56d67c28a"
+          git -C upstream fsck --no-reflogs
+      - name: Publish the source branch ONLY in this backup repository
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          header="$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          git -C upstream -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $header" push https://github.com/volcano-code/Spin_test.git HEAD:refs/heads/upstream-spin-it-strict-computational-v2
+      - name: Verify backup branch points at the source commit
+        run: |
+          set -euo pipefail
+          actual="$(git ls-remote https://github.com/volcano-code/Spin_test.git refs/heads/upstream-spin-it-strict-computational-v2 | cut -f1)"
+          echo "Backup HEAD: $actual"
+          test "$actual" = "a17ff49cd8a1e6e8b388bc591410bda56d67c28a"
