@@ -1,0 +1,157 @@
+{
+  "schema": "noodles-v6-online-execution-status-v1",
+  "generated_utc": "2026-10-16T12:01:46.229074+00:00",
+  "runtime_source_base": "b0a13e3f7050630e84e3fbe19e7cf4004540a06e",
+  "latest_repository_observation_not_binary_source": "a17ff49cd8a1e6e8b388bc591410bda56d67c28a",
+  "stages": [
+    {
+      "stage": "08-foreground-build",
+      "receipt": {
+        "command": [
+          "cmake",
+          "--build",
+          "/mnt/data/noodles_v6_work/build-input-cmake",
+          "--target",
+          "_noodles_exact_audit",
+          "_cherchi_rational_moments",
+          "--parallel",
+          "1"
+        ],
+        "timeout_seconds": 550.0,
+        "started_unix": 1792151440.4797127,
+        "controller_pid": 2156,
+        "pid": 2178,
+        "exit_code": 1,
+        "status": "EXITED",
+        "seconds": 0.01638099499996315,
+        "finished_unix": 1792151440.4960945
+      },
+      "status": "FAILED_OR_INTERRUPTED_STAGE",
+      "stdout.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last_text": ""
+      },
+      "stderr.log": {
+        "bytes": 63,
+        "sha256": "2e7b73e6475d9deac6edae4dd8cd63bf2e3228fd26d8e75a90cff7c4e29aec21",
+        "last_text": "ninja: error: loading 'build.ninja': No such file or directory\n"
+      }
+    },
+    {
+      "stage": "09-native-proof-regressions",
+      "receipt": {
+        "command": [
+          "bash",
+          "-lc",
+          "source '/mnt/data/noodles_v6_work/env.sh'; py '/mnt/data/noodles_v6_work/patch/experiments/noodles_paper_v6_20261016/test_native_checks.py' --output '/mnt/data/noodles_v6_work/native-checks-01' --source '/mnt/data/noodles_v6_work/source/project' --boolean '/mnt/data/noodles_v6_work/build-input-cmake/noodles-exact-boolean'"
+        ],
+        "timeout_seconds": 180.0,
+        "started_unix": 1792151458.9545162,
+        "controller_pid": 2193,
+        "pid": 2203,
+        "exit_code": 127,
+        "status": "EXITED",
+        "seconds": 0.008019559999866033,
+        "finished_unix": 1792151458.9625354
+      },
+      "status": "FAILED_OR_INTERRUPTED_STAGE",
+      "stdout.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last_text": ""
+      },
+      "stderr.log": {
+        "bytes": 159,
+        "sha256": "020c0f729aa1eadd090f0df368f43280759ce259873622e03dfb5182c3e12808",
+        "last_text": "/mnt/data/noodles_v6_work/env.sh: line 8: /mnt/data/noodles_v6_work/bootstrap/sysroot/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2: No such file or directory\n"
+      }
+    },
+    {
+      "stage": "10-exact-input-proof",
+      "receipt": {
+        "command": [
+          "bash",
+          "-lc",
+          "source '/mnt/data/noodles_v6_work/env.sh'; py '/mnt/data/noodles_v6_work/patch/experiments/noodles_paper_v6_20261016/audit_exposed_input_fast.py' --input '/mnt/data/noodles_v6_work/construction-02' --output '/mnt/data/noodles_v6_work/audit-fast-01' --source '/mnt/data/noodles_v6_work/source/project'"
+        ],
+        "timeout_seconds": 1000.0,
+        "started_unix": 1792151472.7568815,
+        "controller_pid": 2216,
+        "pid": 2226,
+        "exit_code": 127,
+        "status": "EXITED",
+        "seconds": 0.00823863599998731,
+        "finished_unix": 1792151472.7651198
+      },
+      "status": "FAILED_OR_INTERRUPTED_STAGE",
+      "stdout.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last_text": ""
+      },
+      "stderr.log": {
+        "bytes": 159,
+        "sha256": "020c0f729aa1eadd090f0df368f43280759ce259873622e03dfb5182c3e12808",
+        "last_text": "/mnt/data/noodles_v6_work/env.sh: line 8: /mnt/data/noodles_v6_work/bootstrap/sysroot/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2: No such file or directory\n"
+      }
+    },
+    {
+      "stage": "11-native-reynolds-derivatives",
+      "receipt": {
+        "command": [
+          "bash",
+          "-lc",
+          "source '/mnt/data/noodles_v6_work/env.sh'; py '/mnt/data/noodles_v6_work/patch/experiments/noodles_paper_v6_20261016/test_reynolds_native.py' --output '/mnt/data/noodles_v6_work/derivatives-01' --boolean '/mnt/data/noodles_v6_work/build-input-cmake/noodles-exact-boolean'"
+        ],
+        "timeout_seconds": 360.0,
+        "started_unix": 1792151516.8178113,
+        "controller_pid": 2250,
+        "pid": 2260,
+        "exit_code": 127,
+        "status": "EXITED",
+        "seconds": 0.008182226000371884,
+        "finished_unix": 1792151516.8259933
+      },
+      "status": "FAILED_OR_INTERRUPTED_STAGE",
+      "stdout.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last_text": ""
+      },
+      "stderr.log": {
+        "bytes": 159,
+        "sha256": "020c0f729aa1eadd090f0df368f43280759ce259873622e03dfb5182c3e12808",
+        "last_text": "/mnt/data/noodles_v6_work/env.sh: line 8: /mnt/data/noodles_v6_work/bootstrap/sysroot/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2: No such file or directory\n"
+      }
+    },
+    {
+      "stage": "12-native-noodles-seed0",
+      "receipt": null,
+      "status": "NO_TERMINAL_RECEIPT"
+    },
+    {
+      "stage": "13-exact-terminal-closure",
+      "receipt": null,
+      "status": "NO_TERMINAL_RECEIPT"
+    }
+  ],
+  "exact_input_construction": null,
+  "exact_input_proof": null,
+  "native_small_regressions": null,
+  "small_state_directional_derivatives": null,
+  "native_terminal": null,
+  "terminal_material_delivery": null,
+  "physics_completed": false,
+  "manufacturing_certified": false,
+  "full_flower_level_target_passed": false,
+  "github_write_performed": false,
+  "legacy_v5_inputs_replaced": false,
+  "caveats": [
+    "当前主原生运行检查点来自已上传 b0a13e3，不是 a17ff49 全量重新编译。",
+    "独立新增 CGAL 求值适配为实验候选；没有覆盖项目现有正式求解路线。",
+    "小型状态导数测试不等于完整面条所有迭代状态导数通过。",
+    "输入整体仍填满设计椭球；固定材料没有永久椭球壳。输入 OBJ 不是最终优化结果。",
+    "未执行新的面条动力学或实际 Bambu Studio 切片验证。"
+  ]
+}
