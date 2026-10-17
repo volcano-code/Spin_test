@@ -14,9 +14,10 @@ from cherchi_obj_export import (CHERCHI_BOOL,CHERCHI_ID_PREFIX,bound_packet,cert
 from cherchi_exact_flip import (fractional_vertices,oriented_edges,ten_moments,plane,
                                 assert_local_flip,exact_plane_chain)
 
-H1=HERE.parent/'Heart_Cherchi_H1' # fallback when this H5 is adjacent H1
+H1=HERE.parent/'Cherchi_H1'
+H4=HERE.parent/'Cherchi_H4'
+# Local review bundles predate the GitHub research directory layout.
 if not H1.exists():H1=Path('/mnt/data/Heart_Cherchi_H1')
-H4=HERE.parent/'Heart_Cherchi_H4'
 if not H4.exists():H4=Path('/mnt/data/Heart_Cherchi_H4')
 
 @pytest.fixture(scope='module')
