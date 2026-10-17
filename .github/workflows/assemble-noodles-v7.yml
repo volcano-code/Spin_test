@@ -1,0 +1,62 @@
+name: Assemble verified Noodles V7 OBJ
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/assemble-noodles-v7.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: assemble-noodles-v7
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - name: Reassemble exact OBJ bytes and verify SHA-256
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          base = Path("research/Noodles_v7_20261017/models")
+          parts = sorted((base/".transfer").glob("complete-mm-repaired.obj.part[0-9][0-9]"))
+          if len(parts) != 26:
+              raise RuntimeError(f"Expected exactly 26 OBJ transfer parts, got {len(parts)}")
+          for n, p in enumerate(parts):
+              if p.name != f"complete-mm-repaired.obj.part{n:02d}":
+                  raise RuntimeError(f"Unexpected transfer part: {p}")
+          data = b"".join(p.read_bytes() for p in parts)
+          digest = hashlib.sha256(data).hexdigest()
+          expected = "e979bd3980a5efaf9b03d047c4e19e9296ddb426267a7322ff4e1a4b954fe80a"
+          if len(data) != 4233138 or digest != expected:
+              raise RuntimeError(f"Frozen OBJ mismatch: bytes={len(data)} sha256={digest}")
+          if data.count(b"\n") != 129009 or not data.endswith(b"\n"):
+              raise RuntimeError("Unexpected OBJ line count or missing final newline")
+          base.joinpath("complete-mm-repaired.obj").write_bytes(data)
+          print(f"Restored {base / 'complete-mm-repaired.obj'} SHA-256={digest}")
+          PY
+      - name: Commit the audited OBJ and remove transfer chunks
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -rf research/Noodles_v7_20261017/models/.transfer
+          git add -A research/Noodles_v7_20261017/models
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Materialize SHA-verified 86076-face Noodles V7 final OBJ"
+          git push origin HEAD:main
