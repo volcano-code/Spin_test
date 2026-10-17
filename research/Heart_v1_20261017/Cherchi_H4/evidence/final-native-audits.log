@@ -1,0 +1,29 @@
+{
+  "schema": "heart-h4-frozen-v4-proxy-qualified-obj-v1",
+  "final_qualified": true,
+  "total_local_exact_flip_operations": 38,
+  "changed_face_count": 64,
+  "rounds": 5,
+  "vertex_count": 793,
+  "face_count": 1570,
+  "final_exact_rational_native_audit": {
+    "boundary_valid": true,
+    "closed": true,
+    "edge_manifold": true,
+    "vertex_manifold": true,
+    "self_intersection_free": true,
+    "intersecting_pair_count": 0,
+    "component_orientations_valid": true
+  },
+  "final_binary64_native_audit": {
+    "boundary_valid": true,
+    "closed": true,
+    "edge_manifold": true,
+    "vertex_manifold": true,
+    "self_intersection_free": true,
+    "intersecting_pair_count": 0,
+    "component_orientations_valid": true
+  },
+  "obj_sha256": "09d98c0ec66f79aa4a927281da204f94cbf4d66d53fb79a97fade7295d9dd5cd",
+  "elapsed_seconds": 14.95364194800095
+}

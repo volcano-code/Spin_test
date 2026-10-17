@@ -1,0 +1,73 @@
+{
+  "schema": "heart-h4-delivery-sha256-manifest-v1",
+  "files": {
+    "H4_STAGE_REPORT_CN.md": {
+      "bytes": 5566,
+      "sha256": "a72cf5bb7c68b079d6ad7d8047592a44762d32ee5530260ec3509debe8b88d98"
+    },
+    "H4_STAGE_STATUS.json": {
+      "bytes": 1057,
+      "sha256": "b9291bc8290f1a47a391635f4ca6b31d8f563e10a9c3b02b6b956df96a550c7c"
+    },
+    "README_REPRODUCE_CN.md": {
+      "bytes": 2653,
+      "sha256": "ddb67f2bd87d8eeaef70a545db3e7bef4581bda8cbffde39d96c70c609bc3ade"
+    },
+    "source/certify_h4_retriangulation.py": {
+      "bytes": 13814,
+      "sha256": "d44743b0bada9e55618b4bbf5dd19060719e2932720098cacdc71c567d038e88"
+    },
+    "source/verify_independent_global_moments.py": {
+      "bytes": 2153,
+      "sha256": "a53a5b4eef80771627a72c5b532a1b6edcfb93ee20e469cd530f5dfe12c51c0a"
+    },
+    "source/classify_binary64_plane_sign_changes.py": {
+      "bytes": 3171,
+      "sha256": "133e3bd792db337a16635939d3aaca0645307698896b1aca27412bead8fe6375"
+    },
+    "tests/test_h4_certificates.py": {
+      "bytes": 2622,
+      "sha256": "671a08fb7c3d0b9e89dd500b608dd9f7d512718769803ab8bee9a4b7050149a9"
+    },
+    "tests/test_sign_classifier.py": {
+      "bytes": 1225,
+      "sha256": "4cbc09c8d156e61f9703322b21db2b5094b563d72181764129822a1caa055bf1"
+    },
+    "evidence/final-native-audits.log": {
+      "bytes": 858,
+      "sha256": "d0a9a8422cfe9a111f1d6f2ff1409ded6a6973c18e09248ca58eee90b433826e"
+    },
+    "evidence/independent-global-ten-moments.json": {
+      "bytes": 2822,
+      "sha256": "c0b30b3d86a1f631eefe82a39b6017864ed5d04a036db1a6784f1b3985ba9542"
+    },
+    "evidence/original-plane-side-changes.json": {
+      "bytes": 48863,
+      "sha256": "b74ee1e47576b2c011f5ef65235f486de0f555fe6c62d7fd576b602212194eab"
+    },
+    "evidence/pytest-h4-all.log": {
+      "bytes": 98,
+      "sha256": "54dbfec11e7faf703fad2a78ddcc7c5a48d8b50115e9cf9df7f1177b60ddde98"
+    },
+    "evidence/pytest-h4-initial-failure.log": {
+      "bytes": 1123,
+      "sha256": "1a403c22a196b6717772ada095196e1ee953133b53f8cb05ea0c0337b2270734"
+    },
+    "final_certified/certification.json": {
+      "bytes": 2092,
+      "sha256": "e660746ffcc270b63e62ca476251751650e0c975037801ad7173463edd0a53d5"
+    },
+    "final_certified/operations.json": {
+      "bytes": 18609,
+      "sha256": "cd57ee1824e72ecd2176f2cc39d198d36c3cc616da18a236e8c04c835763a623"
+    },
+    "final_certified/faces.json": {
+      "bytes": 21234,
+      "sha256": "6b1b71abd11b849a4070106333c76e4e5c3c41a81fdf5d26c05efbe905968ab1"
+    },
+    "final_certified/v4-proxy-cherchi-retained-material-retriangulated.obj": {
+      "bytes": 72284,
+      "sha256": "09d98c0ec66f79aa4a927281da204f94cbf4d66d53fb79a97fade7295d9dd5cd"
+    }
+  }
+}

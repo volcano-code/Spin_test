@@ -1,0 +1,80 @@
+{
+  "schema": "heart-h4-independent-full-exact-ten-moments-v1",
+  "base_sha256": "0176c55d9a7858d5ed120d685ff386a123e1abb8db830b5eb1235bd44273a660",
+  "candidate_faces_sha256": "6b1b71abd11b849a4070106333c76e4e5c3c41a81fdf5d26c05efbe905968ab1",
+  "moments_order": [
+    "volume",
+    "first_x",
+    "first_y",
+    "first_z",
+    "second_xx",
+    "second_yy",
+    "second_zz",
+    "second_yz",
+    "second_xz",
+    "second_xy"
+  ],
+  "exact_zero_difference": true,
+  "per_moment_equality": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "original_moments_float": [
+    0.00685030654563575,
+    0.00017010957936370918,
+    -3.1408224143032946e-05,
+    0.0029749183013255266,
+    0.00011966194945126552,
+    2.2083983469345812e-05,
+    0.0013727820943423756,
+    -1.785819536099861e-05,
+    4.545616642958431e-06,
+    -3.8228911752103066e-07
+  ],
+  "candidate_moments_float": [
+    0.00685030654563575,
+    0.00017010957936370918,
+    -3.1408224143032946e-05,
+    0.0029749183013255266,
+    0.00011966194945126552,
+    2.2083983469345812e-05,
+    0.0013727820943423756,
+    -1.785819536099861e-05,
+    4.545616642958431e-06,
+    -3.8228911752103066e-07
+  ],
+  "original_rational_num_sha256": [
+    "e0677d20399946179fc43b2938b45e9936691c6b993b4fbc5df0ae7d9bec25e6",
+    "cf13442a955a20b587bede597dc9e074ab27f9f2cd48898da702607e9f019404",
+    "48a9b68ec5dc7a88d916465c0330e6e39e580539a36fc08cb82efddc2d93044c",
+    "cb04e53bbd0c1669baed342a1ba9fb66bb806b98cac14d17169c9135a88f2fb6",
+    "e9f0f73b29876207a53609e240a71142eac9ae367d927707916018bf8acdbf62",
+    "3b04389ed2f696eed5ca93512ab042ecfe809a6db5794f48f642941798acccb3",
+    "4797cab31b8141c43a73e41b973912568acd90cb99ce74aa640ea645ee49be82",
+    "f98e44a37e5e54e3302f645c6d2393178e6de43b6905dade54e0a212260608ec",
+    "aa920fc1661064d756071e3f756d5dee0bf4c343e920c33ba7f8f4f28db5e889",
+    "269d2a74c81e639f1c8067d4ca0a2732a7d1521e488ddc8e37a88005df1fec79"
+  ],
+  "original_rational_den_sha256": [
+    "d9714c9d6eeb9296c1790c575c5a85b33246cd7bcd71975b2507846e22935ead",
+    "7c9ca495cb393d1cc085004263f891f6111bddfb247ccc7f76c471d18934245b",
+    "4341346278a49432908c7a42362b580a7bc3d5d8523ad6ed1d8f190df3ac8d57",
+    "03b356b0113d29c6da2bafe75097666abba13427ca438b05c90bb15186d0f98a",
+    "f46932b76bd1d9f8f1187404fa488c8bef0a547bd8457dcd260ba33f6e35d376",
+    "d6b9e65375a9eff4eae273b8417ca4a20a737082bc5173bd40fa4edd826c1728",
+    "9f776420271f7c02c27619ccf6ce3e0e9c11869583495d5a63953858885620f5",
+    "daa66d0d92da8351ba548402116b30fe39f12e47d70c46ea8e6f8e7ca8af6839",
+    "ece0fcd6f1b0ea4cd488c9c9f3b25a536147815b5dcdf09d7fec82f02de9f241",
+    "aa9125cb68fa88775b3b15757da069d7d611d4febde27160d5aad46c8ca650ff"
+  ],
+  "same_exact_rational_moments_sha256": true,
+  "full_author_heart_verified": false
+}

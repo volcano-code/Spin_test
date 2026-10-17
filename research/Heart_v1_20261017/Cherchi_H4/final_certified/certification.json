@@ -1,0 +1,51 @@
+{
+  "final_qualified": true,
+  "scope": "H1_V4_PROXY_ONLY_NOT_ORIGINAL_EVAL60_OR_HEART_OPTIMIZATION",
+  "schema": "heart-h4-frozen-v4-proxy-qualified-obj-v1",
+  "source_sha256": {
+    "material": "0176c55d9a7858d5ed120d685ff386a123e1abb8db830b5eb1235bd44273a660",
+    "binary_audit": "e0959c033682953adf9b85aa629675f3beb28e5ab1755233579bdbff717098d8",
+    "rational_audit": "933b0ee33ba74f9879a64eedf69b780a19a3331e39953724d9c61dc7442d286c"
+  },
+  "native_binary_path": "/mnt/data/heart_native/build-gcc/python/_make_it_stand.cpython-313-x86_64-linux-gnu.so",
+  "native_module_sha256": "24386389631f9bbeaa3a331fe14dce43eda150f020c7d1d07e9784dc4e63208f",
+  "initial_float_intersecting_pairs": 78,
+  "final_float_intersecting_pairs": 0,
+  "total_local_exact_flip_operations": 38,
+  "rounds": 5,
+  "changed_face_count": 64,
+  "vertex_count": 793,
+  "face_count": 1570,
+  "all_flip_rational_moment_equalities": true,
+  "all_flip_strict_convex_coplanar_proven": true,
+  "global_exact_oriented_plane_boundary_chain_equal": true,
+  "global_exact_support_planes": 798,
+  "final_exact_rational_native_audit": {
+    "boundary_valid": true,
+    "closed": true,
+    "edge_manifold": true,
+    "vertex_manifold": true,
+    "self_intersection_free": true,
+    "intersecting_pair_count": 0,
+    "component_orientations_valid": true
+  },
+  "final_binary64_native_audit": {
+    "boundary_valid": true,
+    "closed": true,
+    "edge_manifold": true,
+    "vertex_manifold": true,
+    "self_intersection_free": true,
+    "intersecting_pair_count": 0,
+    "component_orientations_valid": true
+  },
+  "obj_sha256": "09d98c0ec66f79aa4a927281da204f94cbf4d66d53fb79a97fade7295d9dd5cd",
+  "obj_size_bytes": 72284,
+  "qualified_precision": "EXACT_H1_MATERIAL_RATIONAL_SUPPORT_CHAIN_AND_RELOADED_BINARY64_BOUNDARY",
+  "complete_author_heart": false,
+  "original_eval60_reproduced": false,
+  "complete_faster_newton_converged": false,
+  "physical_ground_contact_passed": false,
+  "optimization_invocations": 0,
+  "source_backsum": "Cherchi H1 output, triangulation-only changes",
+  "elapsed_seconds": 14.95364194800095
+}

@@ -1,0 +1,2376 @@
+{
+  "schema": "heart-h4-side-change-diagnostic-v1",
+  "input_sha256": {
+    "material": "0176c55d9a7858d5ed120d685ff386a123e1abb8db830b5eb1235bd44273a660",
+    "binary_audit": "e0959c033682953adf9b85aa629675f3beb28e5ab1755233579bdbff717098d8",
+    "rational_audit": "933b0ee33ba74f9879a64eedf69b780a19a3331e39953724d9c61dc7442d286c"
+  },
+  "summary": {
+    "cross_exact_plane": 67,
+    "shared_0_vertex_indices": 46,
+    "with_at_least_one_side_change": 78,
+    "shared_1_vertex_indices": 32,
+    "same_exact_plane": 11
+  },
+  "pairs": [
+    {
+      "face_pair": [
+        444,
+        1190
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 444,
+          "vertex": 323,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 444,
+          "vertex": 359,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1190,
+          "vertex": 322,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        446,
+        1190
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 446,
+          "vertex": 359,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1190,
+          "vertex": 322,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        447,
+        1192
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 447,
+          "vertex": 325,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1192,
+          "vertex": 324,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1192,
+          "vertex": 323,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        447,
+        1193
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 447,
+          "vertex": 325,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1193,
+          "vertex": 324,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        447,
+        1194
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 447,
+          "vertex": 325,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1194,
+          "vertex": 323,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        447,
+        1196
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 447,
+          "vertex": 325,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1196,
+          "vertex": 324,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1196,
+          "vertex": 323,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        493,
+        1397
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 493,
+          "vertex": 319,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1397,
+          "vertex": 356,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        494,
+        1397
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 494,
+          "vertex": 315,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1397,
+          "vertex": 356,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        497,
+        1190
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 497,
+          "vertex": 323,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 497,
+          "vertex": 359,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1190,
+          "vertex": 322,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        498,
+        1190
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 498,
+          "vertex": 323,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1190,
+          "vertex": 322,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        590,
+        1091
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 590,
+          "vertex": 431,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1091,
+          "vertex": 424,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        591,
+        1091
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 591,
+          "vertex": 423,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 591,
+          "vertex": 420,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1091,
+          "vertex": 424,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        598,
+        1091
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 598,
+          "vertex": 423,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 598,
+          "vertex": 431,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1091,
+          "vertex": 424,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        599,
+        1091
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 599,
+          "vertex": 423,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1091,
+          "vertex": 424,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        683,
+        1080
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 683,
+          "vertex": 501,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1080,
+          "vertex": 504,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        684,
+        1080
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 684,
+          "vertex": 517,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1080,
+          "vertex": 504,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        685,
+        1080
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 1080,
+          "vertex": 504,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1080,
+          "vertex": 506,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        685,
+        1082
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 1082,
+          "vertex": 505,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1082,
+          "vertex": 506,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        686,
+        1080
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 686,
+          "vertex": 517,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1080,
+          "vertex": 504,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        695,
+        1080
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 695,
+          "vertex": 501,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1080,
+          "vertex": 506,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        695,
+        1082
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 4,
+      "changes": [
+        {
+          "plane_face": 695,
+          "vertex": 501,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1082,
+          "vertex": 512,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1082,
+          "vertex": 506,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1082,
+          "vertex": 505,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        696,
+        1080
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 696,
+          "vertex": 501,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1080,
+          "vertex": 506,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1080,
+          "vertex": 513,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        696,
+        1082
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 5,
+      "changes": [
+        {
+          "plane_face": 696,
+          "vertex": 501,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 696,
+          "vertex": 504,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1082,
+          "vertex": 506,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1082,
+          "vertex": 512,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1082,
+          "vertex": 513,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        727,
+        1293
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 727,
+          "vertex": 549,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1293,
+          "vertex": 542,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        733,
+        1293
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 733,
+          "vertex": 544,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1293,
+          "vertex": 542,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        737,
+        1296
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 1296,
+          "vertex": 551,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1296,
+          "vertex": 141,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        737,
+        1309
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 1309,
+          "vertex": 551,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1309,
+          "vertex": 556,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        740,
+        1296
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 1296,
+          "vertex": 557,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1296,
+          "vertex": 141,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        740,
+        1309
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 1309,
+          "vertex": 557,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1309,
+          "vertex": 556,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        786,
+        1562
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 786,
+          "vertex": 616,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 786,
+          "vertex": 528,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1562,
+          "vertex": 589,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        790,
+        1562
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 4,
+      "changes": [
+        {
+          "plane_face": 790,
+          "vertex": 616,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 790,
+          "vertex": 528,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 790,
+          "vertex": 530,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1562,
+          "vertex": 589,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        791,
+        1560
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 791,
+          "vertex": 530,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1560,
+          "vertex": 592,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1560,
+          "vertex": 593,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        791,
+        1562
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 791,
+          "vertex": 530,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1562,
+          "vertex": 589,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1562,
+          "vertex": 593,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        791,
+        1569
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 4,
+      "changes": [
+        {
+          "plane_face": 791,
+          "vertex": 530,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1569,
+          "vertex": 589,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1569,
+          "vertex": 592,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1569,
+          "vertex": 593,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        812,
+        1548
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 4,
+      "changes": [
+        {
+          "plane_face": 812,
+          "vertex": 529,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 812,
+          "vertex": 615,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1548,
+          "vertex": 608,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1548,
+          "vertex": 592,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        812,
+        1551
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 812,
+          "vertex": 588,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 812,
+          "vertex": 611,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1551,
+          "vertex": 608,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        812,
+        1553
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 6,
+      "changes": [
+        {
+          "plane_face": 812,
+          "vertex": 611,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 812,
+          "vertex": 588,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 812,
+          "vertex": 615,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1553,
+          "vertex": 608,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1553,
+          "vertex": 593,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1553,
+          "vertex": 592,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        813,
+        1548
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 813,
+          "vertex": 529,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 813,
+          "vertex": 615,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1548,
+          "vertex": 608,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        813,
+        1551
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 4,
+      "changes": [
+        {
+          "plane_face": 813,
+          "vertex": 592,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 813,
+          "vertex": 588,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 813,
+          "vertex": 611,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1551,
+          "vertex": 608,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        813,
+        1553
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 6,
+      "changes": [
+        {
+          "plane_face": 813,
+          "vertex": 611,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 813,
+          "vertex": 588,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 813,
+          "vertex": 615,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1553,
+          "vertex": 593,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1553,
+          "vertex": 608,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1553,
+          "vertex": 609,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        813,
+        1560
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 6,
+      "changes": [
+        {
+          "plane_face": 813,
+          "vertex": 530,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 813,
+          "vertex": 589,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 813,
+          "vertex": 612,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1560,
+          "vertex": 593,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1560,
+          "vertex": 608,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1560,
+          "vertex": 609,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        813,
+        1562
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 5,
+      "changes": [
+        {
+          "plane_face": 813,
+          "vertex": 616,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 813,
+          "vertex": 528,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 813,
+          "vertex": 530,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1562,
+          "vertex": 593,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1562,
+          "vertex": 609,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        813,
+        1563
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 813,
+          "vertex": 589,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 813,
+          "vertex": 612,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1563,
+          "vertex": 609,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        813,
+        1565
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 4,
+      "changes": [
+        {
+          "plane_face": 813,
+          "vertex": 528,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 813,
+          "vertex": 616,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1565,
+          "vertex": 593,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1565,
+          "vertex": 609,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        813,
+        1569
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 6,
+      "changes": [
+        {
+          "plane_face": 813,
+          "vertex": 616,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 813,
+          "vertex": 530,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 813,
+          "vertex": 612,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1569,
+          "vertex": 593,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1569,
+          "vertex": 608,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1569,
+          "vertex": 609,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        815,
+        1548
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 1548,
+          "vertex": 611,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1548,
+          "vertex": 608,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        815,
+        1551
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 815,
+          "vertex": 592,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1551,
+          "vertex": 608,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        815,
+        1553
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 1553,
+          "vertex": 609,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1553,
+          "vertex": 608,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        815,
+        1565
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 1,
+      "changes": [
+        {
+          "plane_face": 1565,
+          "vertex": 609,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        816,
+        1548
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 816,
+          "vertex": 529,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 816,
+          "vertex": 615,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1548,
+          "vertex": 611,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        816,
+        1565
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 4,
+      "changes": [
+        {
+          "plane_face": 816,
+          "vertex": 528,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 816,
+          "vertex": 616,
+          "exact_side": 1,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1565,
+          "vertex": 609,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1565,
+          "vertex": 612,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        820,
+        1548
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 820,
+          "vertex": 529,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1548,
+          "vertex": 611,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        829,
+        1226
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 829,
+          "vertex": 623,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1226,
+          "vertex": 618,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        829,
+        1237
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 829,
+          "vertex": 623,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1237,
+          "vertex": 622,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        871,
+        1205
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 871,
+          "vertex": 655,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1205,
+          "vertex": 654,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        871,
+        1210
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 871,
+          "vertex": 655,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1210,
+          "vertex": 653,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1210,
+          "vertex": 654,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        871,
+        1211
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 871,
+          "vertex": 655,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1211,
+          "vertex": 653,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1211,
+          "vertex": 654,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        871,
+        1213
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 871,
+          "vertex": 655,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1213,
+          "vertex": 653,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1213,
+          "vertex": 654,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        871,
+        1214
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 871,
+          "vertex": 655,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1214,
+          "vertex": 653,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        871,
+        1215
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 871,
+          "vertex": 655,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1215,
+          "vertex": 653,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1215,
+          "vertex": 654,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1037,
+        1489
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 1037,
+          "vertex": 783,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1489,
+          "vertex": 782,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1037,
+        1492
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 1037,
+          "vertex": 783,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1492,
+          "vertex": 782,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1492,
+          "vertex": 779,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1037,
+        1493
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 1037,
+          "vertex": 783,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1493,
+          "vertex": 782,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1493,
+          "vertex": 779,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1037,
+        1494
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": false,
+      "side_change_count": 3,
+      "changes": [
+        {
+          "plane_face": 1037,
+          "vertex": 783,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1494,
+          "vertex": 782,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1494,
+          "vertex": 779,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1037,
+        1503
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 1037,
+          "vertex": 783,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1503,
+          "vertex": 779,
+          "exact_side": -1,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1047,
+        1499
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 1047,
+          "vertex": 790,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1499,
+          "vertex": 789,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1051,
+        1499
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": false,
+      "side_change_count": 2,
+      "changes": [
+        {
+          "plane_face": 1051,
+          "vertex": 788,
+          "exact_side": -1,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1499,
+          "vertex": 789,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1548,
+        1551
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": true,
+      "side_change_count": 6,
+      "changes": [
+        {
+          "plane_face": 1548,
+          "vertex": 592,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1548,
+          "vertex": 588,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1548,
+          "vertex": 611,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1551,
+          "vertex": 529,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1551,
+          "vertex": 523,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1551,
+          "vertex": 615,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1548,
+        1552
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": true,
+      "side_change_count": 6,
+      "changes": [
+        {
+          "plane_face": 1548,
+          "vertex": 608,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1548,
+          "vertex": 592,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1548,
+          "vertex": 611,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1552,
+          "vertex": 529,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1552,
+          "vertex": 523,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1552,
+          "vertex": 615,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1549,
+        1551
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": true,
+      "side_change_count": 6,
+      "changes": [
+        {
+          "plane_face": 1549,
+          "vertex": 592,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1549,
+          "vertex": 588,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1549,
+          "vertex": 611,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1551,
+          "vertex": 527,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1551,
+          "vertex": 529,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1551,
+          "vertex": 615,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1549,
+        1553
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": true,
+      "side_change_count": 4,
+      "changes": [
+        {
+          "plane_face": 1549,
+          "vertex": 611,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1549,
+          "vertex": 588,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1553,
+          "vertex": 527,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1553,
+          "vertex": 529,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1552,
+        1553
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": true,
+      "side_change_count": 4,
+      "changes": [
+        {
+          "plane_face": 1552,
+          "vertex": 588,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1552,
+          "vertex": 615,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1553,
+          "vertex": 608,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1553,
+          "vertex": 592,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1560,
+        1562
+      ],
+      "shared_vertices_by_index": 1,
+      "same_exact_support_plane": true,
+      "side_change_count": 4,
+      "changes": [
+        {
+          "plane_face": 1560,
+          "vertex": 616,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1560,
+          "vertex": 528,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1562,
+          "vertex": 589,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1562,
+          "vertex": 612,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1560,
+        1565
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": true,
+      "side_change_count": 6,
+      "changes": [
+        {
+          "plane_face": 1560,
+          "vertex": 526,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1560,
+          "vertex": 528,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1560,
+          "vertex": 616,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1565,
+          "vertex": 530,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1565,
+          "vertex": 589,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1565,
+          "vertex": 612,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1561,
+        1562
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": true,
+      "side_change_count": 6,
+      "changes": [
+        {
+          "plane_face": 1561,
+          "vertex": 616,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1561,
+          "vertex": 528,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1561,
+          "vertex": 530,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1562,
+          "vertex": 612,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1562,
+          "vertex": 593,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1562,
+          "vertex": 609,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1561,
+        1565
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": true,
+      "side_change_count": 6,
+      "changes": [
+        {
+          "plane_face": 1561,
+          "vertex": 526,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1561,
+          "vertex": 528,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1561,
+          "vertex": 616,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1565,
+          "vertex": 612,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1565,
+          "vertex": 593,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1565,
+          "vertex": 609,
+          "exact_side": 0,
+          "float_side": 1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1562,
+        1563
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": true,
+      "side_change_count": 6,
+      "changes": [
+        {
+          "plane_face": 1562,
+          "vertex": 589,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1562,
+          "vertex": 593,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1562,
+          "vertex": 612,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1563,
+          "vertex": 616,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1563,
+          "vertex": 528,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1563,
+          "vertex": 530,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    },
+    {
+      "face_pair": [
+        1563,
+        1565
+      ],
+      "shared_vertices_by_index": 0,
+      "same_exact_support_plane": true,
+      "side_change_count": 6,
+      "changes": [
+        {
+          "plane_face": 1563,
+          "vertex": 526,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1563,
+          "vertex": 528,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1563,
+          "vertex": 616,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1565,
+          "vertex": 589,
+          "exact_side": 0,
+          "float_side": 1
+        },
+        {
+          "plane_face": 1565,
+          "vertex": 593,
+          "exact_side": 0,
+          "float_side": -1
+        },
+        {
+          "plane_face": 1565,
+          "vertex": 612,
+          "exact_side": 0,
+          "float_side": -1
+        }
+      ]
+    }
+  ],
+  "notes": "Side differences occur on actual H1 proxy triangles after independent binary64 rounding; not original eval60 and not proof of material changes"
+}

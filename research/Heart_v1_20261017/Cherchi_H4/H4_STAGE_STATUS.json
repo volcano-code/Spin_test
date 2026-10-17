@@ -1,0 +1,22 @@
+{
+  "schema": "heart-h4-qualified-proxy-material-20261017-v1",
+  "classification": "RECONSTRUCTED_HISTORICAL_V4_PROXY_CHERCHI_RETAINED_MATERIAL",
+  "converged_heart_newton": false,
+  "original_eval60_reproduced": false,
+  "manufacture_certified": false,
+  "fixed_shell_or_pin_present_in_obj": false,
+  "exact_rational_boundary_passed": true,
+  "binary64_obj_reloaded_native_boundary_passed": true,
+  "global_exact_plane_chain_proof_passed": true,
+  "independent_exact_raw_ten_moment_match": true,
+  "number_of_coplanar_safe_flips": 38,
+  "number_of_changed_face_rows": 64,
+  "input_vertices": 793,
+  "final_faces": 1570,
+  "float_intersections_before": 78,
+  "float_intersections_after": 0,
+  "obj_sha256": "09d98c0ec66f79aa4a927281da204f94cbf4d66d53fb79a97fade7295d9dd5cd",
+  "canonical_obj": "final_certified/v4-proxy-cherchi-retained-material-retriangulated.obj",
+  "backend_role": "H1 Cherchi physical Boolean, local rational triangulation only; native CGAL boundary audits used for independent validation",
+  "no_fallback_to_cgal_optimization": true
+}
