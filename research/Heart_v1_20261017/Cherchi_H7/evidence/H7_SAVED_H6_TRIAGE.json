@@ -1,0 +1,41 @@
+{
+  "schema": "heart-h7-preserved-h6-digest-triage-v1",
+  "scope": "HISTORICAL_V4_PROXY_ONLY_NOT_AUTHENTIC_EVAL60",
+  "original_h6_numerical_report": "research/Heart_v1_20261017/Cherchi_H6/evidence/three-column-numerical-report.json",
+  "original_h6_feature_report": "research/Heart_v1_20261017/Cherchi_H6/evidence/three-column-feature-classification.json",
+  "source_points": 25,
+  "perturbations": 24,
+  "columns": [
+    0,
+    4,
+    8
+  ],
+  "numerical_checks_passed": 9,
+  "numerical_checks_total": 9,
+  "max_relative_error": 2.559927270162632e-11,
+  "categories": {
+    "face_connectivity_digest_change_only": 18,
+    "no_digest_change": 2,
+    "construction_provenance_digest_change": 4
+  },
+  "by_column": {
+    "0": {
+      "face_connectivity_digest_change_only": 3,
+      "no_digest_change": 1,
+      "construction_provenance_digest_change": 4
+    },
+    "4": {
+      "face_connectivity_digest_change_only": 7,
+      "no_digest_change": 1
+    },
+    "8": {
+      "face_connectivity_digest_change_only": 8
+    }
+  },
+  "certified_equivalent_retriangulation_count": 0,
+  "per_trial_native_cherchi_replay_performed": false,
+  "branch_smoothness_certified": false,
+  "original_eval60_authenticated": false,
+  "formal_heart_newton_converged": false,
+  "comment": "Only source H6 hashes and stored numeric observations; no exact per-perturbation rational Cherchi packets. 18 hash-only changes are NOT proved coplanar or harmless. Fail closed."
+}
