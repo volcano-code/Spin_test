@@ -24,6 +24,8 @@ def digest_file(path):
     return sha256(Path(path).read_bytes()).hexdigest()
 
 def verify_one_archive(path, recorded_sha, expected_h6=None, saved_witness=None):
+    if not Path(path).is_file():
+        raise ValueError("CAPTURED_CHERCHI_PACKET_SHA256_MISMATCH:ARCHIVE_MISSING")
     if not recorded_sha or len(recorded_sha)!=64 or digest_file(path)!=recorded_sha:
         raise ValueError("CAPTURED_CHERCHI_PACKET_SHA256_MISMATCH")
     with gzip.open(path,"rt",encoding="utf8") as fh:
