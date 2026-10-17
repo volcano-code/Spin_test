@@ -1,0 +1,94 @@
+{
+  "schema": "heart-h6-immutable-upload-manifest-v1",
+  "classification": "HISTORICAL_HEART_V4_PROXY_NOT_AUTHORITATIVE_EVAL60",
+  "files": {
+    "H6_STAGE_REPORT_CN.md": {
+      "size": 4285,
+      "sha256": "e8e76306c4ec06659ec51452636f59420f6dadea23d3932836d2cef8506bfe3e"
+    },
+    "H6_STAGE_STATUS.json": {
+      "size": 1904,
+      "sha256": "7b08c9f9193b337beef477800b3809c95ae98ab89d2f8b5d4c357cbe3b6b2abb"
+    },
+    "README_REPRODUCE_CN.md": {
+      "size": 2845,
+      "sha256": "3da6517f3bb798b33045b1f3523747d4069da4267834723aefb05eaf8f64474a"
+    },
+    "source/heart_h6_authority.py": {
+      "size": 3585,
+      "sha256": "b6e5e30ec766a49bff80131298534232883a48a9ae5828e43b0116c7d90ed96f"
+    },
+    "source/heart_h6_cherchi_jacobian.py": {
+      "size": 8434,
+      "sha256": "3761131bb3eb464d68f0f4760d0ee20bc585b31b663c9ee8c5862909a1722ea5"
+    },
+    "source/probe_h6_feature_branches.py": {
+      "size": 6618,
+      "sha256": "73c983b1a049015b5a8f44211c34530e1a30a07bf2bee49bd05cd35eb790929c"
+    },
+    "source/restore_v4_proxy.py": {
+      "size": 1105,
+      "sha256": "81a3cd135f7df8aa0315d1e3b315f67539a1bcb442eb7d1f6c89969b31fc85b8"
+    },
+    "source/collect_original_eval60.py": {
+      "size": 1839,
+      "sha256": "59711a5ea0a38d45d7d934434176c7bfee878dc0e0c88f150c5ac639aa74c6cf"
+    },
+    "input/archived-heart-v4-request.json.gz.b64": {
+      "size": 139253,
+      "sha256": "eba14c2782bc4fdafb0c56b31ff419413644c6e1157325391f56de218159efa9"
+    },
+    "input/registered-eval60-coefficients.json": {
+      "size": 3879,
+      "sha256": "41ede665d8915bcae4d14ee1fa685e475b539c480dd65e643200bc14f319c2f2"
+    },
+    "evidence/three-column-numerical-report.json": {
+      "size": 39774,
+      "sha256": "25af9226a832523d28eba39cb262a599097b8e1b7e02e3a4da904650d9677db7"
+    },
+    "evidence/three-column-feature-classification.json": {
+      "size": 43402,
+      "sha256": "06ddf54f50fd1fdcc7e2c3d5e138862277d55fb566e223e1717265ad977dad4f"
+    },
+    "evidence/three-column-stdout.log": {
+      "size": 823,
+      "sha256": "8ef6e51062a5b944bce7278adde1610d01774e180cc8a78199a8d45e29242ebe"
+    },
+    "evidence/feature-probe.log": {
+      "size": 1023,
+      "sha256": "8d5a4f10fe2fe66574a1ab81eb5f4d5be270456062ad8044807c51b3b4738308"
+    },
+    "evidence/pytest-all.log": {
+      "size": 99,
+      "sha256": "db3988c5aa61c1f984246df6ea9d0e2032da7e891357d094b54e240a3ea50fe1"
+    },
+    "evidence/collector-real-absence-test.log": {
+      "size": 872,
+      "sha256": "8ea291bc870cce83a60956e9e54af10a5ffc41cde9b31564ae42968ff547237d"
+    },
+    "tests/conftest.py": {
+      "size": 219,
+      "sha256": "a035e14a9b86343d4c08931020b6fb5a7c95cb7fad0883d9b6d362103c9d88d2"
+    },
+    "tests/test_h6_authority_and_stencils.py": {
+      "size": 3273,
+      "sha256": "f371d15e105dbadda4bd2412beccc70c3e807ee108bbc13011e4fd7b2e2341c3"
+    },
+    "tests/test_h6_restore.py": {
+      "size": 819,
+      "sha256": "54f5c9367ca9a4de599235e5b0dbe1047c851a4900efc31ec90215ca985bb82d"
+    },
+    "tests/test_h6_evidence_integrity.py": {
+      "size": 3113,
+      "sha256": "ec8dc5a6db1f2b62da7b12d7c0495d85bf4ff3fb216ff180a732739482f58297"
+    },
+    "tests/test_h6_collector.py": {
+      "size": 880,
+      "sha256": "02b453751a8a7484daea1fe39bc9cc6a58198d059d97750759b38ce6352f13b9"
+    },
+    "heart-h6-python-contracts.yml": {
+      "size": 783,
+      "sha256": "af44ab5540684633fe97bb44496b61846f463dbe2a8c7c19886e5735c664f815"
+    }
+  }
+}

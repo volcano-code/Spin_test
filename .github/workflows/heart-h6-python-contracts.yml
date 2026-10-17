@@ -1,0 +1,22 @@
+name: Heart H6 Python identity and evidence contracts (no native admission)
+on:
+  push:
+    branches:
+      - research/heart-p0-p3-20261017
+    paths:
+      - 'research/Heart_v1_20261017/Cherchi_H6/**'
+      - '.github/workflows/heart-h6-python-contracts.yml'
+  workflow_dispatch:
+jobs:
+  pure-python-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install isolated Python-only test dependencies
+        run: python -m pip install 'numpy>=2,<3' 'pytest>=8,<10'
+      - name: Validate archived V4 identity, 25-point evidence, and fail-closed guards
+        run: python -m pytest -q research/Heart_v1_20261017/Cherchi_H6/tests

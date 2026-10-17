@@ -1,0 +1,1094 @@
+{
+  "schema": "heart-h6-cherchi-v4-proxy-feature-branches-v1",
+  "scope": "HISTORICAL_V4_PROXY_ONLY_NOT_AUTHENTIC_EVAL60",
+  "input_sha256": "fa0a7eac8046be48fbfac495c7e6e283ebe7033d6242b64997aa28216b5c92f4",
+  "registration_sha256": "41ede665d8915bcae4d14ee1fa685e475b539c480dd65e643200bc14f319c2f2",
+  "evaluated_points": 25,
+  "directions": [
+    0,
+    4,
+    8
+  ],
+  "any_change_count": 22,
+  "feature_changes_by_type": {
+    "canonical_triangles": 22,
+    "constructed_vertex_features": 4
+  },
+  "verified_original_eval60": false,
+  "topology_neighborhood_certified": false,
+  "rows": [
+    {
+      "index": 0,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 1,
+      "coefficients": [
+        0.005302410165772024,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "4f8cb926685af2f681d1cfb1d3a797c332dcc86ff494eb288188b8d34b27b679",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 2,
+      "coefficients": [
+        0.005303910165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 3,
+      "coefficients": [
+        0.005306910165772024,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "d203f3bbcc942b1b73297b71adfac0f53766f8d6d5e1f63338793d7cccf1da25",
+      "constructed_vertex_features": "f04f3687e704d715a2dd17f00eec60dbb8c2431fd1aa954722f4c1b06b91e86c",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 4,
+      "coefficients": [
+        0.005308410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "a97af3a554517776c96fa04ef585913f856eb1c3bcbed7b3b3a712d73e732eba",
+      "constructed_vertex_features": "06daac2cabcd2bb5768e2c22862e2045a67a39eff882097451f690b668dcf649",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 5,
+      "coefficients": [
+        0.005304660165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "2296e9c5af9b13a725d6396f78e14ead2de0c5db4caf9f15b72f8fc3dc67ab58",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 6,
+      "coefficients": [
+        0.0053061601657720244,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "6932dfd604b81209d0da96c8c67ca7be0f81fb2193ce39d55c128c0eb02d8151",
+      "constructed_vertex_features": "f04f3687e704d715a2dd17f00eec60dbb8c2431fd1aa954722f4c1b06b91e86c",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 7,
+      "coefficients": [
+        0.005305035165772024,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "ef9a7f9ac486d3c49fe24155ba43915ee4920e18cd0e4143132dd216a8db2915",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 8,
+      "coefficients": [
+        0.005305785165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "730d989819d2d66397effd2cf02e8ad6d4d893c843df4b2d9f26dd6460ae73a3",
+      "constructed_vertex_features": "f04f3687e704d715a2dd17f00eec60dbb8c2431fd1aa954722f4c1b06b91e86c",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 9,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915679709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "fdf9412ffee3a51ccb78b8fe56d9fca5bbb9551399a20f1f8ac3fe7ae8d39693",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 10,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915529709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "36a1d0bfd2e4056b2bacebc87c007eee05ffca894322d3418c093f42707d4fb2",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 11,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915229709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "0e2517b2f10a94b4d2665a734cdf0a389c84e94eb65d5ebd9e4bd1488aa56b3f",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 12,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915079709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "9c2e0a1b3bb56bfb25406c802304ca93dd10d1b4035dc0a91684d6b2488a4e63",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 13,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.1091545470967504,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "315e66b883957cd4f0f1561e2204182fc709d44dc02fedb8ad9639e4ea56256a",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 14,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915304709675042,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "315e66b883957cd4f0f1561e2204182fc709d44dc02fedb8ad9639e4ea56256a",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 15,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915417209675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 16,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915342209675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203860263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "d9651c058aa253a88222e008e0cad437313c2b6ec2a98fcb4f68a562a99efb03",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 17,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203890263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "7bbd512c6f3df667575417b50ace5ecf5403b04882aa16adda3e8a20df9d24b4",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 18,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203875263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "0b3c24e705b93a1469ff96f24ca6612fba1bf078a4de5627bd8975bb11aa2865",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 19,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203845263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "7e7f0b50dd8ad6650a212423554c3577c7dd74143cfbb280a8fa8bcdc21deff1",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 20,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203830263241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "0be8fe689b07953503741a4015ccd6210832c3950a33b4ea5490d83e083bd9ed",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 21,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203867763241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "c09b8df5c74f3c60ab5fcf7d1d026496848d9f762b10da86e285f5b8423f42a7",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 22,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203852763241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "7e7f0b50dd8ad6650a212423554c3577c7dd74143cfbb280a8fa8bcdc21deff1",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 23,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203864013241242,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "92df09707dc5b6a9200f9ae3383c0b174975fcb390a7b38f069a9b50046e903a",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    },
+    {
+      "index": 24,
+      "coefficients": [
+        0.005305410165772025,
+        0.6252795734694588,
+        0.12163541805495835,
+        -0.08979885656301044,
+        -0.10915379709675041,
+        -0.036951704010130704,
+        0.16813602828943558,
+        -0.14433154806844548,
+        -0.7203856513241241,
+        -0.0692890432150975
+      ],
+      "source_faces": "5e9d701165a934378b44676ebe33f41bacd58fab8588fdc9478551fa44d4a7f1",
+      "source_normal_edges": "58268f4ff85311d48bee7adfde48f21230514e5396784e31b8b08c812376682e",
+      "source_normal_vertices": "ad6a44342ba6704bcae9fe880eb5bc5b39a3dc3b6401bce9491697332c965867",
+      "source_projective_rays": "9ef0750775ee7e391eb1a7030943aae42d5743592e74e7501850654b7768de98",
+      "source_face_caps": "ee42c3437225fac2e7f16460618acb401f7afd792fe1b950ed08004b15493a1d",
+      "source_surface_type": "HYPERBOLOID",
+      "source_radius": 6.266837884589543,
+      "source_vertices": 168,
+      "source_faces_count": 328,
+      "type_counts": {
+        "EXPLICIT3D": 269,
+        "LPI": 524
+      },
+      "canonical_triangles": "2296e9c5af9b13a725d6396f78e14ead2de0c5db4caf9f15b72f8fc3dc67ab58",
+      "constructed_vertex_features": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+      "geometric_faces": 1570,
+      "geometric_vertices": 793,
+      "input_operation": "intersection"
+    }
+  ],
+  "comparisons": [
+    {
+      "index": 1,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "4f8cb926685af2f681d1cfb1d3a797c332dcc86ff494eb288188b8d34b27b679"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 2,
+      "unequal_fields": {},
+      "actual_geometric_topology_stable": true
+    },
+    {
+      "index": 3,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "d203f3bbcc942b1b73297b71adfac0f53766f8d6d5e1f63338793d7cccf1da25"
+        },
+        "constructed_vertex_features": {
+          "base": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+          "perturbed": "f04f3687e704d715a2dd17f00eec60dbb8c2431fd1aa954722f4c1b06b91e86c"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 4,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "a97af3a554517776c96fa04ef585913f856eb1c3bcbed7b3b3a712d73e732eba"
+        },
+        "constructed_vertex_features": {
+          "base": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+          "perturbed": "06daac2cabcd2bb5768e2c22862e2045a67a39eff882097451f690b668dcf649"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 5,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "2296e9c5af9b13a725d6396f78e14ead2de0c5db4caf9f15b72f8fc3dc67ab58"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 6,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "6932dfd604b81209d0da96c8c67ca7be0f81fb2193ce39d55c128c0eb02d8151"
+        },
+        "constructed_vertex_features": {
+          "base": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+          "perturbed": "f04f3687e704d715a2dd17f00eec60dbb8c2431fd1aa954722f4c1b06b91e86c"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 7,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "ef9a7f9ac486d3c49fe24155ba43915ee4920e18cd0e4143132dd216a8db2915"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 8,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "730d989819d2d66397effd2cf02e8ad6d4d893c843df4b2d9f26dd6460ae73a3"
+        },
+        "constructed_vertex_features": {
+          "base": "61170fccc05d7a73b6b9e2288c616f9f28099afacff6c25d149065102bc79171",
+          "perturbed": "f04f3687e704d715a2dd17f00eec60dbb8c2431fd1aa954722f4c1b06b91e86c"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 9,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "fdf9412ffee3a51ccb78b8fe56d9fca5bbb9551399a20f1f8ac3fe7ae8d39693"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 10,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "36a1d0bfd2e4056b2bacebc87c007eee05ffca894322d3418c093f42707d4fb2"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 11,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "0e2517b2f10a94b4d2665a734cdf0a389c84e94eb65d5ebd9e4bd1488aa56b3f"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 12,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "9c2e0a1b3bb56bfb25406c802304ca93dd10d1b4035dc0a91684d6b2488a4e63"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 13,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "315e66b883957cd4f0f1561e2204182fc709d44dc02fedb8ad9639e4ea56256a"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 14,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "315e66b883957cd4f0f1561e2204182fc709d44dc02fedb8ad9639e4ea56256a"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 15,
+      "unequal_fields": {},
+      "actual_geometric_topology_stable": true
+    },
+    {
+      "index": 16,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "d9651c058aa253a88222e008e0cad437313c2b6ec2a98fcb4f68a562a99efb03"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 17,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "7bbd512c6f3df667575417b50ace5ecf5403b04882aa16adda3e8a20df9d24b4"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 18,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "0b3c24e705b93a1469ff96f24ca6612fba1bf078a4de5627bd8975bb11aa2865"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 19,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "7e7f0b50dd8ad6650a212423554c3577c7dd74143cfbb280a8fa8bcdc21deff1"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 20,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "0be8fe689b07953503741a4015ccd6210832c3950a33b4ea5490d83e083bd9ed"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 21,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "c09b8df5c74f3c60ab5fcf7d1d026496848d9f762b10da86e285f5b8423f42a7"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 22,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "7e7f0b50dd8ad6650a212423554c3577c7dd74143cfbb280a8fa8bcdc21deff1"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 23,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "92df09707dc5b6a9200f9ae3383c0b174975fcb390a7b38f069a9b50046e903a"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    },
+    {
+      "index": 24,
+      "unequal_fields": {
+        "canonical_triangles": {
+          "base": "9c8793354bffce3651d43efe5c487b331c5027e52b6db23a3374be1839aea3c7",
+          "perturbed": "2296e9c5af9b13a725d6396f78e14ead2de0c5db4caf9f15b72f8fc3dc67ab58"
+        }
+      },
+      "actual_geometric_topology_stable": false
+    }
+  ]
+}

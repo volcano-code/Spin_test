@@ -1,0 +1,33 @@
+{
+  "schema": "heart-h6-20261018-cherchi-v4-proxy-partial-jacobian-v1",
+  "classification": "HISTORICAL_V4_PROXY_NOT_AUTHORITATIVE_EVAL60",
+  "native_core_sha256": "24386389631f9bbeaa3a331fe14dce43eda150f020c7d1d07e9784dc4e63208f",
+  "native_cherchi_sha256": "e96e0ef827764f2d30cdf0ad9e4cc1cf990fd4e622bfd44c1eec27918aeefc0a",
+  "backend": "PINNED_CHERCHI_INPROCESS_NO_DYNAMIC_CGAL_FALLBACK",
+  "original_eval60_frozen_config_sha256_required": "071c799c92b522fb3d4de4b9aacf9a9ae8bcae102a49940f33f4037f28a74141",
+  "original_eval60_frozen_events_sha256_required": "2333a9e3c87d9e6b7d3a73676fe9bd940f6e500c9c20b7ce34867d2475269b70",
+  "original_eval60_config_events_available": false,
+  "native_compilation_fresh_against_latest_spin_commit": false,
+  "proxy_v4_material_evaluations_with_full_cherchi_moments_and_jacobian": 25,
+  "proxy_v4_additional_source_cherchi_boolean_for_branch_classification": 25,
+  "numerical_finite_difference_columns": [
+    0,
+    4,
+    8
+  ],
+  "numerical_five_point_three_scale_checks": 9,
+  "numerical_checks_passed": 9,
+  "largest_numerical_relative_error": 2.559927270162632e-11,
+  "coefficient_scaling_null_direction_jacobian_norm": 2.9913325748116326e-15,
+  "branch_feature_changed_in_24_perturbations": 22,
+  "changed_resolved_vertex_features_in_24_perturbations": 4,
+  "source_normal_edges_and_triangulation_constant_over_all_25": true,
+  "material_boundary_self_intersection_independently_checked_each_trial": false,
+  "full_eighty_one_point_derivative_protocol_passed": false,
+  "material_feature_branch_certification_passed": false,
+  "formal_heart_newton_converged": false,
+  "formal_heart_obj_exported": false,
+  "real_contact_dynamics_passed": false,
+  "pytest_pure_checks_passed": 20,
+  "next": "Recover exact hash-registered formal eval60 run; classify construction changes; then full 81-point 10-column branch + numerical admission, genuine Cherchi Newton"
+}

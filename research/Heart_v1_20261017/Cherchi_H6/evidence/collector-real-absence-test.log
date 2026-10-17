@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/mnt/data/Heart_Cherchi_H6/source/collect_original_eval60.py", line 41, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/mnt/data/Heart_Cherchi_H6/source/collect_original_eval60.py", line 40, in main
+    print(json.dumps(collect(args.run,args.registration,args.output),indent=2))
+                     ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Heart_Cherchi_H6/source/collect_original_eval60.py", line 19, in collect
+    status=verify_frozen_eval60(registration,paths['configuration.json'],paths['events.jsonl'])
+  File "/mnt/data/Heart_Cherchi_H6/source/heart_h6_authority.py", line 34, in verify_frozen_eval60
+    raise ValueError('MISSING_AUTHENTIC_HEART_EVAL60_FILES:' + ','.join(missing))
+ValueError: MISSING_AUTHENTIC_HEART_EVAL60_FILES:configuration,events
