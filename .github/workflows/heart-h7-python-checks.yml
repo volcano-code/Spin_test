@@ -1,0 +1,22 @@
+name: Heart H7 pure Python geometry guards (no native certification)
+on:
+  push:
+    branches:
+      - research/heart-p0-p3-20261017
+    paths:
+      - 'research/Heart_v1_20261017/Cherchi_H7/**'
+      - '.github/workflows/heart-h7-python-checks.yml'
+  workflow_dispatch:
+jobs:
+  python-geometry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install isolated Python test dependency
+        run: python -m pip install 'pytest>=8,<10'
+      - name: Exact coplanar and conservative symbolic diagnostics
+        run: python -m pytest -q research/Heart_v1_20261017/Cherchi_H7/tests
