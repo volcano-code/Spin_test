@@ -7,7 +7,8 @@ MODULE = Path(__file__).resolve().parents[1] / 'source' / 'audit_float_export_fa
 spec = importlib.util.spec_from_file_location('audit_float_export_failure', MODULE)
 m = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
-ROOT = Path(__file__).resolve().parents[2] / 'Cherchi_H1'
+import os
+ROOT = Path(os.environ.get('HEART_H1_ROOT', str(Path(__file__).resolve().parents[2] / 'Cherchi_H1')))
 
 
 def sources():

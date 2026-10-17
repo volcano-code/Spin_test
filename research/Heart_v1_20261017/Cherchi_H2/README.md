@@ -8,7 +8,7 @@ python source/audit_float_export_failure.py \
  --binary-audit ../Cherchi_H1/evidence/proxy-cherchi-full-audit.json \
  --rational-audit ../Cherchi_H1/evidence/rational-output-audit.json \
  --out evidence/float-failure-diagnosis.json
-python -m pytest -q tests
+HEART_H1_ROOT=../Cherchi_H1 python -m pytest -q tests  # optional, auto-resolved in repository
 ```
 
 No repaired mesh is created. A native exact boundary audit and a global rational-chain equivalence proof are required before any OBJ release.
