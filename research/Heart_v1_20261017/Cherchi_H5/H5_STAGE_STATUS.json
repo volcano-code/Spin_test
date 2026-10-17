@@ -1,0 +1,14 @@
+{
+  "schema": "heart-h5-frozen-v4-proxy-postprocess-v1",
+  "proxy_cherc_packet_qualified": true,
+  "run_snapshot_formal_bindings_tested_with_mocks": true,
+  "actual_authoritative_eval60_run_verified": false,
+  "actual_formal_Heart_Newton_converged": false,
+  "production_solver_patched": false,
+  "h5_tests_passed": 14,
+  "exact_coplanar_flips": 38,
+  "float_intersections_before": 78,
+  "float_intersections_after": 0,
+  "output_frame": "TARGET_NORMALIZED",
+  "source_archive_h4_geometry_rows_equal": true
+}

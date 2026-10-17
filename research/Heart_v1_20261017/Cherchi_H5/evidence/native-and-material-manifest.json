@@ -1,0 +1,18 @@
+{
+  "schema": "heart-h5-reviewed-input-output-v1",
+  "input_h1_packet_sha256": "0176c55d9a7858d5ed120d685ff386a123e1abb8db830b5eb1235bd44273a660",
+  "h4_obj_sha256": "09d98c0ec66f79aa4a927281da204f94cbf4d66d53fb79a97fade7295d9dd5cd",
+  "h5_obj_sha256": "b2c28e05a57aa1949fffe73dfafc92def9d404cc3051833659bc1be2abd5e987",
+  "h4_h5_obj_vertex_and_face_rows_equal": true,
+  "h5_native_sha256": "24386389631f9bbeaa3a331fe14dce43eda150f020c7d1d07e9784dc4e63208f",
+  "source_sha256": {
+    "cherchi_exact_flip.py": "32ab2cb5284ab63f3ab746f9b7836ddaa87fee4840c925680b2318963767f366",
+    "cherchi_obj_export.py": "ecc2f091471509150d6176fbec76df3245d3c5bac11a06021a2ebe6a39d4d64c"
+  },
+  "evidence_sha256": {
+    "pytest-all.log": "1baf9b88d22896c7b8fb54195538cf4fe54dfd786cbbcf3c41eab2c222a895ec",
+    "pytest-native.log": "093346e2c876c245e7666ccc17665a9ffcb6d92546ee15ea24d86b40a75921a5",
+    "pytest-nonnative.log": "993d6cee9285014d13b13277bb5624c5be7a3a6bda4a555d2a2bc90ed6a5befd"
+  },
+  "status": "HISTORICAL_V4_PROXY_EXPORT_CERTIFIED_NOT_FORMAL_HEART"
+}
