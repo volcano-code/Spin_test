@@ -1,0 +1,167 @@
+{
+  "schema": "heart-h3-exact-support-classification-v1",
+  "input_sha256": {
+    "cherchi-authoritative-exact.json": "0176c55d9a7858d5ed120d685ff386a123e1abb8db830b5eb1235bd44273a660",
+    "proxy-cherchi-full-audit.json": "e0959c033682953adf9b85aa629675f3beb28e5ab1755233579bdbff717098d8",
+    "rational-output-audit.json": "933b0ee33ba74f9879a64eedf69b780a19a3331e39953724d9c61dc7442d286c"
+  },
+  "scope": "DIAGNOSTIC_ONLY_H1_V4_PROXY",
+  "faces": 1570,
+  "exact_support_planes": 798,
+  "same_plane_pairs": 11,
+  "different_plane_pairs": 67,
+  "float_intersections": 78,
+  "affected_faces": 71,
+  "single_face_planes": 522,
+  "face_support_plane_multiplicity": {
+    "1": 522,
+    "2": 197,
+    "3": 36,
+    "4": 14,
+    "5": 7,
+    "6": 3,
+    "7": 4,
+    "9": 3,
+    "11": 1,
+    "12": 3,
+    "13": 1,
+    "14": 2,
+    "16": 2,
+    "77": 1,
+    "81": 1,
+    "104": 1
+  },
+  "affected_faces_on_multiface_plane": 67,
+  "same_plane_examples": [
+    [
+      1548,
+      1551
+    ],
+    [
+      1548,
+      1552
+    ],
+    [
+      1549,
+      1551
+    ],
+    [
+      1549,
+      1553
+    ],
+    [
+      1552,
+      1553
+    ],
+    [
+      1560,
+      1562
+    ],
+    [
+      1560,
+      1565
+    ],
+    [
+      1561,
+      1562
+    ],
+    [
+      1561,
+      1565
+    ],
+    [
+      1562,
+      1563
+    ],
+    [
+      1563,
+      1565
+    ]
+  ],
+  "different_plane_examples": [
+    [
+      444,
+      1190
+    ],
+    [
+      446,
+      1190
+    ],
+    [
+      447,
+      1192
+    ],
+    [
+      447,
+      1193
+    ],
+    [
+      447,
+      1194
+    ],
+    [
+      447,
+      1196
+    ],
+    [
+      493,
+      1397
+    ],
+    [
+      494,
+      1397
+    ],
+    [
+      497,
+      1190
+    ],
+    [
+      498,
+      1190
+    ],
+    [
+      590,
+      1091
+    ],
+    [
+      591,
+      1091
+    ],
+    [
+      598,
+      1091
+    ],
+    [
+      599,
+      1091
+    ],
+    [
+      683,
+      1080
+    ],
+    [
+      684,
+      1080
+    ],
+    [
+      685,
+      1080
+    ],
+    [
+      685,
+      1082
+    ],
+    [
+      686,
+      1080
+    ],
+    [
+      695,
+      1080
+    ]
+  ],
+  "candidate_created": false,
+  "same_exact_material_proved": false,
+  "float_output_qualified": false,
+  "next": "Exact coplanar patch boundaries and cross-plane vertex/edge classifications; reject all unproven mesh edits"
+}
