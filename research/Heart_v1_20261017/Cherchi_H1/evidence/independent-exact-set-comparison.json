@@ -1,0 +1,22 @@
+{
+  "role": "INDEPENDENT_AUDIT_ONLY_NOT_BACKEND",
+  "elapsed_seconds": 76.85587734700039,
+  "proof": {
+    "algorithm": "nef-exact-input-boolean-vs-material-v1",
+    "semantics": "finite-regular-closed-polyhedral-set-v1",
+    "a_digest": "d281bf6097793f8af2600921d8afb86a83c42a11d35e7ccd0d1365348c763fc6",
+    "b_digest": "09e7855506eb23d9f115fa4e86c199d69016163b5a3c55a8eeab5095c070c3e4",
+    "relation_digest": "eec2c83316b6342df32f4c642d1e7b13db83153989e6ecaf1eeb893a4ff899ee",
+    "a_explicit_empty": false,
+    "b_explicit_empty": false,
+    "completed": true,
+    "error": "",
+    "intersection_nonempty": true,
+    "positive_volume_overlap": true,
+    "a_subset_b": true,
+    "b_subset_a": true,
+    "equal": true,
+    "symmetric_difference_volume_exact": "0/1",
+    "scope": "exact-input-binary64-represented-polyhedral-Boolean-only"
+  }
+}

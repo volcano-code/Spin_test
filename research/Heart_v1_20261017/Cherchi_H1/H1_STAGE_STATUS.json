@@ -1,0 +1,22 @@
+{
+  "schema": "spin-heart-h1-cherchi-evidence-20261017",
+  "scope": "HISTORICAL_V4_HEART_PROXY_WITH_SAVED_EVAL60_COEFFICIENTS_NOT_AUTHENTIC_FROZEN_EVAL60",
+  "native_source_returned": true,
+  "cherchi_native_boolean_executed": true,
+  "cherchi_backend_sha256": "e96e0ef827764f2d30cdf0ad9e4cc1cf990fd4e622bfd44c1eec27918aeefc0a",
+  "native_source_module_sha256": "24386389631f9bbeaa3a331fe14dce43eda150f020c7d1d07e9784dc4e63208f",
+  "cherchi_material_vertex_count": 793,
+  "cherchi_material_face_count": 1570,
+  "cherchi_construction_record_count": 793,
+  "exact_rational_boundary_passed": true,
+  "float64_boundary_passed": false,
+  "binary64_self_intersecting_pairs": 78,
+  "independent_exact_boolean_set_equality_passed": true,
+  "independent_exact_symmetric_difference_volume": "0/1",
+  "real_original_eval60_frozen_inputs_available": false,
+  "genuine_heart_newton_converged": false,
+  "published_float_obj": false,
+  "new_native_cpp_compilation_done": false,
+  "pure_python_guard_tests_passed": 16,
+  "milestone": "PROXY_EXACT_CHERCHI_BOOLEAN_VALID_FLOAT_EXPORT_BLOCKED_AWAIT_FROZEN_INPUT"
+}
