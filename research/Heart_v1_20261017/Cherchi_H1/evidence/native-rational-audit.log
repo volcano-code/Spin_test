@@ -1,0 +1,3 @@
+CANDIDATE 793 1570 operands 793
+EXACT_AUDIT 5.642413311999917 {'boundary_valid': True, 'closed': True, 'edge_manifold': True, 'vertex_manifold': True, 'component_orientations_valid': True, 'self_intersection_free': True, 'intersecting_pairs': 0, 'degenerate_faces': 0, 'intersection_error': ''}
+RATIONAL_REGION constructed <class '_make_it_stand.ExactMaterialRegion'> 41.49367170400001

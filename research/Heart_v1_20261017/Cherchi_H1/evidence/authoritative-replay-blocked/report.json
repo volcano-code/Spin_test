@@ -1,0 +1,8 @@
+{
+  "status": "AUTHORITATIVE_EVAL60_BLOCKED_OR_REJECTED",
+  "optimization_invocations": 0,
+  "backend_fallback_count": 0,
+  "full_newton_converged": false,
+  "error_type": "FileNotFoundError",
+  "error": "MISSING_ORIGINAL_EVAL60_CONFIGURATION"
+}

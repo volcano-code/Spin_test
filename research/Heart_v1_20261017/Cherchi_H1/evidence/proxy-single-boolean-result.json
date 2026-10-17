@@ -1,0 +1,16 @@
+{
+  "source_type": "ARCHIVED_V4_PROXY_NOT_REAL_EVAL60",
+  "historical_eval60_reproduced": false,
+  "complete_heart_newton": false,
+  "chernhi_no_fallback": true,
+  "cherchi_backend": "cherchi-reference-7bd6c2697695f555f9a15d7e154e084d841316f0-inprocess-v1",
+  "boolean_operation": "intersection",
+  "input_design_faces": 1436,
+  "source_faces": 328,
+  "material_faces": 1570,
+  "material_vertices": 793,
+  "construction_records": 793,
+  "audit_boundary_valid": false,
+  "native_hash": "24386389631f9bbeaa3a331fe14dce43eda150f020c7d1d07e9784dc4e63208f",
+  "cherchi_sha256": "e96e0ef827764f2d30cdf0ad9e4cc1cf990fd4e622bfd44c1eec27918aeefc0a"
+}

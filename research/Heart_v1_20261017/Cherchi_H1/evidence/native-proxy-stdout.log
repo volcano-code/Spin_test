@@ -1,0 +1,11 @@
+HEAD {"n": "24386389631f9bbeaa3a331fe14dce43eda150f020c7d1d07e9784dc4e63208f", "cherchi": "e96e0ef827764f2d30cdf0ad9e4cc1cf990fd4e622bfd44c1eec27918aeefc0a", "proxy_design_sha": "fa0a7eac8046be48fbfac495c7e6e283ebe7033d6242b64997aa28216b5c92f4", "not_authoritative_eval60": true, "q_sha": "b63916c72389e9065c66fa05f836ddd0259a4cf24036aa66a1f510bce4949201"}
+SOURCE True True 168 328 0.779601716000343
+SRC SIGN True
+CHERCHI DONE 793 1570 793 0.3412884550002673
+AUDIT False 78 1.1990018120000059
+FINAL {"source_type": "ARCHIVED_V4_PROXY_NOT_REAL_EVAL60", "historical_eval60_reproduced": false, "complete_heart_newton": false, "chernhi_no_fallback": true, "cherchi_backend": "cherchi-reference-7bd6c2697695f555f9a15d7e154e084d841316f0-inprocess-v1", "boolean_operation": "intersection", "input_design_faces": 1436, "source_faces": 328, "material_faces": 1570, "material_vertices": 793, "construction_records": 793, "audit_boundary_valid": false, "native_hash": "24386389631f9bbeaa3a331fe14dce43eda150f020c7d1d07e9784dc4e63208f", "cherchi_sha256": "e96e0ef827764f2d30cdf0ad9e4cc1cf990fd4e622bfd44c1eec27918aeefc0a"}
+Traceback (most recent call last):
+  File "/mnt/data/Heart_Cherchi_H1/source/run_proxy_cherchi.py", line 36, in <module>
+    if not rec['audit_boundary_valid']:raise RuntimeError('CHERCHI_OUTPUT_FAILED_INDEPENDENT_AUDIT')
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: CHERCHI_OUTPUT_FAILED_INDEPENDENT_AUDIT
