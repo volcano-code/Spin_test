@@ -1,0 +1,138 @@
+{
+  "schema": "spin-noodles-v7-paper-guided-newton-20261017-v1",
+  "generated_utc": "2026-10-17T06:29:58.685063+00:00",
+  "generated_beijing": "2026-10-17T14:29:58.685063+08:00",
+  "classification": "PAPER_PHOTO_GUIDED_RECONSTRUCTED_METHOD_VALIDATION_NOT_AUTHOR_CAD",
+  "geometry_source_parts_passed": 94,
+  "input_CGAL_exact_boolean_operations": 96,
+  "v7_fixed_faces_before_exact_retriangulation": 114942,
+  "v7_frozen_fixed_faces": 112982,
+  "v7_design_faces_before_exact_retriangulation": 108804,
+  "v7_frozen_design_faces": 106684,
+  "static_original_rational_chains_verified": true,
+  "model_unit_m": 0.025,
+  "material_density_kg_m3": 1200,
+  "source_native_binary_checkpoint": "b0a13e3_not_freshly_recompiled_a17ff49",
+  "Newton_has_true_converged_result": true,
+  "Newton_runs_are_separate_with_verified_acceptance_checkpoint": true,
+  "initial_pilot_status": "RESOURCE_LIMIT_REACHED",
+  "initial_pilot_residual": 0.06495415431214527,
+  "warm_restart_status": "CONVERGED",
+  "warm_restart_residual": 2.8251949346891595e-14,
+  "warm_restart_raw_residual": 4.146207968231612e-13,
+  "warm_restart_physical_relative_residual": 2.506091500408117e-14,
+  "warm_restart_function_evaluations": 6,
+  "warm_restart_accepted_updates": 5,
+  "warm_restart_seconds": 199.00152613200044,
+  "full_paper_random_seed_statistics_verified": false,
+  "converged_quadric_coefficients": [
+    -0.3754120285487631,
+    9.300555147259871e-05,
+    1.996681150836599e-05,
+    0.8137640951206883,
+    0.010258580600087074,
+    0.07121952758132412,
+    -0.43780855935828406,
+    -1.8961755366069204e-05,
+    -5.0202994491486975e-05,
+    -1.2349231511371007e-05
+  ],
+  "quadric_final_boolean": "Cherchi_difference_on_dynamic_source",
+  "retained_faces": 57926,
+  "final_exact_union_faces_before_MM_repair": 86088,
+  "final_exported_OBJ_faces": 86076,
+  "final_exported_OBJ_sha256": "e979bd3980a5efaf9b03d047c4e19e9296ddb426267a7322ff4e1a4b954fe80a",
+  "float64_MM_zero_area_faces_before_fix": 12,
+  "float64_MM_zero_area_faces_after_fix": 0,
+  "final_global_exact_chain_equal": true,
+  "final_global_exact_chain_support_plane_differences": 0,
+  "final_native_boundary_passed": true,
+  "final_native_selfintersection_free": true,
+  "final_native_selfintersection_pairs": 0,
+  "final_native_components": 1,
+  "final_exact_Cherchi_CGAL_same_binary64_surface_match": true,
+  "ten_raw_moments_match": true,
+  "ten_raw_moments_max_normalized_error": 2.220446049250313e-16,
+  "physical_before": {
+    "vertices": 18334,
+    "faces": 36664,
+    "obj_sha256": "cd1f166226efbbcd63ff6698d36a4d8cdc3472dc19926eff68e061d8c4eae63a",
+    "watertight": true,
+    "winding_consistent": true,
+    "euler_number": 2,
+    "signed_volume_mm3": 22491.390834895607,
+    "mass_g_at_1200kg_m3": 26.989669001874727,
+    "center_of_mass_mm": [
+      0.002662975427861572,
+      0.0003276879233769837,
+      22.56810984502001
+    ],
+    "distance_COM_to_Z_axis_mm": 0.002683061218929162,
+    "inertia_center_kg_m2": [
+      [
+        2.9120998932568924e-06,
+        -3.429256658237126e-11,
+        -1.104758460686232e-10
+      ],
+      [
+        -3.429256658237126e-11,
+        3.9718134207058425e-06,
+        1.7307795026463283e-13
+      ],
+      [
+        -1.104758460686232e-10,
+        1.7307795026463283e-13,
+        5.5267504223692506e-06
+      ]
+    ],
+    "inertia_axis_ratio_zz_xx": 1.8978574310471656,
+    "inertia_axis_ratio_zz_yy": 1.3914929622718974
+  },
+  "physical_after": {
+    "vertices": 42932,
+    "faces": 86076,
+    "obj_sha256": "e979bd3980a5efaf9b03d047c4e19e9296ddb426267a7322ff4e1a4b954fe80a",
+    "watertight": true,
+    "winding_consistent": true,
+    "euler_number": -106,
+    "signed_volume_mm3": 15403.245653167984,
+    "mass_g_at_1200kg_m3": 18.483894783801578,
+    "center_of_mass_mm": [
+      1.1128924724699515e-12,
+      -2.4848379076353173e-14,
+      21.20748787845468
+    ],
+    "distance_COM_to_Z_axis_mm": 1.113169842038044e-12,
+    "inertia_center_kg_m2": [
+      [
+        2.1254095912017893e-06,
+        -1.392986142670919e-10,
+        4.643610540346025e-20
+      ],
+      [
+        -1.392986142670919e-10,
+        2.813045532877519e-06,
+        -7.12551025446338e-21
+      ],
+      [
+        4.643610540346025e-20,
+        -7.12551025446338e-21,
+        4.244316301889278e-06
+      ]
+    ],
+    "inertia_axis_ratio_zz_xx": 1.9969404106666218,
+    "inertia_axis_ratio_zz_yy": 1.508797583360723
+  },
+  "mass_reduction_pct": 31.51492601662633,
+  "ideal_fixed_pivot_benchmark_passed_synthetic_energy_momentum_and_step_checks": true,
+  "full_ground_contact_physics_simulation_passed": false,
+  "full_author_CAD_reproduction_passed": false,
+  "paper_style_visual_similarity_quantified": false,
+  "latest_full_native_branch_recompiled": false,
+  "multi_seed_reproducibility_passed": false,
+  "formal_separate_F_D_A_binary64_partition_passed": false,
+  "GitHub_write_performed": false,
+  "manufacturing_certified": false,
+  "milestone": "ONE_RECONSTRUCTED_V7_CHERCHI_FASTER_CONVERGED_AND_CLOSED_EXPORTED_MODEL_PLUS_EXPLORATORY_PINNED_PIVOT_ONLY",
+  "next": "Freeze and back up on approval; latest source build/multiseed, independent physical partition, actual contact dynamics, author-CAD visual fidelity"
+}

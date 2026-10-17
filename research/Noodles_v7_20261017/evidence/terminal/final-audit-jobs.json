@@ -1,0 +1,64 @@
+{
+  "global-proof": {
+    "pid": 10839,
+    "cmd": [
+      "python",
+      "-u",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/prove_v7_final_scaled_output_equivalence.py",
+      "--original",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/complete-rational.json",
+      "--candidate",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/complete-retriangulated-rational.json",
+      "--report",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/final-exact-surface-proof.json"
+    ],
+    "started": 1792217925.9091067
+  },
+  "final-native": {
+    "pid": 10840,
+    "cmd": [
+      "python",
+      "-u",
+      "/mnt/data/Noodles_v6_C4_work/code/audit_complete_mesh_float64.py",
+      "--input",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/complete-mm-repaired.obj",
+      "--report",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/repaired-independent-native-float64-boundary.json"
+    ],
+    "started": 1792217925.909653
+  },
+  "final-moments": {
+    "pid": 10841,
+    "cmd": [
+      "python",
+      "-u",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/audit_export_v7_obj.py",
+      "--complete",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/complete-mm-repaired.obj",
+      "--initial",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/initial-mm.obj",
+      "--material",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/cherchi-terminal-material.json.gz",
+      "--out",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/repaired-independent-obj-moments.json"
+    ],
+    "started": 1792217925.9101365
+  },
+  "final-render": {
+    "pid": 10842,
+    "cmd": [
+      "python",
+      "-u",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/render_v7_newton_model.py",
+      "--initial",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/initial-mm.obj",
+      "--complete",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/complete-mm-repaired.obj",
+      "--fixed",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/fixed-mm.obj",
+      "--out",
+      "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/render-repaired"
+    ],
+    "started": 1792217925.9106321
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "all_three_chains_verified": true,
+  "results": [
+    {
+      "name": "F_plus_D_equals_A",
+      "success": true,
+      "nonzero_support_planes": 0,
+      "exact_zero_area_triangles": 0,
+      "inputs": {
+        "fixed": "71f9df91fca12fde4f4f2c80dc26e2d1229e8209e09db46e680d0de7baee264a",
+        "design": "48e8d3008bba746823eafd9c3704b52d597595b802066450a921ecc0dcb7f611",
+        "initial": "640877647134a54152a8e1f63c1f356d752e6c66f7913301580c1e85a356d83b"
+      },
+      "seconds": 57.5042269810001
+    },
+    {
+      "name": "K_plus_D_equals_E",
+      "success": true,
+      "nonzero_support_planes": 0,
+      "exact_zero_area_triangles": 0,
+      "inputs": {
+        "fixed-inside-envelope": "a944da4e36e5fe386cee3b28e4acf5800fc3942cde4eb35ba54f5de626f55dc7",
+        "design": "48e8d3008bba746823eafd9c3704b52d597595b802066450a921ecc0dcb7f611",
+        "envelope": "92f46d68025467961fcc8b2b52353b4a18c2a981a09ad654ad6af3fb128b73fd"
+      },
+      "seconds": 49.433416021000085
+    },
+    {
+      "name": "K_plus_R_equals_F",
+      "success": true,
+      "nonzero_support_planes": 0,
+      "exact_zero_area_triangles": 0,
+      "inputs": {
+        "fixed-inside-envelope": "a944da4e36e5fe386cee3b28e4acf5800fc3942cde4eb35ba54f5de626f55dc7",
+        "fixed-outside-envelope": "8c66f71da99773fbc9a76b4f82fc43c55816df1876b643634ae64768f72ba262",
+        "fixed": "71f9df91fca12fde4f4f2c80dc26e2d1229e8209e09db46e680d0de7baee264a"
+      },
+      "seconds": 57.84807712700058
+    }
+  ],
+  "does_not_prove_native_solid_validity": true
+}

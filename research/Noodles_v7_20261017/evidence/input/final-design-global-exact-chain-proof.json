@@ -1,0 +1,10 @@
+{
+  "completed": true,
+  "exact_surface_chain_equal": true,
+  "nonzero_support_planes": 0,
+  "exact_zero_area_triangles": 0,
+  "source_sha256": "48e8d3008bba746823eafd9c3704b52d597595b802066450a921ecc0dcb7f611",
+  "candidate_sha256": "299f985429a1dae106cf829d1a114093bc48b553c2e2cb0bf911f16895a16abd",
+  "seconds": 49.9111100730006,
+  "notes": "Only exact rational oriented surface equivalence, not binary64 suitability"
+}

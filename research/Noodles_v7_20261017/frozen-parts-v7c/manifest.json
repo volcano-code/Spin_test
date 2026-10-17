@@ -1,0 +1,1721 @@
+{
+  "spec": {
+    "schema": "noodles-paper-photo-hypothesis-v7",
+    "classification": "RECONSTRUCTED_METHOD_VALIDATION",
+    "author_original": false,
+    "source_view": "USER_REFERENCE_LEFT_UNOPTIMIZED_ONLY",
+    "paper_locator": "Spin-It Faster Section 6.2; reconstructed visible arrangement only",
+    "ellipsoid_center_model": [
+      0.0,
+      0.0,
+      0.9
+    ],
+    "ellipsoid_radii_model": [
+      0.98,
+      0.82,
+      0.42
+    ],
+    "inner_scale": 0.94,
+    "ellipsoid_subdivisions": 3,
+    "tube_radius_model": 0.03,
+    "tube_samples": 33,
+    "tube_sections": 12,
+    "tube_cap_rings": 4,
+    "tube_z_rows": 11,
+    "tube_z_span_model": 0.6138461538461537,
+    "tube_y_lanes": 9,
+    "tube_y_span_model": 0.6764999999999999,
+    "layout_ellipsoid_norm_limit": 0.88,
+    "tube_end_extension_model": 0.035,
+    "tube_wave_z_model": 0.035,
+    "tube_wave_y_model": 0.014,
+    "tube_wave_phase_increment": 0.37,
+    "tube_surface_arch_y_model": 0.0,
+    "hub_radius_model": 0.056,
+    "hub_interval_model": [
+      0.21,
+      1.59
+    ],
+    "shaft_radius_model": 0.045,
+    "grip_radius_model": 0.105,
+    "grip_center_z_model": 1.78,
+    "tip_bottom_model": -0.16,
+    "model_unit_m": 0.025,
+    "density_kg_m3": 1200.0,
+    "target_origin_model": [
+      0.0,
+      0.0,
+      -0.16
+    ],
+    "target_axis": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "objective": "FASTER_INERTIA_RATIO_PLUS_CENTER_OF_MASS_HEIGHT",
+    "center_of_mass_weight": 1.0,
+    "weight_coordinate_contract": "FASTER_NORMALIZED_REQUEST",
+    "backend": "CGAL",
+    "normal_subdivision": 2,
+    "seeds": [
+      0,
+      1
+    ],
+    "maximum_attempts_per_seed": 8,
+    "maximum_evaluations_per_attempt": 60,
+    "raw_residual_tolerance": 1e-12,
+    "alpha": 0.5,
+    "t_max": 0.5,
+    "parameters_source": "RECONSTRUCTED_HIDDEN_GEOMETRY_FIXED_BEFORE_OPTIMIZATION",
+    "hidden_geometry_assumptions": [
+      "rear tendril layout",
+      "internal connections",
+      "curves and rounded tube caps",
+      "ellipsoid candidate dimensions",
+      "axle and grip dimensions"
+    ],
+    "visual_change_purpose": "Repair witnessed tube body self-intersection while keeping dense horizontal layout, tube radius and full envelope",
+    "parent_source_spec_sha256": "0febf93b5c4efefd24d061fa3dda4c267fc2da613baf2c608cc8be76e6dd2b24",
+    "sweep_rule": "PARABOLIC_LATERAL_PATH_WITH_LENGTH_SQUARED_SCALED_WAVES_V1",
+    "curvature_radius_screen_limit": 0.45,
+    "paper_cad_available": false,
+    "permanent_ellipsoid_shell": false,
+    "hypothesis_frozen_before_optimization": true,
+    "parent": "noodles-paper-domain-v6",
+    "design_envelope": "outer-ellipsoid",
+    "z_flatten_scale": 0.6,
+    "centerline_y_preservation": 0.78,
+    "strand_y_weave_amplitude": 0.034,
+    "strand_z_weave_amplitude": 0.018,
+    "strand_y_fine_wave": 0.011,
+    "rib_radius_model": 0.017,
+    "axial_rib_radius_model": 0.022,
+    "rib_sections": 12,
+    "grip_knob_flutes": 12,
+    "grip_flute_depth_fraction": 0.055,
+    "source_hypotheses": [
+      "flattened-envelope inferred from a perspective photo, not measured CAD",
+      "mostly parallel serpentine surface strands in place of strict radial spokes",
+      "separate 11 horizontal rib pieces plus one axial rib, exact union pending",
+      "fluted cylindrical hand grip in place of spherical button",
+      "79 strand count inherited from reconstructed v6, not documented author geometry"
+    ],
+    "expected_physics": "UNTESTED",
+    "active_boolean_solver": "CHERCHI_ONLY_AFTER_EXACT_INPUT_ADMISSION",
+    "independent_boolean_reference": "CGAL"
+  },
+  "parts": {
+    "outer-ellipsoid": {
+      "model_obj": "outer-ellipsoid-model.obj",
+      "sha256_model": "1a7b1ae060fb3a8e4fa1c35cd9b2d1bdea44564c84bf9c360ec79c0f6bdaaa6f",
+      "audit": {
+        "vertices": 642,
+        "triangles": 1280,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 1.401599858658712,
+        "minimum_triangle_area_model2": 0.003207720241358062,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "outer-ellipsoid-si.obj",
+      "sha256_si": "f0f84a4ef147cc73cdca13a361c13da55a7ea28ef80b5e1a2f9f5a665427e4d6"
+    },
+    "hub-fixed": {
+      "model_obj": "hub-fixed-model.obj",
+      "sha256_model": "4ae1fb276a80cf729e5b262d87c280c34e91daba4954892d4588030d0e7dfbbb",
+      "audit": {
+        "vertices": 50,
+        "triangles": 96,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.013441032061311328,
+        "minimum_triangle_area_model2": 0.0004058282627207521,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "hub-fixed-si.obj",
+      "sha256_si": "ea8a68686a28d43ca826032c785a546508a1252b2cc414510db9b2b1d0db157a"
+    },
+    "pin-fixed": {
+      "model_obj": "pin-fixed-model.obj",
+      "sha256_model": "97a2e7cf4da76bec888ca183de1f62b4d61f2055f8fab7515c251110c660f130",
+      "audit": {
+        "vertices": 530,
+        "triangles": 1056,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.017574654250458722,
+        "minimum_triangle_area_model2": 1.6866369504711866e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "pin-fixed-si.obj",
+      "sha256_si": "a5ba4a5d0e151f1edff6c375c806ead75e5cf1fec36e274213133b9cb8402a1b"
+    },
+    "tube-000-fixed": {
+      "model_obj": "tube-000-fixed-model.obj",
+      "sha256_model": "0026a63c3bd09e9cea8f2e6a69cb2919da2b5ca362fa0bf2c507b67f057d0c21",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.002653998720695567,
+        "minimum_triangle_area_model2": 2.1772510587415603e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-000-fixed-si.obj",
+      "sha256_si": "66bac7d2e4eb796915ae30c335f0a1937b21afcc5b7fed1bceb604ac8fb91b02"
+    },
+    "tube-001-fixed": {
+      "model_obj": "tube-001-fixed-model.obj",
+      "sha256_model": "eb23ec1ca1cb46e48266d1ee0a5633d6b49c75fe6ed107d8fc7ffbf451214c15",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0028851418505673153,
+        "minimum_triangle_area_model2": 2.1772510587415353e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-001-fixed-si.obj",
+      "sha256_si": "9b7814a4b2a3845992c24df378f0d996f55da75418ed0ed006682ad2f33cd6d8"
+    },
+    "tube-002-fixed": {
+      "model_obj": "tube-002-fixed-model.obj",
+      "sha256_model": "d3031996768477c94028cec5acdc5de2925600f9f6f3b3271eb5dd0e2357c837",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.002658287258737495,
+        "minimum_triangle_area_model2": 2.1772510587415515e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-002-fixed-si.obj",
+      "sha256_si": "7195b8adbc4198c4a2612d493ebc47564d908173742cff59f05a782cc73c8633"
+    },
+    "tube-003-fixed": {
+      "model_obj": "tube-003-fixed-model.obj",
+      "sha256_model": "185643e8e88323f9d2d7a4a591b2304c5b95717dcfdd638bf94a51cd264e19f6",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0023161011912169603,
+        "minimum_triangle_area_model2": 2.177251058741559e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-003-fixed-si.obj",
+      "sha256_si": "61d8d051005f739072f0dc7c134df500f9c827947c4711a8c8565c028416ce78"
+    },
+    "tube-004-fixed": {
+      "model_obj": "tube-004-fixed-model.obj",
+      "sha256_model": "50dedd209722f23aa010ddda197a58e92e0e3c371689728b976705ce7d3b1700",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0034321541242370406,
+        "minimum_triangle_area_model2": 2.1772510587415488e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-004-fixed-si.obj",
+      "sha256_si": "c58fc5892460ba323eb9c0ecd5e21b3ff7823fa7bf70088548753cf9e790751e"
+    },
+    "tube-005-fixed": {
+      "model_obj": "tube-005-fixed-model.obj",
+      "sha256_model": "ee3ab5cca3dc0194490454774d973d77dd309236f67219f6464c6051a1dd9bc9",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.003941641707864019,
+        "minimum_triangle_area_model2": 2.177251058741556e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-005-fixed-si.obj",
+      "sha256_si": "aa36730d15ce2813513f35779588c292230af0dbcf0b58ca54c7a5fdd1facb42"
+    },
+    "tube-006-fixed": {
+      "model_obj": "tube-006-fixed-model.obj",
+      "sha256_model": "c14ec7e9f5555a7409b2dc215faadf428c3806e0c241e6613d1365c35d86476c",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004098641642568411,
+        "minimum_triangle_area_model2": 2.1772510587415573e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-006-fixed-si.obj",
+      "sha256_si": "483a7366e00a1804fd78f21567ca2f1eeeeaf58ea55db4a423cafbff8f255ac0"
+    },
+    "tube-007-fixed": {
+      "model_obj": "tube-007-fixed-model.obj",
+      "sha256_model": "1776d99bc0ac024ce4f40c03a5b9e08520eccd323f2b2d11871cb70cebaf9ca5",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0039477923291387695,
+        "minimum_triangle_area_model2": 2.177251058741533e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-007-fixed-si.obj",
+      "sha256_si": "a953f0f5142ff1778ea25d45da55b844400bf76884778b445ccf8e81497b46ba"
+    },
+    "tube-008-fixed": {
+      "model_obj": "tube-008-fixed-model.obj",
+      "sha256_model": "0861f75cf3f687ce1d3ba5aaccbb8a72c22e8dc9530345a14e13662c9e7df75d",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0034434913540305604,
+        "minimum_triangle_area_model2": 2.177251058741537e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-008-fixed-si.obj",
+      "sha256_si": "21f469f1c14c1feb0ae90f54b70f79905499d40ee940d1cb8ea95ec051e7e7b8"
+    },
+    "tube-009-fixed": {
+      "model_obj": "tube-009-fixed-model.obj",
+      "sha256_model": "b44b495057049810478ae8f836246774f2893dfcff87e3bf3a4ed807a50e308d",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0023315407378169313,
+        "minimum_triangle_area_model2": 2.177251058741543e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-009-fixed-si.obj",
+      "sha256_si": "327565ed150e3154e538415219b8963643a6bdedb2d63b70fb8a13f57721ade5"
+    },
+    "tube-010-fixed": {
+      "model_obj": "tube-010-fixed-model.obj",
+      "sha256_model": "2a5f8003742b97a9e8d64744cf643040428918a8ce1c2c5fbec867639d148a4e",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0034997696154589627,
+        "minimum_triangle_area_model2": 2.1772510587415387e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-010-fixed-si.obj",
+      "sha256_si": "ed787085c7d91f37cc2fcbb5cf079037e979ff5bb43d8b0112a47ae214106732"
+    },
+    "tube-011-fixed": {
+      "model_obj": "tube-011-fixed-model.obj",
+      "sha256_model": "3e649957ada4daec487600826fa4c7182b3e92e5eeec9d2cc8affdc8d517af3e",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004292937946956816,
+        "minimum_triangle_area_model2": 2.17725105874154e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-011-fixed-si.obj",
+      "sha256_si": "b0a03aa5f0d1af9eaffd87ae506d30a4eefa2d540c298643043da914707e7886"
+    },
+    "tube-012-fixed": {
+      "model_obj": "tube-012-fixed-model.obj",
+      "sha256_model": "4d2992674d0640907ffaa80fd85d2485ad0c5e5ec80f967f519b1521d792ab3d",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004698108363944904,
+        "minimum_triangle_area_model2": 2.177251058741555e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-012-fixed-si.obj",
+      "sha256_si": "91ace0edd25b40c7febbf559a8d7e9f1437fce7839254a7f98e3e9c2f9bcfdd7"
+    },
+    "tube-013-fixed": {
+      "model_obj": "tube-013-fixed-model.obj",
+      "sha256_model": "fe2bb269ccc000cb896cf3364002be3b942727fc589a4e6d53d5e6f292c71da4",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.00482266747400798,
+        "minimum_triangle_area_model2": 2.1772510587415393e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-013-fixed-si.obj",
+      "sha256_si": "5128a52e294af8b9d4e93adbf5e2bcb59d3dff1484e72614b92567f80a819cc8"
+    },
+    "tube-014-fixed": {
+      "model_obj": "tube-014-fixed-model.obj",
+      "sha256_model": "4cf479b2402920a3d912a55762bd6512e7387d47fddf11ae194f68709a116db9",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004692003749665161,
+        "minimum_triangle_area_model2": 2.1772510587415403e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-014-fixed-si.obj",
+      "sha256_si": "42a5546b4d40688108a9773e27248498be95c2336c1e36358b6f921366cee352"
+    },
+    "tube-015-fixed": {
+      "model_obj": "tube-015-fixed-model.obj",
+      "sha256_model": "959eda600197f39383ac9eccfd796d6d5e3ba94307d7c99a633b0b8512c5bb61",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004282250813442035,
+        "minimum_triangle_area_model2": 2.1772510587415336e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-015-fixed-si.obj",
+      "sha256_si": "1482cb7e2ae0fdc9c08470e62a575f448605861315074a20ca9980ee439be4dd"
+    },
+    "tube-016-fixed": {
+      "model_obj": "tube-016-fixed-model.obj",
+      "sha256_model": "3e9cb8055a84398c9ca76a3ae166fbc10d1d2d27e0dc9e9590014e29ef884382",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.003487486943154801,
+        "minimum_triangle_area_model2": 2.1772510587415407e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-016-fixed-si.obj",
+      "sha256_si": "37ce725163354193170e80a2f93f060d594b680d33337ed5c5f1ab4dd3494179"
+    },
+    "tube-017-fixed": {
+      "model_obj": "tube-017-fixed-model.obj",
+      "sha256_model": "2837814ea08e7b5cd0b99843f4544de4911371b1742f9aa9a2d1ebda4e4bf79d",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.002846424691559032,
+        "minimum_triangle_area_model2": 2.177251058741523e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-017-fixed-si.obj",
+      "sha256_si": "2adb36f5897ded9bfab5bff4cd20e000d4961ceced469e339028a098a8f29bc8"
+    },
+    "tube-018-fixed": {
+      "model_obj": "tube-018-fixed-model.obj",
+      "sha256_model": "6a6cef0e51a23a769099559da7b154256202d48bed4686fb6e377f80330889ae",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004103602687495406,
+        "minimum_triangle_area_model2": 2.1772510587415417e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-018-fixed-si.obj",
+      "sha256_si": "b5455a29b6a3cf955b85c52b9f4817f0384c7e31be5026fe365470d70d82790e"
+    },
+    "tube-019-fixed": {
+      "model_obj": "tube-019-fixed-model.obj",
+      "sha256_model": "22c430781f0a42616080c5b64adeb643180c41b20fa7e2e2c9c8248d83957034",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004790104901548246,
+        "minimum_triangle_area_model2": 2.1772510587415458e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-019-fixed-si.obj",
+      "sha256_si": "c5e69f4fc11689add408826d98dda8a17e3d9a4552c3947ee26cbb6134964bec"
+    },
+    "tube-020-fixed": {
+      "model_obj": "tube-020-fixed-model.obj",
+      "sha256_model": "e6c4f5c74d4820b8fbb5b46aabe22b9a08b1ca341581ba81eacbdae388b4d26a",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005157179869358384,
+        "minimum_triangle_area_model2": 2.1772510587415417e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-020-fixed-si.obj",
+      "sha256_si": "19c9c95e56abe14bb6a26ab9e2fe413feed2c33c8591c082442e1013718ef332"
+    },
+    "tube-021-fixed": {
+      "model_obj": "tube-021-fixed-model.obj",
+      "sha256_model": "3d76e952f12e11d5497d2858a5a5e5c767f96cdc3be29d2f2e065a4ecb7e5017",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005275701774310831,
+        "minimum_triangle_area_model2": 2.1772510587415512e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-021-fixed-si.obj",
+      "sha256_si": "6eb134a3926489d4b7ee7b3021df828d116add46e150a6fcc7c7487b9bd390de"
+    },
+    "tube-022-fixed": {
+      "model_obj": "tube-022-fixed-model.obj",
+      "sha256_model": "925d8cfdc7894e4ffc900ee66a6e5787daab4cebf463bed9982d8e9ec6fe3485",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005162838025103314,
+        "minimum_triangle_area_model2": 2.1772510587415542e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-022-fixed-si.obj",
+      "sha256_si": "4b5d89e526aaaa84b3eeca1c97e1c3eb3b40c29a825028bf7c1db6ecc071332a"
+    },
+    "tube-023-fixed": {
+      "model_obj": "tube-023-fixed-model.obj",
+      "sha256_model": "751ba00f336544d0acf595cd7af930d85fba2f116c0660e35e8581495c65b896",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004799838699721532,
+        "minimum_triangle_area_model2": 2.177251058741549e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-023-fixed-si.obj",
+      "sha256_si": "1f436a533619a435653cdcc30adea499aaabfbc6061d9f273d84937ea62edbf4"
+    },
+    "tube-024-fixed": {
+      "model_obj": "tube-024-fixed-model.obj",
+      "sha256_model": "3b13b074cf56217b40d41a16acea39719a8b1b1b49678eaf0753a8cddae5cb83",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004114174653979737,
+        "minimum_triangle_area_model2": 2.1772510587415346e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-024-fixed-si.obj",
+      "sha256_si": "952e7d464f04eb0704c4dee8a55de80c2fa23e81de84320c06ce30921de9380d"
+    },
+    "tube-025-fixed": {
+      "model_obj": "tube-025-fixed-model.obj",
+      "sha256_model": "b4c311a337407fba147848bb6e03c8534d48815703488cbfee8236b1a84dee08",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0028521048073424566,
+        "minimum_triangle_area_model2": 2.1772510587415488e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-025-fixed-si.obj",
+      "sha256_si": "4aa7e4e950c94dcc7c51f7d4a33b7513321bda3385e42f429a16f7e0efd59a5b"
+    },
+    "tube-026-fixed": {
+      "model_obj": "tube-026-fixed-model.obj",
+      "sha256_model": "49c08fc98cf2d540d4989b01dc9d8833e5c543c4c15d0e2faf479c04d5ea7630",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0033187778792002133,
+        "minimum_triangle_area_model2": 2.1772510587415434e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-026-fixed-si.obj",
+      "sha256_si": "3f63fb480009d6ee795ece6b534a6ad7611df91ec6dfb9357f64e15a10e543e6"
+    },
+    "tube-027-fixed": {
+      "model_obj": "tube-027-fixed-model.obj",
+      "sha256_model": "3880f0ab4b5a114266c7e21b4a4003bf1453b7dd456dde64075f6b725db17054",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004439673622983738,
+        "minimum_triangle_area_model2": 2.1772510587415275e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-027-fixed-si.obj",
+      "sha256_si": "e58feee39063709fe2b44b2bf2c9b5cdc08af3a156d409ec2b299c448b2870ba"
+    },
+    "tube-028-fixed": {
+      "model_obj": "tube-028-fixed-model.obj",
+      "sha256_model": "2ddcf2161af927ca1ddc827c38b19f63aba71380bc98694da4b064bbad4e2d87",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005078533615455965,
+        "minimum_triangle_area_model2": 2.1772510587415607e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-028-fixed-si.obj",
+      "sha256_si": "85d19a3243c076b85315bce0f588144c1eb5df5e96c1e53bd2430eacf5bbae80"
+    },
+    "tube-029-fixed": {
+      "model_obj": "tube-029-fixed-model.obj",
+      "sha256_model": "cf34f3f4e98e9a23e281e43ad59bce0faad2e363fbde359e4d53091551faf588",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005421581640753567,
+        "minimum_triangle_area_model2": 2.177251058741534e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-029-fixed-si.obj",
+      "sha256_si": "9d7c839d73567d0ab8daafd764a67fb4735ebb28cc2264005f608cebb69ed6d7"
+    },
+    "tube-030-fixed": {
+      "model_obj": "tube-030-fixed-model.obj",
+      "sha256_model": "307b502c3e3815a73d5472ef4825838f8a2c5c93764f6d2217f7a42d4a0daab1",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005528690046476531,
+        "minimum_triangle_area_model2": 2.1772510587415607e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-030-fixed-si.obj",
+      "sha256_si": "9c5361b508c9728d0c77e9177831437f525bb7de2ef9da0eaf8a535f834386b3"
+    },
+    "tube-031-fixed": {
+      "model_obj": "tube-031-fixed-model.obj",
+      "sha256_model": "37ca02ea54ec7325465214c29d81588aa7253282ee02b86cbfeb3a7d02274fe7",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005415946868324931,
+        "minimum_triangle_area_model2": 2.1772510587415553e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-031-fixed-si.obj",
+      "sha256_si": "599e7f0220e98d91807e5567d958f7dcf330a5fff9f3637bfa16d2f0541560d9"
+    },
+    "tube-032-fixed": {
+      "model_obj": "tube-032-fixed-model.obj",
+      "sha256_model": "3d62cb758bf023ccfc44c174c025e27ccd69dc5d1531bd8412409022f6aa8518",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005068897540177913,
+        "minimum_triangle_area_model2": 2.177251058741544e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-032-fixed-si.obj",
+      "sha256_si": "7e3acda03cd9164e3193781fb2d75319bbf442b30f3e75f5bc82aab700b0deee"
+    },
+    "tube-033-fixed": {
+      "model_obj": "tube-033-fixed-model.obj",
+      "sha256_model": "9f11db1c1fb4fea11ef062f15de5a2b12dc01198a18ce40b1ddc54b2afc3185d",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004429470803719489,
+        "minimum_triangle_area_model2": 2.1772510587415403e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-033-fixed-si.obj",
+      "sha256_si": "85b9e2534a9c4192280c51914190dae642a22e2aeefeea90f1a3fc4fbf350e16"
+    },
+    "tube-034-fixed": {
+      "model_obj": "tube-034-fixed-model.obj",
+      "sha256_model": "6a97348ea37a2f1028fd1579944b085f75d0263ecdecf4a9968d2990c7322195",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.003314971494067792,
+        "minimum_triangle_area_model2": 2.1772510587415237e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-034-fixed-si.obj",
+      "sha256_si": "bef62f04242f626bbe36a2667fceea8a65a445aa8a626b32c5133f6a95a1daf5"
+    },
+    "tube-035-fixed": {
+      "model_obj": "tube-035-fixed-model.obj",
+      "sha256_model": "b962eba8863baa7ed94242ad8835f004a742dc3887cf77e5ec8d50e279fc6917",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.003447409889666435,
+        "minimum_triangle_area_model2": 2.177251058741536e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-035-fixed-si.obj",
+      "sha256_si": "883fe80090568338dc5e6ce4cd445aab2460b685744289928fe4e2db3080c937"
+    },
+    "tube-036-fixed": {
+      "model_obj": "tube-036-fixed-model.obj",
+      "sha256_model": "56319a3b133ec919546bbe15b91320df83696f4bf3d8a89f409928a6d0c75580",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0045290216125968225,
+        "minimum_triangle_area_model2": 2.177251058741528e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-036-fixed-si.obj",
+      "sha256_si": "c2825cf397e033458a7adccf9d53a9da1bb5067c472c2fda91836415ee9b79c8"
+    },
+    "tube-037-fixed": {
+      "model_obj": "tube-037-fixed-model.obj",
+      "sha256_model": "49522da1d909b21ede444345a9c264d62f57c4a7998b5ea76a5650d26df7ca25",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005156967650125397,
+        "minimum_triangle_area_model2": 2.1772510587415417e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-037-fixed-si.obj",
+      "sha256_si": "d786ced76a9a81a9ac45a595614bef22efa813e467867c9fc1e81b3133f938d9"
+    },
+    "tube-038-fixed": {
+      "model_obj": "tube-038-fixed-model.obj",
+      "sha256_model": "724c334cf3434c3ae9f5bb031cca9ce212a832e1cbddbfa4d677a8300c0d1b37",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005499139549903529,
+        "minimum_triangle_area_model2": 2.177251058741543e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-038-fixed-si.obj",
+      "sha256_si": "19e84d6e880cda2fbbcc6cc13fcc27cd9d659ddac57c4a1778adb6b4c279b5b0"
+    },
+    "tube-039-fixed": {
+      "model_obj": "tube-039-fixed-model.obj",
+      "sha256_model": "cd6995952ade04c4b6fdddd3e0c3aeee13ff092206f36a70df68d95149442bc4",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0056103506547086875,
+        "minimum_triangle_area_model2": 2.1772510587415525e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-039-fixed-si.obj",
+      "sha256_si": "06cf644bd293d21c56192914d587d785a8741947bc9400abb7b90b6d6684b24f"
+    },
+    "tube-040-fixed": {
+      "model_obj": "tube-040-fixed-model.obj",
+      "sha256_model": "f389d53a7bfd4e61ba0892bd5e292206e0520b759fdee79cf8f05a986cfe79f9",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005504353076195928,
+        "minimum_triangle_area_model2": 2.177251058741551e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-040-fixed-si.obj",
+      "sha256_si": "224cdb6aee6f94c999d092b9c20d900ce485f758d28c2dd1d741289a63577a9d"
+    },
+    "tube-041-fixed": {
+      "model_obj": "tube-041-fixed-model.obj",
+      "sha256_model": "382d3298d0eca9ed673bdf22a96ed881bb94d3f0234f7bb1ee06a2a01becb31a",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005165839381819268,
+        "minimum_triangle_area_model2": 2.17725105874153e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-041-fixed-si.obj",
+      "sha256_si": "27fe194cd1cd99d76bb5bb220445ea086855c9c6dd04d617195823c0ad8ac2f3"
+    },
+    "tube-042-fixed": {
+      "model_obj": "tube-042-fixed-model.obj",
+      "sha256_model": "0224e49e8eb76980a0e6cf794c59d9878172b58b97563725f83b3e9e91530745",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004538274890151659,
+        "minimum_triangle_area_model2": 2.1772510587415488e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-042-fixed-si.obj",
+      "sha256_si": "1addda28a8a038fd5f21a70ad2e19ce1f5ae9ecd3a45a5a0b12270e055d81015"
+    },
+    "tube-043-fixed": {
+      "model_obj": "tube-043-fixed-model.obj",
+      "sha256_model": "d6150e89612d0f63d2e4e2cbd5a991b625c1ae3b3a351c32bbcc40f93c4f732f",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0034504446473751717,
+        "minimum_triangle_area_model2": 2.1772510587415326e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-043-fixed-si.obj",
+      "sha256_si": "384f61a06965a2f1dbbf3c08ff052720570b30e33046e33e4076788e245e5cee"
+    },
+    "tube-044-fixed": {
+      "model_obj": "tube-044-fixed-model.obj",
+      "sha256_model": "1b441c53fee550f7825267e4010d8c762867025753483d2e2ced92e584857351",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0033247813914136295,
+        "minimum_triangle_area_model2": 2.1772510587415495e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-044-fixed-si.obj",
+      "sha256_si": "5fbb972dec7e91e64689b455fa987e08894526edabaaeb80ae1175f5da5fe4fe"
+    },
+    "tube-045-fixed": {
+      "model_obj": "tube-045-fixed-model.obj",
+      "sha256_model": "f3950b2c94d356ecab247dd6ab5418a91dec7e957a9c032fc6ada552c4912383",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0044419483866311935,
+        "minimum_triangle_area_model2": 2.1772510587415478e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-045-fixed-si.obj",
+      "sha256_si": "0241980d1f32fad93168c8969fee3940016db5b2d57fd0804b9de8df952dc078"
+    },
+    "tube-046-fixed": {
+      "model_obj": "tube-046-fixed-model.obj",
+      "sha256_model": "0257ffd9e51189cc3ab2c5457afd24dcd542904df1edeee8b7546db9af937f75",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005079124495803519,
+        "minimum_triangle_area_model2": 2.1772510587415678e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-046-fixed-si.obj",
+      "sha256_si": "6f772445bc0b8f708779027ce9e01991929ee3275911f7ae04779859dc00c347"
+    },
+    "tube-047-fixed": {
+      "model_obj": "tube-047-fixed-model.obj",
+      "sha256_model": "7ffe6ce9368f76f822a0738fae604ec52521f3f6781942a8b0ab865b99e7d70d",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005421485440657899,
+        "minimum_triangle_area_model2": 2.1772510587415495e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-047-fixed-si.obj",
+      "sha256_si": "ff3298dd9a66099ac36e463a6a393248d5673f31d97ec7679d3837098d7f17e6"
+    },
+    "tube-048-fixed": {
+      "model_obj": "tube-048-fixed-model.obj",
+      "sha256_model": "89ca23a0c395c10137e9e9ea432e2c8ee411c9c6e618568864793275b9a6302c",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005528722567704759,
+        "minimum_triangle_area_model2": 2.1772510587415207e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-048-fixed-si.obj",
+      "sha256_si": "50ae155bfa2a18ec93a944304732f81b5d577fd1b29a1ee716d54d7672ba6f36"
+    },
+    "tube-049-fixed": {
+      "model_obj": "tube-049-fixed-model.obj",
+      "sha256_model": "8ecc2c9fefe84c084aaca83584baaf98ba666b68123e4c542a83d72b61823881",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005416823679992464,
+        "minimum_triangle_area_model2": 2.177251058741543e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-049-fixed-si.obj",
+      "sha256_si": "feff2aac6d992da4faf7f7e1a83814b11a7e2d6005cd75da0f09d1515dd8af0a"
+    },
+    "tube-050-fixed": {
+      "model_obj": "tube-050-fixed-model.obj",
+      "sha256_model": "70b3b18774edaa93434d75eedcb97e5fbcfd930be0f8c9ffae69d02241d566b3",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.005071219755210568,
+        "minimum_triangle_area_model2": 2.1772510587415424e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-050-fixed-si.obj",
+      "sha256_si": "a24193dd0830bc2a7a9cada887cdb47a6f0f4e432603069397383be53fa0981d"
+    },
+    "tube-051-fixed": {
+      "model_obj": "tube-051-fixed-model.obj",
+      "sha256_model": "bb1185a6ca6b512aa95f92f7bdeb990288042c1e68312d66ed58bae93178a213",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004433753787575199,
+        "minimum_triangle_area_model2": 2.1772510587415258e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-051-fixed-si.obj",
+      "sha256_si": "886965dcae8d2f95a1c999a6492a4a61c4218aad72f8f06705b82aacf61c70e8"
+    },
+    "tube-052-fixed": {
+      "model_obj": "tube-052-fixed-model.obj",
+      "sha256_model": "5c23facf5bc68d7bd00ef2b7d9f44085d6ab66469dd585997b3671a0db1b1756",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0033219616566751223,
+        "minimum_triangle_area_model2": 2.1772510587415393e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-052-fixed-si.obj",
+      "sha256_si": "5d67e12c6482a372b3824cc7cb59bf8a806e67a2813defb413a6d7ce686fa626"
+    },
+    "tube-053-fixed": {
+      "model_obj": "tube-053-fixed-model.obj",
+      "sha256_model": "ca75be2adcead6b03aba2e5542c8637b8d1e7b53c93804c6e9e3c37a32ce91a1",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0028300342438125326,
+        "minimum_triangle_area_model2": 2.1772510587415176e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-053-fixed-si.obj",
+      "sha256_si": "63b46111a2436539989fdb74a653179e03c19217438524f4a7ad940508082707"
+    },
+    "tube-054-fixed": {
+      "model_obj": "tube-054-fixed-model.obj",
+      "sha256_model": "83e89d9047f557193cb153fb626fe5fbae47ccd08a46124004fed2669245c2d9",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004097173484501012,
+        "minimum_triangle_area_model2": 2.1772510587415075e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-054-fixed-si.obj",
+      "sha256_si": "58872d3da4f75ca4a3cea9dcb90717059876eb293482bd0c86c6cb1ca445c202"
+    },
+    "tube-055-fixed": {
+      "model_obj": "tube-055-fixed-model.obj",
+      "sha256_model": "4d751cdbef2d9b2cfb0d67435255f6163bebd8f41274b8ce6b9a9adb3e5b370b",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004787943428668467,
+        "minimum_triangle_area_model2": 2.1772510587415464e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-055-fixed-si.obj",
+      "sha256_si": "c9157c9913d309b3bdd745abb88612e4c3431616f12a5f04e09659969473e832"
+    },
+    "tube-056-fixed": {
+      "model_obj": "tube-056-fixed-model.obj",
+      "sha256_model": "3d8c03af4bab271b18a863ac0408de01446c08ee16fec78051be82df4758549c",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0051570074957238005,
+        "minimum_triangle_area_model2": 2.1772510587415248e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-056-fixed-si.obj",
+      "sha256_si": "38b0bfdd4069df442e6263190d040090e5814343b263b763334c7747b8232b8a"
+    },
+    "tube-057-fixed": {
+      "model_obj": "tube-057-fixed-model.obj",
+      "sha256_model": "92c5270327465a83c4c7181fe8307aed258867ce9a0d871b22ceaf86d775ea22",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0052757438729567905,
+        "minimum_triangle_area_model2": 2.177251058741505e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-057-fixed-si.obj",
+      "sha256_si": "6209094fe13fb73cd911bdfece01e8696f5f9e51722582f792d6be37daf09da6"
+    },
+    "tube-058-fixed": {
+      "model_obj": "tube-058-fixed-model.obj",
+      "sha256_model": "fa9d0bf0f1a2974309a33a71ebe84387926d862b9a5ef63f4fcc1f3e75966e53",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.00516151612575893,
+        "minimum_triangle_area_model2": 2.1772510587415153e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-058-fixed-si.obj",
+      "sha256_si": "21fd4649fcdb10886366333d781a4ad8821f79e9e5ccb6cca70d1234b61aea29"
+    },
+    "tube-059-fixed": {
+      "model_obj": "tube-059-fixed-model.obj",
+      "sha256_model": "07d16d7bd2c9cec9fa7cac81adbf457ba0a49e8fcb0d42913025e339e335b556",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004795707668273841,
+        "minimum_triangle_area_model2": 2.1772510587415014e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-059-fixed-si.obj",
+      "sha256_si": "d9b65f70e3e005814f9fa7622cce8f178fc346b23fd420c837ee031568afae72"
+    },
+    "tube-060-fixed": {
+      "model_obj": "tube-060-fixed-model.obj",
+      "sha256_model": "b2e730a28aa0c66c8cb84a57b21c400cc24917c50632d227c0f8ef741a43484b",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004105609531463821,
+        "minimum_triangle_area_model2": 2.1772510587414858e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-060-fixed-si.obj",
+      "sha256_si": "c729c5172745e1c931f04418d3f63289432780e1c875b8d9f4fdc2b611889b55"
+    },
+    "tube-061-fixed": {
+      "model_obj": "tube-061-fixed-model.obj",
+      "sha256_model": "adaf99ac920f68657ce6d3261c2f19b55904275d2a00e80bfa6ab0cee555eb87",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0028343737279885564,
+        "minimum_triangle_area_model2": 2.1772510587415183e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-061-fixed-si.obj",
+      "sha256_si": "25f93aeaf5b87fe427a788e51d77c4cdc3fdc376e51765ad5fa6f43f87151cdd"
+    },
+    "tube-062-fixed": {
+      "model_obj": "tube-062-fixed-model.obj",
+      "sha256_model": "21c53b5fbbeed78c3ca51a78b8f9ab608837f33b87d0a0f526f1fdfe1618aa79",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0035050268468757267,
+        "minimum_triangle_area_model2": 2.1772510587415004e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-062-fixed-si.obj",
+      "sha256_si": "d66fc132e9c67390bdf87c06116e3c36ddeb588ef583237519161cda31fa49cc"
+    },
+    "tube-063-fixed": {
+      "model_obj": "tube-063-fixed-model.obj",
+      "sha256_model": "830ea943d1c9f0e30328170aaec54077cd15721863f47df99d48e724c6c1efcc",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004294842662364653,
+        "minimum_triangle_area_model2": 2.1772510587414933e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-063-fixed-si.obj",
+      "sha256_si": "9620347fdf83bb329eb326e2ca8fdd7fe5a602fcb9f394c3412b92c805b5bead"
+    },
+    "tube-064-fixed": {
+      "model_obj": "tube-064-fixed-model.obj",
+      "sha256_model": "b007ce69bd81d64f0c29b2bd1aedf03ed6de444a45b4e5831f5dce157815e86e",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004698497420914656,
+        "minimum_triangle_area_model2": 2.177251058741523e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-064-fixed-si.obj",
+      "sha256_si": "f1e7997ce40c68eaff62477ba34553ee9580567df88277a8bae617931ccf969c"
+    },
+    "tube-065-fixed": {
+      "model_obj": "tube-065-fixed-model.obj",
+      "sha256_model": "9f75f56a74fadc24894726946e44ab11240de7fc38b5a77983f1b97492d2fa47",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004822686189902037,
+        "minimum_triangle_area_model2": 2.1772510587415234e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-065-fixed-si.obj",
+      "sha256_si": "80940ebe10d3cddc76e120aff89eec9e6b027130b1835c67239fb66ab4a56a26"
+    },
+    "tube-066-fixed": {
+      "model_obj": "tube-066-fixed-model.obj",
+      "sha256_model": "2afddaeb44289220e2e427a291453c42129b7bee77effde43ec8bf9c0e73e312",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0046926429275944955,
+        "minimum_triangle_area_model2": 2.177251058741533e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-066-fixed-si.obj",
+      "sha256_si": "b5c12a58e08e5ee07e2ad41baae71ad84c2b54ea443ed7dc145437446b5f2996"
+    },
+    "tube-067-fixed": {
+      "model_obj": "tube-067-fixed-model.obj",
+      "sha256_model": "fea160f5b1bc3b21dc5673bb921d931f51841ce7c70a68b19976b4de4dee004b",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004284523876087388,
+        "minimum_triangle_area_model2": 2.1772510587415234e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-067-fixed-si.obj",
+      "sha256_si": "d4038855ebfe913cb6455e07fc9428a8a133ae09bf848a8ab852c61b51a18dc8"
+    },
+    "tube-068-fixed": {
+      "model_obj": "tube-068-fixed-model.obj",
+      "sha256_model": "c94123992008146a47b6b9c45850164156ad8af0e01412ca32b489b59d67a584",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0034930623535270673,
+        "minimum_triangle_area_model2": 2.177251058741528e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-068-fixed-si.obj",
+      "sha256_si": "2ed6f022a521b256bf87ecdebb72a35e856936830dd73deffc979a1dfa28b9d4"
+    },
+    "tube-069-fixed": {
+      "model_obj": "tube-069-fixed-model.obj",
+      "sha256_model": "c4be335a774bad1f73a5ac7b4fab3e877e16ea2f84b4165dd583f7a3a662028b",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0023277802328972997,
+        "minimum_triangle_area_model2": 2.17725105874154e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-069-fixed-si.obj",
+      "sha256_si": "22f63a692f49aef08376507fe54b88d9eb4229624e98bca4b037d9e7042473fd"
+    },
+    "tube-070-fixed": {
+      "model_obj": "tube-070-fixed-model.obj",
+      "sha256_model": "c75d10b545f6797772236b35fa74b53486428808cff7161d48fd2fd9ae2999c0",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0034354137935925983,
+        "minimum_triangle_area_model2": 2.1772510587415166e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-070-fixed-si.obj",
+      "sha256_si": "aa707bd148d652e3f2dc48a150442a39ce57dd4d98c818d46d7639efe894973f"
+    },
+    "tube-071-fixed": {
+      "model_obj": "tube-071-fixed-model.obj",
+      "sha256_model": "830626eb4ad2f71e6ff0fad5626391b12eaa1641471e42f5d643c9d55df5cb39",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.003942148677039653,
+        "minimum_triangle_area_model2": 2.1772510587415505e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-071-fixed-si.obj",
+      "sha256_si": "793b33127498c94b39fe6e1c948af759ddfc6306b2f648cb8ac22f0d8a7fa815"
+    },
+    "tube-072-fixed": {
+      "model_obj": "tube-072-fixed-model.obj",
+      "sha256_model": "bf960a8b1ba07ed77c23da8175d7e0c51b4ed8e5a2679c72e3db2ecd727f3897",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.004098793923374515,
+        "minimum_triangle_area_model2": 2.1772510587415407e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-072-fixed-si.obj",
+      "sha256_si": "d0fe5ecc2144fa089c3f985308e7002c3c73f5b0471805c9a23bd4db43654dd5"
+    },
+    "tube-073-fixed": {
+      "model_obj": "tube-073-fixed-model.obj",
+      "sha256_model": "e783f66629a601e9fd3de61a0e1415a0e54ed209fa377167df53d44a512bee94",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.003949527004461858,
+        "minimum_triangle_area_model2": 2.1772510587415278e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-073-fixed-si.obj",
+      "sha256_si": "4cefbbaf8948cd384aca36c8716f2493025c3b87cb9b1d494e1b0d79c247ab84"
+    },
+    "tube-074-fixed": {
+      "model_obj": "tube-074-fixed-model.obj",
+      "sha256_model": "2d717f925030b89d59e5fffb8c87a1d4e9b54800741735d6a306890f90549e96",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0034489339785740325,
+        "minimum_triangle_area_model2": 2.1772510587415187e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-074-fixed-si.obj",
+      "sha256_si": "85298e4b9a79ab42abb31f7d05992c1b2e262edc8a0422303bfbdd49d1f79d90"
+    },
+    "tube-075-fixed": {
+      "model_obj": "tube-075-fixed-model.obj",
+      "sha256_model": "9698b046b6176025eefe2019843aaf44e5c19017ed97e2ec6590805373294842",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0023461662366988643,
+        "minimum_triangle_area_model2": 2.17725105874152e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-075-fixed-si.obj",
+      "sha256_si": "6520372bd5fedd0f438bd14a5e5e1cebac3ad8bae3938ad8993d05b3594d8e47"
+    },
+    "tube-076-fixed": {
+      "model_obj": "tube-076-fixed-model.obj",
+      "sha256_model": "d090d705d1f2e77daa896ebc2f770ac9e1029df9090ef5a41b4239d91f3f5f63",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0026537166319043266,
+        "minimum_triangle_area_model2": 2.1772510587414916e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-076-fixed-si.obj",
+      "sha256_si": "4b920ed019649ef670d2453a3a7649a0b6af58a5cbd208d1b435f9c68bd678ed"
+    },
+    "tube-077-fixed": {
+      "model_obj": "tube-077-fixed-model.obj",
+      "sha256_model": "4f1c29189b8c4db910a77352971bfa5fddb5e990a7e02577861b4f5b4dd33603",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0028857317223934136,
+        "minimum_triangle_area_model2": 2.1772510587415295e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-077-fixed-si.obj",
+      "sha256_si": "5ecd986653ac9ca7bc3305f402043a2fc37a3e7dcfeccfee54d1240929e0eeb5"
+    },
+    "tube-078-fixed": {
+      "model_obj": "tube-078-fixed-model.obj",
+      "sha256_model": "3e26ae06ff5eaf54356b8ee5c0ecba634fd41e9c181f45b294907b1ddf398e0c",
+      "audit": {
+        "vertices": 494,
+        "triangles": 984,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.002651489737172771,
+        "minimum_triangle_area_model2": 2.1772510587415376e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "tube-078-fixed-si.obj",
+      "sha256_si": "5ba5eef7ed68634c7649e5718b6edaf73aa28de42fb99ef973d5ea58f7578e12"
+    },
+    "rib-row-00-fixed": {
+      "model_obj": "rib-row-00-fixed-model.obj",
+      "sha256_model": "40f667dfbfa2bd8f68713208fd7544f64ad7f052f3a3b45a5a1837bdb39c5cc3",
+      "audit": {
+        "vertices": 302,
+        "triangles": 600,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0002699429008723942,
+        "minimum_triangle_area_model2": 6.9913950664034776e-06,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "rib-row-00-fixed-si.obj",
+      "sha256_si": "ca5844cebbb65c491fc9f238cf696287aa0eb513fc70dc18d66992730f1c75f3"
+    },
+    "rib-row-01-fixed": {
+      "model_obj": "rib-row-01-fixed-model.obj",
+      "sha256_model": "7fddc50fd5c1fbeb46d09d4bbdb582e6f501bb02f336968f7fd3f39d3f86fd5a",
+      "audit": {
+        "vertices": 302,
+        "triangles": 600,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0007775410759869771,
+        "minimum_triangle_area_model2": 6.9913950664034776e-06,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "rib-row-01-fixed-si.obj",
+      "sha256_si": "911693d10c0c0f9c43903de66359a28769443ee45bd5eaf8a4b276e29dcd4d58"
+    },
+    "rib-row-02-fixed": {
+      "model_obj": "rib-row-02-fixed-model.obj",
+      "sha256_model": "f0e401022adeceee47d9ab065d4ebdb8d15b44ed1ec0075c98c71bdff1d8b43d",
+      "audit": {
+        "vertices": 302,
+        "triangles": 600,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0007508984027698647,
+        "minimum_triangle_area_model2": 6.9913950664034776e-06,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "rib-row-02-fixed-si.obj",
+      "sha256_si": "9aa546593166a2c03030faf5ce760d801100f94924c98107fd3339d44ca99e14"
+    },
+    "rib-row-03-fixed": {
+      "model_obj": "rib-row-03-fixed-model.obj",
+      "sha256_model": "126e59e07bc5e45883ae7ce318529e957073518a7ec768552ce4449610699040",
+      "audit": {
+        "vertices": 302,
+        "triangles": 600,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0009852195480531225,
+        "minimum_triangle_area_model2": 6.991395066403466e-06,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "rib-row-03-fixed-si.obj",
+      "sha256_si": "141fac1e82c7735c05ab2d326d2b170da629117a833b045d148bdd5886640258"
+    },
+    "rib-row-04-fixed": {
+      "model_obj": "rib-row-04-fixed-model.obj",
+      "sha256_model": "e05ed9ea501898a296e43cad8eb429fd3bc3a437cae1bc61aa07117ca0c3c96f",
+      "audit": {
+        "vertices": 302,
+        "triangles": 600,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0009685815225847413,
+        "minimum_triangle_area_model2": 6.991395066403466e-06,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "rib-row-04-fixed-si.obj",
+      "sha256_si": "ee4e85fb9f142c86f3aec4650426aea67386674b2df17e32b35678ca6113c992"
+    },
+    "rib-row-05-fixed": {
+      "model_obj": "rib-row-05-fixed-model.obj",
+      "sha256_model": "44bfac1b0d55be6352e7fd8033ecbcc46433661dc6fe8eedca873a907ee52c90",
+      "audit": {
+        "vertices": 302,
+        "triangles": 600,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0009849038406506995,
+        "minimum_triangle_area_model2": 6.991395066403466e-06,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "rib-row-05-fixed-si.obj",
+      "sha256_si": "3fb5d2ffde2d43e67e9138827095ba37fcfca8783ab9e78b41fe4c55db75ff2a"
+    },
+    "rib-row-06-fixed": {
+      "model_obj": "rib-row-06-fixed-model.obj",
+      "sha256_model": "ec379642b5b5f8a31239a83c28b8a6c33892bfb6e1a854946a3a9e0fff32966b",
+      "audit": {
+        "vertices": 302,
+        "triangles": 600,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0009556710175161352,
+        "minimum_triangle_area_model2": 6.991395066403466e-06,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "rib-row-06-fixed-si.obj",
+      "sha256_si": "735bc4e24dfb090daf6699a363c697fe9c5c42b4382b3a2577bb396d7b2668a7"
+    },
+    "rib-row-07-fixed": {
+      "model_obj": "rib-row-07-fixed-model.obj",
+      "sha256_model": "1656e7a02609c7d54d99a308d306c7cdf256425d00f7e84db3d8105a8b326764",
+      "audit": {
+        "vertices": 302,
+        "triangles": 600,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0010272529263043607,
+        "minimum_triangle_area_model2": 6.991395066403285e-06,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "rib-row-07-fixed-si.obj",
+      "sha256_si": "0a8803d57be8aefa1f74b9c36732197cf608e0c05301423f0ce1335799eacd4e"
+    },
+    "rib-row-08-fixed": {
+      "model_obj": "rib-row-08-fixed-model.obj",
+      "sha256_model": "a13cf25ca33240c72f95bd07062c74ede6170fa55cc786b9aff9fd1e9ee9c341",
+      "audit": {
+        "vertices": 302,
+        "triangles": 600,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0007252217953161878,
+        "minimum_triangle_area_model2": 6.991395066403298e-06,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "rib-row-08-fixed-si.obj",
+      "sha256_si": "9c903d97ef127d6f571eb23ce94ae7a5b78153d8108b71e11679d3c3e6038248"
+    },
+    "rib-row-09-fixed": {
+      "model_obj": "rib-row-09-fixed-model.obj",
+      "sha256_model": "67ee9256135cca5062a274d0d014187bcc11fa60a43f0fe492527a3693c3d79a",
+      "audit": {
+        "vertices": 302,
+        "triangles": 600,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0007383169981874091,
+        "minimum_triangle_area_model2": 6.991395066403298e-06,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "rib-row-09-fixed-si.obj",
+      "sha256_si": "ef3449c93cc3f5554ae3aedfb687eb120830a5b415af0f3eb98678d331d1a11d"
+    },
+    "rib-row-10-fixed": {
+      "model_obj": "rib-row-10-fixed-model.obj",
+      "sha256_model": "81fff31d9c4e8070320bc77afeab63e213453a998e231e98b17f04b1257e4d59",
+      "audit": {
+        "vertices": 302,
+        "triangles": 600,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.0003110309410314706,
+        "minimum_triangle_area_model2": 6.991395066403285e-06,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "rib-row-10-fixed-si.obj",
+      "sha256_si": "b98b0310a9b216fbb2159ed53dc5109bf76512d511e482e2d69208e2833f9bce"
+    },
+    "rib-axial-fixed": {
+      "model_obj": "rib-axial-fixed-model.obj",
+      "sha256_model": "dd46270bf2b79d910552b93a36f5479bab7f70e4f8177b19361ce327adfd6cc4",
+      "audit": {
+        "vertices": 638,
+        "triangles": 1272,
+        "closed": true,
+        "winding_consistent": true,
+        "components": 1,
+        "signed_volume_model3": 0.001183715238032292,
+        "minimum_triangle_area_model2": 1.1708772360343608e-05,
+        "self_intersection": "NOT_CERTIFIED_PENDING_EXACT_SOURCE_ADMISSION"
+      },
+      "si_obj": "rib-axial-fixed-si.obj",
+      "sha256_si": "d6dd468b1b6d10b999f6e41f6de3ad36548e18b4c1203348aee86df61864ecff"
+    }
+  },
+  "construction": {
+    "fixed_parts": [
+      "hub-fixed",
+      "pin-fixed",
+      "rib-row-00-fixed",
+      "rib-row-01-fixed",
+      "rib-row-02-fixed",
+      "rib-row-03-fixed",
+      "rib-row-04-fixed",
+      "rib-row-05-fixed",
+      "rib-row-06-fixed",
+      "rib-row-07-fixed",
+      "rib-row-08-fixed",
+      "rib-row-09-fixed",
+      "rib-row-10-fixed",
+      "rib-axial-fixed",
+      "tube-000-fixed",
+      "tube-001-fixed",
+      "tube-002-fixed",
+      "tube-003-fixed",
+      "tube-004-fixed",
+      "tube-005-fixed",
+      "tube-006-fixed",
+      "tube-007-fixed",
+      "tube-008-fixed",
+      "tube-009-fixed",
+      "tube-010-fixed",
+      "tube-011-fixed",
+      "tube-012-fixed",
+      "tube-013-fixed",
+      "tube-014-fixed",
+      "tube-015-fixed",
+      "tube-016-fixed",
+      "tube-017-fixed",
+      "tube-018-fixed",
+      "tube-019-fixed",
+      "tube-020-fixed",
+      "tube-021-fixed",
+      "tube-022-fixed",
+      "tube-023-fixed",
+      "tube-024-fixed",
+      "tube-025-fixed",
+      "tube-026-fixed",
+      "tube-027-fixed",
+      "tube-028-fixed",
+      "tube-029-fixed",
+      "tube-030-fixed",
+      "tube-031-fixed",
+      "tube-032-fixed",
+      "tube-033-fixed",
+      "tube-034-fixed",
+      "tube-035-fixed",
+      "tube-036-fixed",
+      "tube-037-fixed",
+      "tube-038-fixed",
+      "tube-039-fixed",
+      "tube-040-fixed",
+      "tube-041-fixed",
+      "tube-042-fixed",
+      "tube-043-fixed",
+      "tube-044-fixed",
+      "tube-045-fixed",
+      "tube-046-fixed",
+      "tube-047-fixed",
+      "tube-048-fixed",
+      "tube-049-fixed",
+      "tube-050-fixed",
+      "tube-051-fixed",
+      "tube-052-fixed",
+      "tube-053-fixed",
+      "tube-054-fixed",
+      "tube-055-fixed",
+      "tube-056-fixed",
+      "tube-057-fixed",
+      "tube-058-fixed",
+      "tube-059-fixed",
+      "tube-060-fixed",
+      "tube-061-fixed",
+      "tube-062-fixed",
+      "tube-063-fixed",
+      "tube-064-fixed",
+      "tube-065-fixed",
+      "tube-066-fixed",
+      "tube-067-fixed",
+      "tube-068-fixed",
+      "tube-069-fixed",
+      "tube-070-fixed",
+      "tube-071-fixed",
+      "tube-072-fixed",
+      "tube-073-fixed",
+      "tube-074-fixed",
+      "tube-075-fixed",
+      "tube-076-fixed",
+      "tube-077-fixed",
+      "tube-078-fixed"
+    ],
+    "design_envelope": "outer-ellipsoid",
+    "fixed": "EXACT_UNION(ALL fixed_parts)",
+    "variable": "EXACT_DIFFERENCE(outer-ellipsoid, fixed)",
+    "initial": "EXACT_UNION(outer-ellipsoid, fixed)",
+    "permanent_ellipsoid_shell": false,
+    "optimized_material": "NOT_COMPUTED"
+  },
+  "status": "SOURCE_PARTS_ONLY_EXACT_BOOLEAN_AND_SOLVER_NOT_RUN",
+  "source_sha256": "8c1ccc9f2bf2b7bd16cf08335f8bc8b19fed9141eef261d98aca2b517ef93329",
+  "optimization_invocations": 0,
+  "simulation_invocations": 0,
+  "note": "Paper-photo-inspired reconstruction, not author CAD and not optimized result"
+}

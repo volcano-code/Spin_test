@@ -1,0 +1,42 @@
+{
+  "status": "CONVERGED",
+  "raw_equation_residual": 4.146207968231612e-13,
+  "normalized_equation_residual": 2.8251949346891595e-14,
+  "physical_relative_residual": 2.506091500408117e-14,
+  "function_evaluations": 6,
+  "quadric_coefficients": [
+    -0.3754120285487631,
+    9.300555147259871e-05,
+    1.996681150836599e-05,
+    0.8137640951206883,
+    0.010258580600087074,
+    0.07121952758132412,
+    -0.43780855935828406,
+    -1.8961755366069204e-05,
+    -5.0202994491486975e-05,
+    -1.2349231511371007e-05
+  ],
+  "diagnostic": "",
+  "failure_reason": null,
+  "elapsed_seconds": 199.00152613200044,
+  "evaluator_counts": {
+    "source": 6,
+    "boolean": 6,
+    "integration": 6,
+    "derivative": 6,
+    "intersection_motion": 6,
+    "prepare_arithmetic_boundary": 6,
+    "material_attachment_serialization": 6
+  },
+  "recorded_events": 8,
+  "source": "actual Cherchi backend through unmodified Faster Newton",
+  "full_paper_validation": false,
+  "not_claimed_model_delivery": true,
+  "complete_success": true,
+  "serialization_note": "Canonical full-precision q from final accepted native event because pilot summary default=str rounded ndarray; observed solver printed q matches event to print precision.",
+  "source_event_log_sha256": "48b1e885075e611c303d35b6d1cebd639842a1f3b1cd4e96e2cf2db1303328d3",
+  "parent_continuation_sha256": "900362e22f3a80a04eb0b1c4a3b360a917c519ea30a1d514a219490af6bea3c5",
+  "final_event_quadric_hash": "fac4785b2a23ae5008878e70596ebd318422d96c96c1cbda1e53c259d7838c27",
+  "final_event_material_hash": "caa8078deca032fa530be0d11a43e5eca18f3499127e4a6c756a98a342541e72",
+  "final_event_topology_hash": "b92d140e00326a354b888998e278efba383efa1e0a0dbebb33bd45c99575cc39"
+}

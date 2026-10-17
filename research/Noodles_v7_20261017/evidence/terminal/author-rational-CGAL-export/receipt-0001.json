@@ -1,0 +1,13 @@
+{
+  "executable_sha256": "d6803f184047f6172b177b9f436b16f22cdb6a949126d1df88a5d084f3dd9df3",
+  "index": 1,
+  "input_faces": [
+    106684,
+    64
+  ],
+  "operand_sha256": "655fd8ef5a89789f964ab1705e695eb98b81cfb380e5eee5e72ec8a09a7cd2f0",
+  "operation": "difference",
+  "output_faces": 57926,
+  "output_sha256": "18a868f3b21a44085ef397f4c9f8c76376eea768efd4c0a6ecef5da47ac45660",
+  "seconds": 82.27469436399952
+}

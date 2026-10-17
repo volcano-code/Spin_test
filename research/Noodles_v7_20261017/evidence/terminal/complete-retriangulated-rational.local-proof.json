@@ -1,0 +1,78 @@
+{
+  "schema": "generic-exact-scaled-retriangulation-proof-v1",
+  "success": true,
+  "source_sha256": "bf51f767f4b700f047aa31ef6a61c420171e0388cfe9cb420f5a1a412aabb406",
+  "result_sha256": "57499d24b068245ac3403cf6a01e813e4f1b50615692f9a20fb6c2d198665e1e",
+  "scale": "25/1",
+  "original_vertices": 42938,
+  "original_faces": 86088,
+  "result_vertices": 42932,
+  "result_faces": 86076,
+  "initial_scaled_float_zero_faces": 12,
+  "final_scaled_float_zero_faces": 0,
+  "steps": [
+    {
+      "iteration": 0,
+      "removed_exact_collinear_vertex_id": 16055,
+      "old_faces": 4,
+      "new_faces": 2,
+      "bad_before": 2,
+      "bad_after": 0,
+      "bad_remaining": 10,
+      "exact_local_moments_and_collinearity_preserved": true
+    },
+    {
+      "iteration": 1,
+      "removed_exact_collinear_vertex_id": 16314,
+      "old_faces": 4,
+      "new_faces": 2,
+      "bad_before": 2,
+      "bad_after": 0,
+      "bad_remaining": 8,
+      "exact_local_moments_and_collinearity_preserved": true
+    },
+    {
+      "iteration": 2,
+      "removed_exact_collinear_vertex_id": 18456,
+      "old_faces": 4,
+      "new_faces": 2,
+      "bad_before": 2,
+      "bad_after": 0,
+      "bad_remaining": 6,
+      "exact_local_moments_and_collinearity_preserved": true
+    },
+    {
+      "iteration": 3,
+      "removed_exact_collinear_vertex_id": 24237,
+      "old_faces": 4,
+      "new_faces": 2,
+      "bad_before": 2,
+      "bad_after": 0,
+      "bad_remaining": 4,
+      "exact_local_moments_and_collinearity_preserved": true
+    },
+    {
+      "iteration": 4,
+      "removed_exact_collinear_vertex_id": 26735,
+      "old_faces": 4,
+      "new_faces": 2,
+      "bad_before": 2,
+      "bad_after": 0,
+      "bad_remaining": 2,
+      "exact_local_moments_and_collinearity_preserved": true
+    },
+    {
+      "iteration": 5,
+      "removed_exact_collinear_vertex_id": 15051,
+      "old_faces": 6,
+      "new_faces": 4,
+      "bad_before": 2,
+      "bad_after": 0,
+      "bad_remaining": 0,
+      "exact_local_moments_and_collinearity_preserved": true
+    }
+  ],
+  "elapsed_seconds": 3.2038296869995975,
+  "independent_global_surface_chain_verified": false,
+  "independent_native_binary64_verified": false
+}

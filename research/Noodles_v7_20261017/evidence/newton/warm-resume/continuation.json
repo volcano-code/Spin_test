@@ -1,0 +1,25 @@
+{
+  "parent": "/mnt/data/Noodles_v7_paper_geometry_candidate/pilot-v7-newton-seed0",
+  "parent_events_sha256": "b25735a38a8551fd69af6bd11fb4d6f373b2d804f6b0b2520bb64aec20668eca",
+  "parent_summary_sha256": "8658882fd79872709c90b113f8010b75cf63db2ca3a54386e47a11bda8c04e3a",
+  "parent_last_accepted_iteration": 3,
+  "parent_last_accepted_residual": 0.06495415431214527,
+  "parent_last_accepted_quadric_hash": "2fcd95a27233cecb9dda4544fde5a69ab771b81c8dbb85d1f1ccb902df6a01b5",
+  "parent_solver_terminal": "RESOURCE_LIMIT_REACHED",
+  "parent_input_identity": "2ea6ebc34369790ea25384354a2577d5251e8fbbef46b2db3ac5e7e63f323fa3",
+  "child_request_digest": "f28130503c98ecdf4def27708d151457fbd4884379eb778c4942266b3f5bd90a",
+  "changed_budget_only": true,
+  "checkpoint_q": [
+    -0.3257191372269598,
+    -0.016497848943222905,
+    0.0038827520605126185,
+    0.8006173048038588,
+    0.0336887195642779,
+    0.10465012778328155,
+    -0.4902757989576843,
+    0.004032504092868011,
+    0.012584887617963674,
+    -0.0003761771710443989
+  ],
+  "resume_kind": "NEW_NATIVE_SOLVE_FROM_VERIFIED_ACCEPTED_Q_NOT_UNBROKEN_RUN"
+}

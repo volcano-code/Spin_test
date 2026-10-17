@@ -1,0 +1,10 @@
+{
+  "schema": "independent-exact-oriented-rational-boundary-equivalence",
+  "role": "initial",
+  "success": true,
+  "nonzero_support_planes": 0,
+  "exact_zero_area_triangles": 0,
+  "source_sha256": "640877647134a54152a8e1f63c1f356d752e6c66f7913301580c1e85a356d83b",
+  "candidate_sha256": "83d9457f37793f20d98fd8e14918b36e2996f8c3fb1763ed5d806f9e3f6057b8",
+  "seconds": 15.226839930000097
+}

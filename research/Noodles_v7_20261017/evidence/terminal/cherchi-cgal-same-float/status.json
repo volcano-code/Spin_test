@@ -1,0 +1,14 @@
+{
+  "schema": "v7-independent-Chi-CGAL-same-binary64-operand-exact-chain-v1",
+  "status": "COMPLETED",
+  "passed": true,
+  "exact_signed_surface_chain_equal": true,
+  "nonzero_support_planes": 0,
+  "exact_null_faces": 0,
+  "cherchi_faces": 57926,
+  "cgal_faces": 57926,
+  "source_design_sha256": "299f985429a1dae106cf829d1a114093bc48b553c2e2cb0bf911f16895a16abd",
+  "source_material_sha256": "db1412908e716f464d441f3b036a409c3cc381f31f75ca60aa8862e96a327acd",
+  "cgalsamefloat_sha256": "9e97e5e5ea11d50b48cb1139b331313c982acb4922096d43bbe3cdaa83c10f0e",
+  "seconds": 28.991540916000304
+}

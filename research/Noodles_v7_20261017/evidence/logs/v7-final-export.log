@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/mnt/data/Noodles_v7_paper_geometry_candidate/export_v7_only_on_converged.py", line 115, in <module>
+    print(run(ap.parse_args()))
+          ~~~^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Noodles_v7_paper_geometry_candidate/export_v7_only_on_converged.py", line 77, in run
+    mat=evaluator.material(tuple(float(x) for x in q))
+  File "/mnt/data/noodles_v6_newrun/runtime/workspace/project/python/make_it_stand/verification/cherchi_inprocess.py", line 337, in material
+    if key not in self._materials:raise ValueError('MATERIAL_NOT_EVALUATED')
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: MATERIAL_NOT_EVALUATED

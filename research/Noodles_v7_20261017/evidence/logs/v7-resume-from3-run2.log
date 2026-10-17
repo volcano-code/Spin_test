@@ -1,0 +1,101 @@
+V7 0.0 PREFLIGHT
+V7 0.0 PASS_ROLE design
+V7 0.01 PASS_ROLE fixed
+V7 0.01 PASS_ROLE initial
+V7 1.42 LOADED 18334 36664 52912 106684 fixed_mass 0.3512604116501636
+V7 2.88 START_NATIVE_NEWTON FROM_ACCEPTED_ITER 3 RESIDUAL 0.06495415431214527
+V7 2.92 SOLVER_EVENT {'type': 'attempt_start', 'reason': 'restart_started', 'outcome': 'started', 'normalized_equation_residual': None, 'step': None, 'quadric_coefficients': [-0.3257191372269598, -0.016497848943222905, 0.0038827520605126185, 0.8006173048038588, 0.0336887195642779, 0.10465012778328155, -0.4902757989576843, 0.004032504092868011, 0.012584887617963674, -0.0003761771710443989]}
+V7 2.92 BEGIN source
+V7 5.88 END source sec 2.96
+V7 5.88 BEGIN boolean
+V7 7.99 END boolean sec 2.11
+V7 14.67 BEGIN intersection_motion
+V7 16.78 END intersection_motion sec 2.1
+V7 16.78 BEGIN prepare_arithmetic_boundary
+V7 17.14 END prepare_arithmetic_boundary sec 0.36
+V7 17.14 BEGIN derivative
+V7 23.22 END derivative sec 6.07
+V7 23.22 BEGIN integration
+V7 31.64 END integration sec 8.43
+V7 32.01 BEGIN material_attachment_serialization
+V7 32.27 END material_attachment_serialization sec 0.26
+V7 32.3 SOLVER_EVENT {'type': 'evaluation', 'reason': 'initial_evaluation_succeeded', 'outcome': 'accepted', 'normalized_equation_residual': 0.06495415431214527, 'step': 0.0, 'quadric_coefficients': [-0.3257191372269598, -0.016497848943222905, 0.0038827520605126185, 0.8006173048038588, 0.0336887195642779, 0.10465012778328155, -0.4902757989576843, 0.004032504092868011, 0.012584887617963674, -0.0003761771710443989]}
+V7 32.31 BEGIN source
+V7 35.42 END source sec 3.12
+V7 35.42 BEGIN boolean
+V7 37.6 END boolean sec 2.18
+V7 45.49 BEGIN intersection_motion
+V7 47.73 END intersection_motion sec 2.23
+V7 47.73 BEGIN prepare_arithmetic_boundary
+V7 48.13 END prepare_arithmetic_boundary sec 0.4
+V7 48.13 BEGIN derivative
+V7 54.51 END derivative sec 6.37
+V7 54.51 BEGIN integration
+V7 63.46 END integration sec 8.95
+V7 64.25 BEGIN material_attachment_serialization
+V7 64.55 END material_attachment_serialization sec 0.3
+V7 64.61 SOLVER_EVENT {'type': 'evaluation', 'reason': 'topology_transition_relinearized', 'outcome': 'accepted', 'normalized_equation_residual': 0.01093830532514315, 'step': 0.08126294374578695, 'quadric_coefficients': [-0.3663635614319962, -0.008818182081563417, -0.027401784526476635, 0.8120248112868897, 0.015146915134470246, 0.07315534346472027, -0.4470583692346316, 0.010724771464380702, 0.0025905577324670617, -0.0008820704660260873]}
+V7 64.61 BEGIN source
+V7 67.74 END source sec 3.13
+V7 67.74 BEGIN boolean
+V7 69.98 END boolean sec 2.23
+V7 78.18 BEGIN intersection_motion
+V7 80.35 END intersection_motion sec 2.17
+V7 80.35 BEGIN prepare_arithmetic_boundary
+V7 80.76 END prepare_arithmetic_boundary sec 0.4
+V7 80.76 BEGIN derivative
+V7 87.1 END derivative sec 6.35
+V7 87.1 BEGIN integration
+V7 96.16 END integration sec 9.05
+V7 97.01 BEGIN material_attachment_serialization
+V7 97.32 END material_attachment_serialization sec 0.31
+V7 97.38 SOLVER_EVENT {'type': 'evaluation', 'reason': 'topology_transition_relinearized', 'outcome': 'accepted', 'normalized_equation_residual': 0.0018521504355185129, 'step': 0.042616662476693365, 'quadric_coefficients': [-0.3745868984174149, 0.0035310067612153257, 0.0019822493416263125, 0.8136370457265982, 0.009912571672315199, 0.07195745565184762, -0.43861524905562765, -0.0011389633448311324, -0.001464248948286496, -0.000321817424446502]}
+V7 97.38 BEGIN source
+V7 100.74 END source sec 3.36
+V7 100.74 BEGIN boolean
+V7 103.28 END boolean sec 2.53
+V7 111.39 BEGIN intersection_motion
+V7 113.54 END intersection_motion sec 2.15
+V7 113.54 BEGIN prepare_arithmetic_boundary
+V7 114.39 END prepare_arithmetic_boundary sec 0.85
+V7 114.39 BEGIN derivative
+V7 121.12 END derivative sec 6.73
+V7 121.12 BEGIN integration
+V7 130.49 END integration sec 9.37
+V7 131.04 BEGIN material_attachment_serialization
+V7 131.36 END material_attachment_serialization sec 0.33
+V7 131.44 SOLVER_EVENT {'type': 'evaluation', 'reason': 'topology_transition_relinearized', 'outcome': 'accepted', 'normalized_equation_residual': 5.7447599911255005e-05, 'step': 0.005570431986883886, 'quadric_coefficients': [-0.37539894867147244, 0.0001106230998261241, -1.4263618440823116e-06, 0.8137622859054928, 0.010232862750978063, 0.07123898395377473, -0.43782057028019844, -6.92281533852892e-06, -5.380714921643351e-05, -1.0782213947648493e-05]}
+V7 131.44 BEGIN source
+V7 134.73 END source sec 3.3
+V7 134.73 BEGIN boolean
+V7 137.01 END boolean sec 2.28
+V7 145.26 BEGIN intersection_motion
+V7 147.44 END intersection_motion sec 2.19
+V7 147.45 BEGIN prepare_arithmetic_boundary
+V7 148.34 END prepare_arithmetic_boundary sec 0.89
+V7 148.34 BEGIN derivative
+V7 154.93 END derivative sec 6.59
+V7 154.93 BEGIN integration
+V7 164.25 END integration sec 9.32
+V7 164.75 BEGIN material_attachment_serialization
+V7 165.07 END material_attachment_serialization sec 0.32
+V7 165.14 SOLVER_EVENT {'type': 'evaluation', 'reason': 'topology_transition_relinearized', 'outcome': 'accepted', 'normalized_equation_residual': 3.542546245284561e-08, 'step': 5.256250734187111e-05, 'quadric_coefficients': [-0.3754120199971945, 9.306386656089495e-05, 1.995655968247767e-05, 0.8137640937439483, 0.010258565934758853, 0.07121954085017124, -0.43780856742091, -1.8956523146566624e-05, -5.022560029543097e-05, -1.2349562853018503e-05]}
+V7 165.14 BEGIN source
+V7 168.37 END source sec 3.23
+V7 168.37 BEGIN boolean
+V7 170.56 END boolean sec 2.19
+V7 179.38 BEGIN intersection_motion
+V7 181.57 END intersection_motion sec 2.19
+V7 181.57 BEGIN prepare_arithmetic_boundary
+V7 181.98 END prepare_arithmetic_boundary sec 0.41
+V7 181.98 BEGIN derivative
+V7 188.5 END derivative sec 6.52
+V7 188.5 BEGIN integration
+V7 197.63 END integration sec 9.13
+V7 198.61 BEGIN material_attachment_serialization
+V7 198.93 END material_attachment_serialization sec 0.32
+V7 199.0 SOLVER_EVENT {'type': 'evaluation', 'reason': 'residual_decreased', 'outcome': 'accepted', 'normalized_equation_residual': 2.8251949346891595e-14, 'step': 7.868257330622134e-08, 'quadric_coefficients': [-0.3754120285487631, 9.300555147259871e-05, 1.996681150836599e-05, 0.8137640951206883, 0.010258580600087074, 0.07121952758132412, -0.43780855935828406, -1.8961755366069204e-05, -5.0202994491486975e-05, -1.2349231511371007e-05]}
+V7 199.0 SOLVER_EVENT {'type': 'attempt_terminal', 'reason': 'converged', 'outcome': 'terminated', 'normalized_equation_residual': None, 'step': None, 'quadric_coefficients': None}
+V7 199.0 RESULT {'status': 'CONVERGED', 'raw_equation_residual': 4.146207968231612e-13, 'normalized_equation_residual': 2.8251949346891595e-14, 'physical_relative_residual': 2.506091500408117e-14, 'function_evaluations': 6, 'quadric_coefficients': array([-3.75412029e-01,  9.30055515e-05,  1.99668115e-05,  8.13764095e-01,
+        1.02585806e-02,  7.12195276e-02, -4.37808559e-01, -1.89617554e-05,
+       -5.02029945e-05, -1.23492315e-05]), 'diagnostic': '', 'failure_reason': None, 'elapsed_seconds': 199.00152613200044, 'evaluator_counts': {'source': 6, 'boolean': 6, 'integration': 6, 'derivative': 6, 'intersection_motion': 6, 'prepare_arithmetic_boundary': 6, 'material_attachment_serialization': 6}, 'recorded_events': 8, 'source': 'actual Cherchi backend through unmodified Faster Newton', 'full_paper_validation': False, 'not_claimed_model_delivery': True, 'complete_success': True}

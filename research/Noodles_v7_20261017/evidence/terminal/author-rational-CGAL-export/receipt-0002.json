@@ -1,0 +1,13 @@
+{
+  "executable_sha256": "d6803f184047f6172b177b9f436b16f22cdb6a949126d1df88a5d084f3dd9df3",
+  "index": 2,
+  "input_faces": [
+    112982,
+    57926
+  ],
+  "operand_sha256": "e7f981f4afd10fea40a72e48e68bc895bb46db1551b955d79b2ac7eba18e3954",
+  "operation": "union",
+  "output_faces": 86088,
+  "output_sha256": "a42f20506b95c3acdc0718f4176935059495b70a1d668c35fe57b2735a17e626",
+  "seconds": 165.6107192620002
+}

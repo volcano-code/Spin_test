@@ -1,0 +1,14 @@
+{
+  "schema": "noodles-v6-cherchi-float64-admission-v1",
+  "rational_input_vertices": 18334,
+  "rational_input_faces": 36664,
+  "aliased_distinct_exact_coordinate_groups": 0,
+  "collapsed_face_count": 0,
+  "binary64_zero_or_nonfinite_area_faces": 0,
+  "exact_positive_area_among_binary64_zero_faces": 0,
+  "aliased_vertex_examples": [],
+  "collapsed_face_index_examples": [],
+  "failure_reason": null,
+  "ready_for_cherchi_float_input": true,
+  "no_auto_weld_or_triangle_deletion": true
+}

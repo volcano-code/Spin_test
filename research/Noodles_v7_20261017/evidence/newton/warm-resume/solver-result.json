@@ -1,0 +1,25 @@
+{
+  "status": "CONVERGED",
+  "raw_equation_residual": 4.146207968231612e-13,
+  "normalized_equation_residual": 2.8251949346891595e-14,
+  "physical_relative_residual": 2.506091500408117e-14,
+  "function_evaluations": 6,
+  "quadric_coefficients": "[-3.75412029e-01  9.30055515e-05  1.99668115e-05  8.13764095e-01\n  1.02585806e-02  7.12195276e-02 -4.37808559e-01 -1.89617554e-05\n -5.02029945e-05 -1.23492315e-05]",
+  "diagnostic": "",
+  "failure_reason": null,
+  "elapsed_seconds": 199.00152613200044,
+  "evaluator_counts": {
+    "source": 6,
+    "boolean": 6,
+    "integration": 6,
+    "derivative": 6,
+    "intersection_motion": 6,
+    "prepare_arithmetic_boundary": 6,
+    "material_attachment_serialization": 6
+  },
+  "recorded_events": 8,
+  "source": "actual Cherchi backend through unmodified Faster Newton",
+  "full_paper_validation": false,
+  "not_claimed_model_delivery": true,
+  "complete_success": true
+}

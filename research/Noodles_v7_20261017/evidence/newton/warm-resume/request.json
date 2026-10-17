@@ -1,0 +1,45 @@
+{
+  "schema": "noodles-v7-real-Cherchi-Faster-pilot",
+  "request_digest": "f28130503c98ecdf4def27708d151457fbd4884379eb778c4942266b3f5bd90a",
+  "settings": {
+    "maximum_iterations": 15,
+    "maximum_restarts": 1,
+    "maximum_function_evaluations_per_restart": 36,
+    "equation_tolerance": 1e-12,
+    "physical_relative_tolerance": 1e-06,
+    "deterministic_seed": 0,
+    "equation_profile": "DUAL_MONOMIAL_RAW_V1",
+    "capture_evaluation_payload": false
+  },
+  "evaluator": {
+    "derivative_method": "DISCRETE_FULL_RANK_QUADRIC",
+    "icosphere_subdivisions": 2,
+    "maximum_icosphere_subdivisions": 2,
+    "paraboloid_grid_resolution": 24,
+    "cylinder_angular_resolution": 96,
+    "hyperbolic_cylinder_grid_resolution": 24,
+    "parabolic_cylinder_grid_resolution": 24,
+    "truncation_radius": 0.0,
+    "maximum_radius_doublings": 8,
+    "retain_fixed_normal_provenance": true,
+    "minimum_interface_gradient": 1e-12,
+    "cap_radius_policy": "REJECT_UNCERTIFIED",
+    "paper_projective_hyperboloid": false,
+    "algebraic_finite_map": true,
+    "fixed_normal_paraboloid": false,
+    "exact_binary64_self_intersection": false,
+    "exact_binary64_source_boundary": false,
+    "exact_binary64_material_boundary": false,
+    "rational_source_coordinates": false,
+    "compact_rational_source_coordinates": false
+  },
+  "input_sha256": {
+    "fixed": "870bb348fc287802b5405815de43a9d94935ebcd10151bd49a10fda94f0a65d9",
+    "design": "299f985429a1dae106cf829d1a114093bc48b553c2e2cb0bf911f16895a16abd",
+    "initial": "83d9457f37793f20d98fd8e14918b36e2996f8c3fb1763ed5d806f9e3f6057b8"
+  },
+  "fixed_gmp_sha256": "71f9df91fca12fde4f4f2c80dc26e2d1229e8209e09db46e680d0de7baee264a",
+  "static_rounded_partition_strictly_certified": false,
+  "original_paper_CAD": false,
+  "scientific_status": "NUMERICAL_PILOT_NOT_FULL_CASE_ADMISSION"
+}

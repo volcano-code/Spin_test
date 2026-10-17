@@ -1,0 +1,25 @@
+{
+  "status": "RESOURCE_LIMIT_REACHED",
+  "raw_equation_residual": 1.0876032908252524,
+  "normalized_equation_residual": 0.06495415431214527,
+  "physical_relative_residual": 0.018134024796334088,
+  "function_evaluations": 6,
+  "quadric_coefficients": null,
+  "diagnostic": "maximum Newton iterations reached",
+  "failure_reason": null,
+  "elapsed_seconds": 225.29265331199986,
+  "evaluator_counts": {
+    "source": 6,
+    "boolean": 6,
+    "integration": 6,
+    "derivative": 6,
+    "intersection_motion": 6,
+    "prepare_arithmetic_boundary": 6,
+    "material_attachment_serialization": 6
+  },
+  "recorded_events": 8,
+  "source": "actual Cherchi backend through unmodified Faster Newton",
+  "full_paper_validation": false,
+  "not_claimed_model_delivery": true,
+  "complete_success": false
+}

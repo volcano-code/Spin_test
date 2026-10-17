@@ -1,0 +1,12 @@
+{
+  "schema": "v7-terminal-full-independent-oriented-rational-chain-proof-v1",
+  "completed": true,
+  "exact_surface_chain_equal": true,
+  "nonzero_support_planes": 0,
+  "exact_null_faces": 0,
+  "original_sha256": "bf51f767f4b700f047aa31ef6a61c420171e0388cfe9cb420f5a1a412aabb406",
+  "candidate_sha256": "57499d24b068245ac3403cf6a01e813e4f1b50615692f9a20fb6c2d198665e1e",
+  "original_faces": 86088,
+  "candidate_faces": 86076,
+  "elapsed_seconds": 40.20071678000022
+}

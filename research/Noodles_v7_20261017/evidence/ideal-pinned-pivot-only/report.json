@@ -1,0 +1,212 @@
+{
+  "schema": "spin-v7-ideal-frictionless-fixed-tip-pivot-only-v1",
+  "full_contact_simulation": false,
+  "status": "EXPLORATORY_NOT_PAPER_PHYSICS",
+  "model_source": "independent_trimesh_mass_inertia_from_exact_union_OBJ",
+  "tip_m": [
+    0,
+    0,
+    -0.004
+  ],
+  "gravity_m_s2": 9.81,
+  "torque": "r_body cross (R_body_to_world.T * gravity_world)",
+  "motor_torque": 0,
+  "damping": 0,
+  "contact_friction": "not_modeled_ideal_pinned_pivot",
+  "material_density_kg_m3": 1200.0,
+  "tested": [
+    {
+      "spin_rad_s": 100.0,
+      "initial": {
+        "record": {
+          "model": "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/initial-mm.obj",
+          "spin_rad_s": 100.0,
+          "initial_tilt_deg": 10.0,
+          "max_step": 0.003,
+          "max_tilt_deg": 92.93624911516662,
+          "min_tilt_deg": 9.987152175003724,
+          "max_deviation_from_initial_deg": 82.93624911516662,
+          "rms_tilt_change_deg": 41.900338452578666,
+          "relative_energy_drift": 2.6424424347345614e-11,
+          "relative_world_z_angular_momentum_drift": 7.963769738079202e-11
+        },
+        "independent_step": {
+          "model": "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/initial-mm.obj",
+          "spin_rad_s": 100.0,
+          "initial_tilt_deg": 10.0,
+          "max_step": 0.0015,
+          "max_tilt_deg": 92.93624911501448,
+          "min_tilt_deg": 9.987152165402641,
+          "max_deviation_from_initial_deg": 82.93624911501448,
+          "rms_tilt_change_deg": 41.900338452387544,
+          "relative_energy_drift": 1.0660919597645041e-13,
+          "relative_world_z_angular_momentum_drift": 3.0677002380384385e-13
+        },
+        "time_step_max_angle_difference_deg": 1.103821887227241e-07,
+        "verified_integration_consistency": true
+      },
+      "optimized": {
+        "record": {
+          "model": "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/complete-mm-repaired.obj",
+          "spin_rad_s": 100.0,
+          "initial_tilt_deg": 10.0,
+          "max_step": 0.003,
+          "max_tilt_deg": 69.37516302847173,
+          "min_tilt_deg": 9.994377413188507,
+          "max_deviation_from_initial_deg": 59.37516302847173,
+          "rms_tilt_change_deg": 33.2922478606699,
+          "relative_energy_drift": 7.596168604314942e-12,
+          "relative_world_z_angular_momentum_drift": 2.360255706540883e-11
+        },
+        "independent_step": {
+          "model": "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/complete-mm-repaired.obj",
+          "spin_rad_s": 100.0,
+          "initial_tilt_deg": 10.0,
+          "max_step": 0.0015,
+          "max_tilt_deg": 69.37516302901369,
+          "min_tilt_deg": 9.994377410812065,
+          "max_deviation_from_initial_deg": 59.37516302901369,
+          "rms_tilt_change_deg": 33.29224786056762,
+          "relative_energy_drift": 3.385426445219287e-14,
+          "relative_world_z_angular_momentum_drift": 1.0206945814775174e-13
+        },
+        "time_step_max_angle_difference_deg": 2.995484038592622e-08,
+        "verified_integration_consistency": true
+      }
+    },
+    {
+      "spin_rad_s": 160.0,
+      "initial": {
+        "record": {
+          "model": "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/initial-mm.obj",
+          "spin_rad_s": 160.0,
+          "initial_tilt_deg": 10.0,
+          "max_step": 0.003,
+          "max_tilt_deg": 21.50081350134636,
+          "min_tilt_deg": 9.994630833504154,
+          "max_deviation_from_initial_deg": 11.50081350134636,
+          "rms_tilt_change_deg": 7.309549318289338,
+          "relative_energy_drift": 1.1200865728714594e-11,
+          "relative_world_z_angular_momentum_drift": 7.646865347417553e-11
+        },
+        "independent_step": {
+          "model": "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/initial-mm.obj",
+          "spin_rad_s": 160.0,
+          "initial_tilt_deg": 10.0,
+          "max_step": 0.0015,
+          "max_tilt_deg": 21.500813491322166,
+          "min_tilt_deg": 9.99463082926484,
+          "max_deviation_from_initial_deg": 11.500813491322166,
+          "rms_tilt_change_deg": 7.309549314739422,
+          "relative_energy_drift": 5.0029390059342874e-14,
+          "relative_world_z_angular_momentum_drift": 2.981794671307654e-13
+        },
+        "time_step_max_angle_difference_deg": 8.937269058151287e-08,
+        "verified_integration_consistency": true
+      },
+      "optimized": {
+        "record": {
+          "model": "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/complete-mm-repaired.obj",
+          "spin_rad_s": 160.0,
+          "initial_tilt_deg": 10.0,
+          "max_step": 0.003,
+          "max_tilt_deg": 15.009335120092242,
+          "min_tilt_deg": 9.997600921855593,
+          "max_deviation_from_initial_deg": 5.009335120092242,
+          "rms_tilt_change_deg": 3.117362059585968,
+          "relative_energy_drift": 3.8355311486615904e-12,
+          "relative_world_z_angular_momentum_drift": 3.6298369994821736e-11
+        },
+        "independent_step": {
+          "model": "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/complete-mm-repaired.obj",
+          "spin_rad_s": 160.0,
+          "initial_tilt_deg": 10.0,
+          "max_step": 0.0015,
+          "max_tilt_deg": 15.009335115503228,
+          "min_tilt_deg": 9.997600920895053,
+          "max_deviation_from_initial_deg": 5.009335115503228,
+          "rms_tilt_change_deg": 3.1173620560240285,
+          "relative_energy_drift": 2.0995280904783908e-14,
+          "relative_world_z_angular_momentum_drift": 1.673057192002538e-13
+        },
+        "time_step_max_angle_difference_deg": 3.092127442982928e-08,
+        "verified_integration_consistency": true
+      }
+    }
+  ],
+  "initial_physical": {
+    "m": 0.02698966900187473,
+    "r": [
+      2.662975427861572e-06,
+      3.2768792337698374e-07,
+      0.026568109845020012
+    ],
+    "I": [
+      [
+        2.1963148051634787e-05,
+        -3.43161184392601e-11,
+        -2.0200009650548178e-09
+      ],
+      [
+        -3.43161184392601e-11,
+        2.302286176758117e-05,
+        -2.3480029594197873e-10
+      ],
+      [
+        -2.0200009650548178e-09,
+        -2.3480029594197873e-10,
+        5.526750616662952e-06
+      ]
+    ],
+    "cm": [
+      2.662975427861572e-06,
+      3.2768792337698374e-07,
+      0.02256810984502001
+    ],
+    "Tip": [
+      0.0,
+      0.0,
+      -0.004
+    ],
+    "obj": "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/initial-mm.obj",
+    "faces": 36664
+  },
+  "optimized_physical": {
+    "m": 0.018483894783801583,
+    "r": [
+      1.1128924724699515e-15,
+      -2.4848379076353173e-17,
+      0.025207487878454678
+    ],
+    "I": [
+      [
+        1.3870398791006656e-05,
+        -1.392986142670919e-10,
+        -4.720967262983323e-19
+      ],
+      [
+        -1.392986142670919e-10,
+        1.4558034732682385e-05,
+        4.452158464118841e-21
+      ],
+      [
+        -4.720967262983323e-19,
+        4.452158464118841e-21,
+        4.244316301889278e-06
+      ]
+    ],
+    "cm": [
+      1.1128924724699515e-15,
+      -2.4848379076353173e-17,
+      0.021207487878454678
+    ],
+    "Tip": [
+      0.0,
+      0.0,
+      -0.004
+    ],
+    "obj": "/mnt/data/Noodles_v7_paper_geometry_candidate/v7-final-export-20261017-r2/complete-mm-repaired.obj",
+    "faces": 86076
+  },
+  "elapsed_seconds": 6.582805212001404
+}

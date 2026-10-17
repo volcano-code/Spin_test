@@ -1,0 +1,43 @@
+{
+  "backend_sha": "d6803f184047f6172b177b9f436b16f22cdb6a949126d1df88a5d084f3dd9df3",
+  "csg_executed_current_process": 96,
+  "elapsed_sec": 345.82923972499975,
+  "independent_partition_verified": false,
+  "manifest_sha": "67364abba55c74ccd377eef6174b8c96ee04e4af1aadbd7e505466bafabd2a3a",
+  "newton_solved": false,
+  "outputs": {
+    "design": {
+      "faces": 108804,
+      "path": "/mnt/data/Noodles_v7_paper_geometry_candidate/exact_v7c/design-rational.json",
+      "sha": "48e8d3008bba746823eafd9c3704b52d597595b802066450a921ecc0dcb7f611"
+    },
+    "envelope": {
+      "faces": 1280,
+      "path": "/mnt/data/Noodles_v7_paper_geometry_candidate/exact_v7c/envelope-rational.json",
+      "sha": "92f46d68025467961fcc8b2b52353b4a18c2a981a09ad654ad6af3fb128b73fd"
+    },
+    "fixed": {
+      "faces": 114942,
+      "path": "/mnt/data/Noodles_v7_paper_geometry_candidate/exact_v7c/fixed-rational.json",
+      "sha": "71f9df91fca12fde4f4f2c80dc26e2d1229e8209e09db46e680d0de7baee264a"
+    },
+    "fixed-inside-envelope": {
+      "faces": 107160,
+      "path": "/mnt/data/Noodles_v7_paper_geometry_candidate/exact_v7c/fixed-inside-envelope-rational.json",
+      "sha": "a944da4e36e5fe386cee3b28e4acf5800fc3942cde4eb35ba54f5de626f55dc7"
+    },
+    "fixed-outside-envelope": {
+      "faces": 35342,
+      "path": "/mnt/data/Noodles_v7_paper_geometry_candidate/exact_v7c/fixed-outside-envelope-rational.json",
+      "sha": "8c66f71da99773fbc9a76b4f82fc43c55816df1876b643634ae64768f72ba262"
+    },
+    "initial": {
+      "faces": 36986,
+      "path": "/mnt/data/Noodles_v7_paper_geometry_candidate/exact_v7c/initial-rational.json",
+      "sha": "640877647134a54152a8e1f63c1f356d752e6c66f7913301580c1e85a356d83b"
+    }
+  },
+  "physics_simulated": false,
+  "schema": "noodles-v7-exact-cgal-input-construction",
+  "status": "EXACT_INPUT_CONSTRUCTED_NOT_OPTIMIZED"
+}
