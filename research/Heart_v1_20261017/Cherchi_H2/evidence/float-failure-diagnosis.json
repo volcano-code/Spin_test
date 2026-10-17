@@ -1,0 +1,228 @@
+{
+  "schema": "heart-cherchi-h2-binary64-failure-diagnosis-v1",
+  "input_sha256": {
+    "cherchi-authoritative-exact.json": "0176c55d9a7858d5ed120d685ff386a123e1abb8db830b5eb1235bd44273a660",
+    "proxy-cherchi-full-audit.json": "e0959c033682953adf9b85aa629675f3beb28e5ab1755233579bdbff717098d8",
+    "rational-output-audit.json": "933b0ee33ba74f9879a64eedf69b780a19a3331e39953724d9c61dc7442d286c"
+  },
+  "scope": "READ_ONLY_RECORDED_CHERCHI_OUTPUT_NOT_AUTHOR_HEART_NOT_EVAL60",
+  "input_vertex_count": 793,
+  "input_face_count": 1570,
+  "rational_boundary_valid": true,
+  "float_boundary_valid": false,
+  "float_intersecting_pairs": 78,
+  "involved_face_count": 71,
+  "min_binary64_triangle_area_model_units_squared": 2.8656593110824357e-22,
+  "min_involved_triangle_area_model_units_squared": 1.412729802851385e-21,
+  "min_involved_shape_double_area_over_max_edge_squared": 7.81253036000212e-16,
+  "faces_below_area_1e_minus_15": 55,
+  "intersecting_faces_below_area_1e_minus_15": 13,
+  "most_frequently_involved_faces": [
+    {
+      "face_index": 813,
+      "native_pair_count": 8,
+      "area_model_units_squared": 7.19633464962373e-08,
+      "triangle_indices": [
+        593,
+        608,
+        609
+      ]
+    },
+    {
+      "face_index": 1562,
+      "native_pair_count": 7,
+      "area_model_units_squared": 2.2197435335645696e-19,
+      "triangle_indices": [
+        616,
+        528,
+        530
+      ]
+    },
+    {
+      "face_index": 1548,
+      "native_pair_count": 7,
+      "area_model_units_squared": 8.658582030531747e-05,
+      "triangle_indices": [
+        529,
+        523,
+        615
+      ]
+    },
+    {
+      "face_index": 1080,
+      "native_pair_count": 6,
+      "area_model_units_squared": 0.00035202324366178614,
+      "triangle_indices": [
+        517,
+        665,
+        501
+      ]
+    },
+    {
+      "face_index": 1565,
+      "native_pair_count": 6,
+      "area_model_units_squared": 8.886746363605766e-05,
+      "triangle_indices": [
+        526,
+        528,
+        616
+      ]
+    },
+    {
+      "face_index": 871,
+      "native_pair_count": 6,
+      "area_model_units_squared": 0.00010680830188932918,
+      "triangle_indices": [
+        653,
+        654,
+        133
+      ]
+    },
+    {
+      "face_index": 1551,
+      "native_pair_count": 5,
+      "area_model_units_squared": 1.2050154575017136e-20,
+      "triangle_indices": [
+        592,
+        588,
+        611
+      ]
+    },
+    {
+      "face_index": 1553,
+      "native_pair_count": 5,
+      "area_model_units_squared": 6.476207409225257e-20,
+      "triangle_indices": [
+        611,
+        588,
+        615
+      ]
+    },
+    {
+      "face_index": 1037,
+      "native_pair_count": 5,
+      "area_model_units_squared": 0.0001064803820904794,
+      "triangle_indices": [
+        782,
+        229,
+        779
+      ]
+    },
+    {
+      "face_index": 1190,
+      "native_pair_count": 4,
+      "area_model_units_squared": 0.0006303201477085984,
+      "triangle_indices": [
+        323,
+        291,
+        359
+      ]
+    },
+    {
+      "face_index": 447,
+      "native_pair_count": 4,
+      "area_model_units_squared": 0.000124094231114415,
+      "triangle_indices": [
+        41,
+        324,
+        323
+      ]
+    },
+    {
+      "face_index": 1091,
+      "native_pair_count": 4,
+      "area_model_units_squared": 1.7372243599049238e-20,
+      "triangle_indices": [
+        423,
+        420,
+        431
+      ]
+    },
+    {
+      "face_index": 1560,
+      "native_pair_count": 4,
+      "area_model_units_squared": 3.527873516881914e-20,
+      "triangle_indices": [
+        530,
+        589,
+        612
+      ]
+    },
+    {
+      "face_index": 815,
+      "native_pair_count": 4,
+      "area_model_units_squared": 4.1695919717348293e-07,
+      "triangle_indices": [
+        611,
+        609,
+        608
+      ]
+    },
+    {
+      "face_index": 1082,
+      "native_pair_count": 3,
+      "area_model_units_squared": 7.5553487174806e-20,
+      "triangle_indices": [
+        517,
+        501,
+        504
+      ]
+    },
+    {
+      "face_index": 791,
+      "native_pair_count": 3,
+      "area_model_units_squared": 1.4542381420195663e-06,
+      "triangle_indices": [
+        589,
+        592,
+        593
+      ]
+    },
+    {
+      "face_index": 812,
+      "native_pair_count": 3,
+      "area_model_units_squared": 7.604438607509606e-08,
+      "triangle_indices": [
+        608,
+        593,
+        592
+      ]
+    },
+    {
+      "face_index": 1563,
+      "native_pair_count": 3,
+      "area_model_units_squared": 7.448835370488121e-20,
+      "triangle_indices": [
+        589,
+        593,
+        612
+      ]
+    },
+    {
+      "face_index": 1397,
+      "native_pair_count": 2,
+      "area_model_units_squared": 2.077560643141897e-07,
+      "triangle_indices": [
+        315,
+        321,
+        319
+      ]
+    },
+    {
+      "face_index": 685,
+      "native_pair_count": 2,
+      "area_model_units_squared": 2.7571384007271203e-05,
+      "triangle_indices": [
+        504,
+        505,
+        506
+      ]
+    }
+  ],
+  "exact_retriangulation_authorized": false,
+  "vertex_move_authorized": false,
+  "triangle_deletion_authorized": false,
+  "qualified_binary64_obj": false,
+  "native_reaudit_required": true,
+  "final_material_set_equality_after_repair_verified": false
+}

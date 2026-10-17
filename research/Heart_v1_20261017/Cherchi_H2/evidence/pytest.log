@@ -1,0 +1,148 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+_____________________ test_existing_h1_failure_classified ______________________
+
+    def test_existing_h1_failure_classified():
+>       out = m.audit(*sources())
+              ^^^^^^^^^^^^^^^^^^^
+
+mnt/data/Heart_Cherchi_H2/tests/test_audit_float_export_failure.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+mnt/data/Heart_Cherchi_H2/source/audit_float_export_failure.py:18: in audit
+    material = json.loads(exact_path.read_text())
+                          ^^^^^^^^^^^^^^^^^^^^^^
+usr/lib/python3.13/pathlib/_local.py:548: in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+usr/lib/python3.13/pathlib/_abc.py:632: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/mnt/data/Cherchi_H1/output_proxy_v1/cherchi-authoritative-exact.json')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/Cherchi_H1/output_proxy_v1/cherchi-authoritative-exact.json'
+
+usr/lib/python3.13/pathlib/_local.py:539: FileNotFoundError
+______________________ test_tampered_pair_count_rejected _______________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-8/test_tampered_pair_count_rejec0')
+
+    def test_tampered_pair_count_rejected(tmp_path):
+        mat,bina,rat = sources()
+>       blob=json.loads(bina.read_text()); blob['intersecting_pair_count']=77
+                        ^^^^^^^^^^^^^^^^
+
+mnt/data/Heart_Cherchi_H2/tests/test_audit_float_export_failure.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+usr/lib/python3.13/pathlib/_local.py:548: in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+usr/lib/python3.13/pathlib/_abc.py:632: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/mnt/data/Cherchi_H1/evidence/proxy-cherchi-full-audit.json')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/Cherchi_H1/evidence/proxy-cherchi-full-audit.json'
+
+usr/lib/python3.13/pathlib/_local.py:539: FileNotFoundError
+______________________ test_unverified_rational_rejected _______________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-8/test_unverified_rational_rejec0')
+
+    def test_unverified_rational_rejected(tmp_path):
+        mat,bina,rat=sources()
+>       blob=json.loads(rat.read_text());blob['boundary_valid']=False
+                        ^^^^^^^^^^^^^^^
+
+mnt/data/Heart_Cherchi_H2/tests/test_audit_float_export_failure.py:36: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+usr/lib/python3.13/pathlib/_local.py:548: in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+usr/lib/python3.13/pathlib/_abc.py:632: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/mnt/data/Cherchi_H1/evidence/rational-output-audit.json')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/Cherchi_H1/evidence/rational-output-audit.json'
+
+usr/lib/python3.13/pathlib/_local.py:539: FileNotFoundError
+_______________________ test_no_rounded_failure_rejected _______________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-8/test_no_rounded_failure_reject0')
+
+    def test_no_rounded_failure_rejected(tmp_path):
+        mat,bina,rat=sources()
+>       blob=json.loads(bina.read_text());blob['boundary_valid']=True
+                        ^^^^^^^^^^^^^^^^
+
+mnt/data/Heart_Cherchi_H2/tests/test_audit_float_export_failure.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+usr/lib/python3.13/pathlib/_local.py:548: in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+usr/lib/python3.13/pathlib/_abc.py:632: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/mnt/data/Cherchi_H1/evidence/proxy-cherchi-full-audit.json')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/Cherchi_H1/evidence/proxy-cherchi-full-audit.json'
+
+usr/lib/python3.13/pathlib/_local.py:539: FileNotFoundError
+=========================== short test summary info ============================
+FAILED mnt/data/Heart_Cherchi_H2/tests/test_audit_float_export_failure.py::test_existing_h1_failure_classified - FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/Cherchi_H1/output_proxy_v1/cherchi-authoritative-exact.json'
+FAILED mnt/data/Heart_Cherchi_H2/tests/test_audit_float_export_failure.py::test_tampered_pair_count_rejected - FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/Cherchi_H1/evidence/proxy-cherchi-full-audit.json'
+FAILED mnt/data/Heart_Cherchi_H2/tests/test_audit_float_export_failure.py::test_unverified_rational_rejected - FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/Cherchi_H1/evidence/rational-output-audit.json'
+FAILED mnt/data/Heart_Cherchi_H2/tests/test_audit_float_export_failure.py::test_no_rounded_failure_rejected - FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/Cherchi_H1/evidence/proxy-cherchi-full-audit.json'
+4 failed in 0.13s
