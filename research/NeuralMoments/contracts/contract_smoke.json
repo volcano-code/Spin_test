@@ -1,0 +1,47 @@
+{
+  "schema": "MomentContractV1-smoke-evidence-v1",
+  "source_revision": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "source_audit_files": [
+    "src/spin/QuadricCoefficients.cpp",
+    "python/make_it_stand/verification/faster_material.py",
+    "python/make_it_stand/verification/spin_common.py"
+  ],
+  "branch": "research/neuralmoments-w0-contract-20261019",
+  "environment": "ISOLATED_LOCAL_PYTHON_CONTAINER",
+  "local_extended_suite_command": "python research/NeuralMoments/contracts/run_contract_smoke.py",
+  "local_extended_suite_result": "15 passed in 1.34s; exit=0; local working tree implementation (not byte-identical to committed minimal version)",
+  "compiled_cpp_sentinel": "g++ standalone independently authored C++ quadratic formula test passed in pytest; production Eigen/Cherchi binary not compiled",
+  "metrics": {
+    "analytic_sphere_cap_P0_mass": 1.4744541520848093,
+    "independent_quadrature_mass_absolute_error": 8.881784197001252e-16,
+    "native_Jc_max_asymmetry": 0.14763149332452027,
+    "transformed_Jc_B_inverse_max_asymmetry": 0,
+    "transformed_Jc_B_inverse_min_symmetric_eigenvalue": -1.1208225351384512e-16
+  },
+  "passed_conditions": [
+    "analytic_box_rotation_translation_density_and_scale",
+    "ellipsoid_sphere_analytic_comparison",
+    "P0_sphere_cap_quadrature",
+    "P0_smooth_jacobian_finite_difference",
+    "cross_term_factor_two",
+    "positive_projective_ray_and_negative_retained_halfspace",
+    "fixed_moments_one_addition",
+    "jacobian_only_conditional_symmetry",
+    "analytic_schema_reference_in_local_worktree"
+  ],
+  "not_run_or_unverified": [
+    "exact_committed_GitHub_pytest_not_run_in_isolated_container",
+    "GitHub_CI_not_triggered_or_verified",
+    "production_Eigen_not_compiled",
+    "actual_Cherchi_native_material_r_J_not_run",
+    "W2_sealed_F_D_labels_unavailable",
+    "Newton_solver_terminal_convergence_not_assessed",
+    "other_W_window_CI_not_checked"
+  ],
+  "failure_ledger": [
+    "An initial local direct smoke script invocation failed to import research package because repository root was not on sys.path; resolved and rerun green.",
+    "Isolated container cannot clone via GitHub network (DNS host unavailable); connector writes were used, so committed minimal tests were not executed here."
+  ],
+  "threshold_policy": "NO_UNIVERSAL_1_PERCENT_ERROR_ACCEPTANCE",
+  "scientific_certification": false
+}
