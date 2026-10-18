@@ -1,0 +1,21 @@
+name: Heart H8e offline exact construction archive guards (no native certification)
+on:
+  push:
+    branches: [research/heart-p0-p3-20261017]
+    paths:
+      - 'research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/classify_h8_exact_branch_snapshots.py'
+      - 'research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/tests/test_h8_offline_classifier.py'
+      - 'research/Heart_v1_20261017/Cherchi_H7/source/h7_planar_patch.py'
+      - '.github/workflows/heart-h8e-offline-construction.yml'
+  workflow_dispatch:
+jobs:
+  archived-provenance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install 'pytest>=8,<10'
+      - run: python -m pytest -q research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/tests/test_h8_offline_classifier.py
