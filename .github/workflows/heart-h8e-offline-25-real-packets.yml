@@ -1,0 +1,36 @@
+name: Heart H8e real 25-packet exact construction classification (offline)
+on:
+  workflow_dispatch:
+  push:
+    branches: [research/heart-p0-p3-20261017]
+    paths: ['.github/workflows/heart-h8e-offline-25-real-packets.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  real-archived-branch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Restore prior successful actual native nine-material snapshot artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: heart-h8e-25point-real-jacobian-proof-or-failure
+          run-id: 39121571756
+          github-token: ${{ github.token }}
+          path: input-native-twenty-five
+      - name: Fail-closed construction provenance and exact support-plane classification
+        run: |
+          mkdir -p offline-reports
+          python research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/classify_h8_exact_branch_snapshots.py --directory input-native-twenty-five/artifacts/h8e-jacobian-cols0-4-8 --request input-native-twenty-five/artifacts/h8-request/prepared-request.json --output offline-reports/twenty-five-exact-construction-classification.json
+      - name: Retain classification evidence even if a source correspondence is unresolved
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: heart-h8e-twenty-five-exact-source-classification
+          path: offline-reports/
+          if-no-files-found: warn
