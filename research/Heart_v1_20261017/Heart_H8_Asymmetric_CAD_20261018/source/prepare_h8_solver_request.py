@@ -63,7 +63,7 @@ def build(cad,output):
       normalized_ten_moment_residual=error,
       initial_COM_axis_offset_mm=info['initial_physical']['COM_axis_offset_mm'],
       native_boundary_certified=False,cherchi_boolean_completed=False,
-      jacobian_certified=False,newton_converged=False,author_CAD=False)
+      jacobian_certified=False,author_CAD=False)
     output.mkdir(parents=True)
     (output/'prepared-request.json').write_text(json.dumps(dict(
        schema='spin-heart-h8-faster-preparation-v1',request=request,
