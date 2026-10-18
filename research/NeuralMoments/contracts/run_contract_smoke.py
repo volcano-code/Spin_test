@@ -12,7 +12,7 @@ import sys
 def main():
     root = Path(__file__).resolve().parents[3]
     command = [sys.executable, "-m", "pytest", "-q",
-               "research/NeuralMoments/contracts/test_contract_v1.py"]
+               "research/NeuralMoments/contracts"]
     result = subprocess.run(command, cwd=root, capture_output=True, text=True)
     print(result.stdout, end="")
     if result.stderr:
