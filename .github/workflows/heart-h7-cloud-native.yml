@@ -46,7 +46,7 @@ jobs:
           pkg-config --modversion mpfr
       - name: Build native core with strict pinned dependencies
         run: |
-          cmake -S . -B build/heart-cloud-core -G Ninja -DCMAKE_BUILD_TYPE=Release -DMAKE_IT_STAND_BUILD_VIEWER=OFF -DMAKE_IT_STAND_BUILD_REACHABILITY=OFF -DMAKE_IT_STAND_BUILD_SPIN_IT_2014=OFF -DMAKE_IT_STAND_BUILD_SPIN_IT_FASTER=ON -DMAKE_IT_STAND_BUILD_EXACT_GEOMETRY_CHECKS=ON -DMAKE_IT_STAND_BUILD_PYTHON=ON -DMAKE_IT_STAND_FILTERED_BOUNDARY_KERNEL=ON -DBUILD_TESTING=OFF -DPython_EXECUTABLE="$(which python)" -DPython3_EXECUTABLE="$(which python)"
+          cmake -S . -B build/heart-cloud-core -G Ninja -DCMAKE_BUILD_TYPE=Release -DMAKE_IT_STAND_BUILD_VIEWER=OFF -DMAKE_IT_STAND_BUILD_REACHABILITY=OFF -DMAKE_IT_STAND_BUILD_SPIN_IT_2014=OFF -DMAKE_IT_STAND_BUILD_SPIN_IT_FASTER=ON -DMAKE_IT_STAND_BUILD_EXACT_GEOMETRY_CHECKS=ON -DMAKE_IT_STAND_BUILD_PYTHON=ON -DMAKE_IT_STAND_FILTERED_BOUNDARY_KERNEL=ON -DBUILD_TESTING=OFF -DBoost_USE_STATIC_LIBS=OFF -DBoost_THREAD_LIBRARY_RELEASE=/usr/lib/x86_64-linux-gnu/libboost_thread.so -DBoost_SYSTEM_LIBRARY_RELEASE=/usr/lib/x86_64-linux-gnu/libboost_system.so -DPython_EXECUTABLE="$(which python)" -DPython3_EXECUTABLE="$(which python)"
           cmake --build build/heart-cloud-core --target _make_it_stand --parallel 2
       - name: Build pinned Cherchi in-process and GMP extension
         run: |
