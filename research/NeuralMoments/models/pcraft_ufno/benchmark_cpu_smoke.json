@@ -1,0 +1,50 @@
+{
+  "schema": "w6_smoke_perf_v1",
+  "trained": false,
+  "seed": 20261019,
+  "source_pin": "volcano-code/test@24eda3e9b3f87ba16251a9025761986d6cfe3079",
+  "target_contract": "W0 MomentContractV1 pending",
+  "teacher": "none; analytic reference only",
+  "data": "unit_cube_[0,1]^3",
+  "geometry_split": "not_applicable_untrained_smoke",
+  "parameter_counts_real": 4100,
+  "inference_device": "cpu",
+  "cpu": "x86_64",
+  "torch": "2.10.0+cpu",
+  "batch": 1,
+  "voxel_resolution": 8,
+  "coefficient_dim": 10,
+  "moment_dim": 10,
+  "frozen_geometry_reused": true,
+  "encoding": {
+    "median_ms": 2.16423400001986,
+    "min_ms": 1.772456000026068,
+    "max_ms": 2.4898839999423217,
+    "repetitions": 7
+  },
+  "cached_head_forward": {
+    "median_ms": 0.08031899994875857,
+    "min_ms": 0.06702899997890199,
+    "max_ms": 0.14684600000691717,
+    "repetitions": 7
+  },
+  "cached_head_jacrev_10x10": {
+    "median_ms": 1.0916809999343968,
+    "min_ms": 0.8202000000210319,
+    "max_ms": 1.3922649999358327,
+    "repetitions": 7
+  },
+  "cuda_peak_allocated_mb": null,
+  "cpu_peak_process_rss_kb": 322860,
+  "comparison_W5": {
+    "state": "PENDING_W5_BASELINE",
+    "speedup_claim": null,
+    "protocol": "same hardware, seed, teacher budget, geometry-family split, params, cold/warm/J timings"
+  },
+  "limitations": [
+    "No W2 teacher labels",
+    "No trained weights",
+    "CPU RSS is process-wide peak, not phase VRAM",
+    "Performance is untrained smoke, not accuracy or optimization speedup"
+  ]
+}

@@ -1,0 +1,13 @@
+test_analytic_reference_is_independent (research.NeuralMoments.models.pcraft_ufno.test_smoke.TestW6Milestone1.test_analytic_reference_is_independent) ... ok
+test_four_channel_contract_and_imputed_fields (research.NeuralMoments.models.pcraft_ufno.test_smoke.TestW6Milestone1.test_four_channel_contract_and_imputed_fields) ... ok
+test_fourier_mode_clipping_and_backprop (research.NeuralMoments.models.pcraft_ufno.test_smoke.TestW6Milestone1.test_fourier_mode_clipping_and_backprop) ... ok
+test_geometry_encoder_train_grad (research.NeuralMoments.models.pcraft_ufno.test_smoke.TestW6Milestone1.test_geometry_encoder_train_grad) ... ok
+test_invalid_coefficients (research.NeuralMoments.models.pcraft_ufno.test_smoke.TestW6Milestone1.test_invalid_coefficients) ... ok
+test_jacobian_vs_finite_difference_and_projective_null (research.NeuralMoments.models.pcraft_ufno.test_smoke.TestW6Milestone1.test_jacobian_vs_finite_difference_and_projective_null) ... ok
+test_one_encode_many_parameters_and_shape (research.NeuralMoments.models.pcraft_ufno.test_smoke.TestW6Milestone1.test_one_encode_many_parameters_and_shape) ... ok
+test_zero_one_two_teacher_adapters (research.NeuralMoments.models.pcraft_ufno.test_smoke.TestW6Milestone1.test_zero_one_two_teacher_adapters) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.884s
+
+OK
