@@ -51,7 +51,7 @@ def ten_by_ten_shape_check(values):
 def finite_checks(points,layouts,analytic,base_hash,tol=1e-6):
     """Pure 5-point independent numerics; not a smooth-branch proof."""
     rows=[]
-    if any('variable_raw_moments' not in row for row in points):
+    if any('independent_variable_raw_moments' not in row for row in points):
         raise ValueError('MISSING_INDEPENDENT_VARIABLE_MOMENTS')
     for layout in layouts:
         column=layout['column']
