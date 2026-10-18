@@ -13,9 +13,9 @@
 
 | Window | Role | Branch / exact instructions | Dependencies | Earliest evidence target | State |
 |---|---|---|---|---|---|
-| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M1_MATH_CONTRACT_CODE_PUSHED; LOCAL_ANALYTIC_SMOKE_15_PASS; NATIVE_CI_NOT_RUN` |
+| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M2_GATE_COMMITTED; 57_LOCAL_PYTEST_PASS; EXACT_BLOB_CHECKED; NATIVE_CI_NOT_RUN` |
 | W1 | Cherchi/Faster 性能 | [research/neuralmoments-w1-native-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w1-native-20261019/research/ParallelLaunch/W1_START_HERE.md) | 可独立 profiling；合并需 W0/W2 | 冻结同输入逐段耗时＋原生改造对照 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
-| W2 | 精确教师与标签 | [research/neuralmoments-w2-teacher-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w2-teacher-20261019/research/ParallelLaunch/W2_START_HERE.md) | 正式发布标签需 W0 | 真实 r,J＋SHA＋可微/失败状态 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
+| W2 | 精确教师与标签 | [research/neuralmoments-w2-teacher-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w2-teacher-20261019/research/ParallelLaunch/W2_START_HERE.md) | 正式发布标签需 W0 | 真实 r,J＋SHA＋可微/失败状态 | `W2_ADAPTER_MOCKS_PRESENT; MANIFEST_0_NATIVE_RUNS_0_TRAINING; TRUTH_BLOCKED` |
 | W3 | Heart H9 | [research/neuralmoments-w3-heart-h9-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w3-heart-h9-20261019/research/ParallelLaunch/W3_START_HERE.md) | 无 | 81 点 point60 构造变化诊断 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
 | W4 | Teapot P1 | [research/neuralmoments-w4-teapot-p1-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w4-teapot-p1-20261019/research/ParallelLaunch/W4_START_HERE.md) | 已完成 P0；体积/求解需 W0/W2 | 合法茶壶输入、F/D 与初态 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
 | W5 | DeepONet＋MLP | [research/neuralmoments-w5-deeponet-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w5-deeponet-20261019/research/ParallelLaunch/W5_START_HERE.md) | 解析 smoke 立即；真实训练需 W0/W2 | r,J 模型＋导数监督/成本报告 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
@@ -46,3 +46,11 @@
 - Local analytic tests: 15 passed from independent, more extensive W0 working implementation. GitHub CI and run of exact committed files are not claimed; frozen Cherchi production geometry not run.
 - W1–W6 completion and CI statuses not independently verified; preserve previous statuses until per-window evidence is reviewed.
 - Required integration gates: independent exact material seals, true geometry and derivative identity, and terminal Newton validation, none replaced by P0 analytic smoke.
+
+
+## W0 milestone 2 record (2026-10-19)
+
+- Implementation `6eb8d16ccec11ef3de283f239facd6a9bc183a04`: strict source/shape/math consistency validator, W2 pre-release identity adapter, and adversarial tests; original native `moment_coordinates.py` mixed-boolean coercion fixed.
+- Local test command `python research/NeuralMoments/contracts/run_contract_smoke.py` passes 57/57 (0.13 seconds); all published source files were checked byte-for-byte by Git blob SHA before pushing, runner blob verified separately. See [W0 M2 evidence](W0_M2_EVIDENCE_20261019.md).
+- Actual Cherchi/Eigen runtime, exact Boolean material certification, derivative smooth-neighborhood proof, end-to-end Newton terminal and GitHub Actions result are **NOT VERIFIED**, so teacher and network training admission remain blocked.
+- The current W2 manifest (read-only observation) reports adapter-smoke only and zero native teacher/training samples. Other W rows are unchanged pending independent audit.
