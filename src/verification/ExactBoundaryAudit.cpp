@@ -37,19 +37,34 @@
 
 namespace verification {
 CGAL::Gmpq parseExactRationalCoordinate(const std::string& value) {
-    const auto slash=value.find('/');
-    if(slash==std::string::npos || value.find('/',slash+1)!=std::string::npos)
-        throw std::invalid_argument("exact coordinate must be decimal numerator/positive denominator");
-    const auto numerator=value.substr(0,slash),denominator=value.substr(slash+1);
-    auto decimal=[](const std::string& token,bool signedValue) {
-        const auto start=signedValue && !token.empty() && token[0]=='-'?1U:0U;
-        return start<token.size() && std::all_of(token.begin()+start,token.end(),
-            [](unsigned char c){return c>='0' && c<='9';});
+    // The original exact-CGAL auditor accepted only decimal n/d. The pinned
+    // Cherchi producer deliberately emits exact binary n/d (0b.../0b...)
+    // to avoid expensive decimal conversion of constructed GMP coordinates.
+    // Both forms are now parsed exactly by GMP, never via double or rounding.
+    const auto slash = value.find('/');
+    if (slash == std::string::npos || value.find('/', slash+1) != std::string::npos)
+        throw std::invalid_argument("exact coordinate must be decimal or binary numerator/positive denominator");
+    const auto parseInteger = [](const std::string& token, bool allowNegative) {
+        const bool negative = allowNegative && !token.empty() && token[0] == '-';
+        const std::size_t signOffset = negative ? 1U : 0U;
+        if (signOffset >= token.size())
+            throw std::invalid_argument("exact coordinate has invalid or zero denominator");
+        const bool binary = token.compare(signOffset, 2, "0b") == 0;
+        const std::size_t offset = signOffset + (binary ? 2U : 0U);
+        if (offset >= token.size() ||
+            !std::all_of(token.begin() + offset, token.end(),
+                [binary](unsigned char c) {
+                    return binary ? (c == '0' || c == '1') : (c >= '0' && c <= '9');
+                }))
+            throw std::invalid_argument("exact coordinate has invalid or zero denominator");
+        const std::string digits = token.substr(offset);
+        return CGAL::Gmpz((negative ? "-" : "") + digits, binary ? 2 : 10);
     };
-    if(!decimal(numerator,true) || !decimal(denominator,false) ||
-       std::all_of(denominator.begin(),denominator.end(),[](char c){return c=='0';}))
+    const CGAL::Gmpz numerator = parseInteger(value.substr(0, slash), true);
+    const CGAL::Gmpz denominator = parseInteger(value.substr(slash+1), false);
+    if (denominator == CGAL::Gmpz(0))
         throw std::invalid_argument("exact coordinate has invalid or zero denominator");
-    return CGAL::Gmpq(CGAL::Gmpz(numerator.c_str()),CGAL::Gmpz(denominator.c_str()));
+    return CGAL::Gmpq(numerator, denominator);
 }
 namespace {
 // Coordinates and constructions are exact rationals in both variants. The
