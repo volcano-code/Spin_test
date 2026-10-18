@@ -9,6 +9,7 @@ The three scale widths and their five-point stencils are those used in H6.
 """
 from __future__ import annotations
 import argparse
+import gzip
 from collections import Counter
 from fractions import Fraction
 from hashlib import sha256
@@ -48,6 +49,33 @@ def ten_by_ten_shape_check(values):
         raise ValueError('ACTUAL_CHERCHI_JACOBIAN_MUST_BE_FINITE_10_X_10')
     return jac
 
+def model_to_target_raw_ten_moments(raw,origin,axes):
+    """Exact mass-moment *formula*, binary64 evaluation for cross-build audit.
+
+    Native engine uses target coordinates = (model-origin) @ axes.T.
+    Unlike raw Cherchi packet integration, the engine shifts its ten moments
+    before passing them to the Newton residual. Never compare frame values
+    without applying this affine change of variables.
+    """
+    vec=np.asarray(raw,dtype=np.float64)
+    origin=np.asarray(origin,dtype=np.float64)
+    axes=np.asarray(axes,dtype=np.float64)
+    if (vec.shape!=(10,) or origin.shape!=(3,) or axes.shape!=(3,3) or
+            not np.isfinite(vec).all() or not np.isfinite(origin).all() or
+            not np.isfinite(axes).all() or vec[0]<=0 or
+            not np.allclose(axes@axes.T,np.eye(3),atol=1e-12,rtol=0) or
+            not math.isclose(np.linalg.det(axes),1.,abs_tol=1e-12)):
+        raise ValueError('INVALID_MODEL_TARGET_MOMENT_FRAME')
+    m=vec[0];first=vec[1:4]
+    second=np.array([[vec[4],vec[9],vec[8]], [vec[9],vec[5],vec[7]],
+                     [vec[8],vec[7],vec[6]]])
+    shifted=second-np.outer(origin,first)-np.outer(first,origin)+m*np.outer(origin,origin)
+    rot=axes.T
+    target_first=rot@(first-m*origin)
+    target_second=rot@shifted@rot.T
+    return np.array([m,*target_first,target_second[0,0],target_second[1,1],
+        target_second[2,2],target_second[1,2],target_second[0,2],target_second[0,1]])
+
 def finite_checks(points,layouts,analytic,base_hash,tol=1e-6):
     """Pure 5-point independent numerics; not a smooth-branch proof."""
     rows=[]
@@ -69,7 +97,7 @@ def finite_checks(points,layouts,analytic,base_hash,tol=1e-6):
             comparison_meaning='FINITE_DIFFERENCE_ONLY_NOT_SMOOTH_TOPOLOGY_CERTIFICATE'))
     return rows
 
-def run(request_file,output,columns):
+def run(request_file,output,columns,base_certificate=None,base_reference=None):
     from make_it_stand.verification.cherchi_inprocess import InProcessCherchiEvaluator
     import _make_it_stand as native
     import _cherchi_core_boolean as boolean
@@ -86,6 +114,27 @@ def run(request_file,output,columns):
     samples,layouts=planned_samples(q,cols)
     if len(samples)!=1+8*len(cols):
         raise ValueError('INCOMPLETE_THREE_SCALE_PILOT_PROTOCOL')
+    if (base_certificate is None)!=(base_reference is None):
+        raise ValueError('BASELINE_REQUIRES_BOTH_MOMENT_CERTIFICATE_AND_REFERENCE')
+    prior=None
+    if base_certificate is not None:
+        direct=json.loads(Path(base_reference).read_text())
+        certificate=json.loads(Path(base_certificate).read_text())
+        if (direct.get('status')!='ACTUAL_CHERCHI_ONE_POINT_RATIONAL_BOUNDARY_PASSED_NOT_OPTIMIZED'
+            or certificate.get('schema')!='h8c-exact-ten-mass-moment-double-implementation-v1'
+            or certificate.get('frozen_request_sha256')!=sha(request_file)
+            or certificate.get('verified_actual_packet_sha256')!=direct.get('actual_packet_archive_sha256')
+            or certificate.get('exact_ten_moments_independently_reproduced') is not True
+            or certificate.get('full_jacobian_passed') is not False
+            or not np.array_equal(np.asarray(direct.get('exploratory_q')),q)):
+            raise ValueError('BASELINE_CERTIFICATE_OR_QUADRIC_IDENTITY_MISMATCH')
+        prior=dict(model_raw_ten_moments=certificate['variable_raw_ten_moments_normalized'],
+                   certificate_sha256=sha(base_certificate),
+                   reference_sha256=sha(base_reference),
+                   native_sha256=direct.get('native_sha256'),
+                   cherchi_sha256=direct.get('cherchi_sha256'),
+                   material_vertices=direct.get('material_vertices'),
+                   material_faces=direct.get('material_faces'))
     output=Path(output)
     output.mkdir(parents=True,exist_ok=False)
     report=dict(schema='heart-h8e-real-cherchi-jacobian-pilot-v1',
@@ -108,6 +157,9 @@ def run(request_file,output,columns):
             branch_identity_policy='SOURCE_FEATURE_BRANCH_V2')
         if not engine.backend_identity.startswith(BACKEND_PREFIX):
             raise ValueError('DYNAMIC_BOOLEAN_NOT_PINNED_CHERCHI')
+        if prior is not None and (prior['native_sha256']!=report['actual_native_sha256']
+                or prior['cherchi_sha256']!=report['actual_cherchi_sha256']):
+            raise ValueError('BASELINE_NATIVE_OR_CHERCHI_BINARY_IDENTITY_MISMATCH')
         base_jac=None
         with (output/'events.jsonl').open('x') as journal:
             for i,coefficients in enumerate(samples):
@@ -143,12 +195,30 @@ def run(request_file,output,columns):
                     if max_err>1e-10:raise ValueError('INDEPENDENT_CHERCHI_MOMENTS_DIFFER')
                     jac=ten_by_ten_shape_check(value['moment_jacobian'])
                     if i==0:
+                        if prior is not None:
+                            if len(rational)!=prior['material_vertices'] or len(faces)!=prior['material_faces']:
+                                raise ValueError('BASELINE_MATERIAL_VERTEX_OR_FACE_COUNT_CHANGED')
+                            mapped=model_to_target_raw_ten_moments(
+                                prior['model_raw_ten_moments'],request.target_origin,request.target_axes)
+                            difference=float(np.max(np.abs(mapped-independently)))
+                            if difference>1e-10:
+                                raise ValueError('BASELINE_MODEL_TO_TARGET_MOMENTS_INCONSISTENT')
+                            report['baseline_independent_model_to_target_max_abs_error']=difference
+                            report['baseline_direct_certificate_sha256']=prior['certificate_sha256']
+                            report['baseline_direct_reference_sha256']=prior['reference_sha256']
+                            report['baseline_model_to_target_ten_moments_verified']=True
                         base_jac=jac
                         report['analytic_jacobian_at_base_computed']=True
                         report['analytic_10_by_10_jacobian']=jac.tolist()
                         report['scale_null_direction_norm']=float(np.linalg.norm(jac@q))
+                    stage='WRITE_COMPLETE_SAME_CALL_MATERIAL'
+                    archive=output/f'point-{i:03d}-material.json.gz'
+                    with gzip.open(archive,'wt',encoding='utf8',compresslevel=5) as snapshot:
+                        json.dump(material,snapshot,sort_keys=True,allow_nan=False)
+                    archive_sha256=sha(archive)
                     stage='WRITE_EVIDENCE'
                     observed=dict(index=i,coefficients=coefficients.tolist(),
+                        exact_same_call_material_archive_sha256=archive_sha256,
                         independent_variable_raw_moments=independently.tolist(),
                         production_variable_raw_moments=reported.tolist(),
                         full_raw_moments=np.asarray(value['raw_moments'],dtype=float).tolist(),
@@ -180,8 +250,11 @@ def run(request_file,output,columns):
                     raise
         if base_jac is None:raise ValueError('NO_BASE_JACOBIAN')
         checks=finite_checks(points,layouts,base_jac,points[0]['feature_branch_hash'])
-        report.update(status='FINITE_JACOBIAN_DIAGNOSTIC_COMPLETED_NO_SMOOTH_ADMISSION',
+        passed=all(x['numerical_passed'] for x in checks)
+        report.update(status=('FINITE_JACOBIAN_DIAGNOSTIC_COMPLETED_NO_SMOOTH_ADMISSION'
+                              if passed else 'FINITE_NUMERICAL_JACOBIAN_DISAGREEMENT'),
             completed_samples=len(points),numeric_checks=checks,
+            all_same_call_material_snapshots_sha256_saved=True,
             all_numerical_checks_passed=all(x['numerical_passed'] for x in checks),
             all_tested_stencils_same_feature_hash=all(x['feature_hash_stable'] for x in checks),
             changed_feature_hash_points=sum(p['feature_branch_hash']!=points[0]['feature_branch_hash'] for p in points[1:]),
@@ -207,5 +280,11 @@ if __name__=='__main__':
     parser.add_argument('--request',required=True,type=Path)
     parser.add_argument('--output',required=True,type=Path)
     parser.add_argument('--columns',default='0',help='one column first, 0,4,8 after pilot')
+    parser.add_argument('--base-certificate',type=Path,
+        help='H8d independent model-frame exact ten-moment certificate')
+    parser.add_argument('--base-reference',type=Path,
+        help='H8d direct Cherchi source and Boolean audit result')
     a=parser.parse_args()
-    run(a.request,a.output,a.columns)
+    result=run(a.request,a.output,a.columns,a.base_certificate,a.base_reference)
+    if not result['all_numerical_checks_passed']:
+        raise SystemExit(2)
