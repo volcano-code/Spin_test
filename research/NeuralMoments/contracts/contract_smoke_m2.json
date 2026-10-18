@@ -1,0 +1,50 @@
+{
+  "schema": "W0_M2_CONTRACT_SMOKE_V1",
+  "tested_at": "2026-10-19",
+  "source_commit": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "branch": "research/neuralmoments-w0-contract-20261019",
+  "results": {
+    "command": "python research/NeuralMoments/contracts/run_contract_smoke.py",
+    "local_environment": "Python 3.13.5 / pytest 9.0.2 / NumPy 2.3.5",
+    "exit_code": 0,
+    "tests_collected": 57,
+    "tests_passed": 57,
+    "tests_failed": 0,
+    "duration_reported_seconds": 0.13,
+    "github_commit_contents_identical_to_local_test_files": true,
+    "github_actions_combined_statuses": 0,
+    "pr_triggered_workflow_runs": 0,
+    "native_eigen_compiled": false,
+    "native_cherchi_evaluated": false,
+    "w2_real_teacher_labels": 0,
+    "training_admissible_labels": 0
+  },
+  "file_git_blob_sha1": {
+    "moment_coordinates.py": "7f844fadc02b8f02c8560b5180e29bac78332ab4",
+    "physical_transforms.py": "30e374297d338a0942e83ef58604b9745685b17a",
+    "analytic_references.py": "8ce3c4dfcc4e3b8882202e3770ad7acacfab0b4f",
+    "test_contract_v1.py": "27a83854b3480165e7bc8f0659df2b72a54d3ca3",
+    "validate_contract_v1.py": "fe5f71e7cb2b6c6ad45f48c49ab4042f797a113e",
+    "test_validate_contract_v1.py": "b531991c5476498f40859dae3f10162ba6a0a009",
+    "w2_teacher_gate.py": "b42ec6d9b389675123250d79f9cc9efb1b658c07",
+    "test_w2_teacher_gate.py": "808a2a4091b60db1b8019e33db43859dc",
+    "run_contract_smoke.py": "5a88ea043a4c8020e0ba66995983646473181136",
+    "__init__.py": "0b045a6c9d80a0b0e0a54e041de1909c8944af33"
+  },
+  "failure_ledger": [
+    "Original mixed [True, 0, 0] input was silently coerced by NumPy; a negative test failed once, patched checked() and reran green.",
+    "First compressed multi-file transport was incomplete and aborted before any ref update; four individually validated blobs were committed atomically thereafter.",
+    "CI unavailable on current commit; zero combined statuses and zero returned PR-triggered Actions runs, not a PASS."
+  ],
+  "admission_gates": {
+    "mathematical_structure": "PASS_LOCAL",
+    "w2_pre_w0_identity_adapter": "PASS_LOCAL_MOCK_ONLY",
+    "native_cherchi_geometry_proof": "NOT_RUN",
+    "physical_material_and_exact_region": "NOT_RUN",
+    "smooth_derivative_neighborhood": "NOT_RUN",
+    "newton_terminal": "NOT_RUN",
+    "uniform_one_percent_gate": "NOT_DEFINED",
+    "native_teacher_label_admission": "BLOCKED_PENDING_EXTERNAL_PROOF"
+  },
+  "scientific_certification": false
+}
