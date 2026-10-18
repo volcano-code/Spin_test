@@ -1,0 +1,13 @@
+{
+  "continuous_smooth_neighborhood_proven": false,
+  "environment": "current response runtime, Python 3.13.5; native extensions not installed; no compiled Cherchi/CGAL binary available",
+  "error": "RuntimeError: REAL_NATIVE_CHERCHI_DEPENDENCIES_UNAVAILABLE_NO_FALLBACK",
+  "exit_code": 1,
+  "failed_stage": "LOAD_NATIVE_CHERCHI_BINARY",
+  "final_heart_obj_produced": false,
+  "historical_workflow_conclusion": "failure (unchanged)",
+  "native_calls_completed": 0,
+  "newton_admitted": false,
+  "schema": "heart-h9-native-microprobe-v1",
+  "status": "FAILED_NO_NEWTON_ADMISSION"
+}

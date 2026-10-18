@@ -1,0 +1,122 @@
+{
+  "actual_continuous_event_localized": false,
+  "archived_secant_max_scaled_jacobian_deviation": 1.4456094976282303e-05,
+  "artifact_id": 12135528290,
+  "artifact_zip_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "continuous_smooth_neighborhood_proven": false,
+  "finite_point_sign_witnesses": [
+    {
+      "coefficient_7": 0.0,
+      "exact_fraction": {
+        "approx": 4.566691773253687e-08,
+        "denominator": "1361129467683753853853498429727072845824",
+        "numerator": "62158587424045684813457542816939",
+        "sign": 1
+      },
+      "index": 0
+    },
+    {
+      "coefficient_7": -3e-06,
+      "exact_fraction": {
+        "approx": 1.0574026262460174e-07,
+        "denominator": "85070591730234615865843651857942052864",
+        "numerator": "8995386711185281724477291827193",
+        "sign": 1
+      },
+      "index": 57
+    },
+    {
+      "coefficient_7": -1.5e-06,
+      "exact_fraction": {
+        "approx": 7.570348493289463e-08,
+        "denominator": "680564733841876926926749214863536422912",
+        "numerator": "51521122074257978130285654138369",
+        "sign": 1
+      },
+      "index": 58
+    },
+    {
+      "coefficient_7": 1.5e-06,
+      "exact_fraction": {
+        "approx": 1.5630561011148573e-08,
+        "denominator": "680564733841876926926749214863536422912",
+        "numerator": "10637608594351547676717446076387",
+        "sign": 1
+      },
+      "index": 59
+    },
+    {
+      "coefficient_7": 3e-06,
+      "exact_fraction": {
+        "approx": -1.4405585247826644e-08,
+        "denominator": "1361129467683753853853498429727072845824",
+        "numerator": "-19607866580047215960245688626015",
+        "sign": -1
+      },
+      "index": 60
+    },
+    {
+      "coefficient_7": -7.5e-07,
+      "exact_fraction": {
+        "approx": 6.06851750218784e-08,
+        "denominator": "680564733841876926926749214863536422912",
+        "numerator": "41300189986912387426768828617025",
+        "sign": 1
+      },
+      "index": 61
+    },
+    {
+      "coefficient_7": 7.5e-07,
+      "exact_fraction": {
+        "approx": 3.0648713062168615e-08,
+        "denominator": "340282366920938463463374607431768211456",
+        "numerator": "10429216623875418988582422221713",
+        "sign": 1
+      },
+      "index": 62
+    },
+    {
+      "coefficient_7": -3.75e-07,
+      "exact_fraction": {
+        "approx": 5.317603979933585e-08,
+        "denominator": "680564733841876926926749214863536422912",
+        "numerator": "36189737372800054341220154384805",
+        "sign": 1
+      },
+      "index": 63
+    },
+    {
+      "coefficient_7": 3.75e-07,
+      "exact_fraction": {
+        "approx": 3.8157808819713754e-08,
+        "denominator": "1361129467683753853853498429727072845824",
+        "numerator": "51937718006755428024228950880403",
+        "sign": 1
+      },
+      "index": 64
+    }
+  ],
+  "frozen_run_conclusion": "failure",
+  "frozen_run_id": 39123384402,
+  "live_probe_candidate_c7": [
+    1.875e-06,
+    2.25e-06,
+    2.625e-06,
+    2.2805875399117463e-06
+  ],
+  "measured_opposite_sign_endpoints": {
+    "lower_c7": 1.5e-06,
+    "lower_index": 59,
+    "lower_sign": 1,
+    "upper_c7": 3e-06,
+    "upper_index": 60,
+    "upper_sign": -1
+  },
+  "new_native_calls_this_run": 0,
+  "newton_admitted": false,
+  "request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+  "schema": "heart-h9-exact-edge-event-sample-bracket-v1",
+  "secant_predicted_c7_not_certified_event": 2.2805875399117463e-06,
+  "source_81_point_classification_sha256": "f82801aa26d3f4228b8cb68f08abab5ef45458cc2368703e9187e0745662d6c5",
+  "source_81_point_report_sha256": "28e5a641da153b08a7f15f4abb87336c797f1e85b6f2742fc025274c231f53c5"
+}
