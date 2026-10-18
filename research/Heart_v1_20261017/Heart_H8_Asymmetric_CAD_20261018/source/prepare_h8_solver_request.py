@@ -53,8 +53,12 @@ def build(cad,output):
        icosphere_subdivisions=2,maximum_icosphere_subdivisions=2,
        maximum_radius_doublings=8,retain_fixed_normal_provenance=True,
        paper_projective_hyperboloid=True,algebraic_finite_map=False)
-    report=dict(schema='H8B_UNOPTIMIZED_RECONSTRUCTED_CAD_REQUEST',
-      input_sha256={n:digest(cad/n) for n in FILES},
+    report=dict(schema='spin-heart-h8-faster-request-v1',
+      scope='H8_RECONSTRUCTED_CAD_ONLY_NOT_NATIVE_CERTIFIED_NOT_SOLVED',
+      normalized_scale_mm_per_unit=scale,
+      native_exact_boundary_admitted=False,newton_converged=False,
+      original_author_cad=False,
+      source_sha256={n:digest(cad/n) for n in FILES},
       source_length_mm=scale,density_kg_m3=rho,
       normalized_ten_moment_residual=error,
       initial_COM_axis_offset_mm=info['initial_physical']['COM_axis_offset_mm'],
@@ -62,7 +66,8 @@ def build(cad,output):
       jacobian_certified=False,newton_converged=False,author_CAD=False)
     output.mkdir(parents=True)
     (output/'prepared-request.json').write_text(json.dumps(dict(
-       request=request,evaluator_settings=evaluator,scope=report['schema']),indent=2,allow_nan=False)+'\n')
+       schema='spin-heart-h8-faster-preparation-v1',request=request,
+       evaluator_settings=evaluator,evidence=report),indent=2,allow_nan=False)+'\n')
     report['request_sha256']=digest(output/'prepared-request.json')
     (output/'manifest.json').write_text(json.dumps(report,indent=2,allow_nan=False)+'\n')
     return report
