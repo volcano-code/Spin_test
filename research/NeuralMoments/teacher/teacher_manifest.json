@@ -1,0 +1,27 @@
+{
+  "schema": "w2-cherchi-teacher-v1-pre-w0",
+  "status": "ADAPTER_SMOKE_ONLY",
+  "native_teacher_runs": 0,
+  "training_samples": 0,
+  "order": [
+    "m",
+    "x",
+    "y",
+    "z",
+    "xx",
+    "yy",
+    "zz",
+    "yz",
+    "xz",
+    "xy"
+  ],
+  "fixed_policy": "r_total=r_F+r_D;J_total=J_D",
+  "derivative_policy": "H8 point60 excluded until branch proof; Teapot open boundary excluded",
+  "data_splits": {
+    "train": [],
+    "val": [],
+    "test": [],
+    "excluded": []
+  },
+  "pending_dependency": "W0 MomentContractV1"
+}
