@@ -34,6 +34,16 @@ jobs:
           git clone https://github.com/gcherchi/InteractiveAndRobustMeshBooleans.git external/reference-sources-20260917/sources/InteractiveAndRobustMeshBooleans-7bd6c2697695f555f9a15d7e154e084d841316f0
           git -C external/reference-sources-20260917/sources/InteractiveAndRobustMeshBooleans-7bd6c2697695f555f9a15d7e154e084d841316f0 checkout 7bd6c2697695f555f9a15d7e154e084d841316f0
           test "$(git -C external/reference-sources-20260917/sources/InteractiveAndRobustMeshBooleans-7bd6c2697695f555f9a15d7e154e084d841316f0 rev-parse HEAD)" = "7bd6c2697695f555f9a15d7e154e084d841316f0"
+      - name: Prestage verified pinned CGAL source required by strict native audit
+        run: |
+          mkdir -p libigl/external/cgal
+          git -C libigl/external/cgal init
+          git -C libigl/external/cgal fetch --depth=1 --filter=blob:none https://github.com/CGAL/cgal.git f7c3c8212b56c0d6dae63787efc99093f4383415
+          git -C libigl/external/cgal checkout --detach FETCH_HEAD
+          test "$(git -C libigl/external/cgal rev-parse HEAD)" = "f7c3c8212b56c0d6dae63787efc99093f4383415"
+          test -f libigl/external/cgal/Number_types/include/CGAL/Gmpq.h
+          pkg-config --modversion gmp
+          pkg-config --modversion mpfr
       - name: Build native core with strict pinned dependencies
         run: |
           cmake -S . -B build/heart-cloud-core -G Ninja -DCMAKE_BUILD_TYPE=Release -DMAKE_IT_STAND_BUILD_VIEWER=OFF -DMAKE_IT_STAND_BUILD_REACHABILITY=OFF -DMAKE_IT_STAND_BUILD_SPIN_IT_2014=OFF -DMAKE_IT_STAND_BUILD_SPIN_IT_FASTER=ON -DMAKE_IT_STAND_BUILD_EXACT_GEOMETRY_CHECKS=ON -DMAKE_IT_STAND_BUILD_PYTHON=ON -DMAKE_IT_STAND_FILTERED_BOUNDARY_KERNEL=ON -DBUILD_TESTING=OFF -DPython_EXECUTABLE="$(which python)" -DPython3_EXECUTABLE="$(which python)"
