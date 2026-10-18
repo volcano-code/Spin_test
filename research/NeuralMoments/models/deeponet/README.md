@@ -50,3 +50,23 @@ The tracked file `smoke_seed19_cpu.json` contains the complete machine-readable 
 1. Integrate the immutable W0 definition of geometric transforms, `c`, ten output moments and Jacobian ordering; add cross-checks for units, topology strata and direction derivatives.
 2. Consume frozen W2 independent real Cherchi teacher records without neural-label substitution; require provenance/checksums, topology-split train/test families and train/test leakage audit.
 3. Run multi-seed, fixed-budget derivative-enhanced vs residual-only training, true optimization-decision and trust-region evaluation, 0/1/2/4/8 oracle-query budget curves, GPU time/memory and cold/warm performance **against** the real expensive evaluator. The current 12-step CPU demonstration is insufficient for such claims.
+
+## M2 — W0 read-only contract gate, W2 fail-closed intake and three-seed analytic audit
+
+**External contract heads actually checked through the GitHub connector** on 2026-10-19: W0 `fbf3f3a3916d504baef0557ed9979525ec63b7b6`, W2 `2319d7a816bf03bd641886a8070b5c809b9456be`. Their branches are NOT merged, modified or copied into W5. W0's frozen common source remains `0bcc187b3005478baa586a6d6f450e73811ca342`.
+
+- `contract_gate.py`: checks relevant `MomentContractV1` fields and hash identities, correct native `c` / monomial `q=Bc` (2× last three coefficients), native-vs-total `r_F+r_D` separation, physical raw 0th/1st/2nd moment pushforward including density and nonuniform linear transformations, native Jacobian column conversion only when **smooth full-ambient** is *separately established*, and normalized error components. The W0 check is deliberately a **subset** validation, **not** full JSON-Schema conformance or independent material proof.
+- `admit_w2_record()` consumes W2's published **pre-W0** sealed envelope, requiring an **independently supplied allowlist of actual serialized file SHA-256 hashes**, expected saved native `c` bytes/values and real model/native module file byte hashes. It rejects unapproved, tampered, unnormalized, split-excluded, unproven neighborhood/topology, missing r or 10×10 J, W0 identity/frame mismatch, and mock/non-native proof identities. The returned pair is `r_total=r_F+r_D` and `J_total=J_D`; fixed geometry is not differentiated. It returns **candidate** data only, *never* a native/material certification. A checksum—even an approved one—is not a substitute for independently verified Boolean material and derivative proof. The current W2 manifest has **zero** native teacher runs / training samples and does not supply any record approval catalog. W5 M2 therefore admits **no real teacher records**.
+- `audit_family_split()` rejects family, original geometry, fixed F and design D SHA leakage between train/val/test and duplicate records. Real-geometry features are intentionally **not** projected into the nine-dimensional synthetic `D` encoding. Doing so would silently substitute a different problem, so formal native training remains blocked until a real geometry encoder, frozen W0/W2 package and independent material seals are available.
+- `m2_audit.py`: repeats the existing *non-Spin* analytic smoke at fixed seeds `7,19,31`, same 12-step CPU budget and family holdout. It reports per-seed + mean/sample-std of ten-component r/J/directional/decision errors, 0/1/2/4/8 analytic oracle-adaptation curves, parameter count, estimated MACs and uncompiled CPU cold/warm/jacrev times. **No real Cherchi speedup claim**, no GPU use. The separately fetched W2 manifest is supplied as a **local, untracked read-only reference**, and only its declared gate status is displayed. No other window file is committed.
+
+From root of a checkout of W5:
+
+```bash
+python -m pytest -q tests/python/test_w5_deeponet_smoke.py tests/python/test_w5_m2_contract_and_gate.py
+python -m research.NeuralMoments.models.deeponet.m2_audit \
+  --seeds 7,19,31 --steps 12 --per-family 8 --repeats 5 \
+  > research/NeuralMoments/models/deeponet/m2_seed7_19_31_cpu.json
+```
+
+To inspect an available W2 manifest without using the native evaluator, append `--w2-manifest /path/to/teacher_manifest.json`. This option **never** unlocks native training. Report: `m2_seed7_19_31_cpu.json`, test evidence: `m2_test_log.txt`. Timings are single-thread CPU sample readings; no paper-grade performance or accuracy conclusion is made. Both W5 architectures currently use synthetic nine-dimensional `D`, while production input features for arbitrary sealed CAD remain to be designed and independently evaluated.
