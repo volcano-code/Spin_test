@@ -76,3 +76,27 @@ def test_reject_ambiguous_support_planes():
     faces=[[0,1,2],[0,2,3]]
     with pytest.raises(ValueError,match='AMBIGUOUS'):
         observe_packet(packet,design,faces,source,faces)
+
+def test_actual_cherchi_binary_rationals_same_symbolic_patch_as_decimal():
+    packet,design=fake_packet()
+    source=[[x,y,z+1] for x,y,z in design]
+    faces=[[0,1,2],[0,2,3]]
+    decimal=observe_packet(packet,design,faces,source,faces)
+    from copy import deepcopy
+    binary=deepcopy(packet)
+    for index,v in enumerate(design):
+        tokens=[f"0b{int(x):b}/0b1" for x in v]
+        binary['exact_vertices'][index]=tokens
+        binary['construction_records'][index]['operand_coordinates_exact']=[tokens]
+    converted=observe_packet(binary,design,faces,source,faces)
+    assert converted['triangle_digest']==decimal['triangle_digest']
+    assert converted['boundary_digest']==decimal['boundary_digest']
+    assert compare_observations(decimal,converted)['qualified_smooth_derivative'] is False
+
+@pytest.mark.parametrize("bad",[
+    "0b101/0b0","0b11/0b","0b12/0b10",
+    "-0b1/-0b10","0b1/0b1/0b1",
+])
+def test_binary_tokens_fail_closed(bad):
+    with pytest.raises(ValueError):
+        exact_point([bad,"0","0"])
