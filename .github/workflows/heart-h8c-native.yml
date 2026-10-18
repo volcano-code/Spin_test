@@ -1,0 +1,42 @@
+name: Heart H8c native admission and actual Cherchi one-point material
+on:
+  workflow_dispatch:
+  push:
+    branches: [research/heart-p0-p3-20261017]
+    paths: ['.github/workflows/heart-h8c-native.yml', 'research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/probe_h8_native_cherchi.py']
+jobs:
+  actual-heart:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Python package dependencies
+        run: python -m pip install 'pybind11==3.0.1' 'numpy>=2,<3' 'trimesh>=4,<5' 'pytest>=8,<10'
+      - name: Fetch standalone frozen H8 input via pinned source and verify signatures
+        run: |
+          python -m pip install 'scipy>=1.14,<2' 'shapely>=2,<3' 'scikit-image>=0.24,<1'
+          mkdir -p artifacts
+          python research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/build_heart_h8.py --output artifacts/h8-input
+          python research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/audit_h8.py --output artifacts/h8-input
+          python research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/prepare_h8_solver_request.py --cad artifacts/h8-input --output artifacts/h8-request
+      - name: Do not claim native result without checked-in compatible native modules
+        run: |
+          echo 'Native _make_it_stand and pinned Cherchi modules are not distributed as CI artifacts yet.'
+          echo 'WAITING_FOR_VERIFIED_CLOUD_NATIVE_MODULES'
+          exit 2
+      - name: Actual Cherchi H8 preflight
+        env:
+          PYTHONPATH: ${{ github.workspace }}/python:${{ github.workspace }}/build/heart-cloud-core/python:${{ github.workspace }}/build/heart-cloud-cherchi/python
+        run: |
+          python research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/probe_h8_native_cherchi.py --cad artifacts/h8-input --request artifacts/h8-request/prepared-request.json --output artifacts/h8-cherc-preflight
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: heart-h8c-frozen-cad-or-native-evidence
+          path: artifacts/
+          if-no-files-found: warn
