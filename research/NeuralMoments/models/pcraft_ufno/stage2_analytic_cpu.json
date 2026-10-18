@@ -1,0 +1,181 @@
+{
+  "W2_actual_teacher_records": 0,
+  "W2_branch_sha": "14b1d2d5da4e258d125e664b5665ef84f7ebbb4e",
+  "W5_branch_sha": "8efd22864dc61b4782e1e2f8c0b177db3a15fff5",
+  "W5_comparison_reason": "Existing W5 smoke uses polynomial density c, not native physical cut c. Retrain both on identical labels before claiming a win.",
+  "W5_existing_report_comparable": false,
+  "W5_reference_parameters": {
+    "deeponet": 13674,
+    "geometry_mlp": 13482
+  },
+  "analytical_labels_are_continuum_not_voxel_integrals": true,
+  "arms": {
+    "derivative_plus_W0_smooth_Jq": {
+      "adaptation": {
+        "0": {
+          "r_mae": 0.053693998605012894,
+          "teacher_queries": 0
+        },
+        "1": {
+          "r_mae": 0.04797029867768288,
+          "teacher_queries": 1
+        },
+        "2": {
+          "r_mae": 0.005624496378004551,
+          "teacher_queries": 2
+        }
+      },
+      "heldout": {
+        "J_mae": 0.023171821609139442,
+        "J_relative_l2": 0.9509616494178772,
+        "directional_derivative_mae": 0.014486871659755707,
+        "oracle_Jq_max_asymmetry": 0.0,
+        "predicted_Jq_max_asymmetry": 0.051564425230026245,
+        "projective_radial_Jc_c_max": 1.3969838619232178e-08,
+        "r_W0_normalized_component_mae": 0.005717660300433636,
+        "r_mae": 0.06687311083078384,
+        "r_relative_l2": 0.9364798665046692
+      },
+      "latency": {
+        "cached_J_10x10": {
+          "max_ms": 0.9454770000729695,
+          "median_ms": 0.8324570000013409,
+          "min_ms": 0.7944190000443996,
+          "repetitions": 7
+        },
+        "cached_head_only": {
+          "max_ms": 0.10998599998401914,
+          "median_ms": 0.07562400003280345,
+          "min_ms": 0.0650580000183254,
+          "repetitions": 7
+        },
+        "cold_encode_plus_head": {
+          "max_ms": 2.6483389999611973,
+          "median_ms": 2.337901000032616,
+          "min_ms": 2.079099000070528,
+          "repetitions": 7
+        },
+        "cpu_process_peak_rss_kb": 338568,
+        "cuda_peak_allocated_mb": null,
+        "encode_only": {
+          "max_ms": 2.9085720000239235,
+          "median_ms": 2.0815630000470264,
+          "min_ms": 2.012698000044111,
+          "repetitions": 7
+        },
+        "note": "CPU process peak RSS is not phase memory; measured on uncompiled warm CPU"
+      },
+      "training": {
+        "batch_size": 8,
+        "cpu_train_seconds": 0.17012147900004493,
+        "derivative_enhanced": true,
+        "gpu_seconds": 0.0,
+        "last_train_J_mse": 0.024034110829234123,
+        "last_train_r_mse": 0.022663377225399017,
+        "last_train_smooth_Jq_asymmetry_mse": 0.00020890038285870105,
+        "lr": 0.003,
+        "steps": 12
+      }
+    },
+    "moment_only": {
+      "adaptation": {
+        "0": {
+          "r_mae": 0.05369450896978378,
+          "teacher_queries": 0
+        },
+        "1": {
+          "r_mae": 0.04884202033281326,
+          "teacher_queries": 1
+        },
+        "2": {
+          "r_mae": 0.0055955322459340096,
+          "teacher_queries": 2
+        }
+      },
+      "heldout": {
+        "J_mae": 0.02542475424706936,
+        "J_relative_l2": 0.9788302183151245,
+        "directional_derivative_mae": 0.019163789227604866,
+        "oracle_Jq_max_asymmetry": 0.0,
+        "predicted_Jq_max_asymmetry": 0.03771303966641426,
+        "projective_radial_Jc_c_max": 1.3969838619232178e-08,
+        "r_W0_normalized_component_mae": 0.005689241923391819,
+        "r_mae": 0.06634645164012909,
+        "r_relative_l2": 0.9350020289421082
+      },
+      "latency": {
+        "cached_J_10x10": {
+          "max_ms": 1.6963010000381473,
+          "median_ms": 0.8221309999498772,
+          "min_ms": 0.7644940000091083,
+          "repetitions": 7
+        },
+        "cached_head_only": {
+          "max_ms": 0.09940999996160826,
+          "median_ms": 0.06627000004755246,
+          "min_ms": 0.06444799998917006,
+          "repetitions": 7
+        },
+        "cold_encode_plus_head": {
+          "max_ms": 2.70359199998893,
+          "median_ms": 2.405281000051218,
+          "min_ms": 2.2450490000665013,
+          "repetitions": 7
+        },
+        "cpu_process_peak_rss_kb": 335076,
+        "cuda_peak_allocated_mb": null,
+        "encode_only": {
+          "max_ms": 2.6912330000641305,
+          "median_ms": 2.316076999932193,
+          "min_ms": 2.112940000074559,
+          "repetitions": 7
+        },
+        "note": "CPU process peak RSS is not phase memory; measured on uncompiled warm CPU"
+      },
+      "training": {
+        "batch_size": 8,
+        "cpu_train_seconds": 0.19066467800007558,
+        "derivative_enhanced": false,
+        "gpu_seconds": 0.0,
+        "last_train_J_mse": null,
+        "last_train_r_mse": 0.022834140807390213,
+        "last_train_smooth_Jq_asymmetry_mse": null,
+        "lr": 0.003,
+        "steps": 12
+      }
+    }
+  },
+  "config": {
+    "batch_size": 8,
+    "grid_size": 8,
+    "lr": 0.003,
+    "repetitions": 7,
+    "steps": 12
+  },
+  "contract_W0_branch_sha": "fbf3f3a3916d504baef0557ed9979525ec63b7b6",
+  "cpu_threads": 1,
+  "derivative_type": "smooth_full_ambient_continuum_only",
+  "device": "cpu",
+  "geometry_ids_test": 20,
+  "geometry_ids_train": 40,
+  "native_c_order": "const,x,y,z,xx,yy,zz,yz,xz,xy",
+  "parameters_real": 13982,
+  "positive_projective_c_unit": true,
+  "python_version": "3.13.5",
+  "r_order": "mass,x,y,z,xx,yy,zz,yz,xz,xy",
+  "retained_side": "beta_c(x)>=0",
+  "seed": 19,
+  "status": "ANALYTIC_P0_CUT_SMOKE_NOT_W2_TEACHER",
+  "teacher": "ANALYTIC_CONTINUUM_P0_NOT_W2_CHERCHI",
+  "test_examples": 40,
+  "test_families": [
+    "ellipsoid"
+  ],
+  "torch_version": "2.10.0+cpu",
+  "train_examples": 80,
+  "train_families": [
+    "box",
+    "sphere"
+  ],
+  "training_teacher_query_count": 80
+}
