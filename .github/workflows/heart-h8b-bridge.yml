@@ -1,0 +1,22 @@
+name: Heart H8b Faster request contracts (no native solver claim)
+on:
+  push:
+    branches: [research/heart-p0-p3-20261017]
+    paths:
+      - 'research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/prepare_h8_solver_request.py'
+      - 'research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/tests/test_h8_solver_request.py'
+      - '.github/workflows/heart-h8b-bridge.yml'
+  workflow_dispatch:
+jobs:
+  python-bridge-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pure Python contract dependencies
+        run: python -m pip install 'numpy>=2,<3' 'trimesh>=4,<5' 'pytest>=8,<10'
+      - name: Check H8b mass tensor and request guard contracts
+        run: python -m pytest -q research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/tests/test_h8_solver_request.py
