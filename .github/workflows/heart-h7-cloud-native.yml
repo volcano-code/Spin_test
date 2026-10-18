@@ -44,6 +44,23 @@ jobs:
           test -f libigl/external/cgal/Number_types/include/CGAL/Gmpq.h
           pkg-config --modversion gmp
           pkg-config --modversion mpfr
+      - name: Enforce shared Boost linkage for CPython module (isolated CI runner)
+        run: |
+          # The pinned legacy CGAL/libigl configuration resolves Boost .a even
+          # with Boost_USE_STATIC_LIBS=OFF. Their non-PIC x86-64 thread objects
+          # cannot be linked into a pybind11 shared module.
+          # The runner is ephemeral; do not change any local user's machine.
+          mkdir -p "$RUNNER_TEMP/nonpic-boost-archives"
+          for library in thread system; do
+            shared="/usr/lib/x86_64-linux-gnu/libboost_${library}.so"
+            archive="/usr/lib/x86_64-linux-gnu/libboost_${library}.a"
+            test -f "$shared"
+            if test -f "$archive"; then
+              sudo mv "$archive" "$RUNNER_TEMP/nonpic-boost-archives/libboost_${library}.a"
+            fi
+          done
+          test ! -e /usr/lib/x86_64-linux-gnu/libboost_thread.a
+          test -e /usr/lib/x86_64-linux-gnu/libboost_thread.so
       - name: Build native core with strict pinned dependencies
         run: |
           cmake -S . -B build/heart-cloud-core -G Ninja -DCMAKE_BUILD_TYPE=Release -DMAKE_IT_STAND_BUILD_VIEWER=OFF -DMAKE_IT_STAND_BUILD_REACHABILITY=OFF -DMAKE_IT_STAND_BUILD_SPIN_IT_2014=OFF -DMAKE_IT_STAND_BUILD_SPIN_IT_FASTER=ON -DMAKE_IT_STAND_BUILD_EXACT_GEOMETRY_CHECKS=ON -DMAKE_IT_STAND_BUILD_PYTHON=ON -DMAKE_IT_STAND_FILTERED_BOUNDARY_KERNEL=ON -DBUILD_TESTING=OFF -DBoost_USE_STATIC_LIBS=OFF -DBoost_THREAD_LIBRARY_RELEASE=/usr/lib/x86_64-linux-gnu/libboost_thread.so -DBoost_SYSTEM_LIBRARY_RELEASE=/usr/lib/x86_64-linux-gnu/libboost_system.so -DPython_EXECUTABLE="$(which python)" -DPython3_EXECUTABLE="$(which python)"
