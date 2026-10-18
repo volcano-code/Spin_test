@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "blocked_no_replayed_native_measurement",
+  "branch": "research/neuralmoments-w1-native-20261019",
+  "frozen_source_commit": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "inspection": {
+    "v7_stage_status_path": "research/Noodles_v7_20261017/V7_STAGE_STATUS.json",
+    "v7_stage_status_present_on_branch": false,
+    "heart_h8_directory": "research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018",
+    "cherchi_sources": [
+      "bindings/cherchi/InProcessBoolean.cpp",
+      "bindings/cherchi/RationalMoments.cpp"
+    ]
+  },
+  "unverified_historical_claims_s": [
+    393.44,
+    168.27
+  ],
+  "hardware": null,
+  "memory_limit_gib": 24,
+  "swap_limit_gib": 0,
+  "build_jobs_limit": 4,
+  "single_job_timeout_minutes": 60,
+  "samples": [],
+  "note": "No native binary, same-run timing log or input/binary SHA available. Empty samples intentionally fail audit."
+}
