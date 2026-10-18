@@ -89,6 +89,9 @@ jobs:
         run: |
           python -c 'import _make_it_stand,_cherchi_core_boolean,_cherchi_rational_moments;print("all three native extensions imported")'
           python research/Heart_v1_20261017/Cherchi_H6/source/restore_v4_proxy.py --output /tmp/heart-cloud-v4.json
+      - name: Verify pinned H8 bridge source and prepare frozen request
+        run: |
+          python -m py_compile research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/prepare_h8_solver_request.py
       - name: Build and independently audit new frozen H8 CAD and Faster request
         run: |
           python -m pip install 'scipy>=1.14,<2' 'shapely>=2,<3' 'scikit-image>=0.24,<1' 'trimesh>=4,<5'
