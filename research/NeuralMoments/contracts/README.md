@@ -79,3 +79,38 @@ not a claim that the exact committed GitHub test suite was run, nor
 that native production Eigen/Cherchi/CAD code was compiled.
 Actual W2 sealed real-mesh `r,J`, geometry and source hashes,
 failure states and Newton terminal checks are still required.
+
+## M2 semantic gate and W2 pre-release handoff
+
+Run the full W0 local-only suite with:
+
+```bash
+python research/NeuralMoments/contracts/run_contract_smoke.py
+# or: python -m pytest -q research/NeuralMoments/contracts
+```
+
+`validate_contract_v1.validate_record` strictly checks frozen SHA identities,
+native unit coefficient c, explicit positive-only projective equivalence,
+density/frame, the ten undoubled moment coordinates, one-time fixed F addition,
+finite Jacobian shape, and native tangent basis orthonormality/orthogonality.
+It rejects ambiguous derivative flags and does **not** assert that Jc itself
+is symmetric. The JSON Schema is the structural interchange document;
+use the semantic validator as an additional gate, not as a substitute for
+independent material certification.
+
+`w2_teacher_gate.inspect_w2_label` reads W2's
+`w2-cherchi-teacher-v1-pre-w0` sealed-envelope semantics *without changing
+or importing W2 source*. W2's legacy field named `q` contains the native
+matrix-entry coefficient vector, equal to W0's **c**, **not** W0's doubled
+monomial `q=Bc`. The bridge binds the expected native c, source/module
+identities and frozen geometry hash externally, recomputes W2 envelope hashes,
+separates cached r_F and variable r_D, and exposes only **candidate** Jc/Jq.
+No SHA, boolean status or locally asserted `native_cherchi=True` proves
+correct original CAD/Boolean geometry; training admission always returns
+false until independent native re-evaluation and derivative-neighborhood proof.
+
+On 2026-10-19 the tested local mirror with Git blob SHAs identical to the
+published Python source achieved **57 passed**. GitHub combined statuses
+and PR-triggered workflow listings for the runner commit were empty: **there
+is no claimed green CI**, and no production Eigen/Cherchi solver was run.
+See `research/ParallelLaunch/W0_M2_EVIDENCE_20261019.md`.
