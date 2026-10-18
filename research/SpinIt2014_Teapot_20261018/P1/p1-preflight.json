@@ -1,0 +1,284 @@
+{
+  "schema": "w4-teapot-p1-candidate-preflight-v1",
+  "source": {
+    "sha256": "1b5396fedd74b577e32cef41146582c2f2e1a050d5b4915193c0ac1ad4187ed4",
+    "upstream_blob_sha1": "c839837bfc09f5d5bac4aa757fcbd9f16ddd7ec1",
+    "upstream_commit": "8a4f8642acaf43f9cd7b67858a1502e1055ef202",
+    "unmodified": true,
+    "public_mesh_not_author_cad": true
+  },
+  "input": {
+    "vertices": 3644,
+    "faces": 6320,
+    "geometric_vertices": 3241,
+    "open_edges": 160,
+    "boundary_loop_lengths": [
+      20,
+      20,
+      20,
+      20,
+      40,
+      40
+    ],
+    "bowtie_vertices": [
+      {
+        "coordinate": [
+          -2.0,
+          0.9,
+          0.0
+        ],
+        "fans": 2
+      }
+    ]
+  },
+  "repairs": {
+    "exact_position_weld_only": true,
+    "source_displacement": 0.0,
+    "joined_lid_and_body_rims": {
+      "loop_sizes": [
+        40,
+        40
+      ],
+      "radii": [
+        1.4032262203012915,
+        1.3029957759940565
+      ],
+      "max_direction_matching_error": 1.5700924586837752e-16,
+      "added_triangles": 80
+    },
+    "small_loop_fan_caps": [
+      {
+        "centroid": [
+          -1.95,
+          0.7499999999999999,
+          -2.0816681711721684e-18
+        ],
+        "loop_length": 20,
+        "max_plane_x_deviation": 0.050000000000000044,
+        "added_triangles": 20
+      },
+      {
+        "centroid": [
+          -1.55,
+          2.1375,
+          2.0816681711721684e-18
+        ],
+        "loop_length": 20,
+        "max_plane_x_deviation": 0.050000000000000044,
+        "added_triangles": 20
+      },
+      {
+        "centroid": [
+          1.6999999999999997,
+          1.0125,
+          -1.3877787807814458e-18
+        ],
+        "loop_length": 20,
+        "max_plane_x_deviation": 2.220446049250313e-16,
+        "added_triangles": 20
+      },
+      {
+        "centroid": [
+          3.0000000000000004,
+          2.3999999999999995,
+          -1.0408340855860842e-18
+        ],
+        "loop_length": 20,
+        "max_plane_x_deviation": 0.20000000000000062,
+        "added_triangles": 20
+      }
+    ],
+    "split_nonmanifold_vertex_fans": [
+      {
+        "original_vertex": 353,
+        "duplicate_vertex": 3245,
+        "coordinate": [
+          -2.0,
+          0.9,
+          0.0
+        ],
+        "affected_faces": 6
+      }
+    ]
+  },
+  "candidate": {
+    "vertices": 3246,
+    "faces": 6480,
+    "closed_checks": {
+      "boundary_or_nonmanifold_edges": 0,
+      "winding_conflicts": 0,
+      "bowtie_vertices": 0,
+      "strictly_positive_triangle_areas": true,
+      "topologically_closed": true
+    },
+    "connected_components": {
+      "count": 3,
+      "face_counts": [
+        840,
+        840,
+        4800
+      ],
+      "signed_volumes": [
+        0.25769661420730056,
+        0.6415248449487696,
+        25.11570945487628
+      ],
+      "euler_characteristic": 6
+    },
+    "source_open_signed_pseudovolume": 25.770106073456354,
+    "pseudovolume_delta": 0.24482484057599407,
+    "pseudovolume_relative_delta": 0.00950034275676373,
+    "pseudovolume_comparison_is_nonphysical": true,
+    "diagnostic_signed_volume": 26.014930914032348,
+    "first_moment": [
+      0.8188030558536012,
+      32.53360156303674,
+      -9.387934600121391e-05
+    ],
+    "second_raw_moment": [
+      [
+        25.453894184554386,
+        0.9994209325989947,
+        -0.0002302579120852244
+      ],
+      [
+        0.9994209325989947,
+        52.09621958569771,
+        -0.00014373950041964012
+      ],
+      [
+        -0.0002302579120852244,
+        -0.00014373950041964012,
+        20.61519879179209
+      ]
+    ],
+    "diagnostic_centroid": [
+      0.03147435057811136,
+      1.2505742056569618,
+      -3.6086717397575625e-06
+    ],
+    "diagnostic_inertia_origin": [
+      [
+        72.7114183774898,
+        -0.9994209325989947,
+        0.0002302579120852244
+      ],
+      [
+        -0.9994209325989947,
+        46.06909297634648,
+        0.00014373950041964012
+      ],
+      [
+        0.0002302579120852244,
+        0.00014373950041964012,
+        77.5501137702521
+      ]
+    ],
+    "candidate_obj_sha256": "3b13a006976093f86b733cd1a00c57d70a66e2fc8dca1c4a157bb18f93a7db47",
+    "conservative_suspected_triangle_contacts": {
+      "status": "WITNESSES_FOUND_NOT_EXHAUSTIVE",
+      "broadphase_checked_pairs": 729,
+      "witness_face_pairs": [
+        [
+          2981,
+          1198
+        ],
+        [
+          2981,
+          1199
+        ],
+        [
+          2981,
+          1381
+        ],
+        [
+          2981,
+          1818
+        ],
+        [
+          2981,
+          2000
+        ],
+        [
+          2981,
+          2001
+        ],
+        [
+          3198,
+          1198
+        ],
+        [
+          3198,
+          1199
+        ],
+        [
+          3198,
+          1381
+        ],
+        [
+          3198,
+          1818
+        ],
+        [
+          3198,
+          2000
+        ],
+        [
+          3198,
+          2001
+        ]
+      ]
+    }
+  },
+  "coordinate_plan": {
+    "original": "Y_UP",
+    "proposed": "Z_UP",
+    "proper_rotation_xyz": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        1,
+        0
+      ]
+    ],
+    "units": "UNDEFINED_AWAIT_W0",
+    "physical_axis": "UNDEFINED_AWAIT_W0",
+    "tip": "UNDEFINED_AWAIT_W0",
+    "fixed_F": "NOT_GENERATED",
+    "removable_D": "NOT_GENERATED"
+  },
+  "optimization_ablation_registry": [
+    {
+      "name": "FIG9_INERTIA_ONLY",
+      "status": "BLOCKED_NOT_RUN"
+    },
+    {
+      "name": "FIG9_CENTER_LOWERING_ONLY",
+      "status": "BLOCKED_NOT_RUN"
+    },
+    {
+      "name": "FIG9_MASS_REDUCTION_ONLY",
+      "status": "BLOCKED_NOT_RUN"
+    }
+  ],
+  "geometry_legal": false,
+  "physical_moments_authoritative": false,
+  "optimized": false,
+  "acceptance": "BLOCKED_REPAIR_CANDIDATE_ONLY",
+  "blocking_reasons": [
+    "SURFACE_INTERSECTION_WITNESSES",
+    "COINCIDENT_POINT_CONTACT_REQUIRES_TRUE_UNION",
+    "EXACT_SELF_INTERSECTION_AND_SOLID_UNION_UNCERTIFIED",
+    "W0_AXIS_TIP_FIXED_REMOVABLE_CONTRACT_PENDING",
+    "W2_REAL_CHERCHI_TEACHER_PENDING"
+  ]
+}

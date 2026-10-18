@@ -1,0 +1,26 @@
+W4 P1 first milestone — actual local execution receipt
+Source: P0 Actions run 39126326305 / artifact 12136372299
+Source commit: 24f89ed21c251a8678aceb997e4ca30e4ba24125
+Source blob: c839837bfc09f5d5bac4aa757fcbd9f16ddd7ec1
+Source sha256: 1b5396fedd74b577e32cef41146582c2f2e1a050d5b4915193c0ac1ad4187ed4
+
+Local environment: Python 3.13.5; numpy 2.3.5; trimesh 4.11.1
+Command: W4_SOURCE_OBJ=<P0 unmodified input OBJ> python -m unittest discover -v -s . -p 'test_*.py'
+Exit code: 0
+test_bad_orientations_and_contact_sat ... ok
+test_pin_source_sha ... ok
+test_real_teapot_repair_and_independent_reload ... ok
+test_tetra_positive_and_closed ... ok
+Ran 4 tests in 2.004s
+OK
+
+Command: python p1_geometry.py --input <P0 unmodified input OBJ> --output <temp negative gate> --require-certified
+Exit code: 1 — EXPECTED NEGATIVE TEST
+RuntimeError: CERTIFICATION_BLOCKED: SURFACE_INTERSECTION_WITNESSES,COINCIDENT_POINT_CONTACT_REQUIRES_TRUE_UNION,EXACT_SELF_INTERSECTION_AND_SOLID_UNION_UNCERTIFIED,W0_AXIS_TIP_FIXED_REMOVABLE_CONTRACT_PENDING,W2_REAL_CHERCHI_TEACHER_PENDING
+
+Independent readback: trimesh.is_watertight=True, is_winding_consistent=True;
+3 indexed connected components, 3246 vertices, 6480 faces, 0 open/nonmanifold indexed edges.
+SAT potential contact witness pairs: 12 (truncated, not an exact crossing certificate).
+Candidate SHA-256: 3b13a006976093f86b733cd1a00c57d70a66e2fc8dca1c4a157bb18f93a7db47
+Candidate volume 26.014930914032348 IS NOT physical true volume; self-contact/overlap unresolved.
+CI on this branch: NOT RUN — legacy P0 workflow push filter targets another branch.
