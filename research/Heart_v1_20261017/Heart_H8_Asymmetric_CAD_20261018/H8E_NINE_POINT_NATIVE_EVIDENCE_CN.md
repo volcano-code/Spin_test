@@ -35,3 +35,14 @@
 - 九个非零奇异值约为 `24.6489, 5.85976, 1.08664, 0.515762, 0.0774418, 0.0670266, 0.0540663, 0.00921865, 0.00281628`；最小值 `3.05575e-16` 对应零方向。
 - 非零子空间条件数 `s_max/s_9 ≈ 8.7523e3`；最小右奇异向量与 `q` 的内积绝对值约 `1.0000000000000002`。
 - **局限：** 这是一个 q 点的**原始十质量矩导数**的数值秩检查，不是 Newton/KKT 方程雅可比条件数，也不能证明周围参数邻域光滑或优化一定收敛。
+
+## H8e 同一九点的完整原生构造归档复核（新增）
+
+- 真实九点重新执行 GitHub Actions run `39121437285`：<https://github.com/volcano-code/Spin_test/actions/runs/39121437285>，**success**，使用更新后的脚本对所有九点持久保存了 complete same-call Cherchi material + source/face construction records + per-snapshot SHA-256。
+- 原生归档 artifact ID `12134378766`（`heart-h8e-real-jacobian-pilot-proof-or-failure`）。
+- 离线在独立 GitHub Actions run `39122544858`（<https://github.com/volcano-code/Spin_test/actions/runs/39122544858>，**success**）下载这批真实原生快照，再逐份验证 q / source/Boolean / construction / 文件 SHA 并运行严格的 exact rational plane support classifier。
+- 该离线报告 artifact ID `12135046852`，报告 schema `heart-h8e-exact-construction-finite-point-audit-v1`。
+- 结果：**9/9 份完整材料快照已验证、9/9 精确来源与支撑面诊断解析成功、0 未解析点；8/8 个扰动点相对基点均为 `SYMBOLIC_PATCH_AND_TRIANGLE_IDENTITY_STABLE_NOT_CERTIFIED`**。这比单纯比较拓扑哈希更有力，但依然是有限点观察。
+- 每个真实 8455 顶点 / 16910 面的 Cherchi 材料都含 7671 个 `EXPLICIT3D` 和 784 个 `LPI` 构造交点，9 点类型计数一致。
+- 离线结果中显式写入 `certified_smooth_neighborhood=false`、`certified_newton_direction=false`。
+- **新的 H8e 三列 (0/4/8) 25 点运行**：<https://github.com/volcano-code/Spin_test/actions/runs/39121571756>，增加 H8d 原始模型坐标 → H8e 轴尖目标坐标的十质量矩平移一致性自动关卡，并保留全部新点的完整构造材料证据。其运行结果必须另行查验，不能由此报告替代。
