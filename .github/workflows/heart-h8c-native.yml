@@ -7,6 +7,8 @@ on:
     paths:
       - '.github/workflows/heart-h8c-native.yml'
       - 'research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/probe_h8_native_cherchi.py'
+      - 'src/verification/ExactBoundaryAudit.cpp'
+      - 'research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/tests/test_h8_exact_token_contract.py'
 jobs:
   fresh-native-single-q:
     runs-on: ubuntu-24.04
@@ -89,6 +91,8 @@ jobs:
         run: |
           python -c 'import _make_it_stand,_cherchi_core_boolean,_cherchi_rational_moments;print("all three native extensions imported")'
           python research/Heart_v1_20261017/Cherchi_H6/source/restore_v4_proxy.py --output /tmp/heart-cloud-v4.json
+      - name: Assert lossless rational token grammar before native audit
+        run: python -m pytest -q research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/tests/test_h8_exact_token_contract.py
       - name: Verify pinned H8 bridge source and prepare frozen request
         run: |
           python -m py_compile research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/prepare_h8_solver_request.py
