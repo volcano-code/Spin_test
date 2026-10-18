@@ -1,0 +1,74 @@
+{
+  "schema": "MomentContractV1",
+  "source_sha": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "geometry": {
+    "original_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "fixed_F_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "design_D_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+    "frame": {
+      "kind": "INPUT_NORMALIZED_TARGET_V1",
+      "length_original_per_normalized": 1,
+      "density_original_per_normalized": 1,
+      "origin_original": [
+        0,
+        0,
+        0
+      ]
+    },
+    "density": 1,
+    "fixed_r_computed_once": true
+  },
+  "coefficients": {
+    "c": [
+      -0.19611613513818404,
+      0,
+      0,
+      0.9805806756909202,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "order": "CONST,X,Y,Z,XX,YY,ZZ,YZ,XZ,XY",
+    "positive_scale_equivalent": true,
+    "negative_sign_equivalent": false,
+    "retained_side": "BETA_POSITIVE",
+    "cross_mapping": "q=Bc;Bdiag=1,1,1,1,1,1,1,2,2,2"
+  },
+  "moments": {
+    "order": "M,LX,LY,LZ,QXX,QYY,QZZ,QYZ,QXZ,QXY",
+    "fixed_r": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "variable_r": null,
+    "total_r": null,
+    "status": "ANALYTIC_ONLY",
+    "independent_geometry_evidence": false
+  },
+  "jacobian": {
+    "type": "UNAVAILABLE",
+    "derivative_defined": false,
+    "values": null,
+    "native_tangent_basis": null,
+    "hessian_rule": "ONLY_IF_SMOOTH_AMBIENT_CHECK_Jc_B_INVERSE"
+  },
+  "error": {
+    "truth_kind": "ANALYTIC_P0",
+    "length_ref": 1,
+    "density_ref": 1,
+    "metric": "ABSOLUTE_PER_COMPONENT_DIVIDED_BY_RHO_L3_L4_L5",
+    "threshold_policy": "PER_CASE_PREDECLARED_NO_UNIVERSAL_1_PERCENT",
+    "certifies_proof": false
+  }
+}
