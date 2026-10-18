@@ -1,0 +1,20 @@
+name: Heart H8e Jacobian pilot math contracts (not native certification)
+on:
+  push:
+    branches: [research/heart-p0-p3-20261017]
+    paths:
+      - 'research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/probe_h8_jacobian.py'
+      - 'research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/tests/test_h8_jacobian_pilot.py'
+      - '.github/workflows/heart-h8e-jacobian-contract.yml'
+  workflow_dispatch:
+jobs:
+  pilot-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install 'numpy>=2,<3' 'pytest>=8,<10'
+      - run: python -m pytest -q research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/tests/test_h8_jacobian_pilot.py
