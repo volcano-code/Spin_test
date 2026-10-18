@@ -16,9 +16,34 @@ CHERCHI_PREFIX = 'cherchi-reference-7bd6c2697695f555f9a15d7e154e084d841316f0-'
 def digest(x):
     return sha256(json.dumps(x,sort_keys=True,separators=(',', ':'),default=str).encode()).hexdigest()
 
+def exact_scalar(value):
+    """Read actual pinned Cherchi 0b.../0b... or ordinary exact decimal.
+
+    The binary-token form was missing from the old symbolic feature
+    classifier even though Cherchi emits it. Never pass it through float.
+    """
+    if isinstance(value, str) and "0b" in value:
+        parts=value.split("/")
+        if len(parts)!=2:
+            raise ValueError('INVALID_EXACT_BINARY_FRACTION')
+        def integer(text, signed):
+            negative=signed and text.startswith('-')
+            digits=text[1:] if negative else text
+            binary=digits.startswith('0b')
+            literal=digits[2:] if binary else digits
+            if not literal or any(c not in ('01' if binary else '0123456789') for c in literal):
+                raise ValueError('INVALID_EXACT_BINARY_INTEGER')
+            return (-1 if negative else 1)*int(literal,2 if binary else 10)
+        numerator=integer(parts[0],True)
+        denominator=integer(parts[1],False)
+        if denominator<=0:
+            raise ValueError('NONPOSITIVE_EXACT_DENOMINATOR')
+        return Q(numerator,denominator)
+    return Q(value) if isinstance(value,(str,int,Q)) else Q(float(value))
+
 def exact_point(row):
     if len(row)!=3:raise ValueError('POINT_MUST_HAVE_THREE_COORDINATES')
-    return tuple(Q(x) if isinstance(x,(str,int,Q)) else Q(float(x)) for x in row)
+    return tuple(exact_scalar(x) for x in row)
 
 def canonical_plane(a,b,c):
     u=tuple(b[i]-a[i] for i in range(3));v=tuple(c[i]-a[i] for i in range(3))
