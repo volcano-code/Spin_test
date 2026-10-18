@@ -13,7 +13,7 @@
 
 | Window | Role | Branch / exact instructions | Dependencies | Earliest evidence target | State |
 |---|---|---|---|---|---|
-| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
+| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M1_MATH_CONTRACT_CODE_PUSHED; LOCAL_ANALYTIC_SMOKE_15_PASS; NATIVE_CI_NOT_RUN` |
 | W1 | Cherchi/Faster 性能 | [research/neuralmoments-w1-native-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w1-native-20261019/research/ParallelLaunch/W1_START_HERE.md) | 可独立 profiling；合并需 W0/W2 | 冻结同输入逐段耗时＋原生改造对照 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
 | W2 | 精确教师与标签 | [research/neuralmoments-w2-teacher-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w2-teacher-20261019/research/ParallelLaunch/W2_START_HERE.md) | 正式发布标签需 W0 | 真实 r,J＋SHA＋可微/失败状态 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
 | W3 | Heart H9 | [research/neuralmoments-w3-heart-h9-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w3-heart-h9-20261019/research/ParallelLaunch/W3_START_HERE.md) | 无 | 81 点 point60 构造变化诊断 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
@@ -36,3 +36,13 @@
 - Full native jobs serialized in same environment: 24GiB RAM, swap0, 60min/job, compile ≤4 jobs; coordinate GPU usage.
 - Every milestone: commit SHA, changed files, tests/CI, measured results, failure ledger, model and data identities.
 - Network prediction/physical constraints are not a geometry validity certificate. Final material and raw residual require true Cherchi/Faster audit.
+
+
+
+## W0 milestone 1 record (2026-10-19)
+
+- W0 math contract and reference implementation pushed exclusively to `research/neuralmoments-w0-contract-20261019` under `research/NeuralMoments/contracts/`.
+- Native c order `a,bx,by,bz,Axx,Ayy,Azz,Ayz,Axz,Axy`; ordinary r order `M,LX,LY,LZ,QXX,QYY,QZZ,QYZ,QXZ,QXY`; map `q=B*c` with last three B diagonal entries equal to 2.
+- Local analytic tests: 15 passed from independent, more extensive W0 working implementation. GitHub CI and run of exact committed files are not claimed; frozen Cherchi production geometry not run.
+- W1–W6 completion and CI statuses not independently verified; preserve previous statuses until per-window evidence is reviewed.
+- Required integration gates: independent exact material seals, true geometry and derivative identity, and terminal Newton validation, none replaced by P0 analytic smoke.
