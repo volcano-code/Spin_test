@@ -17,6 +17,18 @@ B = np.diag([1.]*7 + [2.]*3)
 
 
 def checked(data, shape, label):
+    # np.asarray([True, 1., 2.]) silently promotes the boolean to a float.
+    # A frozen scientific contract must reject such mixed-typed coordinates.
+    def has_boolean(value):
+        if isinstance(value, (bool, np.bool_)):
+            return True
+        if isinstance(value, (list, tuple)):
+            return any(has_boolean(item) for item in value)
+        return isinstance(value, np.ndarray) and (
+            value.dtype.kind == "b" or
+            (value.dtype.kind == "O" and any(has_boolean(v) for v in value.flat)))
+    if has_boolean(data):
+        raise ValueError(f"{label}: boolean cannot be a real coordinate")
     a = np.asarray(data)
     if a.shape != shape or a.dtype.kind not in "iuf":
         raise ValueError(f"{label}: expected finite real {shape}")
