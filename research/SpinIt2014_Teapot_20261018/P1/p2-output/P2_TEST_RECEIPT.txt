@@ -1,0 +1,11 @@
+test_current_p1_must_fail_nonincident_gate (test_p2_cgal_union.TestP2Native.test_current_p1_must_fail_nonincident_gate) ... ok
+test_native_reproducibility_and_fail_closed_optimization (test_p2_cgal_union.TestP2Native.test_native_reproducibility_and_fail_closed_optimization) ... ok
+test_pins_do_not_accept_modified_source_or_p1 (test_p2_cgal_union.TestP2Native.test_pins_do_not_accept_modified_source_or_p1) ... ok
+test_sat_rejects_crossing_and_coplanar_overlaps (test_p2_cgal_union.TestP2Native.test_sat_rejects_crossing_and_coplanar_overlaps) ... ok
+test_saved_artifact_independent_audit (test_p2_cgal_union.TestP2Native.test_saved_artifact_independent_audit) ... ok
+test_tetra_moments_oracle_and_proper_rotation (test_p2_cgal_union.TestP2Native.test_tetra_moments_oracle_and_proper_rotation) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 14.055s
+
+OK

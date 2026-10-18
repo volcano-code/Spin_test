@@ -1,0 +1,189 @@
+{
+  "schema": "w4-teapot-p2-cgal-union-preflight-v1",
+  "source": {
+    "P0_sha256": "1b5396fedd74b577e32cef41146582c2f2e1a050d5b4915193c0ac1ad4187ed4",
+    "P0_git_blob": "c839837bfc09f5d5bac4aa757fcbd9f16ddd7ec1",
+    "P1_candidate_sha256": "3b13a006976093f86b733cd1a00c57d70a66e2fc8dca1c4a157bb18f93a7db47",
+    "source_unchanged": true,
+    "public_teapot_not_paper_author_cad": true
+  },
+  "native": {
+    "engine": "OpenSCAD CGAL Nef",
+    "returncode": 0,
+    "duration_seconds": 1.7149,
+    "stdout_stderr": "\nGeometries in cache: 3\nGeometry cache size in bytes: 467016\nCGAL Polyhedrons in cache: 1\nCGAL cache size in bytes: 8809520\nTotal rendering time: 0:00:01.633\n   Top level object is a 3D object:\n   Simple:        yes\n   Vertices:     3328\n   Halfedges:   19282\n   Edges:        9641\n   Halffacets:  12628\n   Facets:       6314\n   Volumes:         2\n",
+    "native_simple_yes": true,
+    "native_reported_volumes": 2,
+    "binary_stl_sha256": "53d962b0b6bb468cd0988ea92a20832bfe8834aa6a065eee544f5fdc4b23de67"
+  },
+  "output": {
+    "y_up_obj_sha256": "8aab36275b137296bc5f1f61ac71fe164d677f7a49829a4aa6b7b2da2e3beba5",
+    "z_up_obj_sha256": "d3289193185192ebca4d63fc813bd77d96810051089c672e887accdf3205b331",
+    "binary_stl_sha256": "53d962b0b6bb468cd0988ea92a20832bfe8834aa6a065eee544f5fdc4b23de67",
+    "y_up": {
+      "vertices": 3328,
+      "faces": 6656,
+      "boundary_or_nonmanifold_edges": 0,
+      "nonpositive_face_areas": 0,
+      "consistent_winding": true,
+      "watertight": true,
+      "positive_volume": true,
+      "trimesh_is_volume": true,
+      "components": 1,
+      "euler_characteristic": 0,
+      "nonincident_triangle_contacts": {
+        "method": "FLOAT64_SAT_NONINCIDENT_V1",
+        "witnesses": [],
+        "evaluated_nonincident_aabb_pairs": 7236,
+        "excluded_incident_pairs": 41819,
+        "exhaustive": true,
+        "tolerance": 1e-11
+      }
+    },
+    "z_up": {
+      "vertices": 3328,
+      "faces": 6656,
+      "boundary_or_nonmanifold_edges": 0,
+      "nonpositive_face_areas": 0,
+      "consistent_winding": true,
+      "watertight": true,
+      "positive_volume": true,
+      "trimesh_is_volume": true,
+      "components": 1,
+      "euler_characteristic": 0,
+      "nonincident_triangle_contacts": {
+        "method": "FLOAT64_SAT_NONINCIDENT_V1",
+        "witnesses": [],
+        "evaluated_nonincident_aabb_pairs": 7236,
+        "excluded_incident_pairs": 41819,
+        "exhaustive": true,
+        "tolerance": 1e-11
+      }
+    },
+    "volume_unit_density": 25.848771634269497,
+    "center_of_mass_unit_density": [
+      0.02086632040336674,
+      1.2518337519824232,
+      -3.2999918355563985e-06
+    ],
+    "connected_genus": 1,
+    "P1_component_volume_sum": 26.01493091403235,
+    "P2_union_minus_P1_sum_volume": -0.16615927976285505,
+    "P2_union_minus_P1_sum_relative": -0.006387073650586917,
+    "original_raw_open_pseudovolume": 25.770106073456354,
+    "original_open_surface_volume_comparison_valid": false
+  },
+  "independent_mass_audit": {
+    "moment_names": [
+      "M",
+      "LX",
+      "LY",
+      "LZ",
+      "QXX",
+      "QYY",
+      "QZZ",
+      "QYZ",
+      "QXZ",
+      "QXY"
+    ],
+    "y_up_tetra_moments": [
+      25.848771634269497,
+      0.5393687509541251,
+      32.358364779064416,
+      -8.530073535225116e-05,
+      24.90137705459249,
+      51.898757372230946,
+      20.60579626671492,
+      -0.00012572112104333039,
+      -0.00021502821777732647,
+      0.7222217794137151
+    ],
+    "y_up_trimesh_oracle_moments": [
+      25.848771634269497,
+      0.5393687509541465,
+      32.35836477906448,
+      -8.530073535235767e-05,
+      24.901377054592487,
+      51.898757372230946,
+      20.60579626671492,
+      -0.00012572112104310604,
+      -0.00021502821777737944,
+      0.7222217794137141
+    ],
+    "z_up_tetra_moments": [
+      25.848771634269497,
+      0.5393687509541283,
+      8.530073535202829e-05,
+      32.35836477906442,
+      24.90137705459249,
+      20.60579626671492,
+      51.89875737223095,
+      0.00012572112104312916,
+      0.7222217794137133,
+      0.00021502821777730566
+    ],
+    "max_abs_oracle_error": {
+      "mass": 0.0,
+      "first_moment": 6.394884621840902e-14,
+      "raw_second": 3.552713678800501e-15,
+      "inertia_origin": 9.992007221626409e-16
+    },
+    "max_abs_proper_rotation_transform_error": 7.105427357601002e-15,
+    "unit_density_only": true,
+    "physical_density_unspecified": true
+  },
+  "frame": {
+    "input": "Y_UP",
+    "exported_proposal": "Z_UP",
+    "rotation_original_xyz_to_proposal": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "det_rotation": 1.0,
+    "physical_scale": "UNSPECIFIED_REQUIRES_W0_CASE",
+    "tip": "UNSPECIFIED_REQUIRES_W0_CASE",
+    "spin_axis": "UNSPECIFIED_REQUIRES_W0_CASE",
+    "fixed_F_obj": null,
+    "removable_D_obj": null,
+    "material_partition_certified": false
+  },
+  "figure9_ablations": [
+    {
+      "name": "INERTIA_ONLY",
+      "status": "NOT_RUN_WAIT_W0_W2_AND_FD"
+    },
+    {
+      "name": "LOWER_COM_ONLY",
+      "status": "NOT_RUN_WAIT_W0_W2_AND_FD"
+    },
+    {
+      "name": "MASS_REDUCTION_ONLY",
+      "status": "NOT_RUN_WAIT_W0_W2_AND_FD"
+    }
+  ],
+  "acceptance": {
+    "numerical_mesh_geometry_gate": "PASS",
+    "native_cgal_simple_yes": true,
+    "exact_rational_output_preserved": false,
+    "paper_geometry_match": false,
+    "optimization_ready": false,
+    "blocker_reasons": [
+      "W0_PHYSICAL_TEAPOT_AXIS_TIP_SCALE_NOT_AUTHORIZED",
+      "F_D_EXACT_PARTITION_NOT_CONSTRUCTED",
+      "W2_REAL_CHERCHI_TEACHER_NOT_ADMITTED"
+    ]
+  }
+}
