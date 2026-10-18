@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MomentContractV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source_sha",
+    "geometry",
+    "coefficients",
+    "moments",
+    "jacobian",
+    "error"
+  ],
+  "properties": {
+    "schema": {
+      "const": "MomentContractV1"
+    },
+    "source_sha": {
+      "const": "0bcc187b3005478baa586a6d6f450e73811ca342"
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "original_sha256",
+        "fixed_F_sha256",
+        "design_D_sha256",
+        "frame",
+        "density",
+        "fixed_r_computed_once"
+      ],
+      "properties": {
+        "original_sha256": {
+          "$ref": "#/$defs/sha"
+        },
+        "fixed_F_sha256": {
+          "$ref": "#/$defs/sha"
+        },
+        "design_D_sha256": {
+          "$ref": "#/$defs/sha"
+        },
+        "frame": {
+          "type": "object",
+          "required": [
+            "kind",
+            "length_original_per_normalized",
+            "density_original_per_normalized",
+            "origin_original"
+          ],
+          "properties": {
+            "kind": {
+              "const": "INPUT_NORMALIZED_TARGET_V1"
+            },
+            "length_original_per_normalized": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "density_original_per_normalized": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "origin_original": {
+              "$ref": "#/$defs/v3"
+            }
+          }
+        },
+        "density": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "fixed_r_computed_once": {
+          "const": true
+        }
+      }
+    },
+    "coefficients": {
+      "type": "object",
+      "required": [
+        "c",
+        "order",
+        "positive_scale_equivalent",
+        "negative_sign_equivalent",
+        "retained_side",
+        "cross_mapping"
+      ],
+      "properties": {
+        "c": {
+          "$ref": "#/$defs/v10"
+        },
+        "order": {
+          "const": "CONST,X,Y,Z,XX,YY,ZZ,YZ,XZ,XY"
+        },
+        "positive_scale_equivalent": {
+          "const": true
+        },
+        "negative_sign_equivalent": {
+          "const": false
+        },
+        "retained_side": {
+          "enum": [
+            "BETA_POSITIVE",
+            "BETA_NEGATIVE"
+          ]
+        },
+        "cross_mapping": {
+          "const": "q=Bc;Bdiag=1,1,1,1,1,1,1,2,2,2"
+        }
+      }
+    },
+    "moments": {
+      "type": "object",
+      "required": [
+        "order",
+        "fixed_r",
+        "variable_r",
+        "total_r",
+        "status",
+        "independent_geometry_evidence"
+      ],
+      "properties": {
+        "order": {
+          "const": "M,LX,LY,LZ,QXX,QYY,QZZ,QYZ,QXZ,QXY"
+        },
+        "fixed_r": {
+          "$ref": "#/$defs/v10"
+        },
+        "variable_r": {
+          "$ref": "#/$defs/nullable10"
+        },
+        "total_r": {
+          "$ref": "#/$defs/nullable10"
+        },
+        "status": {
+          "enum": [
+            "ANALYTIC_ONLY",
+            "NATIVE_VERIFIED",
+            "FAILED_MATERIAL",
+            "NOT_RUN"
+          ]
+        },
+        "independent_geometry_evidence": {
+          "type": "boolean"
+        }
+      }
+    },
+    "jacobian": {
+      "type": "object",
+      "required": [
+        "type",
+        "derivative_defined",
+        "values",
+        "native_tangent_basis",
+        "hessian_rule"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "AMBIENT_10X10",
+            "TANGENT_10XK",
+            "UNAVAILABLE"
+          ]
+        },
+        "derivative_defined": {
+          "type": "boolean"
+        },
+        "values": {
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "native_tangent_basis": {
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "hessian_rule": {
+          "const": "ONLY_IF_SMOOTH_AMBIENT_CHECK_Jc_B_INVERSE"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "required": [
+        "truth_kind",
+        "length_ref",
+        "density_ref",
+        "metric",
+        "threshold_policy",
+        "certifies_proof"
+      ],
+      "properties": {
+        "truth_kind": {
+          "enum": [
+            "ANALYTIC_P0",
+            "INDEPENDENT_NATIVE_SEAL",
+            "NONE"
+          ]
+        },
+        "length_ref": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "density_ref": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "metric": {
+          "const": "ABSOLUTE_PER_COMPONENT_DIVIDED_BY_RHO_L3_L4_L5"
+        },
+        "threshold_policy": {
+          "const": "PER_CASE_PREDECLARED_NO_UNIVERSAL_1_PERCENT"
+        },
+        "certifies_proof": {
+          "const": false
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "v3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "number"
+      }
+    },
+    "v10": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "number"
+      }
+    },
+    "nullable10": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/v10"
+        }
+      ]
+    }
+  }
+}
