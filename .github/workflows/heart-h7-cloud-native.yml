@@ -1,0 +1,68 @@
+name: Heart H7 cloud native Cherchi smoke (fresh build, not H6 identity)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/heart-p0-p3-20261017
+    paths:
+      - '.github/workflows/heart-h7-cloud-native.yml'
+      - 'research/Heart_v1_20261017/Cherchi_H7/source/cloud_native_probe.py'
+jobs:
+  fresh-native-single-q:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    env:
+      DEBIAN_FRONTEND: noninteractive
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install reproducible build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build cmake libgmp-dev libmpfr-dev libboost-all-dev libtbb-dev libeigen3-dev libgl1-mesa-dev libglu1-mesa-dev libx11-dev libxi-dev libxrandr-dev libxinerama-dev libxcursor-dev
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Python dependencies
+        run: python -m pip install 'pybind11==3.0.1' 'numpy>=2,<3' 'pytest>=8,<10'
+      - name: Fetch pinned Cherchi reference source and verify revision
+        run: |
+          mkdir -p external/reference-sources-20260917/sources
+          git clone https://github.com/gcherchi/InteractiveAndRobustMeshBooleans.git external/reference-sources-20260917/sources/InteractiveAndRobustMeshBooleans-7bd6c2697695f555f9a15d7e154e084d841316f0
+          git -C external/reference-sources-20260917/sources/InteractiveAndRobustMeshBooleans-7bd6c2697695f555f9a15d7e154e084d841316f0 checkout 7bd6c2697695f555f9a15d7e154e084d841316f0
+          test "$(git -C external/reference-sources-20260917/sources/InteractiveAndRobustMeshBooleans-7bd6c2697695f555f9a15d7e154e084d841316f0 rev-parse HEAD)" = "7bd6c2697695f555f9a15d7e154e084d841316f0"
+      - name: Build native core with strict pinned dependencies
+        run: |
+          cmake -S . -B build/heart-cloud-core -G Ninja -DCMAKE_BUILD_TYPE=Release -DMAKE_IT_STAND_BUILD_VIEWER=OFF -DMAKE_IT_STAND_BUILD_REACHABILITY=OFF -DMAKE_IT_STAND_BUILD_SPIN_IT_2014=OFF -DMAKE_IT_STAND_BUILD_SPIN_IT_FASTER=ON -DMAKE_IT_STAND_BUILD_EXACT_GEOMETRY_CHECKS=ON -DMAKE_IT_STAND_BUILD_PYTHON=ON -DMAKE_IT_STAND_FILTERED_BOUNDARY_KERNEL=ON -DBUILD_TESTING=OFF -DPython_EXECUTABLE="$(which python)" -DPython3_EXECUTABLE="$(which python)"
+          cmake --build build/heart-cloud-core --target _make_it_stand --parallel 2
+      - name: Build pinned Cherchi in-process and GMP extension
+        run: |
+          cmake -S bindings/cherchi -B build/heart-cloud-cherchi -G Ninja -DCMAKE_BUILD_TYPE=Release -DPython_EXECUTABLE="$(which python)" -DMAKE_IT_STAND_CHERCHI_RATIONAL_ARITHMETIC=ON
+          cmake --build build/heart-cloud-cherchi --parallel 2
+      - name: Validate native module imports and restore archived historical V4
+        env:
+          PYTHONPATH: ${{ github.workspace }}/python:${{ github.workspace }}/build/heart-cloud-core/python:${{ github.workspace }}/build/heart-cloud-cherchi/python
+        run: |
+          python -c 'import _make_it_stand,_cherchi_core_boolean,_cherchi_rational_moments;print("all three native extensions imported")'
+          python research/Heart_v1_20261017/Cherchi_H6/source/restore_v4_proxy.py --output /tmp/heart-cloud-v4.json
+      - name: Real one-q Cherchi source Boolean and exact boundary audit
+        env:
+          PYTHONPATH: ${{ github.workspace }}/python:${{ github.workspace }}/build/heart-cloud-core/python:${{ github.workspace }}/build/heart-cloud-cherchi/python
+        run: |
+          mkdir -p artifacts
+          python research/Heart_v1_20261017/Cherchi_H7/source/cloud_native_probe.py --fixture /tmp/heart-cloud-v4.json --output artifacts/heart-cloud-one-q.json
+      - name: Persist execution result and source build diagnostics even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: heart-h7-cloud-native-proof-or-build-failure
+          path: |
+            artifacts/
+            build/heart-cloud-core/CMakeCache.txt
+            build/heart-cloud-cherchi/CMakeCache.txt
+            build/heart-cloud-core/CMakeFiles/CMakeConfigureLog.yaml
+            build/heart-cloud-cherchi/CMakeFiles/CMakeConfigureLog.yaml
+          if-no-files-found: warn
