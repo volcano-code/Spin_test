@@ -1,0 +1,32 @@
+name: SpinIt2014 Teapot P0 original asset freeze and topology audit
+on:
+  push:
+    branches: [research/spin-it-teapot-20261018]
+    paths:
+      - 'research/SpinIt2014_Teapot_20261018/input/teapot-public-original.obj'
+      - 'research/SpinIt2014_Teapot_20261018/source/source_audit.py'
+      - '.github/workflows/spin-it-2014-teapot-p0.yml'
+  workflow_dispatch:
+jobs:
+  teapot-original-input:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install deterministic mesh packages
+        run: python -m pip install 'numpy>=2,<3' 'trimesh>=4,<5'
+      - name: Freeze source topology and SHA256
+        run: |
+          python research/SpinIt2014_Teapot_20261018/source/source_audit.py --input research/SpinIt2014_Teapot_20261018/input/teapot-public-original.obj --output artifacts/teapot-source
+          cp research/SpinIt2014_Teapot_20261018/input/teapot-public-original.obj artifacts/teapot-source/teapot-public-original.obj
+          sha256sum artifacts/teapot-source/teapot-public-original.obj > artifacts/teapot-source/source.sha256
+      - name: Upload full P0 source and audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spinit2014-teapot-original-input-p0
+          path: artifacts/teapot-source/
+          if-no-files-found: error
