@@ -9,6 +9,7 @@ on:
       - 'research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/probe_h8_native_cherchi.py'
       - 'src/verification/ExactBoundaryAudit.cpp'
       - 'research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/tests/test_h8_exact_token_contract.py'
+      - 'research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/verify_h8_exact_moments.py'
 jobs:
   fresh-native-single-q:
     runs-on: ubuntu-24.04
@@ -109,6 +110,12 @@ jobs:
         run: |
           mkdir -p artifacts
           python research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/probe_h8_native_cherchi.py --cad artifacts/h8-input --request artifacts/h8-request/prepared-request.json --output artifacts/h8-cherchi-point
+      - name: Cross-check actual Cherchi ten raw moments with independent exact Fraction and native GMP
+        env:
+          PYTHONPATH: ${{ github.workspace }}/python:${{ github.workspace }}/build/heart-cloud-core/python:${{ github.workspace }}/build/heart-cloud-cherchi/python
+        run: |
+          python -m pytest -q research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/tests/test_h8_exact_moments.py
+          python research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/verify_h8_exact_moments.py --packet artifacts/h8-cherchi-point/actual-cherchi-packet.json.gz --request artifacts/h8-request/prepared-request.json --output artifacts/h8-cherchi-point/exact-ten-moment-certificate.json
       - name: Persist execution result and source build diagnostics even on failure
         if: always()
         uses: actions/upload-artifact@v4
