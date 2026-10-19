@@ -1,0 +1,71 @@
+{
+  "after": {
+    "end_to_end_median_seconds": 49.2323664055,
+    "end_to_end_range_seconds": [
+      46.365046816,
+      52.099685995
+    ],
+    "independent_native_gmp_median_seconds": 23.409141335500003,
+    "parse_json_median_seconds": 17.639364683000004,
+    "samples": 2
+  },
+  "before": {
+    "end_to_end_median_seconds": 46.164474573999996,
+    "end_to_end_range_seconds": [
+      44.677458867,
+      47.651490281
+    ],
+    "independent_native_gmp_median_seconds": 22.2775050255,
+    "parse_json_median_seconds": 16.101881363,
+    "samples": 2
+  },
+  "fresh_boolean_or_newton_calls": 0,
+  "full_solver_end_to_end_speedup": null,
+  "original_25point_ci_failed": true,
+  "paired_results": {
+    "archived_analytic_jacobian_not_regenerated": true,
+    "backends": {
+      "orjson": {
+        "end_to_end_median_seconds": 49.2323664055,
+        "end_to_end_range_seconds": [
+          46.365046816,
+          52.099685995
+        ],
+        "independent_native_gmp_median_seconds": 23.409141335500003,
+        "parse_json_median_seconds": 17.639364683000004,
+        "samples": 2
+      },
+      "stdlib": {
+        "end_to_end_median_seconds": 46.164474573999996,
+        "end_to_end_range_seconds": [
+          44.677458867,
+          47.651490281
+        ],
+        "independent_native_gmp_median_seconds": 22.2775050255,
+        "parse_json_median_seconds": 16.101881363,
+        "samples": 2
+      }
+    },
+    "complete_25_point_scientific_parity": true,
+    "count_per_run": 25,
+    "fresh_cherchi_boolean_calls": 0,
+    "identical_scientific_receipt_sha256": "6d4dabea5d40d907233355eb438f65a213d49172002748f8d0c9401e71716f2e",
+    "new_full_geometry_self_intersection_checks": 0,
+    "order": [
+      "stdlib",
+      "orjson",
+      "orjson",
+      "stdlib"
+    ],
+    "original_h8e_ci_failure_preserved": true,
+    "paired_end_to_end_archived_validator_ratio_old_over_new": 0.9376854688187957,
+    "paired_parse_only_ratio_old_over_new": 0.9128379424298791,
+    "paper_speed_qualified": false,
+    "production_full_solver_speedup": null
+  },
+  "paper_speed_qualified": false,
+  "production_optimization_applied": false,
+  "schema": "w1-m7-before-after-v1",
+  "scope": "PAIRED_OLD_NEW_ARCHIVED_25POINT_VALIDATOR_ONLY",
+  "strict_scientific_parity": true
+}

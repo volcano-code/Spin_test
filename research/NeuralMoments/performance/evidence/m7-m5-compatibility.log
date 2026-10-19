@@ -1,0 +1,16 @@
+test_double_count_stage_rejected (test_m5.M5Tests.test_double_count_stage_rejected) ... ok
+test_historical_failure_cannot_be_erased (test_m5.M5Tests.test_historical_failure_cannot_be_erased) ... ok
+test_historical_mixed_run_forbidden (test_m5.M5Tests.test_historical_mixed_run_forbidden) ... ok
+test_instrumented_ast_failure_equivalence (test_m5.M5Tests.test_instrumented_ast_failure_equivalence) ... ok
+test_instrumented_ast_return_equivalence (test_m5.M5Tests.test_instrumented_ast_return_equivalence) ... ok
+test_missing_native_is_fail_closed (test_m5.M5Tests.test_missing_native_is_fail_closed) ... ok
+test_nested_exclusive_accounting_and_fail (test_m5.M5Tests.test_nested_exclusive_accounting_and_fail) ... ok
+test_original_25point_accounting (test_m5.M5Tests.test_original_25point_accounting) ... ok
+test_replay_ledger_disjoint (test_m5.M5Tests.test_replay_ledger_disjoint) ... ok
+test_source_hash_uses_git_blob_frame (test_m5.M5Tests.test_source_hash_uses_git_blob_frame) ... ok
+test_strict_exact_audit_gates (test_m5.M5Tests.test_strict_exact_audit_gates) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.017s
+
+OK

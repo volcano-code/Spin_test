@@ -1,0 +1,35 @@
+test_archive_original_h8e_failure_preserved (test_m6.M6Tests.test_archive_original_h8e_failure_preserved) ... ok
+test_exact_tetra_analytic_and_old_python (test_m6.M6Tests.test_exact_tetra_analytic_and_old_python) ... ok
+test_exclusive_timer_disjoint_fail_closed (test_m6.M6Tests.test_exclusive_timer_disjoint_fail_closed) ... ok
+test_missing_binary_blocks_without_success (test_m6.M6Tests.test_missing_binary_blocks_without_success) ... ok
+test_no_out_of_bounds_jobs (test_m6.M6Tests.test_no_out_of_bounds_jobs) ... ok
+test_python_reject_inconsistent_faces (test_m6.M6Tests.test_python_reject_inconsistent_faces) ... ok
+test_real_first_packet_exact_python_vs_gmp (test_m6.M6Tests.test_real_first_packet_exact_python_vs_gmp) ... M6_ARCHIVED_H8 1 / 1 GMP TETRA OK
+ok
+test_reject_invalid_face (test_m6.M6Tests.test_reject_invalid_face) ... ok
+test_reject_noncanonical_fraction_both (test_m6.M6Tests.test_reject_noncanonical_fraction_both) ... ok
+test_reject_truncated_and_extra_data (test_m6.M6Tests.test_reject_truncated_and_extra_data) ... ok
+test_wrong_archive_hash_and_no_fabricated_baseline (test_m6.M6Tests.test_wrong_archive_hash_and_no_fabricated_baseline) ... ok
+test_abba_summary_matched_and_scope_preserved (test_m7.M7Tests.test_abba_summary_matched_and_scope_preserved) ... ok
+test_bitwise_scientific_equivalence (test_m7.M7Tests.test_bitwise_scientific_equivalence) ... ok
+test_changed_scientific_receipt_fails (test_m7.M7Tests.test_changed_scientific_receipt_fails) ... ok
+test_decode_backend_validation (test_m7.M7Tests.test_decode_backend_validation) ... ok
+test_decoder_rejects_nonfinite_and_malformed_archive_json (test_m7.M7Tests.test_decoder_rejects_nonfinite_and_malformed_archive_json) ... ok
+test_historical_25_point_failure_is_immutable (test_m7.M7Tests.test_historical_25_point_failure_is_immutable) ... ok
+test_invalid_ab_sequence_and_missing_native_fail_closed (test_m7.M7Tests.test_invalid_ab_sequence_and_missing_native_fail_closed) ... ok
+test_missing_required_identity_and_nan_fails (test_m7.M7Tests.test_missing_required_identity_and_nan_fails) ... ok
+test_mutated_jacobian_or_quadric_fails_parity (test_m7.M7Tests.test_mutated_jacobian_or_quadric_fails_parity) ... ok
+test_one_real_packet_both_decoders_complete_and_identical (test_m7.M7Tests.test_one_real_packet_both_decoders_complete_and_identical) ... M7_AB_STARTED 1/2 stdlib 1 points
+M6_ARCHIVED_H8 1 / 1 GMP TETRA OK
+M7_AB_COMPLETED 1/2  wall=1.902s parse=0.342s
+M7_AB_STARTED 2/2 orjson 1 points
+M6_ARCHIVED_H8 1 / 1 GMP TETRA OK
+M7_AB_COMPLETED 2/2  wall=2.003s parse=0.476s
+ok
+test_scientific_receipt_checks_original_failure (test_m7.M7Tests.test_scientific_receipt_checks_original_failure) ... ok
+test_wrong_archive_sha_no_false_speedup (test_m7.M7Tests.test_wrong_archive_sha_no_false_speedup) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 23.993s
+
+OK

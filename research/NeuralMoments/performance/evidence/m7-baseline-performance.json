@@ -1,0 +1,109 @@
+{
+  "all_checks_passed": true,
+  "executions": [
+    {
+      "backend": "stdlib",
+      "completed_without_shortcut": true,
+      "native_binary_sha256": "a19ae26404636910b0260a22d66e4e8a9a3d2e4e444a1918161ad52870d69b66",
+      "native_gmp_seconds": 21.254810685,
+      "parse_json_seconds": 15.881277749,
+      "point_count": 25,
+      "sample": 0,
+      "science_receipt_sha256": "6d4dabea5d40d907233355eb438f65a213d49172002748f8d0c9401e71716f2e",
+      "wall_seconds": 44.677458867
+    },
+    {
+      "backend": "orjson",
+      "completed_without_shortcut": true,
+      "native_binary_sha256": "a19ae26404636910b0260a22d66e4e8a9a3d2e4e444a1918161ad52870d69b66",
+      "native_gmp_seconds": 21.733042983,
+      "parse_json_seconds": 16.829364731000002,
+      "point_count": 25,
+      "sample": 1,
+      "science_receipt_sha256": "6d4dabea5d40d907233355eb438f65a213d49172002748f8d0c9401e71716f2e",
+      "wall_seconds": 46.365046816
+    },
+    {
+      "backend": "orjson",
+      "completed_without_shortcut": true,
+      "native_binary_sha256": "a19ae26404636910b0260a22d66e4e8a9a3d2e4e444a1918161ad52870d69b66",
+      "native_gmp_seconds": 25.085239688,
+      "parse_json_seconds": 18.449364635000002,
+      "point_count": 25,
+      "sample": 2,
+      "science_receipt_sha256": "6d4dabea5d40d907233355eb438f65a213d49172002748f8d0c9401e71716f2e",
+      "wall_seconds": 52.099685995
+    },
+    {
+      "backend": "stdlib",
+      "completed_without_shortcut": true,
+      "native_binary_sha256": "a19ae26404636910b0260a22d66e4e8a9a3d2e4e444a1918161ad52870d69b66",
+      "native_gmp_seconds": 23.300199366,
+      "parse_json_seconds": 16.322484977,
+      "point_count": 25,
+      "sample": 3,
+      "science_receipt_sha256": "6d4dabea5d40d907233355eb438f65a213d49172002748f8d0c9401e71716f2e",
+      "wall_seconds": 47.651490281
+    }
+  ],
+  "experiment_type": "ISOLATED_VALIDATOR_OPTIMIZATION_NOT_SOLVER",
+  "matched_pair": {
+    "archived_analytic_jacobian_not_regenerated": true,
+    "backends": {
+      "orjson": {
+        "end_to_end_median_seconds": 49.2323664055,
+        "end_to_end_range_seconds": [
+          46.365046816,
+          52.099685995
+        ],
+        "independent_native_gmp_median_seconds": 23.409141335500003,
+        "parse_json_median_seconds": 17.639364683000004,
+        "samples": 2
+      },
+      "stdlib": {
+        "end_to_end_median_seconds": 46.164474573999996,
+        "end_to_end_range_seconds": [
+          44.677458867,
+          47.651490281
+        ],
+        "independent_native_gmp_median_seconds": 22.2775050255,
+        "parse_json_median_seconds": 16.101881363,
+        "samples": 2
+      }
+    },
+    "complete_25_point_scientific_parity": true,
+    "count_per_run": 25,
+    "fresh_cherchi_boolean_calls": 0,
+    "identical_scientific_receipt_sha256": "6d4dabea5d40d907233355eb438f65a213d49172002748f8d0c9401e71716f2e",
+    "new_full_geometry_self_intersection_checks": 0,
+    "order": [
+      "stdlib",
+      "orjson",
+      "orjson",
+      "stdlib"
+    ],
+    "original_h8e_ci_failure_preserved": true,
+    "paired_end_to_end_archived_validator_ratio_old_over_new": 0.9376854688187957,
+    "paired_parse_only_ratio_old_over_new": 0.9128379424298791,
+    "paper_speed_qualified": false,
+    "production_full_solver_speedup": null
+  },
+  "measured_total_wall_seconds": 192.409490198,
+  "not_author_cad": true,
+  "resource_contract": {
+    "archived_input_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+    "compile_parallelism": 1,
+    "cpu_count": 5,
+    "host_platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "max_memory_gib": 24,
+    "max_single_run_seconds": 3600,
+    "native_binary_sha256": "a19ae26404636910b0260a22d66e4e8a9a3d2e4e444a1918161ad52870d69b66",
+    "orjson_version": "3.11.9",
+    "python_version": "3.13.5",
+    "rss_child_peak_kib": 249044,
+    "rss_parent_peak_kib": 270540,
+    "swap_entries": 0
+  },
+  "schema": "w1-m7-matched-archived-h8-json-decode-ab-v1",
+  "scope": "ACTUAL_ARCHIVED_CHERCHI_H8E_25POINT_OLD_NEW_JSON_DECODER_ONLY"
+}

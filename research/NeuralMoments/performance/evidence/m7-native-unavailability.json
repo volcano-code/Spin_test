@@ -1,0 +1,17 @@
+{
+  "git_dns": "FAILED: Could not resolve host github.com",
+  "host_memory_reported_gib": 5.8,
+  "native_imports": {
+    "_cherchi_core_boolean": false,
+    "_cherchi_rational_moments": false,
+    "_make_it_stand": false
+  },
+  "no_production_solver_result": true,
+  "operating_system": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "production_native_rebuild_completed": false,
+  "python": "3.13.5",
+  "schema": "w1-m7-runtime-availability-v1",
+  "swap_entries": 0,
+  "w0_head_seen": "5666b002a8582ac77de5e8be8d18ce8b0a538d06",
+  "w2_head_seen": "5b5bfcb7f02502247f21ac293f2ff5682428f67f"
+}
