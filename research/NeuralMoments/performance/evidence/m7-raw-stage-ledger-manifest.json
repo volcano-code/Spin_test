@@ -1,0 +1,18 @@
+{
+  "schema": "w1-m7-raw-stage-ledger-manifest-v1",
+  "scope": "EXACT_LOCAL_100_POINT_ARCHIVED_VALIDATOR_ROWS_NOT_FULL_SOLVER",
+  "file": "evidence/m7-all100-point-stages.jsonl",
+  "sha256": "b80e4fbaf77d257792c62b6d7bf8f47bccab7f421ff145d08c999298d0da3d09",
+  "git_blob_sha1": "e2221ec45d56b3f7bf8bf5be81400ba690675768",
+  "row_count": 25,
+  "sample_count": 4,
+  "total_point_replays": 100,
+  "source_archive_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+  "science_receipt_sha256": "6d4dabea5d40d907233355eb438f65a213d49172002748f8d0c9401e71716f2e",
+  "downloadable_zip_sha256": "ad4aba024bf5414984e98e8c6e97a45e6aef6e2c141d26308c5fa8b0fa2b2065",
+  "bundled_in_downloadable_zip": true,
+  "standalone_github_blob_in_this_commit": false,
+  "original_h8e_ci_failed": true,
+  "production_speedup": null,
+  "paper_speed_qualified": false
+}

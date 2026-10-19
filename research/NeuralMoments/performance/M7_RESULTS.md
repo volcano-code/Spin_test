@@ -81,9 +81,12 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python \
   --points 25 --output /tmp/w1-m7-abba
 ```
 
-Artifacts: `evidence/m7-baseline-performance.json`, `evidence/m7-before_after.json`,
-`evidence/m7-all100-point-stages.jsonl`, logs, and independent production-runtime
-availability report. Timings cannot be spliced into H8e original 379.49s run.
+Committed artifacts: `evidence/m7-baseline-performance.json`,
+`evidence/m7-before_after.json`, complete ABBA execution and regression logs,
+`evidence/m7-native-unavailability.json`, and `evidence/m7-raw-stage-ledger-manifest.json`.
+The full 100-point raw stage ledger is included in the downloadable M7
+reproducibility ZIP (uncompressed JSONL SHA-256 `b80e4fbaf77d257792c62b6d7bf8f47bccab7f421ff145d08c999298d0da3d09`);
+it is not part of this GitHub commit. Historical 379.49s timings are independent.
 
 ## Required next production gate
 
