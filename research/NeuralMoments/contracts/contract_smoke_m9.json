@@ -1,0 +1,249 @@
+{
+  "anomaly_point": 60,
+  "artifact_numeric_moments_returned": true,
+  "certified_newton_direction": false,
+  "certified_smooth_neighborhood": false,
+  "checked_packet_identities": 81,
+  "elapsed_seconds": 113.34044575100006,
+  "evidence_meaning": "REAL_FINITE_POINT_COMBINATORICS_NOT_CONTINUUM_OR_TERMINAL_CERTIFICATION",
+  "fraction_max_abs_error": 0.0,
+  "fraction_reintegrated_per_sample_max_abs_error": {
+    "0": 0.0,
+    "1": 0.0,
+    "10": 0.0,
+    "11": 0.0,
+    "12": 0.0,
+    "13": 0.0,
+    "14": 0.0,
+    "15": 0.0,
+    "16": 0.0,
+    "17": 0.0,
+    "18": 0.0,
+    "19": 0.0,
+    "2": 0.0,
+    "20": 0.0,
+    "21": 0.0,
+    "22": 0.0,
+    "23": 0.0,
+    "24": 0.0,
+    "25": 0.0,
+    "26": 0.0,
+    "27": 0.0,
+    "28": 0.0,
+    "29": 0.0,
+    "3": 0.0,
+    "30": 0.0,
+    "31": 0.0,
+    "32": 0.0,
+    "33": 0.0,
+    "34": 0.0,
+    "35": 0.0,
+    "36": 0.0,
+    "37": 0.0,
+    "38": 0.0,
+    "39": 0.0,
+    "4": 0.0,
+    "40": 0.0,
+    "41": 0.0,
+    "42": 0.0,
+    "43": 0.0,
+    "44": 0.0,
+    "45": 0.0,
+    "46": 0.0,
+    "47": 0.0,
+    "48": 0.0,
+    "49": 0.0,
+    "5": 0.0,
+    "50": 0.0,
+    "51": 0.0,
+    "52": 0.0,
+    "53": 0.0,
+    "54": 0.0,
+    "55": 0.0,
+    "56": 0.0,
+    "57": 0.0,
+    "58": 0.0,
+    "59": 0.0,
+    "6": 0.0,
+    "60": 0.0,
+    "61": 0.0,
+    "62": 0.0,
+    "63": 0.0,
+    "64": 0.0,
+    "65": 0.0,
+    "66": 0.0,
+    "67": 0.0,
+    "68": 0.0,
+    "69": 0.0,
+    "7": 0.0,
+    "70": 0.0,
+    "71": 0.0,
+    "72": 0.0,
+    "73": 0.0,
+    "74": 0.0,
+    "75": 0.0,
+    "76": 0.0,
+    "77": 0.0,
+    "78": 0.0,
+    "79": 0.0,
+    "8": 0.0,
+    "80": 0.0,
+    "9": 0.0
+  },
+  "fraction_reintegrated_sample_count": 81,
+  "github_artifact_id": 12135528290,
+  "github_head_sha": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "github_original_workflow_conclusion": "failure",
+  "github_workflow_run": 39123384402,
+  "independent_closed_oriented_surfaces": 81,
+  "independent_feature_classification": {
+    "CONSTRUCTION_FEATURE_CHANGE_OR_COUNT_CHANGE": 1,
+    "SYMBOLIC_PATCH_AND_TRIANGLE_IDENTITY_STABLE_NOT_CERTIFIED": 79
+  },
+  "independent_fixed_moment_max_abs_error": 2.220446049250313e-16,
+  "newton_converged": false,
+  "numerical": {
+    "checked_stencils": 30,
+    "max_scaled_error": 9.451443496526779e-10,
+    "original_feature_hash_unstable_stencils": 9,
+    "scale_null_direction_norm": 1.0649829225206779e-15
+  },
+  "original_native_failed_stencils": 9,
+  "original_native_feature_hash_changed_points": 17,
+  "original_point_count": 81,
+  "point60_witness": {
+    "added_features": [
+      [
+        "LPI",
+        [
+          [
+            0,
+            5517
+          ],
+          [
+            0,
+            5518
+          ]
+        ],
+        [
+          [
+            1,
+            24
+          ],
+          [
+            1,
+            89
+          ],
+          [
+            1,
+            90
+          ]
+        ]
+      ],
+      [
+        "LPI",
+        [
+          [
+            1,
+            24
+          ],
+          [
+            1,
+            90
+          ]
+        ],
+        [
+          [
+            0,
+            5516
+          ],
+          [
+            0,
+            5517
+          ],
+          [
+            0,
+            5518
+          ]
+        ]
+      ]
+    ],
+    "added_oriented_triangles": 17,
+    "changed_sample_q7": 3e-06,
+    "changed_vertex_indices": [
+      8043,
+      8044,
+      8045,
+      8046,
+      8047
+    ],
+    "normalized_symbolic_triangle_identity": false,
+    "removed_features": [
+      [
+        "LPI",
+        [
+          [
+            0,
+            5517
+          ],
+          [
+            0,
+            5518
+          ]
+        ],
+        [
+          [
+            1,
+            24
+          ],
+          [
+            1,
+            90
+          ],
+          [
+            1,
+            151
+          ]
+        ]
+      ],
+      [
+        "LPI",
+        [
+          [
+            1,
+            24
+          ],
+          [
+            1,
+            90
+          ]
+        ],
+        [
+          [
+            0,
+            5517
+          ],
+          [
+            0,
+            5518
+          ],
+          [
+            0,
+            5523
+          ]
+        ]
+      ]
+    ],
+    "removed_oriented_triangles": 17,
+    "same_raw_material_face_indexing": false,
+    "same_source_faces": true,
+    "source_face_indices_stable": true,
+    "stable_neighbor_q7": 1.5e-06
+  },
+  "schema": "W0_M9_REAL_H8F_81_ARCHIVE_AUDIT_V1",
+  "scope": "RECONSTRUCTED_H8_NONAUTHOR_CAD_FINITE_POINTS_ONLY",
+  "sha256_archive": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "sha256_classification": "f82801aa26d3f4228b8cb68f08abab5ef45458cc2368703e9187e0745662d6c5",
+  "sha256_report": "28e5a641da153b08a7f15f4abb87336c797f1e85b6f2742fc025274c231f53c5",
+  "training_admissible": false
+}

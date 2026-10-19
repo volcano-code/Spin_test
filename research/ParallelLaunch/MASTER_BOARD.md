@@ -13,7 +13,7 @@
 
 | Window | Role | Branch / exact instructions | Dependencies | Earliest evidence target | State |
 |---|---|---|---|---|---|
-| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M8_REAL_ARCHIVE_25_OF_25_INDEPENDENT_R10; 15_LOCAL_PYTEST_PASS; NEWTON_NOT_CONVERGED; W2_TRAINING_BLOCKED` |
+| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M9_REAL81_EXACT_R10_81_PASS; 30_FD_PASS; POINT60_CONSTRUCTION_DRIFT; NEWTON_AND_TRAINING_BLOCKED` |
 | W1 | Cherchi/Faster 性能 | [research/neuralmoments-w1-native-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w1-native-20261019/research/ParallelLaunch/W1_START_HERE.md) | 可独立 profiling；合并需 W0/W2 | 冻结同输入逐段耗时＋原生改造对照 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
 | W2 | 精确教师与标签 | [research/neuralmoments-w2-teacher-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w2-teacher-20261019/research/ParallelLaunch/W2_START_HERE.md) | 正式发布标签需 W0 | 真实 r,J＋SHA＋可微/失败状态 | `W2_M5_EXACT_REFERENCE_PRESENT; MANIFEST_NATIVE_0_TRAINING_0; TRUTH_BLOCKED` |
 | W3 | Heart H9 | [research/neuralmoments-w3-heart-h9-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w3-heart-h9-20261019/research/ParallelLaunch/W3_START_HERE.md) | 无 | 81 点 point60 构造变化诊断 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
@@ -123,3 +123,11 @@
 - Scientific status: non-author reconstructed H8 CAD only; original native job failure preserved; Newton terminal, continuous derivative neighborhood, exact full original/F/D/cavity region partition, dynamics and printability NOT authenticated. No real W5/W6 training labels authorized.
 
 - Reproduction: `research/NeuralMoments/contracts/real_h8e_archive_m8.py` plus `test_real_h8e_archive_m8.py`; 15 local fast regressions passed with both REAL ZIPs supplied, authentic 25-point exact reintegration wall 76.19s. See [M8 evidence](W0_M8_EVIDENCE_20261019.md) and `research/NeuralMoments/contracts/contract_smoke_m8.json`. W0 changed only its own two directories.
+
+
+## W0 M9: real 81-point H8f Cherchi archive & point 60 audit (2026-10-19)
+
+- Real historical GitHub Actions [39123384402](https://github.com/volcano-code/Spin_test/actions/runs/39123384402) **failed** at exact finite-point construction classification after 81/81 native material evaluations and 30/30 numerical FD stencils passed. Original failure is immutable; `complete_eighty_one_samples=false` and `formal_newton_converged=false` remain required.
+- W0 independently reloaded and hash-verified original artifact `12135528290` (SHA256 `99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9`), 81 same-call materials, oriented-closure checks, 81×10 Fraction signed tetrahedral raw moments and 30 finite-difference stencils. **All 81 exact moment binary64 comparisons had max abs error 0**; fixed-frame discrepancy 2.22e-16, maximum FD scaled error 9.45e-10. Full 4-worker exact rerun about 113.34 sec.
+- Normalizing mathematically equivalent LPI operand order and triangle cyclic starts leaves **one genuine sampled combinatorial difference**: point 60 at c[7]=+3e-6 versus stable +1.5e-6, 5 modified vertex-position source features, 2 removed/2 new source features, 17 removed/17 new oriented signature triangles; source quadric triangulation unchanged. No continuous event root, smooth-neighborhood or exact Boolean-set topological theorem claimed.
+- M8+M9 local real ZIP pytest **38 passed** in 28.37 sec. M9 source and tests committed W0 scope only; W1–W6 branches untouched. See [M9 evidence](W0_M9_EVIDENCE_20261019.md) and `research/NeuralMoments/contracts/contract_smoke_m9.json`. Real W5/W6 teacher label admission remains blocked.
