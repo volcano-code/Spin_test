@@ -35,6 +35,12 @@ def evaluate_one(evaluator, q, *, model_path, native_module_path,
     model_sha=sha256_file(model_path)
     native_sha=sha256_file(native_module_path)
     q=vector(q)
+    native_authenticated=(
+        type(evaluator).__module__=="make_it_stand.verification.cherchi_inprocess"
+        and type(evaluator).__name__=="InProcessCherchiEvaluator"
+        and hasattr(evaluator,"native")
+        and Path(evaluator.native.__file__).resolve()==Path(native_module_path).resolve()
+    )
     start=time.perf_counter()
     rss_before=_rss_bytes()
     output=None
@@ -68,12 +74,12 @@ def evaluate_one(evaluator, q, *, model_path, native_module_path,
                "evaluation_map_identity":evaluator.context_identity,
                "boolean_backend_identity":output.get("boolean_backend_identity"),
                "derivative_identity":output.get("derivative_identity"),
-               "native_cherchi":True}
+               "native_cherchi":native_authenticated}
     except Exception as exc:
         variable=jacobian=fixed=None
         topology="FAILED"
         derivative="INVALID"
-        proof={"kind":"failed_same_call","native_cherchi":True}
+        proof={"kind":"failed_same_call","native_cherchi":native_authenticated}
         failure=f"{type(exc).__name__}: {exc}"
     elapsed=time.perf_counter()-start
     stages=dict(getattr(evaluator,"stage_seconds",{}) or {})
