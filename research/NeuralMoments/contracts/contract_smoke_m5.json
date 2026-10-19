@@ -1,0 +1,74 @@
+{
+  "schema": "W0_M5_TWO_ORACLE_AND_TANGENT_EVIDENCE_V1",
+  "date": "2026-10-19",
+  "repository": "volcano-code/Spin_test",
+  "branch": "research/neuralmoments-w0-contract-20261019",
+  "implementation_commit": "17b6035fbb3596944ad5014aee1efaeca92803ee",
+  "frozen_source_commit": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "w2": {
+    "branch": "research/neuralmoments-w2-teacher-20261019",
+    "observed_head": "c2628ea75a8680910557855896e7317f92567756",
+    "independent_reference_blob_sha1": "d734398292e1fdaf839db3413c537de2474df3e1",
+    "independent_reference_sha256": "3238fb14d4cbf85d7754551689fa40cbb08653bf3a9bf631faf16138f9c6bea9",
+    "manifest_status": "M5_EXACT_REFERENCE_AND_NATIVE_RUNNER_COMMITTED_NO_NATIVE_EVALUATION",
+    "native_teacher_runs": 0,
+    "training_samples": 0
+  },
+  "tests": {
+    "command": "python -m pytest -q research/NeuralMoments/contracts/test_*.py",
+    "passed": 93,
+    "failed": 0,
+    "elapsed_seconds": 0.2,
+    "previous_M4_tests_reexecuted": 43,
+    "new_M5_tests": 50,
+    "earlier_M1_M3_tests_reexecuted": false,
+    "sha256_log": "036cbc454dd8509caeaea589d94495fc58be6c6de3b248b0400bae1175ddb82a"
+  },
+  "exact_two_oracle": {
+    "ten_moments_exactly_equal": true,
+    "mass": "48461/640",
+    "QYZ": "5039798617/27648000",
+    "QXZ": "1167681641/9216000",
+    "QXY": "47436278309/165888000",
+    "pinched_vertex_rejected_by_W0": true,
+    "embedding_proved": false,
+    "trainable": false
+  },
+  "numeric_tangent_P0": {
+    "directions": 3,
+    "step_radians": 0.02,
+    "maximum_normalized_jacobian_error": 4.8248891104663016e-8,
+    "predeclared_maximum": 2e-7,
+    "maximum_step_halving_change": 0.0003576595292154039,
+    "base_feature_branch_hash_must_match_every_probe": true,
+    "sampled_numerical_pass": true,
+    "smooth_neighborhood_proved": false,
+    "training_admissible": false
+  },
+  "real_native_preflight": {
+    "status": "BLOCKED_INSUFFICIENT_PHYSICAL_RAM",
+    "exit_code": 3,
+    "RAM_GiB": 5.808525085449219,
+    "swap_kib": 0,
+    "Cherchi_calls": 0,
+    "native_teacher_labels": 0
+  },
+  "scientific_status": {
+    "actual_Cherchi_evaluated": false,
+    "complete_partition_certified": false,
+    "derivative_neighborhood_certified": false,
+    "Newton_terminal_certified": false,
+    "training_admissible": false
+  },
+  "source_git_blobs": {
+    "w2_reference_snapshot.py": "d734398292e1fdaf839db3413c537de2474df3e1",
+    "cross_oracle_gate.py": "bcd546f462c793eb8c531885ee9e416eaec9c25a",
+    "tangent_neighborhood.py": "4fbfd52a787f3cbbc4228b1c1bbdab01638ed57f",
+    "native_m5_bridge.py": "247c728d3442048a64c2e9c68655cc740365fd88",
+    "live_native_m5_cli.py": "18a49859fd6ebb0f7164a9cca0971a80b83b7900",
+    "test_cross_oracle_gate.py": "2ac9554f6b88e60aa8adf6413833fdeeeac92a39",
+    "test_tangent_neighborhood.py": "7fc06a78e63e9bb9e22f1bcb9b5b96df24efa0c2",
+    "test_native_m5_bridge.py": "90f36528156c0f36d6ed743002331114aae61c0e",
+    "test_live_native_m5_cli.py": "3b7e0b8c89e16008dec006d5f4a4d34325550cdc"
+  }
+}

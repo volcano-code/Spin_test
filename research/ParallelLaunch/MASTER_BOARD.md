@@ -13,9 +13,9 @@
 
 | Window | Role | Branch / exact instructions | Dependencies | Earliest evidence target | State |
 |---|---|---|---|---|---|
-| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M4_LIVE_REPLAY_GATE_COMMITTED; 43_PURE_TESTS_PASS; REAL_NATIVE_RESOURCE_BLOCKED; W2_TRUTH_DENIED` |
+| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M5_W0_W2_EXACT_PARITY; 93_LOCAL_PYTEST_PASS; TANGENT_BRANCH_VETO; NATIVE_BLOCKED` |
 | W1 | Cherchi/Faster 性能 | [research/neuralmoments-w1-native-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w1-native-20261019/research/ParallelLaunch/W1_START_HERE.md) | 可独立 profiling；合并需 W0/W2 | 冻结同输入逐段耗时＋原生改造对照 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
-| W2 | 精确教师与标签 | [research/neuralmoments-w2-teacher-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w2-teacher-20261019/research/ParallelLaunch/W2_START_HERE.md) | 正式发布标签需 W0 | 真实 r,J＋SHA＋可微/失败状态 | `W2_ADAPTER_MOCKS_PRESENT; MANIFEST_0_NATIVE_RUNS_0_TRAINING; TRUTH_BLOCKED` |
+| W2 | 精确教师与标签 | [research/neuralmoments-w2-teacher-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w2-teacher-20261019/research/ParallelLaunch/W2_START_HERE.md) | 正式发布标签需 W0 | 真实 r,J＋SHA＋可微/失败状态 | `W2_M5_EXACT_REFERENCE_PRESENT; MANIFEST_NATIVE_0_TRAINING_0; TRUTH_BLOCKED` |
 | W3 | Heart H9 | [research/neuralmoments-w3-heart-h9-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w3-heart-h9-20261019/research/ParallelLaunch/W3_START_HERE.md) | 无 | 81 点 point60 构造变化诊断 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
 | W4 | Teapot P1 | [research/neuralmoments-w4-teapot-p1-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w4-teapot-p1-20261019/research/ParallelLaunch/W4_START_HERE.md) | 已完成 P0；体积/求解需 W0/W2 | 合法茶壶输入、F/D 与初态 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
 | W5 | DeepONet＋MLP | [research/neuralmoments-w5-deeponet-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w5-deeponet-20261019/research/ParallelLaunch/W5_START_HERE.md) | 解析 smoke 立即；真实训练需 W0/W2 | r,J 模型＋导数监督/成本报告 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
@@ -85,3 +85,11 @@
   - W5: `c535cbde306a6ec4447e4d60583fbbe997ac26f5`
   - W6: `b5d3985ec4a10c74316bda6579767b58c13b4eaa`
 - Earlier W1–W6 status columns are retained pending formal per-window test evidence review. Native jobs must remain serialized (24 GiB/swap0; compile ≤4; ≤60min/job).
+
+
+## W0 M5 cross-window independent reference and tangent diagnostic (2026-10-19)
+
+- **Read-only W2 snapshot:** W2 HEAD observed `c2628ea75a8680910557855896e7317f92567756`; exact `independent_reference.py` Git blob `d734398292e1fdaf839db3413c537de2474df3e1` and SHA256 `3238fb14d4cbf85d7754551689fa40cbb08653bf3a9bf631faf16138f9c6bea9`. This snapshot is copied ONLY into W0's contract directory; W2 branch is not modified.
+- **Measured:** 93/93 local tests passed (`python -m pytest -q research/NeuralMoments/contracts/test_*.py`, 0.20 sec): 43 M4 regression tests plus 50 M5 cases. New W0/W2 exact rational r10 equality includes nonzero XY/XZ/YZ and fixed-shell+design accounting; also detects shared-vertex pinched nonmanifold that the W2 edge-only reference admits. Analytic sphere-cap tangent Richardson check maximum normalized error `4.8248891104663016e-08` within predeclared P0 `2e-7` tolerance, and deliberately vetoes base-versus-probe branch changes.
+- **Native:** Real M5 CLI preflight on this 5.8085 GiB / swap0 container exited 3 with `BLOCKED_INSUFFICIENT_PHYSICAL_RAM`, no Cherchi, no teacher data; manifest still `native_teacher_runs=0`, `training_samples=0`. Full exact-region Boolean partition, stable derivative neighborhood and Newton terminal remain **NOT VERIFIED**.
+- **Evidence:** [W0 M5 record](W0_M5_EVIDENCE_20261019.md) and `research/NeuralMoments/contracts/contract_smoke_m5.json`. No 1% universal threshold and no green CI claim. Other windows were read-only.
