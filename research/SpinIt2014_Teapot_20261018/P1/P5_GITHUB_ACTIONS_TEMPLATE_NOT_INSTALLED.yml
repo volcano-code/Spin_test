@@ -1,0 +1,41 @@
+# HANDOFF ONLY: file within W4 exclusive P1 range, GitHub Actions will NOT execute this location.
+# Installation under .github/workflows/ requires separate write-scope authorization.
+name: W4 Teapot MuJoCo (diagnostic only)
+on:
+  push:
+    branches: [research/neuralmoments-w4-teapot-p1-20261019]
+    paths: ['research/SpinIt2014_Teapot_20261018/P1/**', '.github/workflows/w4-teapot-mujoco.yml']
+  workflow_dispatch:
+jobs:
+  native-mujoco:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      MUJOCO_GL: osmesa
+      PYOPENGL_PLATFORM: osmesa
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install headless rendering dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openscad ffmpeg libosmesa6 libgl1-mesa-dri libegl1
+          python -m pip install 'numpy>=2,<3' 'scipy>=1.15,<2' 'trimesh>=4,<5' opencv-python-headless mujoco==3.3.7 pillow
+          python -c 'import mujoco; print(mujoco.__version__)'
+      - name: Regenerate pinned P2 diagnostic mesh and scene
+        run: |
+          P1=research/SpinIt2014_Teapot_20261018/P1
+          python "$P1/p4_prepare_scene.py" --output "$P1/p3-mujoco-diagnostic"
+          python "$P1/p4_mujoco_verified_video.py" --xml "$P1/p3-mujoco-diagnostic/teapot_spinning.xml" --preflight-only
+      - name: Real MuJoCo dynamics and diagnostic video
+        run: |
+          P1=research/SpinIt2014_Teapot_20261018/P1
+          python "$P1/p4_mujoco_verified_video.py" --xml "$P1/p3-mujoco-diagnostic/teapot_spinning.xml" --out "$P1/p4-actual-mujoco" --duration 2.8 --fps 24
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: W4-real-MuJoCo-diagnostic-not-Cherchi-optimization
+          path: research/SpinIt2014_Teapot_20261018/P1/p4-actual-mujoco/**
+          if-no-files-found: warn
