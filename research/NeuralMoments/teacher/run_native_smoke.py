@@ -116,7 +116,8 @@ def evaluate_from_spec(spec):
         'evaluator_settings_sha256':digest(spec['evaluator_settings']),
         'native_c_sha256':spec['expected_native_c_sha256'],
         'spec_sha256':digest(spec),
-        'model_to_request_geometry_verified':True,
+        'model_to_request_geometry_verified':False,
+        'outer_mesh_binary64_correspondence_verified':True,
         'model_to_request_geometry_proof':binding,
     }
     return evaluate_one(evaluator,spec['native_c'],model_path=spec['model_path'],
