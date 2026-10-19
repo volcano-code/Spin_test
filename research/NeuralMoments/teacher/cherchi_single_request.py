@@ -15,7 +15,7 @@ try:
     from .independent_reference import integrate_exact_boundary, compare_exact_reference, compare_predeclared_budget
 except ImportError:
     from native_cherchi_teacher import seal, vector, canonical
-    from independent_reference import integrate_exact_boundary, compare_exact_reference
+    from independent_reference import integrate_exact_boundary, compare_exact_reference, compare_predeclared_budget
 
 
 def sha256_file(path):
