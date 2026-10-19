@@ -1,9 +1,10 @@
-"""Single-request Cherchi adapter. Never silently promotes a derivative to ground truth.
+"""Single-request Cherchi adapter; unverified derivatives never become truth.
 
-Caller provides an already constructed InProcessCherchiEvaluator (or test double).
-No solver runs, no shared core modifications, no hidden extra Cherchi evaluations.
+A caller passes an already constructed InProcessCherchiEvaluator. Exactly one
+native call is made; no Newton solve or shared core mutation is performed.
 """
 import hashlib
+import importlib
 import math
 import resource
 import time
@@ -11,40 +12,79 @@ from pathlib import Path
 
 try:
     from .native_cherchi_teacher import seal, vector
+    from .independent_reference import integrate_exact_boundary, compare_exact_reference
 except ImportError:
     from native_cherchi_teacher import seal, vector
+    from independent_reference import integrate_exact_boundary, compare_exact_reference
+
 
 def sha256_file(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
+
 def _rss_bytes():
-    # Linux getrusage reports KiB; ru_maxrss is a process high-water mark,
-    # NOT per-call peak allocation. Explicitly labelled in timing metadata.
+    # ru_maxrss is a process lifetime high-water mark on Linux, not a per-call peak.
     return int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)*1024
+
+
+def _authenticated_native(evaluator, native_module_path):
+    cls=type(evaluator)
+    if (cls.__module__!="make_it_stand.verification.cherchi_inprocess" or
+        cls.__name__!="InProcessCherchiEvaluator"):
+        return False
+    try:
+        module=importlib.import_module(cls.__module__)
+        actual=module.InProcessCherchiEvaluator
+        native_file=evaluator.native.__file__
+    except (ImportError, AttributeError):
+        return False
+    return (cls is actual and
+            Path(native_file).resolve()==Path(native_module_path).resolve())
+
+
+def audit_same_call_exact_boundary(evaluator, output, density):
+    """Compare a Cherchi same-call material with an independent exact formula.
+
+    Does NOT establish non-self-intersection; an independently sealed geometry
+    and legal Boolean material proof remain separate requirements.
+    """
+    last=evaluator.last
+    if not isinstance(last,dict) or not last.get("geometry_hash"):
+        raise ValueError("MISSING_SAME_CALL_BOUNDARY")
+    if (last["geometry_hash"]!=output.get("geometry_hash") or
+        last.get("topology_hash")!=output.get("topology_hash")):
+        raise ValueError("STALE_OR_WRONG_BRANCH_BOUNDARY")
+    if float(evaluator.request.material_density)!=float(density):
+        raise ValueError("REFERENCE_DENSITY_MISMATCH")
+    faces=last["faces"]
+    if hasattr(faces,"tolist"):
+        faces=faces.tolist()
+    reference,proof=integrate_exact_boundary(last["exact_vertices"],faces,density)
+    comparison=compare_exact_reference(output["variable_raw_moments"],reference)
+    if not comparison["within_tolerance"]:
+        raise ValueError("INDEPENDENT_TEN_MOMENT_MISMATCH:"+
+                         str(comparison["maximum_normalized_error"]))
+    return dict(proof,comparison=comparison)
+
 
 def evaluate_one(evaluator, q, *, model_path, native_module_path,
                  geometry, density, frame, derivative_contract=None,
                  split="excluded", exclusion_reason=None):
-    """Return a sealed label even when the native call raises.
+    """Create replayable pre-W0 label for one evaluation, including failures.
 
-    This wrapper checks the frozen model/module bytes and does not infer
-    smoothness from the evaluator's pointwise derivative_defined flag.
-    Supply a separately established branch-neighborhood certificate as
-    derivative_contract to admit J_D, otherwise it is withheld.
+    Passing claimed derivative contracts never grants a VALID Jacobian until
+    W0's independently authenticating verifier is integrated. The valid
+    *physical moments* survive this derivative exclusion.
     """
     model_sha=sha256_file(model_path)
     native_sha=sha256_file(native_module_path)
     q=vector(q)
-    native_authenticated=(
-        type(evaluator).__module__=="make_it_stand.verification.cherchi_inprocess"
-        and type(evaluator).__name__=="InProcessCherchiEvaluator"
-        and hasattr(evaluator,"native")
-        and Path(evaluator.native.__file__).resolve()==Path(native_module_path).resolve()
-    )
+    native_authenticated=_authenticated_native(evaluator,native_module_path)
+    stage_before=dict(getattr(evaluator,"stage_seconds",{}) or {})
     start=time.perf_counter()
     rss_before=_rss_bytes()
-    output=None
     failure=None
+    extra_proof={}
     try:
         output=evaluator(tuple(q))
         if not isinstance(output,dict):
@@ -59,52 +99,43 @@ def evaluate_one(evaluator, q, *, model_path, native_module_path,
             raise ValueError("EVALUATION_MAP_IDENTITY_MISMATCH")
         if not output.get("geometry_hash") or not output.get("topology_hash"):
             raise ValueError("MISSING_GEOMETRY_TOPOLOGY_PROOF")
+        if native_authenticated:
+            exact_start=time.perf_counter()
+            extra_proof["independent_ten_moment_audit"]=audit_same_call_exact_boundary(
+                evaluator,output,density)
+            extra_proof["reference_elapsed_seconds"]=time.perf_counter()-exact_start
         topology="OBSERVED_DISCRETE_MAP"
         derivative="UNKNOWN"
         jacobian=None
-        if output.get("derivative_defined") and derivative_contract is not None:
-            if not native_authenticated:
-                raise ValueError("MOCK_OR_UNAUTHENTICATED_DERIVATIVE_NOT_ADMISSIBLE")
-            if not isinstance(derivative_contract,dict) or not derivative_contract.get("verified_neighborhood"):
-                raise ValueError("UNVERIFIED_DERIVATIVE_CONTRACT")
-            # W0's contract is not released: provisional certificates must not
-            # create training labels or valid Jacobians.
-            if derivative_contract.get("schema")!="MomentContractV1" or not derivative_contract.get("contract_sha256"):
-                raise ValueError("W0_MOMENT_CONTRACT_REQUIRED")
-            # A user-supplied digest is not proof that W0 certified this branch.
-            # Keep W2 labels excluded until a trusted W0 verifier is integrated.
-            raise ValueError("W0_VERIFIER_NOT_INTEGRATED")
-            jacobian=[vector(row) for row in output["moment_jacobian"]]
-            derivative="VALID"
-            topology="VALID"
+        reason=("W0_VERIFIER_NOT_INTEGRATED" if derivative_contract is not None
+                else "NO_W0_NEIGHBORHOOD_CERTIFICATE")
         proof={"kind":"cherchi_same_call_discrete_map",
                "geometry_hash":output["geometry_hash"],
                "topology_hash":output["topology_hash"],
                "evaluation_map_identity":evaluator.context_identity,
                "boolean_backend_identity":output.get("boolean_backend_identity"),
                "derivative_identity":output.get("derivative_identity"),
-               "native_cherchi":native_authenticated}
+               "derivative_admission_reason":reason,
+               "native_cherchi":native_authenticated,**extra_proof}
     except Exception as exc:
         variable=jacobian=fixed=None
         topology="FAILED"
         derivative="INVALID"
-        proof={"kind":"failed_same_call","native_cherchi":native_authenticated}
+        proof={"kind":"failed_same_call","native_cherchi":native_authenticated,**extra_proof}
         failure=f"{type(exc).__name__}: {exc}"
     elapsed=time.perf_counter()-start
-    stages=dict(getattr(evaluator,"stage_seconds",{}) or {})
+    raw_stages=dict(getattr(evaluator,"stage_seconds",{}) or {})
+    stages={key:max(0.0,float(value)-float(stage_before.get(key,0)))
+            for key,value in raw_stages.items()}
     stages["w2_total_wall_seconds"]=elapsed
-    stages["w2_rss_process_hwm_before_bytes"]=float(rss_before)
-    stages["w2_rss_process_hwm_after_bytes"]=float(_rss_bytes())
-    if exclusion_reason:
-        stages["w2_excluded_sample"]=0.0
-    if failure is not None:
-        split="excluded"
-    # A successful numerical value with UNKNOWN derivative is not training truth.
-    if derivative!="VALID":
+    rss_after=_rss_bytes()
+    proof["memory_measurement"]={"kind":"PROCESS_LIFETIME_RSS_HIGH_WATER_LINUX",
+        "before_bytes":rss_before,"after_bytes":rss_after,
+        "is_per_call_peak":False}
+    if failure is not None or derivative!="VALID" or not native_authenticated:
         split="excluded"
     return seal(model_sha256=model_sha,native_module_sha256=native_sha,
         geometry=geometry,density=density,frame=frame,q=q,r_d=variable,j_d=jacobian,
         r_f=fixed,topology_status=topology,derivative_status=derivative,
-        derivative_contract=derivative_contract if derivative=="VALID" else None,
-        stage_seconds=stages,peak_rss_bytes=_rss_bytes(),exact_proof=proof,
-        split=split,failure_reason=failure or exclusion_reason)
+        derivative_contract=None,stage_seconds=stages,peak_rss_bytes=rss_after,
+        exact_proof=proof,split=split,failure_reason=failure or exclusion_reason)
