@@ -26,6 +26,7 @@ from certify_h9_interior_edge_crossing import (
 )
 from probe_h9_crossing_sides_live import native_plan, BACKEND_PREFIX
 from reintegrate_h9_true_moments import check_mass_snapshot
+from h9_one_sided_derivative_audit import one_sided_diagnostics
 
 EXACT_SAME = 'SYMBOLIC_PATCH_AND_TRIANGLE_IDENTITY_STABLE_NOT_CERTIFIED'
 EXACT_CHANGED = 'CONSTRUCTION_FEATURE_CHANGE_OR_COUNT_CHANGE'
@@ -64,6 +65,49 @@ def validate_native_packet_provenance(material,historical_material,arithmetic_sh
          and len(material.get('quadric_source_vertices',[]))==len(historical_material['quadric_source_vertices']),
          'NATIVE_SOURCE_TRIANGULATION_CHANGED_IN_PROBE_INTERVAL')
     return True
+
+
+
+def validate_new_same_call_numerics(material, meta):
+    """Validate actual stage-4 producer schema + independently re-integrate.
+
+    This factors a previously untested success-path: `native_saved` was an
+    undefined variable, so older fail-closed tests could not catch the bug.
+    Historic material is accepted here ONLY as a unit-test fixture, not as a
+    new native run; the enclosing audit still requires four fresh side files.
+    """
+    original = meta.get('independent_ten_mass_moments')
+    production = material.get('variable_raw_moments')
+    need(isinstance(original, list) and isinstance(production, list)
+         and len(original)==len(production)==10
+         and all(type(v) in (float,int) and math.isfinite(v)
+                 for v in original+production),
+         'NEW_NATIVE_MOMENTS_NOT_FINITE_TEN')
+    # Cheap, strict fail-fast guards before expensive 16k-face Fraction
+    # re-integration. Genuine material is still re-integrated below.
+    saved_error = meta.get('independent_scaled_moment_error')
+    need(type(saved_error) in (float,int) and math.isfinite(saved_error)
+         and 0 <= saved_error <= 1e-10,
+         'NEW_NATIVE_INDEPENDENT_MOMENT_ERROR_NOT_REPRODUCED')
+    recorded_disagreement=max(abs(a-b)/max(1.,abs(b)) for a,b in zip(original,production))
+    need(recorded_disagreement<=1e-10 and
+         abs(saved_error-recorded_disagreement)<=1e-12,
+         'NEW_NATIVE_SAVED_AND_PRODUCTION_TEN_MOMENT_MISMATCH')
+    jac = material.get('moment_jacobian')
+    j7 = meta.get('native_moment_jacobian_column7')
+    need(isinstance(j7, list) and len(j7)==10
+         and all(type(v) in (float,int) and math.isfinite(v) for v in j7),
+         'NEW_NATIVE_JACOBIAN_COLUMN7_MISSING')
+    need(isinstance(jac, list) and len(jac)==10 and
+         all(isinstance(row,list) and len(row)==10 and
+             all(type(v) in (float,int) and math.isfinite(v) for v in row)
+             for row in jac), 'NEW_NATIVE_FULL_10X10_JACOBIAN_INVALID')
+    need(all(abs(jac[k][7]-j7[k])<=1e-12 for k in range(10)),
+         'NEW_NATIVE_JACOBIAN_COLUMN_NOT_FROM_SAME_MATERIAL')
+    independent = check_mass_snapshot(material, original, production)
+    need(abs(saved_error-independent['max_scaled_error_vs_archived_production'])<=1e-12,
+         'NEW_NATIVE_INDEPENDENT_MOMENT_ERROR_NOT_REPRODUCED')
+    return independent
 
 
 def h7_observe(material,request):
@@ -150,12 +194,9 @@ def audit(artifact,certificate_path,native_output):
              and meta.get('native_feature_branch_hash')==material['topology_hash']
              and meta.get('native_material_geometry_hash')==material['geometry_hash'],
              f'NEW_NATIVE_MATERIAL_AUDIT_OR_IDENTITY_MISMATCH_{i}')
-        point_saved=meta.get('independent_ten_mass_moments')
-        native_mom=material.get('variable_raw_moments')
-        need(isinstance(native_mom,list) and isinstance(point_saved,list)
-             and len(native_mom)==len(point_saved)==10,
-             f'NEW_NATIVE_MOMENTS_NOT_10_{i}')
-        moment_audit=check_mass_snapshot(material,point_saved,native_saved)
+        # Independently re-integrate the exact same-call material and verify the
+        # producer's real numeric schema, including all 100 Jacobian entries.
+        moment_audit=validate_new_same_call_numerics(material,meta)
         # The original H7 constructor identities must be recomputed from *new*
         # same-call records; do not trust statuses in side-XX.json.
         observation=h7_observe(material,data)
@@ -172,17 +213,7 @@ def audit(artifact,certificate_path,native_output):
         need(abs(float(witness['source_segment_parameter'])-meta['native_source_param'])<=1e-12
              and abs(float(witness['design_segment_parameter'])-meta['native_design_param'])<=1e-12,
              f'NEW_NATIVE_EDGE_PARAMETERS_NOT_REPRODUCED_{i}')
-        new_j7=meta.get('native_moment_jacobian_column7')
-        need(isinstance(new_j7,list) and len(new_j7)==10
-             and all(type(v) in (float,int) and math.isfinite(v) for v in new_j7),
-             f'NEW_NATIVE_10_BY_10_COLUMN_MISSING_{i}')
-        material_jac=material.get('moment_jacobian')
-        need(isinstance(material_jac,list) and len(material_jac)==10
-             and all(isinstance(row,list) and len(row)==10 for row in material_jac)
-             and all(type(row[7]) in (float,int) and math.isfinite(row[7])
-                     and abs(row[7]-new_j7[j])<=1e-12
-                     for j,row in enumerate(material_jac)),
-             f'NEW_NATIVE_JACOBIAN_COLUMN_NOT_SAME_CALL_{i}')
+        new_j7=meta['native_moment_jacobian_column7']
         # No continuous derivative truth from finite packets alone.
         stats.append({'index':i,'side':p['side'],'c7':p['c7'],
                       'new_same_call_material_sha256':meta['material_sha256'],
@@ -210,6 +241,14 @@ def audit(artifact,certificate_path,native_output):
                                  'relation_to_historical_60':right['status'],
                                  'same_historical_59_patch':left['status']==EXACT_SAME,
                                  'same_historical_60_patch':right['status']==EXACT_SAME})
+    # The event can separate 59/60 finite construction features without ever
+    # certifying a continuous q-neighborhood. Compare each *within-side* pair
+    # and report independent secants against the same-call native Jacobians.
+    inside_left=compare_observations(observations[0],observations[1])
+    inside_right=compare_observations(observations[2],observations[3])
+    one_sided=one_sided_diagnostics(stats,
+        same_symbolic_left=inside_left['status']==EXACT_SAME,
+        same_symbolic_right=inside_right['status']==EXACT_SAME)
     # Finite correspondence is only diagnostic, not a continuous stratum proof.
     expected_branch_split=(all(x['same_historical_59_patch'] and not x['same_historical_60_patch']
                                for x in classifications[:2])
@@ -225,6 +264,8 @@ def audit(artifact,certificate_path,native_output):
             'same_binary_across_runs':all(comparables.values()),
             'every_new_side_reproduces_expected_oriented_edge_sign':True,
             'finite_symbolic_branch_split_at_new_four_samples':expected_branch_split,
+            'cross_build_same_semantic_baseline_admitted':bool(expected_branch_split and all(comparables.values())),
+            'one_sided_independent_moment_jacobian_diagnostics':one_sided,
             'sample_diagnostics':stats,
             'semantic_provenance_comparisons':classifications,
             'newton_admitted':False,
