@@ -1,0 +1,254 @@
+{
+  "W2_native_teacher_runs": 0,
+  "benchmark_device": "CPU_one_thread_no_cuda",
+  "data_sha256_per_seed": [
+    {
+      "minibatch_schedule": "85e8182e6be448d9d2cd0122bc53b446c41b58d57de2116bb058a105d45fd30b",
+      "seed": 19,
+      "test": "5db2ede650ade31c45602647e6296865a41629269e65eb7b5228e0585b51400b",
+      "train": "7b65ebbb3e5d32e82ff7ee23a1f88978fa4100902b67f63e16b0fdc2df54e087"
+    },
+    {
+      "minibatch_schedule": "6d2bbdc1361c6f6ff1a1f7a89f3ee8d46889347697610739b7b484a79c4dcf45",
+      "seed": 23,
+      "test": "fd16cc24093f9593ea592a3744f75be656b4d09b13bfd29314b2a0fda94ffb1d",
+      "train": "d36d707cbf7ecdd0089f66fea3f8784a200830f09a2e0b5a60790ce6028562e7"
+    },
+    {
+      "minibatch_schedule": "a6eb019e0f5dd394b5d87013767a30b9f71267bd9a1aae50d2584ecd51e510ca",
+      "seed": 29,
+      "test": "008c850489155ef281ade007439bebd3816efa006dfd3f86c5809718710781d7",
+      "train": "25eece482d68d864064bfcc7785226785afc41307f56978f2f027ba4ac838394"
+    }
+  ],
+  "external_branch_pin": {
+    "W0": "bfedacd3a1f4e10d30f1258331260380739d243c",
+    "W2": "ab93ccd6b894978311773b0f8a8b6b9c40d696ab",
+    "W5": "7054cf6624eeb85f8ba06093090127bdb8016dc4"
+  },
+  "failures_and_qualifications": [
+    "No real W2 training samples",
+    "No equivalent feature representation: W5 has lossy 9D input, W6 full raw voxels",
+    "Only three seeds and 12 steps; training unconverged",
+    "All decision step sizes clipped: step error not discriminative",
+    "No actual compiled native/Faster/CGAL/Cherchi timing, no GPU memory or speedup conclusion"
+  ],
+  "feature_equivalence": false,
+  "geometry_preprocessor_W5": "voxel_summary9 of identical source voxel (lossy)",
+  "holdout_families": [
+    "ellipsoid"
+  ],
+  "models": {
+    "deeponet": {
+      "moment_and_jacobian": {
+        "J_mae_mean": 0.022554907326896984,
+        "J_mae_per_seed": {
+          "19": 0.021757822483778,
+          "23": 0.022491222247481346,
+          "29": 0.02341567724943161
+        },
+        "J_mae_sd": 0.0008307601627456802,
+        "Jq_asymmetry_max_mean": 0.06897808238863945,
+        "analytic_query2_mae_mean": 0.004339197495331367,
+        "clipped_decision_count": 3,
+        "directional_mae_mean": 0.01619594171643257,
+        "median_cpu_cached_J_ms": 0.6572269999196578,
+        "median_cpu_cached_head_ms": 0.03723600002558669,
+        "median_cpu_cold_voxel_to_head_ms": 0.23075700005392719,
+        "projective_radial_max_mean": 0.05787200232346853,
+        "r_mae_mean": 0.0696106677254041,
+        "r_mae_per_seed": {
+          "19": 0.07481053471565247,
+          "23": 0.06737982481718063,
+          "29": 0.06664164364337921
+        },
+        "r_mae_sd": 0.00451831720871218,
+        "train_seconds_per_seed": {
+          "19": 0.03408823500012659,
+          "23": 0.02917355299996416,
+          "29": 0.030230751000090095
+        },
+        "true_objective_gradient_error_mean": 0.13184003035227457
+      },
+      "moment_only": {
+        "J_mae_mean": 0.024157327289382618,
+        "J_mae_per_seed": {
+          "19": 0.023859485983848572,
+          "23": 0.02362426184117794,
+          "29": 0.024988234043121338
+        },
+        "J_mae_sd": 0.0007291345036275874,
+        "Jq_asymmetry_max_mean": 0.06223656050860882,
+        "analytic_query2_mae_mean": 0.004388037603348494,
+        "clipped_decision_count": 3,
+        "directional_mae_mean": 0.017162421718239784,
+        "median_cpu_cached_J_ms": 0.6458100001509592,
+        "median_cpu_cached_head_ms": 0.03742700005204824,
+        "median_cpu_cold_voxel_to_head_ms": 0.22999599991635478,
+        "projective_radial_max_mean": 0.045364423344532646,
+        "r_mae_mean": 0.06952909628550212,
+        "r_mae_per_seed": {
+          "19": 0.07490482926368713,
+          "23": 0.06659442186355591,
+          "29": 0.0670880377292633
+        },
+        "r_mae_sd": 0.0046620588740683006,
+        "train_seconds_per_seed": {
+          "19": 0.017903081999975257,
+          "23": 0.014929136000091603,
+          "29": 0.014468323999835775
+        },
+        "true_objective_gradient_error_mean": 0.14047387739022574
+      }
+    },
+    "geometry_mlp": {
+      "moment_and_jacobian": {
+        "J_mae_mean": 0.023975610733032227,
+        "J_mae_per_seed": {
+          "19": 0.025375863537192345,
+          "23": 0.022348329424858093,
+          "29": 0.024202639237046242
+        },
+        "J_mae_sd": 0.0015264819542212143,
+        "Jq_asymmetry_max_mean": 0.15506625175476074,
+        "analytic_query2_mae_mean": 0.004023873790477713,
+        "clipped_decision_count": 3,
+        "directional_mae_mean": 0.014757577950755755,
+        "median_cpu_cached_J_ms": 0.5589100001088809,
+        "median_cpu_cached_head_ms": 0.023134999992180383,
+        "median_cpu_cold_voxel_to_head_ms": 0.19686499990712036,
+        "projective_radial_max_mean": 0.2694731851418813,
+        "r_mae_mean": 0.055174753069877625,
+        "r_mae_per_seed": {
+          "19": 0.05733112245798111,
+          "23": 0.06865592300891876,
+          "29": 0.039537213742733
+        },
+        "r_mae_sd": 0.014678632566953417,
+        "train_seconds_per_seed": {
+          "19": 0.02850533999981053,
+          "23": 0.025465191999956005,
+          "29": 0.02474380800003928
+        },
+        "true_objective_gradient_error_mean": 0.07315761347611745
+      },
+      "moment_only": {
+        "J_mae_mean": 0.036850664764642715,
+        "J_mae_per_seed": {
+          "19": 0.037658244371414185,
+          "23": 0.033857207745313644,
+          "29": 0.03903654217720032
+        },
+        "J_mae_sd": 0.002682445694750703,
+        "Jq_asymmetry_max_mean": 0.18182498216629028,
+        "analytic_query2_mae_mean": 0.00412232909972469,
+        "clipped_decision_count": 3,
+        "directional_mae_mean": 0.024002936979134876,
+        "median_cpu_cached_J_ms": 0.5810329998894304,
+        "median_cpu_cached_head_ms": 0.022903999933987507,
+        "median_cpu_cold_voxel_to_head_ms": 0.19757699988076638,
+        "projective_radial_max_mean": 0.22900454699993134,
+        "r_mae_mean": 0.05596979707479477,
+        "r_mae_per_seed": {
+          "19": 0.05935458838939667,
+          "23": 0.06516826897859573,
+          "29": 0.04338653385639191
+        },
+        "r_mae_sd": 0.011278457581425542,
+        "train_seconds_per_seed": {
+          "19": 0.013945277999937389,
+          "23": 0.011879705999945145,
+          "29": 0.01192349099983403
+        },
+        "true_objective_gradient_error_mean": 0.10583548992872238
+      }
+    },
+    "ufno": {
+      "moment_and_jacobian": {
+        "J_mae_mean": 0.023403071487943333,
+        "J_mae_per_seed": {
+          "19": 0.02329234778881073,
+          "23": 0.020943010225892067,
+          "29": 0.025973856449127197
+        },
+        "J_mae_sd": 0.0025172501333045943,
+        "Jq_asymmetry_max_mean": 0.06876289596160252,
+        "analytic_query2_mae_mean": 0.004082472529262304,
+        "clipped_decision_count": 3,
+        "directional_mae_mean": 0.015772276868422825,
+        "median_cpu_cached_J_ms": 0.771359000054872,
+        "median_cpu_cached_head_ms": 0.06319499993878708,
+        "median_cpu_cold_voxel_to_head_ms": 2.183268999942811,
+        "projective_radial_max_mean": 1.202958325544993e-08,
+        "r_mae_mean": 0.0776498094201088,
+        "r_mae_per_seed": {
+          "19": 0.06681874394416809,
+          "23": 0.09267930686473846,
+          "29": 0.07345137745141983
+        },
+        "r_mae_sd": 0.01343176466027368,
+        "train_seconds_per_seed": {
+          "19": 0.18111694300000636,
+          "23": 0.15688018600008036,
+          "29": 0.15393156599998292
+        },
+        "true_objective_gradient_error_mean": 0.13908669849236807
+      },
+      "moment_only": {
+        "J_mae_mean": 0.025619802996516228,
+        "J_mae_per_seed": {
+          "19": 0.02542475424706936,
+          "23": 0.023495284840464592,
+          "29": 0.027939369902014732
+        },
+        "J_mae_sd": 0.002228453728388559,
+        "Jq_asymmetry_max_mean": 0.06112637743353844,
+        "analytic_query2_mae_mean": 0.004078815458342433,
+        "clipped_decision_count": 3,
+        "directional_mae_mean": 0.02100474387407303,
+        "median_cpu_cached_J_ms": 0.7962760000737035,
+        "median_cpu_cached_head_ms": 0.06353499998112966,
+        "median_cpu_cold_voxel_to_head_ms": 2.17706100011128,
+        "projective_radial_max_mean": 1.2766880293687185e-08,
+        "r_mae_mean": 0.07677989701430003,
+        "r_mae_per_seed": {
+          "19": 0.06634645164012909,
+          "23": 0.0902579054236412,
+          "29": 0.07373533397912979
+        },
+        "r_mae_sd": 0.01224301550136251,
+        "train_seconds_per_seed": {
+          "19": 0.16955392399995617,
+          "23": 0.13788816700002826,
+          "29": 0.13114153299989084
+        },
+        "true_objective_gradient_error_mean": 0.14508179823557535
+      }
+    }
+  },
+  "new_trainable_FEM_weights": 0,
+  "oracle_holdout_queries_each_seed": 40,
+  "oracle_train_queries_each_seed": 80,
+  "parameter_real_dof": {
+    "deeponet": 13674,
+    "geometry_mlp": 13482,
+    "ufno": 13982
+  },
+  "seeds": [
+    19,
+    23,
+    29
+  ],
+  "source_data": "W0-aligned analytic physical plane cuts, NOT W2 Cherchi/CAD",
+  "source_sha": {
+    "deeponet_model": "7aa363769c0baf9f843d50e268164e761b566977",
+    "geometry_mlp_model": "85db98ec60926a653270020f05294a7347221dcb",
+    "interface": "9d776e5c324140899f03296ee96dbfad602f8836"
+  },
+  "status": "W6_M3_ANALYTIC_P0_ONLY",
+  "train_families": [
+    "box",
+    "sphere"
+  ],
+  "training_steps_each": 12
+}

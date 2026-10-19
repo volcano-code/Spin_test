@@ -1,0 +1,18 @@
+test_all_models_caching_and_jacobian_shapes (research.NeuralMoments.models.pcraft_ufno.test_faircut_m3.W6FairCutM3Tests.test_all_models_caching_and_jacobian_shapes) ... ok
+test_analytic_oracle_W0_native_jq_and_radial_null (research.NeuralMoments.models.pcraft_ufno.test_faircut_m3.W6FairCutM3Tests.test_analytic_oracle_W0_native_jq_and_radial_null) ... ok
+test_common_minibatch_rng_exact (research.NeuralMoments.models.pcraft_ufno.test_faircut_m3.W6FairCutM3Tests.test_common_minibatch_rng_exact) ... ok
+test_dataset_manifest_digest_and_seed_identity (research.NeuralMoments.models.pcraft_ufno.test_faircut_m3.W6FairCutM3Tests.test_dataset_manifest_digest_and_seed_identity) ... ok
+test_family_and_identity_holdout (research.NeuralMoments.models.pcraft_ufno.test_faircut_m3.W6FairCutM3Tests.test_family_and_identity_holdout) ... ok
+test_head_derivatives_match_finite_difference (research.NeuralMoments.models.pcraft_ufno.test_faircut_m3.W6FairCutM3Tests.test_head_derivatives_match_finite_difference) ... ok
+test_identical_adaptation_budget_all_three (research.NeuralMoments.models.pcraft_ufno.test_faircut_m3.W6FairCutM3Tests.test_identical_adaptation_budget_all_three) ... ok
+test_model_capacity_within_five_percent (research.NeuralMoments.models.pcraft_ufno.test_faircut_m3.W6FairCutM3Tests.test_model_capacity_within_five_percent) ... ok
+test_multiseed_aggregate_and_duplicate_seed_gate (research.NeuralMoments.models.pcraft_ufno.test_faircut_m3.W6FairCutM3Tests.test_multiseed_aggregate_and_duplicate_seed_gate) ... ok
+test_real_cpu_e2e_three_architectures_two_arms (research.NeuralMoments.models.pcraft_ufno.test_faircut_m3.W6FairCutM3Tests.test_real_cpu_e2e_three_architectures_two_arms) ... ok
+test_source_snapshot_pins_and_import_only_compatibility_patch (research.NeuralMoments.models.pcraft_ufno.test_faircut_m3.W6FairCutM3Tests.test_source_snapshot_pins_and_import_only_compatibility_patch) ... ok
+test_two_support_anchor_fit_exact_for_w5_and_w6 (research.NeuralMoments.models.pcraft_ufno.test_faircut_m3.W6FairCutM3Tests.test_two_support_anchor_fit_exact_for_w5_and_w6) ... ok
+test_voxel_to_w5_adapter_is_label_and_family_blind (research.NeuralMoments.models.pcraft_ufno.test_faircut_m3.W6FairCutM3Tests.test_voxel_to_w5_adapter_is_label_and_family_blind) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 1.688s
+
+OK

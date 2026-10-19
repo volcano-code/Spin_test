@@ -1,0 +1,2155 @@
+{
+  "W5_input_feature_equivalence": false,
+  "aggregates": {
+    "deeponet": {
+      "moment_and_jacobian": {
+        "J_mae": {
+          "mean": 0.022554907326896984,
+          "per_seed": {
+            "19": 0.021757822483778,
+            "23": 0.022491222247481346,
+            "29": 0.02341567724943161
+          },
+          "sample_sd": 0.0008307601627456802
+        },
+        "directional_mae": {
+          "mean": 0.01619594171643257,
+          "per_seed": {
+            "19": 0.013148194178938866,
+            "23": 0.018308866769075394,
+            "29": 0.017130764201283455
+          },
+          "sample_sd": 0.0027043585569010075
+        },
+        "predicted_Jq_asymmetry_max": {
+          "mean": 0.06897808238863945,
+          "per_seed": {
+            "19": 0.08340764790773392,
+            "23": 0.09020683914422989,
+            "29": 0.033319760113954544
+          },
+          "sample_sd": 0.03106757491262519
+        },
+        "projective_radial_Jc_c_max": {
+          "mean": 0.05787200232346853,
+          "per_seed": {
+            "19": 0.04822050780057907,
+            "23": 0.07701873034238815,
+            "29": 0.048376768827438354
+          },
+          "sample_sd": 0.01658173693404856
+        },
+        "r_mae": {
+          "mean": 0.0696106677254041,
+          "per_seed": {
+            "19": 0.07481053471565247,
+            "23": 0.06737982481718063,
+            "29": 0.06664164364337921
+          },
+          "sample_sd": 0.00451831720871218
+        },
+        "r_w0_normalized_component_mae": {
+          "mean": 0.0056255341817935305,
+          "per_seed": {
+            "19": 0.00649808207526803,
+            "23": 0.005545660853385925,
+            "29": 0.004832859616726637
+          },
+          "sample_sd": 0.0008354796649535179
+        }
+      },
+      "moment_only": {
+        "J_mae": {
+          "mean": 0.024157327289382618,
+          "per_seed": {
+            "19": 0.023859485983848572,
+            "23": 0.02362426184117794,
+            "29": 0.024988234043121338
+          },
+          "sample_sd": 0.0007291345036275874
+        },
+        "directional_mae": {
+          "mean": 0.017162421718239784,
+          "per_seed": {
+            "19": 0.013807332143187523,
+            "23": 0.018709132447838783,
+            "29": 0.018970800563693047
+          },
+          "sample_sd": 0.002908536933439552
+        },
+        "predicted_Jq_asymmetry_max": {
+          "mean": 0.06223656050860882,
+          "per_seed": {
+            "19": 0.08490995317697525,
+            "23": 0.07517606019973755,
+            "29": 0.026623668149113655
+          },
+          "sample_sd": 0.03122332052776932
+        },
+        "projective_radial_Jc_c_max": {
+          "mean": 0.045364423344532646,
+          "per_seed": {
+            "19": 0.04632112383842468,
+            "23": 0.05931383743882179,
+            "29": 0.03045830875635147
+          },
+          "sample_sd": 0.014451534200993222
+        },
+        "r_mae": {
+          "mean": 0.06952909628550212,
+          "per_seed": {
+            "19": 0.07490482926368713,
+            "23": 0.06659442186355591,
+            "29": 0.0670880377292633
+          },
+          "sample_sd": 0.0046620588740683006
+        },
+        "r_w0_normalized_component_mae": {
+          "mean": 0.005613246001303196,
+          "per_seed": {
+            "19": 0.0064911930821835995,
+            "23": 0.005467941053211689,
+            "29": 0.004880603868514299
+          },
+          "sample_sd": 0.0008150672056658152
+        }
+      }
+    },
+    "geometry_mlp": {
+      "moment_and_jacobian": {
+        "J_mae": {
+          "mean": 0.023975610733032227,
+          "per_seed": {
+            "19": 0.025375863537192345,
+            "23": 0.022348329424858093,
+            "29": 0.024202639237046242
+          },
+          "sample_sd": 0.0015264819542212143
+        },
+        "directional_mae": {
+          "mean": 0.014757577950755755,
+          "per_seed": {
+            "19": 0.01369389332830906,
+            "23": 0.014309568330645561,
+            "29": 0.016269272193312645
+          },
+          "sample_sd": 0.001344871198055877
+        },
+        "predicted_Jq_asymmetry_max": {
+          "mean": 0.15506625175476074,
+          "per_seed": {
+            "19": 0.21643772721290588,
+            "23": 0.12991271913051605,
+            "29": 0.11884830892086029
+          },
+          "sample_sd": 0.05343639951619277
+        },
+        "projective_radial_Jc_c_max": {
+          "mean": 0.2694731851418813,
+          "per_seed": {
+            "19": 0.24205133318901062,
+            "23": 0.27156996726989746,
+            "29": 0.29479825496673584
+          },
+          "sample_sd": 0.026435900036231825
+        },
+        "r_mae": {
+          "mean": 0.055174753069877625,
+          "per_seed": {
+            "19": 0.05733112245798111,
+            "23": 0.06865592300891876,
+            "29": 0.039537213742733
+          },
+          "sample_sd": 0.014678632566953417
+        },
+        "r_w0_normalized_component_mae": {
+          "mean": 0.004380536420891683,
+          "per_seed": {
+            "19": 0.004426948726177216,
+            "23": 0.005435744300484657,
+            "29": 0.003278916236013174
+          },
+          "sample_sd": 0.0010791628243617315
+        }
+      },
+      "moment_only": {
+        "J_mae": {
+          "mean": 0.036850664764642715,
+          "per_seed": {
+            "19": 0.037658244371414185,
+            "23": 0.033857207745313644,
+            "29": 0.03903654217720032
+          },
+          "sample_sd": 0.002682445694750703
+        },
+        "directional_mae": {
+          "mean": 0.024002936979134876,
+          "per_seed": {
+            "19": 0.02031683176755905,
+            "23": 0.02675495110452175,
+            "29": 0.02493702806532383
+          },
+          "sample_sd": 0.0033191474458385394
+        },
+        "predicted_Jq_asymmetry_max": {
+          "mean": 0.18182498216629028,
+          "per_seed": {
+            "19": 0.22986875474452972,
+            "23": 0.1680046021938324,
+            "29": 0.14760158956050873
+          },
+          "sample_sd": 0.04283951206294354
+        },
+        "projective_radial_Jc_c_max": {
+          "mean": 0.22900454699993134,
+          "per_seed": {
+            "19": 0.22854360938072205,
+            "23": 0.23566551506519318,
+            "29": 0.22280451655387878
+          },
+          "sample_sd": 0.006442877330324511
+        },
+        "r_mae": {
+          "mean": 0.05596979707479477,
+          "per_seed": {
+            "19": 0.05935458838939667,
+            "23": 0.06516826897859573,
+            "29": 0.04338653385639191
+          },
+          "sample_sd": 0.011278457581425542
+        },
+        "r_w0_normalized_component_mae": {
+          "mean": 0.00447941889675955,
+          "per_seed": {
+            "19": 0.004608072806149721,
+            "23": 0.005183990113437176,
+            "29": 0.0036461937706917524
+          },
+          "sample_sd": 0.0007769287414179828
+        }
+      }
+    },
+    "ufno": {
+      "moment_and_jacobian": {
+        "J_mae": {
+          "mean": 0.023403071487943333,
+          "per_seed": {
+            "19": 0.02329234778881073,
+            "23": 0.020943010225892067,
+            "29": 0.025973856449127197
+          },
+          "sample_sd": 0.0025172501333045943
+        },
+        "directional_mae": {
+          "mean": 0.015772276868422825,
+          "per_seed": {
+            "19": 0.014742097817361355,
+            "23": 0.01233834121376276,
+            "29": 0.020236391574144363
+          },
+          "sample_sd": 0.00404854931200244
+        },
+        "predicted_Jq_asymmetry_max": {
+          "mean": 0.06876289596160252,
+          "per_seed": {
+            "19": 0.05330143868923187,
+            "23": 0.06162847578525543,
+            "29": 0.09135877341032028
+          },
+          "sample_sd": 0.020006627525841075
+        },
+        "projective_radial_Jc_c_max": {
+          "mean": 1.202958325544993e-08,
+          "per_seed": {
+            "19": 9.313225746154785e-09,
+            "23": 1.210719347000122e-08,
+            "29": 1.4668330550193787e-08
+          },
+          "sample_sd": 2.6783958584593913e-09
+        },
+        "r_mae": {
+          "mean": 0.0776498094201088,
+          "per_seed": {
+            "19": 0.06681874394416809,
+            "23": 0.09267930686473846,
+            "29": 0.07345137745141983
+          },
+          "sample_sd": 0.01343176466027368
+        },
+        "r_w0_normalized_component_mae": {
+          "mean": 0.006432552666713794,
+          "per_seed": {
+            "19": 0.005711485166102648,
+            "23": 0.007560926489531994,
+            "29": 0.006025246344506741
+          },
+          "sample_sd": 0.0009897131565683058
+        }
+      },
+      "moment_only": {
+        "J_mae": {
+          "mean": 0.025619802996516228,
+          "per_seed": {
+            "19": 0.02542475424706936,
+            "23": 0.023495284840464592,
+            "29": 0.027939369902014732
+          },
+          "sample_sd": 0.002228453728388559
+        },
+        "directional_mae": {
+          "mean": 0.02100474387407303,
+          "per_seed": {
+            "19": 0.019163789227604866,
+            "23": 0.0188808161765337,
+            "29": 0.02496962621808052
+          },
+          "sample_sd": 0.0034366026011563933
+        },
+        "predicted_Jq_asymmetry_max": {
+          "mean": 0.06112637743353844,
+          "per_seed": {
+            "19": 0.03771303966641426,
+            "23": 0.06660861521959305,
+            "29": 0.079057477414608
+          },
+          "sample_sd": 0.02121041799530836
+        },
+        "projective_radial_Jc_c_max": {
+          "mean": 1.2766880293687185e-08,
+          "per_seed": {
+            "19": 1.3969838619232178e-08,
+            "23": 1.210719347000122e-08,
+            "29": 1.2223608791828156e-08
+          },
+          "sample_sd": 1.0434173093913708e-09
+        },
+        "r_mae": {
+          "mean": 0.07677989701430003,
+          "per_seed": {
+            "19": 0.06634645164012909,
+            "23": 0.0902579054236412,
+            "29": 0.07373533397912979
+          },
+          "sample_sd": 0.01224301550136251
+        },
+        "r_w0_normalized_component_mae": {
+          "mean": 0.006362988303105037,
+          "per_seed": {
+            "19": 0.005689241923391819,
+            "23": 0.007361145224422216,
+            "29": 0.006038577761501074
+          },
+          "sample_sd": 0.0008818995473561131
+        }
+      }
+    }
+  },
+  "experimental_scope": "analytic physical-cut labels from the same voxel source; W5 uses lossy 9D fixed summary",
+  "independent_native_teacher_runs": 0,
+  "parameter_counts": {
+    "deeponet": 13674,
+    "geometry_mlp": 13482,
+    "ufno": 13982
+  },
+  "runs": [
+    {
+      "W2_real_teacher_samples_in_manifest": 0,
+      "W5_feature_policy": "deterministic lossy voxel-derived summary9; no learnable parameters",
+      "W5_source_blobs": {
+        "deeponet_model": "7aa363769c0baf9f843d50e268164e761b566977",
+        "geometry_mlp_model": "85db98ec60926a653270020f05294a7347221dcb",
+        "interface": "9d776e5c324140899f03296ee96dbfad602f8836"
+      },
+      "adaptation_geometry_sha256": "c13310e6fa54fe391ffacd717f5736556f8d44b859bb646e2f36f1bbde661673",
+      "analytic_training_queries": 80,
+      "baseline_W5_head": "7054cf6624eeb85f8ba06093090127bdb8016dc4",
+      "config": {
+        "batch_size": 8,
+        "gradient_loss_weight": 0.5,
+        "grid_size": 8,
+        "lr": 0.003,
+        "repeats": 5,
+        "seed": 19,
+        "steps": 12
+      },
+      "contract_W0_head": "bfedacd3a1f4e10d30f1258331260380739d243c",
+      "decision_geometry_sha256": "f2f1cd94d4776e12f4a3704d9162086119cd96c47879a2f4ac49cfebe4147cf8",
+      "device": "cpu",
+      "feature_equivalence": false,
+      "heldout_dataset_sha256": "5db2ede650ade31c45602647e6296865a41629269e65eb7b5228e0585b51400b",
+      "heldout_queries": 40,
+      "model_parameter_real_dof": {
+        "deeponet": 13674,
+        "geometry_mlp": 13482,
+        "ufno": 13982
+      },
+      "model_results": {
+        "deeponet": {
+          "moment_and_jacobian": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.07288094609975815,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.04217442870140076,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.006192246917635202,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.12549126148223877,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.7189973592758179,
+              "dr_dh_relative_l2_error": 0.9138771295547485,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.028218597173690796,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.021757822483778,
+              "J_relative_l2": 0.9216490387916565,
+              "directional_mae": 0.013148194178938866,
+              "predicted_Jq_asymmetry_max": 0.08340764790773392,
+              "projective_radial_Jc_c_max": 0.04822050780057907,
+              "r_mae": 0.07481053471565247,
+              "r_relative_l2": 1.0742980241775513,
+              "r_w0_normalized_component_mae": 0.00649808207526803
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 0.6765160001123149,
+                "median_ms": 0.6417939998755173,
+                "min_ms": 0.6188499999097985,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.38434700013567635,
+                "median_ms": 0.062253999885797384,
+                "min_ms": 0.03720599988810136,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 0.2966350000406237,
+                "median_ms": 0.23221900005410134,
+                "min_ms": 0.22622999995292048,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 338704,
+              "encode_only": {
+                "max_ms": 0.09454199994252122,
+                "median_ms": 0.033018999829437234,
+                "min_ms": 0.031257000046025496,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.23559400005979114,
+                "median_ms": 0.1311869998517068,
+                "min_ms": 0.12966399981451104,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": 0.023077942430973053,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.03408823500012659,
+              "derivative_enhanced": true,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": true,
+              "r_loss": 0.023844260722398758,
+              "steps": 12
+            }
+          },
+          "moment_only": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.07324283570051193,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.04382958635687828,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.0062667252495884895,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.13289880752563477,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.6647536754608154,
+              "dr_dh_relative_l2_error": 0.934783935546875,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.02081105299293995,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.023859485983848572,
+              "J_relative_l2": 0.9509778618812561,
+              "directional_mae": 0.013807332143187523,
+              "predicted_Jq_asymmetry_max": 0.08490995317697525,
+              "projective_radial_Jc_c_max": 0.04632112383842468,
+              "r_mae": 0.07490482926368713,
+              "r_relative_l2": 1.0755295753479004,
+              "r_w0_normalized_component_mae": 0.0064911930821835995
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 1.0210739999365614,
+                "median_ms": 0.6597310000415746,
+                "min_ms": 0.6210930000634107,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.03698499995152815,
+                "median_ms": 0.036455000099522294,
+                "min_ms": 0.03602500009947107,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 0.2828649999173649,
+                "median_ms": 0.23798799998075992,
+                "min_ms": 0.22463799996330636,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 338704,
+              "encode_only": {
+                "max_ms": 0.031247000151779503,
+                "median_ms": 0.030846000072415336,
+                "min_ms": 0.030455000114670838,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.5034659998273128,
+                "median_ms": 0.2010420000715385,
+                "min_ms": 0.15088600002854946,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": null,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.017903081999975257,
+              "derivative_enhanced": false,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": false,
+              "r_loss": 0.024177048355340958,
+              "steps": 12
+            }
+          }
+        },
+        "geometry_mlp": {
+          "moment_and_jacobian": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.041758038103580475,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.04725903272628784,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.005725246854126453,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.09846915304660797,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.9126102924346924,
+              "dr_dh_relative_l2_error": 0.7486626505851746,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.05524070933461189,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.025375863537192345,
+              "J_relative_l2": 0.790042519569397,
+              "directional_mae": 0.01369389332830906,
+              "predicted_Jq_asymmetry_max": 0.21643772721290588,
+              "projective_radial_Jc_c_max": 0.24205133318901062,
+              "r_mae": 0.05733112245798111,
+              "r_relative_l2": 0.675376832485199,
+              "r_w0_normalized_component_mae": 0.004426948726177216
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 0.7096959998307284,
+                "median_ms": 0.5589100001088809,
+                "min_ms": 0.5204910000884411,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.055483999858552124,
+                "median_ms": 0.023655000177313923,
+                "min_ms": 0.023005000002740417,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 0.23128700013330672,
+                "median_ms": 0.19675600015034433,
+                "min_ms": 0.19383099993319775,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 338704,
+              "encode_only": {
+                "max_ms": 0.025688000050649862,
+                "median_ms": 0.020301000176914386,
+                "min_ms": 0.019999999949504854,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.13629499994749494,
+                "median_ms": 0.12979500002074928,
+                "min_ms": 0.12686000013673038,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": 0.01981496810913086,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.02850533999981053,
+              "derivative_enhanced": true,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": true,
+              "r_loss": 0.021172434091567993,
+              "steps": 12
+            }
+          },
+          "moment_only": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.045569635927677155,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.05121482536196709,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.005944651551544666,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.11745309829711914,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.8281399607658386,
+              "dr_dh_relative_l2_error": 0.8451990485191345,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.036256760358810425,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.037658244371414185,
+              "J_relative_l2": 0.9576674699783325,
+              "directional_mae": 0.02031683176755905,
+              "predicted_Jq_asymmetry_max": 0.22986875474452972,
+              "projective_radial_Jc_c_max": 0.22854360938072205,
+              "r_mae": 0.05935458838939667,
+              "r_relative_l2": 0.7196931838989258,
+              "r_w0_normalized_component_mae": 0.004608072806149721
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 0.6312479999905918,
+                "median_ms": 0.6187989999943966,
+                "min_ms": 0.5207829999562819,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.023325000029217335,
+                "median_ms": 0.023234999844135018,
+                "min_ms": 0.022933999844099162,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 0.22619999981543515,
+                "median_ms": 0.19757699988076638,
+                "min_ms": 0.19371100006537745,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 338704,
+              "encode_only": {
+                "max_ms": 0.02195299998675182,
+                "median_ms": 0.021010999944337527,
+                "min_ms": 0.020221000113451737,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.1592190001247218,
+                "median_ms": 0.132499000073949,
+                "min_ms": 0.12800200011042762,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": null,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.013945277999937389,
+              "derivative_enhanced": false,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": false,
+              "r_loss": 0.022382095456123352,
+              "steps": 12
+            }
+          }
+        },
+        "ufno": {
+          "moment_and_jacobian": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.052523642778396606,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.05025721341371536,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.005708404816687107,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.13983643054962158,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.7231706380844116,
+              "dr_dh_relative_l2_error": 0.9497069716453552,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.013873428106307983,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.02329234778881073,
+              "J_relative_l2": 0.95123291015625,
+              "directional_mae": 0.014742097817361355,
+              "predicted_Jq_asymmetry_max": 0.05330143868923187,
+              "projective_radial_Jc_c_max": 9.313225746154785e-09,
+              "r_mae": 0.06681874394416809,
+              "r_relative_l2": 0.9355047345161438,
+              "r_w0_normalized_component_mae": 0.005711485166102648
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 1.6953770000327495,
+                "median_ms": 0.8112289999644418,
+                "min_ms": 0.7712189999438124,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.10190299985879392,
+                "median_ms": 0.06684000004497648,
+                "min_ms": 0.06344500002342102,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 3.057173000115654,
+                "median_ms": 2.2664740001800965,
+                "min_ms": 2.0844010000473645,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 338704,
+              "encode_only": {
+                "max_ms": 2.394676999983858,
+                "median_ms": 2.101927000012438,
+                "min_ms": 2.0178009999654023,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.0005109998255647952,
+                "median_ms": 0.0001500000053056283,
+                "min_ms": 0.0001110001903725788,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": 0.024036558344960213,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.18111694300000636,
+              "derivative_enhanced": true,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": true,
+              "r_loss": 0.022660313174128532,
+              "steps": 12
+            }
+          },
+          "moment_only": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.05257261544466019,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.0510961189866066,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.005683860741555691,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.14471758902072906,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.5838244557380676,
+              "dr_dh_relative_l2_error": 0.9664610624313354,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.008992263115942478,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.02542475424706936,
+              "J_relative_l2": 0.9788302183151245,
+              "directional_mae": 0.019163789227604866,
+              "predicted_Jq_asymmetry_max": 0.03771303966641426,
+              "projective_radial_Jc_c_max": 1.3969838619232178e-08,
+              "r_mae": 0.06634645164012909,
+              "r_relative_l2": 0.9350020289421082,
+              "r_w0_normalized_component_mae": 0.005689241923391819
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 1.0997720000887057,
+                "median_ms": 0.8244680000188964,
+                "min_ms": 0.7817240000349557,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.06931400002940791,
+                "median_ms": 0.06296400010796788,
+                "min_ms": 0.06140300001789001,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 2.5899709999066545,
+                "median_ms": 2.17706100011128,
+                "min_ms": 2.0322729999406874,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 335564,
+              "encode_only": {
+                "max_ms": 2.370340999959808,
+                "median_ms": 2.1147570000721316,
+                "min_ms": 1.9144660000165459,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.0011709998943842947,
+                "median_ms": 0.0002899998889915878,
+                "min_ms": 0.00012999998943996616,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": null,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.16955392399995617,
+              "derivative_enhanced": false,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": false,
+              "r_loss": 0.022834140807390213,
+              "steps": 12
+            }
+          }
+        }
+      },
+      "python_version": "3.13.5",
+      "raw_geometry_source_identical": true,
+      "scope": "analytic vertical cuts; no native Cherchi, CGAL, CAD or W2 training",
+      "seed": 19,
+      "shared_batch_schedule_sha256": "85e8182e6be448d9d2cd0122bc53b446c41b58d57de2116bb058a105d45fd30b",
+      "shared_geometry_source": "same 4-channel sampled voxel tensors, no primitive one-hot or exact axes to W5",
+      "source_teacher": "ANALYTIC_CONTINUUM_P0_NOT_W2_CHERCHI",
+      "status": "SAME_NATIVE_C_ANALYTIC_CONTINUUM_P0_M3_ONLY",
+      "teacher_W2_head": "ab93ccd6b894978311773b0f8a8b6b9c40d696ab",
+      "test_families": [
+        "ellipsoid"
+      ],
+      "test_geometry_count": 20,
+      "torch_version": "2.10.0+cpu",
+      "train_dataset_sha256": "7b65ebbb3e5d32e82ff7ee23a1f88978fa4100902b67f63e16b0fdc2df54e087",
+      "train_families": [
+        "box",
+        "sphere"
+      ],
+      "train_geometry_count": 40,
+      "trained_pino_or_Cherchi_weights": false
+    },
+    {
+      "W2_real_teacher_samples_in_manifest": 0,
+      "W5_feature_policy": "deterministic lossy voxel-derived summary9; no learnable parameters",
+      "W5_source_blobs": {
+        "deeponet_model": "7aa363769c0baf9f843d50e268164e761b566977",
+        "geometry_mlp_model": "85db98ec60926a653270020f05294a7347221dcb",
+        "interface": "9d776e5c324140899f03296ee96dbfad602f8836"
+      },
+      "adaptation_geometry_sha256": "c13310e6fa54fe391ffacd717f5736556f8d44b859bb646e2f36f1bbde661673",
+      "analytic_training_queries": 80,
+      "baseline_W5_head": "7054cf6624eeb85f8ba06093090127bdb8016dc4",
+      "config": {
+        "batch_size": 8,
+        "gradient_loss_weight": 0.5,
+        "grid_size": 8,
+        "lr": 0.003,
+        "repeats": 5,
+        "seed": 23,
+        "steps": 12
+      },
+      "contract_W0_head": "bfedacd3a1f4e10d30f1258331260380739d243c",
+      "decision_geometry_sha256": "f2f1cd94d4776e12f4a3704d9162086119cd96c47879a2f4ac49cfebe4147cf8",
+      "device": "cpu",
+      "feature_equivalence": false,
+      "heldout_dataset_sha256": "fd16cc24093f9593ea592a3744f75be656b4d09b13bfd29314b2a0fda94ffb1d",
+      "heldout_queries": 40,
+      "model_parameter_real_dof": {
+        "deeponet": 13674,
+        "geometry_mlp": 13482,
+        "ufno": 13982
+      },
+      "model_results": {
+        "deeponet": {
+          "moment_and_jacobian": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.055452894419431686,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.02176322415471077,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.0028962530195713043,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.1390048861503601,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.8696521520614624,
+              "dr_dh_relative_l2_error": 0.921438455581665,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.014704971574246883,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.022491222247481346,
+              "J_relative_l2": 0.9268126487731934,
+              "directional_mae": 0.018308866769075394,
+              "predicted_Jq_asymmetry_max": 0.09020683914422989,
+              "projective_radial_Jc_c_max": 0.07701873034238815,
+              "r_mae": 0.06737982481718063,
+              "r_relative_l2": 1.0463228225708008,
+              "r_w0_normalized_component_mae": 0.005545660853385925
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 0.7735619999493792,
+                "median_ms": 0.6572269999196578,
+                "min_ms": 0.6312379998689721,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.036994999845774146,
+                "median_ms": 0.03665500003080524,
+                "min_ms": 0.036423999972612364,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 0.2618439998514077,
+                "median_ms": 0.23075700005392719,
+                "min_ms": 0.22613999999521184,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 340208,
+              "encode_only": {
+                "max_ms": 0.03208799989806721,
+                "median_ms": 0.031147000072451192,
+                "min_ms": 0.031036999871503212,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.16900399987207493,
+                "median_ms": 0.13117800017425907,
+                "min_ms": 0.12913399996250519,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": 0.02430359274148941,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.02917355299996416,
+              "derivative_enhanced": true,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": true,
+              "r_loss": 0.024245446547865868,
+              "steps": 12
+            }
+          },
+          "moment_only": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.056243933737277985,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.022194258868694305,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.0029443148523569107,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.14586390554904938,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.8534281253814697,
+              "dr_dh_relative_l2_error": 0.9535165429115295,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.00784594938158989,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.02362426184117794,
+              "J_relative_l2": 0.9648351669311523,
+              "directional_mae": 0.018709132447838783,
+              "predicted_Jq_asymmetry_max": 0.07517606019973755,
+              "projective_radial_Jc_c_max": 0.05931383743882179,
+              "r_mae": 0.06659442186355591,
+              "r_relative_l2": 1.0372886657714844,
+              "r_w0_normalized_component_mae": 0.005467941053211689
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 0.6473329999607813,
+                "median_ms": 0.6443279999075457,
+                "min_ms": 0.6078229998820461,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.04353499980425113,
+                "median_ms": 0.03746599986698129,
+                "min_ms": 0.036614999999073916,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 0.26977600009558955,
+                "median_ms": 0.22540800000570016,
+                "min_ms": 0.22315499995784194,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 340208,
+              "encode_only": {
+                "max_ms": 0.03178799988745595,
+                "median_ms": 0.03095600004598964,
+                "min_ms": 0.030526000045938417,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.17978999994738842,
+                "median_ms": 0.13020599999435944,
+                "min_ms": 0.1276720001897047,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": null,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.014929136000091603,
+              "derivative_enhanced": false,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": false,
+              "r_loss": 0.024977846071124077,
+              "steps": 12
+            }
+          }
+        },
+        "geometry_mlp": {
+          "moment_and_jacobian": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.04770226776599884,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.017513733357191086,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.002678564051166177,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.041413553059101105,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.9304105639457703,
+              "dr_dh_relative_l2_error": 0.594985842704773,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.11229630559682846,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.022348329424858093,
+              "J_relative_l2": 0.6411978602409363,
+              "directional_mae": 0.014309568330645561,
+              "predicted_Jq_asymmetry_max": 0.12991271913051605,
+              "projective_radial_Jc_c_max": 0.27156996726989746,
+              "r_mae": 0.06865592300891876,
+              "r_relative_l2": 1.0049448013305664,
+              "r_w0_normalized_component_mae": 0.005435744300484657
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 0.9762970000792848,
+                "median_ms": 0.5593299999873125,
+                "min_ms": 0.5384690000482806,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.022974000103204162,
+                "median_ms": 0.022793999960413203,
+                "min_ms": 0.022694000108458567,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 0.23797700009708933,
+                "median_ms": 0.1972170000499318,
+                "min_ms": 0.19532299984348356,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 340208,
+              "encode_only": {
+                "max_ms": 0.0211320000289561,
+                "median_ms": 0.02031100007116038,
+                "min_ms": 0.019669000039357343,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.14886400003888411,
+                "median_ms": 0.13334999994185637,
+                "min_ms": 0.13058600006843335,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": 0.01747329905629158,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.025465191999956005,
+              "derivative_enhanced": true,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": true,
+              "r_loss": 0.017668837681412697,
+              "steps": 12
+            }
+          },
+          "moment_only": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.044903311878442764,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.01874433644115925,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.0027250610291957855,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.08809713274240494,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.9091095924377441,
+              "dr_dh_relative_l2_error": 0.7321118712425232,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.06561272591352463,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.033857207745313644,
+              "J_relative_l2": 0.8320859670639038,
+              "directional_mae": 0.02675495110452175,
+              "predicted_Jq_asymmetry_max": 0.1680046021938324,
+              "projective_radial_Jc_c_max": 0.23566551506519318,
+              "r_mae": 0.06516826897859573,
+              "r_relative_l2": 0.9804219007492065,
+              "r_w0_normalized_component_mae": 0.005183990113437176
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 1.6652520000661752,
+                "median_ms": 0.5810329998894304,
+                "min_ms": 0.5264910000732925,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.022833999992144527,
+                "median_ms": 0.02276399982292787,
+                "min_ms": 0.02243399990220496,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 0.24699100003999774,
+                "median_ms": 0.19591399995988468,
+                "min_ms": 0.1915269999699376,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 340208,
+              "encode_only": {
+                "max_ms": 0.020260999917809386,
+                "median_ms": 0.020100000028833165,
+                "min_ms": 0.019629999997050618,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.2249479998681636,
+                "median_ms": 0.12909399993077386,
+                "min_ms": 0.12716099990939256,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": null,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.011879705999945145,
+              "derivative_enhanced": false,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": false,
+              "r_loss": 0.02016875334084034,
+              "steps": 12
+            }
+          }
+        },
+        "ufno": {
+          "moment_and_jacobian": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.05837065726518631,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.022406047210097313,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.0026747100055217743,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.13552147150039673,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.8612930774688721,
+              "dr_dh_relative_l2_error": 0.9446155428886414,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.01818837970495224,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.020943010225892067,
+              "J_relative_l2": 0.9334702491760254,
+              "directional_mae": 0.01233834121376276,
+              "predicted_Jq_asymmetry_max": 0.06162847578525543,
+              "projective_radial_Jc_c_max": 1.210719347000122e-08,
+              "r_mae": 0.09267930686473846,
+              "r_relative_l2": 1.4047530889511108,
+              "r_w0_normalized_component_mae": 0.007560926489531994
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 1.2612049999916053,
+                "median_ms": 0.771359000054872,
+                "min_ms": 0.7452499999089923,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.06499699998130382,
+                "median_ms": 0.06302499991761579,
+                "min_ms": 0.06193300009726954,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 2.571591999867451,
+                "median_ms": 2.183268999942811,
+                "min_ms": 2.050700000154393,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 340208,
+              "encode_only": {
+                "max_ms": 2.286995000076786,
+                "median_ms": 2.1014159999594995,
+                "min_ms": 1.9043510001210961,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.0004099999841855606,
+                "median_ms": 0.00021999994714860804,
+                "min_ms": 0.0001309999788645655,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": 0.024346154183149338,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.15688018600008036,
+              "derivative_enhanced": true,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": true,
+              "r_loss": 0.022451981902122498,
+              "steps": 12
+            }
+          },
+          "moment_only": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.05579357221722603,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.02290773019194603,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.0026807566173374653,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.14276981353759766,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.7489818334579468,
+              "dr_dh_relative_l2_error": 0.9654236435890198,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.010940046049654484,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.023495284840464592,
+              "J_relative_l2": 0.9663198590278625,
+              "directional_mae": 0.0188808161765337,
+              "predicted_Jq_asymmetry_max": 0.06660861521959305,
+              "projective_radial_Jc_c_max": 1.210719347000122e-08,
+              "r_mae": 0.0902579054236412,
+              "r_relative_l2": 1.3768121004104614,
+              "r_w0_normalized_component_mae": 0.007361145224422216
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 1.293022000027122,
+                "median_ms": 0.7962760000737035,
+                "min_ms": 0.7572780000373314,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.0651670000024751,
+                "median_ms": 0.06353499998112966,
+                "min_ms": 0.06023099990670744,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 3.4235529999477876,
+                "median_ms": 2.264422000052946,
+                "min_ms": 2.052713000011863,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 339244,
+              "encode_only": {
+                "max_ms": 2.4720139999772073,
+                "median_ms": 1.9497789999149973,
+                "min_ms": 1.8792430000758031,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.0006210000265127746,
+                "median_ms": 0.0002100000529026147,
+                "min_ms": 0.00012000009519397281,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": null,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.13788816700002826,
+              "derivative_enhanced": false,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": false,
+              "r_loss": 0.02291014976799488,
+              "steps": 12
+            }
+          }
+        }
+      },
+      "python_version": "3.13.5",
+      "raw_geometry_source_identical": true,
+      "scope": "analytic vertical cuts; no native Cherchi, CGAL, CAD or W2 training",
+      "seed": 23,
+      "shared_batch_schedule_sha256": "6d2bbdc1361c6f6ff1a1f7a89f3ee8d46889347697610739b7b484a79c4dcf45",
+      "shared_geometry_source": "same 4-channel sampled voxel tensors, no primitive one-hot or exact axes to W5",
+      "source_teacher": "ANALYTIC_CONTINUUM_P0_NOT_W2_CHERCHI",
+      "status": "SAME_NATIVE_C_ANALYTIC_CONTINUUM_P0_M3_ONLY",
+      "teacher_W2_head": "ab93ccd6b894978311773b0f8a8b6b9c40d696ab",
+      "test_families": [
+        "ellipsoid"
+      ],
+      "test_geometry_count": 20,
+      "torch_version": "2.10.0+cpu",
+      "train_dataset_sha256": "d36d707cbf7ecdd0089f66fea3f8784a200830f09a2e0b5a60790ce6028562e7",
+      "train_families": [
+        "box",
+        "sphere"
+      ],
+      "train_geometry_count": 40,
+      "trained_pino_or_Cherchi_weights": false
+    },
+    {
+      "W2_real_teacher_samples_in_manifest": 0,
+      "W5_feature_policy": "deterministic lossy voxel-derived summary9; no learnable parameters",
+      "W5_source_blobs": {
+        "deeponet_model": "7aa363769c0baf9f843d50e268164e761b566977",
+        "geometry_mlp_model": "85db98ec60926a653270020f05294a7347221dcb",
+        "interface": "9d776e5c324140899f03296ee96dbfad602f8836"
+      },
+      "adaptation_geometry_sha256": "c13310e6fa54fe391ffacd717f5736556f8d44b859bb646e2f36f1bbde661673",
+      "analytic_training_queries": 80,
+      "baseline_W5_head": "7054cf6624eeb85f8ba06093090127bdb8016dc4",
+      "config": {
+        "batch_size": 8,
+        "gradient_loss_weight": 0.5,
+        "grid_size": 8,
+        "lr": 0.003,
+        "repeats": 5,
+        "seed": 29,
+        "steps": 12
+      },
+      "contract_W0_head": "bfedacd3a1f4e10d30f1258331260380739d243c",
+      "decision_geometry_sha256": "f2f1cd94d4776e12f4a3704d9162086119cd96c47879a2f4ac49cfebe4147cf8",
+      "device": "cpu",
+      "feature_equivalence": false,
+      "heldout_dataset_sha256": "008c850489155ef281ade007439bebd3816efa006dfd3f86c5809718710781d7",
+      "heldout_queries": 40,
+      "model_parameter_real_dof": {
+        "deeponet": 13674,
+        "geometry_mlp": 13482,
+        "ufno": 13982
+      },
+      "model_results": {
+        "deeponet": {
+          "moment_and_jacobian": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.05729978531599045,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.04777015373110771,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.003929092548787594,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.13102394342422485,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.8651653528213501,
+              "dr_dh_relative_l2_error": 0.906650185585022,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.02268592081964016,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.02341567724943161,
+              "J_relative_l2": 0.9169928431510925,
+              "directional_mae": 0.017130764201283455,
+              "predicted_Jq_asymmetry_max": 0.033319760113954544,
+              "projective_radial_Jc_c_max": 0.048376768827438354,
+              "r_mae": 0.06664164364337921,
+              "r_relative_l2": 0.6978317499160767,
+              "r_w0_normalized_component_mae": 0.004832859616726637
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 0.8195110001452122,
+                "median_ms": 0.6974880000143457,
+                "min_ms": 0.6264510000164591,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.03828700005215069,
+                "median_ms": 0.03723600002558669,
+                "min_ms": 0.0362939999831724,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 0.3038360000573448,
+                "median_ms": 0.22921499999029038,
+                "min_ms": 0.22260400010054582,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 340208,
+              "encode_only": {
+                "max_ms": 0.0324090001413424,
+                "median_ms": 0.031107000040719868,
+                "min_ms": 0.030846000072415336,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.13386099999479484,
+                "median_ms": 0.12875400011580496,
+                "min_ms": 0.1279630000681209,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": 0.023595169186592102,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.030230751000090095,
+              "derivative_enhanced": true,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": true,
+              "r_loss": 0.034236639738082886,
+              "steps": 12
+            }
+          },
+          "moment_only": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.05826125666499138,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.049321483820676804,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.0039530727081000805,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.14265891909599304,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.8413785099983215,
+              "dr_dh_relative_l2_error": 0.9523704051971436,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.011050946079194546,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.024988234043121338,
+              "J_relative_l2": 0.9615904092788696,
+              "directional_mae": 0.018970800563693047,
+              "predicted_Jq_asymmetry_max": 0.026623668149113655,
+              "projective_radial_Jc_c_max": 0.03045830875635147,
+              "r_mae": 0.0670880377292633,
+              "r_relative_l2": 0.7083620429039001,
+              "r_w0_normalized_component_mae": 0.004880603868514299
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 0.7028459999673942,
+                "median_ms": 0.6458100001509592,
+                "min_ms": 0.6187300000419782,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.06891399993946834,
+                "median_ms": 0.03742700005204824,
+                "min_ms": 0.03664499990918557,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 0.3045070000098349,
+                "median_ms": 0.22999599991635478,
+                "min_ms": 0.22368600002664607,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 340208,
+              "encode_only": {
+                "max_ms": 0.03179800000907562,
+                "median_ms": 0.031206999892674503,
+                "min_ms": 0.030826000056549674,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.16910399995140324,
+                "median_ms": 0.13404199989963672,
+                "min_ms": 0.1291739999942365,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": null,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.014468323999835775,
+              "derivative_enhanced": false,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": false,
+              "r_loss": 0.03499866649508476,
+              "steps": 12
+            }
+          }
+        },
+        "geometry_mlp": {
+          "moment_and_jacobian": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.024246161803603172,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.029516145586967468,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.0036678104661405087,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.07959013432264328,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.952460527420044,
+              "dr_dh_relative_l2_error": 0.5965545177459717,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.07411972433328629,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.024202639237046242,
+              "J_relative_l2": 0.6946916580200195,
+              "directional_mae": 0.016269272193312645,
+              "predicted_Jq_asymmetry_max": 0.11884830892086029,
+              "projective_radial_Jc_c_max": 0.29479825496673584,
+              "r_mae": 0.039537213742733,
+              "r_relative_l2": 0.46885156631469727,
+              "r_w0_normalized_component_mae": 0.003278916236013174
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 1.0118300001522584,
+                "median_ms": 0.5462810001972684,
+                "min_ms": 0.5225150000569556,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.02368500008742558,
+                "median_ms": 0.023134999992180383,
+                "min_ms": 0.022964999971009092,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 0.2513970000563859,
+                "median_ms": 0.19686499990712036,
+                "min_ms": 0.19181800007572747,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 340208,
+              "encode_only": {
+                "max_ms": 0.020271000039429055,
+                "median_ms": 0.02023100000769773,
+                "min_ms": 0.02002999985961651,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.17687500007923518,
+                "median_ms": 0.13363099992602656,
+                "min_ms": 0.13151799998922797,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": 0.017341015860438347,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.02474380800003928,
+              "derivative_enhanced": true,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": true,
+              "r_loss": 0.036760617047548294,
+              "steps": 12
+            }
+          },
+          "moment_only": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.028476539999246597,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.037833429872989655,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.0036972747184336185,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.11195623874664307,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.8348894119262695,
+              "dr_dh_relative_l2_error": 0.782731831073761,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.0417536199092865,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.03903654217720032,
+              "J_relative_l2": 0.8993868827819824,
+              "directional_mae": 0.02493702806532383,
+              "predicted_Jq_asymmetry_max": 0.14760158956050873,
+              "projective_radial_Jc_c_max": 0.22280451655387878,
+              "r_mae": 0.04338653385639191,
+              "r_relative_l2": 0.5323711037635803,
+              "r_w0_normalized_component_mae": 0.0036461937706917524
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 0.9928209999543469,
+                "median_ms": 0.5510880000656471,
+                "min_ms": 0.5194599998503691,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.02328499999748601,
+                "median_ms": 0.022903999933987507,
+                "min_ms": 0.022734999902240816,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 0.2252680001220142,
+                "median_ms": 0.19808799993370485,
+                "min_ms": 0.19692499995471735,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 340208,
+              "encode_only": {
+                "max_ms": 0.026310000066587236,
+                "median_ms": 0.02037099989138369,
+                "min_ms": 0.019839999822579557,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.2069109998501517,
+                "median_ms": 0.13366099983613822,
+                "min_ms": 0.12704099981419859,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": null,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.01192349099983403,
+              "derivative_enhanced": false,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": false,
+              "r_loss": 0.039157040417194366,
+              "steps": 12
+            }
+          }
+        },
+        "ufno": {
+          "moment_and_jacobian": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.07166092097759247,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.04914109408855438,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.0038643027655780315,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.14190219342708588,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.7757574319839478,
+              "dr_dh_relative_l2_error": 0.9592815637588501,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.011807662434875965,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.025973856449127197,
+              "J_relative_l2": 0.9698037505149841,
+              "directional_mae": 0.020236391574144363,
+              "predicted_Jq_asymmetry_max": 0.09135877341032028,
+              "projective_radial_Jc_c_max": 1.4668330550193787e-08,
+              "r_mae": 0.07345137745141983,
+              "r_relative_l2": 0.8781465888023376,
+              "r_w0_normalized_component_mae": 0.006025246344506741
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 1.3217660000464093,
+                "median_ms": 0.7646889998795814,
+                "min_ms": 0.7203820000540873,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.06369599987010588,
+                "median_ms": 0.06319499993878708,
+                "min_ms": 0.062144000139596756,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 2.3140570001487504,
+                "median_ms": 2.0402249999733613,
+                "min_ms": 2.005082000096081,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 340208,
+              "encode_only": {
+                "max_ms": 1.984321000009004,
+                "median_ms": 1.952413000026354,
+                "min_ms": 1.9187220000276284,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.0005310000688041328,
+                "median_ms": 0.00021999994714860804,
+                "min_ms": 0.00012999998943996616,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": 0.024669386446475983,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.15393156599998292,
+              "derivative_enhanced": true,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": true,
+              "r_loss": 0.03660784289240837,
+              "steps": 12
+            }
+          },
+          "moment_only": {
+            "adaptation": {
+              "0": {
+                "r_mae": 0.07183900475502014,
+                "teacher_query_count": 0
+              },
+              "1": {
+                "r_mae": 0.049885399639606476,
+                "teacher_query_count": 1
+              },
+              "2": {
+                "r_mae": 0.003871829016134143,
+                "teacher_query_count": 2
+              }
+            },
+            "decision": {
+              "absolute_objective_gradient_error": 0.14775799214839935,
+              "absolute_step_error": 0.0,
+              "dr_dh_cosine": 0.5519591569900513,
+              "dr_dh_relative_l2_error": 0.9805600643157959,
+              "oracle_objective_gradient": -0.15370985865592957,
+              "oracle_step": 0.11999999731779099,
+              "oracle_step_clipped": true,
+              "predicted_objective_gradient": -0.005951870232820511,
+              "predicted_step": 0.11999999731779099,
+              "predicted_step_clipped": true,
+              "scope": "one-dimensional analytic cut GN diagnostic, not Spin production optimizer; clipped steps can hide large gradient errors",
+              "signed_true_objective_gap": 0.0,
+              "true_after_oracle_step": 0.014468049630522728,
+              "true_after_predicted_step": 0.014468049630522728,
+              "true_initial_objective": 0.03025662526488304
+            },
+            "heldout": {
+              "J_mae": 0.027939369902014732,
+              "J_relative_l2": 0.9982976913452148,
+              "directional_mae": 0.02496962621808052,
+              "predicted_Jq_asymmetry_max": 0.079057477414608,
+              "projective_radial_Jc_c_max": 1.2223608791828156e-08,
+              "r_mae": 0.07373533397912979,
+              "r_relative_l2": 0.8811535835266113,
+              "r_w0_normalized_component_mae": 0.006038577761501074
+            },
+            "performance": {
+              "cached_J10x10": {
+                "max_ms": 1.0755349999271857,
+                "median_ms": 0.749014999883002,
+                "min_ms": 0.7327410000925738,
+                "repeats": 5
+              },
+              "cached_head": {
+                "max_ms": 0.06444699988605862,
+                "median_ms": 0.06355599998641992,
+                "min_ms": 0.061932999869895866,
+                "repeats": 5
+              },
+              "cold_voxel_to_head": {
+                "max_ms": 2.36227899995356,
+                "median_ms": 2.051000999927055,
+                "min_ms": 2.000495000174851,
+                "repeats": 5
+              },
+              "cpu_process_peak_rss_kb": 340208,
+              "encode_only": {
+                "max_ms": 2.103740000165999,
+                "median_ms": 1.9520719999945868,
+                "min_ms": 1.9378609999876062,
+                "repeats": 5
+              },
+              "gpu_peak_allocated_mb": null,
+              "voxel_preprocess": {
+                "max_ms": 0.0005809999947814504,
+                "median_ms": 0.00016099988897622097,
+                "min_ms": 0.00012999998943996616,
+                "repeats": 5
+              }
+            },
+            "training": {
+              "J_loss": null,
+              "analytic_training_queries": 80,
+              "batch_size": 8,
+              "cpu_train_seconds": 0.13114153299989084,
+              "derivative_enhanced": false,
+              "gpu_hours": 0.0,
+              "lr": 0.003,
+              "oracle_J_used": false,
+              "r_loss": 0.036921024322509766,
+              "steps": 12
+            }
+          }
+        }
+      },
+      "python_version": "3.13.5",
+      "raw_geometry_source_identical": true,
+      "scope": "analytic vertical cuts; no native Cherchi, CGAL, CAD or W2 training",
+      "seed": 29,
+      "shared_batch_schedule_sha256": "a6eb019e0f5dd394b5d87013767a30b9f71267bd9a1aae50d2584ecd51e510ca",
+      "shared_geometry_source": "same 4-channel sampled voxel tensors, no primitive one-hot or exact axes to W5",
+      "source_teacher": "ANALYTIC_CONTINUUM_P0_NOT_W2_CHERCHI",
+      "status": "SAME_NATIVE_C_ANALYTIC_CONTINUUM_P0_M3_ONLY",
+      "teacher_W2_head": "ab93ccd6b894978311773b0f8a8b6b9c40d696ab",
+      "test_families": [
+        "ellipsoid"
+      ],
+      "test_geometry_count": 20,
+      "torch_version": "2.10.0+cpu",
+      "train_dataset_sha256": "25eece482d68d864064bfcc7785226785afc41307f56978f2f027ba4ac838394",
+      "train_families": [
+        "box",
+        "sphere"
+      ],
+      "train_geometry_count": 40,
+      "trained_pino_or_Cherchi_weights": false
+    }
+  ],
+  "seeds": [
+    19,
+    23,
+    29
+  ],
+  "shared_configuration": {
+    "batch_size": 8,
+    "gradient_loss_weight": 0.5,
+    "grid_size": 8,
+    "lr": 0.003,
+    "repeats": 5,
+    "steps": 12
+  },
+  "status": "ANALYTIC_P0_CUT_M3_MULTI_SEED_SMOKE_ONLY"
+}
