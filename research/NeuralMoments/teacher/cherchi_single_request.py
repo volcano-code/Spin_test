@@ -74,6 +74,7 @@ def audit_same_call_exact_boundary(evaluator, output, density, *, reference_abso
 
 
 
+
 def audit_same_call_attachment(evaluator, output, native_c):
     """Require the producer's persisted material to match *this* evaluation.
 
