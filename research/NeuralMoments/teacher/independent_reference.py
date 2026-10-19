@@ -127,3 +127,39 @@ def compare_exact_reference(measured, reference, *, rtol=1e-10, atol=1e-12):
             "maximum_normalized_error":max(e/t for e,t in zip(errors,tolerance)),
             "within_tolerance":all(e<=t for e,t in zip(errors,tolerance)),
             "rtol":rtol,"atol":atol}
+
+
+def compare_predeclared_budget(measured, reference, absolute_tolerances):
+    """Per-case ten-component error budget; no hidden global percent cutoff.
+
+    Tolerances are expressed in each moment's own normalized target-frame
+    units, so the fixture author must set and justify them *before* evaluation.
+    This numerical check alone is not material or derivative certification.
+    """
+    def ten(row, name):
+        if hasattr(row, 'tolist'):
+            row=row.tolist()
+        if not isinstance(row,(list,tuple)) or len(row)!=10:
+            raise ValueError(name+'_TEN_COMPONENTS_REQUIRED')
+        try:
+            values=[float(x) for x in row]
+        except (ValueError,TypeError,OverflowError) as error:
+            raise ValueError(name+'_UNREPRESENTABLE') from error
+        if not all(math.isfinite(x) for x in values):
+            raise ValueError(name+'_NONFINITE')
+        return values
+    measured=ten(measured,'MEASURED')
+    truth=ten(reference,'REFERENCE')
+    tolerances=ten(absolute_tolerances,'BUDGET')
+    if any(x<=0 for x in tolerances):
+        raise ValueError('MOMENT_ERROR_BUDGET_NONPOSITIVE')
+    errors=[abs(a-b) for a,b in zip(measured,truth)]
+    normal=[e/t for e,t in zip(errors,tolerances)]
+    return {'schema':'w2-predeclared-component-budget-v1',
+            'measured':measured,'reference':truth,
+            'absolute_errors':errors,'component_absolute_tolerances':tolerances,
+            'normalized_to_budget_errors':normal,
+            'maximum_absolute_error':max(errors),
+            'maximum_normalized_error':max(normal),
+            'within_tolerance':all(e<=t for e,t in zip(errors,tolerances)),
+            'threshold_policy':'PER_CASE_PREDECLARED_NO_UNIVERSAL_PERCENT'}
