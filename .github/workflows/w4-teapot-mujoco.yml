@@ -156,3 +156,87 @@ jobs:
             research/SpinIt2014_Teapot_20261018/P1/p5-cloud-mujoco-scene/p5-scene-certificate.json
           if-no-files-found: warn
           retention-days: 30
+
+
+  # Genuine original Cherchi (not CGAL) source geometry pipeline.
+  # Resource agreement: sequential after the MuJoCo job, <=2 build workers,
+  # native binary identity pinned, bounded runtime. Do not promote to W0/W2.
+  pinned-cherchi-teapot-union:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    needs: actual-mujoco-diagnostic
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      P1: research/SpinIt2014_Teapot_20261018/P1
+      NATIVE_ROOT: external/reference-sources-20260917/sources/InteractiveAndRobustMeshBooleans-7bd6c2697695f555f9a15d7e154e084d841316f0
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install pinned-Cherchi reference build dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -q
+          sudo apt-get install -y ninja-build cmake libgmp-dev libmpfr-dev libboost-all-dev libtbb-dev libeigen3-dev libgl1-mesa-dev libglu1-mesa-dev libx11-dev libxi-dev libxrandr-dev libxinerama-dev libxcursor-dev
+          python -m pip install 'numpy>=2,<3' 'scipy>=1.15,<2' 'trimesh>=4,<5'
+          mkdir -p "$P1/p7-cherchi-native"
+          git rev-parse HEAD > "$P1/p7-cherchi-native/w4-commit.txt"
+
+      - name: Run source SHA, topology, no-fallback and analytic moment tests
+        run: |
+          set -euo pipefail
+          python -m unittest discover -v -s "$P1" -p 'test_p7_cherchi_reference.py' 2>&1 | tee "$P1/p7-cherchi-native/local-scope-tests.log"
+
+      - name: Clone the actual Cherchi 2022 reference code at fixed commit
+        run: |
+          set -euo pipefail
+          mkdir -p "$(dirname "$NATIVE_ROOT")"
+          git clone https://github.com/gcherchi/InteractiveAndRobustMeshBooleans.git "$NATIVE_ROOT"
+          git -C "$NATIVE_ROOT" checkout --detach 7bd6c2697695f555f9a15d7e154e084d841316f0
+          test "$(git -C "$NATIVE_ROOT" rev-parse HEAD)" = 7bd6c2697695f555f9a15d7e154e084d841316f0
+          test "$(git -C "$NATIVE_ROOT" hash-object main.cpp)" = 3f65d2a0f83b10629f99ed5dcd2781409cdca4b5
+          echo 'PINNED_UPSTREAM 7bd6c2697695f555f9a15d7e154e084d841316f0' | tee "$P1/p7-cherchi-native/upstream-pin.log"
+
+      - name: Compile the original Cherchi union executable (no CGAL alternative)
+        run: |
+          set -euo pipefail
+          cmake -S "$P1/p7_cherchi_reference_cli" -B build/w4-cherchi-reference -G Ninja -DCMAKE_BUILD_TYPE=Release "-DW4_CHERCHI_SOURCE=$GITHUB_WORKSPACE/$NATIVE_ROOT" 2>&1 | tee "$P1/p7-cherchi-native/native-configure.log"
+          cmake --build build/w4-cherchi-reference --target w4_cherchi_reference_native --parallel 2 2>&1 | tee "$P1/p7-cherchi-native/native-build.log"
+          test -x build/w4-cherchi-reference/bin/w4_cherchi_reference_native
+          sha256sum build/w4-cherchi-reference/bin/w4_cherchi_reference_native | tee "$P1/p7-cherchi-native/native-binary.sha256"
+
+      - name: Execute genuine Cherchi variadic Teapot UNION and independent audit
+        run: |
+          set -euo pipefail
+          python "$P1/p7_cherchi_native_union.py" --native-bin build/w4-cherchi-reference/bin/w4_cherchi_reference_native --upstream-checkout "$NATIVE_ROOT" --out "$P1/p7-cherchi-native" --timeout 240 2>&1 | tee "$P1/p7-cherchi-native/cherchi-run.log"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('research/SpinIt2014_Teapot_20261018/P1/p7-cherchi-native/p7-cherchi-native-receipt.json')
+          j=json.loads(p.read_text())
+          assert j['status']=='CHERCHI_REFERENCE_UNION_NUMERIC_GEOMETRY_PASS'
+          assert j['cherchi_geometry_executed'] and not j['optimized']
+          assert j['final_geometry']['float_independent_preflight_pass']
+          assert j['moments']['max_abs_independent_tetra_vs_trimesh']<1e-8
+          print('P7 real Cherchi reference union numeric geometry PASS; exact and optimization not certified')
+          PY
+
+      - name: Always retain Cherchi compile/native source and failed validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-P7-real-Cherchi-reference-geometry-or-failure-not-optimized
+          path: |
+            research/SpinIt2014_Teapot_20261018/P1/p7-cherchi-native/**
+            build/w4-cherchi-reference/CMakeCache.txt
+            build/w4-cherchi-reference/CMakeFiles/CMakeConfigureLog.yaml
+          if-no-files-found: warn
+          retention-days: 30

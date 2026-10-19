@@ -1,0 +1,13 @@
+P7 local verification (2026-10-19; Python 3.13.5, NumPy 2.3.5, Trimesh 4.11.1):
+$ python -m unittest -v test_p7_cherchi_reference
+test_closed_tetra_oracle ... ok
+test_no_native_means_no_cgal_fallback ... ok
+test_pinned_mesh_components ... ok
+test_rejects_wrong_binary_basename ... ok
+test_tampered_source_rejected_before_native ... ok
+test_unsupported_timeout_denied ... ok
+
+Ran 6 tests in 0.294s
+OK
+
+This is PYTHON-only local input/equation testing. Real Cherchi native binary/union has NOT yet run locally. W4 cloud job handles actual reference C++ build and union; its status must be checked separately.
