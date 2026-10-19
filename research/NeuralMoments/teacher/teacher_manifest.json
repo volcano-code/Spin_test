@@ -91,7 +91,7 @@
     "independent_ten_moment_max_float_absolute_error": 0,
     "independent_ten_moment_max_ulp_error": 0,
     "archived_native_25point_wall_seconds": 379.493727883,
-    "offline_independent_reverification_seconds": 78.34623676299998,
+    "offline_independent_reverification_seconds": 79.53340224199997,
     "archived_topology_hash_drift_sample_indices": [
       17,
       18,
@@ -108,7 +108,11 @@
     "full_81_points": false,
     "certified_smooth_neighborhood": false,
     "newton_converged": false,
-    "training_admitted": false
+    "training_admitted": false,
+    "final_verifier_script_git_blob_sha1": "cafa555297c36492f81ecfce66fac4066861276f",
+    "final_local_full_report_sha256": "29977a068888c0891c12614a74513ca885f5246fd78ebf2b8fbaeea999661cd1",
+    "verified_archive_point_sha_ledger_sha256": "e792c0032359ed2ae69119f4a0fb11f14314868c87be1d37d2a21b35c9e8eba2",
+    "number_of_distinct_native_c": 25
   },
   "archived_data_use_policy": "Historical upstream artifacts are preserved; M8 offline replays physical r_D only; no J_D admission and no reinterpretation of upstream FAILURE"
 }
