@@ -1,6 +1,6 @@
 {
-  "schema": "w2-cherchi-teacher-v1-pre-w0",
-  "status": "M5_EXACT_REFERENCE_AND_NATIVE_RUNNER_COMMITTED_NO_NATIVE_EVALUATION",
+  "schema": "w2-cherchi-teacher-v2-pre-w0",
+  "status": "M6_SAME_CALL_BOUND_AND_PREDECLARED_BUDGET_TESTED_NATIVE_BLOCKED",
   "native_teacher_runs": 0,
   "training_samples": 0,
   "order": [
@@ -16,14 +16,14 @@
     "xy"
   ],
   "fixed_policy": "r_total=r_F+r_D;J_total=J_D",
-  "derivative_policy": "W0 verifier not integrated: J_D withheld and all labels excluded; H8 point60 branch-change/unknown; open Teapot rejected",
+  "derivative_policy": "No W0 trusted neighborhood verifier; keep J_D=null and split excluded; H8 point60 branch-change/unknown; open Teapot excluded",
   "data_splits": {
     "train": [],
     "val": [],
     "test": [],
     "excluded": []
   },
-  "pending_dependency": "W0 MomentContractV1",
+  "pending_dependency": "W0 verified derivative-neighborhood admission and native compiled module for production sample",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -31,11 +31,31 @@
     "smoke_analytic_box_error_max_abs": 0
   },
   "local_smoke": {
-    "tests_run": 31,
-    "tests_passed": 31,
+    "tests_run": 45,
+    "tests_passed": 45,
     "tests_failed": 0,
-    "scope": "locally mirrored W2 files; remote blob hashes verified; no compiled native modules",
+    "scope": "exact W2 source snapshots mirrored locally; Git blob SHA checked against GitHub; native Cherchi not compiled",
     "native_preflight_status": "FAILED_PREFLIGHT",
-    "native_preflight_error": "ModuleNotFoundError: No module named 'make_it_stand'"
+    "native_preflight_error": "ModuleNotFoundError: No module named 'make_it_stand'",
+    "native_preflight_exit_code": 2
+  },
+  "label_convention": {
+    "native_c_order": "CONST,X,Y,Z,XX,YY,ZZ,YZ,XZ,XY",
+    "native_c_to_polynomial_q": "q=Bc, Bdiag=1,1,1,1,1,1,1,2,2,2",
+    "alias_field": "legacy payload.q stores native_c; never treat as polynomial q",
+    "w0_reference_schema_git_blob": "52c2cfa54567d7dc2164c4b9eb56e8385c0ee1dc",
+    "w0_verifier_integrated": false
+  },
+  "source_replay": {
+    "native_one_call_spec_schema": "w2-one-cherchi-request-v2",
+    "required_sha_pins": [
+      "model",
+      "native_module",
+      "native_c"
+    ],
+    "moment_error_policy": "PREDECLARED_PER_CASE_TEN_ABSOLUTE_TOLERANCES",
+    "same_call_material_validation": true,
+    "serialization": "EXCLUSIVE_ATOMIC_LINK_FSYNC_V1",
+    "model_bytes_match_request_geometry_verified": false
   }
 }
