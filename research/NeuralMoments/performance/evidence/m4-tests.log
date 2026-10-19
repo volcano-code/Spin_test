@@ -1,0 +1,15 @@
+test_clock_captures_failure (test_m4.M4Tests.test_clock_captures_failure) ... ok
+test_clock_exclusivity_and_no_fake_timer (test_m4.M4Tests.test_clock_exclusivity_and_no_fake_timer) ... ok
+test_fd_polynomial (test_m4.M4Tests.test_fd_polynomial) ... ok
+test_missing_executable_fails_closed (test_m4.M4Tests.test_missing_executable_fails_closed) ... ok
+test_real_archive_immutability_and_original_ci_failure (test_m4.M4Tests.test_real_archive_immutability_and_original_ci_failure) ... ok
+test_real_archived_fd_independently_recomputed_from_stored_ten (test_m4.M4Tests.test_real_archived_fd_independently_recomputed_from_stored_ten) ... ok
+test_reject_archive_sha (test_m4.M4Tests.test_reject_archive_sha) ... ok
+test_reject_bad_rational (test_m4.M4Tests.test_reject_bad_rational) ... ok
+test_reject_geometry_bounds (test_m4.M4Tests.test_reject_geometry_bounds) ... ok
+test_tetra_exact_independent_formula (test_m4.M4Tests.test_tetra_exact_independent_formula) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.638s
+
+OK

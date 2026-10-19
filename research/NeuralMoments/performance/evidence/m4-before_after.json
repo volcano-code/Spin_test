@@ -1,0 +1,8 @@
+{
+  "schema": "w1-m4-old-new-gate-v1",
+  "full_solver_old_new_speedup": null,
+  "native_cherchi_boolean_and_jacobian_parity": null,
+  "original_h8_25point_failure_preserved": true,
+  "scope": "ARCHIVED_MOMENT_REPLAY_ONLY_NOT_FULL_NATIVE_PRODUCTION",
+  "result": "BLOCKED_PENDING_FULL_MATCHED_SOLVES_AND_W0_W2_ADMISSION"
+}
