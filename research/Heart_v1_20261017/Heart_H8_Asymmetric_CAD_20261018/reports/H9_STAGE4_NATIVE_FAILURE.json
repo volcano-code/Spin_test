@@ -1,0 +1,49 @@
+{
+  "actual_accepted_step": false,
+  "actual_smooth_neighborhood_certified": false,
+  "certified_analytic_proxy_root": [
+    "16048198887747/7036874417766400000",
+    "40120497219369/17592186044416000000"
+  ],
+  "error": "RuntimeError: REAL_PINNED_NATIVE_CHERCHI_MISSING_NO_SURROGATE_FALLBACK",
+  "failed_stage": "IMPORT_REAL_PINNED_NATIVE_CHERCHI",
+  "final_heart_obj_produced": false,
+  "finished_indices": [],
+  "historical_run_conclusion": "failure",
+  "historical_run_id": 39123384402,
+  "new_real_native_calls": 0,
+  "newton_admitted": false,
+  "plan": [
+    {
+      "c7": 2.1805862283444328e-06,
+      "distance_from_proxy_root": "-1/10000000",
+      "expected_proxy_event_sign": 1,
+      "index": 0,
+      "side": "left-coarse"
+    },
+    {
+      "c7": 2.2705862283444327e-06,
+      "distance_from_proxy_root": "-1/100000000",
+      "expected_proxy_event_sign": 1,
+      "index": 1,
+      "side": "left-near"
+    },
+    {
+      "c7": 2.2905862283444326e-06,
+      "distance_from_proxy_root": "1/100000000",
+      "expected_proxy_event_sign": -1,
+      "index": 2,
+      "side": "right-near"
+    },
+    {
+      "c7": 2.3805862283444325e-06,
+      "distance_from_proxy_root": "1/10000000",
+      "expected_proxy_event_sign": -1,
+      "index": 3,
+      "side": "right-coarse"
+    }
+  ],
+  "schema": "heart-h9-crossing-sides-live-v1",
+  "source_archive_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "status": "FAILED_NO_NEWTON_ADMISSION"
+}
