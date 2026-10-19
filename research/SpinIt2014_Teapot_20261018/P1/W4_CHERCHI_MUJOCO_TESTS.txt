@@ -1,0 +1,16 @@
+test_false_provenance_is_rejected ... ok
+test_missing_native_never_calls_cgal ... ok
+test_native_cannot_report_made_up_exact_proof ... ok
+test_noncherchi_backend_fails_even_if_mesh_geometry_good ... ok
+test_actual_mujoco_dynamics ... skipped 'MuJoCo package unavailable in this container'
+test_cgal_cannot_masquerade_as_cherchi ... ok
+test_exact_p2_mesh_identity ... ok
+test_inertial_tensor_rotated_and_scaled ... ok
+test_no_runtime_must_explicitly_fail ... ok
+test_requires_explicit_physical_parameters ... ok
+test_xml_scene_provenance_tip_and_inertia ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.109s
+
+OK (skipped=1)

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="w4_teapot_spinning_diagnostic">
+  <compiler angle="radian" inertiafromgeom="false" autolimits="true" />
+  <option timestep="0.002" gravity="0 0 -9.81" integrator="implicitfast" solver="Newton" iterations="70" />
+  <asset>
+    <mesh name="teapot_visual" file="assets/teapot_visual_z_up.obj" scale="0.04761905338578643 0.04761905338578643 0.04761905338578643" />
+  </asset>
+  <worldbody>
+    <light pos="0 0 2" dir="0 0 -1" />
+    <geom name="floor" type="plane" pos="0 0 0" size="2 2 .1" rgba="0.86 0.86 0.86 1" friction="0.9 0.01 0.001" />
+    <body name="teapot" pos="0 0 0">
+      <freejoint name="teapot_free" />
+      <inertial pos="0.000993634425252885 1.571424873902157e-07 0.05961113826578046" quat="0.9999984829444357 9.439902623040117e-07 -0.001741691177984269 2.489530804646806e-05" mass="0.25" diaginertia="0.0007017334643663936 0.0007956973017369907 0.000997781890235413" />
+      <geom name="teapot_mesh_visual" type="mesh" mesh="teapot_visual" contype="0" conaffinity="0" rgba="0.60 0.68 0.78 0.9" group="2" />
+      <geom name="virtual_tip_contact" type="sphere" pos="0 0 0" size="0.002" friction="0.9 0.01 0.001" rgba="0.9 0.2 0.18 1" />
+      <geom name="approximate_body_contact" type="sphere" pos="0 0 0.07199999999999999" size="0.048" friction="0.9 0.01 0.001" rgba="0.20 0.5 0.9 0.05" group="3" />
+    </body>
+  </worldbody>
+</mujoco>

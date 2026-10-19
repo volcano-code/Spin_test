@@ -1,0 +1,32 @@
+{
+  "schema": "W4CherchiMuJoCoStageV1",
+  "branch": "research/neuralmoments-w4-teapot-p1-20261019",
+  "parent_commit": "8fc1dd33e6cabb29a54849dce271ec63660b6af4",
+  "geometry_producer_desired": "CHERCHI_ONLY",
+  "cherchi_teapot_union": {
+    "status": "BLOCKED_NATIVE_UNION_AND_PINNED_CHERCHI_SOURCES_UNAVAILABLE",
+    "native_runs": 0,
+    "input_p2_is_not_cherchi": true,
+    "automatic_cgal_fallback": false
+  },
+  "mujoco": {
+    "status": "MJCF_GENERATED_BUT_ACTUAL_ENGINE_NOT_AVAILABLE",
+    "executed_timesteps": 0,
+    "experiment_case": "DIAGNOSTIC_CGAL_PROXY_EXPLICIT_0_15_M_0_25_KG",
+    "package_installed": false,
+    "pip_install_result": "FAILED_DNS",
+    "simulation_invocation_exit_code": 2,
+    "error": "MUJOCO_RUNTIME_UNAVAILABLE_INSTALL_MUJOCO_3_3_OR_NEWER",
+    "model_xml_sha256": "b830a76a8d25d689b109f15b60ab171cbac8d8aecea5a310b15ed36f1b6ffd61",
+    "mesh_sha256": "d3289193185192ebca4d63fc813bd77d96810051089c672e887accdf3205b331"
+  },
+  "local_unit_tests": {
+    "total": 11,
+    "passed": 10,
+    "skipped_runtime_integration": 1,
+    "failed": 0,
+    "log": "W4_CHERCHI_MUJOCO_TESTS.txt"
+  },
+  "main_branch_changed": false,
+  "w0_w2_authoritative_dependencies_met": false
+}

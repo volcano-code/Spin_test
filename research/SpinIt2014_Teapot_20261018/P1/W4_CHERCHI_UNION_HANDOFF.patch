@@ -1,0 +1,8 @@
+diff --git a/bindings/cherchi/InProcessBoolean.cpp b/bindings/cherchi/InProcessBoolean.cpp
+--- a/bindings/cherchi/InProcessBoolean.cpp
++++ b/bindings/cherchi/InProcessBoolean.cpp
+@@ -196,7 +196,8 @@ PYBIND11_MODULE(_cherchi_core_boolean,module) {
+-        const BoolOp op=operation=="intersection"?INTERSECTION:operation=="difference"?SUBTRACTION:NONE;
++        const BoolOp op=operation=="intersection"?INTERSECTION:
++            operation=="difference"?SUBTRACTION:operation=="union"?UNION:NONE;
+         if(op==NONE)throw py::value_error("unsupported Boolean operation");
