@@ -53,6 +53,19 @@ class TestSingleRequest(unittest.TestCase):
         p=self.check(self.invoke(Nonfinite()))
         self.assertEqual(p["derivative_status"],"INVALID")
         self.assertIn("NONFINITE_COMPONENT",p["failure_reason"])
+    def test_mock_cannot_forge_derivative_contract(self):
+        record=evaluate_one(MockEvaluator(),[0]*10,model_path=self.model,
+            native_module_path=self.native,geometry={"kind":"mock_only"},
+            density=1,frame={"name":"physical"},
+            derivative_contract={"schema":"MomentContractV1",
+                "contract_sha256":"c"*64,"verified_neighborhood":True},
+            split="train")
+        p=self.check(record)
+        self.assertEqual(p["split"],"excluded")
+        self.assertEqual(p["derivative_status"],"INVALID")
+        self.assertIsNone(p["J_D"])
+        self.assertIn("MOCK_OR_UNAUTHENTICATED",p["failure_reason"])
+
     def test_failure_still_sealed(self):
         class Broken(MockEvaluator):
             def __call__(self,q): raise RuntimeError("native failed")
