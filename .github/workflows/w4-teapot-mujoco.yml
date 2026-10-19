@@ -111,6 +111,37 @@ jobs:
           PY
           sha256sum "$P1/p4-actual-mujoco/"* > "$P1/p4-actual-mujoco/files.sha256"
 
+      - name: Validate same-speed mass relocation mathematical controls
+        run: |
+          set -euo pipefail
+          export W4_P6_TEST_SCENE_XML="$P1/p5-cloud-mujoco-scene/teapot_spinning.xml"
+          python -m unittest discover -v -s "$P1" -p 'test_p6_mujoco_mass_shift_comparison.py' 2>&1 | tee "$P1/p4-actual-mujoco/mass-shift-tests.log"
+
+      - name: Execute real MuJoCo same-speed before vs hypothetical mass redistribution
+        run: |
+          set -euo pipefail
+          python "$P1/p6_mujoco_mass_shift_comparison.py" --xml "$P1/p5-cloud-mujoco-scene/teapot_spinning.xml" --out "$P1/p4-actual-mujoco" --duration 2.8 --fps 24 | tee "$P1/p4-actual-mujoco/ab_execution.log"
+          test -s "$P1/p4-actual-mujoco/mujoco_baseline_vs_hypothetical_mass_shift.mp4"
+          test -s "$P1/p4-actual-mujoco/mujoco_ab_results.json"
+          python - <<'PY'
+          from pathlib import Path
+          import json, subprocess
+          p=Path('research/SpinIt2014_Teapot_20261018/P1/p4-actual-mujoco')
+          m=json.loads((p/'mujoco_ab_results.json').read_text())
+          assert m['status']=='REAL_MUJOCO_AB_DIAGNOSTIC_EXECUTED'
+          assert m['source_geometry']=='P2_CGAL_PROXY_NOT_CHERCHI'
+          assert m['optimization_source']=='NONE_ANALYTIC_HYPOTHETICAL_MASS_RELOCATION'
+          assert len(m['results'])==2 and all(row['samples']==69 for row in m['results'])
+          for csv in ('baseline.csv','hypothetical_mass_shift.csv'):
+              assert (p/csv).stat().st_size>100
+          probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_entries',
+              'stream=codec_name,width,height,nb_frames','-select_streams','v:0','-of','json',
+              str(p/'mujoco_baseline_vs_hypothetical_mass_shift.mp4')],text=True))['streams'][0]
+          assert (probe['codec_name'],probe['width'],probe['height'])==('h264',1240,680)
+          print('REAL_MUJOCO_AB_VIDEO_VERIFIED',probe)
+          PY
+          sha256sum "$P1/p4-actual-mujoco/"* > "$P1/p4-actual-mujoco/files.sha256"
+
       - name: Upload artifacts, including diagnostics on failure
         if: always()
         uses: actions/upload-artifact@v4
@@ -120,5 +151,8 @@ jobs:
             research/SpinIt2014_Teapot_20261018/P1/p4-actual-mujoco/**
             research/SpinIt2014_Teapot_20261018/P1/p5-cloud-mujoco-scene/simulation-manifest.json
             research/SpinIt2014_Teapot_20261018/P1/p5-cloud-mujoco-scene/teapot_spinning.xml
+            research/SpinIt2014_Teapot_20261018/P1/p5-cloud-mujoco-scene/teapot_counterfactual_mass_shift_30g.xml
+            research/SpinIt2014_Teapot_20261018/P1/p5-cloud-mujoco-scene/mass_shift_case.json
+            research/SpinIt2014_Teapot_20261018/P1/p5-cloud-mujoco-scene/p5-scene-certificate.json
           if-no-files-found: warn
           retention-days: 30
