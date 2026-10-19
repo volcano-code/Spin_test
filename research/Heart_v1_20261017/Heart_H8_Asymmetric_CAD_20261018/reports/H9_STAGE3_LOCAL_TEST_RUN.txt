@@ -1,0 +1,36 @@
+H9_STAGE3_LOCAL_REPLAY_2026-10-19
+repo: volcano-code/Spin_test
+only branch: research/neuralmoments-w3-heart-h9-20261019
+frozen historical Actions run: 39123384402 (failure)
+historical artifact: 12135528290
+--- environment ---
+Python 3.13.5
+               total        used        free      shared  buff/cache   available
+Mem:           5.8Gi       1.1Gi       4.7Gi        12Ki       139Mi       4.7Gi
+Swap:             0B          0B          0B
+--- original artifact SHA ---
+99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9  /mnt/data/w3-h8f-evidence-12135528290.zip
+--- new source/test/report Git blob SHA ---
+fae0ab0fc496ff893879bd8dbba2a56bdd2b9995
+4aee6e07558d9dc4480662364707e89eaf7fc221
+7ab56b2d9be583d0ca97624ac657195a13c85d98
+2a78fc5769d4f7b8cd51081340cafce554d4b1c8
+--- cli replay ---
+H9_RATIONAL_INTERVAL_SURROGATE_UNIQUE_ROOT_NEWTON_DENIED {"bracket": {"exact_lower_fraction": "16048198887747/7036874417766400000", "exact_upper_fraction": "40120497219369/17592186044416000000", "lower": 2.28058622834439e-06, "upper": 2.2805862283444754e-06, "width_float": 8.526512829121202e-20}, "derivative": [-0.020033154531313845, -0.020015040217368812], "max_source_fit_error": 9.830390539378602e-16, "new_native_calls": 0}
+--- regenerated certificate reproducible? ---
+cmp_exit_code:0
+--- unit tests ---
+test_rational_outward_rounding_add_mul_div (test_h9_analytic_event.H9AnalyticIntervalContracts.test_rational_outward_rounding_add_mul_div) ... ok
+test_real_81_point_archive_derivative_and_unique_surrogate_root (test_h9_analytic_event.H9AnalyticIntervalContracts.test_real_81_point_archive_derivative_and_unique_surrogate_root) ... ok
+test_refuses_divide_by_zero_and_negative_sqrt (test_h9_analytic_event.H9AnalyticIntervalContracts.test_refuses_divide_by_zero_and_negative_sqrt) ... ok
+test_sqrt_outward_and_derivative_interval (test_h9_analytic_event.H9AnalyticIntervalContracts.test_sqrt_outward_and_derivative_interval) ... ok
+test_wrong_zip_refused (test_h9_analytic_event.H9AnalyticIntervalContracts.test_wrong_zip_refused) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.837s
+
+OK
+--- native import checks ---
+_make_it_stand MISSING: No module named '_make_it_stand'
+_cherchi_core_boolean MISSING: No module named '_cherchi_core_boolean'
+_cherchi_rational_moments MISSING: No module named '_cherchi_rational_moments'
