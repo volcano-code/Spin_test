@@ -1,0 +1,52 @@
+{
+  "base_commit": "f30d2ece1d14051b29b30d85655928a3bf412567",
+  "branch": "research/neuralmoments-w0-contract-20261019",
+  "branch_integrity": "ONLY_W0_EXCLUSIVE_PATHS_ON_COMMIT",
+  "date": "2026-10-19",
+  "derivative_open_neighborhood_proved": false,
+  "exact_frame_policy": "BINARY64_ENTRIES_INTERPRETED_RATIONALLY_INVERT_MATRIX_NOT_TRANSPOSE",
+  "failures_encountered": [
+    "First M6 tests found incorrect rejection of already-converted Fraction axes; fixed to invert original binary64 matrix",
+    "Synthetic negative test pattern expected generic PARTITION text while accurate native verdict was UNION_EQUALS_WHOLE; corrected assertion",
+    "Real native executable blocked by memory and missing modules; not silently skipped"
+  ],
+  "frozen_production_sha": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "full_native_partition_certified": false,
+  "native_partition_checks_to_be_executed": [
+    "original=F+D",
+    "design=retained+cavity",
+    "original=F+retained+cavity"
+  ],
+  "newton_terminal_certified": false,
+  "real_resource_preflight": {
+    "Cherchi_calls": 0,
+    "executed": true,
+    "exit_code": 3,
+    "factory_loaded": false,
+    "log_sha256": "6b4d473b5a563739dc47e877a0dd6d781069db0ac2583b40077e19129b9060dc",
+    "physical_memory_gib": 5.808525085449219,
+    "status": "BLOCKED_INSUFFICIENT_PHYSICAL_RAM",
+    "swap_kib": 0
+  },
+  "repository": "volcano-code/Spin_test",
+  "schema": "W0_M6_PARTITION_AND_REPRESENTED_MATERIAL_GATE_V1",
+  "source_construction_policy": "ONE_CHERCHI_QUADRIC_SOURCE_TWO_SAME_SOURCE_OPPOSITE_BOOLEAN_OPERATIONS",
+  "source_git_blobs": {
+    "full_partition_m6.py": "a226f61c19a465bd3421ea1ec7e56ce7f381b633",
+    "live_native_m6_cli.py": "45cea486061e88741bf29ada1b45da40a090a54d",
+    "test_full_partition_m6.py": "a0c47f4a979fbf91307d8db4507a770f201c6769",
+    "test_full_partition_m6_synthetic.py": "10b66c2b3c8727174e281df2cc44c82851f289d7",
+    "test_live_native_m6_cli.py": "ae717a7e5404d52905200287de0458f8580b0881"
+  },
+  "test_execution": {
+    "command": "python -m pytest -q research/NeuralMoments/contracts/test_*.py",
+    "elapsed_seconds": 0.27,
+    "failed": 0,
+    "log_sha256": "138503b8d9f5336540152fa020c873799932e61a28e25ea8dfbf71a777dd398a",
+    "native_geometry_actually_executed": false,
+    "passed": 142,
+    "previous_M1_M3_tests_reexecuted": false,
+    "scope": "LOCAL_M4_M5_M6_ONLY_NOT_FULL_W0_CHECKOUT"
+  },
+  "training_admissible": false
+}
