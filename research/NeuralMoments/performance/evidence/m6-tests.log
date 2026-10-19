@@ -1,0 +1,17 @@
+test_archive_original_h8e_failure_preserved (test_m6.M6Tests.test_archive_original_h8e_failure_preserved) ... ok
+test_exact_tetra_analytic_and_old_python (test_m6.M6Tests.test_exact_tetra_analytic_and_old_python) ... ok
+test_exclusive_timer_disjoint_fail_closed (test_m6.M6Tests.test_exclusive_timer_disjoint_fail_closed) ... ok
+test_missing_binary_blocks_without_success (test_m6.M6Tests.test_missing_binary_blocks_without_success) ... ok
+test_no_out_of_bounds_jobs (test_m6.M6Tests.test_no_out_of_bounds_jobs) ... ok
+test_python_reject_inconsistent_faces (test_m6.M6Tests.test_python_reject_inconsistent_faces) ... ok
+test_real_first_packet_exact_python_vs_gmp (test_m6.M6Tests.test_real_first_packet_exact_python_vs_gmp) ... M6_ARCHIVED_H8 1 / 1 GMP TETRA OK
+ok
+test_reject_invalid_face (test_m6.M6Tests.test_reject_invalid_face) ... ok
+test_reject_noncanonical_fraction_both (test_m6.M6Tests.test_reject_noncanonical_fraction_both) ... ok
+test_reject_truncated_and_extra_data (test_m6.M6Tests.test_reject_truncated_and_extra_data) ... ok
+test_wrong_archive_hash_and_no_fabricated_baseline (test_m6.M6Tests.test_wrong_archive_hash_and_no_fabricated_baseline) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 13.261s
+
+OK

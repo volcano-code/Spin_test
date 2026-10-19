@@ -1,0 +1,15 @@
+{
+  "schema": "w1-m6-before-after-v1",
+  "scope": "MATCHED_ARCHIVED_VALIDATOR_SUBSET_NOT_SOLVER",
+  "paired_python_fraction_vs_gmp_samples": 3,
+  "exact_ten_rational_equal_on_paired_samples": true,
+  "paired_independent_verifier_speedup_ratios": [
+    7.765843302856556,
+    7.04417060985924,
+    8.116922330531784
+  ],
+  "full_solver_end_to_end_speedup": null,
+  "production_code_changed": false,
+  "strong_same_call_geometry_newly_certified": false,
+  "paper_speed_qualified": false
+}

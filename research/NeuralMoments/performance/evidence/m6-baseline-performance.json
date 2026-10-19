@@ -1,0 +1,77 @@
+{
+  "schema": "w1-m6-verified-archived-validation-milestone-v1",
+  "branch": "research/neuralmoments-w1-native-20261019",
+  "scope": "REAL_ARCHIVED_H8E_INDEPENDENT_GMP_TETRA_VALIDATION_NOT_PRODUCTION_FASTENING",
+  "freeze_commit": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "archived_artifact_id": 12134772056,
+  "historical_action_run_id": 39121571756,
+  "archive_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+  "h8_is_reconstructed_not_author_cad": true,
+  "native_standalone_binary_sha256": "a19ae26404636910b0260a22d66e4e8a9a3d2e4e444a1918161ad52870d69b66",
+  "data": {
+    "packets": 25,
+    "vertices_per_point": 8455,
+    "faces_per_point": 16910,
+    "historical_independent_binary64_moment_checks": 250,
+    "fresh_python_fraction_exact_rational_comparisons": 3,
+    "fresh_exact_fraction_vs_gmp_all_ten_passed": true,
+    "historical_original_h8e_status": "FAILURE_BRANCH_HASH_DRIFT_UNMODIFIED",
+    "historical_changed_feature_hash_points": 8,
+    "archived_analytic_jacobian_used_not_regenerated": true,
+    "independent_fd_stencils_validated": 9,
+    "independent_fd_max_scaled_error": 2.6019151368622826e-10
+  },
+  "paired_sample_run": {
+    "total_wall_seconds": 64.92581975,
+    "python_fraction_exact_3_samples_seconds": 20.026580591,
+    "native_all_25_subprocess_seconds": 22.356829629,
+    "validation_stage_isolated_speed_ratios": [
+      7.765843302856556,
+      7.04417060985924,
+      8.116922330531784
+    ],
+    "validation_isolated_speedup_median": 7.765843302856556,
+    "claim_scope": "PAIRED_SAMPLE_VALIDATOR_COMPARISON_WITH_NATIVE_BOUNDARY_GATE_NOT_SOLVER"
+  },
+  "new_all_25_native_mode": {
+    "end_to_end_wall_seconds": 43.101666244,
+    "all_25_native_subprocess_seconds": 21.104733194,
+    "all_25_native_tetra_math_seconds": 15.861941297,
+    "stage_seconds": {
+      "read_archive": 0.419639786,
+      "decompress_packet": 4.267566971,
+      "parse_packet": 14.881460883,
+      "authenticate_same_call": 0.087877121,
+      "write_checked_stream": 0.954121559,
+      "native_exact_tetra": 21.104733194,
+      "exact_python_fraction": 0.0,
+      "parity": 0.788795016
+    },
+    "new_all_25_self_intersection_audit": false,
+    "original_historical_geometry_audit_not_rerun": true
+  },
+  "native_boolean_evaluations_this_milestone": 0,
+  "native_newton_solver_runs_this_milestone": 0,
+  "native_jacobian_regenerations_this_milestone": 0,
+  "full_solver_before_after_speedup": null,
+  "unknown_historical_core_wall_seconds_unresolved": 301.5494231889993,
+  "production_src_bindings_changed": false,
+  "w0_w2_production_math_admission": false,
+  "paper_speed_qualified": false,
+  "test_run": {
+    "unittest_passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "real_archive_tests_enabled": true
+  },
+  "execution_platform": {
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "cpu_count": 5,
+    "rss_process_peak_kib": 243468,
+    "rss_child_peak_kib": 243468,
+    "swap_entries": 0,
+    "memory_limit_gib": 24,
+    "max_compile_workers": 1,
+    "max_single_job_seconds": 3600
+  }
+}

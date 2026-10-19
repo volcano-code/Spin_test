@@ -1,0 +1,49 @@
+M6_ARCHIVED_H8 1 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 2 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 3 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 4 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 5 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 6 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 7 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 8 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 9 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 10 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 11 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 12 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 13 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 14 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 15 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 16 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 17 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 18 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 19 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 20 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 21 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 22 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 23 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 24 / 25 GMP TETRA OK
+M6_ARCHIVED_H8 25 / 25 GMP TETRA OK
+W1_M6 25 archived packets with exact tetra parity
+	Command being timed: "python m6_archived_validation_replay.py --archive /mnt/data/h8e-25point-39121571756.zip --binary ./m6_independent_tetra_gmp --points 25 --fraction-points  --output /mnt/data/W1_M6/real25-fast-final"
+	User time (seconds): 35.30
+	System time (seconds): 11.56
+	Percent of CPU this job got: 101%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:46.30
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 243468
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 827605
+	Voluntary context switches: 333
+	Involuntary context switches: 434
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 55112
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
