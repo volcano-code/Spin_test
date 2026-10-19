@@ -16,6 +16,7 @@ import math
 from pathlib import Path
 import platform
 import resource
+import struct
 import subprocess
 import sys
 import tempfile
@@ -137,6 +138,53 @@ def run_binary(executable: Path, stream: Path):
     return obj
 
 
+def decoder_for(backend):
+    """Opt-in alternate parser for the *pinned archive* only; no bypass of gates."""
+    if backend == "stdlib":
+        return json.loads
+    if backend == "orjson":
+        try:
+            import orjson
+        except ImportError as exc:
+            raise RuntimeError("M7_ORJSON_NOT_INSTALLED") from exc
+        return orjson.loads
+    raise ValueError("M7_UNKNOWN_DECODER")
+
+
+def scientific_fingerprint(packet):
+    """Bind all H8e q/ten/J binary64 values and material identity to decoder output.
+
+    The complete archived JSON bytes remain SHA authenticated; exact token rows
+    are consumed by the unchanged GMP boundary/integral gate in both variants.
+    """
+    h=sha256()
+    for name in ("geometry_hash", "topology_hash", "quadric_source_identity",
+                 "boolean_backend_identity"):
+        value=packet.get(name)
+        if not isinstance(value,str) or not value:
+            raise ValueError("M7_MISSING_SCIENTIFIC_IDENTITY:"+name)
+        h.update(name.encode()+b"="+value.encode()+b"\0")
+    for name, shape in (("quadric_coefficients",(10,)),
+                        ("variable_raw_moments",(10,)),
+                        ("raw_moments",(10,)),
+                        ("moment_jacobian",(10,10))):
+        data=packet.get(name)
+        if not isinstance(data,list) or len(data)!=shape[0]:
+            raise ValueError("M7_INVALID_SCIENTIFIC_ARRAY:"+name)
+        if len(shape)==1:
+            flat=data
+        else:
+            if any(not isinstance(row,list) or len(row)!=shape[1] for row in data):
+                raise ValueError("M7_INVALID_SCIENTIFIC_MATRIX:"+name)
+            flat=[x for row in data for x in row]
+        h.update(name.encode()+b"\0")
+        for value in flat:
+            if isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value):
+                raise ValueError("M7_NONFINITE_SCIENTIFIC_VALUE:"+name)
+            h.update(struct.pack("!d",float(value)))
+    return h.hexdigest()
+
+
 def independent_fd(rows, report):
     if len(rows)!=25:
         return dict(status="INCOMPLETE_NO_FD", numeric_stencils=0)
@@ -171,11 +219,12 @@ def independent_fd(rows, report):
                 archived_jacobian_not_recomputed=True,checks=numeric)
 
 
-def run(archive, binary, output, *, count=25, reference_indices=(0,12,24)):
+def run(archive, binary, output, *, count=25, reference_indices=(0,12,24), json_backend="stdlib"):
     archive,binary,output=Path(archive),Path(binary),Path(output)
     if not 1<=count<=25 or len(set(reference_indices))!=len(reference_indices) or any(
             type(i) is not int or i<0 or i>=count for i in reference_indices):
         raise ValueError("M6_UNSAFE_SAMPLE_SELECTION")
+    loader=decoder_for(json_backend)
     output.mkdir(parents=True,exist_ok=False)
     records=[]
     wall=time.perf_counter_ns()
@@ -202,8 +251,8 @@ def run(archive, binary, output, *, count=25, reference_indices=(0,12,24)):
                         if len(unpacked)>20_000_000:
                             raise ValueError("M6_PACKET_DECOMPRESSION_LIMIT")
                     with clock.stage("parse_packet"):
-                        packet=json.loads(unpacked)
-                        reference=json.loads(raw)
+                        packet=loader(unpacked)
+                        reference=loader(raw)
                     with clock.stage("authenticate_same_call"):
                         if (sha(packed)!=reference["exact_same_call_material_archive_sha256"] or
                             reference["index"]!=i or
@@ -260,6 +309,7 @@ def run(archive, binary, output, *, count=25, reference_indices=(0,12,24)):
                     if not t["all_passed"]:
                         raise ValueError("M6_INCOMPLETE_POINT_STAGE")
                     records.append(dict(index=i,archive_material_sha256=sha(packed),
+                        m7_scientific_fingerprint=scientific_fingerprint(packet),
                         topology_hash=packet["topology_hash"],q=packet["quadric_coefficients"],
                         moments=floats,exact_python_fraction_matched=old_exact is not None,
                         native_parse_ns=independent["input_parse_ns"],
@@ -282,6 +332,7 @@ def run(archive, binary, output, *, count=25, reference_indices=(0,12,24)):
         report=dict(schema="w1-m6-archived-exact-tetra-accelerated-validation-v1",
             scope="ARCHIVED_H8E_VALIDATION_ONLY_NOT_FRESH_CHERCHI_OR_NEWTON",
             input_archive_sha256=ARCHIVE_SHA,source_historical_run_id=39121571756,
+            archive_json_backend=json_backend,
             native_binary_sha256=bsha,point_count=len(records),all_points_parity_passed=True,
             full_old_new_exact_python_sample_count=len(measured_old),
             exact_python_fraction_gmp_parity_on_samples=True,
@@ -327,9 +378,10 @@ def main():
     p.add_argument("--output",type=Path,required=True)
     p.add_argument("--points",type=int,default=25)
     p.add_argument("--fraction-points",default="0,12,24")
+    p.add_argument("--json-backend",choices=("stdlib","orjson"),default="stdlib")
     a=p.parse_args()
     samples=tuple(int(x) for x in a.fraction_points.split(",") if x)
-    r=run(a.archive,a.binary,a.output,count=a.points,reference_indices=samples)
+    r=run(a.archive,a.binary,a.output,count=a.points,reference_indices=samples,json_backend=a.json_backend)
     print("W1_M6",r["point_count"],"archived packets with exact tetra parity",flush=True)
 
 if __name__=="__main__":
