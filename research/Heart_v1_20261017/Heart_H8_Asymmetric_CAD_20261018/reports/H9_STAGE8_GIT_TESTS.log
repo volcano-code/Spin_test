@@ -1,0 +1,26 @@
+W3 H9 Stage8 tests after exact source SHA matching
+Original H8f historical run 39123384402: failure (unchanged)
+Original artifact SHA256: 99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9
+Python: 3.13.5
+Environment: cgroup memory.max=4294967296 bytes, swap=0, no complete W3 checkout, no native Cherchi modules.
+
+Command 1: H9_EVIDENCE_ZIP=<original> H9_CROSSING_CERTIFICATE=<stage4> PYTHONPATH=<H8/source> python -m unittest discover -s <H8/tests> -p 'test_h9_stage[5-7]*.py' -q
+----------------------------------------------------------------------
+Ran 35 tests in 15.032s
+
+OK
+exit_code=0
+
+Command 2: PYTHONPATH=<H8/source> python -m unittest discover -s <H8/tests> -p 'test_h9_stage8_handoff_contract.py' -q
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+OK
+exit_code=0
+
+Additional local expanded mock regression (tests in separately delivered ZIP): 50/50 PASS, 16.113s. These synthetic inputs are not new native Cherchi evaluations.
+Build phase real preflight: exit 2 (no build, no mutation).
+Run phase real preflight: exit 2 (no new native calls).
+No-fresh-material independent audit: exit 1 (NO_COMPLETED_NEW_REAL_CHERCHI_RUN_REPORT).
+New real Cherchi calls: 0/4.
+Newton admitted: false.

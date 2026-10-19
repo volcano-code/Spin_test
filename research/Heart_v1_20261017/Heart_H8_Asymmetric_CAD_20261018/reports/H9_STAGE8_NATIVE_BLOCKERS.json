@@ -1,0 +1,27 @@
+{
+  "schema": "heart-h9-stage8-github-commit-native-blockers-v1",
+  "historical_run_id": 39123384402,
+  "historical_run_conclusion": "failure",
+  "historical_artifact_id": 12135528290,
+  "historical_zip_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "resource_effective_memory_bytes": 4294967296,
+  "swap_bytes": 0,
+  "complete_W3_checkout": false,
+  "native_modules_built": false,
+  "real_build_preflight_exit_code": 2,
+  "real_run_preflight_exit_code": 2,
+  "independent_audit_without_new_material_exit_code": 1,
+  "independent_audit_failure": "NO_COMPLETED_NEW_REAL_CHERCHI_RUN_REPORT",
+  "committed_regression_stage5_to_stage7": {
+    "passed": 35,
+    "ran": 35
+  },
+  "committed_regression_stage8": {
+    "passed": 4,
+    "ran": 4
+  },
+  "new_real_cherchi_boolean_calls": 0,
+  "actual_newton_step_accepted": false,
+  "newton_admitted": false,
+  "final_heart_obj_produced": false
+}
