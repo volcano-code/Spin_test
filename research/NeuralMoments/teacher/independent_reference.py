@@ -51,7 +51,14 @@ def integrate_exact_boundary(vertices, faces, density):
         raise ValueError("VERTEX_SHAPE_INVALID") from error
     if any(len(row)!=3 for row in v):
         raise ValueError("VERTEX_SHAPE_INVALID")
-    d=_rational(density)
+    # Density is the frozen binary64 numerical input of SpinItFasterRequest;
+    # unlike exact geometry coordinates, binary64 density is legitimate.
+    if isinstance(density,float):
+        if not math.isfinite(density):
+            raise ValueError("INVALID_BINARY64_DENSITY")
+        d=Fraction.from_float(density)
+    else:
+        d=_rational(density)
     if d<=0:
         raise ValueError("DENSITY_MUST_BE_POSITIVE")
     f=[]
