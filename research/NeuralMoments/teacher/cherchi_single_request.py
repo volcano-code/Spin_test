@@ -71,6 +71,9 @@ def evaluate_one(evaluator, q, *, model_path, native_module_path,
             # create training labels or valid Jacobians.
             if derivative_contract.get("schema")!="MomentContractV1" or not derivative_contract.get("contract_sha256"):
                 raise ValueError("W0_MOMENT_CONTRACT_REQUIRED")
+            # A user-supplied digest is not proof that W0 certified this branch.
+            # Keep W2 labels excluded until a trusted W0 verifier is integrated.
+            raise ValueError("W0_VERIFIER_NOT_INTEGRATED")
             jacobian=[vector(row) for row in output["moment_jacobian"]]
             derivative="VALID"
             topology="VALID"
