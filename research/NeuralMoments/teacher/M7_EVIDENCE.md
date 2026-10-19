@@ -31,6 +31,12 @@ error: ModuleNotFoundError: No module named 'make_it_stand'
 training_admitted: false
 native_cherchi_verified: false
 ```
+A second, independently executed negative CLI preflight deliberately changed the frozen
+`expected_model_sha256` to a mismatching 64-digit value. It returned **exit code 2**,
+persisted a distinct failure record, and reported
+`FAILED_PREFLIGHT: ValueError: FROZEN_MODEL_SHA256_MISMATCH` before loading any
+native code. Both failures are negative infrastructure tests, not native geometry runs.
+
 It **did not** call a Cherchi native evaluator. Real native teacher samples: **0**; formally admitted training samples: **0**. There are no real native moment errors, compute timings, or memory readings to report.
 
 ## New source/model correspondence contract
@@ -69,3 +75,7 @@ PYTHONPATH=python:. timeout --signal=TERM --kill-after=10s 60m \
 ```
 
 Do not run multiple concurrent Cherchi jobs. Enforce the existing research-host 24GiB/swap0 and maximum-60-minute policies. Log actual per-stage timing, Linux process-lifetime RSS high water (not per-call peak), independent exact ten-moment errors, fixed/variable separation and negative cases. Retain all failures. Neither the new OBJ binding nor the W0 schema alone permits derivative `J_D` to train until the independently validated `MomentContractV1` neighborhood rule is integrated.
+
+## Remote status at M7 submission
+
+GitHub connector compared M6 head against W2 and confirmed all modified files under `research/NeuralMoments/teacher/` (no changes to main or other W branches). Neither pull-request-triggered workflow runs nor commit status checks were returned for the M7 commit at the time of inspection. The 61 passing tests are local, not CI.
