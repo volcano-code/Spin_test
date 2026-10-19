@@ -128,3 +128,12 @@ python research/NeuralMoments/contracts/run_contract_smoke.py
 ```
 
 Measured in the isolated 2026-10-19 environment: **9 new tests passed in 11.85s**, native C++ value/gradient/matrix maximal error `2.22e-16`, pullback `6.66e-16`. Prior M2 57 tests were not rerun in this isolated mirror, so an aggregate 66-test PASS is **not** claimed. W2 teacher manifest still advertises 0 native teacher samples; only 5.8GiB RAM and no Cherchi native module are available here. See `research/ParallelLaunch/W0_M3_EVIDENCE_20261019.md` for exact limitations.
+
+
+## M4 live native teacher replay and W2 handoff
+
+W0 `native_teacher_replay.py` integrates ten undoubled raw moments with exact rational signed tetrahedra, confirms indexed boundary topology, physical/target rational coordinate maps and geometry/source SHA bindings, and checks fixed+design accounting against a same-call Cherchi material attachment. All arithmetic-only results deliberately return `training_admissible=False`; no geometric embedding or smooth derivative is inferred from a hash or local mock.
+
+When an authorized native runtime is present, `audit_live_native_once(evaluator,problem,c,pins)` permits **only** the authentic frozen `InProcessCherchiEvaluator` and a locked `SpinArtifactProblem`, with externally pinned six SHA identities. It obtains `evaluator.material(c)` from that single source+Boolean call, compares independent fixed moments, native `MeshSnapshot.from_rationals` physical region and exact design subset, then records pointwise Jacobian and native stage timings. Training still requires an independent derivative neighborhood, terminal Newton and final full-material seal.
+
+Run offline: `python -m pytest -q research/NeuralMoments/contracts/test_native_teacher_replay.py research/NeuralMoments/contracts/test_live_native_teacher_cli.py`. Native CLI details: `research/NeuralMoments/contracts/M4_NATIVE_HANDOFF.md`. Local result `43 passed in 0.07s`; real native CLI status `BLOCKED_INSUFFICIENT_PHYSICAL_RAM`, not a green native proof. See `contract_smoke_m4.json` and `research/ParallelLaunch/W0_M4_EVIDENCE_20261019.md`.

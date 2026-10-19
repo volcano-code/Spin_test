@@ -13,7 +13,7 @@
 
 | Window | Role | Branch / exact instructions | Dependencies | Earliest evidence target | State |
 |---|---|---|---|---|---|
-| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M3_FROZEN_EIGEN_CPP_125PTS_PASS; CLOSED_FD_EXACT; 9_M3_TESTS_PASS; CHERCHI_BLOCKED` |
+| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M4_LIVE_REPLAY_GATE_COMMITTED; 43_PURE_TESTS_PASS; REAL_NATIVE_RESOURCE_BLOCKED; W2_TRUTH_DENIED` |
 | W1 | Cherchi/Faster 性能 | [research/neuralmoments-w1-native-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w1-native-20261019/research/ParallelLaunch/W1_START_HERE.md) | 可独立 profiling；合并需 W0/W2 | 冻结同输入逐段耗时＋原生改造对照 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
 | W2 | 精确教师与标签 | [research/neuralmoments-w2-teacher-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w2-teacher-20261019/research/ParallelLaunch/W2_START_HERE.md) | 正式发布标签需 W0 | 真实 r,J＋SHA＋可微/失败状态 | `W2_ADAPTER_MOCKS_PRESENT; MANIFEST_0_NATIVE_RUNS_0_TRAINING; TRUTH_BLOCKED` |
 | W3 | Heart H9 | [research/neuralmoments-w3-heart-h9-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w3-heart-h9-20261019/research/ParallelLaunch/W3_START_HERE.md) | 无 | 81 点 point60 构造变化诊断 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
@@ -69,3 +69,19 @@
   - W4: `8fc1dd33e6cabb29a54849dce271ec63660b6af4` — W4 P2: reproducible CGAL teapot solid union with independent self-contact and moment gates
   - W5: `7054cf6624eeb85f8ba06093090127bdb8016dc4` — W5 M2: gate W0/W2 teacher provenance and audit multi-seed analytic baselines
   - W6: `694e5764e656de0c769f59d2838dc53eddde0b63` — W6 M2: W0-native analytic cut oracle, derivative smoke, W2 fail-closed gate and CPU evidence
+
+
+## W0 M4 native replay gate and read-only branch heads (2026-10-19)
+
+- Implemented real-source Cherchi single-call replay, independently exact rational mass moments, frozen 6-way input/native/source SHA pins, resource-guarded native worker and 43 adversarial pytest cases. See [M4 evidence](W0_M4_EVIDENCE_20261019.md).
+- Local M4 tests 43/43 passed; on the actual 5.8085-GiB/swap0 host the native admission command returned exit 3, `BLOCKED_INSUFFICIENT_PHYSICAL_RAM`; no real Cherchi teacher evaluation, exact Nef replay, derivative-neighborhood certificate or training labels were produced.
+- W2 manifest remains `ADAPTER_SMOKE_ONLY`, `native_teacher_runs=0`, `training_samples=0`. Its pre-W0 label envelope omits exact rational material vertices/faces, so a genuine live `evaluator.material(c)` attachment is required for W0 numeric replay.
+- Read-only branch HEAD snapshots (commit presence **not** proof of runtime correctness):
+  - W0: `0c3ad0a8f6a6f8088ecb617c980d979fafe68383`
+  - W1: `bbee1eb3044bf41bb5328f0348e97334d8faf0a5`
+  - W2: `56212f46b007fa255cc5796224192010aa67513c`
+  - W3: `fc08c229ecf966f9a4453414dbb54095d22cc118`
+  - W4: `dcae39d2113aeed91c26d7bacceba3e252306d27`
+  - W5: `c535cbde306a6ec4447e4d60583fbbe997ac26f5`
+  - W6: `b5d3985ec4a10c74316bda6579767b58c13b4eaa`
+- Earlier W1–W6 status columns are retained pending formal per-window test evidence review. Native jobs must remain serialized (24 GiB/swap0; compile ≤4; ≤60min/job).

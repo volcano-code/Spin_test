@@ -1,0 +1,55 @@
+{
+  "schema": "W0_M4_P0_INDEPENDENT_TEACHER_REPLAY_EVIDENCE_V1",
+  "recorded_at": "2026-10-19",
+  "branch": "research/neuralmoments-w0-contract-20261019",
+  "source_sha": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "implementation_commit": "0c3ad0a8f6a6f8088ecb617c980d979fafe68383",
+  "source_blob_shas": {
+    "native_teacher_replay.py": "ff53709e38bdba360ad2c7aba499a675ee83dd93",
+    "test_native_teacher_replay.py": "2948d5985b306a7a0676201db18337f4c8e34795",
+    "live_native_teacher_cli.py": "04a8dabb48ccbfeffbd4d4c6d061127301be5ff5",
+    "test_live_native_teacher_cli.py": "41c51d66427af2b9a41d992d91efca8d46b05c05"
+  },
+  "tests": {
+    "command": "python -m pytest -q research/NeuralMoments/contracts/test_native_teacher_replay.py research/NeuralMoments/contracts/test_live_native_teacher_cli.py",
+    "collected": 43,
+    "passed": 43,
+    "failed": 0,
+    "return_code": 0,
+    "observed_seconds": 0.07
+  },
+  "native_attempt": {
+    "status": "BLOCKED_INSUFFICIENT_PHYSICAL_RAM",
+    "exit_code": 3,
+    "observed_memory_gib": 5.808525085449219,
+    "swap_kib": 0,
+    "native_factory_imported": false
+  },
+  "module_availability": {
+    "_make_it_stand": false,
+    "_cherchi_core_boolean": false,
+    "_cherchi_rational_moments": false
+  },
+  "w2_observed_head": "56212f46b007fa255cc5796224192010aa67513c",
+  "w2_teacher_manifest": {
+    "status": "ADAPTER_SMOKE_ONLY",
+    "native_teacher_runs": 0,
+    "training_samples": 0
+  },
+  "cannot_certify": [
+    "genuine same-call Cherchi Boolean",
+    "native independent exact material partition",
+    "Cherchi-produced actual r_D/J_D",
+    "smooth derivative neighborhood",
+    "Newton terminal or physical printability"
+  ],
+  "verified_only": [
+    "synthetic exact rational tetra r10/closed indexing",
+    "same-call native packet structural/numeric policy via fixtures",
+    "malicious hash/frame/J/r/coefficients rejection",
+    "resource admission blocks inappropriate native host"
+  ],
+  "prior_m2_m3_suites_rerun": false,
+  "scientific_proof": false,
+  "training_admissible": false
+}
