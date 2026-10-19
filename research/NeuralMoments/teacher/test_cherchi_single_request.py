@@ -38,6 +38,21 @@ class TestSingleRequest(unittest.TestCase):
         self.assertIsNone(p["J_D"])
         self.assertEqual(p["split"],"excluded")
         self.assertEqual(p["derivative_status"],"UNKNOWN")
+        self.assertFalse(p["exact_proof"]["native_cherchi"])
+    def test_numpy_moment_rows_and_mock_provenance(self):
+        record=self.invoke(MockEvaluator())
+        p=self.check(record)
+        self.assertEqual(p["r_D"],[3.0]+[0.0]*9)
+        self.assertFalse(p["exact_proof"]["native_cherchi"])
+    def test_numpy_nan_rejected_and_recorded(self):
+        class Nonfinite(MockEvaluator):
+            def __call__(self,q):
+                packet=super().__call__(q)
+                packet["variable_raw_moments"][0]=float("nan")
+                return packet
+        p=self.check(self.invoke(Nonfinite()))
+        self.assertEqual(p["derivative_status"],"INVALID")
+        self.assertIn("NONFINITE_COMPONENT",p["failure_reason"])
     def test_failure_still_sealed(self):
         class Broken(MockEvaluator):
             def __call__(self,q): raise RuntimeError("native failed")
