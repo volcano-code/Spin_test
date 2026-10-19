@@ -74,7 +74,6 @@ def audit_same_call_exact_boundary(evaluator, output, density, *, reference_abso
 
 
 
-
 def audit_same_call_attachment(evaluator, output, native_c):
     """Require the producer's persisted material to match *this* evaluation.
 
@@ -109,6 +108,7 @@ def audit_same_call_attachment(evaluator, output, native_c):
             'coefficient_order':'CONST,X,Y,Z,XX,YY,ZZ,YZ,XZ,XY',
             'native_c_to_polynomial_q':'Bdiag=1,1,1,1,1,1,1,2,2,2',
             'source':'producer.material + producer.validate_same_call_material'}
+
 
 def evaluate_one(evaluator, q, *, model_path, native_module_path,
                  geometry, density, frame, derivative_contract=None,
