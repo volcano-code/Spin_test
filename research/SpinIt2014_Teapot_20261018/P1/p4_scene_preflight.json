@@ -1,0 +1,23 @@
+{
+  "schema": "W4MuJoCoVideoPreflightV1",
+  "preflight": "STATIC_SOURCE_AND_SCENE_PASS_MUJOCO_NOT_EXECUTED",
+  "xml_sha256": "b830a76a8d25d689b109f15b60ab171cbac8d8aecea5a310b15ed36f1b6ffd61",
+  "visual_mesh_sha256": "d3289193185192ebca4d63fc813bd77d96810051089c672e887accdf3205b331",
+  "mesh_vertices": 3328,
+  "mesh_faces": 6656,
+  "mass_kg": 0.25,
+  "com_body_m": [
+    0.000993634425252885,
+    1.571424873902157e-07,
+    0.05961113826578046
+  ],
+  "inertia_principal_kgm2": [
+    0.0007017334643663936,
+    0.0007956973017369907,
+    0.000997781890235413
+  ],
+  "timestep_s": 0.002,
+  "contact": "VIRTUAL_TIP_AND_APPROX_BODY_SPHERES_NOT_TRUE_CAD",
+  "geometry_source": "P2_CGAL_PROXY_NOT_CHERCHI",
+  "does_not_prove": "MJCf_NATIVE_ACCEPTANCE_OR_DYNAMICS_OR_OPTIMIZATION"
+}

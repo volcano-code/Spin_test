@@ -1,0 +1,75 @@
+{
+  "schema": "W4FixedPivotSurrogateV1",
+  "engine": "SciPy solve_ivp DOP853",
+  "not_mujoco": true,
+  "not_cherchi": true,
+  "geometry": "CGAL_DIAGNOSTIC_PROXY",
+  "asset_sha256": "d3289193185192ebca4d63fc813bd77d96810051089c672e887accdf3205b331",
+  "physics": "fixed_pivot_heavy_top_gravity_only_no_contact_no_friction",
+  "virtual_tip": "body_origin_pivot",
+  "mass_kg": 0.25,
+  "com_body_m": [
+    0.000993634425252885,
+    1.571424873902157e-07,
+    0.05961113826578046
+  ],
+  "I_pivot_kgm2": [
+    [
+      0.001590109008167624,
+      -4.715818371912093e-09,
+      -1.5839161814020488e-05
+    ],
+    [
+      -4.715818371912093e-09,
+      0.0016843160801831248,
+      -2.757210093081158e-09
+    ],
+    [
+      -1.5839161814020488e-05,
+      -2.757210093081158e-09,
+      0.0009980251253569172
+    ]
+  ],
+  "initial_tilt_deg": 5.0,
+  "dt_output_s": 0.02,
+  "duration_s": 2.8,
+  "initial_angular_velocity_body_z_rad_s": [
+    0.0,
+    30.0,
+    60.0
+  ],
+  "energy_conservation_label": "numeric_invariant_only_not_physical_validation",
+  "results": [
+    {
+      "spin_rad_s": 0.0,
+      "final_tilt_deg": 31.523499562546487,
+      "max_tilt_deg": 177.12756764795134,
+      "first_60deg_time_s": 0.34,
+      "mean_last_quarter_tilt_deg": 62.22567321807359,
+      "peak_relative_energy_error": 1.3753529121835197e-11,
+      "peak_absolute_vertical_angular_momentum_error": 1.997123497224855e-14,
+      "integration_wall_s": 1.3047278639999718
+    },
+    {
+      "spin_rad_s": 30.0,
+      "final_tilt_deg": 4.226152952944273,
+      "max_tilt_deg": 34.66593141002831,
+      "first_60deg_time_s": null,
+      "mean_last_quarter_tilt_deg": 19.32022103003752,
+      "peak_relative_energy_error": 1.4700271857237043e-12,
+      "peak_absolute_vertical_angular_momentum_error": 9.106257414792651e-14,
+      "integration_wall_s": 1.2606248399999913
+    },
+    {
+      "spin_rad_s": 60.0,
+      "final_tilt_deg": 5.134126008576013,
+      "max_tilt_deg": 9.72218056429594,
+      "first_60deg_time_s": null,
+      "mean_last_quarter_tilt_deg": 6.18506371904761,
+      "peak_relative_energy_error": 4.344657355646866e-12,
+      "peak_absolute_vertical_angular_momentum_error": 2.1233848013224588e-12,
+      "integration_wall_s": 1.8742175699999848
+    }
+  ],
+  "trajectory_sha256": "7642661476b9cb9acbf5b16a6bccbb7b3c61831f4b8259586d48d695b97a319c"
+}

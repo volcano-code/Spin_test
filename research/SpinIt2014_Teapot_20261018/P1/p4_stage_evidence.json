@@ -1,0 +1,45 @@
+{
+  "schema": "W4P4EvidenceV1",
+  "branch": "research/neuralmoments-w4-teapot-p1-20261019",
+  "before_sha": "dcae39d2113aeed91c26d7bacceba3e252306d27",
+  "actual_tests": {
+    "count": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "run": "python -m unittest -v test_p4_video_pipeline",
+    "log_file": "p4_local_unittest.log"
+  },
+  "diagnostic_geometry": {
+    "producer": "OpenSCAD_CGAL_NOT_CHERCHI",
+    "P2_z_obj_sha256": "d3289193185192ebca4d63fc813bd77d96810051089c672e887accdf3205b331",
+    "reproduction": "BYTE_IDENTICAL_WITH_PINNED_P0_AND_P1"
+  },
+  "mjcf": {
+    "source": "P2_CGAL_DIAGNOSTIC_ONLY",
+    "sha256": "b830a76a8d25d689b109f15b60ab171cbac8d8aecea5a310b15ed36f1b6ffd61",
+    "preflight": "STATIC_PASS_ONLY_NO_ENGINE"
+  },
+  "simulations": {
+    "scipy_reference": "EXECUTED",
+    "mujoco_status": "FAILED_UNAVAILABLE",
+    "mujoco_exit_code": 2,
+    "mujoco_engine_timesteps": 0,
+    "mujoco_comparison_video": null,
+    "cherchi_optimized_geometry": "NOT_AVAILABLE"
+  },
+  "sci_py_video": {
+    "sha256": "280216a3cb50904fda6fc1012b7b622dcaf7fd5b250e0a1515a80c66e2669ef6",
+    "codec": "h264",
+    "dimensions": [
+      1440,
+      810
+    ],
+    "fps": "30/1",
+    "frames": 169,
+    "playback_seconds": 5.633333,
+    "simulation_seconds": 2.8,
+    "not_mujoco": true
+  },
+  "no_main_or_other_branch_writes": true
+}
