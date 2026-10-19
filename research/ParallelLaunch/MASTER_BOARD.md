@@ -13,7 +13,7 @@
 
 | Window | Role | Branch / exact instructions | Dependencies | Earliest evidence target | State |
 |---|---|---|---|---|---|
-| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M5_W0_W2_EXACT_PARITY; 93_LOCAL_PYTEST_PASS; TANGENT_BRANCH_VETO; NATIVE_BLOCKED` |
+| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M6_FULL_PARTITION_GATE_COMMITTED; 142_LOCAL_M4_M5_M6_PYTEST_PASS; REAL_CHERCHI_BLOCKED; TRAINING_NOT_ADMITTED` |
 | W1 | Cherchi/Faster 性能 | [research/neuralmoments-w1-native-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w1-native-20261019/research/ParallelLaunch/W1_START_HERE.md) | 可独立 profiling；合并需 W0/W2 | 冻结同输入逐段耗时＋原生改造对照 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
 | W2 | 精确教师与标签 | [research/neuralmoments-w2-teacher-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w2-teacher-20261019/research/ParallelLaunch/W2_START_HERE.md) | 正式发布标签需 W0 | 真实 r,J＋SHA＋可微/失败状态 | `W2_M5_EXACT_REFERENCE_PRESENT; MANIFEST_NATIVE_0_TRAINING_0; TRUTH_BLOCKED` |
 | W3 | Heart H9 | [research/neuralmoments-w3-heart-h9-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w3-heart-h9-20261019/research/ParallelLaunch/W3_START_HERE.md) | 无 | 81 点 point60 构造变化诊断 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
@@ -93,3 +93,12 @@
 - **Measured:** 93/93 local tests passed (`python -m pytest -q research/NeuralMoments/contracts/test_*.py`, 0.20 sec): 43 M4 regression tests plus 50 M5 cases. New W0/W2 exact rational r10 equality includes nonzero XY/XZ/YZ and fixed-shell+design accounting; also detects shared-vertex pinched nonmanifold that the W2 edge-only reference admits. Analytic sphere-cap tangent Richardson check maximum normalized error `4.8248891104663016e-08` within predeclared P0 `2e-7` tolerance, and deliberately vetoes base-versus-probe branch changes.
 - **Native:** Real M5 CLI preflight on this 5.8085 GiB / swap0 container exited 3 with `BLOCKED_INSUFFICIENT_PHYSICAL_RAM`, no Cherchi, no teacher data; manifest still `native_teacher_runs=0`, `training_samples=0`. Full exact-region Boolean partition, stable derivative neighborhood and Newton terminal remain **NOT VERIFIED**.
 - **Evidence:** [W0 M5 record](W0_M5_EVIDENCE_20261019.md) and `research/NeuralMoments/contracts/contract_smoke_m5.json`. No 1% universal threshold and no green CI claim. Other windows were read-only.
+
+
+## W0 M6 exact full partition contract gate (2026-10-19)
+
+- Own branch only: M6 code and source identity in `research/NeuralMoments/contracts/`; see [W0 M6 native handoff](../NeuralMoments/contracts/M6_NATIVE_HANDOFF.md) and [executed M6 evidence](W0_M6_EVIDENCE_20261019.md).
+- **Published but NOT native-executed:** one pinned actual Cherchi quadric source, retained/opposite-side Boolean, exact inverse of binary64 target frame, independent native `check_exact_material_partition` for original = F+D, D = retained+cavity, original = F+retained+cavity, exact ten-moment identity and fixed-density accounting. Output remains `training_admissible=false` even if future native partition succeeds.
+- **Observed local test execution:** `142 passed in 0.27s`, local M4/M5/M6 mirror only; 49 new M6 tests plus 93 rerun M4/M5 tests, not full W0 M1–M3 checkout. Synthetic native test doubles are not production proof.
+- **Observed native preflight:** actual RAM 5.808525085449219 GiB, swap 0; exit 3 `BLOCKED_INSUFFICIENT_PHYSICAL_RAM`; no Cherchi call. W2's last inspected manifest reports 0 native runs and 0 training labels.
+- No Green GitHub Actions result claimed, no shared native serialization lock with W1/W2, and no automatic derivative neighborhood/Newton terminal/printability certification. Historic failures are preserved and M6 CLI never overwrites an output evidence path.
