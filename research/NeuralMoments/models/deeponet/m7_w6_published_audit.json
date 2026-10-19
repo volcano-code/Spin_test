@@ -1,0 +1,31 @@
+{
+  "best_J_mae": "w5_deeponet",
+  "best_r_mae": "w5_deeponet",
+  "capacity_max_over_min": 1.0291493158834026,
+  "convex6_Jq_asymmetry": 1.6128372711439927e-09,
+  "convex6_cached_J_speed_ratio_vs_deeponet": 4.919823974092781,
+  "deeponet_Jq_asymmetry": 0.0978690932194392,
+  "fastest_archived_cached_J": "w6_convex_potential4",
+  "fastest_archived_cold_moment": "w5_deeponet",
+  "model_count": 6,
+  "pareto_metrics": [
+    "r_mae",
+    "J_mae",
+    "warm_J_ms"
+  ],
+  "pareto_nondominated_models": [
+    "w5_deeponet",
+    "w6_convex_potential4",
+    "w6_convex_potential6",
+    "w6_convex_potential8"
+  ],
+  "representation_parity": false,
+  "schema": "W5_M7_PUBLISHED_W6_AUDIT_V1",
+  "seed_count": 3,
+  "source_git_blob_sha1": "2e0d186933cf4f8579b1e012e74df714f5ae2bbc",
+  "status": "ARCHIVED_ANALYTIC_TRAINING_NOT_RERUN_IN_W5_M7",
+  "teacher_real_native_runs": 0,
+  "this_turn_retrained_W6": false,
+  "verified_native_CAD_accuracy": false,
+  "warning": "Aggregated across W6's pre-existing 3-seed CPU 400-step analytic P0 experiment; not a new training run, not fair information parity, not actual native/Cherchi optimization performance."
+}

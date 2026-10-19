@@ -1,0 +1,133 @@
+{
+  "accuracy_comparison_allowed": false,
+  "capacity_max_over_min": 1.0483343248066628,
+  "caveat": "Untrained exact-source W6 and W5 API/caching/CPU timing smoke only; W5 uses nine density statistics, W6 full four-channel voxels. Cannot infer trained error, Cherchi throughput or solver acceleration.",
+  "cherchi_native_evaluations": 0,
+  "device": "cpu",
+  "python": "3.13.5",
+  "repeats": 9,
+  "results": {
+    "w5_deeponet": {
+      "Jc_shape": [
+        1,
+        10,
+        10
+      ],
+      "cold_moment_ms": 0.078927,
+      "encode_ms": 0.036444,
+      "jacobian_q_max_asymmetry": 0.02109057968482375,
+      "jacobian_q_min_symmetric_eigenvalue": -0.02045228177880848,
+      "positive_scale_r_max_abs_difference": 0.000604286789894104,
+      "r_shape": [
+        1,
+        10
+      ],
+      "radial_null_max_abs": 0.012139335303234938,
+      "real_parameters": 13674,
+      "warm_jacobian_ms": 0.780739,
+      "warm_moment_ms": 0.042832999999999996,
+      "weights_trained": false
+    },
+    "w5_geometry_mlp": {
+      "Jc_shape": [
+        1,
+        10,
+        10
+      ],
+      "cold_moment_ms": 0.049734,
+      "encode_ms": 0.023184999999999997,
+      "jacobian_q_max_asymmetry": 0.10477172955870628,
+      "jacobian_q_min_symmetric_eigenvalue": -0.08000351221276852,
+      "positive_scale_r_max_abs_difference": 0.0022638514637947083,
+      "r_shape": [
+        1,
+        10
+      ],
+      "radial_null_max_abs": 0.045357067791031436,
+      "real_parameters": 13482,
+      "warm_jacobian_ms": 0.6409509999999999,
+      "warm_moment_ms": 0.026319,
+      "weights_trained": false
+    },
+    "w6_convex_potential6": {
+      "Jc_shape": [
+        1,
+        10,
+        10
+      ],
+      "cold_moment_ms": 0.900346,
+      "encode_ms": 0.7415999999999999,
+      "jacobian_q_max_asymmetry": 0.0,
+      "jacobian_q_min_symmetric_eigenvalue": 8.596129691399255e-09,
+      "positive_scale_r_max_abs_difference": 1.1920928955078125e-07,
+      "r_shape": [
+        1,
+        10
+      ],
+      "radial_null_max_abs": 5.937679681267127e-08,
+      "real_parameters": 13448,
+      "warm_jacobian_ms": 0.223872,
+      "warm_moment_ms": 0.10632799999999999,
+      "weights_trained": false
+    },
+    "w6_lite_bottleneck": {
+      "Jc_shape": [
+        1,
+        10,
+        10
+      ],
+      "cold_moment_ms": 0.786376,
+      "encode_ms": 0.68091,
+      "jacobian_q_max_asymmetry": 0.020795083604753017,
+      "jacobian_q_min_symmetric_eigenvalue": -0.028900101971736154,
+      "positive_scale_r_max_abs_difference": 7.450580596923828e-09,
+      "r_shape": [
+        1,
+        10
+      ],
+      "radial_null_max_abs": 5.730297486516989e-10,
+      "real_parameters": 13746,
+      "warm_jacobian_ms": 1.2227649999999999,
+      "warm_moment_ms": 0.065677,
+      "weights_trained": false
+    },
+    "w6_lite_local_only": {
+      "Jc_shape": [
+        1,
+        10,
+        10
+      ],
+      "cold_moment_ms": 0.5044179999999999,
+      "encode_ms": 0.421124,
+      "jacobian_q_max_asymmetry": 0.04340454563498497,
+      "jacobian_q_min_symmetric_eigenvalue": -0.021377724601383877,
+      "positive_scale_r_max_abs_difference": 7.450580596923828e-09,
+      "r_shape": [
+        1,
+        10
+      ],
+      "radial_null_max_abs": 5.275511971714053e-10,
+      "real_parameters": 14098,
+      "warm_jacobian_ms": 1.056197,
+      "warm_moment_ms": 0.065277,
+      "weights_trained": false
+    }
+  },
+  "same_geometry_input_information": false,
+  "schema": "W5_M7_EXTERNAL_FRAMEWORK_RUNTIME_V1",
+  "seed": 19,
+  "shared_underlying_voxels": true,
+  "source": {
+    "w5_parent_commit": "3686c921bcda2f3815bceadba04604df0c449ea0",
+    "w6_external_source_git_blobs": {
+      "m4_lite_model.py": "853ea92054e5895abe06d33092615a0be4b58772",
+      "m5_potential.py": "b5f976af0b2ef0621fd3f557ea93ae08a48ba99a"
+    },
+    "w6_readonly_commit": "8bc72fe0c2d88bf2cd4de1922242a4745c141891"
+  },
+  "source_4channel_grid_sha256": "9c7256348d1717ffaed352fb6e90aad1f9277377765214a34f00f565f076a2ae",
+  "source_9d_lossy_summary_sha256": "dddf23f62c0658ba93ec16ca884094490452c346e60350d8723f226fb6d7b741",
+  "torch": "2.10.0+cpu",
+  "torch_threads": 1,
+  "training_applied": false
+}

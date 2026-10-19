@@ -1,0 +1,42 @@
+{
+  "schema": "W5_M7_EXTRACTED_W6_M5_PUBLISHED_SNAPSHOT_V1",
+  "origin": {
+    "repository": "volcano-code/Spin_test",
+    "branch": "research/neuralmoments-w6-pcraft-20261019",
+    "read_only_commit": "8bc72fe0c2d88bf2cd4de1922242a4745c141891",
+    "source_file": "research/NeuralMoments/models/pcraft_ufno/m5_summary.json",
+    "source_git_blob_sha1": "2e0d186933cf4f8579b1e012e74df714f5ae2bbc",
+    "source_schema": "W6_M5_EVIDENCE_V1",
+    "extraction_scope": "accuracy_400_steps selected fields only, copied from W6 GitHub report; prior W6 execution, not retrained in this W5 milestone"
+  },
+  "data": {
+    "kind": "ANALYTIC_CONTINUUM_P0_NOT_CHERCHI",
+    "seeds": [19,23,29],
+    "train_geometries_per_seed": 40,
+    "test_geometries_per_seed": 20,
+    "train_analytic_labels_per_seed": 80,
+    "test_analytic_labels_per_seed": 40,
+    "max_steps": 400,
+    "batch_size": 8,
+    "derivative_loss_weight": 0.5,
+    "validation_only_checkpoint_selection": true,
+    "heldout_family": "ellipsoid",
+    "training_families": ["box","sphere"],
+    "representation_parity": false,
+    "teacher_real_native_runs": 0,
+    "teacher_real_samples": 0,
+    "dataset_sha256_per_seed": [
+      {"seed":19,"train":"7b65ebbb3e5d32e82ff7ee23a1f88978fa4100902b67f63e16b0fdc2df54e087","heldout":"5db2ede650ade31c45602647e6296865a41629269e65eb7b5228e0585b51400b"},
+      {"seed":23,"train":"d36d707cbf7ecdd0089f66fea3f8784a200830f09a2e0b5a60790ce6028562e7","heldout":"fd16cc24093f9593ea592a3744f75be656b4d09b13bfd29314b2a0fda94ffb1d"},
+      {"seed":29,"train":"25eece482d68d864064bfcc7785226785afc41307f56978f2f027ba4ac838394","heldout":"008c850489155ef281ade007439bebd3816efa006dfd3f86c5809718710781d7"}
+    ],
+    "models": {
+      "w5_deeponet": {"real_parameters":13674,"r_mae":0.015621301407615343,"J_mae":0.01530398583660523,"Jq_max_asymmetry":0.0978690932194392,"warm_J_ms":1.1112799998045375,"cold_ms":0.266427000042313,"r_mae_sample_sd":0.0021791248493699743},
+      "w5_geometry_mlp": {"real_parameters":13482,"r_mae":0.024629640703399975,"J_mae":0.0208699864645799,"Jq_max_asymmetry":0.07265872011582057,"warm_J_ms":0.7872090000091703,"cold_ms":0.26683500027502305,"r_mae_sample_sd":0.0038144792938583218},
+      "w6_lite_bottleneck": {"real_parameters":13746,"r_mae":0.019889314969380695,"J_mae":0.016801230298976105,"Jq_max_asymmetry":0.34841973582903546,"warm_J_ms":1.2876259997938178,"cold_ms":1.1320470002829097,"r_mae_sample_sd":0.004090135302464492},
+      "w6_convex_potential4": {"real_parameters":13528,"r_mae":0.033373006309072174,"J_mae":0.027792025357484818,"Jq_max_asymmetry":2.364481351454136e-9,"warm_J_ms":0.14908699995430652,"cold_ms":1.3478119999490445,"r_mae_sample_sd":0.008269319425088111},
+      "w6_convex_potential6": {"real_parameters":13448,"r_mae":0.0226667324701945,"J_mae":0.018103211497267086,"Jq_max_asymmetry":1.6128372711439927e-9,"warm_J_ms":0.2258780000374827,"cold_ms":1.2498370001594594,"r_mae_sample_sd":0.002367876263672705},
+      "w6_convex_potential8": {"real_parameters":13840,"r_mae":0.020635501792033512,"J_mae":0.024614844471216202,"Jq_max_asymmetry":1.039249279225866e-8,"warm_J_ms":0.3664549999484734,"cold_ms":1.51829300011741,"r_mae_sample_sd":0.0017291812881933218}
+    }
+  }
+}
