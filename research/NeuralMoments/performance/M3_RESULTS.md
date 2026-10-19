@@ -4,7 +4,7 @@
 
 ## What was actually executed
 
-Locally built and ran a **standalone** C++17/GMP `real_h8_gmp_probe.cpp` on TWO genuine historical H8 Cherchi **archived** material packets retrieved from GitHub Actions, with balanced AB/BA repeats. Independently verified archival SHA-256, same-q and CAD identities, exact rational ten moments, binary64 moments against archived independent Fraction/native certificates, and target-frame translation. The full locally tested implementation, tests, and all original stage rows are preserved in the downloadable `W1_M3_real_H8_replay_bundle.zip` (not automatically a GitHub checkout file). Local tests: **11 passed / 0 failed / 0 skipped**; see `evidence/m3-tests.log`. No fresh Cherchi Boolean was executed. No full Newton solver run, no fresh exact self-intersection audit or derivative/Jacobian regeneration.
+Locally built and ran a **standalone** C++17/GMP `real_h8_gmp_probe.cpp` on TWO genuine historical H8 Cherchi **archived** material packets retrieved from GitHub Actions, with balanced AB/BA repeats. Independently verified archival SHA-256, same-q and CAD identities, exact rational ten moments, binary64 moments against archived independent Fraction/native certificates, and target-frame translation. The exact tested C++ source `real_h8_gmp_probe.cpp` is now also committed in W1 (Git blob `02821d2d02d5362d4252729125832bc86e2777b4`). The full local Python harness, tests and original raw stage rows remain in the downloadable M3 bundle. Local tests: **11 passed / 0 failed / 0 skipped**; see `evidence/m3-tests.log`. No fresh Cherchi Boolean was executed. No full Newton solver run, no fresh exact self-intersection audit or derivative/Jacobian regeneration.
 
 In this branch the separate `m3_h8_archive_audit.py` is a **pure-Python fail-closed archival verifier**, which checks SHA identities, q/geometry, exact source material shape, historical cross-frame moments and preserved H8e CI failure state. Running this verifier cannot promote archived evidence to a newly certified native solve. It is a separately uploaded source file and does not imply CI succeeded.
 
@@ -30,7 +30,7 @@ python research/NeuralMoments/performance/m3_h8_archive_audit.py \
   --output /tmp/w1-m3-audit.json
 ```
 
-For the complete native C++ side of the local experiment, use the linked M3 source/evidence bundle; the standalone replay source is not yet merged into production bindings and its original local byte-for-byte file is not the newly published Python audit script. All local experimental timings depend on hardware and are **not** author-matched paper results.
+For the complete native C++ side of the local experiment, use the linked M3 source/evidence bundle; the byte-identical standalone `real_h8_gmp_probe.cpp` is now in the W1 directory; it remains outside production Cherchi bindings. All local experimental timings depend on hardware and are **not** author-matched paper results.
 
 ## Open admission gates
 
