@@ -62,9 +62,10 @@ class TestSingleRequest(unittest.TestCase):
             split="train")
         p=self.check(record)
         self.assertEqual(p["split"],"excluded")
-        self.assertEqual(p["derivative_status"],"INVALID")
+        self.assertEqual(p["derivative_status"],"UNKNOWN")
         self.assertIsNone(p["J_D"])
-        self.assertIn("MOCK_OR_UNAUTHENTICATED",p["failure_reason"])
+        self.assertIn("W0_VERIFIER_NOT_INTEGRATED",p["exact_proof"]["derivative_admission_reason"])
+        self.assertIsNone(p["failure_reason"])
 
     def test_failure_still_sealed(self):
         class Broken(MockEvaluator):
