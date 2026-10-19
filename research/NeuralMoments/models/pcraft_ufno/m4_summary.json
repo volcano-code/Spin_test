@@ -1,0 +1,146 @@
+{
+  "M3_input_dataset_sha256": [
+    {
+      "full_M3_heldout_sha256": "5db2ede650ade31c45602647e6296865a41629269e65eb7b5228e0585b51400b",
+      "full_M3_train_sha256": "7b65ebbb3e5d32e82ff7ee23a1f88978fa4100902b67f63e16b0fdc2df54e087",
+      "seed": 19
+    },
+    {
+      "full_M3_heldout_sha256": "fd16cc24093f9593ea592a3744f75be656b4d09b13bfd29314b2a0fda94ffb1d",
+      "full_M3_train_sha256": "d36d707cbf7ecdd0089f66fea3f8784a200830f09a2e0b5a60790ce6028562e7",
+      "seed": 23
+    },
+    {
+      "full_M3_heldout_sha256": "008c850489155ef281ade007439bebd3816efa006dfd3f86c5809718710781d7",
+      "full_M3_train_sha256": "25eece482d68d864064bfcc7785226785afc41307f56978f2f027ba4ac838394",
+      "seed": 29
+    }
+  ],
+  "W0_contract": "MomentContractV1 order and full ambient smooth P0 Jacobian",
+  "W5_comparison_note": "Same source voxel and labels, lossy W5 9D summary versus W6 full 4-channel voxel; representation parity FALSE",
+  "dataset": "M3 seeded frozen continuum cube/ball/ellipsoid closed-form vertical cuts; no native Cherchi",
+  "early_stopping": "minimize r_mae+0.25*J_mae, evaluated every 10 steps; patience 5",
+  "max_steps": 100,
+  "models": {
+    "lite_bottleneck": {
+      "J_mae_mean": 0.01730789616703987,
+      "J_mae_sample_sd": 0.001324712200497408,
+      "Jq_asymmetry_max_mean": 0.40226096908251446,
+      "cpu_cached_J_ms_median_of_seed_medians": 1.7287980000446623,
+      "cpu_cold_ms_median_of_seed_medians": 2.053079000006619,
+      "moment_only_ablation": {
+        "J_mae_mean": 0.023054479310909908,
+        "Jq_asymmetry_max_mean": 0.48812806606292725,
+        "r_mae_mean": 0.030571384976307552,
+        "selected_steps": [
+          100,
+          100,
+          100
+        ]
+      },
+      "r_mae_mean": 0.030971577391028404,
+      "r_mae_sample_sd": 0.013875702371308729,
+      "selected_steps": [
+        100,
+        100,
+        100
+      ]
+    },
+    "lite_dual": {
+      "J_mae_mean": 0.018260765820741653,
+      "J_mae_sample_sd": 0.001719933011336663,
+      "Jq_asymmetry_max_mean": 0.4560452401638031,
+      "cpu_cached_J_ms_median_of_seed_medians": 1.8047629999955461,
+      "cpu_cold_ms_median_of_seed_medians": 1.576430000000073,
+      "moment_only_ablation": {
+        "J_mae_mean": 0.024432665357987087,
+        "Jq_asymmetry_max_mean": 0.4938737253348033,
+        "r_mae_mean": 0.028381409123539925,
+        "selected_steps": [
+          100,
+          100,
+          100
+        ]
+      },
+      "r_mae_mean": 0.027687368914484978,
+      "r_mae_sample_sd": 0.006158778831315081,
+      "selected_steps": [
+        100,
+        100,
+        100
+      ]
+    },
+    "lite_local_only": {
+      "J_mae_mean": 0.018193893134593964,
+      "J_mae_sample_sd": 0.0009320703689225628,
+      "Jq_asymmetry_max_mean": 0.3983534077803294,
+      "cpu_cached_J_ms_median_of_seed_medians": 1.8363300000601157,
+      "cpu_cold_ms_median_of_seed_medians": 0.8087649999879432,
+      "moment_only_ablation": {
+        "J_mae_mean": 0.024686094994346302,
+        "Jq_asymmetry_max_mean": 0.42151039838790894,
+        "r_mae_mean": 0.030725426971912384,
+        "selected_steps": [
+          100,
+          100,
+          100
+        ]
+      },
+      "r_mae_mean": 0.03082471402982871,
+      "r_mae_sample_sd": 0.0126160501116036,
+      "selected_steps": [
+        100,
+        100,
+        80
+      ]
+    },
+    "w5_deeponet": {
+      "J_mae_mean": 0.01696766261011362,
+      "J_mae_sample_sd": 0.0016814916331349952,
+      "Jq_asymmetry_max_mean": 0.1091291531920433,
+      "cpu_cached_J_ms_median_of_seed_medians": 1.9103210000821491,
+      "cpu_cold_ms_median_of_seed_medians": 0.5760660000078133,
+      "r_mae_mean": 0.02662427785495917,
+      "r_mae_sample_sd": 0.0036211887268566955,
+      "selected_steps": [
+        100,
+        100,
+        90
+      ]
+    },
+    "w5_geometry_mlp": {
+      "J_mae_mean": 0.019809243579705555,
+      "J_mae_sample_sd": 0.0005834697045218608,
+      "Jq_asymmetry_max_mean": 0.06292732059955597,
+      "cpu_cached_J_ms_median_of_seed_medians": 1.0915619999423143,
+      "cpu_cold_ms_median_of_seed_medians": 0.33910799993464025,
+      "r_mae_mean": 0.02908119497199853,
+      "r_mae_sample_sd": 0.010601252275250389,
+      "selected_steps": [
+        100,
+        80,
+        80
+      ]
+    }
+  },
+  "parameters_real": {
+    "lite_bottleneck": 13746,
+    "lite_dual": 14122,
+    "lite_local_only": 14098,
+    "w5_deeponet": 13674,
+    "w5_geometry_mlp": 13482
+  },
+  "schema": "W6_M4_ANALYTIC_ONLY_V1",
+  "seeds": [
+    19,
+    23,
+    29
+  ],
+  "status": "ANALYTIC_CONTINUUM_P0_M4_NO_W2_REAL_TEACHER",
+  "test_labels_per_seed": 40,
+  "total_architectures": 5,
+  "train_labels_per_seed": 64,
+  "train_loss": "MSE(r)+0.5*MSE(J)",
+  "validation_labels_per_seed": 16,
+  "w2_real_teacher_samples": 0
+}

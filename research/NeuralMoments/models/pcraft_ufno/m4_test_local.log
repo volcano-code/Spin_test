@@ -1,0 +1,19 @@
+test_all_five_near_equal_parameter_budget (research.NeuralMoments.models.pcraft_ufno.test_m4.TestW6M4.test_all_five_near_equal_parameter_budget) ... ok
+test_analytic_native_Jq_versus_Jc (research.NeuralMoments.models.pcraft_ufno.test_m4.TestW6M4.test_analytic_native_Jq_versus_Jc) ... ok
+test_cached_geometry_only_once_for_multi_c (research.NeuralMoments.models.pcraft_ufno.test_m4.TestW6M4.test_cached_geometry_only_once_for_multi_c) ... ok
+test_dataset_reproduces_M3_across_three_seeds (research.NeuralMoments.models.pcraft_ufno.test_m4.TestW6M4.test_dataset_reproduces_M3_across_three_seeds) ... ok
+test_duplicate_seed_or_parameter_budget_rejected (research.NeuralMoments.models.pcraft_ufno.test_m4.TestW6M4.test_duplicate_seed_or_parameter_budget_rejected) ... ok
+test_early_stop_selects_validation_not_test (research.NeuralMoments.models.pcraft_ufno.test_m4.TestW6M4.test_early_stop_selects_validation_not_test) ... ok
+test_fft_mode_clamp_at_small_resolution_and_backward (research.NeuralMoments.models.pcraft_ufno.test_m4.TestW6M4.test_fft_mode_clamp_at_small_resolution_and_backward) ... ok
+test_full_J_matches_finite_difference (research.NeuralMoments.models.pcraft_ufno.test_m4.TestW6M4.test_full_J_matches_finite_difference) ... ok
+test_one_cpu_end_to_end_with_five_models (research.NeuralMoments.models.pcraft_ufno.test_m4.TestW6M4.test_one_cpu_end_to_end_with_five_models) ... ok
+test_positive_projective_invariance_but_sign_distinct (research.NeuralMoments.models.pcraft_ufno.test_m4.TestW6M4.test_positive_projective_invariance_but_sign_distinct) ... ok
+test_same_minibatch_schedule (research.NeuralMoments.models.pcraft_ufno.test_m4.TestW6M4.test_same_minibatch_schedule) ... ok
+test_split_holds_out_whole_geometry_id (research.NeuralMoments.models.pcraft_ufno.test_m4.TestW6M4.test_split_holds_out_whole_geometry_id) ... ok
+test_three_variant_fft_placement_is_explicit (research.NeuralMoments.models.pcraft_ufno.test_m4.TestW6M4.test_three_variant_fft_placement_is_explicit) ... ok
+test_voxel9_has_no_family_or_oracle_descriptors (research.NeuralMoments.models.pcraft_ufno.test_m4.TestW6M4.test_voxel9_has_no_family_or_oracle_descriptors) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 2.074s
+
+OK
