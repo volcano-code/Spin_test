@@ -1,0 +1,119 @@
+# W4-owned workflow. Diagnostic physics ONLY; this is not Cherchi optimization.
+# Authorized for this W4 branch by user; never runs against main.
+name: W4 Teapot MuJoCo diagnostic (not Cherchi)
+
+on:
+  push:
+    branches:
+      - research/neuralmoments-w4-teapot-p1-20261019
+    paths:
+      - .github/workflows/w4-teapot-mujoco.yml
+      - research/SpinIt2014_Teapot_20261018/P1/**
+      - research/SpinIt2014_Teapot_20261018/input/teapot-public-original.obj
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: w4-teapot-mujoco-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  actual-mujoco-diagnostic:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      MUJOCO_GL: osmesa
+      PYOPENGL_PLATFORM: osmesa
+      OPENBLAS_NUM_THREADS: 1
+      OMP_NUM_THREADS: 1
+      P1: research/SpinIt2014_Teapot_20261018/P1
+    steps:
+      - name: Checkout the exact W4 branch revision
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Prepare Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install native OpenSCAD and offscreen Mesa renderer
+        run: |
+          set -euo pipefail
+          sudo apt-get update -q
+          sudo apt-get install -y openscad ffmpeg libosmesa6 libgl1-mesa-dri libgl1 libegl1 libglib2.0-0
+          python -m pip install --upgrade pip
+          python -m pip install 'numpy>=2,<3' 'scipy>=1.15,<2' 'trimesh>=4,<5' 'opencv-python-headless>=4,<5' 'mujoco==3.3.7' 'PyOpenGL>=3.1.7' pillow
+          python - <<'PY'
+          import mujoco, numpy, scipy, trimesh, cv2, OpenGL
+          print('REAL ENGINE:', mujoco.__version__)
+          print('MuJoCo module:', mujoco.__file__)
+          print('Scientific versions:', numpy.__version__, scipy.__version__, trimesh.__version__, cv2.__version__)
+          PY
+          openscad --version
+          ffmpeg -version | head -n 2
+
+      - name: Reproduce pinned P2 diagnostic mesh and MJCF
+        run: |
+          set -euo pipefail
+          mkdir -p "$P1/p4-actual-mujoco"
+          git rev-parse HEAD | tee "$P1/p4-actual-mujoco/git-commit.txt"
+          python "$P1/p4_prepare_scene.py" --output "$P1/p3-mujoco-diagnostic" | tee "$P1/p4-actual-mujoco/scene-rebuild.log"
+          python "$P1/p4_mujoco_verified_video.py" --xml "$P1/p3-mujoco-diagnostic/teapot_spinning.xml" --preflight-only | tee "$P1/p4-actual-mujoco/preflight.json"
+
+      - name: Verify real MuJoCo model loads and diagnostic physics runs
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import mujoco
+          from pathlib import Path
+          xml=Path('research/SpinIt2014_Teapot_20261018/P1/p3-mujoco-diagnostic/teapot_spinning.xml')
+          m=mujoco.MjModel.from_xml_path(str(xml.resolve()))
+          d=mujoco.MjData(m)
+          mujoco.mj_forward(m,d)
+          print('MuJoCo loaded model',dict(nbody=m.nbody,ngeom=m.ngeom,nq=m.nq,nv=m.nv,
+                                             timestep=float(m.opt.timestep)))
+          assert (m.nq,m.nv)==(7,6)
+          PY
+
+      - name: Execute MuJoCo dynamics and export three-way H.264 MP4
+        run: |
+          set -euo pipefail
+          python "$P1/p4_mujoco_verified_video.py" --xml "$P1/p3-mujoco-diagnostic/teapot_spinning.xml" --out "$P1/p4-actual-mujoco" --duration 2.8 --fps 24 | tee "$P1/p4-actual-mujoco/execution.log"
+          test -s "$P1/p4-actual-mujoco/mujoco_teapot_comparison.mp4"
+          test -s "$P1/p4-actual-mujoco/mujoco_video_results.json"
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import subprocess
+          p=Path('research/SpinIt2014_Teapot_20261018/P1/p4-actual-mujoco')
+          data=json.loads((p/'mujoco_video_results.json').read_text())
+          assert data['status']=='REAL_MUJOCO_ENGINE_AND_VIDEO_EXECUTED'
+          assert data['source_geometry']=='P2_CGAL_DIAGNOSTIC_PROXY_NOT_CHERCHI'
+          assert len(data['results'])==3
+          for speed in (0,30,60):
+              assert (p/f'mujoco_{speed}_rad_s.csv').stat().st_size>100
+          probe=json.loads(subprocess.check_output(['ffprobe','-v','error',
+              '-select_streams','v:0','-show_entries','stream=codec_name,width,height,nb_frames',
+              '-of','json',str(p/'mujoco_teapot_comparison.mp4')],text=True))
+          v=probe['streams'][0]
+          assert v['codec_name']=='h264' and v['width']==1320 and v['height']==480
+          print('VERIFIED_REAL_MUJOCO_DIAGNOSTIC:',data['engine_version'],v)
+          PY
+          sha256sum "$P1/p4-actual-mujoco/"* > "$P1/p4-actual-mujoco/files.sha256"
+
+      - name: Upload artifacts, including diagnostics on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-actual-MuJoCo-CGAL-diagnostic-not-Cherchi-optimization
+          path: |
+            research/SpinIt2014_Teapot_20261018/P1/p4-actual-mujoco/**
+            research/SpinIt2014_Teapot_20261018/P1/p3-mujoco-diagnostic/simulation-manifest.json
+            research/SpinIt2014_Teapot_20261018/P1/p3-mujoco-diagnostic/teapot_spinning.xml
+          if-no-files-found: warn
+          retention-days: 30
