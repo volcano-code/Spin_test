@@ -79,7 +79,9 @@ def make_pinned_archive(tmp_path):
                       'fixed_moments_target':[0.]*10,
                       'variable_moments_target':r,'total_moments_target':r})
     events=[{'kind':'NEWTON_EVENT','event':event} for event in newton]
-    events.extend([{'kind':'MAP_SAVED','evaluation':1,'evaluation_file':'evaluation-000001.json'},
+    events.extend([{'kind':'MAP_SAVED','evaluation':1,'evaluation_file':'evaluation-000001.json',
+                    'sha256':None,'geometry_hash':material['geometry_hash'],
+                    'coefficients':C},
                    {'kind':'RUN_TERMINATED','status':'CONVERGED','evaluation_count':1}])
     pins={}
     for name,obj in [('configuration.json',configuration),('events.jsonl',events),
@@ -91,6 +93,9 @@ def make_pinned_archive(tmp_path):
         if name in ('terminal-material-reference.json','terminal-complement-reference.json','native-result.json'):
             continue
         pins[name]=_save(root,name,obj)
+    # Production MAP_SAVED events bind the material bytes *before* the log is sealed.
+    events[-2]['sha256']=pins['evaluation-000001.json']
+    pins['events.jsonl']=_save(root,'events.jsonl',events)
     native=dict(schema='cherchi-numerical-terminal-v1',native_run=run,
                 configuration_sha256=pins['configuration.json'],material_audit_complete=False)
     pins['native-result.json']=_save(root,'native-result.json',native)

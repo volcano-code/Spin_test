@@ -132,9 +132,11 @@ def review_pinned_terminal_archive(directory, external_pins):
          'BAD_EXTERNAL_PROBLEM_PIN')
     pins=external_pins['files']
     need(type(pins) is dict and set(pins).issuperset(REQUIRED_FILES) and
-         len(pins)==len(REQUIRED_FILES)+1 and
-         all(key in REQUIRED_FILES or EVALUATION.fullmatch(key) for key in pins),
+         all(type(key) is str and
+             (key in REQUIRED_FILES or EVALUATION.fullmatch(key)) for key in pins),
          'FULL_ARCHIVE_FILE_PINS_REQUIRED')
+    evaluation_names={name for name in pins if EVALUATION.fullmatch(name)}
+    need(bool(evaluation_names), 'FULL_ARCHIVE_FILE_PINS_REQUIRED')
     root=Path(directory)
     need(root.is_dir() and not root.is_symlink(), 'REAL_ARCHIVE_DIRECTORY_REQUIRED')
     data={key:_read_exact_file(root,key,sha) for key,sha in pins.items()}
@@ -226,6 +228,31 @@ def review_pinned_terminal_archive(directory, external_pins):
          events[-1].get('status')=='CONVERGED' and
          events[-1].get('evaluation_count')==done.get('evaluation_count'),
          'RUN_TERMINAL_LOG_MISMATCH')
+    # Real Newton journals have many evaluation checkpoints; every MAP_SAVED
+    # must bind a distinct externally pinned file, not merely the last one.
+    mapped=[e for e in events if e.get('kind') in ('MAP_SAVED','MAP_REJECTED')]
+    need(bool(mapped) and
+         [e.get('evaluation') for e in mapped] == list(range(1,len(mapped)+1)) and
+         len(mapped)==done.get('evaluation_count'),
+         'NONCONTIGUOUS_NEWTON_MAP_CHECKPOINTS')
+    saved=[row for row in mapped if row['kind']=='MAP_SAVED']
+    claimed=set()
+    for item in saved:
+        i=item['evaluation']
+        filename=item.get('evaluation_file')
+        need(filename==f'evaluation-{i:06d}.json' and filename not in claimed
+             and filename in evaluation_names and
+             item.get('sha256')==pins[filename],
+             'MISSING_OR_UNPINNED_NEWTON_EVALUATION')
+        material_item=objs[filename]
+        need(type(material_item) is dict and
+             material_item.get('quadric_coefficients')==item.get('coefficients') and
+             material_item.get('geometry_hash')==item.get('geometry_hash') and
+             material_item.get('evaluation_map_identity')==config.get('evaluation_map_identity') and
+             material_item.get('boolean_backend_identity')==config.get('boolean_backend_identity'),
+             'NONTERMINAL_EVALUATION_ATTACHMENT_MISMATCH')
+        claimed.add(filename)
+    need(claimed==evaluation_names,'UNREFERENCED_PINNED_EVALUATION')
     newton=[e['event'] for e in events if e.get('kind')=='NEWTON_EVENT']
     need(newton and _proj(newton)==_proj(run.get('events')),
          'NATIVE_NEWTON_EVENT_LEDGER_MISMATCH')
@@ -270,6 +297,8 @@ def review_pinned_terminal_archive(directory, external_pins):
     return {
        'schema':'W0_M7_PINNED_NUMERICAL_TERMINAL_REVIEW_V1',
        'external_archive_bytes_checked':len(data),
+       'pinned_saved_evaluation_count':len(saved),
+       'mapped_evaluation_count':len(mapped),
        'journal_sha256':pins['events.jsonl'],
        'native_terminal_c_sha256':digest(list(c)),
        'quadric_source_sha256':source,
