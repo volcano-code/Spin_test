@@ -62,8 +62,13 @@ jobs:
           set -euo pipefail
           mkdir -p "$P1/p4-actual-mujoco"
           git rev-parse HEAD | tee "$P1/p4-actual-mujoco/git-commit.txt"
-          python "$P1/p4_prepare_scene.py" --output "$P1/p3-mujoco-diagnostic" | tee "$P1/p4-actual-mujoco/scene-rebuild.log"
-          python "$P1/p4_mujoco_verified_video.py" --xml "$P1/p3-mujoco-diagnostic/teapot_spinning.xml" --preflight-only | tee "$P1/p4-actual-mujoco/preflight.json"
+          python "$P1/p5_cloud_scene_bootstrap.py" --output "$P1/p5-cloud-mujoco-scene" | tee "$P1/p4-actual-mujoco/scene-rebuild.log"
+          python "$P1/p4_mujoco_verified_video.py" --xml "$P1/p5-cloud-mujoco-scene/teapot_spinning.xml" --preflight-only | tee "$P1/p4-actual-mujoco/preflight.json"
+
+      - name: Check cross-version physics invariants and rejection tests
+        run: |
+          set -euo pipefail
+          python -m unittest discover -v -s "$P1" -p 'test_p5_cloud_scene_bootstrap.py' 2>&1 | tee "$P1/p4-actual-mujoco/cloud-scene-tests.log"
 
       - name: Verify real MuJoCo model loads and diagnostic physics runs
         run: |
@@ -71,7 +76,7 @@ jobs:
           python - <<'PY'
           import mujoco
           from pathlib import Path
-          xml=Path('research/SpinIt2014_Teapot_20261018/P1/p3-mujoco-diagnostic/teapot_spinning.xml')
+          xml=Path('research/SpinIt2014_Teapot_20261018/P1/p5-cloud-mujoco-scene/teapot_spinning.xml')
           m=mujoco.MjModel.from_xml_path(str(xml.resolve()))
           d=mujoco.MjData(m)
           mujoco.mj_forward(m,d)
@@ -83,7 +88,7 @@ jobs:
       - name: Execute MuJoCo dynamics and export three-way H.264 MP4
         run: |
           set -euo pipefail
-          python "$P1/p4_mujoco_verified_video.py" --xml "$P1/p3-mujoco-diagnostic/teapot_spinning.xml" --out "$P1/p4-actual-mujoco" --duration 2.8 --fps 24 | tee "$P1/p4-actual-mujoco/execution.log"
+          python "$P1/p4_mujoco_verified_video.py" --xml "$P1/p5-cloud-mujoco-scene/teapot_spinning.xml" --out "$P1/p4-actual-mujoco" --duration 2.8 --fps 24 | tee "$P1/p4-actual-mujoco/execution.log"
           test -s "$P1/p4-actual-mujoco/mujoco_teapot_comparison.mp4"
           test -s "$P1/p4-actual-mujoco/mujoco_video_results.json"
           python - <<'PY'
@@ -113,7 +118,7 @@ jobs:
           name: W4-actual-MuJoCo-CGAL-diagnostic-not-Cherchi-optimization
           path: |
             research/SpinIt2014_Teapot_20261018/P1/p4-actual-mujoco/**
-            research/SpinIt2014_Teapot_20261018/P1/p3-mujoco-diagnostic/simulation-manifest.json
-            research/SpinIt2014_Teapot_20261018/P1/p3-mujoco-diagnostic/teapot_spinning.xml
+            research/SpinIt2014_Teapot_20261018/P1/p5-cloud-mujoco-scene/simulation-manifest.json
+            research/SpinIt2014_Teapot_20261018/P1/p5-cloud-mujoco-scene/teapot_spinning.xml
           if-no-files-found: warn
           retention-days: 30
