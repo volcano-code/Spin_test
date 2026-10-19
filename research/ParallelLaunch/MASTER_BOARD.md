@@ -13,7 +13,7 @@
 
 | Window | Role | Branch / exact instructions | Dependencies | Earliest evidence target | State |
 |---|---|---|---|---|---|
-| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M6_FULL_PARTITION_GATE_COMMITTED; 142_LOCAL_M4_M5_M6_PYTEST_PASS; REAL_CHERCHI_BLOCKED; TRAINING_NOT_ADMITTED` |
+| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M7_TERMINAL_RECORD_GATE_COMMITTED; 222_LOCAL_M4_M7_PYTEST_PASS; EVERY_MAP_SAVED_PINNED; REAL_NATIVE_BLOCKED` |
 | W1 | Cherchi/Faster 性能 | [research/neuralmoments-w1-native-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w1-native-20261019/research/ParallelLaunch/W1_START_HERE.md) | 可独立 profiling；合并需 W0/W2 | 冻结同输入逐段耗时＋原生改造对照 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
 | W2 | 精确教师与标签 | [research/neuralmoments-w2-teacher-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w2-teacher-20261019/research/ParallelLaunch/W2_START_HERE.md) | 正式发布标签需 W0 | 真实 r,J＋SHA＋可微/失败状态 | `W2_M5_EXACT_REFERENCE_PRESENT; MANIFEST_NATIVE_0_TRAINING_0; TRUTH_BLOCKED` |
 | W3 | Heart H9 | [research/neuralmoments-w3-heart-h9-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w3-heart-h9-20261019/research/ParallelLaunch/W3_START_HERE.md) | 无 | 81 点 point60 构造变化诊断 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
@@ -102,3 +102,12 @@
 - **Observed local test execution:** `142 passed in 0.27s`, local M4/M5/M6 mirror only; 49 new M6 tests plus 93 rerun M4/M5 tests, not full W0 M1–M3 checkout. Synthetic native test doubles are not production proof.
 - **Observed native preflight:** actual RAM 5.808525085449219 GiB, swap 0; exit 3 `BLOCKED_INSUFFICIENT_PHYSICAL_RAM`; no Cherchi call. W2's last inspected manifest reports 0 native runs and 0 training labels.
 - No Green GitHub Actions result claimed, no shared native serialization lock with W1/W2, and no automatic derivative neighborhood/Newton terminal/printability certification. Historic failures are preserved and M6 CLI never overwrites an output evidence path.
+
+
+## W0 M7 authentic-terminal-readiness and independent KKT (2026-10-19)
+
+- Source-linked M7 terminal reader, original Spin2014 KKT re-evaluator, M6 proof-chain binder and production-only CLI committed on the **W0 branch exclusively**. It reads existing output; neither launches Newton nor performs a Boolean. See [M7 evidence](W0_M7_EVIDENCE_20261019.md) and [M7 handoff](../NeuralMoments/contracts/M7_TERMINAL_HANDOFF.md).
+- Measured new M4–M7 local mirror: **222 passed in 0.55 s** (142 prior M4–M6 rerun, 80 M7 tests including 5 multi-step journal tests). All deployed source/test Git blobs match the local tested bytes. M1–M3's source-linked binary tests were not rerun in this isolated mirror.
+- M7 requires independent **post-run** SHA256 pins for every `MAP_SAVED` `evaluation-%06d.json`, every essential terminal/complete/material journal attachment, the last accepted Newton c, and the native source/geometry identity. An independently *pre-run* frozen model/build/source SHA remains a different class of pin. Do not allow local self-resealed evidence as native authority.
+- Synthetic journal consistent numerical smoke: exit0 `NUMERICAL_ARCHIVE_CONSISTENT_NOT_NATIVE_CERTIFICATE`, never training true; actual installed production journal-verifier and original-objective KKT requests: **exit3 `BLOCKED_PRODUCTION_VERIFIER_UNAVAILABLE`**. No real Cherchi solver or independent M6 native partition was run on this 5.8-GiB/swap0 host.
+- **W2 actual native labels and training admission remain BLOCKED**; an apparent CONVERGED JSON, archive hash equality, several stable sampled branches, or an ML prediction cannot substitute for independently authenticated exact geometry, derivative smooth-neighborhood, sealed final material and native original-equation terminal.

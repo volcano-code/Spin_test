@@ -157,3 +157,17 @@ Local (no native) command: `python -m pytest -q research/NeuralMoments/contracts
 `live_native_m6_cli.py` admits only precommitted SHA pins and a trusted real evaluator factory on a 20+GiB RAM/swap0 node, shares W0 M5's in-process serialization lock, times out after 60 minutes and **never overwrites an existing evidence file**. Cross-window native jobs must still be scheduled serially. Run `python -m pytest -q research/NeuralMoments/contracts/test_*.py` for local W0-only checks; M4/M5/M6 mirror result `142 passed in 0.27s` is not a Cherchi runtime certificate. This local host blocked actual native preflight at 5.81 GiB, exit 3.
 
 See `M6_NATIVE_HANDOFF.md`, `contract_smoke_m6.json`, and `research/ParallelLaunch/W0_M6_EVIDENCE_20261019.md`. Further independent Newton terminal and continuous derivative-neighborhood proof remain required for any real W2 teacher/training promotion.
+
+
+## M7 externally pinned terminal journal and KKT review
+
+New W0-only `terminal_archive_m7.py` is a **read-only reviewer** for immutable actual `solve_cherchi_inprocess_and_seal_faster` production archives. It demands exact independently frozen SHA256 for **every** `MAP_SAVED` evaluation file, all essential saved terminal/material/complement/result/complete/event records, final accepted native c, source and geometry identity, exact rational ten-moment reintegration, and correct Jc→solver Jacobian chain rule. A missing, unreferenced, mutated or reordered nonterminal material is denied. Archive file pins must be committed by an independent collector **after writer close, before review**; model/build/source pins must be separately fixed **before execution**. No existing archive or failed record is overwritten.
+
+`original_stationarity_m7.py` provides separately tested original-mode numerical KKT via complex step and correct native coefficient B mapping; `live_original_objective_m7.py` can run only with installed production `faster_material.py` and original objective contract whose **SHA256 are externally pinned**. `m7_evidence_chain.py` binds one M6 exact partition record to the same terminal c/source/retained geometry but does **not** grant authenticity to self-asserted native flags. `live_terminal_m7_cli.py` never launches Newton; production-dependent options return a typed blocked status in an environment without native modules.
+
+```bash
+python -m pytest -q research/NeuralMoments/contracts/test_*.py
+PYTHONPATH=python python -m research.NeuralMoments.contracts.live_terminal_m7_cli --archive /immutable/native-run --pins /externally-frozen/terminal-pins.json --output /new/m7-review.json
+```
+
+The measured isolated **M4–M7** mirror was **222 passed in 0.55 seconds** including five extra multi-evaluation journal tests; earlier M1–M3 tests were not rerun in this mirror. Only synthetic archives were numerically checked here, and both real verifier/original KKT modes correctly returned `BLOCKED_PRODUCTION_VERIFIER_UNAVAILABLE` (exit3). This is **NOT** a claim of real Cherchi convergence, a valid full material partition, geometric/printability approval or a smooth derivative-neighborhood certificate. **`training_admissible=false` always.** See `M7_TERMINAL_HANDOFF.md`, `contract_smoke_m7.json` and `research/ParallelLaunch/W0_M7_EVIDENCE_20261019.md`.

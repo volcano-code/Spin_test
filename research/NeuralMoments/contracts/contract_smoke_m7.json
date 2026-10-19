@@ -1,0 +1,62 @@
+{
+  "schema": "W0_M7_TERMINAL_ARCHIVE_EVIDENCE_V1",
+  "date": "2026-10-19",
+  "target_branch": "research/neuralmoments-w0-contract-20261019",
+  "source_commit": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "core_commits": [
+    "3d1dfdb61f8c352f5d525e0eb3172273bee79745",
+    "e05044b79701f5ee8d24504b4f4e63f9352595a7"
+  ],
+  "local_tests": {
+    "command": "python -m pytest -q research/NeuralMoments/contracts/test_*.py",
+    "passed": 222,
+    "failed": 0,
+    "exit_code": 0,
+    "pytest_reported_elapsed_seconds": 0.55,
+    "prior_M4_to_M6_rerun": 142,
+    "new_M7_tests": 80,
+    "prior_M1_to_M3_rerun": false,
+    "log_sha256": "da27204891217932d82fc09564ecff529ef47cd2c9bc50e52c0da17b7079ae21"
+  },
+  "authentic_data": {
+    "native_Cherchi_calls": 0,
+    "real_teacher_samples": 0,
+    "actual_native_newton_converged": false,
+    "independent_native_partition": false,
+    "continuous_derivative_neighborhood": false,
+    "training_admissible": false
+  },
+  "actual_cli_preflight": [
+    {
+      "scope": "SYNTHETIC_SHAPE_ONLY",
+      "status": "NUMERICAL_ARCHIVE_CONSISTENT_NOT_NATIVE_CERTIFICATE",
+      "exit_code": 0,
+      "training_admissible": false
+    },
+    {
+      "scope": "REAL_SOURCE_PINNED_RECORD_VERIFIER",
+      "status": "BLOCKED_PRODUCTION_VERIFIER_UNAVAILABLE",
+      "exit_code": 3
+    },
+    {
+      "scope": "REAL_SOURCE_PINNED_ORIGINAL_KKT",
+      "status": "BLOCKED_PRODUCTION_VERIFIER_UNAVAILABLE",
+      "exit_code": 3
+    }
+  ],
+  "verified_m7_file_git_blobs": {
+    "terminal_archive_m7.py": "10c9dfc3b0d74d7c2d330e5554f6c81009df669e",
+    "test_terminal_archive_m7.py": "3a61c66347f7389acf81d206b081ffaf6bfa4f57",
+    "test_multistep_terminal_archive_m7.py": "fea84339bceab1f7d53b4eb0c2fe70179e906dde",
+    "original_stationarity_m7.py": "11b8f7f5fcadb05851a187cbbb3db4af982c205e",
+    "live_original_objective_m7.py": "aaa66ebafe6401d862d65880edffc3e503765d40",
+    "m7_evidence_chain.py": "ea3a885f28836cc0323556d1800d9ec59bc7e2a9",
+    "live_terminal_m7_cli.py": "ab616b030cac5d66f1b276927eb72d3c6f9951aa",
+    "test_live_original_objective_m7.py": "698b3f9278320a604cc98cf0771be3f486e613e3",
+    "test_live_terminal_m7_cli.py": "d7ad135f8117fa08b2a984d26203ca1c00ed7c29",
+    "test_m7_evidence_chain.py": "cf5847cbc4282cc7a38d9614bd5f248ceea83845",
+    "test_original_stationarity_m7.py": "e939bb737b05d60587b4f84addeec194972328a9"
+  },
+  "no_CI_success_claim": true,
+  "scientific_certification": false
+}
