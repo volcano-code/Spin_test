@@ -1,0 +1,83 @@
+{
+  "P0_decision_controlled_perturbation": {
+    "candidate_step_h": -0.06634433128181436,
+    "loss_before": 0.06286001980912435,
+    "loss_candidate_after": 0.00017204220508170242,
+    "loss_oracle_after": 1.0682031770635672e-07,
+    "oracle_step_h": -0.07009108644256351,
+    "signed_oracle_loss_gap": 0.00017193538476399607,
+    "step_absolute_error": 0.0037467551607491545,
+    "truth_kind": "ANALYTIC_P0_ONLY"
+  },
+  "P0_decision_reference": {
+    "candidate_step_h": -0.07009108644256351,
+    "loss_before": 0.06286001980912435,
+    "loss_candidate_after": 1.0682031770635672e-07,
+    "loss_oracle_after": 1.0682031770635672e-07,
+    "oracle_step_h": -0.07009108644256351,
+    "signed_oracle_loss_gap": 0.0,
+    "step_absolute_error": 0.0,
+    "truth_kind": "ANALYTIC_P0_ONLY"
+  },
+  "W0_monomial_B": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2
+  ],
+  "W0_native_control_order": "CONST,X,Y,Z,XX,YY,ZZ,YZ,XZ,XY",
+  "analytic_oracle": "continuous perfect sphere cap; isolated from triangulated cube network inputs",
+  "cpu_threads": 1,
+  "gpu_seconds": 0.0,
+  "mesh_feature_dimension": 24,
+  "mesh_kind": "triangular closed cube (no self-intersection or CAD Boolean certificate)",
+  "mesh_raw_mass": 8.0,
+  "models_untrained_interface_probes": {
+    "deeponet": {
+      "cold_ms_cpu_median": 0.097254,
+      "estimated_linear_macs": {
+        "cold_query_macs": 14144,
+        "encode_macs": 10432,
+        "parameters": 14394,
+        "warm_query_macs": 3712
+      },
+      "finite_output_and_jacobian_shapes_verified": true,
+      "jacrev_10x10_ms_cpu_median": 0.530127,
+      "trainable_parameters": 14394,
+      "warm_ms_cpu_median": 0.039619
+    },
+    "geometry_mlp": {
+      "cold_ms_cpu_median": 0.063745,
+      "estimated_linear_macs": {
+        "cold_query_macs": 13920,
+        "encode_macs": 4992,
+        "parameters": 14202,
+        "warm_query_macs": 8928
+      },
+      "finite_output_and_jacobian_shapes_verified": true,
+      "jacrev_10x10_ms_cpu_median": 0.45162,
+      "trainable_parameters": 14202,
+      "warm_ms_cpu_median": 0.028011
+    }
+  },
+  "no_real_teacher_or_accuracy_or_speedup_claim": true,
+  "non_comparable_inputs": true,
+  "python_version": "3.13.5",
+  "remaining_dependencies": [
+    "W0 full verified native material/coordinate exchange",
+    "W2 independently sealed real Cherchi r_D and Jacobian with held-out geometry families"
+  ],
+  "repeats": 21,
+  "schema": "W5-M3-mesh-and-native-P0-smoke-v1",
+  "seed": 101,
+  "source_sha256": "7f7b6b645a6f0ba8e5db38d269abe1c1063eccd39ed05f4d1763184b4765ffee",
+  "status": "ANALYTIC_P0_AND_MESH_INPUT_ONLY_REAL_W2_TRAINING_BLOCKED",
+  "torch_version": "2.10.0+cpu",
+  "train_steps": 0
+}
