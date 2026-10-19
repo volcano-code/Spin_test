@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v1-pre-w0",
-  "status": "ADAPTER_SMOKE_ONLY",
+  "status": "M5_EXACT_REFERENCE_AND_NATIVE_RUNNER_COMMITTED_NO_NATIVE_EVALUATION",
   "native_teacher_runs": 0,
   "training_samples": 0,
   "order": [
@@ -16,12 +16,26 @@
     "xy"
   ],
   "fixed_policy": "r_total=r_F+r_D;J_total=J_D",
-  "derivative_policy": "H8 point60 excluded until branch proof; Teapot open boundary excluded",
+  "derivative_policy": "W0 verifier not integrated: J_D withheld and all labels excluded; H8 point60 branch-change/unknown; open Teapot rejected",
   "data_splits": {
     "train": [],
     "val": [],
     "test": [],
     "excluded": []
   },
-  "pending_dependency": "W0 MomentContractV1"
+  "pending_dependency": "W0 MomentContractV1",
+  "independent_reference": {
+    "schema": "w2-independent-tetra-integral-v1",
+    "module": "independent_reference.py",
+    "acceptance": "closed oriented exact rational mesh; not embedding certification",
+    "smoke_analytic_box_error_max_abs": 0
+  },
+  "local_smoke": {
+    "tests_run": 31,
+    "tests_passed": 31,
+    "tests_failed": 0,
+    "scope": "locally mirrored W2 files; remote blob hashes verified; no compiled native modules",
+    "native_preflight_status": "FAILED_PREFLIGHT",
+    "native_preflight_error": "ModuleNotFoundError: No module named 'make_it_stand'"
+  }
 }
