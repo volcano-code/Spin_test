@@ -5,8 +5,11 @@ import math
 from fractions import Fraction
 from pathlib import Path
 
-SCHEMA = "w2-cherchi-teacher-v1-pre-w0"
+SCHEMA = "w2-cherchi-teacher-v2-pre-w0"
 ORDER = ["m","x","y","z","xx","yy","zz","yz","xz","xy"]
+NATIVE_C_ORDER = ["CONST","X","Y","Z","XX","YY","ZZ","YZ","XZ","XY"]
+COEFFICIENT_CONVENTION = "NATIVE_MATRIX_ENTRIES_C10_POLYNOMIAL_Q_EQUALS_BC_V1"
+
 
 def canonical(x):
     return json.dumps(x, sort_keys=True, separators=(",",":"), allow_nan=False)
@@ -23,6 +26,11 @@ def vector(x):
     if not all(math.isfinite(v) for v in y):
         raise ValueError("NONFINITE_COMPONENT")
     return y
+
+def native_c_to_polynomial_q(native_c):
+    """W0: polynomial cross terms are 2 times native matrix off-diagonals."""
+    c=vector(native_c)
+    return vector(c[:7]+[2*x for x in c[7:]])
 
 def seal(*,model_sha256,native_module_sha256,geometry,density,frame,q,
          r_d,j_d,r_f,topology_status,derivative_status,derivative_contract,
@@ -50,7 +58,8 @@ def seal(*,model_sha256,native_module_sha256,geometry,density,frame,q,
         raise ValueError("INVALID_TIMINGS")
     if peak_rss_bytes is not None and (not isinstance(peak_rss_bytes,int) or peak_rss_bytes<0):
         raise ValueError("INVALID_MEMORY")
-    p=dict(schema=SCHEMA,order=ORDER,coefficient_convention="NATIVE_MATRIX_ENTRY_Q10",
+    p=dict(schema=SCHEMA,order=ORDER,coefficient_convention=COEFFICIENT_CONVENTION,
+           native_c_order=NATIVE_C_ORDER,native_c=q,polynomial_q=native_c_to_polynomial_q(q),
            model_sha256=model_sha256,native_module_sha256=native_module_sha256,
            geometry=geometry,density=density,frame=frame,q=q,r_D=r_d,J_D=j_d,r_F=r_f,
            topology_status=topology_status,derivative_status=derivative_status,
@@ -66,11 +75,14 @@ def verify(record,*,expected_q,expected_model_sha256,expected_native_module_sha2
     if set(record)!={"payload","payload_sha256","identity"}:
         raise ValueError("INVALID_ENVELOPE")
     p=record["payload"]
-    if p.get("schema")!=SCHEMA or p.get("order")!=ORDER or p.get("coefficient_convention")!="NATIVE_MATRIX_ENTRY_Q10":
+    if p.get("schema")!=SCHEMA or p.get("order")!=ORDER or p.get("coefficient_convention")!=COEFFICIENT_CONVENTION:
         raise ValueError("SCHEMA_OR_ORDER_MISMATCH")
     if digest(p)!=record["payload_sha256"]:
         raise ValueError("PAYLOAD_TAMPERED")
-    if p.get("q")!=vector(expected_q) or digest(p["q"])!=record["identity"].get("q_sha256"):
+    if (p.get("q")!=vector(expected_q) or p.get("native_c")!=vector(expected_q) or
+        p.get("native_c_order")!=NATIVE_C_ORDER or
+        p.get("polynomial_q")!=native_c_to_polynomial_q(expected_q) or
+        digest(p["q"])!=record["identity"].get("q_sha256")):
         raise ValueError("Q_MISMATCH")
     if p.get("model_sha256")!=expected_model_sha256 or p.get("native_module_sha256")!=expected_native_module_sha256:
         raise ValueError("MODULE_MISMATCH")
