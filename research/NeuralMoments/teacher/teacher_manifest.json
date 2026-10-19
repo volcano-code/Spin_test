@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M7_FROZEN_OBJ_TO_REQUEST_BINDING_VERIFIED_LOCALLY_NATIVE_UNAVAILABLE",
+  "status": "M8_REAL_ARCHIVED_CHERCHI_H8E_25POINT_OFFLINE_EXACT_MOMENTS_VERIFIED_NO_DERIVATIVE_ADMISSION",
   "native_teacher_runs": 0,
   "training_samples": 0,
   "order": [
@@ -23,7 +23,7 @@
     "test": [],
     "excluded": []
   },
-  "pending_dependency": "Compiled Cherchi and Spin native modules on research host, independently sealed Heart/Noodles input, W0 verified derivative-neighborhood admission",
+  "pending_dependency": "W0 signed/independent neighborhood verifier + real H8 81-point/no branch-change proof; original native host missing in this runtime",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -73,5 +73,42 @@
     "frozen_arrays": "EXACT_BINARY64_VERTEX_AND_ORDERED_INDEXED_FACES",
     "topology": "ORIENTED_TWO_MANIFOLD_NECESSARY_NOT_EMBEDDING_PROOF",
     "limitations": "Does not certify CAD provenance, original CAD equivalence, watertight exact embedding, design/fixed geometry or W0 derivative neighborhood"
-  }
+  },
+  "local_native_calls": 0,
+  "previously_recorded_native_evidence": {
+    "scope": "H8_RECONSTRUCTED_CAD_NON_AUTHOR_ORIGINAL",
+    "upstream_github_actions_run": 39121571756,
+    "upstream_workflow_conclusion": "failure",
+    "upstream_artifact_id": 12134772056,
+    "archive_zip_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+    "independent_classifier_run": 39122997405,
+    "independent_classifier_workflow_conclusion": "success",
+    "independent_classifier_artifact_id": 12134499573,
+    "independent_classifier_zip_sha256": "e17d90a8195637358d19e61fda3d8e1946cb33540f26190cead6723e7a36ef16",
+    "original_native_evaluations": 25,
+    "new_native_evaluations": 0,
+    "archived_samples_offline_independently_reverified": 25,
+    "independent_ten_moment_max_float_absolute_error": 0,
+    "independent_ten_moment_max_ulp_error": 0,
+    "archived_native_25point_wall_seconds": 379.493727883,
+    "offline_independent_reverification_seconds": 78.34623676299998,
+    "archived_topology_hash_drift_sample_indices": [
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "distinct_feature_hashes": 3,
+    "numeric_moments_status": "REVERIFIED_FROM_EXACT_RATIONAL_SAME_CALL_MATERIAL",
+    "derivative_status": "FINITE_DIAGNOSTIC_ONLY_NOT_CERTIFIED",
+    "full_81_points": false,
+    "certified_smooth_neighborhood": false,
+    "newton_converged": false,
+    "training_admitted": false
+  },
+  "archived_data_use_policy": "Historical upstream artifacts are preserved; M8 offline replays physical r_D only; no J_D admission and no reinterpretation of upstream FAILURE"
 }
