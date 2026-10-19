@@ -1,0 +1,15 @@
+{
+  "actual_h8_samples": 0,
+  "expected_request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+  "frozen_h8_prepared_request_available": false,
+  "installed_native_extensions": {
+    "_cherchi_core_boolean": false,
+    "_cherchi_rational_moments": false,
+    "_make_it_stand": false
+  },
+  "math_contract_or_w2_parity_accepted": false,
+  "reason": "Frozen request and compiled Cherchi/native extensions not available to this runner",
+  "schema": "w1-m2-h8-input-availability-v1",
+  "scope": "LOCAL_TEST_ENVIRONMENT_NOT_GITHUB_RUNNER",
+  "unqualified": true
+}

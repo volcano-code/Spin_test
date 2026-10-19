@@ -1,0 +1,15 @@
+COMMAND: python -m unittest discover -s research/NeuralMoments/performance -p test_m2.py -v
+test_audit_rejects_missing_flags (test_m2.TestM2.test_audit_rejects_missing_flags) ... ok
+test_gmp_multiple_distinct_sources (test_m2.TestM2.test_gmp_multiple_distinct_sources) ... ok
+test_gmp_negative_and_analytic (test_m2.TestM2.test_gmp_negative_and_analytic) ... ok
+test_gmp_resource_limits (test_m2.TestM2.test_gmp_resource_limits) ... ok
+test_gmp_tetra_identity (test_m2.TestM2.test_gmp_tetra_identity) ... ok
+test_h8_missing_request_fails_closed (test_m2.TestM2.test_h8_missing_request_fails_closed) ... ok
+test_h8_wrong_sha_fails_without_native_import (test_m2.TestM2.test_h8_wrong_sha_fails_without_native_import) ... ok
+test_ledger_rejects_nested (test_m2.TestM2.test_ledger_rejects_nested) ... ok
+test_ten_moment_jacobian_parity (test_m2.TestM2.test_ten_moment_jacobian_parity) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 1.879s
+
+OK
