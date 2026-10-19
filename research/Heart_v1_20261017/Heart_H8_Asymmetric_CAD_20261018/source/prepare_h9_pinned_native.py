@@ -344,23 +344,32 @@ def launch(repo,artifact,certificate,output,build_evidence):
         exit_code=proc.returncode
     except subprocess.TimeoutExpired:
         exit_code=124
+    from verify_h9_live_handoff import verify_handoff, HandoffRejected
     audit_file=out/'serial-native/independent-audit.json'
-    audit_complete=False
-    if exit_code==0 and audit_file.exists():
-        audit=json.loads(audit_file.read_text())
-        audit_complete=(audit.get('schema')=='heart-h9-independent-new-side-material-audit-v1'
-                        and audit.get('new_native_samples_reintegrated')==4
-                        and audit.get('newton_admitted') is False
-                        and audit.get('actual_newton_step_accepted') is False)
-    if exit_code==0 and not audit_complete:
-        exit_code=1
-    result={'schema':'heart-h9-stage7-serial-native-handoff-v1',
-            'status':'FOUR_NATIVE_SIDES_AND_INDEPENDENT_AUDIT_FINISHED_NOT_NEWTON'
-                if exit_code==0 else 'FAILED_CLOSED',
+    handoff=None
+    handoff_error=None
+    if exit_code==0:
+        try:
+            handoff=verify_handoff(out/'serial-native',
+                original_archive_sha256=HISTORICAL_ARTIFACT_SHA256,
+                module_sha256=status['module_sha256'])
+        except (HandoffRejected,ValueError,KeyError,TypeError,OSError) as exc:
+            handoff_error=f'{type(exc).__name__}: {exc}'
+            exit_code=1
+    # A structural handoff witness does not prove executable runtime origin.
+    # It MUST NOT be promoted to a Newton or continuous-branch certificate.
+    result={'schema':'heart-h9-stage8-serial-native-handoff-v1',
+            'status':'FOUR_NATIVE_SIDES_AND_INDEPENDENT_AUDIT_STRUCTURALLY_BOUND_NO_NEWTON'
+                if exit_code==0 and handoff is not None else 'FAILED_CLOSED',
             'exit_code':exit_code,'module_sha256':status['module_sha256'],
             'local_build_evidence_sha256':status['verified_local_build_evidence_sha256'],
-            'actual_independent_audit_accepted':audit_complete,
-            'independent_audit':str(audit_file),'newton_admitted':False}
+            'actual_independent_audit_accepted':handoff is not None,
+            'outer_handoff':handoff,
+            'outer_handoff_error':handoff_error,
+            'independent_audit':str(audit_file),
+            'continuous_native_boolean_stratum_proven':False,
+            'cryptographic_runtime_origin_attested':False,
+            'newton_admitted':False}
     (out/'launch_result.json').write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')
     return exit_code
 

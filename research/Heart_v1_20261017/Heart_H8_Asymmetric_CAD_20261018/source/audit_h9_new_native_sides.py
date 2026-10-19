@@ -130,13 +130,38 @@ def h7_observe(material,request):
 
 def audit(artifact,certificate_path,native_output):
     artifact=Path(artifact);native_output=Path(native_output)
+    # Refuse missing/partial NEW native packets before the expensive archived
+    # 81-point rational replay. Previous order spent time recalculating frozen
+    # materials even when zero fresh Cherchi samples had ever been produced.
+    # Cheap metadata identity guards also preserve the diagnostic priority
+    # of existing Stage5 tests for a forged binary manifest or tampered cert.
+    if Path(certificate_path).is_file():
+        supplied_preflight=json.loads(Path(certificate_path).read_text(encoding='utf8'))
+        need(supplied_preflight.get('schema')==
+             'heart-h9-native-endpoints-and-conditional-interior-event-v1'
+             and supplied_preflight.get('conditional_analytic_interior_edge_crossing_certified') is True
+             and supplied_preflight.get('native_production_continuity_or_topology_certified') is False
+             and supplied_preflight.get('newton_admitted') is False,
+             'CROSSING_CERTIFICATE_NOT_REPRODUCED_FROM_FROZEN_ARTIFACT')
+    run_path=native_output/'report.json'
+    need(run_path.is_file(),'NO_COMPLETED_NEW_REAL_CHERCHI_RUN_REPORT')
+    pre_report=json.loads(run_path.read_text(encoding='utf8'))
+    hashes=pre_report.get('binary_hashes')
+    need(type(hashes) is dict and set(hashes)=={'core','boolean','arithmetic'}
+         and all(type(h) is str and len(h)==64 and
+                 all(c in '0123456789abcdef' for c in h) for h in hashes.values()),
+         'MISSING_ACTUAL_BINARY_SHA256_IDS')
+    expected_sides=('left-coarse','left-near','right-near','right-coarse')
+    for i,side in enumerate(expected_sides):
+        name=f'side-{i:02d}-{side}'
+        need((native_output/(name+'.json')).is_file()
+             and (native_output/(name+'.json.gz')).is_file(),
+             'NEW_NATIVE_SIDE_SNAPSHOT_MISSING_'+str(i))
     original,old_report,old_samples=archival_data(artifact)
     expected=offline_solve(artifact)
     supplied=json.loads(Path(certificate_path).read_text(encoding='utf8'))
     need(supplied==expected,'CROSSING_CERTIFICATE_NOT_REPRODUCED_FROM_FROZEN_ARTIFACT')
     plan=native_plan(expected)
-    run_path=native_output/'report.json'
-    need(run_path.is_file(),'NO_COMPLETED_NEW_REAL_CHERCHI_RUN_REPORT')
     run_bytes=run_path.read_bytes()
     runner=json.loads(run_bytes)
     need(runner.get('schema')=='heart-h9-crossing-sides-live-v1'
