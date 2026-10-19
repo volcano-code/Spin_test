@@ -63,8 +63,14 @@ def evaluate_one(evaluator, q, *, model_path, native_module_path,
         derivative="UNKNOWN"
         jacobian=None
         if output.get("derivative_defined") and derivative_contract is not None:
+            if not native_authenticated:
+                raise ValueError("MOCK_OR_UNAUTHENTICATED_DERIVATIVE_NOT_ADMISSIBLE")
             if not isinstance(derivative_contract,dict) or not derivative_contract.get("verified_neighborhood"):
                 raise ValueError("UNVERIFIED_DERIVATIVE_CONTRACT")
+            # W0's contract is not released: provisional certificates must not
+            # create training labels or valid Jacobians.
+            if derivative_contract.get("schema")!="MomentContractV1" or not derivative_contract.get("contract_sha256"):
+                raise ValueError("W0_MOMENT_CONTRACT_REQUIRED")
             jacobian=[vector(row) for row in output["moment_jacobian"]]
             derivative="VALID"
             topology="VALID"
