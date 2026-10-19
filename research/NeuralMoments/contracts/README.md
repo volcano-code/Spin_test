@@ -114,3 +114,17 @@ published Python source achieved **57 passed**. GitHub combined statuses
 and PR-triggered workflow listings for the runner commit were empty: **there
 is no claimed green CI**, and no production Eigen/Cherchi solver was run.
 See `research/ParallelLaunch/W0_M2_EVIDENCE_20261019.md`.
+
+## M3 source-compiled quadric and exact signed-shell P0
+
+The executable probe `native_quadric_probe.cpp` is linked against the **unmodified actual frozen production** `src/spin/QuadricCoefficients.cpp` and exact header. `test_native_quadric_cpp.py` computes their Git blob SHA-1 before compiling, and passes the repository's actual `include/` path plus a real Eigen header directory to one g++ process. The unrelated slicer hash function is stubbed **for linking only**; no production hash claims are made. If Eigen is not available, that pytest is explicitly **SKIPPED**, not passed.
+
+`exact_box_material_probe.py` independently uses signed tetrahedra over two exact-rational watertight boxes. An inward-oriented inner boundary defines the fixed shell F and its independent inner D, with different physical densities; ten ordinary raw moments are compared to *independent separable rational monomial integrals*. A transformed mesh is reintegrated to check rotation, scale, shear, reflection/winding and translation. The integrator's elementary edge checks are **not** a certificate of arbitrary Boolean nesting, embedding, geometry or Cherchi source identity.
+
+```bash
+python -m pytest -q research/NeuralMoments/contracts/test_native_quadric_cpp.py research/NeuralMoments/contracts/test_exact_box_material_probe.py
+# Full W0 suite (old 57 + new cases):
+python research/NeuralMoments/contracts/run_contract_smoke.py
+```
+
+Measured in the isolated 2026-10-19 environment: **9 new tests passed in 11.85s**, native C++ value/gradient/matrix maximal error `2.22e-16`, pullback `6.66e-16`. Prior M2 57 tests were not rerun in this isolated mirror, so an aggregate 66-test PASS is **not** claimed. W2 teacher manifest still advertises 0 native teacher samples; only 5.8GiB RAM and no Cherchi native module are available here. See `research/ParallelLaunch/W0_M3_EVIDENCE_20261019.md` for exact limitations.

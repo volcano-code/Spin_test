@@ -13,7 +13,7 @@
 
 | Window | Role | Branch / exact instructions | Dependencies | Earliest evidence target | State |
 |---|---|---|---|---|---|
-| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M2_GATE_COMMITTED; 57_LOCAL_PYTEST_PASS; EXACT_BLOB_CHECKED; NATIVE_CI_NOT_RUN` |
+| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M3_FROZEN_EIGEN_CPP_125PTS_PASS; CLOSED_FD_EXACT; 9_M3_TESTS_PASS; CHERCHI_BLOCKED` |
 | W1 | Cherchi/Faster 性能 | [research/neuralmoments-w1-native-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w1-native-20261019/research/ParallelLaunch/W1_START_HERE.md) | 可独立 profiling；合并需 W0/W2 | 冻结同输入逐段耗时＋原生改造对照 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
 | W2 | 精确教师与标签 | [research/neuralmoments-w2-teacher-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w2-teacher-20261019/research/ParallelLaunch/W2_START_HERE.md) | 正式发布标签需 W0 | 真实 r,J＋SHA＋可微/失败状态 | `W2_ADAPTER_MOCKS_PRESENT; MANIFEST_0_NATIVE_RUNS_0_TRAINING; TRUTH_BLOCKED` |
 | W3 | Heart H9 | [research/neuralmoments-w3-heart-h9-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w3-heart-h9-20261019/research/ParallelLaunch/W3_START_HERE.md) | 无 | 81 点 point60 构造变化诊断 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
@@ -54,3 +54,18 @@
 - Local test command `python research/NeuralMoments/contracts/run_contract_smoke.py` passes 57/57 (0.13 seconds); all published source files were checked byte-for-byte by Git blob SHA before pushing, runner blob verified separately. See [W0 M2 evidence](W0_M2_EVIDENCE_20261019.md).
 - Actual Cherchi/Eigen runtime, exact Boolean material certification, derivative smooth-neighborhood proof, end-to-end Newton terminal and GitHub Actions result are **NOT VERIFIED**, so teacher and network training admission remain blocked.
 - The current W2 manifest (read-only observation) reports adapter-smoke only and zero native teacher/training samples. Other W rows are unchanged pending independent audit.
+
+
+## W0 milestone 3 source-linked native / exact P0 observation (2026-10-19)
+
+- The unchanged frozen production `src/spin/QuadricCoefficients.cpp` and header are Git-blob verified as `ae831afe9191f67fb2659f112d1b85a8e2b61581` and `d315960a8d9616197df656a3c74b74b2da037798`, compiled together with W0 native probe and a linker stub **only** for unrelated slicer SHA hashing.
+- 125 actual native-Eigen points passed (value, gradient, homogeneous matrix, pullback; worst absolute error `6.66e-16`). Signed exact-rational 24-face fixed shell F plus 12-face inner D was independently integrated against separable analytic box mass-moments and transformed meshes, with **exact zero** algebraic difference. New M3 tests: `9 passed in 11.85s`.
+- Source/test files committed under W0-only scope; see [W0 M3 evidence](W0_M3_EVIDENCE_20261019.md) and `research/NeuralMoments/contracts/contract_smoke_m3.json`.
+- Machine has only 5.8GiB RAM, no swap, and neither `_make_it_stand` nor `_cherchi_core_boolean` present. **Real Cherchi material, independent exact Boolean seal, teacher r/J, Newton terminal and training admission NOT VERIFIED.** GitHub CI is not assumed green.
+- The following W1–W6 branch SHAs and commit subjects were **read-only observed**, not independently benchmarked or certified. The earlier state cells remain unchanged to avoid treating commit messages as tested evidence:
+  - W1: `01a1d480ec4044ff678bc648051234bcb7e85aeb` — research(w1): M2 exact GMP PreparedMaterial parity and H8 replay profiler
+  - W2: `14b1d2d5da4e258d125e664b5665ef84f7ebbb4e` — W2: add mock smoke for one-call Cherchi adapter and failure accounting
+  - W3: `0f5229bb10cac098011f42ab9c996eec485ac034` — Heart H9 W3: certify archived edge-event sign bracket, add guarded native microprobe and tests
+  - W4: `8fc1dd33e6cabb29a54849dce271ec63660b6af4` — W4 P2: reproducible CGAL teapot solid union with independent self-contact and moment gates
+  - W5: `7054cf6624eeb85f8ba06093090127bdb8016dc4` — W5 M2: gate W0/W2 teacher provenance and audit multi-seed analytic baselines
+  - W6: `694e5764e656de0c769f59d2838dc53eddde0b63` — W6 M2: W0-native analytic cut oracle, derivative smoke, W2 fail-closed gate and CPU evidence

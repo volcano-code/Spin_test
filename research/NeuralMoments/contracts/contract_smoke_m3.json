@@ -1,0 +1,72 @@
+{
+  "schema": "W0_M3_NATIVE_CPP_AND_EXACT_P0_V1",
+  "day": "2026-10-19",
+  "repository": "volcano-code/Spin_test",
+  "branch": "research/neuralmoments-w0-contract-20261019",
+  "frozen_source_sha": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "native_files_sha": {
+    "src/spin/QuadricCoefficients.cpp": "ae831afe9191f67fb2659f112d1b85a8e2b61581",
+    "include/spin/QuadricCoefficients.h": "d315960a8d9616197df656a3c74b74b2da037798"
+  },
+  "new_file_blobs": {
+    "native_quadric_probe.cpp": "6d9831953f657478749ae7317a6100e81886c980",
+    "test_native_quadric_cpp.py": "56234aa31eb1a530d7ceb6aa45577fd592dbb8f7",
+    "exact_box_material_probe.py": "11265f4b9e8793cddeb0f43a7f3e2986be78fccd",
+    "test_exact_box_material_probe.py": "7ccb454483710e52a838270276e3ea0a8f4a7d18"
+  },
+  "new_test_command": "python -m pytest -q research/NeuralMoments/contracts/test_native_quadric_cpp.py research/NeuralMoments/contracts/test_exact_box_material_probe.py",
+  "new_test_results": {
+    "pass": 9,
+    "fail": 0,
+    "exit_code": 0,
+    "wall_seconds_reported": 11.85,
+    "cpp_probe_points": 125
+  },
+  "cpp_values": {
+    "max_value_error": 2.220446049250313e-16,
+    "max_gradient_error": 2.220446049250313e-16,
+    "max_homogeneous_error": 2.220446049250313e-16,
+    "max_pullback_error": 6.661338147750939e-16,
+    "positive_pullback_scale": 0.6343232753371417,
+    "hash_dependency_stubbed": true
+  },
+  "exact_closed_box_FD": {
+    "F_mass": "3027/40",
+    "D_mass": "105/64",
+    "total_mass": "24741/320",
+    "QYZ": "99/4096",
+    "QXZ": "99/4096",
+    "QXY": "33/4096",
+    "F_faces": 24,
+    "D_faces": 12,
+    "independent_analytical_discrepancy_exact": "0",
+    "physical_affine_discrepancy_exact": "0",
+    "is_real_Cherchi_teacher": false
+  },
+  "failures_and_blockers": [
+    "No DNS network for git checkout; source reconstructed from GitHub connector with exact Git blobs checked",
+    "The only linker stub replaces unrelated manufacturing::computeContentSha256; hash implementation not validated",
+    "Current runner memory 5.8GiB/swap0, not the 24GiB real-native host",
+    "_make_it_stand and _cherchi_core_boolean modules unavailable; full native/Cherchi jobs NOT RUN",
+    "W2 teacher_manifest.json at last inspection: native_teacher_runs=0, training_samples=0",
+    "Previous 57 M2 Python tests not rerun in this environment; 66/66 aggregate not claimed",
+    "GitHub CI for final M3 ref not yet checked"
+  ],
+  "nonclaims": {
+    "cherchi_boolean_geometry": false,
+    "independent_native_material_seal": false,
+    "real_cherchi_r_or_J": false,
+    "converged_newton_terminal": false,
+    "training_ready": false
+  },
+  "local_test_log_sha256": "dfd615c8433d5457c6ef8b06bef67fd45133a8cba6ca58b379e1d010c028ecb5",
+  "source_analysis": "actual native C++ values test W0 B mapping; analytic closed F/D is P0 independent integration only",
+  "other_windows_observed_commits": {
+    "W1": "01a1d480ec4044ff678bc648051234bcb7e85aeb",
+    "W2": "14b1d2d5da4e258d125e664b5665ef84f7ebbb4e",
+    "W3": "0f5229bb10cac098011f42ab9c996eec485ac034",
+    "W4": "8fc1dd33e6cabb29a54849dce271ec63660b6af4",
+    "W5": "7054cf6624eeb85f8ba06093090127bdb8016dc4",
+    "W6": "694e5764e656de0c769f59d2838dc53eddde0b63"
+  }
+}
