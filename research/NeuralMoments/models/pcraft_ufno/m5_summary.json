@@ -1,0 +1,317 @@
+{
+  "ablation_value_only_400_steps": {
+    "lite_bottleneck": {
+      "J_mae_mean": 0.020318865155180294,
+      "J_mae_sample_sd": 0.0026079457054453982,
+      "Jq_max_asymmetry_mean": 0.4140808582305908,
+      "Jq_min_eig_mean": -0.06969593962033589,
+      "directional_mae_mean": 0.012393221569557985,
+      "median_cached_J_ms": 1.6127700000652112,
+      "median_cold_ms": 1.622754999971221,
+      "r_mae_mean": 0.01792304093639056,
+      "r_mae_sample_sd": 0.001067968855270248,
+      "real_parameters": 13746,
+      "selected_steps": [
+        170,
+        240,
+        300
+      ]
+    },
+    "lite_potential_6": {
+      "J_mae_mean": 0.038140142957369484,
+      "J_mae_sample_sd": 0.017344676206815894,
+      "Jq_max_asymmetry_mean": 1.7074247201283772e-08,
+      "Jq_min_eig_mean": -4.7095497279769916e-08,
+      "directional_mae_mean": 0.03692529536783695,
+      "median_cached_J_ms": 0.243969000166544,
+      "median_cold_ms": 1.4935080002942414,
+      "r_mae_mean": 0.03571277422209581,
+      "r_mae_sample_sd": 0.019936187502678292,
+      "real_parameters": 13448,
+      "selected_steps": [
+        350,
+        240,
+        40
+      ]
+    }
+  },
+  "accuracy_100_steps": {
+    "lite_bottleneck": {
+      "J_mae_mean": 0.01730789616703987,
+      "J_mae_sample_sd": 0.001324712200497408,
+      "Jq_max_asymmetry_mean": 0.40226096908251446,
+      "Jq_min_eig_mean": -0.04141381879647573,
+      "directional_mae_mean": 0.015942764468491077,
+      "median_cached_J_ms": 1.653270999668166,
+      "median_cold_ms": 2.1659939998244226,
+      "r_mae_mean": 0.030971577391028404,
+      "r_mae_sample_sd": 0.013875702371308729,
+      "real_parameters": 13746,
+      "selected_steps": [
+        100,
+        100,
+        100
+      ]
+    },
+    "lite_potential_4": {
+      "J_mae_mean": 0.039925730476776757,
+      "J_mae_sample_sd": 0.018562586763893725,
+      "Jq_max_asymmetry_mean": 9.002784887949625e-09,
+      "Jq_min_eig_mean": -1.6092994788626433e-07,
+      "directional_mae_mean": 0.03919556923210621,
+      "median_cached_J_ms": 0.14507400010188576,
+      "median_cold_ms": 1.7597789997125801,
+      "r_mae_mean": 0.07117251803477605,
+      "r_mae_sample_sd": 0.00112078538465995,
+      "real_parameters": 13528,
+      "selected_steps": [
+        100,
+        100,
+        100
+      ]
+    },
+    "lite_potential_6": {
+      "J_mae_mean": 0.028375179196397465,
+      "J_mae_sample_sd": 0.010254854780558228,
+      "Jq_max_asymmetry_mean": 1.5056381622950237e-08,
+      "Jq_min_eig_mean": -1.0945791236357157e-07,
+      "directional_mae_mean": 0.0308332871645689,
+      "median_cached_J_ms": 0.2022249996116443,
+      "median_cold_ms": 1.3912499998696148,
+      "r_mae_mean": 0.06792907913525899,
+      "r_mae_sample_sd": 0.008243654844124404,
+      "real_parameters": 13448,
+      "selected_steps": [
+        100,
+        90,
+        100
+      ]
+    },
+    "lite_potential_8": {
+      "J_mae_mean": 0.03631015866994858,
+      "J_mae_sample_sd": 0.011154028337730494,
+      "Jq_max_asymmetry_mean": 1.8723464260498684e-08,
+      "Jq_min_eig_mean": -1.9615963727422545e-07,
+      "directional_mae_mean": 0.04339484559992949,
+      "median_cached_J_ms": 0.5520319996321632,
+      "median_cold_ms": 2.01779400003943,
+      "r_mae_mean": 0.05320869634548823,
+      "r_mae_sample_sd": 0.010282264433388442,
+      "real_parameters": 13840,
+      "selected_steps": [
+        90,
+        100,
+        90
+      ]
+    },
+    "w5_deeponet": {
+      "J_mae_mean": 0.01696766261011362,
+      "J_mae_sample_sd": 0.0016814916331349952,
+      "Jq_max_asymmetry_mean": 0.1091291531920433,
+      "Jq_min_eig_mean": -0.011492555340131124,
+      "directional_mae_mean": 0.015169959515333176,
+      "median_cached_J_ms": 1.2633619999178336,
+      "median_cold_ms": 0.3165670000271348,
+      "r_mae_mean": 0.02662427785495917,
+      "r_mae_sample_sd": 0.0036211887268566955,
+      "real_parameters": 13674,
+      "selected_steps": [
+        100,
+        100,
+        90
+      ]
+    },
+    "w5_geometry_mlp": {
+      "J_mae_mean": 0.019809243579705555,
+      "J_mae_sample_sd": 0.0005834697045218608,
+      "Jq_max_asymmetry_mean": 0.06292732059955597,
+      "Jq_min_eig_mean": 0.003153655988474687,
+      "directional_mae_mean": 0.017692016437649727,
+      "median_cached_J_ms": 1.270378000299388,
+      "median_cold_ms": 0.3248729999540956,
+      "r_mae_mean": 0.02908119497199853,
+      "r_mae_sample_sd": 0.010601252275250389,
+      "real_parameters": 13482,
+      "selected_steps": [
+        100,
+        80,
+        80
+      ]
+    }
+  },
+  "accuracy_400_steps": {
+    "lite_bottleneck": {
+      "J_mae_mean": 0.016801230298976105,
+      "J_mae_sample_sd": 0.0032277758469360916,
+      "Jq_max_asymmetry_mean": 0.34841973582903546,
+      "Jq_min_eig_mean": -0.03313435676197211,
+      "directional_mae_mean": 0.014360117726027966,
+      "median_cached_J_ms": 1.2876259997938178,
+      "median_cold_ms": 1.1320470002829097,
+      "r_mae_mean": 0.019889314969380695,
+      "r_mae_sample_sd": 0.004090135302464492,
+      "real_parameters": 13746,
+      "selected_steps": [
+        190,
+        240,
+        110
+      ]
+    },
+    "lite_potential_4": {
+      "J_mae_mean": 0.027792025357484818,
+      "J_mae_sample_sd": 0.008955987689621936,
+      "Jq_max_asymmetry_mean": 2.364481351454136e-09,
+      "Jq_min_eig_mean": -1.6413284716539542e-07,
+      "directional_mae_mean": 0.024635758871833485,
+      "median_cached_J_ms": 0.14908699995430652,
+      "median_cold_ms": 1.3478119999490445,
+      "r_mae_mean": 0.033373006309072174,
+      "r_mae_sample_sd": 0.008269499828078111,
+      "real_parameters": 13528,
+      "selected_steps": [
+        230,
+        280,
+        280
+      ]
+    },
+    "lite_potential_6": {
+      "J_mae_mean": 0.018103211497267086,
+      "J_mae_sample_sd": 0.0027510287490756353,
+      "Jq_max_asymmetry_mean": 1.6128372711439927e-09,
+      "Jq_min_eig_mean": -1.1698959667683084e-07,
+      "directional_mae_mean": 0.017169317230582237,
+      "median_cached_J_ms": 0.2258780000374827,
+      "median_cold_ms": 1.2498370001594594,
+      "r_mae_mean": 0.0226667324701945,
+      "r_mae_sample_sd": 0.002367876263672705,
+      "real_parameters": 13448,
+      "selected_steps": [
+        400,
+        310,
+        330
+      ]
+    },
+    "lite_potential_8": {
+      "J_mae_mean": 0.024614844471216202,
+      "J_mae_sample_sd": 0.006163827254884503,
+      "Jq_max_asymmetry_mean": 1.039249279225866e-08,
+      "Jq_min_eig_mean": -1.630471141803961e-07,
+      "directional_mae_mean": 0.02627611222366492,
+      "median_cached_J_ms": 0.3664549999484734,
+      "median_cold_ms": 1.51829300011741,
+      "r_mae_mean": 0.020635501792033512,
+      "r_mae_sample_sd": 0.0017291812881930547,
+      "real_parameters": 13840,
+      "selected_steps": [
+        400,
+        310,
+        350
+      ]
+    },
+    "w5_deeponet": {
+      "J_mae_mean": 0.01530398583660523,
+      "J_mae_sample_sd": 0.0012548384979373702,
+      "Jq_max_asymmetry_mean": 0.0978690932194392,
+      "Jq_min_eig_mean": -0.00722564896568656,
+      "directional_mae_mean": 0.01302101400991281,
+      "median_cached_J_ms": 1.1112799998045375,
+      "median_cold_ms": 0.266427000042313,
+      "r_mae_mean": 0.015621301407615343,
+      "r_mae_sample_sd": 0.0021791248493699743,
+      "real_parameters": 13674,
+      "selected_steps": [
+        200,
+        150,
+        230
+      ]
+    },
+    "w5_geometry_mlp": {
+      "J_mae_mean": 0.0208699864645799,
+      "J_mae_sample_sd": 0.0022416789017785143,
+      "Jq_max_asymmetry_mean": 0.07265872011582057,
+      "Jq_min_eig_mean": 0.002745755909321209,
+      "directional_mae_mean": 0.016958261529604595,
+      "median_cached_J_ms": 0.7872090000091703,
+      "median_cold_ms": 0.26683500027502305,
+      "r_mae_mean": 0.024629640703399975,
+      "r_mae_sample_sd": 0.0038144792938583218,
+      "real_parameters": 13482,
+      "selected_steps": [
+        190,
+        80,
+        200
+      ]
+    }
+  },
+  "branch": "research/neuralmoments-w6-pcraft-20261019",
+  "dataset_SHA256_per_seed": [
+    {
+      "heldout": "5db2ede650ade31c45602647e6296865a41629269e65eb7b5228e0585b51400b",
+      "seed": 19,
+      "train": "7b65ebbb3e5d32e82ff7ee23a1f88978fa4100902b67f63e16b0fdc2df54e087"
+    },
+    {
+      "heldout": "fd16cc24093f9593ea592a3744f75be656b4d09b13bfd29314b2a0fda94ffb1d",
+      "seed": 23,
+      "train": "d36d707cbf7ecdd0089f66fea3f8784a200830f09a2e0b5a60790ce6028562e7"
+    },
+    {
+      "heldout": "008c850489155ef281ade007439bebd3816efa006dfd3f86c5809718710781d7",
+      "seed": 29,
+      "train": "25eece482d68d864064bfcc7785226785afc41307f56978f2f027ba4ac838394"
+    }
+  ],
+  "expected_parent_commit": "b5d3985ec4a10c74316bda6579767b58c13b4eaa",
+  "limitations": [
+    "teacher is exact analytic continuum primitive, not mesh voxel quadrature",
+    "no Cherchi native teacher labels; no independent exact Boolean CAD proof",
+    "PSD/symmetry structural property alone does not guarantee true raw-moment realizability",
+    "W5 has only 9D lossy voxel statistics, W6 has raw voxels and statistics",
+    "CPU results only, GPU memory/latency unavailable",
+    "real Spin optimization decision error and Faster speedup not measured",
+    "training sample budgets equal but early stopping may select different steps",
+    "additional 400-step comparison was exploratory; 100-step protocol matched M4"
+  ],
+  "local_file_sha256": {
+    "m5_experiment.py": "d87d626e746e67c603b8865bd96496497ea9b9ec7cf1bfb902850bb47810102a",
+    "m5_long_400step_cpu.json": "b020eefc3278df0445cc1c0b7f9bde252c1987ecdae313892ef53553d93ee374",
+    "m5_potential.py": "f01cf8648c17e666ab916f7f3e13818375a3b99fad941acc4b1e7e39cefd2c2f",
+    "m5_previous_m4_regression.log": "2e983baa5c477b4f437aebb5739203d32cfb8689136b78df29b35b7d1edd8233",
+    "m5_test_local.log": "ee0091eef0af70b9f5db297b918bc9d6f5731d974d201ab7d6f640b59167c1ab",
+    "m5_three_seed_cpu.json": "938ffcb8bb2ecc3befc4f60ac590f4a860bab4479b08a7efda63d85e6d5b3c67",
+    "m5_value_only_400step_cpu.json": "b7260b8d3103390062a0263bb4bf0b90d6fbd2c52a106a9213c6eab2ef797c68",
+    "test_m5.py": "d2ab19c2d779d470ebf5ce21b6d550a0a437298334800b00221ae1f4b98eb03b"
+  },
+  "local_input_exactness": "m4_lite_model.py and m4_experiment.py locally match Git blob; analytic_cut.py locally reconstructed with matching M3 training+holdout dataset SHA in 3 seeds, not same Git blob; committed code should be tested again in a fresh full branch checkout.",
+  "matrix_mapping": "B=diag(1,1,1,1,1,1,1,2,2,2)",
+  "milestone": "M5_CONVEX_SCALAR_POTENTIAL",
+  "proof_scope": "Phi(q,z)=sum_nonnegative_weights [q.m + sqrt((q.m)^2 + eps^2 ||q||^2)]/2, q=Bc. Convex positive-homogeneous Phi => symmetric PSD Jc B^-1 and Jc c=0 at nonzero c. True per model but not a guarantee of realizable geometry/Boolean material.",
+  "representation_parity": false,
+  "retained_side": "beta_c(x)>=0",
+  "schema": "W6_M5_EVIDENCE_V1",
+  "seeds": [
+    19,
+    23,
+    29
+  ],
+  "status": "LOCAL_ANALYTIC_P0_VERIFIED_NO_REAL_W2_NO_REMOTE_CI",
+  "test_analytic_labels_per_seed": 40,
+  "test_geometries_per_seed": 20,
+  "tests_local": {
+    "CUDA_available": false,
+    "M4_regression": 14,
+    "M5": 17,
+    "compileall": true
+  },
+  "train_analytic_labels_per_seed": 80,
+  "train_geometries_per_seed": 40,
+  "upstream": {
+    "W0_branch_head_observed": "bfedacd3a1f4e10d30f1258331260380739d243c",
+    "W2_branch_head_observed": "56212f46b007fa255cc5796224192010aa67513c",
+    "W2_teacher_manifest_status": "ADAPTER_SMOKE_ONLY",
+    "W2_teacher_native_runs": 0,
+    "W2_teacher_training_samples": 0,
+    "W5_branch_head_observed": "0c67cd0e922a063d59ba17818976a8d157b85597"
+  },
+  "validation_geometry_identity_disjoint": true
+}

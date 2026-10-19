@@ -1,0 +1,22 @@
+test_analytic_data_same_as_frozen_M3_three_seeds (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_analytic_data_same_as_frozen_M3_three_seeds) ... ok
+test_autodiff_hessian_matches_native_J (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_autodiff_hessian_matches_native_J) ... ok
+test_cache_geometry_one_time_multiple_c (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_cache_geometry_one_time_multiple_c) ... ok
+test_count_matches_w5_within_5_percent (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_count_matches_w5_within_5_percent) ... ok
+test_cpu_end_to_end_all_models (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_cpu_end_to_end_all_models) ... ok
+test_encoder_and_weight_training_gradients (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_encoder_and_weight_training_gradients) ... ok
+test_exact_Jq_symmetry_PSD_and_radial_null (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_exact_Jq_symmetry_PSD_and_radial_null) ... ok
+test_fixed_material_cached_once_and_derivative_excludes_F (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_fixed_material_cached_once_and_derivative_excludes_F) ... ok
+test_full_J_finite_difference (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_full_J_finite_difference) ... ok
+test_parameter_capacity_and_duplicate_seeds_fail (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_parameter_capacity_and_duplicate_seeds_fail) ... ok
+test_potential_autograd_gradient_in_native_c (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_potential_autograd_gradient_in_native_c) ... ok
+test_potential_convexity_without_degenerate_midpoint (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_potential_convexity_without_degenerate_midpoint) ... ok
+test_preW0_W2_teacher_still_rejected (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_preW0_W2_teacher_still_rejected) ... ok
+test_projective_positive_scaling_and_sign (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_projective_positive_scaling_and_sign) ... ok
+test_quadrature_nonnegative_weights_and_zero_bad_inputs (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_quadrature_nonnegative_weights_and_zero_bad_inputs) ... ok
+test_w0_analytic_reference_is_symmetric_only_after_B_inv (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_w0_analytic_reference_is_symmetric_only_after_B_inv) ... ok
+test_w0_monomial_and_cross_terms (research.NeuralMoments.models.pcraft_ufno.test_m5.TestW6M5Potential.test_w0_monomial_and_cross_terms) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 1.583s
+
+OK
