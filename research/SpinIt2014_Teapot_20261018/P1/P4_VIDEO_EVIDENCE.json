@@ -1,0 +1,76 @@
+{
+  "schema": "w4-teapot-p4-video-evidence-v1",
+  "branch": "research/neuralmoments-w4-teapot-p1-20261019",
+  "result_type": "NUMERICAL_REFERENCE_VIDEO_NOT_MUJOCO",
+  "geometry": {
+    "sha256": "d3289193185192ebca4d63fc813bd77d96810051089c672e887accdf3205b331",
+    "source": "P2 OpenSCAD CGAL diagnostic proxy",
+    "cherchi_geometry": false
+  },
+  "dynamics": {
+    "engine": "SciPy solve_ivp DOP853",
+    "mujoco_executed": false,
+    "model": "gravitational rigid body about fixed point; no contact/no friction",
+    "physical_parameters": {
+      "mass_kg": 0.25,
+      "model_height_m": 0.15,
+      "initial_tilt_deg": 5,
+      "gravity_m_s2": 9.81,
+      "duration_s": 2.8,
+      "output_step_s": 0.02
+    },
+    "data_rows": 423,
+    "runs": [
+      {
+        "initial_spin_rad_s": 0,
+        "max_tilt_deg": 177.12756764795134,
+        "final_tilt_deg": 31.523499562546487,
+        "first_60deg_tilt_s": 0.34,
+        "relative_energy_drift": 1.3753529121835197e-11,
+        "angular_momentum_z_max_abs_drift": 1.997123497224855e-14
+      },
+      {
+        "initial_spin_rad_s": 30,
+        "max_tilt_deg": 34.66593141002831,
+        "final_tilt_deg": 4.226152952944273,
+        "first_60deg_tilt_s": null,
+        "relative_energy_drift": 1.4700271857237043e-12,
+        "angular_momentum_z_max_abs_drift": 9.106257414792651e-14
+      },
+      {
+        "initial_spin_rad_s": 60,
+        "max_tilt_deg": 9.72218056429594,
+        "final_tilt_deg": 5.134126008576013,
+        "first_60deg_tilt_s": null,
+        "relative_energy_drift": 4.344657355646866e-12,
+        "angular_momentum_z_max_abs_drift": 2.1233848013224588e-12
+      }
+    ]
+  },
+  "media": {
+    "filename": "w4_teapot_fixed_pivot_comparison.mp4",
+    "sha256": "280216a3cb50904fda6fc1012b7b622dcaf7fd5b250e0a1515a80c66e2669ef6",
+    "video_bytes": 989394,
+    "codec": "H264",
+    "width": 1440,
+    "height": 810,
+    "frame_count": 169,
+    "duration_s": 5.633333,
+    "fully_decoded": true,
+    "poster_sha256": "a3f04eceb286b31c8decd8984ce9a13bd5bc3838b767312326ea5113d11e6495",
+    "trajectory_csv_sha256": "7642661476b9cb9acbf5b16a6bccbb7b3c61831f4b8259586d48d695b97a319c"
+  },
+  "mujoco_attempt": {
+    "runtime_present": false,
+    "pip_index_access": false,
+    "video_export_executed": false,
+    "exit_code": 2,
+    "error": "MUJOCO_RUNTIME_UNAVAILABLE: no real MuJoCo simulation/video possible",
+    "runner_file": "p4_mujoco_video_capture.py"
+  },
+  "cherchi_teacher": {
+    "native_cherchi_teapot_generated": false,
+    "formal_optimization_executed": false
+  },
+  "deliverable": "W4_Teapot_Spin_Comparison_20261019.zip in conversation artifacts; large files not included in Git commit"
+}
