@@ -1,0 +1,19 @@
+{
+  "after": {
+    "candidate_native_abba_gate_ready": true,
+    "example_two_calls_cumulative_misses": 4,
+    "parser_cache_lifecycle": "FRESH_PER_EVALUATION_PLUS_FINAL_CACHE_CLEAR"
+  },
+  "before": {
+    "example_two_calls_cumulative_misses": 2,
+    "parser_cache_lifecycle": "SINGLE_CACHE_SURVIVES_MULTIPLE_Q_CALLS"
+  },
+  "full_newton_before_after_speedup": null,
+  "observed_50_point_archived_ratio": 1.2525800435099093,
+  "paper_speed_qualified": false,
+  "real_10_by_10_production_jacobian_recomputed": false,
+  "real_four_native_boolean_abba_executed": false,
+  "reason": "No pinned production checkout or compiled native extensions in this environment",
+  "schema": "w1-m9-before-after-v1",
+  "scope": "CANDIDATE_CACHE_LIFECYCLE_AND_ARCHIVED_PYTHON_ONLY"
+}

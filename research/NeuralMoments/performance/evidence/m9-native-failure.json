@@ -1,0 +1,9 @@
+{
+  "completed_points": 0,
+  "error": "ValueError: M5_PRODUCTION_SOURCE_UNPINNED",
+  "old_new_full_solver_speedup": null,
+  "paper_speed_qualified": false,
+  "schema": "w1-m9-fail-closed-v1",
+  "stage": "PREFLIGHT",
+  "status": "BLOCKED_OR_FAILED_NO_NATIVE_ABBA_CERTIFICATE"
+}

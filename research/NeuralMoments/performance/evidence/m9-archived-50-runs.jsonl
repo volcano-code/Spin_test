@@ -1,0 +1,2 @@
+{"cache_hits":0,"cache_misses":0,"mode":"original","sample":0,"stage_ns":{"check_archive":975416779,"parse_exact_vertices":2025657669,"resolve_construction":2818076423,"source_lookup":2357618802,"target_coordinates":4310920964},"wall_ns":15732869966}
+{"cache_hits":1433953,"cache_misses":69497,"mode":"optimized","sample":1,"stage_ns":{"check_archive":1209305619,"parse_exact_vertices":644644465,"resolve_construction":2274893406,"source_lookup":2314700636,"target_coordinates":2427032002},"wall_ns":12560370930}

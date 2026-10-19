@@ -9,6 +9,8 @@ paper-matched speed claim.
 from __future__ import annotations
 import argparse
 from functools import lru_cache
+from collections import namedtuple
+from types import FunctionType
 import gzip
 from hashlib import sha256
 import inspect
@@ -29,8 +31,34 @@ from m5_native_call_instrumentation import (
 from m8_exact_construction_trial import MAX_CACHED_TOKENS, target_coordinates
 
 
+class PerCallParserStats:
+    """Only statistics survive an evaluation; never share cached Fraction values.
+
+    In the legacy M8 candidate, lru_cache was closed over by the class and
+    survived successive q calls. That leaked per-evaluation state and made
+    repeat runs appear to require fewer conversions. The new contract below
+    clears each cache even on failures and stores *counts*, not coordinates.
+    """
+    _Info=namedtuple('ScopedCacheInfo','hits misses maxsize currsize')
+    def __init__(self):
+        self.calls=[]
+
+    def record(self, info):
+        self.calls.append(dict(info._asdict()))
+
+    def cache_info(self):
+        return self._Info(sum(x['hits'] for x in self.calls),
+                          sum(x['misses'] for x in self.calls),
+                          MAX_CACHED_TOKENS,0)
+
+
 def clone_paired_classes(original, old_ledger, new_ledger):
-    """Two distinct recompiled diagnostic methods, no global monkeypatching."""
+    """Old and candidate have isolated globals, with a fresh cache PER q call.
+
+    Every candidate invocation clones the *same instrumented Python code
+    object* with an invocation-local globals mapping. No monkeypatching of
+    the frozen production source, no shared global cache, no ABI mutation.
+    """
     original_function=original.__call__
     exact=original_function.__globals__.get('exact_fraction')
     if not callable(exact):
@@ -39,12 +67,23 @@ def clone_paired_classes(original, old_ledger, new_ledger):
     newer,new_labels=instrument_call(original_function,new_ledger)
     if old_labels!=new_labels:
         raise ValueError('M8_INSTRUMENTATION_MISMATCH')
-    # Only the candidate's fresh isolated function-global dictionary is changed;
-    # original module globals and frozen source remain untouched.
-    candidate_exact=lru_cache(maxsize=MAX_CACHED_TOKENS)(exact)
     if newer.__globals__ is original_function.__globals__:
         raise ValueError('M8_CANDIDATE_GLOBAL_LEAK')
-    newer.__globals__['exact_fraction']=candidate_exact
+    stats=PerCallParserStats()
+
+    def candidate_call(self, *args, **kwargs):
+        parser=lru_cache(maxsize=MAX_CACHED_TOKENS)(exact)
+        local=dict(newer.__globals__)
+        local['exact_fraction']=parser
+        isolated=FunctionType(newer.__code__,local,newer.__name__,
+                              newer.__defaults__,newer.__closure__)
+        isolated.__kwdefaults__=newer.__kwdefaults__
+        try:
+            return isolated(self,*args,**kwargs)
+        finally:
+            stats.record(parser.cache_info())
+            parser.cache_clear()
+
     if original_function.__globals__.get('exact_fraction') is not exact:
         raise ValueError('M8_ORIGINAL_PARSER_WAS_MODIFIED')
 
@@ -56,9 +95,9 @@ def clone_paired_classes(original, old_ledger, new_ledger):
         return np.asarray([[float(x) for x in row] for row in values],dtype=float).reshape(-1,3),tuple(values)
 
     Old=type('W1M8OriginalProfiled',(original,),{'__call__':old})
-    Candidate=type('W1M8CandidateProfiled',(original,),
-        {'__call__':newer,'_target_view':candidate_target_view})
-    return Old,Candidate,old_labels,candidate_exact
+    Candidate=type('W1M9CandidateScopedProfiled',(original,),
+        {'__call__':candidate_call,'_target_view':candidate_target_view})
+    return Old,Candidate,old_labels,stats
 
 
 def native_pair(archive,root,output):
@@ -151,6 +190,8 @@ def native_pair(archive,root,output):
                     ('native',native),('cherchi',boolean),('arithmetic',arithmetic))},
                 stage_labels=labels,old_and_candidate_identical_complete_material=True,
                 candidate_parser_cache=cached.cache_info()._asdict(),
+                candidate_cache_scope="ONE_EVALUATION_CLEARED_ON_RETURN_AND_EXCEPTION",
+                candidate_parser_cache_by_call=list(cached.calls),
                 results=results,observed_single_q_evaluator_ratio=first['eval_wall_ns']/second['eval_wall_ns'],
                 memory=dict(maxrss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,limits=limits),
                 full_solver_speedup=None,terminal_material_verified=False,

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/mnt/data/w1_m9_work/research/NeuralMoments/performance/m9_native_abba_gate.py", line 307, in <module>
+    main()
+    ~~~~^^
+  File "/mnt/data/w1_m9_work/research/NeuralMoments/performance/m9_native_abba_gate.py", line 302, in main
+    report=run(args.archive,args.root,args.output)
+  File "/mnt/data/w1_m9_work/research/NeuralMoments/performance/m9_native_abba_gate.py", line 151, in run
+    frozen=preflight(archive,root)
+  File "/mnt/data/w1_m9_work/research/NeuralMoments/performance/m5_native_call_instrumentation.py", line 213, in preflight
+    raise ValueError('M5_PRODUCTION_SOURCE_UNPINNED')
+ValueError: M5_PRODUCTION_SOURCE_UNPINNED

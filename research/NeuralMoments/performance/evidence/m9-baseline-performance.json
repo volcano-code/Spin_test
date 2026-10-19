@@ -1,0 +1,73 @@
+{
+  "archived_replay": {
+    "all_binary64_target_bits_equal": true,
+    "all_exact_target_equal": true,
+    "all_provenance_equal": true,
+    "candidate_seconds": 12.56037093,
+    "observed_isolated_ratio": 1.2525800435099093,
+    "original_h8e_historical_ci_failure_preserved": true,
+    "original_seconds": 15.732869966,
+    "preserved_8_feature_hash_changes": 8,
+    "replayed_point_evaluations": 50,
+    "scope": "H8E_25_POINT_ORIGINAL_PLUS_OPTIMIZED_SEMANTIC_REPLAY_NOT_NATIVE_BOOLEAN"
+  },
+  "base_parent_git_sha": "63bdad9ef9292b2524036c5df1e86781676b6d48",
+  "branch": "research/neuralmoments-w1-native-20261019",
+  "cache_lifecycle": {
+    "m9_live_entries_after_calls": 0,
+    "m9_per_call_misses": [
+      2,
+      2
+    ],
+    "m9_twocall_misses": 4,
+    "max_entries_per_call": 65536,
+    "previous_twocall_misses": 2,
+    "scope": "ONE_Q_PER_CALL_LRU_CLEARED_SUCCESS_AND_FAILURE"
+  },
+  "frozen_source_commit": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "full_solver_speedup": null,
+  "h8c_archive_sha256": "78749e99abd25ab2d2571440991ffa4e907a1565b4c7faf5210496431389cdd7",
+  "h8c_archived_packet_sha256": "ba47a6d6f9fad2dce2569434bf9340252cceaeaf99c14a82df02b637092b6464",
+  "h8c_to_h8e_target_frame_ten_max_abs_error": 5.551115123125783e-17,
+  "h8e_archive_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+  "local_tests": {
+    "failed": 0,
+    "passed": 68,
+    "skipped": 0,
+    "suite": "test_m5 test_m6 test_m7 test_m8 test_m8_native_paired test_m9"
+  },
+  "m8_prior_git_blob": "6188b4c4e87f057828d5c6cde422d3d90d4c6d2b",
+  "m9_gate_did_not_modify_production": true,
+  "m9_updated_gate_git_blob": "871ff1fc85ac7bd129d2a90c12bc1a912940af94",
+  "native_attempt": {
+    "completed_points": 0,
+    "error": "ValueError: M5_PRODUCTION_SOURCE_UNPINNED",
+    "native_cherchi_extension_present": false,
+    "native_gmp_extension_present": false,
+    "native_spin_extension_present": false,
+    "old_new_full_solver_speedup": null,
+    "paper_speed_qualified": false,
+    "schema": "w1-m9-fail-closed-v1",
+    "stage": "PREFLIGHT",
+    "status": "BLOCKED_OR_FAILED_NO_NATIVE_ABBA_CERTIFICATE",
+    "true_native_evaluations": 0
+  },
+  "newton_acceptance_rejection_parity": null,
+  "paper_speed_qualified": false,
+  "production_evaluator_unchanged_blob": "f9fa539f699df8baf8b8d30729048269a26ecb3c",
+  "real_archived_material_face_count": 16910,
+  "real_archived_material_vertex_count": 8455,
+  "schema": "w1-m9-executed-proof-and-blockers-v1",
+  "system": {
+    "cpu_count": 5,
+    "job_time_limit_seconds": 3600,
+    "max_build_workers": 4,
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "process_peak_rss_kib": 153832,
+    "python": "3.13.5",
+    "ram_limit_gib": 24,
+    "swap_entries": 0
+  },
+  "terminal_material_admission": null,
+  "w0_w2_production_admission": false
+}

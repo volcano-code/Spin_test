@@ -1,0 +1,66 @@
+{
+  "all_original_resolved_records_equal": true,
+  "all_target_binary64_bitwise_equal": true,
+  "all_target_rational_tokens_equal": true,
+  "archive_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+  "cached_exact_parser_bounded": 65536,
+  "checked_point_evaluations": 50,
+  "environment": {
+    "maxrss_kib": 229008,
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "swap_entries": 0
+  },
+  "frozen_source_git_blob": "f9fa539f699df8baf8b8d30729048269a26ecb3c",
+  "isolated_post_boolean_ratio": 1.2525800435099093,
+  "median_optimized_wall_seconds": 12.56037093,
+  "median_original_wall_seconds": 15.732869966,
+  "native_cherchi_boolean_evaluations": 0,
+  "native_jacobian_regenerations": 0,
+  "original_H8e_ci_failure_preserved": true,
+  "original_H8e_failed_hash_changes": 8,
+  "original_complete_solver_optimized": false,
+  "paper_speed_qualified": false,
+  "points_per_sample": 25,
+  "production_changes_applied": false,
+  "production_speedup": null,
+  "request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+  "runs": [
+    {
+      "cache_hits": 0,
+      "cache_misses": 0,
+      "mode": "original",
+      "sample": 0,
+      "stage_ns": {
+        "check_archive": 975416779,
+        "parse_exact_vertices": 2025657669,
+        "resolve_construction": 2818076423,
+        "source_lookup": 2357618802,
+        "target_coordinates": 4310920964
+      },
+      "wall_ns": 15732869966
+    },
+    {
+      "cache_hits": 1433953,
+      "cache_misses": 69497,
+      "mode": "optimized",
+      "sample": 1,
+      "stage_ns": {
+        "check_archive": 1209305619,
+        "parse_exact_vertices": 644644465,
+        "resolve_construction": 2274893406,
+        "source_lookup": 2314700636,
+        "target_coordinates": 2427032002
+      },
+      "wall_ns": 12560370930
+    }
+  ],
+  "samples": 2,
+  "schema": "w1-m8-archived-exact-provenance-abba-v1",
+  "scope": "HISTORICAL_REAL_H8E_POST_BOOLEAN_PYTHON_ONLY_NOT_NATIVE_SOLVER",
+  "source_on_disk_verified": false,
+  "timing_order": [
+    "original",
+    "optimized"
+  ]
+}
