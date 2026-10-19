@@ -1,0 +1,140 @@
+{
+  "plan": {
+    "boost_abi_policy": "SHARED_LIB_ONLY_NO_SYSTEM_STATIC_ARCHIVE_MUTATION",
+    "branch": "research/neuralmoments-w3-heart-h9-20261019",
+    "frozen_ancestor": "0bcc187b3005478baa586a6d6f450e73811ca342",
+    "historical_h8f_workflow_blob_sha": "a6dda4d04998f1244ce0a7f80991d6198c037cdb",
+    "max_build_seconds": 3500,
+    "max_native_job_seconds": 3600,
+    "maximum_compiler_parallelism": 2,
+    "no_newton_claim": true,
+    "operator_prerequisites": [
+      "Ubuntu 24.04 isolated checkout with 24GiB effective RAM, zero swap, Git/CMake/Ninja/GCC/Python3.13.",
+      "Preinstall libgmp-dev libmpfr-dev libboost-all-dev libtbb-dev libeigen3-dev and X11/OpenGL development dependencies.",
+      "Install pybind11==3.0.1, numpy>=2,<3, pytest>=8,<10, scipy>=1.14,<2, trimesh>=4,<5.",
+      "Allow access to pinned Cherchi and CGAL GitHub URLs. No sudo is invoked by this program.",
+      "Do not run concurrent large native tasks; retain all test results and binary SHA256."
+    ],
+    "paths": {
+      "cgal": "/mnt/data/W3_H9_stage7_work/libigl/external/cgal",
+      "cherchi": "/mnt/data/W3_H9_stage7_work/external/reference-sources-20260917/sources/InteractiveAndRobustMeshBooleans-7bd6c2697695f555f9a15d7e154e084d841316f0",
+      "cherchi_build": "/mnt/data/W3_H9_stage7_work/build/h9-w3-cherchi",
+      "core": "/mnt/data/W3_H9_stage7_work/build/h9-w3-core"
+    },
+    "python_minor": "3.13",
+    "reference_urls": {
+      "cgal": "https://github.com/CGAL/cgal.git",
+      "cherchi": "https://github.com/gcherchi/InteractiveAndRobustMeshBooleans.git"
+    },
+    "require_mem_gib": 24,
+    "require_swap_bytes": 0,
+    "schema": "heart-h9-pinned-native-build-plan-v1",
+    "source_references": {
+      "cgal": "f7c3c8212b56c0d6dae63787efc99093f4383415",
+      "cherchi": "7bd6c2697695f555f9a15d7e154e084d841316f0"
+    },
+    "source_workflow_head": "0bcc187b3005478baa586a6d6f450e73811ca342",
+    "steps": [
+      {
+        "argv": [
+          "git",
+          "-C",
+          "/mnt/data/W3_H9_stage7_work",
+          "submodule",
+          "update",
+          "--init",
+          "--recursive",
+          "--",
+          "libigl"
+        ],
+        "name": "libigl_submodule"
+      },
+      {
+        "argv": [
+          "cmake",
+          "-S",
+          "/mnt/data/W3_H9_stage7_work",
+          "-B",
+          "/mnt/data/W3_H9_stage7_work/build/h9-w3-core",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DMAKE_IT_STAND_BUILD_VIEWER=OFF",
+          "-DMAKE_IT_STAND_BUILD_REACHABILITY=OFF",
+          "-DMAKE_IT_STAND_BUILD_SPIN_IT_2014=OFF",
+          "-DMAKE_IT_STAND_BUILD_SPIN_IT_FASTER=ON",
+          "-DMAKE_IT_STAND_BUILD_EXACT_GEOMETRY_CHECKS=ON",
+          "-DMAKE_IT_STAND_BUILD_PYTHON=ON",
+          "-DMAKE_IT_STAND_FILTERED_BOUNDARY_KERNEL=ON",
+          "-DBUILD_TESTING=OFF",
+          "-DBoost_USE_STATIC_LIBS=OFF",
+          "-DBoost_THREAD_LIBRARY_RELEASE=/usr/lib/x86_64-linux-gnu/libboost_thread.so",
+          "-DBoost_SYSTEM_LIBRARY_RELEASE=/usr/lib/x86_64-linux-gnu/libboost_system.so",
+          "-DPython_EXECUTABLE=/opt/pyvenv/bin/python",
+          "-DPython3_EXECUTABLE=/opt/pyvenv/bin/python"
+        ],
+        "name": "core_configure"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "/mnt/data/W3_H9_stage7_work/build/h9-w3-core",
+          "--target",
+          "_make_it_stand",
+          "--parallel",
+          "2"
+        ],
+        "name": "core_build"
+      },
+      {
+        "argv": [
+          "cmake",
+          "-S",
+          "/mnt/data/W3_H9_stage7_work/bindings/cherchi",
+          "-B",
+          "/mnt/data/W3_H9_stage7_work/build/h9-w3-cherchi",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DPython_EXECUTABLE=/opt/pyvenv/bin/python",
+          "-DMAKE_IT_STAND_CHERCHI_RATIONAL_ARITHMETIC=ON"
+        ],
+        "name": "cherchi_configure"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "/mnt/data/W3_H9_stage7_work/build/h9-w3-cherchi",
+          "--parallel",
+          "2"
+        ],
+        "name": "cherchi_build"
+      }
+    ]
+  },
+  "preflight": {
+    "blocked_reasons": [
+      "NOT_FROZEN_W3_BRANCH_OR_ANCESTOR",
+      "LESS_THAN_24GIB_EFFECTIVE_MEMORY",
+      "NOT_A_COMPLETE_SOURCE_CHECKOUT"
+    ],
+    "git_ref": {
+      "branch": null,
+      "frozen_ancestor_is_ancestor": false,
+      "head_sha": null
+    },
+    "machine_memory": {
+      "container_memory_limit_bytes": 4294967296,
+      "effective_memory_bytes": 4294967296,
+      "mem_available_bytes": 4943757312,
+      "physical_mem_bytes": 6236856320,
+      "physical_swap_bytes": 0
+    },
+    "newton_admitted": false,
+    "python": "3.13.5",
+    "ready": false,
+    "repo": "/mnt/data/W3_H9_stage7_work"
+  }
+}

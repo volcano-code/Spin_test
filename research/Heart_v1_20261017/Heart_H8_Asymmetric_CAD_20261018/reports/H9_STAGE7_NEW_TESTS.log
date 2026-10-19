@@ -1,0 +1,16 @@
+test_absent_untrusted_build_manifest_cannot_approve_native_launch (test_h9_stage7_native_handoff.H9Stage7NativeHandoffContracts.test_absent_untrusted_build_manifest_cannot_approve_native_launch) ... ok
+test_boost_rewrite_only_changes_build_ninja_not_system (test_h9_stage7_native_handoff.H9Stage7NativeHandoffContracts.test_boost_rewrite_only_changes_build_ninja_not_system) ... ok
+test_build_attempt_in_small_container_returns_two_and_never_builds (test_h9_stage7_native_handoff.H9Stage7NativeHandoffContracts.test_build_attempt_in_small_container_returns_two_and_never_builds) ... ok
+test_command_runner_rejects_nonzero_without_shell_or_silent_success (test_h9_stage7_native_handoff.H9Stage7NativeHandoffContracts.test_command_runner_rejects_nonzero_without_shell_or_silent_success) ... ok
+test_native_extension_must_originate_from_new_w3_build_and_match_sha (test_h9_stage7_native_handoff.H9Stage7NativeHandoffContracts.test_native_extension_must_originate_from_new_w3_build_and_match_sha) ... ok
+test_plan_reuses_exact_frozen_reference_pins_and_compiler_flags (test_h9_stage7_native_handoff.H9Stage7NativeHandoffContracts.test_plan_reuses_exact_frozen_reference_pins_and_compiler_flags) ... ok
+test_python_path_points_to_only_local_builds_and_python_package (test_h9_stage7_native_handoff.H9Stage7NativeHandoffContracts.test_python_path_points_to_only_local_builds_and_python_package) ... ok
+test_real_current_container_rejected_before_git_and_compilers (test_h9_stage7_native_handoff.H9Stage7NativeHandoffContracts.test_real_current_container_rejected_before_git_and_compilers) ... ok
+test_run_attempt_in_small_container_refuses_without_claimed_native_result (test_h9_stage7_native_handoff.H9Stage7NativeHandoffContracts.test_run_attempt_in_small_container_refuses_without_claimed_native_result) ... ok
+test_wrong_branch_even_on_large_machine_is_rejected (test_h9_stage7_native_handoff.H9Stage7NativeHandoffContracts.test_wrong_branch_even_on_large_machine_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.807s
+
+OK
+H9_STAGE7_BUILD_BLOCKED_NO_NATIVE_CALLS ['NOT_FROZEN_W3_BRANCH_OR_ANCESTOR', 'LESS_THAN_24GIB_EFFECTIVE_MEMORY', 'NOT_A_COMPLETE_SOURCE_CHECKOUT']
