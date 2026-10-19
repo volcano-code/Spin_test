@@ -1,0 +1,31 @@
+{
+  "schema": "w1-m5-historical-stage-attribution-v1",
+  "scope": "STATIC_INTRA_RUN_ACCOUNTING_NOT_FRESH_BOOLEAN",
+  "archived_run_id": 39121571756,
+  "archived_25point_failed": true,
+  "named_total_seconds": 77.94430469400072,
+  "recorded_wall_seconds": 379.493727883,
+  "unattributed_seconds": 301.5494231889993,
+  "unattributed_fraction": 0.794609768312083,
+  "top_known_stages_seconds": {
+    "boolean": 32.5997561879999,
+    "intersection_motion": 18.744640863000313,
+    "derivative": 11.608747608000613,
+    "integration": 8.104069458999902,
+    "material_attachment_serialization": 3.1772469180007192,
+    "prepare_arithmetic_boundary": 1.8061157959998582,
+    "physical_source_boundary": 1.803228045999731,
+    "source": 0.10049981599968305
+  },
+  "original_prepared_boundary_seconds": 1.8061157959998582,
+  "ideal_elimination_of_prepared_stage_max_wall_saving_fraction": 0.004759277066515032,
+  "ideal_elimination_of_prepared_stage_max_speedup": 1.004782036101263,
+  "archived_material_replay_seconds": 251.671440849,
+  "replay_original_machine_different": true,
+  "cross_host_unattributed_time_subtraction_forbidden": true,
+  "original_25point_branch_changes": 8,
+  "profiler_source_sha_required": "f9fa539f699df8baf8b8d30729048269a26ecb3c",
+  "w0_w2_admission_pending": true,
+  "production_before_after_speedup": null,
+  "paper_speed_qualified": false
+}

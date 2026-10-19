@@ -1,0 +1,14 @@
+{
+  "schema": "w1-m5-native-availability-v1",
+  "scope": "CURRENT_LOCAL_CONVERSATION_RUNTIME_NOT_FULL_NATIVE_HOST",
+  "importable_extensions": {
+    "_make_it_stand": false,
+    "_cherchi_core_boolean": false,
+    "_cherchi_rational_moments": false
+  },
+  "fresh_h8_boolean_call_count": 0,
+  "fresh_native_jacobian_computed": false,
+  "full_faster_solver_completed": false,
+  "paper_speed_qualified": false,
+  "note": "No new native performance claims. Historical H8c/H8e ZIPs were available for existing M4 verification."
+}

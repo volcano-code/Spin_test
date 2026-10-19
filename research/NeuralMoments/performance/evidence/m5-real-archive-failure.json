@@ -1,0 +1,14 @@
+{
+  "error": "ValueError: M5_PRODUCTION_SOURCE_UNPINNED",
+  "paper_speed_qualified": false,
+  "schema": "w1-m5-fail-closed-v1",
+  "status": "FAILED_NO_FRESH_NATIVE_CERTIFICATION",
+  "timing": {
+    "all_returned": true,
+    "exclusive_ns": 0,
+    "exclusive_stages": [],
+    "stage_exclusive_totals_ns": {},
+    "unattributed_ns": 60568671,
+    "wall_ns": 60568671
+  }
+}
