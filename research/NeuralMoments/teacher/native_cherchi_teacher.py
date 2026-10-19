@@ -15,6 +15,8 @@ def digest(x):
     return hashlib.sha256(canonical(x).encode()).hexdigest()
 
 def vector(x):
+    if hasattr(x,"tolist"):
+        x=x.tolist()
     if not isinstance(x,(tuple,list)) or len(x)!=10:
         raise ValueError("TEN_COMPONENTS_REQUIRED")
     y=[float(v) for v in x]
