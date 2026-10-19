@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M6_SAME_CALL_BOUND_AND_PREDECLARED_BUDGET_TESTED_NATIVE_BLOCKED",
+  "status": "M7_FROZEN_OBJ_TO_REQUEST_BINDING_VERIFIED_LOCALLY_NATIVE_UNAVAILABLE",
   "native_teacher_runs": 0,
   "training_samples": 0,
   "order": [
@@ -23,7 +23,7 @@
     "test": [],
     "excluded": []
   },
-  "pending_dependency": "W0 verified derivative-neighborhood admission and native compiled module for production sample",
+  "pending_dependency": "Compiled Cherchi and Spin native modules on research host, independently sealed Heart/Noodles input, W0 verified derivative-neighborhood admission",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -31,10 +31,10 @@
     "smoke_analytic_box_error_max_abs": 0
   },
   "local_smoke": {
-    "tests_run": 45,
-    "tests_passed": 45,
+    "tests_run": 61,
+    "tests_passed": 61,
     "tests_failed": 0,
-    "scope": "exact W2 source snapshots mirrored locally; Git blob SHA checked against GitHub; native Cherchi not compiled",
+    "scope": "locally mirrored W2 blobs; 3 changed production/test blobs compared byte-identically with GitHub",
     "native_preflight_status": "FAILED_PREFLIGHT",
     "native_preflight_error": "ModuleNotFoundError: No module named 'make_it_stand'",
     "native_preflight_exit_code": 2
@@ -57,5 +57,21 @@
     "same_call_material_validation": true,
     "serialization": "EXCLUSIVE_ATOMIC_LINK_FSYNC_V1",
     "model_bytes_match_request_geometry_verified": false
+  },
+  "native_spec_version": "w2-one-cherchi-request-v3",
+  "native_spec_compatibility": {
+    "v2": "PARSE_AND_PREFLIGHT_FAILURE_ONLY_NATIVE_EVALUATION_BLOCKED",
+    "v3": "REQUIRES_EXACT_FROZEN_OBJ_TO_NATIVE_OUTER_CORRESPONDENCE"
+  },
+  "model_to_request_geometry_evidence": {
+    "schema": "w2-obj-faster-outer-correspondence-v1",
+    "status": "LOCAL_UNIT_TESTED_NOT_PRODUCTION_SAMPLE",
+    "modes": [
+      "OBJ_IS_INPUT_NORMALIZED_OUTER_V1",
+      "OBJ_PHYSICAL_TO_INPUT_NORMALIZED_OUTER_V1"
+    ],
+    "frozen_arrays": "EXACT_BINARY64_VERTEX_AND_ORDERED_INDEXED_FACES",
+    "topology": "ORIENTED_TWO_MANIFOLD_NECESSARY_NOT_EMBEDDING_PROOF",
+    "limitations": "Does not certify CAD provenance, original CAD equivalence, watertight exact embedding, design/fixed geometry or W0 derivative neighborhood"
   }
 }
