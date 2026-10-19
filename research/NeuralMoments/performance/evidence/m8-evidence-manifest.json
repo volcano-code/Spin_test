@@ -1,0 +1,71 @@
+{
+  "archive_artifact_id": 12134772056,
+  "archive_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+  "before_after_full_solver_speedup": null,
+  "branch": "research/neuralmoments-w1-native-20261019",
+  "files": {
+    "M8_RESULTS.md": {
+      "bytes": 7099,
+      "sha256": "f62f40cf5972b7a73e00e597d2079c963c8ce5233322d6c6e1850436e9006e45"
+    },
+    "evidence/m8-100-point-ledger.jsonl": {
+      "bytes": 53743,
+      "sha256": "d0efcff0c2f3b1ad2f24c243a7e55d8bc7cdea5139bed7734109b67ede37e99f"
+    },
+    "evidence/m8-51tests.log": {
+      "bytes": 6154,
+      "sha256": "da0685e0a6009cf063bc00ea7a7abf7f262594b54f14f71605f19e18be9cea22"
+    },
+    "evidence/m8-abba-run.log": {
+      "bytes": 251,
+      "sha256": "2f31f03d8a28565196e0f5099dcace7eb8cf89f27cb4c3fed1f4668cc9c38d74"
+    },
+    "evidence/m8-baseline-performance.json": {
+      "bytes": 2886,
+      "sha256": "9f7885df512da32938ea7f991fb628d5f5a772a560f021e0a6384463ebb59961"
+    },
+    "evidence/m8-before_after.json": {
+      "bytes": 412,
+      "sha256": "d9dbe2a5409bca1a1d1e1b55dbd2c08f728130cf931cf06ce0e22f7f603ba7ad"
+    },
+    "evidence/m8-native-host-failure.json": {
+      "bytes": 210,
+      "sha256": "ecdbee020aa9b0642e5c98e6f083a056526eb5596502bf7b9e8e06f1899b93db"
+    },
+    "evidence/m8-run-timing.jsonl": {
+      "bytes": 1027,
+      "sha256": "d3f0d29ed6878b67a1c3cc82b2d589e893ab1725e8490913d9c198d1816bacba"
+    },
+    "m8_exact_construction_trial.py": {
+      "bytes": 16480,
+      "sha256": "092351662b6dca0dcaec8345b065e740ae51f1fd56e8e35cacb6dc67e95e1c9f"
+    },
+    "m8_native_paired_gate.py": {
+      "bytes": 10220,
+      "sha256": "ec3eb7e6f695d171471a271209a70b8f347ebe169f54160bcae0313fbcb44fc8"
+    },
+    "test_m8.py": {
+      "bytes": 6060,
+      "sha256": "2b0d010bfeab0222f5e6db4b8a9756e91e0094fb63f14c15fa17c324e2ff9524"
+    },
+    "test_m8_native_paired.py": {
+      "bytes": 3576,
+      "sha256": "65c93bf8e9cf841c9ef55d8df7323c536acdeb363f03230cbf5e67e5998ebdf7"
+    }
+  },
+  "frozen_source": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "full_solver_performance_qualified": false,
+  "local_regressions_passed": 51,
+  "native_cherchi_new_evaluations": 0,
+  "native_modules": {
+    "_cherchi_core_boolean": false,
+    "_cherchi_rational_moments": false,
+    "_make_it_stand": false
+  },
+  "pinned_full_h8e_ci_failure_preserved": true,
+  "production_sources_changed": false,
+  "real_archived_material_samples": 100,
+  "schema": "w1-m8-immutable-evidence-manifest-v1",
+  "source_git_blob": "f9fa539f699df8baf8b8d30729048269a26ecb3c",
+  "source_on_execution_host_verified": false
+}

@@ -1,0 +1,7 @@
+{
+  "error": "ValueError: M5_PRODUCTION_SOURCE_UNPINNED",
+  "full_solver_speedup": null,
+  "paper_speed_qualified": false,
+  "schema": "w1-m8-native-failure-v1",
+  "status": "FAILED_NO_NATIVE_MATH_ADMISSION"
+}

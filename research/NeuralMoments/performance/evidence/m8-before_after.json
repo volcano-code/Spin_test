@@ -1,0 +1,14 @@
+{
+  "after": {
+    "isolated_post_boolean_median_seconds": 12.634811702
+  },
+  "before": {
+    "isolated_post_boolean_median_seconds": 17.9096750665
+  },
+  "isolated_post_boolean_ratio": 1.4174865038681208,
+  "optimizations_applied_to_production": false,
+  "paper_speed_qualified": false,
+  "production_full_solve_speedup": null,
+  "same_archived_input_exact_parity": true,
+  "schema": "w1-m8-before-after-v1"
+}

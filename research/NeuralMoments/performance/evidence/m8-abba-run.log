@@ -1,0 +1,5 @@
+M8_REPLAY 0 original 16.076 seconds
+M8_REPLAY 1 optimized 12.237 seconds
+M8_REPLAY 2 optimized 13.033 seconds
+M8_REPLAY 3 original 19.743 seconds
+{"status": "PASS_ARCHIVED_EXACT_CONSTRUCTION_ONLY", "ratio": 1.4174865038681208, "records_checked": 100}
