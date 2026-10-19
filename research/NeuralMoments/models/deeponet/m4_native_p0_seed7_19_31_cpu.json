@@ -1,0 +1,1117 @@
+{
+  "analytic_source": "closed boxes, exact spheres, axis-aligned ellipsoids; symbolic polynomial integrals",
+  "cpu_threads": 1,
+  "cut_model": "beta=c0+c3*z; c=normalize(-h,0,0,1,0,...); c3>0",
+  "device": "cpu",
+  "frozen_source_sha": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "geometry_input": "10D exact primitive parameters; NOT the M3 24D mesh descriptor",
+  "gpu_seconds": 0.0,
+  "material_partition": "analytic D cut only; fixed F identically zero",
+  "native_teacher_runs": 0,
+  "native_training_samples": 0,
+  "oracle_audits": {
+    "19": {
+      "mass": 0.6419981889753034,
+      "max_B_corrected_asymmetry": 0.0,
+      "max_directional_fd_abs_error": 9.771250475409943e-11,
+      "max_scale_null_error": 2.7755575615628914e-17
+    },
+    "31": {
+      "mass": 0.33773288931018264,
+      "max_B_corrected_asymmetry": 0.0,
+      "max_directional_fd_abs_error": 6.258482621035455e-11,
+      "max_scale_null_error": 6.938893903907228e-18
+    },
+    "7": {
+      "mass": 0.48020267892893054,
+      "max_B_corrected_asymmetry": 0.0,
+      "max_directional_fd_abs_error": 6.231548610458049e-11,
+      "max_scale_null_error": 2.7755575615628914e-17
+    }
+  },
+  "per_family": 20,
+  "python_version": "3.13.5",
+  "queries_per_geometry": 3,
+  "real_native_speedup_claim": false,
+  "repeats": 25,
+  "runs": {
+    "19": {
+      "dataset_sha256": "8b732b875cf52c1b646c37aaf781742ab3887c505beb6b1971519254f1fc8391",
+      "family_and_identity_holdout_verified": true,
+      "models": {
+        "deeponet": {
+          "derivative_enhanced": {
+            "complexity_and_cpu_timing": {
+              "cached_jacrev_10x10": {
+                "maximum_ms": 1.222482,
+                "median_ms": 0.53453,
+                "minimum_ms": 0.490651
+              },
+              "cold_encode_plus_query": {
+                "maximum_ms": 0.181014,
+                "median_ms": 0.080591,
+                "minimum_ms": 0.078849
+              },
+              "cpu_threads": 1,
+              "estimated_complexity": {
+                "cold_query_macs": 13472,
+                "encode_macs": 9760,
+                "parameters": 13722,
+                "warm_query_macs": 3712
+              },
+              "no_gpu_or_native_teacher_timing": true,
+              "repeats": 25,
+              "warm_cached_query": {
+                "maximum_ms": 0.153462,
+                "median_ms": 0.041526,
+                "minimum_ms": 0.039825
+              }
+            },
+            "heldout": {
+              "Jc_mae": 0.0467926236458107,
+              "Jc_relative_l2": 0.3932025856863093,
+              "candidate_step_worsened_start_fraction": 0.016666666666666666,
+              "evaluated_queries": 60,
+              "height_directional_mae": 0.08581168011850043,
+              "r_mae": 0.057024900510820466,
+              "r_relative_l2": 0.21107631010685893,
+              "signed_true_objective_gap": 0.0027217868008083163,
+              "step_absolute_error": 0.03141512461798489,
+              "unique_heldout_geometries": 20,
+              "w0_normalized_component_mae": 0.005435557856832624
+            },
+            "oracle_adaptation": {
+              "0": {
+                "height_directional_mae": 0.0728941473164054,
+                "heldout_query_count": 7,
+                "oracle_query_count": 0,
+                "r_mae": 0.05383891239762306
+              },
+              "1": {
+                "height_directional_mae": 0.06890731014309566,
+                "heldout_query_count": 7,
+                "oracle_query_count": 1,
+                "r_mae": 0.02877745032310486
+              },
+              "2": {
+                "height_directional_mae": 0.08770018964048504,
+                "heldout_query_count": 7,
+                "oracle_query_count": 2,
+                "r_mae": 0.033107466995716095
+              },
+              "4": {
+                "height_directional_mae": 0.06279414566020909,
+                "heldout_query_count": 7,
+                "oracle_query_count": 4,
+                "r_mae": 0.01737617328763008
+              },
+              "8": {
+                "height_directional_mae": 0.048551671970200834,
+                "heldout_query_count": 7,
+                "oracle_query_count": 8,
+                "r_mae": 0.005842084065079689
+              }
+            },
+            "training": {
+              "batch_size": 16,
+              "cpu_train_seconds": 1.2697969529999682,
+              "derivative_weight": 0.5,
+              "gpu_seconds": 0.0,
+              "last_train_j_mse": 0.01549261063337326,
+              "last_train_r_mse": 0.0026571552734822035,
+              "learning_rate": 0.003,
+              "steps": 500
+            }
+          },
+          "residual_only": {
+            "complexity_and_cpu_timing": {
+              "cached_jacrev_10x10": {
+                "maximum_ms": 1.200279,
+                "median_ms": 0.551953,
+                "minimum_ms": 0.501518
+              },
+              "cold_encode_plus_query": {
+                "maximum_ms": 0.12042,
+                "median_ms": 0.081752,
+                "minimum_ms": 0.078628
+              },
+              "cpu_threads": 1,
+              "estimated_complexity": {
+                "cold_query_macs": 13472,
+                "encode_macs": 9760,
+                "parameters": 13722,
+                "warm_query_macs": 3712
+              },
+              "no_gpu_or_native_teacher_timing": true,
+              "repeats": 25,
+              "warm_cached_query": {
+                "maximum_ms": 0.278174,
+                "median_ms": 0.041142,
+                "minimum_ms": 0.03981
+              }
+            },
+            "heldout": {
+              "Jc_mae": 0.09554373280258213,
+              "Jc_relative_l2": 0.7916141784902313,
+              "candidate_step_worsened_start_fraction": 0.03333333333333333,
+              "evaluated_queries": 60,
+              "height_directional_mae": 0.11485950607721798,
+              "r_mae": 0.06336256293084867,
+              "r_relative_l2": 0.22013908669967264,
+              "signed_true_objective_gap": 0.0023692410215714454,
+              "step_absolute_error": 0.03209191639439647,
+              "unique_heldout_geometries": 20,
+              "w0_normalized_component_mae": 0.006122877351867849
+            },
+            "oracle_adaptation": {
+              "0": {
+                "height_directional_mae": 0.08772891064688253,
+                "heldout_query_count": 7,
+                "oracle_query_count": 0,
+                "r_mae": 0.054846204817295074
+              },
+              "1": {
+                "height_directional_mae": 0.08897048720838868,
+                "heldout_query_count": 7,
+                "oracle_query_count": 1,
+                "r_mae": 0.03604597598314285
+              },
+              "2": {
+                "height_directional_mae": 0.09496913506871356,
+                "heldout_query_count": 7,
+                "oracle_query_count": 2,
+                "r_mae": 0.028789643198251724
+              },
+              "4": {
+                "height_directional_mae": 0.08553760052628868,
+                "heldout_query_count": 7,
+                "oracle_query_count": 4,
+                "r_mae": 0.020884452387690544
+              },
+              "8": {
+                "height_directional_mae": 0.028638842003667158,
+                "heldout_query_count": 7,
+                "oracle_query_count": 8,
+                "r_mae": 0.0037824835162609816
+              }
+            },
+            "training": {
+              "batch_size": 16,
+              "cpu_train_seconds": 0.5607893979999972,
+              "derivative_weight": 0.0,
+              "gpu_seconds": 0.0,
+              "last_train_j_mse": null,
+              "last_train_r_mse": 0.002409654902294278,
+              "learning_rate": 0.003,
+              "steps": 500
+            }
+          }
+        },
+        "geometry_mlp": {
+          "derivative_enhanced": {
+            "complexity_and_cpu_timing": {
+              "cached_jacrev_10x10": {
+                "maximum_ms": 1.35786,
+                "median_ms": 0.508857,
+                "minimum_ms": 0.409994
+              },
+              "cold_encode_plus_query": {
+                "maximum_ms": 0.147118,
+                "median_ms": 0.052171,
+                "minimum_ms": 0.050518
+              },
+              "cpu_threads": 1,
+              "estimated_complexity": {
+                "cold_query_macs": 13248,
+                "encode_macs": 4320,
+                "parameters": 13530,
+                "warm_query_macs": 8928
+              },
+              "no_gpu_or_native_teacher_timing": true,
+              "repeats": 25,
+              "warm_cached_query": {
+                "maximum_ms": 0.235304,
+                "median_ms": 0.027602,
+                "minimum_ms": 0.026741
+              }
+            },
+            "heldout": {
+              "Jc_mae": 0.050065069122840915,
+              "Jc_relative_l2": 0.436312890808357,
+              "candidate_step_worsened_start_fraction": 0.0,
+              "evaluated_queries": 60,
+              "height_directional_mae": 0.09305768837902238,
+              "r_mae": 0.05074787851792583,
+              "r_relative_l2": 0.17587043228612098,
+              "signed_true_objective_gap": 0.0017664560948084979,
+              "step_absolute_error": 0.024895013214184622,
+              "unique_heldout_geometries": 20,
+              "w0_normalized_component_mae": 0.00522672241695429
+            },
+            "oracle_adaptation": {
+              "0": {
+                "height_directional_mae": 0.1038185341449347,
+                "heldout_query_count": 7,
+                "oracle_query_count": 0,
+                "r_mae": 0.045727748423814774
+              },
+              "1": {
+                "height_directional_mae": 0.10567732423766191,
+                "heldout_query_count": 7,
+                "oracle_query_count": 1,
+                "r_mae": 0.04364260286092758
+              },
+              "2": {
+                "height_directional_mae": 0.14331662267157097,
+                "heldout_query_count": 7,
+                "oracle_query_count": 2,
+                "r_mae": 0.054423149675130844
+              },
+              "4": {
+                "height_directional_mae": 0.09781519952685698,
+                "heldout_query_count": 7,
+                "oracle_query_count": 4,
+                "r_mae": 0.028029799461364746
+              },
+              "8": {
+                "height_directional_mae": 0.057308566920018816,
+                "heldout_query_count": 7,
+                "oracle_query_count": 8,
+                "r_mae": 0.007131668273359537
+              }
+            },
+            "training": {
+              "batch_size": 16,
+              "cpu_train_seconds": 1.099332719999893,
+              "derivative_weight": 0.5,
+              "gpu_seconds": 0.0,
+              "last_train_j_mse": 0.02149013802409172,
+              "last_train_r_mse": 0.002533629070967436,
+              "learning_rate": 0.003,
+              "steps": 500
+            }
+          },
+          "residual_only": {
+            "complexity_and_cpu_timing": {
+              "cached_jacrev_10x10": {
+                "maximum_ms": 0.907969,
+                "median_ms": 0.489229,
+                "minimum_ms": 0.417969
+              },
+              "cold_encode_plus_query": {
+                "maximum_ms": 0.168309,
+                "median_ms": 0.051248,
+                "minimum_ms": 0.050177
+              },
+              "cpu_threads": 1,
+              "estimated_complexity": {
+                "cold_query_macs": 13248,
+                "encode_macs": 4320,
+                "parameters": 13530,
+                "warm_query_macs": 8928
+              },
+              "no_gpu_or_native_teacher_timing": true,
+              "repeats": 25,
+              "warm_cached_query": {
+                "maximum_ms": 0.04504,
+                "median_ms": 0.02674,
+                "minimum_ms": 0.026339
+              }
+            },
+            "heldout": {
+              "Jc_mae": 0.09781966630684345,
+              "Jc_relative_l2": 0.8577848069225065,
+              "candidate_step_worsened_start_fraction": 0.06666666666666667,
+              "evaluated_queries": 60,
+              "height_directional_mae": 0.12724704290644856,
+              "r_mae": 0.05628664048874574,
+              "r_relative_l2": 0.22427670215453877,
+              "signed_true_objective_gap": 0.00892676110274118,
+              "step_absolute_error": 0.0325917342742244,
+              "unique_heldout_geometries": 20,
+              "w0_normalized_component_mae": 0.005183728232661595
+            },
+            "oracle_adaptation": {
+              "0": {
+                "height_directional_mae": 0.11942909084432969,
+                "heldout_query_count": 7,
+                "oracle_query_count": 0,
+                "r_mae": 0.04569549113512039
+              },
+              "1": {
+                "height_directional_mae": 0.121292343433466,
+                "heldout_query_count": 7,
+                "oracle_query_count": 1,
+                "r_mae": 0.05015351250767708
+              },
+              "2": {
+                "height_directional_mae": 0.14326976684846185,
+                "heldout_query_count": 7,
+                "oracle_query_count": 2,
+                "r_mae": 0.051482804119586945
+              },
+              "4": {
+                "height_directional_mae": 0.10208988844373143,
+                "heldout_query_count": 7,
+                "oracle_query_count": 4,
+                "r_mae": 0.02689608559012413
+              },
+              "8": {
+                "height_directional_mae": 0.049038022168944706,
+                "heldout_query_count": 7,
+                "oracle_query_count": 8,
+                "r_mae": 0.006094593089073896
+              }
+            },
+            "training": {
+              "batch_size": 16,
+              "cpu_train_seconds": 0.39503212700003587,
+              "derivative_weight": 0.0,
+              "gpu_seconds": 0.0,
+              "last_train_j_mse": null,
+              "last_train_r_mse": 0.003741492982953787,
+              "learning_rate": 0.003,
+              "steps": 500
+            }
+          }
+        }
+      },
+      "test_queries": 60,
+      "test_unique_geometries": 20,
+      "train_queries": 120,
+      "train_unique_geometries": 40
+    },
+    "31": {
+      "dataset_sha256": "3064fc5b1e0136482d195468ad66e3faa6e63e11bb9f55d75590b099b7f9c8d0",
+      "family_and_identity_holdout_verified": true,
+      "models": {
+        "deeponet": {
+          "derivative_enhanced": {
+            "complexity_and_cpu_timing": {
+              "cached_jacrev_10x10": {
+                "maximum_ms": 0.958833,
+                "median_ms": 0.541938,
+                "minimum_ms": 0.499863
+              },
+              "cold_encode_plus_query": {
+                "maximum_ms": 0.186619,
+                "median_ms": 0.081936,
+                "minimum_ms": 0.079313
+              },
+              "cpu_threads": 1,
+              "estimated_complexity": {
+                "cold_query_macs": 13472,
+                "encode_macs": 9760,
+                "parameters": 13722,
+                "warm_query_macs": 3712
+              },
+              "no_gpu_or_native_teacher_timing": true,
+              "repeats": 25,
+              "warm_cached_query": {
+                "maximum_ms": 0.063177,
+                "median_ms": 0.041094,
+                "minimum_ms": 0.040102
+              }
+            },
+            "heldout": {
+              "Jc_mae": 0.04321918165735128,
+              "Jc_relative_l2": 0.34097060763528825,
+              "candidate_step_worsened_start_fraction": 0.0,
+              "evaluated_queries": 60,
+              "height_directional_mae": 0.0817419729588791,
+              "r_mae": 0.0478091165752024,
+              "r_relative_l2": 0.16057532074942224,
+              "signed_true_objective_gap": 0.0017398747293699798,
+              "step_absolute_error": 0.027342056605146037,
+              "unique_heldout_geometries": 20,
+              "w0_normalized_component_mae": 0.004209747221294304
+            },
+            "oracle_adaptation": {
+              "0": {
+                "height_directional_mae": 0.07892787005186261,
+                "heldout_query_count": 7,
+                "oracle_query_count": 0,
+                "r_mae": 0.069595105946064
+              },
+              "1": {
+                "height_directional_mae": 0.0696393676328151,
+                "heldout_query_count": 7,
+                "oracle_query_count": 1,
+                "r_mae": 0.030794160440564156
+              },
+              "2": {
+                "height_directional_mae": 0.06870172809945796,
+                "heldout_query_count": 7,
+                "oracle_query_count": 2,
+                "r_mae": 0.02269400842487812
+              },
+              "4": {
+                "height_directional_mae": 0.05484141326482319,
+                "heldout_query_count": 7,
+                "oracle_query_count": 4,
+                "r_mae": 0.014100644737482071
+              },
+              "8": {
+                "height_directional_mae": 0.02577385402266676,
+                "heldout_query_count": 7,
+                "oracle_query_count": 8,
+                "r_mae": 0.0031698341481387615
+              }
+            },
+            "training": {
+              "batch_size": 16,
+              "cpu_train_seconds": 1.2378281790000756,
+              "derivative_weight": 0.5,
+              "gpu_seconds": 0.0,
+              "last_train_j_mse": 0.00852739904075861,
+              "last_train_r_mse": 0.001550651853904128,
+              "learning_rate": 0.003,
+              "steps": 500
+            }
+          },
+          "residual_only": {
+            "complexity_and_cpu_timing": {
+              "cached_jacrev_10x10": {
+                "maximum_ms": 0.968368,
+                "median_ms": 0.585205,
+                "minimum_ms": 0.50474
+              },
+              "cold_encode_plus_query": {
+                "maximum_ms": 0.119115,
+                "median_ms": 0.080985,
+                "minimum_ms": 0.079933
+              },
+              "cpu_threads": 1,
+              "estimated_complexity": {
+                "cold_query_macs": 13472,
+                "encode_macs": 9760,
+                "parameters": 13722,
+                "warm_query_macs": 3712
+              },
+              "no_gpu_or_native_teacher_timing": true,
+              "repeats": 25,
+              "warm_cached_query": {
+                "maximum_ms": 0.106685,
+                "median_ms": 0.041214,
+                "minimum_ms": 0.040533
+              }
+            },
+            "heldout": {
+              "Jc_mae": 0.08027308787806696,
+              "Jc_relative_l2": 0.7185433159704684,
+              "candidate_step_worsened_start_fraction": 0.016666666666666666,
+              "evaluated_queries": 60,
+              "height_directional_mae": 0.1073348588741303,
+              "r_mae": 0.0461615758798871,
+              "r_relative_l2": 0.1610655185435956,
+              "signed_true_objective_gap": 0.0011913035647351977,
+              "step_absolute_error": 0.023659029797564998,
+              "unique_heldout_geometries": 20,
+              "w0_normalized_component_mae": 0.004080367388400168
+            },
+            "oracle_adaptation": {
+              "0": {
+                "height_directional_mae": 0.08438966382106233,
+                "heldout_query_count": 7,
+                "oracle_query_count": 0,
+                "r_mae": 0.04637099802494049
+              },
+              "1": {
+                "height_directional_mae": 0.08074014696805615,
+                "heldout_query_count": 7,
+                "oracle_query_count": 1,
+                "r_mae": 0.037579309195280075
+              },
+              "2": {
+                "height_directional_mae": 0.054624060302348586,
+                "heldout_query_count": 7,
+                "oracle_query_count": 2,
+                "r_mae": 0.014543337747454643
+              },
+              "4": {
+                "height_directional_mae": 0.048991634877579765,
+                "heldout_query_count": 7,
+                "oracle_query_count": 4,
+                "r_mae": 0.01137597393244505
+              },
+              "8": {
+                "height_directional_mae": 0.01465796241402338,
+                "heldout_query_count": 7,
+                "oracle_query_count": 8,
+                "r_mae": 0.001906097517348826
+              }
+            },
+            "training": {
+              "batch_size": 16,
+              "cpu_train_seconds": 0.5629686789999369,
+              "derivative_weight": 0.0,
+              "gpu_seconds": 0.0,
+              "last_train_j_mse": null,
+              "last_train_r_mse": 0.003144707065075636,
+              "learning_rate": 0.003,
+              "steps": 500
+            }
+          }
+        },
+        "geometry_mlp": {
+          "derivative_enhanced": {
+            "complexity_and_cpu_timing": {
+              "cached_jacrev_10x10": {
+                "maximum_ms": 0.925432,
+                "median_ms": 0.482225,
+                "minimum_ms": 0.42037
+              },
+              "cold_encode_plus_query": {
+                "maximum_ms": 0.313545,
+                "median_ms": 0.051379,
+                "minimum_ms": 0.049977
+              },
+              "cpu_threads": 1,
+              "estimated_complexity": {
+                "cold_query_macs": 13248,
+                "encode_macs": 4320,
+                "parameters": 13530,
+                "warm_query_macs": 8928
+              },
+              "no_gpu_or_native_teacher_timing": true,
+              "repeats": 25,
+              "warm_cached_query": {
+                "maximum_ms": 0.182712,
+                "median_ms": 0.026641,
+                "minimum_ms": 0.026201
+              }
+            },
+            "heldout": {
+              "Jc_mae": 0.04398540913746678,
+              "Jc_relative_l2": 0.3740942408686927,
+              "candidate_step_worsened_start_fraction": 0.11666666666666667,
+              "evaluated_queries": 60,
+              "height_directional_mae": 0.08213691638210038,
+              "r_mae": 0.046142541728452974,
+              "r_relative_l2": 0.15743534607215143,
+              "signed_true_objective_gap": 0.0068862167445426885,
+              "step_absolute_error": 0.05976717446334577,
+              "unique_heldout_geometries": 20,
+              "w0_normalized_component_mae": 0.004221604975293003
+            },
+            "oracle_adaptation": {
+              "0": {
+                "height_directional_mae": 0.07356927140306774,
+                "heldout_query_count": 7,
+                "oracle_query_count": 0,
+                "r_mae": 0.03017420694231987
+              },
+              "1": {
+                "height_directional_mae": 0.0722316389064697,
+                "heldout_query_count": 7,
+                "oracle_query_count": 1,
+                "r_mae": 0.034336354583501816
+              },
+              "2": {
+                "height_directional_mae": 0.09382935328152389,
+                "heldout_query_count": 7,
+                "oracle_query_count": 2,
+                "r_mae": 0.03474530950188637
+              },
+              "4": {
+                "height_directional_mae": 0.05896349196265071,
+                "heldout_query_count": 7,
+                "oracle_query_count": 4,
+                "r_mae": 0.0153434993699193
+              },
+              "8": {
+                "height_directional_mae": 0.03823323965462303,
+                "heldout_query_count": 7,
+                "oracle_query_count": 8,
+                "r_mae": 0.004168054088950157
+              }
+            },
+            "training": {
+              "batch_size": 16,
+              "cpu_train_seconds": 1.0485917060000247,
+              "derivative_weight": 0.5,
+              "gpu_seconds": 0.0,
+              "last_train_j_mse": 0.0134058753028512,
+              "last_train_r_mse": 0.0019078573677688837,
+              "learning_rate": 0.003,
+              "steps": 500
+            }
+          },
+          "residual_only": {
+            "complexity_and_cpu_timing": {
+              "cached_jacrev_10x10": {
+                "maximum_ms": 0.782821,
+                "median_ms": 0.455214,
+                "minimum_ms": 0.415953
+              },
+              "cold_encode_plus_query": {
+                "maximum_ms": 0.091421,
+                "median_ms": 0.051459,
+                "minimum_ms": 0.050458
+              },
+              "cpu_threads": 1,
+              "estimated_complexity": {
+                "cold_query_macs": 13248,
+                "encode_macs": 4320,
+                "parameters": 13530,
+                "warm_query_macs": 8928
+              },
+              "no_gpu_or_native_teacher_timing": true,
+              "repeats": 25,
+              "warm_cached_query": {
+                "maximum_ms": 0.050078,
+                "median_ms": 0.027062,
+                "minimum_ms": 0.026561
+              }
+            },
+            "heldout": {
+              "Jc_mae": 0.07835330785985287,
+              "Jc_relative_l2": 0.6264180961954815,
+              "candidate_step_worsened_start_fraction": 0.05,
+              "evaluated_queries": 60,
+              "height_directional_mae": 0.11421261920599432,
+              "r_mae": 0.04804623969018091,
+              "r_relative_l2": 0.1646049384949662,
+              "signed_true_objective_gap": 0.0033495600249645475,
+              "step_absolute_error": 0.03892389304464134,
+              "unique_heldout_geometries": 20,
+              "w0_normalized_component_mae": 0.004314038461330502
+            },
+            "oracle_adaptation": {
+              "0": {
+                "height_directional_mae": 0.12833214006101282,
+                "heldout_query_count": 7,
+                "oracle_query_count": 0,
+                "r_mae": 0.06825508177280426
+              },
+              "1": {
+                "height_directional_mae": 0.11978426561760713,
+                "heldout_query_count": 7,
+                "oracle_query_count": 1,
+                "r_mae": 0.056010108441114426
+              },
+              "2": {
+                "height_directional_mae": 0.0790333622476737,
+                "heldout_query_count": 7,
+                "oracle_query_count": 2,
+                "r_mae": 0.02788909710943699
+              },
+              "4": {
+                "height_directional_mae": 0.05558494946254314,
+                "heldout_query_count": 7,
+                "oracle_query_count": 4,
+                "r_mae": 0.01461927592754364
+              },
+              "8": {
+                "height_directional_mae": 0.03299237210085525,
+                "heldout_query_count": 7,
+                "oracle_query_count": 8,
+                "r_mae": 0.0037005029153078794
+              }
+            },
+            "training": {
+              "batch_size": 16,
+              "cpu_train_seconds": 0.40051998800004185,
+              "derivative_weight": 0.0,
+              "gpu_seconds": 0.0,
+              "last_train_j_mse": null,
+              "last_train_r_mse": 0.0029710859525948763,
+              "learning_rate": 0.003,
+              "steps": 500
+            }
+          }
+        }
+      },
+      "test_queries": 60,
+      "test_unique_geometries": 20,
+      "train_queries": 120,
+      "train_unique_geometries": 40
+    },
+    "7": {
+      "dataset_sha256": "410581400bfbccd5764c5e2d1e9bab465b3db0dc8638f3346128c3c076591403",
+      "family_and_identity_holdout_verified": true,
+      "models": {
+        "deeponet": {
+          "derivative_enhanced": {
+            "complexity_and_cpu_timing": {
+              "cached_jacrev_10x10": {
+                "maximum_ms": 1.359396,
+                "median_ms": 0.541307,
+                "minimum_ms": 0.496961
+              },
+              "cold_encode_plus_query": {
+                "maximum_ms": 0.392555,
+                "median_ms": 0.081752,
+                "minimum_ms": 0.079379
+              },
+              "cpu_threads": 1,
+              "estimated_complexity": {
+                "cold_query_macs": 13472,
+                "encode_macs": 9760,
+                "parameters": 13722,
+                "warm_query_macs": 3712
+              },
+              "no_gpu_or_native_teacher_timing": true,
+              "repeats": 25,
+              "warm_cached_query": {
+                "maximum_ms": 0.132687,
+                "median_ms": 0.041192,
+                "minimum_ms": 0.04031
+              }
+            },
+            "heldout": {
+              "Jc_mae": 0.04238452811728627,
+              "Jc_relative_l2": 0.3340266862716532,
+              "candidate_step_worsened_start_fraction": 0.0,
+              "evaluated_queries": 60,
+              "height_directional_mae": 0.07552575912025326,
+              "r_mae": 0.04178292742389506,
+              "r_relative_l2": 0.1570500382432058,
+              "signed_true_objective_gap": 0.0013528602955315279,
+              "step_absolute_error": 0.028443848177258996,
+              "unique_heldout_geometries": 20,
+              "w0_normalized_component_mae": 0.00398235992922218
+            },
+            "oracle_adaptation": {
+              "0": {
+                "height_directional_mae": 0.06200930649883018,
+                "heldout_query_count": 7,
+                "oracle_query_count": 0,
+                "r_mae": 0.04097225144505501
+              },
+              "1": {
+                "height_directional_mae": 0.05476694184369538,
+                "heldout_query_count": 7,
+                "oracle_query_count": 1,
+                "r_mae": 0.022308753803372383
+              },
+              "2": {
+                "height_directional_mae": 0.057115783881390596,
+                "heldout_query_count": 7,
+                "oracle_query_count": 2,
+                "r_mae": 0.02180837281048298
+              },
+              "4": {
+                "height_directional_mae": 0.04552248083781785,
+                "heldout_query_count": 7,
+                "oracle_query_count": 4,
+                "r_mae": 0.01137198694050312
+              },
+              "8": {
+                "height_directional_mae": 0.030213427654470732,
+                "heldout_query_count": 7,
+                "oracle_query_count": 8,
+                "r_mae": 0.003888327395543456
+              }
+            },
+            "training": {
+              "batch_size": 16,
+              "cpu_train_seconds": 1.2859953130000576,
+              "derivative_weight": 0.5,
+              "gpu_seconds": 0.0,
+              "last_train_j_mse": 0.009955797344446182,
+              "last_train_r_mse": 0.0024730770383030176,
+              "learning_rate": 0.003,
+              "steps": 500
+            }
+          },
+          "residual_only": {
+            "complexity_and_cpu_timing": {
+              "cached_jacrev_10x10": {
+                "maximum_ms": 1.069534,
+                "median_ms": 0.581918,
+                "minimum_ms": 0.507136
+              },
+              "cold_encode_plus_query": {
+                "maximum_ms": 0.635478,
+                "median_ms": 0.092128,
+                "minimum_ms": 0.079388
+              },
+              "cpu_threads": 1,
+              "estimated_complexity": {
+                "cold_query_macs": 13472,
+                "encode_macs": 9760,
+                "parameters": 13722,
+                "warm_query_macs": 3712
+              },
+              "no_gpu_or_native_teacher_timing": true,
+              "repeats": 25,
+              "warm_cached_query": {
+                "maximum_ms": 0.14066,
+                "median_ms": 0.04074,
+                "minimum_ms": 0.04
+              }
+            },
+            "heldout": {
+              "Jc_mae": 0.07272480770078411,
+              "Jc_relative_l2": 0.6387437796756666,
+              "candidate_step_worsened_start_fraction": 0.03333333333333333,
+              "evaluated_queries": 60,
+              "height_directional_mae": 0.1073463246456694,
+              "r_mae": 0.04160673539971564,
+              "r_relative_l2": 0.1582510860898169,
+              "signed_true_objective_gap": 0.0029899357446995633,
+              "step_absolute_error": 0.03365440524265462,
+              "unique_heldout_geometries": 20,
+              "w0_normalized_component_mae": 0.004030336193338161
+            },
+            "oracle_adaptation": {
+              "0": {
+                "height_directional_mae": 0.06451637663569848,
+                "heldout_query_count": 7,
+                "oracle_query_count": 0,
+                "r_mae": 0.03965375944972038
+              },
+              "1": {
+                "height_directional_mae": 0.059288048360004696,
+                "heldout_query_count": 7,
+                "oracle_query_count": 1,
+                "r_mae": 0.026428423821926117
+              },
+              "2": {
+                "height_directional_mae": 0.056463062006789154,
+                "heldout_query_count": 7,
+                "oracle_query_count": 2,
+                "r_mae": 0.021152233704924583
+              },
+              "4": {
+                "height_directional_mae": 0.04421210789565784,
+                "heldout_query_count": 7,
+                "oracle_query_count": 4,
+                "r_mae": 0.012454981915652752
+              },
+              "8": {
+                "height_directional_mae": 0.01625743526983247,
+                "heldout_query_count": 7,
+                "oracle_query_count": 8,
+                "r_mae": 0.0022413497790694237
+              }
+            },
+            "training": {
+              "batch_size": 16,
+              "cpu_train_seconds": 0.5412071759999435,
+              "derivative_weight": 0.0,
+              "gpu_seconds": 0.0,
+              "last_train_j_mse": null,
+              "last_train_r_mse": 0.002993933390825987,
+              "learning_rate": 0.003,
+              "steps": 500
+            }
+          }
+        },
+        "geometry_mlp": {
+          "derivative_enhanced": {
+            "complexity_and_cpu_timing": {
+              "cached_jacrev_10x10": {
+                "maximum_ms": 1.191556,
+                "median_ms": 0.511914,
+                "minimum_ms": 0.4225
+              },
+              "cold_encode_plus_query": {
+                "maximum_ms": 0.12744,
+                "median_ms": 0.051076,
+                "minimum_ms": 0.049795
+              },
+              "cpu_threads": 1,
+              "estimated_complexity": {
+                "cold_query_macs": 13248,
+                "encode_macs": 4320,
+                "parameters": 13530,
+                "warm_query_macs": 8928
+              },
+              "no_gpu_or_native_teacher_timing": true,
+              "repeats": 25,
+              "warm_cached_query": {
+                "maximum_ms": 0.056785,
+                "median_ms": 0.02685,
+                "minimum_ms": 0.026309
+              }
+            },
+            "heldout": {
+              "Jc_mae": 0.047702811791222134,
+              "Jc_relative_l2": 0.4024677444038148,
+              "candidate_step_worsened_start_fraction": 0.016666666666666666,
+              "evaluated_queries": 60,
+              "height_directional_mae": 0.08904293663268667,
+              "r_mae": 0.03874442844658915,
+              "r_relative_l2": 0.1528402185145595,
+              "signed_true_objective_gap": 0.004477839863119281,
+              "step_absolute_error": 0.039508528325222676,
+              "unique_heldout_geometries": 20,
+              "w0_normalized_component_mae": 0.0037384925803470312
+            },
+            "oracle_adaptation": {
+              "0": {
+                "height_directional_mae": 0.0508752132626204,
+                "heldout_query_count": 7,
+                "oracle_query_count": 0,
+                "r_mae": 0.028408167883753777
+              },
+              "1": {
+                "height_directional_mae": 0.04952173921196623,
+                "heldout_query_count": 7,
+                "oracle_query_count": 1,
+                "r_mae": 0.018377870321273804
+              },
+              "2": {
+                "height_directional_mae": 0.07601044398727592,
+                "heldout_query_count": 7,
+                "oracle_query_count": 2,
+                "r_mae": 0.03637980297207832
+              },
+              "4": {
+                "height_directional_mae": 0.04622728163447652,
+                "heldout_query_count": 7,
+                "oracle_query_count": 4,
+                "r_mae": 0.010514043271541595
+              },
+              "8": {
+                "height_directional_mae": 0.042458278095935484,
+                "heldout_query_count": 7,
+                "oracle_query_count": 8,
+                "r_mae": 0.005200512707233429
+              }
+            },
+            "training": {
+              "batch_size": 16,
+              "cpu_train_seconds": 1.120057567999993,
+              "derivative_weight": 0.5,
+              "gpu_seconds": 0.0,
+              "last_train_j_mse": 0.015922777354717255,
+              "last_train_r_mse": 0.0024035584647208452,
+              "learning_rate": 0.003,
+              "steps": 500
+            }
+          },
+          "residual_only": {
+            "complexity_and_cpu_timing": {
+              "cached_jacrev_10x10": {
+                "maximum_ms": 0.864278,
+                "median_ms": 0.462349,
+                "minimum_ms": 0.413006
+              },
+              "cold_encode_plus_query": {
+                "maximum_ms": 0.177855,
+                "median_ms": 0.051877,
+                "minimum_ms": 0.050385
+              },
+              "cpu_threads": 1,
+              "estimated_complexity": {
+                "cold_query_macs": 13248,
+                "encode_macs": 4320,
+                "parameters": 13530,
+                "warm_query_macs": 8928
+              },
+              "no_gpu_or_native_teacher_timing": true,
+              "repeats": 25,
+              "warm_cached_query": {
+                "maximum_ms": 0.066919,
+                "median_ms": 0.026749,
+                "minimum_ms": 0.026079
+              }
+            },
+            "heldout": {
+              "Jc_mae": 0.07561680715642796,
+              "Jc_relative_l2": 0.6752425505974881,
+              "candidate_step_worsened_start_fraction": 0.15,
+              "evaluated_queries": 60,
+              "height_directional_mae": 0.11628539398489907,
+              "r_mae": 0.04421629570291164,
+              "r_relative_l2": 0.18187765003156126,
+              "signed_true_objective_gap": 0.007404434872604918,
+              "step_absolute_error": 0.05373165393595181,
+              "unique_heldout_geometries": 20,
+              "w0_normalized_component_mae": 0.004611202691721456
+            },
+            "oracle_adaptation": {
+              "0": {
+                "height_directional_mae": 0.06290401487570739,
+                "heldout_query_count": 7,
+                "oracle_query_count": 0,
+                "r_mae": 0.030902773141860962
+              },
+              "1": {
+                "height_directional_mae": 0.061617236616535426,
+                "heldout_query_count": 7,
+                "oracle_query_count": 1,
+                "r_mae": 0.02924698404967785
+              },
+              "2": {
+                "height_directional_mae": 0.06288777785261637,
+                "heldout_query_count": 7,
+                "oracle_query_count": 2,
+                "r_mae": 0.023992570117115974
+              },
+              "4": {
+                "height_directional_mae": 0.047221923293667395,
+                "heldout_query_count": 7,
+                "oracle_query_count": 4,
+                "r_mae": 0.012197691947221756
+              },
+              "8": {
+                "height_directional_mae": 0.02487017374550983,
+                "heldout_query_count": 7,
+                "oracle_query_count": 8,
+                "r_mae": 0.0032917906064540148
+              }
+            },
+            "training": {
+              "batch_size": 16,
+              "cpu_train_seconds": 0.4111996819999604,
+              "derivative_weight": 0.0,
+              "gpu_seconds": 0.0,
+              "last_train_j_mse": null,
+              "last_train_r_mse": 0.003957351204007864,
+              "learning_rate": 0.003,
+              "steps": 500
+            }
+          }
+        }
+      },
+      "test_queries": 60,
+      "test_unique_geometries": 20,
+      "train_queries": 120,
+      "train_unique_geometries": 40
+    }
+  },
+  "schema": "W5-M4-native-P0-physical-moment-derivative-v1",
+  "seeds": [
+    7,
+    19,
+    31
+  ],
+  "status": "INDEPENDENT_ANALYTIC_P0_ONLY_REAL_W2_TRAINING_BLOCKED",
+  "steps": 500,
+  "teacher_gate": {
+    "native_teacher_runs_declared": 0,
+    "ready": false,
+    "reason": "W2 pre-W0 manifest has no approved per-label checksums/W0 contract linkage; training blocked",
+    "status": "ADAPTER_SMOKE_ONLY",
+    "training_samples_declared": 0
+  },
+  "teacher_source": "independently derived analytic P0 oracle, no W2 or neural-generated labels",
+  "test_families": [
+    "ellipsoid"
+  ],
+  "torch_version": "2.10.0+cpu",
+  "train_families": [
+    "box",
+    "sphere"
+  ],
+  "w0_c_order": "CONST,X,Y,Z,XX,YY,ZZ,YZ,XZ,XY",
+  "w0_contract_head_checked": "bfedacd3a1f4e10d30f1258331260380739d243c",
+  "w0_native_to_monomial_diag": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    2.0,
+    2.0,
+    2.0
+  ],
+  "w0_r_order": "M,LX,LY,LZ,QXX,QYY,QZZ,QYZ,QXZ,QXY",
+  "w2_teacher_head_checked": "56212f46b007fa255cc5796224192010aa67513c"
+}

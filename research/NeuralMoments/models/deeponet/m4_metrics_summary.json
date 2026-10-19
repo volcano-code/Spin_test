@@ -1,0 +1,621 @@
+{
+  "W0_branch_sha": "bfedacd3a1f4e10d30f1258331260380739d243c",
+  "W2_branch_sha": "56212f46b007fa255cc5796224192010aa67513c",
+  "architecture_family_holdout": {
+    "geometry_count_per_family": 20,
+    "queries_per_geometry": 3,
+    "test": [
+      "ellipsoid"
+    ],
+    "train": [
+      "box",
+      "sphere"
+    ]
+  },
+  "experiment_json_sha256": "58946273c710da2b0759298ff2a3bdb7240f63667f240ccd74c9290f2bb6fb39",
+  "frozen_source_sha": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "models": {
+    "deeponet": {
+      "derivative_enhanced": {
+        "adaptation": {
+          "0": {
+            "height_directional_mae_mean": 0.07127710795569939,
+            "oracle_queries": 0,
+            "r_mae_mean": 0.05480208992958069
+          },
+          "1": {
+            "height_directional_mae_mean": 0.06443787320653538,
+            "oracle_queries": 1,
+            "r_mae_mean": 0.027293454855680466
+          },
+          "2": {
+            "height_directional_mae_mean": 0.0711725672071112,
+            "oracle_queries": 2,
+            "r_mae_mean": 0.025869949410359066
+          },
+          "4": {
+            "height_directional_mae_mean": 0.054386013254283376,
+            "oracle_queries": 4,
+            "r_mae_mean": 0.014282934988538424
+          },
+          "8": {
+            "height_directional_mae_mean": 0.03484631788244611,
+            "oracle_queries": 8,
+            "r_mae_mean": 0.004300081869587302
+          }
+        },
+        "metrics": {
+          "Jc_mae": {
+            "mean": 0.044132111140149415,
+            "per_seed": [
+              0.04238452811728627,
+              0.0467926236458107,
+              0.04321918165735128
+            ],
+            "sample_std": 0.00234156074607746
+          },
+          "Jc_relative_l2": {
+            "mean": 0.35606662653108356,
+            "per_seed": [
+              0.3340266862716532,
+              0.3932025856863093,
+              0.34097060763528825
+            ],
+            "sample_std": 0.032347551804735246
+          },
+          "candidate_step_worsened_start_fraction": {
+            "mean": 0.005555555555555556,
+            "per_seed": [
+              0.0,
+              0.016666666666666666,
+              0.0
+            ],
+            "sample_std": 0.009622504486493762
+          },
+          "height_directional_mae": {
+            "mean": 0.08102647073254426,
+            "per_seed": [
+              0.07552575912025326,
+              0.08581168011850043,
+              0.0817419729588791
+            ],
+            "sample_std": 0.005180154464150957
+          },
+          "r_mae": {
+            "mean": 0.048872314836639306,
+            "per_seed": [
+              0.04178292742389506,
+              0.057024900510820466,
+              0.0478091165752024
+            ],
+            "sample_std": 0.0076764072848554245
+          },
+          "r_relative_l2": {
+            "mean": 0.17623388969982898,
+            "per_seed": [
+              0.1570500382432058,
+              0.21107631010685893,
+              0.16057532074942224
+            ],
+            "sample_std": 0.030225859773583302
+          },
+          "signed_true_objective_gap": {
+            "mean": 0.0019381739419032746,
+            "per_seed": [
+              0.0013528602955315279,
+              0.0027217868008083163,
+              0.0017398747293699798
+            ],
+            "sample_std": 0.0007056783101958171
+          },
+          "step_absolute_error": {
+            "mean": 0.029067009800129974,
+            "per_seed": [
+              0.028443848177258996,
+              0.03141512461798489,
+              0.027342056605146037
+            ],
+            "sample_std": 0.002106826657669574
+          },
+          "w0_normalized_component_mae": {
+            "mean": 0.004542555002449702,
+            "per_seed": [
+              0.00398235992922218,
+              0.005435557856832624,
+              0.004209747221294304
+            ],
+            "sample_std": 0.00078167564795189
+          }
+        },
+        "parameters": 13722,
+        "timings": {
+          "cached_jacrev_10x10": {
+            "median_of_seed_medians_ms": 0.541307,
+            "per_seed_median_ms": [
+              0.541307,
+              0.53453,
+              0.541938
+            ]
+          },
+          "cold_encode_plus_query": {
+            "median_of_seed_medians_ms": 0.081752,
+            "per_seed_median_ms": [
+              0.081752,
+              0.080591,
+              0.081936
+            ]
+          },
+          "warm_cached_query": {
+            "median_of_seed_medians_ms": 0.041192,
+            "per_seed_median_ms": [
+              0.041192,
+              0.041526,
+              0.041094
+            ]
+          }
+        },
+        "train_seconds_all_seeds": 3.7936204450001014
+      },
+      "residual_only": {
+        "adaptation": {
+          "0": {
+            "height_directional_mae_mean": 0.07887831703454778,
+            "oracle_queries": 0,
+            "r_mae_mean": 0.046956987430651985
+          },
+          "1": {
+            "height_directional_mae_mean": 0.0763328941788165,
+            "oracle_queries": 1,
+            "r_mae_mean": 0.033351236333449684
+          },
+          "2": {
+            "height_directional_mae_mean": 0.06868541912595043,
+            "oracle_queries": 2,
+            "r_mae_mean": 0.021495071550210316
+          },
+          "4": {
+            "height_directional_mae_mean": 0.05958044776650876,
+            "oracle_queries": 4,
+            "r_mae_mean": 0.014905136078596115
+          },
+          "8": {
+            "height_directional_mae_mean": 0.019851413229174338,
+            "oracle_queries": 8,
+            "r_mae_mean": 0.002643310270893077
+          }
+        },
+        "metrics": {
+          "Jc_mae": {
+            "mean": 0.08284720946047773,
+            "per_seed": [
+              0.07272480770078411,
+              0.09554373280258213,
+              0.08027308787806696
+            ],
+            "sample_std": 0.011625205896720352
+          },
+          "Jc_relative_l2": {
+            "mean": 0.7163004247121221,
+            "per_seed": [
+              0.6387437796756666,
+              0.7916141784902313,
+              0.7185433159704684
+            ],
+            "sample_std": 0.07645987594371696
+          },
+          "candidate_step_worsened_start_fraction": {
+            "mean": 0.027777777777777776,
+            "per_seed": [
+              0.03333333333333333,
+              0.03333333333333333,
+              0.016666666666666666
+            ],
+            "sample_std": 0.009622504486493762
+          },
+          "height_directional_mae": {
+            "mean": 0.10984689653233923,
+            "per_seed": [
+              0.1073463246456694,
+              0.11485950607721798,
+              0.1073348588741303
+            ],
+            "sample_std": 0.004341050990605436
+          },
+          "r_mae": {
+            "mean": 0.05037695807015047,
+            "per_seed": [
+              0.04160673539971564,
+              0.06336256293084867,
+              0.0461615758798871
+            ],
+            "sample_std": 0.011474148907374077
+          },
+          "r_relative_l2": {
+            "mean": 0.17981856377769503,
+            "per_seed": [
+              0.1582510860898169,
+              0.22013908669967264,
+              0.1610655185435956
+            ],
+            "sample_std": 0.034946940982516786
+          },
+          "signed_true_objective_gap": {
+            "mean": 0.0021834934436687353,
+            "per_seed": [
+              0.0029899357446995633,
+              0.0023692410215714454,
+              0.0011913035647351977
+            ],
+            "sample_std": 0.0009135896517164497
+          },
+          "step_absolute_error": {
+            "mean": 0.029801783811538696,
+            "per_seed": [
+              0.03365440524265462,
+              0.03209191639439647,
+              0.023659029797564998
+            ],
+            "sample_std": 0.005376840429785437
+          },
+          "w0_normalized_component_mae": {
+            "mean": 0.004744526977868726,
+            "per_seed": [
+              0.004030336193338161,
+              0.006122877351867849,
+              0.004080367388400168
+            ],
+            "sample_std": 0.0011939485312388782
+          }
+        },
+        "parameters": 13722,
+        "timings": {
+          "cached_jacrev_10x10": {
+            "median_of_seed_medians_ms": 0.581918,
+            "per_seed_median_ms": [
+              0.581918,
+              0.551953,
+              0.585205
+            ]
+          },
+          "cold_encode_plus_query": {
+            "median_of_seed_medians_ms": 0.081752,
+            "per_seed_median_ms": [
+              0.092128,
+              0.081752,
+              0.080985
+            ]
+          },
+          "warm_cached_query": {
+            "median_of_seed_medians_ms": 0.041142,
+            "per_seed_median_ms": [
+              0.04074,
+              0.041142,
+              0.041214
+            ]
+          }
+        },
+        "train_seconds_all_seeds": 1.6649652529998775
+      }
+    },
+    "geometry_mlp": {
+      "derivative_enhanced": {
+        "adaptation": {
+          "0": {
+            "height_directional_mae_mean": 0.07608767293687428,
+            "oracle_queries": 0,
+            "r_mae_mean": 0.03477004108329614
+          },
+          "1": {
+            "height_directional_mae_mean": 0.07581023411869928,
+            "oracle_queries": 1,
+            "r_mae_mean": 0.032118942588567734
+          },
+          "2": {
+            "height_directional_mae_mean": 0.10438547331345693,
+            "oracle_queries": 2,
+            "r_mae_mean": 0.04184942071636518
+          },
+          "4": {
+            "height_directional_mae_mean": 0.06766865770799474,
+            "oracle_queries": 4,
+            "r_mae_mean": 0.017962447367608547
+          },
+          "8": {
+            "height_directional_mae_mean": 0.04600002822352578,
+            "oracle_queries": 8,
+            "r_mae_mean": 0.005500078356514375
+          }
+        },
+        "metrics": {
+          "Jc_mae": {
+            "mean": 0.04725109668384327,
+            "per_seed": [
+              0.047702811791222134,
+              0.050065069122840915,
+              0.04398540913746678
+            ],
+            "sample_std": 0.003064898250858515
+          },
+          "Jc_relative_l2": {
+            "mean": 0.4042916253602882,
+            "per_seed": [
+              0.4024677444038148,
+              0.436312890808357,
+              0.3740942408686927
+            ],
+            "sample_std": 0.031149398170529106
+          },
+          "candidate_step_worsened_start_fraction": {
+            "mean": 0.044444444444444446,
+            "per_seed": [
+              0.016666666666666666,
+              0.0,
+              0.11666666666666667
+            ],
+            "sample_std": 0.06309898162000305
+          },
+          "height_directional_mae": {
+            "mean": 0.08807918046460314,
+            "per_seed": [
+              0.08904293663268667,
+              0.09305768837902238,
+              0.08213691638210038
+            ],
+            "sample_std": 0.00552380618014682
+          },
+          "r_mae": {
+            "mean": 0.04521161623098932,
+            "per_seed": [
+              0.03874442844658915,
+              0.05074787851792583,
+              0.046142541728452974
+            ],
+            "sample_std": 0.006055631273049829
+          },
+          "r_relative_l2": {
+            "mean": 0.1620486656242773,
+            "per_seed": [
+              0.1528402185145595,
+              0.17587043228612098,
+              0.15743534607215143
+            ],
+            "sample_std": 0.012188507888928618
+          },
+          "signed_true_objective_gap": {
+            "mean": 0.004376837567490155,
+            "per_seed": [
+              0.004477839863119281,
+              0.0017664560948084979,
+              0.0068862167445426885
+            ],
+            "sample_std": 0.002561374313807615
+          },
+          "step_absolute_error": {
+            "mean": 0.04139023866758436,
+            "per_seed": [
+              0.039508528325222676,
+              0.024895013214184622,
+              0.05976717446334577
+            ],
+            "sample_std": 0.01751206820756153
+          },
+          "w0_normalized_component_mae": {
+            "mean": 0.0043956066575314414,
+            "per_seed": [
+              0.0037384925803470312,
+              0.00522672241695429,
+              0.004221604975293003
+            ],
+            "sample_std": 0.0007592196327205798
+          }
+        },
+        "parameters": 13530,
+        "timings": {
+          "cached_jacrev_10x10": {
+            "median_of_seed_medians_ms": 0.508857,
+            "per_seed_median_ms": [
+              0.511914,
+              0.508857,
+              0.482225
+            ]
+          },
+          "cold_encode_plus_query": {
+            "median_of_seed_medians_ms": 0.051379,
+            "per_seed_median_ms": [
+              0.051076,
+              0.052171,
+              0.051379
+            ]
+          },
+          "warm_cached_query": {
+            "median_of_seed_medians_ms": 0.02685,
+            "per_seed_median_ms": [
+              0.02685,
+              0.027602,
+              0.026641
+            ]
+          }
+        },
+        "train_seconds_all_seeds": 3.2679819939999106
+      },
+      "residual_only": {
+        "adaptation": {
+          "0": {
+            "height_directional_mae_mean": 0.10355508192701664,
+            "oracle_queries": 0,
+            "r_mae_mean": 0.04828444868326187
+          },
+          "1": {
+            "height_directional_mae_mean": 0.10089794855586952,
+            "oracle_queries": 1,
+            "r_mae_mean": 0.04513686833282312
+          },
+          "2": {
+            "height_directional_mae_mean": 0.09506363564958398,
+            "oracle_queries": 2,
+            "r_mae_mean": 0.03445482378204664
+          },
+          "4": {
+            "height_directional_mae_mean": 0.06829892039998066,
+            "oracle_queries": 4,
+            "r_mae_mean": 0.017904351154963177
+          },
+          "8": {
+            "height_directional_mae_mean": 0.035633522671769925,
+            "oracle_queries": 8,
+            "r_mae_mean": 0.004362295536945264
+          }
+        },
+        "metrics": {
+          "Jc_mae": {
+            "mean": 0.0839299271077081,
+            "per_seed": [
+              0.07561680715642796,
+              0.09781966630684345,
+              0.07835330785985287
+            ],
+            "sample_std": 0.012106434251667965
+          },
+          "Jc_relative_l2": {
+            "mean": 0.719815151238492,
+            "per_seed": [
+              0.6752425505974881,
+              0.8577848069225065,
+              0.6264180961954815
+            ],
+            "sample_std": 0.12195358237496565
+          },
+          "candidate_step_worsened_start_fraction": {
+            "mean": 0.08888888888888889,
+            "per_seed": [
+              0.15,
+              0.06666666666666667,
+              0.05
+            ],
+            "sample_std": 0.05357583756107197
+          },
+          "height_directional_mae": {
+            "mean": 0.11924835203244731,
+            "per_seed": [
+              0.11628539398489907,
+              0.12724704290644856,
+              0.11421261920599432
+            ],
+            "sample_std": 0.00700416951496671
+          },
+          "r_mae": {
+            "mean": 0.04951639196061276,
+            "per_seed": [
+              0.04421629570291164,
+              0.05628664048874574,
+              0.04804623969018091
+            ],
+            "sample_std": 0.006168007505339146
+          },
+          "r_relative_l2": {
+            "mean": 0.19025309689368874,
+            "per_seed": [
+              0.18187765003156126,
+              0.22427670215453877,
+              0.1646049384949662
+            ],
+            "sample_std": 0.030704900702757724
+          },
+          "signed_true_objective_gap": {
+            "mean": 0.006560252000103548,
+            "per_seed": [
+              0.007404434872604918,
+              0.00892676110274118,
+              0.0033495600249645475
+            ],
+            "sample_std": 0.0028828417416078716
+          },
+          "step_absolute_error": {
+            "mean": 0.04174909375160585,
+            "per_seed": [
+              0.05373165393595181,
+              0.0325917342742244,
+              0.03892389304464134
+            ],
+            "sample_std": 0.010849441004127675
+          },
+          "w0_normalized_component_mae": {
+            "mean": 0.004702989795237851,
+            "per_seed": [
+              0.004611202691721456,
+              0.005183728232661595,
+              0.004314038461330502
+            ],
+            "sample_std": 0.0004420505953716491
+          }
+        },
+        "parameters": 13530,
+        "timings": {
+          "cached_jacrev_10x10": {
+            "median_of_seed_medians_ms": 0.462349,
+            "per_seed_median_ms": [
+              0.462349,
+              0.489229,
+              0.455214
+            ]
+          },
+          "cold_encode_plus_query": {
+            "median_of_seed_medians_ms": 0.051459,
+            "per_seed_median_ms": [
+              0.051877,
+              0.051248,
+              0.051459
+            ]
+          },
+          "warm_cached_query": {
+            "median_of_seed_medians_ms": 0.026749,
+            "per_seed_median_ms": [
+              0.026749,
+              0.02674,
+              0.027062
+            ]
+          }
+        },
+        "train_seconds_all_seeds": 1.206751797000038
+      }
+    }
+  },
+  "oracle_analytic_sanity": {
+    "19": {
+      "mass": 0.6419981889753034,
+      "max_B_corrected_asymmetry": 0.0,
+      "max_directional_fd_abs_error": 9.771250475409943e-11,
+      "max_scale_null_error": 2.7755575615628914e-17
+    },
+    "31": {
+      "mass": 0.33773288931018264,
+      "max_B_corrected_asymmetry": 0.0,
+      "max_directional_fd_abs_error": 6.258482621035455e-11,
+      "max_scale_null_error": 6.938893903907228e-18
+    },
+    "7": {
+      "mass": 0.48020267892893054,
+      "max_B_corrected_asymmetry": 0.0,
+      "max_directional_fd_abs_error": 6.231548610458049e-11,
+      "max_scale_null_error": 2.7755575615628914e-17
+    }
+  },
+  "schema": "W5-M4-analytic-P0-cross-family-summary-v1",
+  "seeds": [
+    7,
+    19,
+    31
+  ],
+  "statuses": {
+    "gpu_seconds": 0.0,
+    "real_native_teacher": false,
+    "teacher_gate": {
+      "native_teacher_runs_declared": 0,
+      "ready": false,
+      "reason": "W2 pre-W0 manifest has no approved per-label checksums/W0 contract linkage; training blocked",
+      "status": "ADAPTER_SMOKE_ONLY",
+      "training_samples_declared": 0
+    }
+  },
+  "steps_per_model_per_arm": 500
+}
