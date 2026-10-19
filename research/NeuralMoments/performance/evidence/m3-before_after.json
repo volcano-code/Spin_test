@@ -1,0 +1,18 @@
+{
+  "schema": "w1-before-after-m3-v1",
+  "mode": "ISOLATED_ARCHIVED_H8_MATERIAL_GMP_REFERENCE_ONLY",
+  "h8c_ratio": 1.024402923302008,
+  "h8e_ratio": 1.0133799330250628,
+  "old_new_exact_ten_parity": true,
+  "cross_frame_parity": {
+    "model_to_target_ten_moment_max_abs_error": 5.551115123125783e-17,
+    "same_q_bitwise_equal": true,
+    "coordinate_shift_z": -0.11499998450279236
+  },
+  "original_h8e25_failed_native_status_preserved": true,
+  "full_solver_old_new_speedup": null,
+  "production_prepared_material_applied": false,
+  "production_geometry_jacobian_and_terminal_parity": null,
+  "w0_w2_admission_not_assumed": true,
+  "no_paper_speed_claim": true
+}

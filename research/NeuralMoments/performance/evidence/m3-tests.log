@@ -1,0 +1,16 @@
+test_analytic_exact_volume (test_m3.M3Standalone.test_analytic_exact_volume) ... ok
+test_duplicate_zip_member_fails_closed (test_m3.M3Standalone.test_duplicate_zip_member_fails_closed) ... ok
+test_invalid_repeats (test_m3.M3Standalone.test_invalid_repeats) ... ok
+test_missing_original_archive (test_m3.M3Standalone.test_missing_original_archive) ... ok
+test_reject_degenerate (test_m3.M3Standalone.test_reject_degenerate) ... ok
+test_reject_malformed_token (test_m3.M3Standalone.test_reject_malformed_token) ... ok
+test_reject_misoriented (test_m3.M3Standalone.test_reject_misoriented) ... ok
+test_reject_out_of_bounds (test_m3.M3Standalone.test_reject_out_of_bounds) ... ok
+test_reject_truncated_stream (test_m3.M3Standalone.test_reject_truncated_stream) ... ok
+test_two_actual_archives_replay (test_m3.M3Standalone.test_two_actual_archives_replay) ... ok
+test_wrong_frozen_request_fails_before_native (test_m3.M3Standalone.test_wrong_frozen_request_fails_before_native) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 4.615s
+
+OK

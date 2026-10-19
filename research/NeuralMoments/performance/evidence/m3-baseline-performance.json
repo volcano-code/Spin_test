@@ -1,0 +1,190 @@
+{
+  "schema": "w1-m3-real-h8-archived-baseline-v1",
+  "scope": "GENUINE_H8_ARCHIVED_MATERIAL_GMP_REPLAY_NOT_FRESH_CHERCHI_OR_FULL_SOLVER",
+  "frozen_source_commit": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "frozen_request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+  "archived_native_binary_sha256": "ad0c4fe3527954c611743dbbccb384cc1521909e8a39d68c3b7554b3a3919d40",
+  "archived_cherchi_binary_sha256": "3cc8bf789168752f8b921c160ca9937cdf0f61c845d3088760811b9e5a4596b7",
+  "isolated_new_gmp_binary_sha256": "48dad1839ba62912d94703f1ced394b70805b10df5e06a2bae02a62486e7b1e1",
+  "environment": {
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "peak_children_rss_kib": 206560,
+    "swap_entries": 0,
+    "memory_limit_gib": 24,
+    "max_compile_workers": 1,
+    "max_job_seconds": 3600
+  },
+  "stage_columns_ns": [
+    "old_serialize_parse_or_prepared_ref",
+    "full_boundary_admission",
+    "exact_gmp_ten",
+    "total"
+  ],
+  "sample_order": "ABBA_BALANCED_4_REPEATS_PER_VARIANT_PER_INPUT",
+  "cases": [
+    {
+      "kind": "H8c",
+      "run_id": 39118951636,
+      "artifact_id": 12132634988,
+      "archive_sha256": "78749e99abd25ab2d2571440991ffa4e907a1565b4c7faf5210496431389cdd7",
+      "packet_sha256": "ba47a6d6f9fad2dce2569434bf9340252cceaeaf99c14a82df02b637092b6464",
+      "legacy": [
+        [
+          8841906,
+          38128700,
+          305148729,
+          352119335
+        ],
+        [
+          8306954,
+          37641136,
+          304610332,
+          350558422
+        ],
+        [
+          8084764,
+          35845665,
+          306115943,
+          350046372
+        ],
+        [
+          8340854,
+          38619106,
+          307286047,
+          354246007
+        ]
+      ],
+      "prepared": [
+        [
+          401,
+          37073485,
+          306035954,
+          343109840
+        ],
+        [
+          211,
+          36433776,
+          315747150,
+          352181137
+        ],
+        [
+          3675,
+          36175144,
+          306650185,
+          342829004
+        ],
+        [
+          290,
+          36244466,
+          303296634,
+          339541390
+        ]
+      ],
+      "median_before_ns": 351338878.5,
+      "median_after_ns": 342969422,
+      "ratio": 1.024402923302008,
+      "vertices": 8455,
+      "faces": 16910,
+      "sample_count_each_variant": 4,
+      "exact_ten_moments_old_new_equal": true,
+      "archived_fraction_binary64_ten_equal": true
+    },
+    {
+      "kind": "H8e-point000",
+      "run_id": 39121571756,
+      "artifact_id": 12134772056,
+      "archive_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+      "packet_sha256": "9538d11fbc180b7b96e7afe3dc98a6af1a5ddf074a680eb182f63517a48d72e3",
+      "legacy": [
+        [
+          16787783,
+          46191031,
+          317424314,
+          380403128
+        ],
+        [
+          8363891,
+          38082389,
+          313426355,
+          359872635
+        ],
+        [
+          8175443,
+          38288494,
+          307734796,
+          354198733
+        ],
+        [
+          7906503,
+          36061462,
+          306798758,
+          350766723
+        ]
+      ],
+      "prepared": [
+        [
+          581,
+          38941673,
+          306862302,
+          345804556
+        ],
+        [
+          230,
+          36357511,
+          313090257,
+          349447998
+        ],
+        [
+          270,
+          37150928,
+          318044092,
+          355195290
+        ],
+        [
+          190,
+          36984981,
+          319030616,
+          356015787
+        ]
+      ],
+      "median_before_ns": 357035684,
+      "median_after_ns": 352321644,
+      "ratio": 1.0133799330250628,
+      "vertices": 8455,
+      "faces": 16910,
+      "sample_count_each_variant": 4,
+      "exact_ten_moments_old_new_equal": true,
+      "archived_fraction_binary64_ten_equal": true
+    }
+  ],
+  "H8e_historical_25point": {
+    "total_wall_seconds": 379.493727883,
+    "isolated_stages_seconds": {
+      "source": 0.10049981599968305,
+      "physical_source_boundary": 1.803228045999731,
+      "boolean": 32.5997561879999,
+      "intersection_motion": 18.744640863000313,
+      "prepare_arithmetic_boundary": 1.8061157959998582,
+      "derivative": 11.608747608000613,
+      "integration": 8.104069458999902,
+      "material_attachment_serialization": 3.1772469180007192
+    },
+    "isolated_stage_sum_seconds": 77.94430469400072,
+    "unattributed_seconds": 301.5494231889993,
+    "original_workflow_status": "FAILURE_UNALTERED",
+    "changed_feature_hash_points": 8
+  },
+  "cross_frame_moment_max_abs_error": 5.551115123125783e-17,
+  "measured_fresh_cherchi_boolean": false,
+  "full_faster_solver_speedup": null,
+  "paper_speed_qualified": false,
+  "source_code_tested_locally": "real_h8_gmp_probe.cpp and replay_archived_h8.py packaged in M3 bundle; repository verifier is independently uploaded text and has not been run in CI",
+  "local_tests": {
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "log": "research/NeuralMoments/performance/evidence/m3-tests.log"
+  },
+  "reported_at": "2026-10-19T04:52:07.038010+00:00"
+}
