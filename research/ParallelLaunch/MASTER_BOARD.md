@@ -13,7 +13,7 @@
 
 | Window | Role | Branch / exact instructions | Dependencies | Earliest evidence target | State |
 |---|---|---|---|---|---|
-| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M7_TERMINAL_RECORD_GATE_COMMITTED; 222_LOCAL_M4_M7_PYTEST_PASS; EVERY_MAP_SAVED_PINNED; REAL_NATIVE_BLOCKED` |
+| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M8_REAL_ARCHIVE_25_OF_25_INDEPENDENT_R10; 15_LOCAL_PYTEST_PASS; NEWTON_NOT_CONVERGED; W2_TRAINING_BLOCKED` |
 | W1 | Cherchi/Faster 性能 | [research/neuralmoments-w1-native-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w1-native-20261019/research/ParallelLaunch/W1_START_HERE.md) | 可独立 profiling；合并需 W0/W2 | 冻结同输入逐段耗时＋原生改造对照 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
 | W2 | 精确教师与标签 | [research/neuralmoments-w2-teacher-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w2-teacher-20261019/research/ParallelLaunch/W2_START_HERE.md) | 正式发布标签需 W0 | 真实 r,J＋SHA＋可微/失败状态 | `W2_M5_EXACT_REFERENCE_PRESENT; MANIFEST_NATIVE_0_TRAINING_0; TRUTH_BLOCKED` |
 | W3 | Heart H9 | [research/neuralmoments-w3-heart-h9-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w3-heart-h9-20261019/research/ParallelLaunch/W3_START_HERE.md) | 无 | 81 点 point60 构造变化诊断 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
@@ -111,3 +111,15 @@
 - M7 requires independent **post-run** SHA256 pins for every `MAP_SAVED` `evaluation-%06d.json`, every essential terminal/complete/material journal attachment, the last accepted Newton c, and the native source/geometry identity. An independently *pre-run* frozen model/build/source SHA remains a different class of pin. Do not allow local self-resealed evidence as native authority.
 - Synthetic journal consistent numerical smoke: exit0 `NUMERICAL_ARCHIVE_CONSISTENT_NOT_NATIVE_CERTIFICATE`, never training true; actual installed production journal-verifier and original-objective KKT requests: **exit3 `BLOCKED_PRODUCTION_VERIFIER_UNAVAILABLE`**. No real Cherchi solver or independent M6 native partition was run on this 5.8-GiB/swap0 host.
 - **W2 actual native labels and training admission remain BLOCKED**; an apparent CONVERGED JSON, archive hash equality, several stable sampled branches, or an ML prediction cannot substitute for independently authenticated exact geometry, derivative smooth-neighborhood, sealed final material and native original-equation terminal.
+
+
+## W0 M8 real H8e archived Cherchi replay (2026-10-19)
+
+- GitHub native workflow 39121571756: completed FAILURE (unmodified historical result); authentic ZIP artifact 12134772056 digest `14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38`.
+- GitHub independent classification workflow 39122997405: completed SUCCESS (only finite-point classification); ZIP artifact 12134499573 digest `e17d90a8195637358d19e61fda3d8e1946cb33540f26190cead6723e7a36ef16`.
+- W0 M8 downloaded both real ZIPs, verified artifact SHA-256, original frozen request SHA `1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c`, original report SHA `7937da1e76a73612d71bc0d4352c292c2549655c770d024a06548eb8e8096d0f`, classifier report source-binding and all 25 per-point gzip SHA-256.
+- Real 25 archived Cherchi materials (8455 vertices and 16910 oriented triangles per point) independently re-integrated using rational signed tetrahedra, all 250 raw moment component comparisons pass with binary64 absolute maximum 0; target-frame fixed material max discrepancy 2.220446049250313e-16. This is an independent offline arithmetic recheck, not a new native Cherchi solve.
+- Nine 5-point FD stencils recomputed (max normalized difference 2.6019151368622826e-10), three stencils contain original raw feature-hash drift, eight perturbed source feature hashes differ. Independent finite-point classification 24/24 `SYMBOLIC_PATCH_AND_TRIANGLE_IDENTITY_STABLE_NOT_CERTIFIED` does NOT grant smooth neighborhood.
+- Scientific status: non-author reconstructed H8 CAD only; original native job failure preserved; Newton terminal, continuous derivative neighborhood, exact full original/F/D/cavity region partition, dynamics and printability NOT authenticated. No real W5/W6 training labels authorized.
+
+- Reproduction: `research/NeuralMoments/contracts/real_h8e_archive_m8.py` plus `test_real_h8e_archive_m8.py`; 15 local fast regressions passed with both REAL ZIPs supplied, authentic 25-point exact reintegration wall 76.19s. See [M8 evidence](W0_M8_EVIDENCE_20261019.md) and `research/NeuralMoments/contracts/contract_smoke_m8.json`. W0 changed only its own two directories.

@@ -171,3 +171,10 @@ PYTHONPATH=python python -m research.NeuralMoments.contracts.live_terminal_m7_cl
 ```
 
 The measured isolated **M4–M7** mirror was **222 passed in 0.55 seconds** including five extra multi-evaluation journal tests; earlier M1–M3 tests were not rerun in this mirror. Only synthetic archives were numerically checked here, and both real verifier/original KKT modes correctly returned `BLOCKED_PRODUCTION_VERIFIER_UNAVAILABLE` (exit3). This is **NOT** a claim of real Cherchi convergence, a valid full material partition, geometric/printability approval or a smooth derivative-neighborhood certificate. **`training_admissible=false` always.** See `M7_TERMINAL_HANDOFF.md`, `contract_smoke_m7.json` and `research/ParallelLaunch/W0_M7_EVIDENCE_20261019.md`.
+
+
+## M8 actual archived H8e Cherchi data (not a Newton convergence claim)
+
+W0 `real_h8e_archive_m8.py` verifies authentic downloaded H8e 25-point native and classifier ZIP artifacts (GitHub Actions run IDs `39121571756` failure and `39122997405` success). It binds the artifact ZIP hashes, frozen request and report hashes, each gzip snapshot SHA, native coefficient/source/geometry identity and independently recomputes all ten mass moments by exact rational signed tetrahedra. It also checks 25 indexed mesh edge closures, fixed material target frame and nine 5-point numerical Jacobian stencils. This is a **real historical Cherchi** offline audit, not a new native run.
+
+The observed 25 real snapshots all match binary64 raw moments (`max_abs_error=0.0`); fixed-frame maximum discrepancy `2.22e-16`; nine reconstructed derivative checks maximum normalized `2.60e-10`; native run was **failure** because raw topology hashes drifted in eight perturbation points. A later successful 24/24 exact symbolic patch classification is *finite point only*, and cannot prove continuous smoothness. Thus full Newton terminal/represented-set partition/differentiability remain unverified and `training_admissible=false`. See `M8_REAL_H8E_ARCHIVE_HANDOFF.md`, `contract_smoke_m8.json`, `research/ParallelLaunch/W0_M8_EVIDENCE_20261019.md`.
