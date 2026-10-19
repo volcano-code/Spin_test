@@ -18,6 +18,11 @@ class TestIndependentReference(unittest.TestCase):
         result=compare_exact_reference(EXPECTED[:7]+[145]+EXPECTED[8:],list(map(Fraction,EXPECTED)))
         self.assertFalse(result["within_tolerance"])
         self.assertEqual(result["absolute_errors"][7],1)
+    def test_binary64_density_exact_and_finite(self):
+        moments,proof=integrate_exact_boundary(V,F,2.0)
+        self.assertEqual(moments,list(map(Fraction,EXPECTED)))
+        with self.assertRaisesRegex(ValueError,"INVALID_BINARY64_DENSITY"):
+            integrate_exact_boundary(V,F,float('nan'))
     def test_open_boundary_rejected(self):
         with self.assertRaisesRegex(ValueError,"BOUNDARY_NOT_CLOSED"):
             integrate_exact_boundary(V,F[:-1],2)
