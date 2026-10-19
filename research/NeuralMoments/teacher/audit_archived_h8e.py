@@ -17,6 +17,9 @@ from zipfile import ZipFile
 
 PREFIX='artifacts/h8e-jacobian-cols0-4-8/'
 POINTS=25
+# Verified GitHub Actions artifacts, pinned to their downloaded ZIP bytes.
+EXPECTED_ARCHIVE_SHA256='14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38'
+EXPECTED_CLASSIFIER_SHA256='e17d90a8195637358d19e61fda3d8e1946cb33540f26190cead6723e7a36ef16'
 ORDER=('M','LX','LY','LZ','QXX','QYY','QZZ','QYZ','QXZ','QXY')
 PAIR_ORDER=((0,0),(1,1),(2,2),(1,2),(0,2),(0,1))
 
@@ -142,6 +145,7 @@ def audit_archive(zip_path, classifier_path=None, *, limit=25):
     started=time.monotonic()
     path=Path(zip_path)
     archive_hash=sha(path.read_bytes())
+    require(archive_hash==EXPECTED_ARCHIVE_SHA256,'UNRECOGNIZED_H8E_SOURCE_ARCHIVE_SHA')
     points=[]
     with ZipFile(path) as z:
         names=set(z.namelist())
@@ -192,6 +196,8 @@ def audit_archive(zip_path, classifier_path=None, *, limit=25):
                            'r_F':fixed,'total_r':total})
         classification=None
         if classifier_path:
+            require(sha(Path(classifier_path).read_bytes())==EXPECTED_CLASSIFIER_SHA256,
+                    'UNRECOGNIZED_H8E_CLASSIFIER_ARCHIVE_SHA')
             with ZipFile(classifier_path) as cls:
                 cls_json=json.loads(cls.read('twenty-five-exact-construction-classification.json'))
             require(cls_json['source_report_sha256']==sha(report_bytes) and
