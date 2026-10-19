@@ -1,0 +1,94 @@
+{
+  "actual_accepted_newton_step_observed": false,
+  "actual_converged_newton_residual_available": false,
+  "actual_native_cherchi_boolean_event_certified": false,
+  "archive_samples_verified": [
+    0,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64
+  ],
+  "archived_coordinate_comparisons": 108,
+  "artifact_id": 12135528290,
+  "artifact_zip_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "assumptions": [
+    "H8 fixed inverse-Gauss normals are continuous across bracket",
+    "source triangle identities do not switch inside bracket",
+    "roundoff between native source and archived binary64 seed is negligible; not formally bounded"
+  ],
+  "conditional_surrogate_unique_root": true,
+  "continuous_Cherchi_construction_stratum_certified": false,
+  "final_heart_obj_produced": false,
+  "final_independently_integrated_physical_metrics_available": false,
+  "frozen_request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+  "historic_run_conclusion": "failure",
+  "historic_run_id": 39123384402,
+  "matched_archived_source_vertices": [
+    24,
+    89,
+    90,
+    151
+  ],
+  "max_model_vs_actual_archived_coordinate_absolute_error": 9.830390539378602e-16,
+  "native_calls_performed_this_run": 0,
+  "newton_admitted": false,
+  "rational_fixed_point_decimal_digits": 38,
+  "schema": "heart-h9-offline-rational-interval-inverse-gauss-event-v1",
+  "surrogate": "FIXED_NORMAL_INVERSE_GAUSS_FROM_BINARY64_ARCHIVE_SEEDS_NOT_PRODUCTION_CHERCHI",
+  "surrogate_bisection_steps": 44,
+  "surrogate_endpoint_det_enclosures": {
+    "high": [
+      -1.4405585246458627e-08,
+      -1.4405585246458627e-08
+    ],
+    "low": [
+      1.5630561010714866e-08,
+      1.5630561010714866e-08
+    ]
+  },
+  "surrogate_root_anchor_estimate_spread_float": 8.688525159755711e-17,
+  "surrogate_root_bracket_binary64_anchor0": {
+    "exact_lower_fraction": "16048198887747/7036874417766400000",
+    "exact_upper_fraction": "40120497219369/17592186044416000000",
+    "lower": 2.28058622834439e-06,
+    "upper": 2.2805862283444754e-06,
+    "width_float": 8.526512829121202e-20
+  },
+  "surrogate_root_estimates_other_native_binary64_anchors": {
+    "0": {
+      "lower": 2.28058622834439e-06,
+      "upper": 2.2805862283444754e-06
+    },
+    "57": {
+      "lower": 2.280586228310284e-06,
+      "upper": 2.2805862283103692e-06
+    },
+    "59": {
+      "lower": 2.2805862283657063e-06,
+      "upper": 2.2805862283657914e-06
+    },
+    "60": {
+      "lower": 2.280586228278821e-06,
+      "upper": 2.2805862282789066e-06
+    },
+    "62": {
+      "lower": 2.280586228320345e-06,
+      "upper": 2.2805862283204307e-06
+    }
+  },
+  "verified_surrogate_continuous_derivative_sign": -1,
+  "verified_surrogate_derivative_enclosure": [
+    -0.020033154531313845,
+    -0.020015040217368812
+  ],
+  "worst_fit_sample_source_axis": [
+    60,
+    89,
+    2
+  ]
+}
