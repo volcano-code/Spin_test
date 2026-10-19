@@ -17,13 +17,16 @@ try:
     from .native_cherchi_teacher import canonical, digest, load, vector
     from .cherchi_single_request import evaluate_one, sha256_file
     from .independent_reference import compare_predeclared_budget
+    from .frozen_model_binding import validate_model_binding
 except ImportError:
     from native_cherchi_teacher import canonical, digest, load, vector
     from cherchi_single_request import evaluate_one, sha256_file
     from independent_reference import compare_predeclared_budget
+    from frozen_model_binding import validate_model_binding
 
 FROZEN_SOURCE_SHA='0bcc187b3005478baa586a6d6f450e73811ca342'
-SCHEMA='w2-one-cherchi-request-v2'
+SCHEMA='w2-one-cherchi-request-v3'
+LEGACY_SCHEMA='w2-one-cherchi-request-v2'
 _SHA=re.compile(r'^[0-9a-f]{64}$')
 
 
@@ -35,8 +38,8 @@ def _require_sha(token, field):
 
 def parse_spec(path):
     spec=json.loads(Path(path).read_text(encoding='utf-8'))
-    if not isinstance(spec,dict) or spec.get('schema')!=SCHEMA:
-        raise ValueError('W2_V2_FROZEN_SPEC_REQUIRED')
+    if not isinstance(spec,dict) or spec.get('schema') not in (SCHEMA,LEGACY_SCHEMA):
+        raise ValueError('W2_V2_OR_V3_FROZEN_SPEC_REQUIRED')
     if spec.get('source_sha')!=FROZEN_SOURCE_SHA:
         raise ValueError('SOURCE_REVISION_MISMATCH')
     if not isinstance(spec.get('request'),dict) or not isinstance(spec.get('evaluator_settings'),dict):
@@ -62,12 +65,24 @@ def parse_spec(path):
     # frame's mass, first and second moment units, not a universal percentage.
     compare_predeclared_budget([0.0]*10,[0.0]*10,
                                spec.get('reference_absolute_tolerances'))
+    if spec['schema']==SCHEMA:
+        spec['_verified_model_binding']=validate_model_binding(
+            model, spec['request'],spec.get('model_geometry_binding'),
+            spec.get('normalization'))
     return spec
 
 
 def evaluate_from_spec(spec):
     """Lazy imports allow infrastructure failures to be logged without mock data."""
     import numpy as np
+    # V2 intentionally remains parseable for historical test-only failures,
+    # but has no geometrical source binding and can NEVER launch native work.
+    if spec.get('schema')!=SCHEMA or not spec.get('_verified_model_binding'):
+        raise ValueError('NATIVE_REQUIRES_V3_VERIFIED_MODEL_REQUEST_BINDING')
+    binding=validate_model_binding(spec['model_path'],spec['request'],
+        spec['model_geometry_binding'],spec.get('normalization'))
+    if binding!=spec['_verified_model_binding']:
+        raise ValueError('FROZEN_OBJ_CHANGED_SINCE_PREFLIGHT')
     from make_it_stand.spin import SpinItFasterRequest, SpinSolverConfig, SpinEvaluatorConfig
     from make_it_stand.verification.cherchi_inprocess import InProcessCherchiEvaluator
     request_data=dict(spec['request'])
@@ -101,13 +116,14 @@ def evaluate_from_spec(spec):
         'evaluator_settings_sha256':digest(spec['evaluator_settings']),
         'native_c_sha256':spec['expected_native_c_sha256'],
         'spec_sha256':digest(spec),
-        'model_to_request_geometry_verified':False,
+        'model_to_request_geometry_verified':True,
+        'model_to_request_geometry_proof':binding,
     }
     return evaluate_one(evaluator,spec['native_c'],model_path=spec['model_path'],
         native_module_path=evaluator.native.__file__,geometry=geometry,
         density=request.material_density,frame=spec['frame'],split='excluded',
         reference_absolute_tolerances=spec['reference_absolute_tolerances'],
-        exclusion_reason='W0_VERIFIER_AND_SEALED_MODEL_LINK_NOT_VERIFIED')
+        exclusion_reason='W0_VERIFIER_AND_INDEPENDENT_SOLID_PROOF_NOT_VERIFIED')
 
 
 def _write_new_atomically(path,record):
@@ -144,6 +160,11 @@ def run(spec_path,output_path):
         phase='POSTFLIGHT'
         if sha256_file(spec_path)!=spec_content_before:
             raise ValueError('FROZEN_SPEC_CHANGED_DURING_EVALUATION')
+        if spec['schema']==SCHEMA:
+            binding_after=validate_model_binding(spec['model_path'],spec['request'],
+                spec['model_geometry_binding'],spec.get('normalization'))
+            if binding_after!=spec['_verified_model_binding']:
+                raise ValueError('MODEL_REQUEST_GEOMETRY_CHANGED_DURING_EVALUATION')
         if record['payload'].get('exact_proof',{}).get('native_cherchi') is not True:
             raise ValueError('NON_NATIVE_EVALUATION_RETURN')
         if (record['identity']['model_sha256']!=spec['expected_model_sha256'] or
@@ -166,7 +187,9 @@ def run(spec_path,output_path):
         raise
     except Exception as error:
         # Import failures are preflight failures: zero native evaluations.
-        kind='FAILED_PREFLIGHT' if (phase=='PREFLIGHT' or isinstance(error,ImportError)) else 'FAILED_'+phase
+        kind=('FAILED_PREFLIGHT' if (phase=='PREFLIGHT' or isinstance(error,ImportError) or
+               str(error)=='NATIVE_REQUIRES_V3_VERIFIED_MODEL_REQUEST_BINDING')
+              else 'FAILED_'+phase)
         failure={'schema':'w2-native-smoke-preflight-v2','status':kind,
                  'phase':phase,'error':f'{type(error).__name__}: {error}',
                  'elapsed_seconds':time.perf_counter()-start,
