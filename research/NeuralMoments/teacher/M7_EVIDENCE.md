@@ -20,7 +20,7 @@ Command:
 cd /mnt/data/w2_m7
 python -m unittest discover -s . -p 'test_*.py' -v
 ```
-**61 tests executed, 61 passed, 0 failed (0.068 seconds).** Fifteen of the new cases exercise ordered OBJ correspondence, physical-to-normalized coordinates, wrong transforms, open/duplicate/wrong-winding faces, unsupported polygon faces, relative indices, NaN vertices, frozen spec gating and malformed face indices. These tests are on fixture data; they are NOT real Cherchi evaluations or GitHub CI.
+**61 tests executed, 61 passed, 0 failed (0.068 seconds).** Sixteen new cases exercise ordered OBJ correspondence, physical-to-normalized coordinates, wrong transforms, open/duplicate/wrong-winding faces, unsupported polygon faces, relative indices, NaN vertices, frozen spec gating and malformed face indices. These tests are on fixture data; they are NOT real Cherchi evaluations or GitHub CI.
 
 Executed an additional end-to-end CLI preflight using a *deliberately synthetic* v3 specification and a small indexed closed box OBJ. The OBJ-to-request correspondence gate passed before the attempted native import. The command returned **exit code 2**, with this persisted failure evidence:
 ```text
