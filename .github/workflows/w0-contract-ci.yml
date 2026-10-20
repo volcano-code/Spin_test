@@ -1,0 +1,45 @@
+name: W0 mathematical contracts and frozen consumer interfaces
+on:
+  push:
+    branches:
+      - research/neuralmoments-w0-contract-20261019
+    paths:
+      - '.github/workflows/w0-contract-ci.yml'
+      - 'research/NeuralMoments/contracts/**'
+      - 'research/ParallelLaunch/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pure-python-contracts:
+    name: W0 structural math and consumer regression (no native teacher)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install lightweight dependencies
+        run: python -m pip install 'numpy>=2,<3' 'pytest>=8,<10'
+      - name: Run exact committed W0 math and interface tests
+        run: |
+          python -m pytest -q \
+            research/NeuralMoments/contracts/test_contract_v1.py \
+            research/NeuralMoments/contracts/test_validate_contract_v1.py \
+            research/NeuralMoments/contracts/test_w2_teacher_gate.py \
+            research/NeuralMoments/contracts/test_cross_window_release_m15.py \
+            research/NeuralMoments/contracts/test_cross_window_interface_m16.py
+      - name: Independently audit frozen W2 W5 W6 source interface
+        run: |
+          python -m research.NeuralMoments.contracts.cross_window_interface_m16 \
+            --output "$RUNNER_TEMP/w0-m16-interface-audit.json"
+      - name: Upload CI interface denial evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: w0-m16-ci-nonnative-interface-evidence
+          path: ${{ runner.temp }}/w0-m16-interface-audit.json
+          if-no-files-found: warn
