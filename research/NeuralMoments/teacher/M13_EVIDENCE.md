@@ -22,7 +22,7 @@ M12 的 exact positive pivot ratios 可以判定 raw binary64 的正比例射线
 - **81/81** signed primitive integer rays 精确正比例重构、**81** 条唯一 ray；H8f **17** 个原始单位范数兼容、**64** 个非单位，全部保持原始 c 与 SHA。
 - 本轮再次读取真实原始 ZIP、检验全 ZIP SHA 和真实 point60 单份 material gzip SHA、原始系数、几何/拓扑及 Jacobian 摘要、`r_D+r_F`。**实际本轮原始材料重读为 1 份**，先前 81 份全量真实材料重绑定沿用已保存的 M10/M12 证据，不宣称本轮重新解压了 81 份。
 - 原始 point60 `c[7]=3e-6`、`q[7]=6e-6`、5 个变化位置、2+2 LPI 特征和 17+17 个有向三角面特征变化保持。拒绝声明光滑区间、左右侧导数或 Newton 已成立。
-- 本地 Python 3.13 + NumPy，先实际执行 CLI 成功生成完整 81 条数学证书与聚焦点原始材料证据（`M13_H8F_81_PROJECTIVE_HANDOFF.json`，**381548 字节，SHA256 `2de535d1243802eba1826870001e7d7dc8c34ba8f6d911e933bc201da14ee8fc`**）；又在**不使用缓存报告**时执行专项回归 **25/25 PASS、0 FAIL、约 5.734 秒**，日志 SHA256 `871feaa4ebcc6c768dd4d9bf011a82f08fe3e08b9f3ca5f7ac0c3b9b39fb6b15`。
+- 本地 Python 3.13 + NumPy，先实际执行 CLI 成功生成完整 81 条数学证书与聚焦点原始材料证据（`M13_H8F_81_PROJECTIVE_HANDOFF.json`，**381548 字节，SHA256 `2de535d1243802eba1826870001e7d7dc8c34ba8f6d911e933bc201da14ee8fc`**）；又在**不使用缓存报告**时执行专项回归 **25/25 PASS、0 FAIL、约 8.769 秒**，日志 SHA256 `33d021ba9803abe1660c50a64c21cf58b0a80bd8cc39d01c06537f2a01143398`。
 - 本地测试使用从 GitHub M9 锁定内容重建、明确标记的 **semantic manifest fixture**。W2 仓库真实 `teacher_manifest.json` 已由 GitHub 连接器读取并更新，但本地测试未冒充对远端完整 manifest 逐字节运行。历史 ZIP 是原始字节内容，SHA 独立验证。
 - 测试覆盖有理正比例、负号禁并、float 缩放舍入、不合法分数/零向量、真实 81 点证书、point60 来源、M10/M12 污染反例、训练导出拒绝、覆盖证据拒绝与假冒 W0/W3 证明拒绝。
 
@@ -30,7 +30,7 @@ M12 的 exact positive pivot ratios 可以判定 raw binary64 的正比例射线
 
 新提交：
 
-- [M13 代码](./w2_projective_handoff_m13.py)：Git blob SHA1 `cc31a440f62af8a1d214bfd7fcc156ae31213808`
+- [M13 代码](./w2_projective_handoff_m13.py)：Git blob SHA1 `91186ae8abeff20b99f086d43e49616e643a41d3`
 - [M13 25 项测试](./test_w2_projective_handoff_m13.py)：Git blob SHA1 `011a5dd71c9927824918b50789c7b3193d29867d`
 - [81 点精确整数射线紧凑索引](./M13_H8F_81_PROJECTIVE_HANDOFF_INDEX.json)：Git blob SHA1 `fe6fbae5bf3e6f139bfef5dd66620208429483ee`，用原 M12 Git SHA 锁定的 81 条原始 c 独立核验精确分量与正有理缩放。
 - [W0 正式交接提案](./M13_W0_PROJECTIVE_HANDOFF_REQUEST.md)：只读依赖/合同提案，不修改 W0。
