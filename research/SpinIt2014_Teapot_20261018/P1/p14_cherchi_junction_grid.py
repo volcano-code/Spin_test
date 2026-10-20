@@ -93,6 +93,30 @@ def load_pinned(directory):
         raise ValueError('P13_CHERCHI_REFERENCE_REVISION_MISMATCH')
     return out
 
+def edge_connected_face_components(faces):
+    """Deterministic face connectivity by INDEXED shared edges; no networkx.
+
+    This intentionally differs from Trimesh.split's optional repair pathway
+    on nonmanifold inputs and does not claim manifoldness by itself.
+    """
+    f=np.asarray(faces,dtype=np.int64)
+    if len(f)==0:return 0
+    parent=np.arange(len(f),dtype=np.int64)
+    def find(x):
+        while parent[x]!=x:
+            parent[x]=parent[int(parent[x])]
+            x=int(parent[x])
+        return int(x)
+    owner={}
+    for fi,(a,b,c) in enumerate(f):
+        for x,y in ((a,b),(b,c),(c,a)):
+            k=(min(int(x),int(y)),max(int(x),int(y)))
+            if k in owner:
+                parent[find(fi)]=find(owner[k])
+            else:
+                owner[k]=fi
+    return len({find(i) for i in range(len(f))})
+
 def geometry(path):
     mesh=trimesh.load_mesh(path,process=False)
     v=np.asarray(mesh.vertices,dtype=float);f=np.asarray(mesh.faces,dtype=int)
@@ -109,7 +133,7 @@ def geometry(path):
              min_triangle_area=float(areas.min()),
              is_volume=bool(mesh.is_volume),watertight=bool(mesh.is_watertight),
              winding_consistent=bool(mesh.is_winding_consistent),
-             indexed_components=len(mesh.split(only_watertight=False)),
+             edge_connected_face_components=edge_connected_face_components(f),
              signed_tetrahedral_integral=float(mesh.volume))
     if len(bad):
         midpoint=(v[unique[bad,0]]+v[unique[bad,1]])/2
@@ -124,7 +148,7 @@ def geometry(path):
     out['strict_numeric_preflight']=bool(
         len(bad)==0 and out['is_volume'] and out['watertight'] and
         out['winding_consistent'] and out['low_area_triangles']==0 and
-        out['indexed_components']>=1)
+        out['edge_connected_face_components']>=1)
     if out['strict_numeric_preflight']:
         from p2_self_intersection import check_nonincident_triangle_contacts
         sat=check_nonincident_triangle_contacts(v,f,max_witnesses=12)

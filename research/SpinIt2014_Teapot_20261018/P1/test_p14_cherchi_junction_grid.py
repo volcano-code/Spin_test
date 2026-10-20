@@ -9,7 +9,8 @@ from pathlib import Path
 import numpy as np
 import trimesh
 from p14_cherchi_junction_grid import (PIN,CANONICAL,CASES,load_pinned,geometry,variant,
-                                       raw_ten,native_call,write_obj,digest,canonical_geometry_sha)
+                                       raw_ten,native_call,write_obj,digest,canonical_geometry_sha,
+                                       edge_connected_face_components)
 
 ARCHIVE=Path(os.environ.get('W4_P14_NATIVE_ARCHIVE_DIR',
                            'research/SpinIt2014_Teapot_20261018/P1/p14-source-archive'))
@@ -113,6 +114,17 @@ class RealCherchiAxisJunction(unittest.TestCase):
             target.write_bytes(target.read_bytes()+b'\n# fake\n')
             with self.assertRaisesRegex(ValueError,'SHA_MISMATCH_shaft'):
                 load_pinned(p)
+
+    def test_edge_connected_components_without_optional_networkx(self):
+        f=np.array([[0,2,1],[0,1,3],[0,3,2],[1,2,3]],dtype=int)
+        self.assertEqual(edge_connected_face_components(f),1)
+        self.assertEqual(edge_connected_face_components(np.vstack((f,f+4))),2)
+        self.assertEqual(edge_connected_face_components(np.vstack((f,f[0]))),1)
+        self.assertEqual(edge_connected_face_components(np.zeros((0,3),dtype=int)),0)
+        real=geometry(self.files['failed'])
+        self.assertEqual(real['non_two_incident_edges'],162)
+        self.assertEqual(real['edge_connected_face_components'],1)
+        self.assertFalse(real['strict_numeric_preflight'])
 
     def test_analytic_tetrahedron_raw_ten_formula(self):
         v=np.array([[0,0,0],[1,0,0],[0,1,0],[0,0,1]],dtype=float)
