@@ -43,7 +43,15 @@ def key(index, side):
 
 
 def _atomic_write_json(path, document):
+    """Publish a complete JSON as a new durable name; never replace evidence.
+
+    A preflight exists() check cannot protect against a concurrent writer. The
+    hard-link itself provides POSIX O_EXCL-like new-name semantics. Its target
+    must be an ordinary temporary file in the same filesystem.
+    """
     path = Path(path)
+    if os.path.lexists(path):
+        raise FileExistsError('CAPTURE_METADATA_ALREADY_EXISTS_DO_NOT_OVERWRITE')
     temp = None
     try:
         with tempfile.NamedTemporaryFile(mode='w', encoding='utf8', dir=path.parent,
@@ -54,7 +62,21 @@ def _atomic_write_json(path, document):
             stream.write('\n')
             stream.flush()
             os.fsync(stream.fileno())
-        os.replace(temp, path)
+        linked = False
+        try:
+            os.link(temp, path)
+            linked = True
+            _sync_directory(path.parent)
+        except OSError:
+            # Only unlink a destination created by THIS writer. If another
+            # producer won the name race, its file must remain untouched.
+            if linked:
+                path.unlink(missing_ok=True)
+                try:
+                    _sync_directory(path.parent)
+                except OSError:
+                    pass
+            raise
     finally:
         if temp is not None:
             temp.unlink(missing_ok=True)
@@ -80,7 +102,7 @@ def capture_same_call(output, *, index, side, coefficients, material, backend_id
     manifest_path = path / f'unverified-{identity}.json'
     final_path = path / f'side-{identity}.json.gz'
     final_meta = path / f'side-{identity}.json'
-    need(not any(x.exists() for x in (raw_path, manifest_path, final_path, final_meta)),
+    need(not any(os.path.lexists(x) for x in (raw_path, manifest_path, final_path, final_meta)),
          'NATIVE_MATERIAL_CAPTURE_ALREADY_EXISTS_DO_NOT_OVERWRITE')
     # Serialize before opening a checkpoint file so failed JSON serialization
     # cannot leave an invalid material with a valid-looking capture manifest.
@@ -96,7 +118,11 @@ def capture_same_call(output, *, index, side, coefficients, material, backend_id
                 gzip_stream.write(payload)
             stream.flush()
             os.fsync(stream.fileno())
-        os.replace(temp, raw_path)
+        # A parallel producer cannot overwrite a packet after our precheck.
+        # If a power loss occurs after this exclusive link but before the
+        # manifest, only an UNVERIFIED orphan remains, never a qualified side.
+        os.link(temp, raw_path)
+        _sync_directory(path)
     finally:
         if temp is not None:
             temp.unlink(missing_ok=True)
@@ -139,8 +165,13 @@ def promote_after_full_audit(output, capture, side_metadata):
     manifest_path = path / f'unverified-{identity}.json'
     final = path / f'side-{identity}.json.gz'
     final_metadata = path / f'side-{identity}.json'
-    need(not final_metadata.exists(), 'VALIDATED_NATIVE_PACKET_ALREADY_PRESENT')
+    need(not os.path.lexists(final_metadata), 'VALIDATED_NATIVE_PACKET_ALREADY_PRESENT')
     need(manifest_path.is_file() and pending.is_file(), 'UNVERIFIED_SAME_CALL_PACKET_NOT_FOUND')
+    # is_file() follows a symlink. Only plain capture files owned by this W3
+    # output directory may be upgraded to a production side.
+    need(stat.S_ISREG(os.lstat(manifest_path).st_mode)
+         and stat.S_ISREG(os.lstat(pending).st_mode),
+         'SAME_CALL_CAPTURE_SYMLINK_OR_NONREGULAR_FILE')
     need(json.loads(manifest_path.read_text(encoding='utf8')) == capture
          and digest(pending) == capture['archive_sha256'],
          'CAPTURE_MANIFEST_OR_ARCHIVE_SHA_DRIFT')
@@ -165,15 +196,24 @@ def promote_after_full_audit(output, capture, side_metadata):
     # written and fsync'ed. Both links initially reference identical gzip bytes.
     # os.link is atomic and fails rather than overwriting an existing side.
     linked = False
+    metadata_committed = False
     try:
         os.link(pending, final)
         linked = True
+        # The file is hard-linked, but content can still change if an outside
+        # writer mutated the source inode between precheck and publication.
+        # Recheck the actual final bytes before publishing its metadata.
+        need(digest(final) == capture['archive_sha256'],
+             'PROMOTED_NATIVE_GZIP_BYTES_CHANGED_BEFORE_METADATA')
         _atomic_write_json(final_metadata, side_metadata)
+        metadata_committed = True
         _sync_directory(path)
     except (OSError, ValueError, TypeError):
-        # Any incomplete promotion leaves the original capture + SHA manifest
-        # untouched, ready for safe investigation or an explicit retry.
-        final_metadata.unlink(missing_ok=True)
+        # Never remove another writer's metadata if exclusive publication
+        # lost a name race. _atomic_write_json cleans up its own failed link.
+        # A successfully published metadata name is ours to roll back.
+        if metadata_committed:
+            final_metadata.unlink(missing_ok=True)
         if linked:
             final.unlink(missing_ok=True)
         raise
@@ -185,7 +225,12 @@ def promote_after_full_audit(output, capture, side_metadata):
             stale.unlink()
         except OSError as exc:
             cleanup_errors.append(f'{stale.name}:{type(exc).__name__}')
-    _sync_directory(path)
+    try:
+        _sync_directory(path)
+    except OSError as exc:
+        # The completed pair was durably linked and fsync'ed above. An error
+        # syncing *optional forensic cleanup* must not relabel it as absent.
+        cleanup_errors.append(f'directory_sync:{type(exc).__name__}')
     return {'side': side, 'material_sha256': capture['archive_sha256'],
             'archive': str(final), 'complete_material_metadata': str(final_metadata),
             'forensic_cleanup_incomplete': bool(cleanup_errors),

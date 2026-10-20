@@ -1,0 +1,42 @@
+{
+  "branch": "research/neuralmoments-w3-heart-h9-20261019",
+  "certified_continuous_neighborhood": false,
+  "changed_file_policy": "W3 exclusive Heart H9 source/tests/reports only",
+  "final_heart_obj": false,
+  "historical_artifact_id": 12135528290,
+  "historical_artifact_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "historical_ci_conclusion": "failure",
+  "historical_h8f_workflow_run_id": 39123384402,
+  "new_remote_ci_run": false,
+  "newton_admitted": false,
+  "prior_branch_sha": "d69a9c91bf3a9359cf2a480fc22fec8bc8393ca3",
+  "real_native_attempts": {
+    "build_preflight_exit": 2,
+    "new_boolean_calls": 0,
+    "real_four_side_packets": 0,
+    "real_verified_newton_steps": 0,
+    "run_preflight_exit": 2
+  },
+  "runtime": {
+    "memory_cgroup_bytes": 4294967296,
+    "native_extension_available": {
+      "_cherchi_core_boolean": false,
+      "_cherchi_rational_moments": false,
+      "_make_it_stand": false
+    },
+    "python": "3.13.5"
+  },
+  "schema": "heart-h9-stage13-exclusive-durable-capture-evidence-v1",
+  "source_git_blob_sha": "8f597a2380a5fd8298e240ac09e11e61ff88268c",
+  "test_git_blob_sha": "ac62df904f01be10ebe897972fa3d443ae86d09e",
+  "test_scope": "Filesystem atomicity/concurrency/crash fixtures plus genuine pinned historical H8f point059 bytes; no fresh Cherchi invocation",
+  "verified_local_unittest": {
+    "failures": 0,
+    "log_sha256": "487c273dc9e570c70147dd71f5f6ccc8db8ad9343db635701ce24a4981cbb6d0",
+    "skips": 0,
+    "stage11": 8,
+    "stage12": 7,
+    "stage13": 10,
+    "total_passed": 25
+  }
+}
