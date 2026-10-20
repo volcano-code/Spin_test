@@ -1,0 +1,23 @@
+{
+  "schema": "w1-m15-real-native-resource-and-provenance-v1",
+  "utc_timestamp": "2026-10-20T13:12:32.988915+00:00",
+  "genuine_h8e_archive_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+  "native_modules": {
+    "_make_it_stand": false,
+    "_cherchi_core_boolean": false,
+    "_cherchi_rational_moments": false
+  },
+  "cgroup_memory_limit_bytes": 4294967296,
+  "swap_entries": 0,
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "native_cherchi_core_build_attempted": false,
+  "native_cherchi_core_build_blocked_by": "no full W1 checkout, no pinned Cherchi/CGAL sources, no MPFR development headers, 4GiB cgroup",
+  "real_cpp_gmp_standalone_builds": 2,
+  "real_cpp_gmp_standalone_executions": 50,
+  "standalone_surface_internal_integrations": 100,
+  "independent_tetra_integrations": 25,
+  "new_boolean_calls": 0,
+  "new_newton_solves": 0,
+  "full_newton_speedup": null,
+  "archived_h8e_historical_ci_state": "FAILED_EIGHT_FEATURE_HASH_DRIFTS_PRESERVED"
+}

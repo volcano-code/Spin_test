@@ -1,0 +1,18 @@
+test_actual_one_point_fresh_compiled_native (test_m15.M15Gates.test_actual_one_point_fresh_compiled_native) ... ok
+test_missing_boundary_stage_rejected (test_m15.M15Gates.test_missing_boundary_stage_rejected) ... ok
+test_recomputed_boolean_claim_rejected (test_m15.M15Gates.test_recomputed_boolean_claim_rejected) ... ok
+test_recovered_25_real_archive_rows (test_m15.M15Gates.test_recovered_25_real_archive_rows) ... ok
+test_reference_mismatch_rejected (test_m15.M15Gates.test_reference_mismatch_rejected) ... ok
+test_reject_empty_point_range (test_m15.M15Gates.test_reject_empty_point_range) ... ok
+test_reject_out_of_bounds_start (test_m15.M15Gates.test_reject_out_of_bounds_start) ... ok
+test_tampered_25point_log_rejected (test_m15.M15Gates.test_tampered_25point_log_rejected) ... ok
+test_two_variants_mandatory (test_m15.M15Gates.test_two_variants_mandatory) ... ok
+test_valid_exact_synthetic (test_m15.M15Gates.test_valid_exact_synthetic) ... ok
+test_wrong_archive_fail_closed (test_m15.M15Gates.test_wrong_archive_fail_closed) ... ok
+test_wrong_exact_moment_rejected (test_m15.M15Gates.test_wrong_exact_moment_rejected) ... ok
+test_wrong_geometry_rejected (test_m15.M15Gates.test_wrong_geometry_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 2.209s
+
+OK

@@ -1,0 +1,49 @@
+{
+  "schema": "w1-m15-25-recovered-native-points-v1",
+  "scope": "25_AUTHENTIC_H8E_ARCHIVED_CHERCHI_MATERIAL_GMP_ONLY",
+  "source_artifact_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+  "cpp_sources_git_blobs": {
+    "surface": "02821d2d02d5362d4252729125832bc86e2777b4",
+    "tetra": "fe40e9a0cf5cfcce3c82dd96460b576212f012e8"
+  },
+  "native_executables_sha256": {
+    "surface": "48dad1839ba62912d94703f1ced394b70805b10df5e06a2bae02a62486e7b1e1",
+    "tetra": "a19ae26404636910b0260a22d66e4e8a9a3d2e4e444a1918161ad52870d69b66"
+  },
+  "runs": {
+    "first_batch_interrupted_after": 16,
+    "second_batch_points": 9,
+    "separate_batches": true,
+    "one_continuous_25point_wall_measured": false
+  },
+  "points": 25,
+  "vertices_per_packet": 8455,
+  "faces_per_packet": 16910,
+  "independent_gmp_formulas_exact_rationals_equal_all_ten_each_point": true,
+  "exact_components_matched": 250,
+  "independent_reference_max_scaled_error": 0.0,
+  "original_branch_hash_changes": 8,
+  "original_h8e_ci_status": "FAILED_PRESERVED",
+  "old_surface_exact_gmp_samples": 50,
+  "prepared_samples": 50,
+  "median_legacy_ns": 371099629.5,
+  "median_prepared_ns": 359721045.5,
+  "isolated_surface_ref_ratio": 1.031631688338346,
+  "total_executable_process_wall_seconds": 47.697996313,
+  "median_surface_process_ns": 1523536040,
+  "median_independent_tetra_process_ns": 375764934,
+  "native_surface_evaluations": 100,
+  "native_independent_tetra_evaluations": 25,
+  "native_boolean_calls": 0,
+  "actual_production_compiled_modules": 0,
+  "complete_newton_solves": 0,
+  "regenerated_analytic_jacobians": 0,
+  "independent_full_self_intersection_audit_fresh": false,
+  "paper_matched_speedup": null,
+  "full_faster_newton_speedup": null,
+  "w0_w2_production_admitted": false,
+  "paper_speed_qualified": false,
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "swap_entries": 0
+}

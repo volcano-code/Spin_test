@@ -1,0 +1,47 @@
+{
+  "schema": "w1-m15-provenance-v1",
+  "source_branch": "research/neuralmoments-w1-native-20261019",
+  "frozen_base": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "executables": [
+    {
+      "name": "w1_surface_gmp",
+      "sha256": "48dad1839ba62912d94703f1ced394b70805b10df5e06a2bae02a62486e7b1e1"
+    },
+    {
+      "name": "w1_tetra_gmp",
+      "sha256": "a19ae26404636910b0260a22d66e4e8a9a3d2e4e444a1918161ad52870d69b66"
+    }
+  ],
+  "compiled_original_cpp_source": [
+    {
+      "name": "real_h8_gmp_probe.cpp",
+      "git_blob_sha1": "02821d2d02d5362d4252729125832bc86e2777b4"
+    },
+    {
+      "name": "m6_independent_tetra_gmp.cpp",
+      "git_blob_sha1": "fe40e9a0cf5cfcce3c82dd96460b576212f012e8"
+    }
+  ],
+  "compile_argv": [
+    "g++",
+    "-std=c++17",
+    "-O2",
+    "-Wall",
+    "-Wextra",
+    "-pedantic",
+    "SOURCE",
+    "-o",
+    "BINARY",
+    "-lgmpxx",
+    "-lgmp"
+  ],
+  "one_failed_full_batch_log": "m15-first-run-interrupted.json",
+  "first_batch_rows": 16,
+  "second_batch_rows": 9,
+  "build_jobs_max": 1,
+  "native_job_parallelism": 1,
+  "swaps_enabled": false,
+  "zip_sha_expected": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+  "sample_ledger_sha256": "87ce03e524bc5b7fe266ef7b8c7020618fc23031fcbf60f84ed0e0966c37a926",
+  "test_log_sha256": "2411508b355088ce0262f74a1800d506d7c7eeec60b32cccd846212bc453ffb1"
+}

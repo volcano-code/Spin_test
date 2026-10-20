@@ -1,0 +1,40 @@
+{
+  "schema": "w1-m15-authentic-25point-two-compiled-native-integrals-v1",
+  "scope": "ARCHIVED_CHERCHI_MATERIAL_GMP_COMPUTATION_ONLY_NOT_FRESH_BOOLEAN_OR_SOLVER",
+  "original_failed_h8e": true,
+  "original_feature_hash_changed_points": 8,
+  "input_archive_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+  "compiled_native_binaries": {
+    "surface": {
+      "path": "/mnt/data/W1_M15_native/build/w1_surface_gmp",
+      "sha256": "48dad1839ba62912d94703f1ced394b70805b10df5e06a2bae02a62486e7b1e1"
+    },
+    "tetra": {
+      "path": "/mnt/data/W1_M15_native/build/w1_tetra_gmp",
+      "sha256": "a19ae26404636910b0260a22d66e4e8a9a3d2e4e444a1918161ad52870d69b66"
+    }
+  },
+  "real_archived_points": 9,
+  "sample_start_inclusive": 16,
+  "sample_end_exclusive": 25,
+  "exact_ten_equal_each_point": true,
+  "max_independent_reference_scaled_error": 0.0,
+  "surface_variant_old_median_ns": 378109355.5,
+  "surface_variant_prepared_median_ns": 380259990.5,
+  "isolated_surface_source_ref_ratio": 0.9943443037560377,
+  "full_replay_wall_ns": 19240528009,
+  "original_h8e_full_solver_speedup": null,
+  "fresh_boolean_calls": 0,
+  "regenerated_jacobian": false,
+  "full_newton_runs": 0,
+  "true_independent_self_intersection_audit_rerun": false,
+  "post_optimization_mathematical_admission": false,
+  "paper_speed_qualified": false,
+  "host": {
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "swap_entries": 0,
+    "cgroup_memory_ceiling_bytes": 4294967296,
+    "serialized_native_processes": true
+  }
+}

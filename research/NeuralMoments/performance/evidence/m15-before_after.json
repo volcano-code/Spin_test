@@ -1,0 +1,12 @@
+{
+  "schema": "w1-m15-nativesurface-reference-abba-before-after-v1",
+  "scope": "EXACT_GMP_OWNERSHIP_ONLY_ON_ARCHIVED_H8E_MATERIAL",
+  "baseline_median_ns": 371099629.5,
+  "candidate_median_ns": 359721045.5,
+  "baseline_over_candidate": 1.031631688338346,
+  "exact_mathematics_and_full_oriented_boundary_equal": true,
+  "no_independent_self_intersection_rerun": true,
+  "comparison_isolation_only": true,
+  "full_production_faster_speedup": null,
+  "paper_speed_qualified": false
+}
