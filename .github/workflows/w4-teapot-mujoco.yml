@@ -343,6 +343,29 @@ jobs:
           print('P11 real Cherchi subtraction: provisional F/D only, not W0-authorized or optimized')
           PY
 
+      - name: P13 native Cherchi shaft-and-design overlap repair (exploratory only)
+        run: |
+          set -euo pipefail
+          python "$P1/p13_reconstructed_shaft_domain.py" \
+            --m "$P1/p10-cherchi-seal/cherchi-p9-numeric-original-yup.obj" \
+            --f "$P1/p11-trial-FD/p11-F-trial-cherchi-subtraction-unapproved.obj" \
+            --d "$P1/p11-trial-FD/p11-D-trial-sphere-unapproved.obj" \
+            --p11-report "$P1/p11-trial-FD/p11-experimental-FD-partition.json" \
+            --native-bin build/w4-cherchi-reference/bin/w4_cherchi_reference_native \
+            --upstream-checkout "$NATIVE_ROOT" \
+            --out "$P1/p13-native-Cherchi-domain" --timeout 90 | tee "$P1/p10-cherchi-seal/p13-real-native-csg.log"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('research/SpinIt2014_Teapot_20261018/P1/p13-native-Cherchi-domain/p13-native-csg-audit.json')
+          r=json.loads(p.read_text())
+          assert r['status']=='NATIVE_CHERCHI_EXPLORATORY_SHAFT_DOMAIN_NUMERIC_PASS'
+          assert r['true_native_Cherchi_calls']==3 and r['geometry_accepted']
+          assert r['max_abs_10_raw_moment_partition_error']<5e-7
+          assert not r['material_F_D_W0_admitted'] and not r['final_Faster_optimization']
+          print('P13 real Cherchi shaft/domain exploratory only, NOT W0/Faster admitted')
+          PY
+
       - name: Always retain Cherchi compile/native source and failed validation evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -354,6 +377,7 @@ jobs:
             research/SpinIt2014_Teapot_20261018/P1/p9-cherchi-handle-variants/**
             research/SpinIt2014_Teapot_20261018/P1/p10-cherchi-seal/**
             research/SpinIt2014_Teapot_20261018/P1/p11-trial-FD/**
+            research/SpinIt2014_Teapot_20261018/P1/p13-native-Cherchi-domain/**
             build/w4-cherchi-reference/CMakeCache.txt
             build/w4-cherchi-reference/CMakeFiles/CMakeConfigureLog.yaml
           if-no-files-found: warn
@@ -422,6 +446,42 @@ jobs:
           assert x['assumed_solid_mass_divided_by_old_demo_mass']>13
           print('P12 real Cherchi material PHYSICAL_DIAGNOSTIC_ONLY; W0 authorization DENIED')
           PY
+      - name: P13 shaft-reference construction and positive-overlap witness, archived true Cherchi M/F/D
+        run: |
+          set -euo pipefail
+          export W4_P13_REAL_INPUT_DIR="$W4_P12_REAL_INPUT_DIR"
+          python -m unittest discover -v -s "$P1" -p 'test_p13_reconstructed_shaft_domain.py' 2>&1 | tee "$P1/p12-cloud-output/p13-test-11.log"
+          python "$P1/p13_reconstructed_shaft_domain.py" \
+            --m "$W4_P12_REAL_INPUT_DIR/P10_Cherchi_Original_Yup.obj" \
+            --f "$W4_P12_REAL_INPUT_DIR/P11_F_Trial_Cherchi_Real_Subtraction.obj" \
+            --d "$W4_P12_REAL_INPUT_DIR/P11_D_Trial_Interior_Sphere.obj" \
+            --p11-report "$W4_P12_REAL_INPUT_DIR/P11_real_Cherchi_subtraction_audit.json" \
+            --out "$P1/p13-cloud-proposal" | tee "$P1/p12-cloud-output/p13-geometry-preflight.log"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('research/SpinIt2014_Teapot_20261018/P1/p13-cloud-proposal/p13-preflight.json')
+          x=json.loads(p.read_text())
+          assert x['status']=='CONFLICT_IDENTIFIED_CANDIDATES_STAGED_NATIVE_UNION_NOT_RUN'
+          assert x['old_P11_D_not_compatible_with_new_fixed_shaft']
+          assert x['require_D_minus_shaft_before_optimization']
+          assert all(not x[k] for k in ('W0_spindle_approved','W0_fixed_F_design_D_admitted','faster_optimization_performed'))
+          assert abs(x['mass_M_kg']-0.031017469002406838)<1e-9
+          assert abs(x['mass_shaft_kg']-0.0003452287629431886)<1e-9
+          print('P13 pinned true Cherchi MFD and shaft preflight PASS; no native assembled union or W0 approval')
+          PY
+
+      - name: Always retain P13 geometry proposal separately from native results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-P13-reference-shaft-overlap-trial-not-optimized
+          path: |
+            research/SpinIt2014_Teapot_20261018/P1/p13-cloud-proposal/**
+            research/SpinIt2014_Teapot_20261018/P1/p12-cloud-output/p13-*
+          if-no-files-found: warn
+          retention-days: 30
+
       - name: Preserve P12 diagnostics without a false physical approval
         if: always()
         uses: actions/upload-artifact@v4

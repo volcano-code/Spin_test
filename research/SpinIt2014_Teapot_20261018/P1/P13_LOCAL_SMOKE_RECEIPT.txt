@@ -1,0 +1,29 @@
+W4 P13 actual local smoke on archived genuine Cherchi P9/P11 material
+Python 3.13 / NumPy 2.x / Trimesh 4.x
+Input M SHA256 154cdfc9ec94b6885a95e596c36ac1382dd2d36ed99e19d0b36c2b9de80b6df4
+Input F SHA256 22593c5ab3b5f6ee786f2d17ce15f3beae16fcb09589dce2314d1615b3f115ba
+Input D SHA256 4cc61b54939fe9c9acdfe9e956af24f2a411d6016acd83fd32d46722749a99b9
+
+$ W4_P13_REAL_INPUT_DIR=/mnt/data/w4_p12_real python -m unittest -v test_p13_reconstructed_shaft_domain
+
+test_existing_D_positively_overlaps_mandatory_shaft ... ok
+test_mass_is_different_from_previous_mujoco_and_P12_cases ... ok
+test_prohibit_W0_or_optimizer_promotion ... ok
+test_real_ch_erchi_identity_not_mock ... ok
+test_reference_proper_transform_and_bottom_clearance ... ok
+test_reference_shaft_true_closed_tip_and_pin ... ok
+test_reject_fake_native_material_P11_report ... ok
+test_reject_forged_real_Cherchi_source ... ok
+test_source_files_untouched_after_generation ... ok
+test_staged_mesh_sha_tamper_fails_closed ... ok
+test_undoubled_ten_mass_moments_remain_additive_after_affine ... ok
+Ran 11 tests, PASS.
+
+Real M standalone mass: 0.031017469002406838 kg.
+Standalone shaft mass: 0.0003452287629431886 kg.
+Proposed tip z=0, teapot body bottom z=0.00375 m, shaft upper z=0.04275 m.
+P11 D and reference shaft both contain point (0.03,0,0.67); solid-angle windings 1.0000000000000002 and 1.0000000000000084.
+M/F/D raw moment max residual in transformed source frame: 1.5612511283791264e-16.
+
+NO native Cherchi P13 Boolean executed in local smoke; only preflight.
+W0 authorized=false; printing=false; Faster optimized=false; MuJoCo official before/after=false.
