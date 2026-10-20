@@ -1,0 +1,49 @@
+{
+  "allowed_use": "READ_ONLY_FINITE_POINT_PHYSICAL_MOMENT_AUDIT",
+  "archive_binding": {
+    "archive_gzip_sha_verified": true,
+    "archived_materials_rebound": 81,
+    "jacobian_digests_rebound_without_releasing_values": 81,
+    "maximum_fixed_plus_variable_disagreement": 2.220446049250313e-16,
+    "original_workflow_conclusion": "failure"
+  },
+  "certifications": {
+    "full_continuous_neighborhood": false,
+    "independent_CAD_origin": false,
+    "native_newton_terminal": false,
+    "physical_moments_numerically_reproduced": true,
+    "w0_verified_derivative_J_D": false,
+    "w3_point60_event_resolved": false
+  },
+  "coverage": {
+    "exact_physical_ten_moment_components": 810,
+    "fixed_moments_frozen": true,
+    "material_archive_sha_ledger_sha256": "a4f5f0049815353bbf0b0f7f6d7fa5f76ed6fe761ee01cd0c3eff6c11fa0798a",
+    "native_coefficients_unique": 81,
+    "newton_terminal_certified": false,
+    "point60_feature_change": true,
+    "rows": 81,
+    "w0_continuous_derivative_neighborhood_certified": false
+  },
+  "derivative_J_D": null,
+  "manifest": {
+    "m9_source_manifest_consistent": true,
+    "w0_formal_verifier_integrated_into_w2": false,
+    "w0_m9_observed_handoff_git_blob_sha1": "5f95bdeeb9f6b5bd9156aa796d3b72f9f1649de7"
+  },
+  "no_implicit_w0_or_w3_promotion": true,
+  "schema": "w2-m10-consumer-readonly-gate-v1",
+  "source": {
+    "artifact_id": 12135528290,
+    "candidate_file_sha256": "fcfccf626af7166c577ba15cc95c5ae0b345cd58a15000d708d5e68e9b85019a",
+    "candidate_git_blob_sha1": "213ed8db8e411aaa5c25a6fdd2afb1860c094b39",
+    "frozen_source_commit_sha": "0bcc187b3005478baa586a6d6f450e73811ca342",
+    "github_run_id": 39123384402,
+    "original_artifact_zip_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+    "original_workflow_conclusion": "failure"
+  },
+  "status": "ARCHIVED_81_MATERIALS_REBOUND_DERIVATIVES_BLOCKED",
+  "training_admitted": false,
+  "training_export": null,
+  "training_samples": 0
+}
