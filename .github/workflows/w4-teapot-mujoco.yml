@@ -374,6 +374,26 @@ jobs:
           print('P13 real Cherchi shaft/domain exploratory only, NOT W0/Faster admitted')
           PY
 
+      - name: P13 independently audit malformed saved Cherchi D-minus-shaft output
+        if: always()
+        run: |
+          set -euo pipefail
+          mkdir -p "$P1/p13-native-Cherchi-domain"
+          python -m unittest discover -v -s "$P1" -p 'test_p13_native_failure_forensics.py' 2>&1 | tee "$P1/p13-native-Cherchi-domain/p13-forensics-tests.log"
+          target="$P1/p13-native-Cherchi-domain/p13-D-shaft-excluded.obj"
+          log="$P1/p13-native-Cherchi-domain/p13-D-shaft-excluded.native-call.json"
+          if [ -s "$target" ] && [ -s "$log" ]; then
+            set +e
+            python "$P1/p13_native_failure_forensics.py" --mesh "$target" --native-log "$log" --out "$P1/p13-native-Cherchi-domain/p13-D-shaft-topology-failure-analysis.json"
+            rc=$?
+            set -e
+            echo "P13 audit expected to reject invalid geometry when rc=2; observed rc=$rc"
+            test "$rc" -eq 0 -o "$rc" -eq 2
+            W4_P13_INVALID_NATIVE_OBJ="$target" W4_P13_INVALID_NATIVE_RECEIPT="$log" python -m unittest discover -v -s "$P1" -p 'test_p13_native_failure_forensics.py' 2>&1 | tee "$P1/p13-native-Cherchi-domain/p13-actual-failure-regression.log"
+          else
+            echo "Native D-minus-shaft OBJ not created; no geometry success claimed"
+          fi
+
       - name: Always retain Cherchi compile/native source and failed validation evidence
         if: always()
         uses: actions/upload-artifact@v4
