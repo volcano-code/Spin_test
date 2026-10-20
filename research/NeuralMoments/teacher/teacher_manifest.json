@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M12_EXACT_SIGNED_PROJECTIVE_RAYS_81_REAL_ARCHIVED_REBOUND_W0_UNSAMPLED_NOT_RUN",
+  "status": "M13_PRIMITIVE_POSITIVE_PROJECTIVE_ALGEBRA_READY_W0_FORMAL_ACCEPTANCE_PENDING",
   "native_teacher_runs": 0,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "W0 independent projective-ray and W2-v2 verifier acceptance, W3 new native left/right point60 side evidence, actual trusted smooth-neighborhood and sealed Newton solution; M12 NOT_RUN projected display cannot release J_D",
+  "pending_dependency": "W0 must independently accept a native-c projective identity format without substituting rounded display c, and W3 must supply new authenticated native one-sided Cherchi data plus qualified continuity/Newton proof; Noodles V7 W2 teacher validation outstanding",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -274,5 +274,40 @@
       "failed": 0,
       "scope": "Real original H8f 81-point ZIP plus SHA-pinned candidate; GitHub M10 exact blob mirrored locally; manifest reconstructed as an explicit semantic fixture"
     }
+  },
+  "m13_positive_projective_handoff": {
+    "schema": "w2-m13-projective-ray-handoff-v1",
+    "source_m12_git_blob_sha1": "2d4cf4aae1368e22e760803d9bfe49479125ac4b",
+    "source_m9_candidate_sha256": "fcfccf626af7166c577ba15cc95c5ae0b345cd58a15000d708d5e68e9b85019a",
+    "source_zip_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+    "source_gitHub_actions_run_id": 39123384402,
+    "original_actions_conclusion": "failure",
+    "exact_algebraic_primitive_positive_rays": 81,
+    "distinct_primitive_positive_rays": 81,
+    "exact_positive_scale_and_monomial_mapping_verified": true,
+    "w0_raw_native_unit_rule_pass": 17,
+    "w0_raw_native_unit_rule_fail": 64,
+    "historical_M10_prior_all81_materials_rebound": true,
+    "m13_newly_rechecked_archived_focus_packets": 1,
+    "focus_index": 60,
+    "focus_native_c7": 0.000003,
+    "focus_constructive_feature_change": true,
+    "m13_report_full_local_sha256": "2de535d1243802eba1826870001e7d7dc8c34ba8f6d911e933bc201da14ee8fc",
+    "full_local_report_committed_to_git": false,
+    "compact_projective_index_path": "research/NeuralMoments/teacher/M13_H8F_81_PROJECTIVE_HANDOFF_INDEX.json",
+    "compact_projective_index_git_blob_sha1": "fe6fbae5bf3e6f139bfef5dd66620208429483ee",
+    "code_git_blob_sha1": "cc31a440f62af8a1d214bfd7fcc156ae31213808",
+    "tests_git_blob_sha1": "011a5dd71c9927824918b50789c7b3193d29867d",
+    "tested_local_cases": 25,
+    "tested_local_failures": 0,
+    "local_tests_uncached_sha256": "871feaa4ebcc6c768dd4d9bf011a82f08fe3e08b9f3ca5f7ac0c3b9b39fb6b15",
+    "test_manifest_provenance": "M9 pinned fields reconstructed as semantic fixture, not byte-equal to full GitHub W2 manifest",
+    "original_native_c_rewritten": false,
+    "new_native_cherchi_evaluations": 0,
+    "independently_certified_derivative_J_D": false,
+    "verified_w0_v2_release": false,
+    "w3_native_four_point_sides_obtained": false,
+    "newton_admitted": false,
+    "training_admitted": 0
   }
 }
