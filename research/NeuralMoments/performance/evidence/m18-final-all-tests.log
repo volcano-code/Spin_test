@@ -1,0 +1,69 @@
+test_archived_h8c_q_and_full_reference_are_immutable (test_m9.TestM9ABBAContract.test_archived_h8c_q_and_full_reference_are_immutable) ... ok
+test_four_identical_rows_are_only_single_q_diagnostic (test_m9.TestM9ABBAContract.test_four_identical_rows_are_only_single_q_diagnostic) ... ok
+test_h8c_target_frame_matches_h8e_true_point_zero (test_m9.TestM9ABBAContract.test_h8c_target_frame_matches_h8e_true_point_zero) ... ok
+test_mutated_jacobian_rejected (test_m9.TestM9ABBAContract.test_mutated_jacobian_rejected) ... ok
+test_mutated_saved_full_material_rejected (test_m9.TestM9ABBAContract.test_mutated_saved_full_material_rejected) ... ok
+test_nan_jacobian_rejected (test_m9.TestM9ABBAContract.test_nan_jacobian_rejected) ... ok
+test_native_missing_production_checkout_fails_closed (test_m9.TestM9ABBAContract.test_native_missing_production_checkout_fails_closed) ... ok
+test_nonidentity_frame_cannot_claim_h8c_reference (test_m9.TestM9ABBAContract.test_nonidentity_frame_cannot_claim_h8c_reference) ... ok
+test_nonunit_quadric_rejected (test_m9.TestM9ABBAContract.test_nonunit_quadric_rejected) ... ok
+test_reordered_runs_rejected (test_m9.TestM9ABBAContract.test_reordered_runs_rejected) ... ok
+test_unverified_geometry_or_ten_rejected (test_m9.TestM9ABBAContract.test_unverified_geometry_or_ten_rejected) ... ok
+test_wrong_mesh_or_missing_native_identity_rejected (test_m9.TestM9ABBAContract.test_wrong_mesh_or_missing_native_identity_rejected) ... ok
+test_exception_always_clears_cache_and_restores_globals (test_m9.TestM9CacheLifecycle.test_exception_always_clears_cache_and_restores_globals) ... ok
+test_fresh_lru_on_each_q_call (test_m9.TestM9CacheLifecycle.test_fresh_lru_on_each_q_call) ... ok
+test_nonidentity_axes_falls_back_exactly (test_m9.TestM9CacheLifecycle.test_nonidentity_axes_falls_back_exactly) ... ok
+test_same_class_two_instances_no_shared_fraction_values (test_m9.TestM9CacheLifecycle.test_same_class_two_instances_no_shared_fraction_values) ... ok
+test_two_distinct_real_h8_material_tokens_do_not_reuse_cache (test_m9.TestM9CacheLifecycle.test_two_distinct_real_h8_material_tokens_do_not_reuse_cache)
+Two actually archived 8455-vertex source packets, same candidate class. ... ok
+test_workflow_template_is_explicitly_inactive_and_pinned (test_m17.M17CloudHandoff.test_workflow_template_is_explicitly_inactive_and_pinned) ... ok
+test_one_real_unchanged_geometry_but_jittered_jacobian (test_m17.M17TrueArtifactBasePoint.test_one_real_unchanged_geometry_but_jittered_jacobian) ... ok
+test_archive_digests_are_pinned_independently (test_m17.M17Unit.test_archive_digests_are_pinned_independently) ... ok
+test_bitwise_nan_is_denied (test_m17.M17Unit.test_bitwise_nan_is_denied) ... ok
+test_exact_moment_changes_denied (test_m17.M17Unit.test_exact_moment_changes_denied) ... ok
+test_geometry_and_provenance_drift_denied (test_m17.M17Unit.test_geometry_and_provenance_drift_denied) ... ok
+test_jacobian_nonfinite_denied (test_m17.M17Unit.test_jacobian_nonfinite_denied) ... ok
+test_jacobian_stays_full_10_by_10 (test_m17.M17Unit.test_jacobian_stays_full_10_by_10) ... ok
+test_missing_material_field_denied (test_m17.M17Unit.test_missing_material_field_denied) ... ok
+test_report_cannot_promote_historical_failed_branch (test_m17.M17Unit.test_report_cannot_promote_historical_failed_branch) ... ok
+test_same_original_exact_succeeds (test_m17.M17Unit.test_same_original_exact_succeeds) ... ok
+test_signed_zero_moment_drift_is_denied (test_m17.M17Unit.test_signed_zero_moment_drift_is_denied) ... ok
+test_subulp_jacobian_difference_is_reported_not_silenced (test_m17.M17Unit.test_subulp_jacobian_difference_is_reported_not_silenced) ... ok
+test_full_four_saved_failures_can_be_diagnosed_but_not_admitted (test_m18.M18FailedNativeHandoff.test_full_four_saved_failures_can_be_diagnosed_but_not_admitted) ... ok
+test_missing_original_failure_fails_closed (test_m18.M18FailedNativeHandoff.test_missing_original_failure_fails_closed) ... ok
+test_nonfinite_json_rejected (test_m18.M18FailedNativeHandoff.test_nonfinite_json_rejected) ... ok
+test_nonmatching_saved_failure_count_rejected (test_m18.M18FailedNativeHandoff.test_nonmatching_saved_failure_count_rejected) ... ok
+test_three_points_never_pretend_four_native_calls (test_m18.M18FailedNativeHandoff.test_three_points_never_pretend_four_native_calls) ... ok
+test_wrong_index_rejected (test_m18.M18FailedNativeHandoff.test_wrong_index_rejected) ... ok
+test_bad_jacobian_shape_denied (test_m18.M18Math.test_bad_jacobian_shape_denied) ... ok
+test_bitwise_identical_matrix (test_m18.M18Math.test_bitwise_identical_matrix) ... ok
+test_nan_jacobian_denied (test_m18.M18Math.test_nan_jacobian_denied) ... ok
+test_negative_float_order (test_m18.M18Math.test_negative_float_order) ... ok
+test_nonjacobian_fingerprint_excludes_only_j (test_m18.M18Math.test_nonjacobian_fingerprint_excludes_only_j) ... ok
+test_one_ulp_is_measured_not_math_admitted (test_m18.M18Math.test_one_ulp_is_measured_not_math_admitted) ... ok
+test_signed_zero_is_detected (test_m18.M18Math.test_signed_zero_is_detected) ... ok
+test_duplicate_json_keys_denied (test_m18.M18Shadow.test_duplicate_json_keys_denied) ... ok
+test_exact_ten_drift_denied (test_m18.M18Shadow.test_exact_ten_drift_denied) ... ok
+test_fake_signed_jacobian_denied (test_m18.M18Shadow.test_fake_signed_jacobian_denied) ... ok
+test_inactive_cloud_handoff_preserves_native_failure_and_saves_shadow (test_m18.M18Shadow.test_inactive_cloud_handoff_preserves_native_failure_and_saves_shadow) ... ok
+test_missing_binary_sha_denied (test_m18.M18Shadow.test_missing_binary_sha_denied) ... ok
+test_missing_native_exact_boundary_denied (test_m18.M18Shadow.test_missing_native_exact_boundary_denied) ... ok
+test_saved_snapshot_tamper_denied (test_m18.M18Shadow.test_saved_snapshot_tamper_denied) ... ok
+test_shadow_detects_realistic_jitter_but_never_admits (test_m18.M18Shadow.test_shadow_detects_realistic_jitter_but_never_admits) ... ok
+test_skipped_independent_fraction_denied (test_m18.M18Shadow.test_skipped_independent_fraction_denied) ... ok
+test_source_provenance_drift_denied (test_m18.M18Shadow.test_source_provenance_drift_denied) ... ok
+test_wall_forgery_denied (test_m18.M18Shadow.test_wall_forgery_denied) ... ok
+test_without_jitter_is_still_not_release (test_m18.M18Shadow.test_without_jitter_is_still_not_release) ... ok
+test_wrong_order_denied (test_m18.M18Shadow.test_wrong_order_denied) ... ok
+test_all_25_real_samples_merge_and_remain_blocked (test_m18.M18TrueCloudReceipt.test_all_25_real_samples_merge_and_remain_blocked) ... ok
+test_claimed_W0_release_denied (test_m18.M18TrueCloudReceipt.test_claimed_W0_release_denied) ... ok
+test_duplicate_slice_denied (test_m18.M18TrueCloudReceipt.test_duplicate_slice_denied) ... ok
+test_one_changed_entry_forgery_denied (test_m18.M18TrueCloudReceipt.test_one_changed_entry_forgery_denied) ... ok
+test_one_slice_missing_denied (test_m18.M18TrueCloudReceipt.test_one_slice_missing_denied) ... ok
+test_original_git_blob_pinned (test_m18.M18TrueCloudReceipt.test_original_git_blob_pinned) ... ok
+test_source_receipt_edit_denied (test_m18.M18TrueCloudReceipt.test_source_receipt_edit_denied) ... ok
+
+----------------------------------------------------------------------
+Ran 63 tests in 5.238s
+
+OK

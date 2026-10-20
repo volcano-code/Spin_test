@@ -1,0 +1,22 @@
+test_m18 (unittest.loader._FailedTest.test_m18) ... ERROR
+
+======================================================================
+ERROR: test_m18 (unittest.loader._FailedTest.test_m18)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_m18
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "/mnt/data/W1_M18_dev/research/NeuralMoments/performance/test_m18.py", line 20, in <module>
+    from m9_native_abba_gate import certify_abba
+  File "/mnt/data/W1_M18_dev/research/NeuralMoments/performance/m9_native_abba_gate.py", line 31, in <module>
+    from m8_native_paired_gate import clone_paired_classes
+  File "/mnt/data/W1_M18_dev/research/NeuralMoments/performance/m8_native_paired_gate.py", line 31, in <module>
+    from m8_exact_construction_trial import MAX_CACHED_TOKENS, target_coordinates
+ModuleNotFoundError: No module named 'm8_exact_construction_trial'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)

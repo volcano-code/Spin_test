@@ -1,0 +1,36 @@
+{
+  "schema": "w1-m18-slice-metadata-label-correction-v1",
+  "note": "Correct slice-only flag labels; no material/Jacobian entry or count re-execution claimed",
+  "files": [
+    {
+      "name": "m18-slice-00-04.json",
+      "before_sha256": "2d41e2705703054ce20a709c0a35b30a5f2f57390ffe3b8462929ec021fe10f8",
+      "after_sha256": "2a8f8e6ac4b9e33a7a0d8d8853da197196e683d788ab9aadddfe6c81eac8c519"
+    },
+    {
+      "name": "m18-slice-05-09.json",
+      "before_sha256": "02e859cdd4cf356a93603777a0ef2375b77894cbc8b90075a6920c5bbf5455de",
+      "after_sha256": "864747de879a303b26efa49da01d0484e9a2695dcb756af07db89295c415ce58"
+    },
+    {
+      "name": "m18-slice-10-14.json",
+      "before_sha256": "18c15ee81d048527513dabc81bc53974c4ae15bb9c1b01ff74275efff1faa4bd",
+      "after_sha256": "f96468087e5c4a2581fe66b4bda9769ba5382ae576fc61848cb70d0bed1d691a"
+    },
+    {
+      "name": "m18-slice-15-17.json",
+      "before_sha256": "7f2270d634edad562b5642225680c9e1c773da0b69139cc17c31f0dc157c1c45",
+      "after_sha256": "0c17703d40aa4c98eac27364454c4c3865e347514a09a2b49d921f4252b89c92"
+    },
+    {
+      "name": "m18-slice-18-20.json",
+      "before_sha256": "46a83cc1f711b8dbaa8f6861cd391927e0063f6a0f0a85dad00a1083389ff354",
+      "after_sha256": "814f133643fa44e5904c199b55a7bedf4ca025d01560a8585ca5acf5a8916454"
+    },
+    {
+      "name": "m18-slice-21-24.json",
+      "before_sha256": "72dc9d4f75e4fc02fa814be1ae23d54a06eaa745eeaa96bf4a2456cb4f0cc169",
+      "after_sha256": "32ca79f13802e6b2e804c2a5e358526e2e4c1ad65e49d7cd6eda53f547355bc8"
+    }
+  ]
+}
