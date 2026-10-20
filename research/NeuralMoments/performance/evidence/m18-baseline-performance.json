@@ -1,0 +1,89 @@
+{
+  "frozen_ancestor": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "github_actions_h8e_run_id": 39121571756,
+  "jacobian_bitwise_changed_components": 1096,
+  "jacobian_components_compared": 2500,
+  "jacobian_max_abs_difference": 1.7763568394002505e-15,
+  "jacobian_max_scaled_difference": 2.1384136821605478e-16,
+  "local_test_group": {
+    "failures": 0,
+    "log": "evidence/m18-final-all-tests.log",
+    "skipped": 0,
+    "tests": 63
+  },
+  "m17_pinned_blob_sha1": "077ac148eb35d2aebd14ea36c6bc1cd209156156",
+  "machine_local_reanalysis": {
+    "cgroup_memory_max_bytes": 4294967296,
+    "cpu_count": 5,
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "swap_entries": 0
+  },
+  "matched_material_count": 25,
+  "math_contract_approved": false,
+  "new_cherchi_boolean_calls": 0,
+  "new_optimized_ABBA_calls": 0,
+  "new_optimized_full_newton_runs": 0,
+  "nonjacobian_exact_state_and_250_raw_moment_equal": true,
+  "original_arithmetic_binary_sha256": "ed05436e2796b190ddebb024f67318e2e88bdc46d96b01e9d7db71a6af080dca",
+  "original_artifact_sha256": {
+    "attempt_1": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+    "attempt_2": "b763aabfdcaddb821a8766bf661fb25c184f416aa96cb24609874b15f9bc08e1"
+  },
+  "original_cherchi_binary_sha256": "3cc8bf789168752f8b921c160ca9937cdf0f61c845d3088760811b9e5a4596b7",
+  "original_h8e_failed_feature_drift_points": [
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "original_job_ids": [
+    117658066974,
+    118689837052
+  ],
+  "original_native_binary_sha256": "ad0c4fe3527954c611743dbbccb384cc1521909e8a39d68c3b7554b3a3919d40",
+  "paper_speed_qualified": false,
+  "real_runs": {
+    "original": {
+      "named_stage_seconds": 77.94430469400072,
+      "outside_point_seconds": 0.18597416500040254,
+      "stage_totals_seconds": {
+        "boolean": 32.5997561879999,
+        "derivative": 11.608747608000613,
+        "integration": 8.104069458999902,
+        "intersection_motion": 18.744640863000313,
+        "material_attachment_serialization": 3.1772469180007192,
+        "physical_source_boundary": 1.803228045999731,
+        "prepare_arithmetic_boundary": 1.8061157959998582,
+        "source": 0.10049981599968305
+      },
+      "sum_points_wall_seconds": 379.3077537179996,
+      "total_wall_seconds": 379.493727883,
+      "unattributed_inside_points_seconds": 301.3634490239989
+    },
+    "rerun": {
+      "named_stage_seconds": 74.93992371599984,
+      "outside_point_seconds": 0.17220768499964834,
+      "stage_totals_seconds": {
+        "boolean": 33.168437781999955,
+        "derivative": 12.872161865999942,
+        "integration": 8.45242704899988,
+        "intersection_motion": 13.653930323999703,
+        "material_attachment_serialization": 2.928820615000177,
+        "physical_source_boundary": 1.8474690460000147,
+        "prepare_arithmetic_boundary": 1.9173500779997994,
+        "source": 0.09932695600036823
+      },
+      "sum_points_wall_seconds": 371.7105723230003,
+      "total_wall_seconds": 371.88278000799994,
+      "unattributed_inside_points_seconds": 296.77064860700045
+    }
+  },
+  "schema": "w1-m18-native-original-repeatability-baseline-v1",
+  "scope": "HISTORICAL_TWO_REAL_ORIGINAL_NATIVE_RUNS_NOT_OPTIMIZED_ABBA",
+  "w1_base_head_before_m18": "b8216cf79563de1301b08d41477107e8b88733dd"
+}

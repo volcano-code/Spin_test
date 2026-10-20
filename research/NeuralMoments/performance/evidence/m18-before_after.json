@@ -1,0 +1,13 @@
+{
+  "baseline_1_25point_wall_seconds": 379.493727883,
+  "baseline_2_25point_wall_seconds": 371.88278000799994,
+  "candidate_native_evaluations": 0,
+  "comparison_scope": "TWO_UNCHANGED_ORIGINAL_ACTIONS_NOT_W1_CANDIDATE",
+  "full_solver_speedup": null,
+  "jacobian_eligible_for_release": false,
+  "newton_solver_old_new_pair": false,
+  "original_vs_original_descriptive_ratio": 1.0204659862842704,
+  "paper_speed_qualified": false,
+  "proven_source_and_geometry_matched": true,
+  "schema": "w1-m18-before-after-v1"
+}

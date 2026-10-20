@@ -88,6 +88,23 @@ jobs:
             --archive "$PWD/artifacts/w1-h8c-reference.zip" \
             --m13-artifacts "$PWD/artifacts/w1-m17-native" \
             --output "$PWD/artifacts/w1-m17-custody"
+      - name: M18 read-only failed-ABBA shadow diagnosis, never a release gate
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p artifacts/w1-m17-native
+          folder="artifacts/w1-m17-native/m11/work/m9"
+          if [ -d "$folder" ]; then
+            set +e
+            python research/NeuralMoments/performance/m18_native_shadow_cli.py \
+              --m9-output "$folder" \
+              --output artifacts/w1-m17-native/m18-shadow-diagnostic.json
+            result=$?
+            set -e
+            printf 'M18 diagnostic exit code (NOT a math admission): %s\n' "$result" > artifacts/w1-m17-native/m18-shadow-exit.txt
+          else
+            printf 'M18_NOT_RUN: no genuine M9 output yet\n' > artifacts/w1-m17-native/m18-shadow-exit.txt
+          fi
       - name: Always retain precise evidence, even if strict ABBA fails
         if: always()
         uses: actions/upload-artifact@v4
