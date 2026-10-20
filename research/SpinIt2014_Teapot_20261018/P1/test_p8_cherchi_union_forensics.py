@@ -48,7 +48,15 @@ class IndependentP8Topology(unittest.TestCase):
         v,f=tetra()
         with tempfile.TemporaryDirectory() as d:
             out=Path(d)/'open.obj'
-            write_obj(out,trimesh.Trimesh(vertices=v,faces=f[:-1],process=False))
+            # P7's writer intentionally rejects incomplete source meshes;
+            # first serialize a valid tetra, then mutate the saved OBJ as an
+            # adversarial output fixture (not as a legal input).
+            write_obj(out,trimesh.Trimesh(vertices=v,faces=f,process=False))
+            lines=out.read_text().splitlines()
+            face_positions=[i for i,line in enumerate(lines) if line.startswith('f ')]
+            self.assertEqual(len(face_positions),4)
+            del lines[face_positions[-1]]
+            out.write_text('\n'.join(lines)+'\n')
             _,report=inspect_obj(out)
             self.assertFalse(report['watertight'])
             self.assertGreater(report['non_two_incidence_edges'],0)
