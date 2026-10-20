@@ -1,0 +1,155 @@
+{
+  "actual_native_solver_end_to_end_verified": false,
+  "base_head_before_m13": "56befd05baf403a2371be8483d7564f69ffca0d8",
+  "branch": "research/neuralmoments-w5-deeponet-20261019",
+  "certified_W2_native_J_training_labels": 0,
+  "cpu_tests": "229 passed, 42 subtests passed in 8.61s",
+  "external_W2_manifest_observed_git_blob": "41e7c4dc65a029a3cc7ce746c694bc8a03cdad70",
+  "external_W2_manifest_observed_head": "4b1301c6b478437f29836e78be0b773b9d145787",
+  "external_W6_M7_original_commit": "9d1758ea1ef527577b835f2b6bcfc5f0439d933d",
+  "external_W6_original_Git_blobs": {
+    "m4_lite_model.py": "853ea92054e5895abe06d33092615a0be4b58772",
+    "m5_potential.py": "b5f976af0b2ef0621fd3f557ea93ae08a48ba99a",
+    "m6_gauss_potential.py": "85d0ead6ee0dec9fc3212750e849310230d7878a",
+    "m6_moment_guard.py": "9a9f0ae8cd1066c7e401529541387052faf264af",
+    "m6_safe_inference.py": "6e43940adfd81c748dbd1c6a127cbe1c3f53141b",
+    "m7_realizable.py": "a0e45b278de050329bed60cf5cb2b27e2fdd3c64"
+  },
+  "external_W6_source_HEAD_at_start": "2e5f8b66017dc342a0692d8a4c4a5d61fee74232",
+  "files": {
+    "research/NeuralMoments/models/deeponet/M13_README.md": {
+      "bytes": 10277,
+      "git_blob_sha1": "fad6e410847b3dc895f663edcc48227b535cfcfa",
+      "raw_sha256": "d1eef006b13f7044e2363583cdf194812cd70eb0ace0337437a0f1e902484ccb"
+    },
+    "research/NeuralMoments/models/deeponet/m13_cell_integrals.py": {
+      "bytes": 8827,
+      "git_blob_sha1": "8264fbea474f9c030578792705dfbd176a6d755f",
+      "raw_sha256": "ce776ffaa8200dbc7c4e53e62e848285a4ab2a84630bf5fd0fae81679d9ed2d3"
+    },
+    "research/NeuralMoments/models/deeponet/m13_m7_model_comparison.py": {
+      "bytes": 7391,
+      "git_blob_sha1": "8c4d1b42100d6a8cdf551511736402aec996f746",
+      "raw_sha256": "567233957e5ad689b365c9c96c6fbff50a3f1b5125df1527ec61b4f069294cb9"
+    },
+    "research/NeuralMoments/models/deeponet/m13_merge.py": {
+      "bytes": 5315,
+      "git_blob_sha1": "2d7c5b4bf3dc1427bff1c35c8b7ea56386ac279f",
+      "raw_sha256": "df440fddc5e09a3ac1b782a9a38179e1ae20055252aec3517badde1bc5796067"
+    },
+    "research/NeuralMoments/models/deeponet/m13_resolution_benchmark.py": {
+      "bytes": 10931,
+      "git_blob_sha1": "55909a289b2cc4624b6c572bf8679cd9cc368869",
+      "raw_sha256": "9869a2cf01e3102cff23d18b586a46f828fcb22df9eedfbe6d81541b4fb37560"
+    },
+    "research/NeuralMoments/models/deeponet/m13_resolution_seed67_71_73.json": {
+      "bytes": 281039,
+      "git_blob_sha1": "049de27c72dcd9890e120cdec0340545b523ad31",
+      "raw_sha256": "a41d37681d3d345a6e9cdcb90e2a244e7a4aa0bb7062d9e8bb3f7ee4e37bdae3"
+    },
+    "research/NeuralMoments/models/deeponet/m13_test_log.txt": {
+      "bytes": 318,
+      "git_blob_sha1": "0cbbb64f9059274ca6aaaf64bbb2e987ad684c79",
+      "raw_sha256": "ba05344f7fe14e5d8b762687a54600047f3b27284ed20174a169d7b3130fafae"
+    },
+    "research/NeuralMoments/models/deeponet/m13_train_seed67.json": {
+      "bytes": 17509,
+      "git_blob_sha1": "a7ac9972ddbb24c9f7897e387e2cced94adf6761",
+      "raw_sha256": "eb9aefaf18da3a7737c1856686844f445b5d5ec422167d65c0a33a1be95a8f85"
+    },
+    "research/NeuralMoments/models/deeponet/m13_train_seed67_71_73_full.json": {
+      "bytes": 47098,
+      "git_blob_sha1": "865977d16ca7ff54816d7cf42764b1a56890f417",
+      "raw_sha256": "6bda8f9c2abf900a94ac413bd1c91791da4aa4c006b95890dfb133269b784bc0"
+    },
+    "research/NeuralMoments/models/deeponet/m13_train_seed71.json": {
+      "bytes": 17479,
+      "git_blob_sha1": "de82d93af3d593a509cd4a09135ca2277f0f054a",
+      "raw_sha256": "7b50372cfe60fdef4f3d8a9e21bd9bbbce85c1aceb9b45585d334d15b1c6103f"
+    },
+    "research/NeuralMoments/models/deeponet/m13_train_seed73.json": {
+      "bytes": 17587,
+      "git_blob_sha1": "3fa50ee1ca572355cc4e436451fcc67f27825849",
+      "raw_sha256": "93c4a2df48288e505cd1bc770342411d3b53470ea84e20516c88223c928d5bae"
+    },
+    "research/NeuralMoments/models/deeponet/m13_w6_m7_probe.py": {
+      "bytes": 2765,
+      "git_blob_sha1": "5af60b81b5e94e973165efeb664455d180a33a76",
+      "raw_sha256": "cd259af1f15f99514467c706e040f66ec558b31582884e159733a5e107250bff"
+    },
+    "tests/python/test_w5_m13_cell_integrals.py": {
+      "bytes": 5641,
+      "git_blob_sha1": "233e09dfb96b4ef3b16c61ccdd84af51fb3e1948",
+      "raw_sha256": "feaa0cac3faf05400a17d140e2ad8fbdcfa4ac950a69caf5b3e468299bce42f7"
+    },
+    "tests/python/test_w5_m13_merge.py": {
+      "bytes": 2217,
+      "git_blob_sha1": "41c750dbb3e976de449a4da96e54d6fde7a04a33",
+      "raw_sha256": "ed4d31be9d17b9593ab552b5d806a7e94648465902217cb08dc47cdda4957c4f"
+    },
+    "tests/python/test_w5_m13_resolution_and_m7.py": {
+      "bytes": 6180,
+      "git_blob_sha1": "f3496ebceec5660773e210de6538e3195ca8a3e4",
+      "raw_sha256": "c9c07b505acb8bc55813640e8e67448c075a8d8cbb3d9288e2bb93d623e1dddd"
+    }
+  },
+  "native_Cherchi_calls_new": 0,
+  "native_source_frozen": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "no_CAD_geometry_material_certificate": true,
+  "no_full_10D_optimization_or_terminal_Newton_test": true,
+  "preserve_historical_failed_CI": true,
+  "python": "3.13.5",
+  "real_H8f_archived_81_derivative_admitted": 0,
+  "remote_CI_confirmed": false,
+  "resolution_summary": {
+    "CELL_CENTER_n16": {
+      "J_mae": 0.0034524322457035422,
+      "cache_ms": 0.39382414814814815,
+      "query_rJ_ms": 0.2211958888888889,
+      "r_mae": 0.006342849826864883
+    },
+    "CELL_CENTER_n24": {
+      "J_mae": 0.0022804524905637668,
+      "cache_ms": 0.531172425925926,
+      "query_rJ_ms": 0.2847086481481481,
+      "r_mae": 0.0042815437662634655
+    },
+    "CELL_CENTER_n8": {
+      "J_mae": 0.0076199030668112925,
+      "cache_ms": 0.23809630555555555,
+      "query_rJ_ms": 0.1766281574074074,
+      "r_mae": 0.014931070188528933
+    },
+    "LEGACY_NODE_AS_CELL_INVALID_MAPPING_n8": {
+      "J_mae": 0.011797999677037466,
+      "cache_ms": null,
+      "query_rJ_ms": null,
+      "r_mae": 0.0342900903426353
+    }
+  },
+  "result_raw_JSON_saved": true,
+  "sample_truth": "ANALYTIC_CONTINUUM_P0_NOT_CAD",
+  "schema": "W5_M13_SUBMISSION_EVIDENCE_V1",
+  "source_only_W5_files_count": 15,
+  "torch": "2.10.0+cpu",
+  "trained_seed_summary": {
+    "w5_deeponet_centered": {
+      "J_mae": 0.014252391333381334,
+      "decision_accept": 0.8583333333333333,
+      "r_mae": 0.020126840099692345,
+      "warm_J_ms": 1.0314543333333333
+    },
+    "w5_positive_measure_centered": {
+      "J_mae": 0.024789271876215935,
+      "decision_accept": 0.9833333333333333,
+      "r_mae": 0.04639504477381706,
+      "warm_J_ms": 0.462862
+    },
+    "w6_realizable_m7_centered": {
+      "J_mae": 0.006272027113785346,
+      "decision_accept": 0.7416666666666667,
+      "r_mae": 0.009786499664187431,
+      "warm_J_ms": 0.24968666666666664
+    }
+  }
+}
