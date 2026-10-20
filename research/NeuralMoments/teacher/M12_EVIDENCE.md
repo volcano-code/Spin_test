@@ -61,4 +61,4 @@ python research/NeuralMoments/teacher/w2_projective_ray_m12.py \
 
 ## M12 最终回归修复和测试说明
 
-先前回归脚本假设历史 64MB ZIP 位于测试目录且写入该目录的测试夹具。已修复为优先使用环境变量 `W2_H8F_ARCHIVE` 指定实际历史 ZIP；完整 W2 checkout 自动读取真正的 `teacher_manifest.json`，隔离测试环境则将语义 fixture 放入临时目录，不污染源码目录。没有配置历史 ZIP 时真实档案测试显式跳过，绝不报告为全部执行。变更后使用真实历史 ZIP 的本地测试 **21/21 PASS，13.891 秒**，完整日志本地 SHA256 `987c5cc8023e4e9c18e429c68cb658372c926877621bf3a08d8e60c7ab20139d`（注意：这个 SHA 来自更早一轮 12.756 秒的日志；最终 13.891 秒的独立日志与其不同，不得把该值冒称最终日志校验结果）。修订测试 Git blob SHA1 `38bbe1c9bf00c85fdfb22f12fe8845bc9599d767` 已由 GitHub 重读核实。
+先前回归脚本假设历史 64MB ZIP 位于测试目录且写入该目录的测试夹具。已修复为优先使用环境变量 `W2_H8F_ARCHIVE` 指定实际历史 ZIP；完整 W2 checkout 自动读取真正的 `teacher_manifest.json`，隔离测试环境则将语义 fixture 放入临时目录，不污染源码目录。没有配置历史 ZIP 时真实档案测试显式跳过，绝不报告为全部执行。变更后使用真实历史 ZIP 的本地测试 **21/21 PASS，13.891 秒**，最终 13.891 秒测试日志 SHA256 `d9a353eb87dc8d63846529557bebdeb920b089480370b6763f2acb6ca16aac01`。修订测试 Git blob SHA1 `38bbe1c9bf00c85fdfb22f12fe8845bc9599d767` 已由 GitHub 重读核实。
