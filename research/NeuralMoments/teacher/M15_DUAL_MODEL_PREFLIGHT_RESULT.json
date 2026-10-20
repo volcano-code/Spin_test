@@ -1,0 +1,76 @@
+{
+  "schema": "w2-m15-dual-model-native-teacher-preflight-result-v1",
+  "historical_source_identity": {
+    "heart_run_id": 39123384402,
+    "heart_artifact_id": 12135528290,
+    "heart_original_workflow_conclusion": "failure",
+    "heart_zip_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+    "heart_request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+    "noodles_20261017_frozen_source_commit": "053756f5091ab3e07d6bd29c40baab146e910121",
+    "noodles_final_obj_git_blob_sha": "f803c45274d7721b854cfd19a5173e4b43e79af1"
+  },
+  "executed_heart_input_preflight": {
+    "passed": true,
+    "frozen_original_obj_sha256": "fbada64691e30b458bc5b5375f8d4ad351cb0b383d800512bb659077b29532f6",
+    "frozen_fixed_obj_sha256": "45c83ffd19c94b6c75ea63e7e7261fda645cd00ec0920c1a6ecc68e703c3a5b0",
+    "frozen_design_obj_sha256": "391fbeb80b8e7e4e2f12217880f4642c5fccd30ae5bb9ba2b5703d0dbd05b092",
+    "outer_vertices": 15646,
+    "outer_faces": 31288,
+    "design_vertices": 13122,
+    "design_faces": 26244,
+    "fixed_vertices": 28768,
+    "fixed_faces": 57532,
+    "original_obj_coords": "millimeters; divide by 25 mm",
+    "native_request_scale": "0.025 meters/normalized unit",
+    "ordered_outer_vertices_faces_exactly_match_native_request": true,
+    "ordered_design_vertices_faces_exactly_match_native_request": true,
+    "independent_fixed_moment_max_abs_difference": 7.704947790898586e-14,
+    "independent_F_plus_D_vs_outer_max_abs_difference": 2.220446049250313e-16,
+    "per_case_predeclared_moment_abs_tolerance": 1e-9,
+    "normalized_view_sha256": "929abe196ce4811b545599e79f17cfb1f4ea22482e8695583883de2dee29989e",
+    "native_c10_sha256": "8be318f8e19909a2c63ba5287d712665b9723b1b7a9cca42dc4ba23c16819a47",
+    "independent_archived_input_audit_passed": true,
+    "full_exact_Cherchi_boolean_proved_in_this_milestone": false
+  },
+  "executed_native_attempt": {
+    "command": "python research/NeuralMoments/teacher/m15_dual_teacher_campaign.py --heart-archive ... --output-dir ... --execute-native",
+    "exit_code": 2,
+    "heart_status": "BLOCKED_COMPILED_NATIVE_MODULE_FILE_ABSENT",
+    "observed_cgroup_limit_bytes": 4294967296,
+    "required_native_memory_bytes": 25769803776,
+    "original_native_binary_available": false,
+    "new_cherchi_calls": 0,
+    "training_admitted": 0
+  },
+  "verified_noodles_v7_evidence": {
+    "status": "BLOCKED_FROZEN_NOODLES_NATIVE_F_D_INPUT_ABSENT",
+    "model_kind": "HISTORICAL_OPTIMIZED_COMPLETE_OBJ_NOT_FROZEN_TEACHER_INPUT",
+    "independent_terminal_obj_report": "research/NeuralMoments/teacher/M15_NOODLES_V7_HISTORICAL_OBJ_AUDIT.json",
+    "independently_audited_final_obj_vertices": 42932,
+    "independently_audited_final_obj_faces": 86076,
+    "independently_audited_edges": 129114,
+    "independent_oriented_boundary_mismatches": 0,
+    "independently_recomputed_ten_moments_max_abs_error": 6.661338147750939e-16,
+    "target_coordinates": "(x_mm/25,y_mm/25,(z_mm+4)/25)",
+    "original_solve_backend": "OLD_NATIVE_BINARY_NOT_CURRENT_FROZEN_BUILD",
+    "missing_frozen_input_parts": [
+      "ORIGINAL_NATIVE_OUTER_AND_DESIGN_VERTICES_AND_FACES",
+      "FIXED_MATERIAL_REGION",
+      "MODEL_MATCHING_PROVENANCE"
+    ]
+  },
+  "local_test_run": {
+    "command": "W2_H8F_ARCHIVE=/mnt/data/h8f_81_real.zip python -m unittest discover -s /mnt/data/w2_m15 -p test_m15_dual_teacher_campaign.py -v",
+    "total_tests": 21,
+    "passed": 20,
+    "skipped": 1,
+    "failed": 0,
+    "elapsed_seconds": 2.485,
+    "one_skip_reason": "Full Noodles final OBJ not mounted in Python container; exact Github source blob independently audited in connector runtime",
+    "local_test_log_sha256": "17c7a6d2fa6a2637f898f64e04e15f2492de8c4762f5bde8f215c0b54b93701a",
+    "scope": "Local tested source git blob matches pushed m15_dual_teacher_campaign.py; committed test suite is similar but not byte-identical to local 21-case suite"
+  },
+  "formal_training_samples": 0,
+  "new_native_cherchi_teacher_evaluations": 0,
+  "conclusion": "HEART_FROZEN_INPUT_READY_ON_QUALIFIED_HOST_NO_NATIVE_THIS_ENVIRONMENT_NOODLES_SOURCE_GAP_CONFIRMED"
+}
