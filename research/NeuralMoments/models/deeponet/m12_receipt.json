@@ -1,0 +1,30 @@
+{
+  "aggregated_json_sha256": "c87fd333de2bdc5266193e82c5b302e9e5b6e59c03fba2ce9dc2c5d6357bcc42",
+  "all_full_source_analytic_calls": 60,
+  "all_sign_queries": 240,
+  "base_W5_head": "2c413afca5944fe5db708dc5bfadd256013deeed",
+  "certified_W2_training_labels": 0,
+  "cpu_threads": 1,
+  "gpu_hours": 0.0,
+  "numpy": "2.3.5",
+  "original_failed_H8f_workflow_unchanged": true,
+  "pytest": "9.0.2",
+  "python": "3.13.5",
+  "real_native_cherchi_calls": 0,
+  "schema": "W5_M12_LOCAL_EVIDENCE_RECEIPT_V1",
+  "source_W6_commit": "27d51678cf741233c7a2e6c54c78d9a4667bec00",
+  "source_bound_analytic_only": true,
+  "source_seed_json_sha256": {
+    "53": "b32e7ee12fd758423def9a0450aeffada83a847f06b72b26c7951032f2bffaf3",
+    "59": "4d6c0d2331dd47670feeda1bde9cfb615b4f7b6b0faded9d6386811f696cde44",
+    "61": "f2eb2d1505dd6ccbe8e9b121b5eb677c8dddd78835bade59648b00542d572447"
+  },
+  "tests": {
+    "failed": 0,
+    "passed": 185,
+    "skipped": 0,
+    "subtests_passed": 42
+  },
+  "torch": "2.10.0+cpu",
+  "writable_branch": "research/neuralmoments-w5-deeponet-20261019"
+}

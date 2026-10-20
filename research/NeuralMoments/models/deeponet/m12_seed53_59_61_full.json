@@ -1,0 +1,1728 @@
+{
+  "W2_certified_smooth_J_training_labels": 0,
+  "aggregate": {
+    "w5_cone_integrable_025": {
+      "interior_J_mae": {
+        "mean": 0.023009678969780605,
+        "per_seed": {
+          "53": 0.02191971242427826,
+          "59": 0.024468237534165382,
+          "61": 0.02264108695089817
+        },
+        "sample_sd": 0.0013136362191334269
+      },
+      "interior_r_mae": {
+        "mean": 0.045947372913360596,
+        "per_seed": {
+          "53": 0.04106298089027405,
+          "59": 0.05377723276615143,
+          "61": 0.04300190508365631
+        },
+        "sample_sd": 0.00684980917563986
+      },
+      "interior_true_one_step_accepted": {
+        "mean": 0.6583333333333333,
+        "per_seed": {
+          "53": 0.825,
+          "59": 0.925,
+          "61": 0.225
+        },
+        "sample_sd": 0.37859388972001823
+      },
+      "training_cpu_seconds": {
+        "mean": 0.5092369833333427,
+        "per_seed": {
+          "53": 0.5579065890000265,
+          "59": 0.5237291280000136,
+          "61": 0.44607523299998775
+        },
+        "sample_sd": 0.057306890850766304
+      },
+      "unprotected_empty_r_mae": {
+        "mean": 0.0,
+        "per_seed": {
+          "53": 0.0,
+          "59": 0.0,
+          "61": 0.0
+        },
+        "sample_sd": 0.0
+      },
+      "unprotected_full_r_mae": {
+        "mean": 0.1076742714891831,
+        "per_seed": {
+          "53": 0.07880486669018864,
+          "59": 0.16323360856622457,
+          "61": 0.0809843392111361
+        },
+        "sample_sd": 0.04812813602714765
+      },
+      "unprotected_max_full_J_abs": {
+        "mean": 0.06354383751749992,
+        "per_seed": {
+          "53": 0.07346191257238388,
+          "59": 0.08851124346256256,
+          "61": 0.02865835651755333
+        },
+        "sample_sd": 0.031134678069778522
+      }
+    },
+    "w5_deeponet_voxel": {
+      "interior_J_mae": {
+        "mean": 0.014793079967300097,
+        "per_seed": {
+          "53": 0.014007358811795712,
+          "59": 0.014475452713668346,
+          "61": 0.015896428376436234
+        },
+        "sample_sd": 0.0009837739878651088
+      },
+      "interior_r_mae": {
+        "mean": 0.021081929405530293,
+        "per_seed": {
+          "53": 0.02084388956427574,
+          "59": 0.020340388640761375,
+          "61": 0.022061510011553764
+        },
+        "sample_sd": 0.0008849078583490698
+      },
+      "interior_true_one_step_accepted": {
+        "mean": 0.5333333333333333,
+        "per_seed": {
+          "53": 0.675,
+          "59": 0.425,
+          "61": 0.5
+        },
+        "sample_sd": 0.12829003598617214
+      },
+      "training_cpu_seconds": {
+        "mean": 0.4556531383332943,
+        "per_seed": {
+          "53": 0.49260087599998315,
+          "59": 0.4134231529999397,
+          "61": 0.4609353859999601
+        },
+        "sample_sd": 0.03985228425293711
+      },
+      "unprotected_empty_r_mae": {
+        "mean": 0.08536480714877447,
+        "per_seed": {
+          "53": 0.07692959569394589,
+          "59": 0.0707119444385171,
+          "61": 0.10845288131386041
+        },
+        "sample_sd": 0.02023509756025198
+      },
+      "unprotected_full_r_mae": {
+        "mean": 0.0626820495352149,
+        "per_seed": {
+          "53": 0.0635689132846892,
+          "59": 0.051091043278574944,
+          "61": 0.07338619204238057
+        },
+        "sample_sd": 0.01117400152508736
+      },
+      "unprotected_max_full_J_abs": {
+        "mean": 0.1613463113705317,
+        "per_seed": {
+          "53": 0.11500726640224457,
+          "59": 0.09554767608642578,
+          "61": 0.2734839916229248
+        },
+        "sample_sd": 0.09760027363233076
+      }
+    },
+    "w5_positive_quadrature_012": {
+      "interior_J_mae": {
+        "mean": 0.021580855672558148,
+        "per_seed": {
+          "53": 0.01825198158621788,
+          "59": 0.026859786361455917,
+          "61": 0.01963079907000065
+        },
+        "sample_sd": 0.004623377156044731
+      },
+      "interior_r_mae": {
+        "mean": 0.04102936883767446,
+        "per_seed": {
+          "53": 0.03279943764209747,
+          "59": 0.04906127601861954,
+          "61": 0.041227392852306366
+        },
+        "sample_sd": 0.008132727523949739
+      },
+      "interior_true_one_step_accepted": {
+        "mean": 0.7666666666666666,
+        "per_seed": {
+          "53": 0.975,
+          "59": 1.0,
+          "61": 0.325
+        },
+        "sample_sd": 0.38269875010683446
+      },
+      "training_cpu_seconds": {
+        "mean": 0.4991406920000448,
+        "per_seed": {
+          "53": 0.5581709260000025,
+          "59": 0.5007902850001074,
+          "61": 0.43846086500002457
+        },
+        "sample_sd": 0.05987207649609291
+      },
+      "unprotected_empty_r_mae": {
+        "mean": 0.0,
+        "per_seed": {
+          "53": 0.0,
+          "59": 0.0,
+          "61": 0.0
+        },
+        "sample_sd": 0.0
+      },
+      "unprotected_full_r_mae": {
+        "mean": 0.13165653807421523,
+        "per_seed": {
+          "53": 0.12228032946586609,
+          "59": 0.18584329187870025,
+          "61": 0.08684599287807941
+        },
+        "sample_sd": 0.050160255863133725
+      },
+      "unprotected_max_full_J_abs": {
+        "mean": 0.0,
+        "per_seed": {
+          "53": 0.0,
+          "59": 0.0,
+          "61": 0.0
+        },
+        "sample_sd": 0.0
+      }
+    },
+    "w6_gauss_004": {
+      "interior_J_mae": {
+        "mean": 0.0257538848867019,
+        "per_seed": {
+          "53": 0.020724017173051834,
+          "59": 0.030225593596696854,
+          "61": 0.026312043890357018
+        },
+        "sample_sd": 0.004775316192527221
+      },
+      "interior_r_mae": {
+        "mean": 0.04688426976402601,
+        "per_seed": {
+          "53": 0.04986435920000076,
+          "59": 0.049048326909542084,
+          "61": 0.04174012318253517
+        },
+        "sample_sd": 0.0044736070696548315
+      },
+      "interior_true_one_step_accepted": {
+        "mean": 0.44166666666666665,
+        "per_seed": {
+          "53": 0.425,
+          "59": 0.675,
+          "61": 0.225
+        },
+        "sample_sd": 0.22546248764114474
+      },
+      "training_cpu_seconds": {
+        "mean": 0.5470595353333465,
+        "per_seed": {
+          "53": 0.7030382499999632,
+          "59": 0.4942540460000373,
+          "61": 0.443886310000039
+        },
+        "sample_sd": 0.13740904911696594
+      },
+      "unprotected_empty_r_mae": {
+        "mean": 0.00018085621325856968,
+        "per_seed": {
+          "53": 0.00027103336396976373,
+          "59": 0.0002284725196659565,
+          "61": 4.306275613998878e-05
+        },
+        "sample_sd": 0.00012121523825609087
+      },
+      "unprotected_full_r_mae": {
+        "mean": 0.2989933124743402,
+        "per_seed": {
+          "53": 0.4469039537012577,
+          "59": 0.36850330159068106,
+          "61": 0.08157268213108182
+        },
+        "sample_sd": 0.19232904990402716
+      },
+      "unprotected_max_full_J_abs": {
+        "mean": 0.002856221670905749,
+        "per_seed": {
+          "53": 0.004254496190696955,
+          "59": 0.0035687682684510946,
+          "61": 0.0007454005535691977
+        },
+        "sample_sd": 0.001859900545158894
+      }
+    }
+  },
+  "full_seed_records": [
+    {
+      "M12_distinction": "SAME_TRAINED_M11_WEIGHTS_WITH_POSTHOC_ANALYTIC_SATURATION_NOT_FIFTH_INDEPENDENT_MODEL",
+      "compute_device": "cpu",
+      "fit_samples": 64,
+      "geometry_family_split": {
+        "fit_ids": 32,
+        "heldout_families": [
+          "ellipsoid"
+        ],
+        "heldout_ids": 20,
+        "validation_ids": 8
+      },
+      "gpu_hours": 0.0,
+      "heldout_samples": 40,
+      "heldout_sha256": "2e8cbffe77e0f10c8969447f09208e357677b7015b9546a9bafa11a4ee1c19d5",
+      "max_optimizer_steps": 100,
+      "models": [
+        "w5_deeponet_voxel",
+        "w5_positive_quadrature_012",
+        "w6_gauss_004",
+        "w5_cone_integrable_025"
+      ],
+      "native_cherchi_calls": 0,
+      "native_real_CAD_certification": false,
+      "normalization": "W0_SIGNED_NATIVE_C_AND_UNDOUBLED_RAW_R",
+      "optimizer": "ADAM_0.003_MSE_R_PLUS_HALF_MSE_J",
+      "parameter_counts": {
+        "w5_cone_integrable_025": 13448,
+        "w5_deeponet_voxel": 13939,
+        "w5_positive_quadrature_012": 13448,
+        "w6_gauss_004": 13448
+      },
+      "python_version": "3.13.5",
+      "real_w2_training_labels": 0,
+      "results": {
+        "w5_cone_integrable_025": {
+          "M12_strict_saturation_with_independent_analytic_full_moment": {
+            "analytic_full_reference_evaluations": 20,
+            "empty_queries": 40,
+            "empty_raw_r_mae": 0.0,
+            "full_queries": 40,
+            "full_raw_r_mae": 0.0,
+            "independent_analytic_geometry_count": 20,
+            "max_empty_abs_Jc": 0.0,
+            "max_full_abs_Jc": 0.0,
+            "measured_wall_ms_including_analytic_source_binding": 62.914886000044135,
+            "new_native_cherchi_calls": 0,
+            "one_geometry_encoding_per_geometry": true,
+            "out_of_cut_queries": 80,
+            "real_CAD_derivative_certified": false,
+            "source_restriction": "EXACT_ANALYTIC_SHAPE_AND_VOXEL_BINDING_ONLY",
+            "undecided_queries": 0
+          },
+          "fit": {
+            "batch_schedule_sha256": "520c59c478fd35eb166d694931b85452d473008787c598ba58472cb688e19702",
+            "batch_size": 8,
+            "cpu_training_seconds": 0.5579065890000265,
+            "fit_analytic_queries": 64,
+            "gpu_hours": 0.0,
+            "history": [
+              {
+                "step": 10,
+                "validation_score": 0.42453498486429453
+              },
+              {
+                "step": 20,
+                "validation_score": 0.13124705851078033
+              },
+              {
+                "step": 30,
+                "validation_score": 0.0809605810791254
+              },
+              {
+                "step": 40,
+                "validation_score": 0.08082264848053455
+              },
+              {
+                "step": 50,
+                "validation_score": 0.09326905570924282
+              },
+              {
+                "step": 60,
+                "validation_score": 0.07659945543855429
+              },
+              {
+                "step": 70,
+                "validation_score": 0.09095969051122665
+              },
+              {
+                "step": 80,
+                "validation_score": 0.07779544685035944
+              },
+              {
+                "step": 90,
+                "validation_score": 0.07792224083095789
+              },
+              {
+                "step": 100,
+                "validation_score": 0.060246339067816734
+              }
+            ],
+            "loss": "MSE(r)+0.5*MSE(Jc)",
+            "lr": 0.003,
+            "max_steps": 100,
+            "selected_step": 100,
+            "steps_executed": 100,
+            "validation_analytic_queries": 16,
+            "validation_only_early_stop": true,
+            "validation_score": 0.060246339067816734
+          },
+          "guarded_one_dimensional_decision": {
+            "accepted_candidates": 33,
+            "accepted_over_all_samples": 0.825,
+            "additional_analytic_candidate_oracle_queries": 40,
+            "additional_analytic_target_oracle_queries": 40,
+            "eligible_samples": 40,
+            "mean_true_loss_after_fallback": 0.0006627767644692513,
+            "new_native_cherchi_queries": 0,
+            "no_geometric_state_committed": true,
+            "not_a_10D_native_solver_optimization": true,
+            "predicted_current_necessary_support_pass_fraction": 1.0,
+            "rejected_at_candidate_surrogate_physicality_or_domain": 0,
+            "rejected_at_current_surrogate_physicality": 0,
+            "rejected_by_independent_analytic_true_objective": 7,
+            "step_mae_for_physicality_screened_candidates": 0.04891712529173763,
+            "true_moments_necessary_support_pass_fraction": 1.0,
+            "true_signed_objective_gap_for_screened_candidates": 0.0020345946055349766
+          },
+          "interior": {
+            "J_mae": 0.02191971242427826,
+            "Jq_max_asymmetry": 0.0,
+            "directional_mae": 0.06529132276773453,
+            "native_radial_max": 1.7881393432617188e-07,
+            "predicted_negative_mass_fraction": 0.0,
+            "r_W0_normalized_mae": 0.002691584173589945,
+            "r_mae": 0.04106298089027405
+          },
+          "interior_preservation": {
+            "all_analytic_geometry_source_checks": 20,
+            "already_full_or_empty": 0,
+            "max_J_difference_where_defined": 0.0,
+            "max_r_difference": 0.0,
+            "native_label_uses": 0,
+            "nodal_derivative_withheld": 0,
+            "queries": 40
+          },
+          "strict_saturation_without_independent_full_moment": {
+            "analytic_full_reference_evaluations": 20,
+            "empty_queries": 40,
+            "empty_raw_r_mae": 0.0,
+            "full_queries": 40,
+            "full_raw_r_mae": 0.07880486669018864,
+            "independent_analytic_geometry_count": 20,
+            "max_empty_abs_Jc": 0.0,
+            "max_full_abs_Jc": 0.07346191257238388,
+            "measured_wall_ms_including_analytic_source_binding": 86.8513970000322,
+            "new_native_cherchi_calls": 0,
+            "one_geometry_encoding_per_geometry": true,
+            "out_of_cut_queries": 80,
+            "real_CAD_derivative_certified": false,
+            "source_restriction": "EXACT_ANALYTIC_SHAPE_AND_VOXEL_BINDING_ONLY",
+            "undecided_queries": 0
+          }
+        },
+        "w5_deeponet_voxel": {
+          "fit": {
+            "batch_schedule_sha256": "520c59c478fd35eb166d694931b85452d473008787c598ba58472cb688e19702",
+            "batch_size": 8,
+            "cpu_training_seconds": 0.49260087599998315,
+            "fit_analytic_queries": 64,
+            "gpu_hours": 0.0,
+            "history": [
+              {
+                "step": 10,
+                "validation_score": 0.07148083578795195
+              },
+              {
+                "step": 20,
+                "validation_score": 0.06480010133236647
+              },
+              {
+                "step": 30,
+                "validation_score": 0.05059536127373576
+              },
+              {
+                "step": 40,
+                "validation_score": 0.04462205618619919
+              },
+              {
+                "step": 50,
+                "validation_score": 0.03988168016076088
+              },
+              {
+                "step": 60,
+                "validation_score": 0.03619773918762803
+              },
+              {
+                "step": 70,
+                "validation_score": 0.03157458873465657
+              },
+              {
+                "step": 80,
+                "validation_score": 0.03212028834968805
+              },
+              {
+                "step": 90,
+                "validation_score": 0.03263154020532966
+              },
+              {
+                "step": 100,
+                "validation_score": 0.031202425714582205
+              }
+            ],
+            "loss": "MSE(r)+0.5*MSE(Jc)",
+            "lr": 0.003,
+            "max_steps": 100,
+            "selected_step": 100,
+            "steps_executed": 100,
+            "validation_analytic_queries": 16,
+            "validation_only_early_stop": true,
+            "validation_score": 0.031202425714582205
+          },
+          "guarded_one_dimensional_decision": {
+            "accepted_candidates": 27,
+            "accepted_over_all_samples": 0.675,
+            "additional_analytic_candidate_oracle_queries": 29,
+            "additional_analytic_target_oracle_queries": 40,
+            "eligible_samples": 40,
+            "mean_true_loss_after_fallback": 0.0005827540284350176,
+            "new_native_cherchi_queries": 0,
+            "no_geometric_state_committed": true,
+            "not_a_10D_native_solver_optimization": true,
+            "predicted_current_necessary_support_pass_fraction": 0.75,
+            "rejected_at_candidate_surrogate_physicality_or_domain": 1,
+            "rejected_at_current_surrogate_physicality": 10,
+            "rejected_by_independent_analytic_true_objective": 2,
+            "step_mae_for_physicality_screened_candidates": 0.022261123055064922,
+            "true_moments_necessary_support_pass_fraction": 1.0,
+            "true_signed_objective_gap_for_screened_candidates": 0.00024788680945604023
+          },
+          "interior": {
+            "J_mae": 0.014007358811795712,
+            "Jq_max_asymmetry": 0.3932608664035797,
+            "directional_mae": 0.030534077435731888,
+            "native_radial_max": 5.960464477539063e-08,
+            "predicted_negative_mass_fraction": 0.02500000037252903,
+            "r_W0_normalized_mae": 0.001453112461604178,
+            "r_mae": 0.02084388956427574
+          },
+          "strict_saturation_without_independent_full_moment": {
+            "analytic_full_reference_evaluations": 20,
+            "empty_queries": 40,
+            "empty_raw_r_mae": 0.07692959569394589,
+            "full_queries": 40,
+            "full_raw_r_mae": 0.0635689132846892,
+            "independent_analytic_geometry_count": 20,
+            "max_empty_abs_Jc": 0.10735037922859192,
+            "max_full_abs_Jc": 0.11500726640224457,
+            "measured_wall_ms_including_analytic_source_binding": 143.0188790000102,
+            "new_native_cherchi_calls": 0,
+            "one_geometry_encoding_per_geometry": true,
+            "out_of_cut_queries": 80,
+            "real_CAD_derivative_certified": false,
+            "source_restriction": "EXACT_ANALYTIC_SHAPE_AND_VOXEL_BINDING_ONLY",
+            "undecided_queries": 0
+          }
+        },
+        "w5_positive_quadrature_012": {
+          "fit": {
+            "batch_schedule_sha256": "520c59c478fd35eb166d694931b85452d473008787c598ba58472cb688e19702",
+            "batch_size": 8,
+            "cpu_training_seconds": 0.5581709260000025,
+            "fit_analytic_queries": 64,
+            "gpu_hours": 0.0,
+            "history": [
+              {
+                "step": 10,
+                "validation_score": 0.38536490499973297
+              },
+              {
+                "step": 20,
+                "validation_score": 0.11409413442015648
+              },
+              {
+                "step": 30,
+                "validation_score": 0.07290289690718055
+              },
+              {
+                "step": 40,
+                "validation_score": 0.07245190627872944
+              },
+              {
+                "step": 50,
+                "validation_score": 0.07623916678130627
+              },
+              {
+                "step": 60,
+                "validation_score": 0.06950956210494041
+              },
+              {
+                "step": 70,
+                "validation_score": 0.06860618991777301
+              },
+              {
+                "step": 80,
+                "validation_score": 0.061794677283614874
+              },
+              {
+                "step": 90,
+                "validation_score": 0.06390090472996235
+              },
+              {
+                "step": 100,
+                "validation_score": 0.05137090990319848
+              }
+            ],
+            "loss": "MSE(r)+0.5*MSE(Jc)",
+            "lr": 0.003,
+            "max_steps": 100,
+            "selected_step": 100,
+            "steps_executed": 100,
+            "validation_analytic_queries": 16,
+            "validation_only_early_stop": true,
+            "validation_score": 0.05137090990319848
+          },
+          "guarded_one_dimensional_decision": {
+            "accepted_candidates": 39,
+            "accepted_over_all_samples": 0.975,
+            "additional_analytic_candidate_oracle_queries": 40,
+            "additional_analytic_target_oracle_queries": 40,
+            "eligible_samples": 40,
+            "mean_true_loss_after_fallback": 0.0003542357780136054,
+            "new_native_cherchi_queries": 0,
+            "no_geometric_state_committed": true,
+            "not_a_10D_native_solver_optimization": true,
+            "predicted_current_necessary_support_pass_fraction": 1.0,
+            "rejected_at_candidate_surrogate_physicality_or_domain": 0,
+            "rejected_at_current_surrogate_physicality": 0,
+            "rejected_by_independent_analytic_true_objective": 1,
+            "step_mae_for_physicality_screened_candidates": 0.018759631124900197,
+            "true_moments_necessary_support_pass_fraction": 1.0,
+            "true_signed_objective_gap_for_screened_candidates": 0.00048125661140839033
+          },
+          "interior": {
+            "J_mae": 0.01825198158621788,
+            "Jq_max_asymmetry": 0.07179668545722961,
+            "directional_mae": 0.03486279398202896,
+            "native_radial_max": 1.7881393432617188e-07,
+            "predicted_negative_mass_fraction": 0.0,
+            "r_W0_normalized_mae": 0.002068477915599942,
+            "r_mae": 0.03279943764209747
+          },
+          "strict_saturation_without_independent_full_moment": {
+            "analytic_full_reference_evaluations": 20,
+            "empty_queries": 40,
+            "empty_raw_r_mae": 0.0,
+            "full_queries": 40,
+            "full_raw_r_mae": 0.12228032946586609,
+            "independent_analytic_geometry_count": 20,
+            "max_empty_abs_Jc": 0.0,
+            "max_full_abs_Jc": 0.0,
+            "measured_wall_ms_including_analytic_source_binding": 86.83576399994308,
+            "new_native_cherchi_calls": 0,
+            "one_geometry_encoding_per_geometry": true,
+            "out_of_cut_queries": 80,
+            "real_CAD_derivative_certified": false,
+            "source_restriction": "EXACT_ANALYTIC_SHAPE_AND_VOXEL_BINDING_ONLY",
+            "undecided_queries": 0
+          }
+        },
+        "w6_gauss_004": {
+          "fit": {
+            "batch_schedule_sha256": "520c59c478fd35eb166d694931b85452d473008787c598ba58472cb688e19702",
+            "batch_size": 8,
+            "cpu_training_seconds": 0.7030382499999632,
+            "fit_analytic_queries": 64,
+            "gpu_hours": 0.0,
+            "history": [
+              {
+                "step": 10,
+                "validation_score": 0.40283868461847305
+              },
+              {
+                "step": 20,
+                "validation_score": 0.14648477919399738
+              },
+              {
+                "step": 30,
+                "validation_score": 0.09186796098947525
+              },
+              {
+                "step": 40,
+                "validation_score": 0.082167680375278
+              },
+              {
+                "step": 50,
+                "validation_score": 0.08144933171570301
+              },
+              {
+                "step": 60,
+                "validation_score": 0.08948827348649502
+              },
+              {
+                "step": 70,
+                "validation_score": 0.09130253177136183
+              },
+              {
+                "step": 80,
+                "validation_score": 0.08882591500878334
+              },
+              {
+                "step": 90,
+                "validation_score": 0.08281871769577265
+              },
+              {
+                "step": 100,
+                "validation_score": 0.06809227541089058
+              }
+            ],
+            "loss": "MSE(r)+0.5*MSE(Jc)",
+            "lr": 0.003,
+            "max_steps": 100,
+            "selected_step": 100,
+            "steps_executed": 100,
+            "validation_analytic_queries": 16,
+            "validation_only_early_stop": true,
+            "validation_score": 0.06809227541089058
+          },
+          "guarded_one_dimensional_decision": {
+            "accepted_candidates": 17,
+            "accepted_over_all_samples": 0.425,
+            "additional_analytic_candidate_oracle_queries": 36,
+            "additional_analytic_target_oracle_queries": 40,
+            "eligible_samples": 40,
+            "mean_true_loss_after_fallback": 0.001458363695044697,
+            "new_native_cherchi_queries": 0,
+            "no_geometric_state_committed": true,
+            "not_a_10D_native_solver_optimization": true,
+            "predicted_current_necessary_support_pass_fraction": 0.925000011920929,
+            "rejected_at_candidate_surrogate_physicality_or_domain": 1,
+            "rejected_at_current_surrogate_physicality": 3,
+            "rejected_by_independent_analytic_true_objective": 19,
+            "step_mae_for_physicality_screened_candidates": 0.13116788665862372,
+            "true_moments_necessary_support_pass_fraction": 1.0,
+            "true_signed_objective_gap_for_screened_candidates": 0.0045971687542398325
+          },
+          "interior": {
+            "J_mae": 0.020724017173051834,
+            "Jq_max_asymmetry": 0.0,
+            "directional_mae": 0.061781253665685654,
+            "native_radial_max": 2.123415470123291e-07,
+            "predicted_negative_mass_fraction": 0.0,
+            "r_W0_normalized_mae": 0.0034100310876965523,
+            "r_mae": 0.04986435920000076
+          },
+          "strict_saturation_without_independent_full_moment": {
+            "analytic_full_reference_evaluations": 20,
+            "empty_queries": 40,
+            "empty_raw_r_mae": 0.00027103336396976373,
+            "full_queries": 40,
+            "full_raw_r_mae": 0.4469039537012577,
+            "independent_analytic_geometry_count": 20,
+            "max_empty_abs_Jc": 0.004254496190696955,
+            "max_full_abs_Jc": 0.004254496190696955,
+            "measured_wall_ms_including_analytic_source_binding": 80.22032899998521,
+            "new_native_cherchi_calls": 0,
+            "one_geometry_encoding_per_geometry": true,
+            "out_of_cut_queries": 80,
+            "real_CAD_derivative_certified": false,
+            "source_restriction": "EXACT_ANALYTIC_SHAPE_AND_VOXEL_BINDING_ONLY",
+            "undecided_queries": 0
+          }
+        }
+      },
+      "schema": "W5_M12_ANALYTIC_STRICT_SATURATION_V1",
+      "seed": 53,
+      "source_W6_commit": "27d51678cf741233c7a2e6c54c78d9a4667bec00",
+      "teacher_kind": "ANALYTIC_P0_GROUND_TRUTH_ONLY_NOT_W2_REAL_MATERIAL",
+      "torch_version": "2.10.0+cpu",
+      "train_sha256": "0a677de0d3833dd0420f5abb62f5ef3c4be24f057e79607d09f91e6cd9b31fc5",
+      "validation_samples": 16
+    },
+    {
+      "M12_distinction": "SAME_TRAINED_M11_WEIGHTS_WITH_POSTHOC_ANALYTIC_SATURATION_NOT_FIFTH_INDEPENDENT_MODEL",
+      "compute_device": "cpu",
+      "fit_samples": 64,
+      "geometry_family_split": {
+        "fit_ids": 32,
+        "heldout_families": [
+          "ellipsoid"
+        ],
+        "heldout_ids": 20,
+        "validation_ids": 8
+      },
+      "gpu_hours": 0.0,
+      "heldout_samples": 40,
+      "heldout_sha256": "8a7144cb53b39a53ad3597ef03038ac6cbb2285497981d75c61925727fb6d172",
+      "max_optimizer_steps": 100,
+      "models": [
+        "w5_deeponet_voxel",
+        "w5_positive_quadrature_012",
+        "w6_gauss_004",
+        "w5_cone_integrable_025"
+      ],
+      "native_cherchi_calls": 0,
+      "native_real_CAD_certification": false,
+      "normalization": "W0_SIGNED_NATIVE_C_AND_UNDOUBLED_RAW_R",
+      "optimizer": "ADAM_0.003_MSE_R_PLUS_HALF_MSE_J",
+      "parameter_counts": {
+        "w5_cone_integrable_025": 13448,
+        "w5_deeponet_voxel": 13939,
+        "w5_positive_quadrature_012": 13448,
+        "w6_gauss_004": 13448
+      },
+      "python_version": "3.13.5",
+      "real_w2_training_labels": 0,
+      "results": {
+        "w5_cone_integrable_025": {
+          "M12_strict_saturation_with_independent_analytic_full_moment": {
+            "analytic_full_reference_evaluations": 20,
+            "empty_queries": 40,
+            "empty_raw_r_mae": 0.0,
+            "full_queries": 40,
+            "full_raw_r_mae": 0.0,
+            "independent_analytic_geometry_count": 20,
+            "max_empty_abs_Jc": 0.0,
+            "max_full_abs_Jc": 0.0,
+            "measured_wall_ms_including_analytic_source_binding": 58.238490000007914,
+            "new_native_cherchi_calls": 0,
+            "one_geometry_encoding_per_geometry": true,
+            "out_of_cut_queries": 80,
+            "real_CAD_derivative_certified": false,
+            "source_restriction": "EXACT_ANALYTIC_SHAPE_AND_VOXEL_BINDING_ONLY",
+            "undecided_queries": 0
+          },
+          "fit": {
+            "batch_schedule_sha256": "beeee4b0c0c650ee5c69343e1ab259f5360dc54adc1332e7939aa6443d07849e",
+            "batch_size": 8,
+            "cpu_training_seconds": 0.5237291280000136,
+            "fit_analytic_queries": 64,
+            "gpu_hours": 0.0,
+            "history": [
+              {
+                "step": 10,
+                "validation_score": 0.3811488747596741
+              },
+              {
+                "step": 20,
+                "validation_score": 0.1243332028388977
+              },
+              {
+                "step": 30,
+                "validation_score": 0.11757803428918123
+              },
+              {
+                "step": 40,
+                "validation_score": 0.10878229793161154
+              },
+              {
+                "step": 50,
+                "validation_score": 0.07855022046715021
+              },
+              {
+                "step": 60,
+                "validation_score": 0.07576076220721006
+              },
+              {
+                "step": 70,
+                "validation_score": 0.0737101761624217
+              },
+              {
+                "step": 80,
+                "validation_score": 0.07224198058247566
+              },
+              {
+                "step": 90,
+                "validation_score": 0.0731379073113203
+              },
+              {
+                "step": 100,
+                "validation_score": 0.07305333763360977
+              }
+            ],
+            "loss": "MSE(r)+0.5*MSE(Jc)",
+            "lr": 0.003,
+            "max_steps": 100,
+            "selected_step": 80,
+            "steps_executed": 100,
+            "validation_analytic_queries": 16,
+            "validation_only_early_stop": true,
+            "validation_score": 0.07224198058247566
+          },
+          "guarded_one_dimensional_decision": {
+            "accepted_candidates": 37,
+            "accepted_over_all_samples": 0.925,
+            "additional_analytic_candidate_oracle_queries": 40,
+            "additional_analytic_target_oracle_queries": 40,
+            "eligible_samples": 40,
+            "mean_true_loss_after_fallback": 0.0003848026432450171,
+            "new_native_cherchi_queries": 0,
+            "no_geometric_state_committed": true,
+            "not_a_10D_native_solver_optimization": true,
+            "predicted_current_necessary_support_pass_fraction": 1.0,
+            "rejected_at_candidate_surrogate_physicality_or_domain": 0,
+            "rejected_at_current_surrogate_physicality": 0,
+            "rejected_by_independent_analytic_true_objective": 3,
+            "step_mae_for_physicality_screened_candidates": 0.02827251705462708,
+            "true_moments_necessary_support_pass_fraction": 1.0,
+            "true_signed_objective_gap_for_screened_candidates": 0.0006152913403708281
+          },
+          "interior": {
+            "J_mae": 0.024468237534165382,
+            "Jq_max_asymmetry": 0.0,
+            "directional_mae": 0.060918036848306656,
+            "native_radial_max": 1.564621925354004e-07,
+            "predicted_negative_mass_fraction": 0.0,
+            "r_W0_normalized_mae": 0.0033789619337767363,
+            "r_mae": 0.05377723276615143
+          },
+          "interior_preservation": {
+            "all_analytic_geometry_source_checks": 20,
+            "already_full_or_empty": 0,
+            "max_J_difference_where_defined": 0.0,
+            "max_r_difference": 0.0,
+            "native_label_uses": 0,
+            "nodal_derivative_withheld": 0,
+            "queries": 40
+          },
+          "strict_saturation_without_independent_full_moment": {
+            "analytic_full_reference_evaluations": 20,
+            "empty_queries": 40,
+            "empty_raw_r_mae": 0.0,
+            "full_queries": 40,
+            "full_raw_r_mae": 0.16323360856622457,
+            "independent_analytic_geometry_count": 20,
+            "max_empty_abs_Jc": 0.0,
+            "max_full_abs_Jc": 0.08851124346256256,
+            "measured_wall_ms_including_analytic_source_binding": 79.32992600001398,
+            "new_native_cherchi_calls": 0,
+            "one_geometry_encoding_per_geometry": true,
+            "out_of_cut_queries": 80,
+            "real_CAD_derivative_certified": false,
+            "source_restriction": "EXACT_ANALYTIC_SHAPE_AND_VOXEL_BINDING_ONLY",
+            "undecided_queries": 0
+          }
+        },
+        "w5_deeponet_voxel": {
+          "fit": {
+            "batch_schedule_sha256": "beeee4b0c0c650ee5c69343e1ab259f5360dc54adc1332e7939aa6443d07849e",
+            "batch_size": 8,
+            "cpu_training_seconds": 0.4134231529999397,
+            "fit_analytic_queries": 64,
+            "gpu_hours": 0.0,
+            "history": [
+              {
+                "step": 10,
+                "validation_score": 0.08468526974320412
+              },
+              {
+                "step": 20,
+                "validation_score": 0.09852814394980669
+              },
+              {
+                "step": 30,
+                "validation_score": 0.07348401471972466
+              },
+              {
+                "step": 40,
+                "validation_score": 0.06871711183339357
+              },
+              {
+                "step": 50,
+                "validation_score": 0.07078372640535235
+              },
+              {
+                "step": 60,
+                "validation_score": 0.05032744538038969
+              },
+              {
+                "step": 70,
+                "validation_score": 0.05311034433543682
+              },
+              {
+                "step": 80,
+                "validation_score": 0.04686018358916044
+              },
+              {
+                "step": 90,
+                "validation_score": 0.034373313654214144
+              },
+              {
+                "step": 100,
+                "validation_score": 0.03626952599734068
+              }
+            ],
+            "loss": "MSE(r)+0.5*MSE(Jc)",
+            "lr": 0.003,
+            "max_steps": 100,
+            "selected_step": 90,
+            "steps_executed": 100,
+            "validation_analytic_queries": 16,
+            "validation_only_early_stop": true,
+            "validation_score": 0.034373313654214144
+          },
+          "guarded_one_dimensional_decision": {
+            "accepted_candidates": 17,
+            "accepted_over_all_samples": 0.425,
+            "additional_analytic_candidate_oracle_queries": 27,
+            "additional_analytic_target_oracle_queries": 40,
+            "eligible_samples": 40,
+            "mean_true_loss_after_fallback": 0.0013217701284681165,
+            "new_native_cherchi_queries": 0,
+            "no_geometric_state_committed": true,
+            "not_a_10D_native_solver_optimization": true,
+            "predicted_current_necessary_support_pass_fraction": 0.699999988079071,
+            "rejected_at_candidate_surrogate_physicality_or_domain": 1,
+            "rejected_at_current_surrogate_physicality": 12,
+            "rejected_by_independent_analytic_true_objective": 10,
+            "step_mae_for_physicality_screened_candidates": 0.09918976957846261,
+            "true_moments_necessary_support_pass_fraction": 1.0,
+            "true_signed_objective_gap_for_screened_candidates": 0.0019032197209186978
+          },
+          "interior": {
+            "J_mae": 0.014475452713668346,
+            "Jq_max_asymmetry": 0.33722037076950073,
+            "directional_mae": 0.032655272632837296,
+            "native_radial_max": 5.960464477539063e-08,
+            "predicted_negative_mass_fraction": 0.02500000037252903,
+            "r_W0_normalized_mae": 0.00142721610609442,
+            "r_mae": 0.020340388640761375
+          },
+          "strict_saturation_without_independent_full_moment": {
+            "analytic_full_reference_evaluations": 20,
+            "empty_queries": 40,
+            "empty_raw_r_mae": 0.0707119444385171,
+            "full_queries": 40,
+            "full_raw_r_mae": 0.051091043278574944,
+            "independent_analytic_geometry_count": 20,
+            "max_empty_abs_Jc": 0.08750976622104645,
+            "max_full_abs_Jc": 0.09554767608642578,
+            "measured_wall_ms_including_analytic_source_binding": 109.54037600004085,
+            "new_native_cherchi_calls": 0,
+            "one_geometry_encoding_per_geometry": true,
+            "out_of_cut_queries": 80,
+            "real_CAD_derivative_certified": false,
+            "source_restriction": "EXACT_ANALYTIC_SHAPE_AND_VOXEL_BINDING_ONLY",
+            "undecided_queries": 0
+          }
+        },
+        "w5_positive_quadrature_012": {
+          "fit": {
+            "batch_schedule_sha256": "beeee4b0c0c650ee5c69343e1ab259f5360dc54adc1332e7939aa6443d07849e",
+            "batch_size": 8,
+            "cpu_training_seconds": 0.5007902850001074,
+            "fit_analytic_queries": 64,
+            "gpu_hours": 0.0,
+            "history": [
+              {
+                "step": 10,
+                "validation_score": 0.3467829804867506
+              },
+              {
+                "step": 20,
+                "validation_score": 0.10430850181728601
+              },
+              {
+                "step": 30,
+                "validation_score": 0.1110440082848072
+              },
+              {
+                "step": 40,
+                "validation_score": 0.07926461519673467
+              },
+              {
+                "step": 50,
+                "validation_score": 0.06799894105643034
+              },
+              {
+                "step": 60,
+                "validation_score": 0.06837296625599265
+              },
+              {
+                "step": 70,
+                "validation_score": 0.0625902321189642
+              },
+              {
+                "step": 80,
+                "validation_score": 0.060935571789741516
+              },
+              {
+                "step": 90,
+                "validation_score": 0.061841996386647224
+              },
+              {
+                "step": 100,
+                "validation_score": 0.060543622355908155
+              }
+            ],
+            "loss": "MSE(r)+0.5*MSE(Jc)",
+            "lr": 0.003,
+            "max_steps": 100,
+            "selected_step": 100,
+            "steps_executed": 100,
+            "validation_analytic_queries": 16,
+            "validation_only_early_stop": true,
+            "validation_score": 0.060543622355908155
+          },
+          "guarded_one_dimensional_decision": {
+            "accepted_candidates": 40,
+            "accepted_over_all_samples": 1.0,
+            "additional_analytic_candidate_oracle_queries": 40,
+            "additional_analytic_target_oracle_queries": 40,
+            "eligible_samples": 40,
+            "mean_true_loss_after_fallback": 0.00017202924293823884,
+            "new_native_cherchi_queries": 0,
+            "no_geometric_state_committed": true,
+            "not_a_10D_native_solver_optimization": true,
+            "predicted_current_necessary_support_pass_fraction": 1.0,
+            "rejected_at_candidate_surrogate_physicality_or_domain": 0,
+            "rejected_at_current_surrogate_physicality": 0,
+            "rejected_by_independent_analytic_true_objective": 0,
+            "step_mae_for_physicality_screened_candidates": 0.012295954818979726,
+            "true_moments_necessary_support_pass_fraction": 1.0,
+            "true_signed_objective_gap_for_screened_candidates": 0.00016610802181112134
+          },
+          "interior": {
+            "J_mae": 0.026859786361455917,
+            "Jq_max_asymmetry": 0.0884777158498764,
+            "directional_mae": 0.04641525819897652,
+            "native_radial_max": 2.384185791015625e-07,
+            "predicted_negative_mass_fraction": 0.0,
+            "r_W0_normalized_mae": 0.003372537437826395,
+            "r_mae": 0.04906127601861954
+          },
+          "strict_saturation_without_independent_full_moment": {
+            "analytic_full_reference_evaluations": 20,
+            "empty_queries": 40,
+            "empty_raw_r_mae": 0.0,
+            "full_queries": 40,
+            "full_raw_r_mae": 0.18584329187870025,
+            "independent_analytic_geometry_count": 20,
+            "max_empty_abs_Jc": 0.0,
+            "max_full_abs_Jc": 0.0,
+            "measured_wall_ms_including_analytic_source_binding": 83.7799170000153,
+            "new_native_cherchi_calls": 0,
+            "one_geometry_encoding_per_geometry": true,
+            "out_of_cut_queries": 80,
+            "real_CAD_derivative_certified": false,
+            "source_restriction": "EXACT_ANALYTIC_SHAPE_AND_VOXEL_BINDING_ONLY",
+            "undecided_queries": 0
+          }
+        },
+        "w6_gauss_004": {
+          "fit": {
+            "batch_schedule_sha256": "beeee4b0c0c650ee5c69343e1ab259f5360dc54adc1332e7939aa6443d07849e",
+            "batch_size": 8,
+            "cpu_training_seconds": 0.4942540460000373,
+            "fit_analytic_queries": 64,
+            "gpu_hours": 0.0,
+            "history": [
+              {
+                "step": 10,
+                "validation_score": 0.35217493772506714
+              },
+              {
+                "step": 20,
+                "validation_score": 0.12307194247841835
+              },
+              {
+                "step": 30,
+                "validation_score": 0.11640811711549759
+              },
+              {
+                "step": 40,
+                "validation_score": 0.11845484655350447
+              },
+              {
+                "step": 50,
+                "validation_score": 0.0823236396536231
+              },
+              {
+                "step": 60,
+                "validation_score": 0.0797380656003952
+              },
+              {
+                "step": 70,
+                "validation_score": 0.07964381016790867
+              },
+              {
+                "step": 80,
+                "validation_score": 0.07779445871710777
+              },
+              {
+                "step": 90,
+                "validation_score": 0.07682233490049839
+              },
+              {
+                "step": 100,
+                "validation_score": 0.07618208043277264
+              }
+            ],
+            "loss": "MSE(r)+0.5*MSE(Jc)",
+            "lr": 0.003,
+            "max_steps": 100,
+            "selected_step": 100,
+            "steps_executed": 100,
+            "validation_analytic_queries": 16,
+            "validation_only_early_stop": true,
+            "validation_score": 0.07618208043277264
+          },
+          "guarded_one_dimensional_decision": {
+            "accepted_candidates": 27,
+            "accepted_over_all_samples": 0.675,
+            "additional_analytic_candidate_oracle_queries": 38,
+            "additional_analytic_target_oracle_queries": 40,
+            "eligible_samples": 40,
+            "mean_true_loss_after_fallback": 0.0008309928261394443,
+            "new_native_cherchi_queries": 0,
+            "no_geometric_state_committed": true,
+            "not_a_10D_native_solver_optimization": true,
+            "predicted_current_necessary_support_pass_fraction": 0.9750000238418579,
+            "rejected_at_candidate_surrogate_physicality_or_domain": 1,
+            "rejected_at_current_surrogate_physicality": 1,
+            "rejected_by_independent_analytic_true_objective": 11,
+            "step_mae_for_physicality_screened_candidates": 0.07096402148114067,
+            "true_moments_necessary_support_pass_fraction": 1.0,
+            "true_signed_objective_gap_for_screened_candidates": 0.0021068485610714906
+          },
+          "interior": {
+            "J_mae": 0.030225593596696854,
+            "Jq_max_asymmetry": 0.0,
+            "directional_mae": 0.07772522419691086,
+            "native_radial_max": 1.4901161193847656e-07,
+            "predicted_negative_mass_fraction": 0.0,
+            "r_W0_normalized_mae": 0.0029915824998170137,
+            "r_mae": 0.049048326909542084
+          },
+          "strict_saturation_without_independent_full_moment": {
+            "analytic_full_reference_evaluations": 20,
+            "empty_queries": 40,
+            "empty_raw_r_mae": 0.0002284725196659565,
+            "full_queries": 40,
+            "full_raw_r_mae": 0.36850330159068106,
+            "independent_analytic_geometry_count": 20,
+            "max_empty_abs_Jc": 0.0035687682684510946,
+            "max_full_abs_Jc": 0.0035687682684510946,
+            "measured_wall_ms_including_analytic_source_binding": 74.06716100001631,
+            "new_native_cherchi_calls": 0,
+            "one_geometry_encoding_per_geometry": true,
+            "out_of_cut_queries": 80,
+            "real_CAD_derivative_certified": false,
+            "source_restriction": "EXACT_ANALYTIC_SHAPE_AND_VOXEL_BINDING_ONLY",
+            "undecided_queries": 0
+          }
+        }
+      },
+      "schema": "W5_M12_ANALYTIC_STRICT_SATURATION_V1",
+      "seed": 59,
+      "source_W6_commit": "27d51678cf741233c7a2e6c54c78d9a4667bec00",
+      "teacher_kind": "ANALYTIC_P0_GROUND_TRUTH_ONLY_NOT_W2_REAL_MATERIAL",
+      "torch_version": "2.10.0+cpu",
+      "train_sha256": "87176f1bbaec1345f42eb168a61c7b2a5a8f9c30971c0d8fd9687bbd25a4e846",
+      "validation_samples": 16
+    },
+    {
+      "M12_distinction": "SAME_TRAINED_M11_WEIGHTS_WITH_POSTHOC_ANALYTIC_SATURATION_NOT_FIFTH_INDEPENDENT_MODEL",
+      "compute_device": "cpu",
+      "fit_samples": 64,
+      "geometry_family_split": {
+        "fit_ids": 32,
+        "heldout_families": [
+          "ellipsoid"
+        ],
+        "heldout_ids": 20,
+        "validation_ids": 8
+      },
+      "gpu_hours": 0.0,
+      "heldout_samples": 40,
+      "heldout_sha256": "f59cc00d694d9ec107247f49d1c35e9d45893b29dbd6fe585c92d4cf10e1076a",
+      "max_optimizer_steps": 100,
+      "models": [
+        "w5_deeponet_voxel",
+        "w5_positive_quadrature_012",
+        "w6_gauss_004",
+        "w5_cone_integrable_025"
+      ],
+      "native_cherchi_calls": 0,
+      "native_real_CAD_certification": false,
+      "normalization": "W0_SIGNED_NATIVE_C_AND_UNDOUBLED_RAW_R",
+      "optimizer": "ADAM_0.003_MSE_R_PLUS_HALF_MSE_J",
+      "parameter_counts": {
+        "w5_cone_integrable_025": 13448,
+        "w5_deeponet_voxel": 13939,
+        "w5_positive_quadrature_012": 13448,
+        "w6_gauss_004": 13448
+      },
+      "python_version": "3.13.5",
+      "real_w2_training_labels": 0,
+      "results": {
+        "w5_cone_integrable_025": {
+          "M12_strict_saturation_with_independent_analytic_full_moment": {
+            "analytic_full_reference_evaluations": 20,
+            "empty_queries": 40,
+            "empty_raw_r_mae": 0.0,
+            "full_queries": 40,
+            "full_raw_r_mae": 0.0,
+            "independent_analytic_geometry_count": 20,
+            "max_empty_abs_Jc": 0.0,
+            "max_full_abs_Jc": 0.0,
+            "measured_wall_ms_including_analytic_source_binding": 60.28531100002965,
+            "new_native_cherchi_calls": 0,
+            "one_geometry_encoding_per_geometry": true,
+            "out_of_cut_queries": 80,
+            "real_CAD_derivative_certified": false,
+            "source_restriction": "EXACT_ANALYTIC_SHAPE_AND_VOXEL_BINDING_ONLY",
+            "undecided_queries": 0
+          },
+          "fit": {
+            "batch_schedule_sha256": "af6a5b3befb684a4e338c79e0cad437bc7164ec28dd370fea8d503e55c4ac2a5",
+            "batch_size": 8,
+            "cpu_training_seconds": 0.44607523299998775,
+            "fit_analytic_queries": 64,
+            "gpu_hours": 0.0,
+            "history": [
+              {
+                "step": 10,
+                "validation_score": 0.39738835021853447
+              },
+              {
+                "step": 20,
+                "validation_score": 0.15229131001979113
+              },
+              {
+                "step": 30,
+                "validation_score": 0.06063335761427879
+              },
+              {
+                "step": 40,
+                "validation_score": 0.10914900992065668
+              },
+              {
+                "step": 50,
+                "validation_score": 0.08428335189819336
+              },
+              {
+                "step": 60,
+                "validation_score": 0.07256549037992954
+              },
+              {
+                "step": 70,
+                "validation_score": 0.08431053347885609
+              },
+              {
+                "step": 80,
+                "validation_score": 0.07630107924342155
+              }
+            ],
+            "loss": "MSE(r)+0.5*MSE(Jc)",
+            "lr": 0.003,
+            "max_steps": 100,
+            "selected_step": 30,
+            "steps_executed": 80,
+            "validation_analytic_queries": 16,
+            "validation_only_early_stop": true,
+            "validation_score": 0.06063335761427879
+          },
+          "guarded_one_dimensional_decision": {
+            "accepted_candidates": 9,
+            "accepted_over_all_samples": 0.225,
+            "additional_analytic_candidate_oracle_queries": 40,
+            "additional_analytic_target_oracle_queries": 40,
+            "eligible_samples": 40,
+            "mean_true_loss_after_fallback": 0.0024477397883479394,
+            "new_native_cherchi_queries": 0,
+            "no_geometric_state_committed": true,
+            "not_a_10D_native_solver_optimization": true,
+            "predicted_current_necessary_support_pass_fraction": 1.0,
+            "rejected_at_candidate_surrogate_physicality_or_domain": 0,
+            "rejected_at_current_surrogate_physicality": 0,
+            "rejected_by_independent_analytic_true_objective": 31,
+            "step_mae_for_physicality_screened_candidates": 0.19330360919839473,
+            "true_moments_necessary_support_pass_fraction": 1.0,
+            "true_signed_objective_gap_for_screened_candidates": 0.00828296646263579
+          },
+          "interior": {
+            "J_mae": 0.02264108695089817,
+            "Jq_max_asymmetry": 0.0,
+            "directional_mae": 0.0836869329214096,
+            "native_radial_max": 4.377216100692749e-08,
+            "predicted_negative_mass_fraction": 0.0,
+            "r_W0_normalized_mae": 0.004064118955284357,
+            "r_mae": 0.04300190508365631
+          },
+          "interior_preservation": {
+            "all_analytic_geometry_source_checks": 20,
+            "already_full_or_empty": 0,
+            "max_J_difference_where_defined": 0.0,
+            "max_r_difference": 0.0,
+            "native_label_uses": 0,
+            "nodal_derivative_withheld": 0,
+            "queries": 40
+          },
+          "strict_saturation_without_independent_full_moment": {
+            "analytic_full_reference_evaluations": 20,
+            "empty_queries": 40,
+            "empty_raw_r_mae": 0.0,
+            "full_queries": 40,
+            "full_raw_r_mae": 0.0809843392111361,
+            "independent_analytic_geometry_count": 20,
+            "max_empty_abs_Jc": 0.0,
+            "max_full_abs_Jc": 0.02865835651755333,
+            "measured_wall_ms_including_analytic_source_binding": 93.71360400007234,
+            "new_native_cherchi_calls": 0,
+            "one_geometry_encoding_per_geometry": true,
+            "out_of_cut_queries": 80,
+            "real_CAD_derivative_certified": false,
+            "source_restriction": "EXACT_ANALYTIC_SHAPE_AND_VOXEL_BINDING_ONLY",
+            "undecided_queries": 0
+          }
+        },
+        "w5_deeponet_voxel": {
+          "fit": {
+            "batch_schedule_sha256": "af6a5b3befb684a4e338c79e0cad437bc7164ec28dd370fea8d503e55c4ac2a5",
+            "batch_size": 8,
+            "cpu_training_seconds": 0.4609353859999601,
+            "fit_analytic_queries": 64,
+            "gpu_hours": 0.0,
+            "history": [
+              {
+                "step": 10,
+                "validation_score": 0.09007528331130743
+              },
+              {
+                "step": 20,
+                "validation_score": 0.08271596487611532
+              },
+              {
+                "step": 30,
+                "validation_score": 0.05882352730259299
+              },
+              {
+                "step": 40,
+                "validation_score": 0.04524345463141799
+              },
+              {
+                "step": 50,
+                "validation_score": 0.04401217075064778
+              },
+              {
+                "step": 60,
+                "validation_score": 0.0350297661498189
+              },
+              {
+                "step": 70,
+                "validation_score": 0.033786734100431204
+              },
+              {
+                "step": 80,
+                "validation_score": 0.03152889385819435
+              },
+              {
+                "step": 90,
+                "validation_score": 0.03078305721282959
+              },
+              {
+                "step": 100,
+                "validation_score": 0.030111487954854965
+              }
+            ],
+            "loss": "MSE(r)+0.5*MSE(Jc)",
+            "lr": 0.003,
+            "max_steps": 100,
+            "selected_step": 100,
+            "steps_executed": 100,
+            "validation_analytic_queries": 16,
+            "validation_only_early_stop": true,
+            "validation_score": 0.030111487954854965
+          },
+          "guarded_one_dimensional_decision": {
+            "accepted_candidates": 20,
+            "accepted_over_all_samples": 0.5,
+            "additional_analytic_candidate_oracle_queries": 20,
+            "additional_analytic_target_oracle_queries": 40,
+            "eligible_samples": 40,
+            "mean_true_loss_after_fallback": 0.001130067913035203,
+            "new_native_cherchi_queries": 0,
+            "no_geometric_state_committed": true,
+            "not_a_10D_native_solver_optimization": true,
+            "predicted_current_necessary_support_pass_fraction": 0.625,
+            "rejected_at_candidate_surrogate_physicality_or_domain": 5,
+            "rejected_at_current_surrogate_physicality": 15,
+            "rejected_by_independent_analytic_true_objective": 0,
+            "step_mae_for_physicality_screened_candidates": 0.0011837474552526942,
+            "true_moments_necessary_support_pass_fraction": 1.0,
+            "true_signed_objective_gap_for_screened_candidates": -3.873231945720665e-07
+          },
+          "interior": {
+            "J_mae": 0.015896428376436234,
+            "Jq_max_asymmetry": 0.5094971656799316,
+            "directional_mae": 0.04053337499499321,
+            "native_radial_max": 8.940696716308594e-08,
+            "predicted_negative_mass_fraction": 0.02500000037252903,
+            "r_W0_normalized_mae": 0.0016846529906615615,
+            "r_mae": 0.022061510011553764
+          },
+          "strict_saturation_without_independent_full_moment": {
+            "analytic_full_reference_evaluations": 20,
+            "empty_queries": 40,
+            "empty_raw_r_mae": 0.10845288131386041,
+            "full_queries": 40,
+            "full_raw_r_mae": 0.07338619204238057,
+            "independent_analytic_geometry_count": 20,
+            "max_empty_abs_Jc": 0.18709580600261688,
+            "max_full_abs_Jc": 0.2734839916229248,
+            "measured_wall_ms_including_analytic_source_binding": 116.5815949999569,
+            "new_native_cherchi_calls": 0,
+            "one_geometry_encoding_per_geometry": true,
+            "out_of_cut_queries": 80,
+            "real_CAD_derivative_certified": false,
+            "source_restriction": "EXACT_ANALYTIC_SHAPE_AND_VOXEL_BINDING_ONLY",
+            "undecided_queries": 0
+          }
+        },
+        "w5_positive_quadrature_012": {
+          "fit": {
+            "batch_schedule_sha256": "af6a5b3befb684a4e338c79e0cad437bc7164ec28dd370fea8d503e55c4ac2a5",
+            "batch_size": 8,
+            "cpu_training_seconds": 0.43846086500002457,
+            "fit_analytic_queries": 64,
+            "gpu_hours": 0.0,
+            "history": [
+              {
+                "step": 10,
+                "validation_score": 0.3534107431769371
+              },
+              {
+                "step": 20,
+                "validation_score": 0.12626025639474392
+              },
+              {
+                "step": 30,
+                "validation_score": 0.057219307869672775
+              },
+              {
+                "step": 40,
+                "validation_score": 0.09241766855120659
+              },
+              {
+                "step": 50,
+                "validation_score": 0.07655075378715992
+              },
+              {
+                "step": 60,
+                "validation_score": 0.06859300844371319
+              },
+              {
+                "step": 70,
+                "validation_score": 0.07162817660719156
+              },
+              {
+                "step": 80,
+                "validation_score": 0.067698759958148
+              }
+            ],
+            "loss": "MSE(r)+0.5*MSE(Jc)",
+            "lr": 0.003,
+            "max_steps": 100,
+            "selected_step": 30,
+            "steps_executed": 80,
+            "validation_analytic_queries": 16,
+            "validation_only_early_stop": true,
+            "validation_score": 0.057219307869672775
+          },
+          "guarded_one_dimensional_decision": {
+            "accepted_candidates": 13,
+            "accepted_over_all_samples": 0.325,
+            "additional_analytic_candidate_oracle_queries": 40,
+            "additional_analytic_target_oracle_queries": 40,
+            "eligible_samples": 40,
+            "mean_true_loss_after_fallback": 0.0020693454683369957,
+            "new_native_cherchi_queries": 0,
+            "no_geometric_state_committed": true,
+            "not_a_10D_native_solver_optimization": true,
+            "predicted_current_necessary_support_pass_fraction": 1.0,
+            "rejected_at_candidate_surrogate_physicality_or_domain": 0,
+            "rejected_at_current_surrogate_physicality": 0,
+            "rejected_by_independent_analytic_true_objective": 27,
+            "step_mae_for_physicality_screened_candidates": 0.1590055300833264,
+            "true_moments_necessary_support_pass_fraction": 1.0,
+            "true_signed_objective_gap_for_screened_candidates": 0.007196066904944445
+          },
+          "interior": {
+            "J_mae": 0.01963079907000065,
+            "Jq_max_asymmetry": 0.021361093968153,
+            "directional_mae": 0.05998964235186577,
+            "native_radial_max": 6.705522537231445e-08,
+            "predicted_negative_mass_fraction": 0.0,
+            "r_W0_normalized_mae": 0.003355528460815549,
+            "r_mae": 0.041227392852306366
+          },
+          "strict_saturation_without_independent_full_moment": {
+            "analytic_full_reference_evaluations": 20,
+            "empty_queries": 40,
+            "empty_raw_r_mae": 0.0,
+            "full_queries": 40,
+            "full_raw_r_mae": 0.08684599287807941,
+            "independent_analytic_geometry_count": 20,
+            "max_empty_abs_Jc": 0.0,
+            "max_full_abs_Jc": 0.0,
+            "measured_wall_ms_including_analytic_source_binding": 95.01555199994982,
+            "new_native_cherchi_calls": 0,
+            "one_geometry_encoding_per_geometry": true,
+            "out_of_cut_queries": 80,
+            "real_CAD_derivative_certified": false,
+            "source_restriction": "EXACT_ANALYTIC_SHAPE_AND_VOXEL_BINDING_ONLY",
+            "undecided_queries": 0
+          }
+        },
+        "w6_gauss_004": {
+          "fit": {
+            "batch_schedule_sha256": "af6a5b3befb684a4e338c79e0cad437bc7164ec28dd370fea8d503e55c4ac2a5",
+            "batch_size": 8,
+            "cpu_training_seconds": 0.443886310000039,
+            "fit_analytic_queries": 64,
+            "gpu_hours": 0.0,
+            "history": [
+              {
+                "step": 10,
+                "validation_score": 0.3693618141114712
+              },
+              {
+                "step": 20,
+                "validation_score": 0.15749029256403446
+              },
+              {
+                "step": 30,
+                "validation_score": 0.05909255053848028
+              },
+              {
+                "step": 40,
+                "validation_score": 0.10343469772487879
+              },
+              {
+                "step": 50,
+                "validation_score": 0.07825584337115288
+              },
+              {
+                "step": 60,
+                "validation_score": 0.0710093230009079
+              },
+              {
+                "step": 70,
+                "validation_score": 0.08921335358172655
+              },
+              {
+                "step": 80,
+                "validation_score": 0.069925625808537
+              }
+            ],
+            "loss": "MSE(r)+0.5*MSE(Jc)",
+            "lr": 0.003,
+            "max_steps": 100,
+            "selected_step": 30,
+            "steps_executed": 80,
+            "validation_analytic_queries": 16,
+            "validation_only_early_stop": true,
+            "validation_score": 0.05909255053848028
+          },
+          "guarded_one_dimensional_decision": {
+            "accepted_candidates": 9,
+            "accepted_over_all_samples": 0.225,
+            "additional_analytic_candidate_oracle_queries": 40,
+            "additional_analytic_target_oracle_queries": 40,
+            "eligible_samples": 40,
+            "mean_true_loss_after_fallback": 0.002399984010337255,
+            "new_native_cherchi_queries": 0,
+            "no_geometric_state_committed": true,
+            "not_a_10D_native_solver_optimization": true,
+            "predicted_current_necessary_support_pass_fraction": 1.0,
+            "rejected_at_candidate_surrogate_physicality_or_domain": 0,
+            "rejected_at_current_surrogate_physicality": 0,
+            "rejected_by_independent_analytic_true_objective": 31,
+            "step_mae_for_physicality_screened_candidates": 0.1892128542085568,
+            "true_moments_necessary_support_pass_fraction": 1.0,
+            "true_signed_objective_gap_for_screened_candidates": 0.008266970832185371
+          },
+          "interior": {
+            "J_mae": 0.026312043890357018,
+            "Jq_max_asymmetry": 0.0,
+            "directional_mae": 0.08056500554084778,
+            "native_radial_max": 1.4901161193847656e-07,
+            "predicted_negative_mass_fraction": 0.0,
+            "r_W0_normalized_mae": 0.003939819522202015,
+            "r_mae": 0.04174012318253517
+          },
+          "strict_saturation_without_independent_full_moment": {
+            "analytic_full_reference_evaluations": 20,
+            "empty_queries": 40,
+            "empty_raw_r_mae": 4.306275613998878e-05,
+            "full_queries": 40,
+            "full_raw_r_mae": 0.08157268213108182,
+            "independent_analytic_geometry_count": 20,
+            "max_empty_abs_Jc": 0.0007454005535691977,
+            "max_full_abs_Jc": 0.0007454005535691977,
+            "measured_wall_ms_including_analytic_source_binding": 90.05484900001193,
+            "new_native_cherchi_calls": 0,
+            "one_geometry_encoding_per_geometry": true,
+            "out_of_cut_queries": 80,
+            "real_CAD_derivative_certified": false,
+            "source_restriction": "EXACT_ANALYTIC_SHAPE_AND_VOXEL_BINDING_ONLY",
+            "undecided_queries": 0
+          }
+        }
+      },
+      "schema": "W5_M12_ANALYTIC_STRICT_SATURATION_V1",
+      "seed": 61,
+      "source_W6_commit": "27d51678cf741233c7a2e6c54c78d9a4667bec00",
+      "teacher_kind": "ANALYTIC_P0_GROUND_TRUTH_ONLY_NOT_W2_REAL_MATERIAL",
+      "torch_version": "2.10.0+cpu",
+      "train_sha256": "3d11aa67c4565275de21a0d2d6884fcc3246364156439a35906601e4c1ff5264",
+      "validation_samples": 16
+    }
+  ],
+  "full_source_r_is_INDEPENDENT_ORACLE_not_network_prediction": true,
+  "model_names": [
+    "w5_deeponet_voxel",
+    "w5_positive_quadrature_012",
+    "w6_gauss_004",
+    "w5_cone_integrable_025"
+  ],
+  "no_new_approximation_speedup_claim": true,
+  "per_seed_source_sha256": [
+    {
+      "file": "m12_seed53.json",
+      "seed": 53,
+      "sha256": "b32e7ee12fd758423def9a0450aeffada83a847f06b72b26c7951032f2bffaf3"
+    },
+    {
+      "file": "m12_seed59.json",
+      "seed": 59,
+      "sha256": "4d6c0d2331dd47670feeda1bde9cfb615b4f7b6b0faded9d6386811f696cde44"
+    },
+    {
+      "file": "m12_seed61.json",
+      "seed": 61,
+      "sha256": "f2eb2d1505dd6ccbe8e9b121b5eb677c8dddd78835bade59648b00542d572447"
+    }
+  ],
+  "proof_scope": "TRUSTED_SELF_GENERATED_ANALYTIC_SHAPE_ONLY_NOT_REAL_CAD",
+  "protected_empty_r_mae": 0.0,
+  "protected_full_r_mae": 0.0,
+  "protected_max_J_abs": 0.0,
+  "real_Cherchi_native_calls": 0,
+  "schema": "W5_M12_MERGED_FRESH_SEEDS_ANALYTIC_ONLY_V1",
+  "seed_list": [
+    53,
+    59,
+    61
+  ],
+  "strict_saturation_total_full_oracle_analytic_calls": 60,
+  "strict_saturation_total_independent_geometries": 60,
+  "strict_saturation_total_queries": 240
+}
