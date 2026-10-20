@@ -1,0 +1,10 @@
+{
+  "newton_admitted": false,
+  "reason": "W3_PREVIOUS_STAGE9_HAS_NO_FOUR_NATIVE_PACKETS",
+  "status": "BLOCKED_MISSING_FOUR_NEW_CHERCHI_SIDE_MATERIALS",
+  "training_admissible": false,
+  "w3_new_materials": 0,
+  "w3_new_native_calls": 0,
+  "w3_observed_head": "533f2f78e4b9e62920a8e667edc3cce9924bff8e",
+  "w3_stage9_git_blob_sha1": "ec6995c2b60cb5158d94f79a783a60d9ad64f23d"
+}
