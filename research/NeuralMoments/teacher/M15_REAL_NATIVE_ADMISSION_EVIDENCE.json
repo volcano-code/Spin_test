@@ -1,0 +1,48 @@
+{
+  "schema": "w2-m15-frozen-heart-and-noodles-native-attempt-v1",
+  "status": "HEART_INPUT_READY_NATIVE_UNAVAILABLE_NOODLES_FROZEN_EVIDENCE_INCOMPLETE",
+  "provenance": {
+    "historical_run_id": 39123384402,
+    "historical_workflow_conclusion": "failure",
+    "archive_zip_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+    "frozen_request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+    "frozen_h8f_model_obj_sha256": "fbada64691e30b458bc5b5375f8d4ad351cb0b383d800512bb659077b29532f6"
+  },
+  "heart": {
+    "source_obj_unit": "mm",
+    "source_divisor_mm_per_normalized_unit": 25,
+    "vertices": 15646,
+    "faces": 31288,
+    "source_to_frozen_request_vertices_exact_binary64": true,
+    "source_to_frozen_request_faces_ordered_exact": true,
+    "original_units_per_normalized_unit_m": 0.025,
+    "original_native_module_sha256": "ad0c4fe3527954c611743dbbccb384cc1521909e8a39d68c3b7554b3a3919d40",
+    "locally_derived_normalized_obj_sha256": "59ca43758f62bf2cbb700a08e6e1e7ac4a5e6b43f5a06efc5e637b950f68448f",
+    "locally_prepared_spec_sha256": "37450ba466ca28255da97f1628a4db3af91d676f9425b4dca057dcc5a42e86a1",
+    "true_native_import_attempted": true,
+    "native_import_result": "ModuleNotFoundError: No module named 'make_it_stand'",
+    "real_native_evaluations_new": 0,
+    "derivative_admitted": false
+  },
+  "noodles": {
+    "historic_finite_points": 81,
+    "historic_finite_sample_numerical_fd_error": 5.536038294451373e-11,
+    "historic_finite_sample_continuous_neighborhood_certified": false,
+    "historic_case_admission": false,
+    "historical_report_git_blob": "efe41e9d8397dd8b64978b7930d422d488978b28",
+    "historical_numerical_and_connection_report_paths_not_present_in_w2_branch": true,
+    "historical_frozen_request_path_not_present_in_w2_branch": true,
+    "no_new_native_evaluation": true,
+    "current_status": "BLOCKED_MISSING_FROZEN_PRODUCTION_REQUEST_AND_MATERIAL_SOURCES"
+  },
+  "local_test_status": {
+    "executed": 12,
+    "passed": 12,
+    "failed": 0,
+    "scope": "local W2 M15 implementation and mirrored Noodles gate; exact GitHub-committed byte-for-byte test execution not established"
+  },
+  "historical_data_reused_without_modification": true,
+  "new_native_cherchi_calls": 0,
+  "new_admitted_J_D_labels": 0,
+  "training_admitted": false
+}
