@@ -1,0 +1,29 @@
+test_actual_immutable_h8c_archive_not_fake (test_m11.SyntheticReceipt.test_actual_immutable_h8c_archive_not_fake) ... ok
+test_json_duplicate_keys_are_rejected (test_m11.SyntheticReceipt.test_json_duplicate_keys_are_rejected) ... ok
+test_m10_blocked_native_environment_never_launches_m11 (test_m11.SyntheticReceipt.test_m10_blocked_native_environment_never_launches_m11) ... ok
+test_m11_refuses_subsequent_false_success_after_m10_zero (test_m11.SyntheticReceipt.test_m11_refuses_subsequent_false_success_after_m10_zero) ... ok
+test_reject_blocked_preflight (test_m11.SyntheticReceipt.test_reject_blocked_preflight) ... ok
+test_reject_changed_jacobian_and_archived_snapshot (test_m11.SyntheticReceipt.test_reject_changed_jacobian_and_archived_snapshot) ... ok
+test_reject_drifted_original_module_binary (test_m11.SyntheticReceipt.test_reject_drifted_original_module_binary) ... ok
+test_reject_invalid_timer_sum (test_m11.SyntheticReceipt.test_reject_invalid_timer_sum) ... ok
+test_reject_m5_m9_cross_run_drift (test_m11.SyntheticReceipt.test_reject_m5_m9_cross_run_drift) ... ok
+test_reject_missing_boolean_stage (test_m11.SyntheticReceipt.test_reject_missing_boolean_stage) ... ok
+test_reject_per_point_report_tamper (test_m11.SyntheticReceipt.test_reject_per_point_report_tamper) ... ok
+test_reject_source_construction_internal_digest (test_m11.SyntheticReceipt.test_reject_source_construction_internal_digest) ... ok
+test_reject_unsourced_history_material (test_m11.SyntheticReceipt.test_reject_unsourced_history_material) ... ok
+test_synthetic_reference_receipt_passes_integrity_only (test_m11.SyntheticReceipt.test_synthetic_reference_receipt_passes_integrity_only) ... ok
+test_forged_fast_candidate_wall_with_self_consistent_ratio_rejected (test_m12.SyntheticReceiptBinding.test_forged_fast_candidate_wall_with_self_consistent_ratio_rejected) ... ok
+test_forged_fast_evaluation_wall_even_after_ratio_update_rejected (test_m12.SyntheticReceiptBinding.test_forged_fast_evaluation_wall_even_after_ratio_update_rejected) ... ok
+test_m5_cannot_omit_fraction_independent_validation (test_m12.SyntheticReceiptBinding.test_m5_cannot_omit_fraction_independent_validation) ... ok
+test_m5_sample_wall_requires_actual_parent_ledger_window (test_m12.SyntheticReceiptBinding.test_m5_sample_wall_requires_actual_parent_ledger_window) ... ok
+test_missing_native_geometry_audit_span_rejected (test_m12.SyntheticReceiptBinding.test_missing_native_geometry_audit_span_rejected) ... ok
+test_normal_synthetic_contract_still_checks_scoped_timing (test_m12.SyntheticReceiptBinding.test_normal_synthetic_contract_still_checks_scoped_timing) ... ok
+test_exact_m9_timing_accounting (test_m12.TimingScopeUnit.test_exact_m9_timing_accounting) ... ok
+test_native_boolean_alone_does_not_replace_independent_audits (test_m12.TimingScopeUnit.test_native_boolean_alone_does_not_replace_independent_audits) ... ok
+test_stage_count_does_not_allow_duplicated_audits (test_m12.TimingScopeUnit.test_stage_count_does_not_allow_duplicated_audits) ... ok
+test_staged_evaluation_cannot_exceed_observed_eval_window (test_m12.TimingScopeUnit.test_staged_evaluation_cannot_exceed_observed_eval_window) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.910s
+
+OK

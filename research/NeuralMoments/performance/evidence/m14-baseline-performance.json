@@ -1,0 +1,40 @@
+{
+  "schema": "w1-m14-native-custody-baseline-v1",
+  "scope": "DEVELOPMENT_AND_SYNTHETIC_SCIENCE_RECEIPT_GATE_NO_FRESH_BOOLEAN",
+  "branch": "research/neuralmoments-w1-native-20261019",
+  "freeze_commit": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "parent_w1_sha": "5f2e5fcb3abeaa24393c271e86b80e5983a3ee68",
+  "h8c_original_archive_sha256": "78749e99abd25ab2d2571440991ffa4e907a1565b4c7faf5210496431389cdd7",
+  "original_workflow_h8e_failed_feature_hash_drift_count": 8,
+  "original_h8e_unattributed_seconds": 301.5494231889993,
+  "local_test_group_counts": [
+    51,
+    34,
+    24,
+    39
+  ],
+  "total_local_tests_passed": 148,
+  "m14_new_tests_passed": 18,
+  "m13_tests_recovered_to_git": 21,
+  "host": {
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "cgroup_memory_max_bytes": 4294967296,
+    "swap_count": 0,
+    "production_native_module_present": {
+      "_make_it_stand": false,
+      "_cherchi_core_boolean": false,
+      "_cherchi_rational_moments": false
+    }
+  },
+  "actual_m14_native_attempt": {
+    "returncode": 1,
+    "failure": "M10_FULL_GIT_CHECKOUT_REQUIRED",
+    "verified_new_native_calls": 0,
+    "success_admission_generated": false
+  },
+  "github_remote_ci": "NOT_EXECUTED",
+  "full_faster_newton_speedup": null,
+  "production_optimization_merged": false,
+  "paper_speed_qualified": false
+}

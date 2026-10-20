@@ -1,0 +1,11 @@
+{
+  "schema": "w1-m14-native-custody-before-after-v1",
+  "original_m13_verifier": "CHECKS_STAGE_SUCCESS_AND_NATIVE_MODULE_HASHES",
+  "current_m14_verifier": "BINDS_FROZEN_COMMITTED_SOURCE_CLEAN_WORKTREE_BUILD_STAGE_LOGS_ACTUAL_MODULES_AND_M11_MATERIAL_RECEIPTS",
+  "complete_old_new_solver_runs": 0,
+  "full_solver_speedup": null,
+  "newton_end_state_parity": null,
+  "w0_w2_production_gate_passed": false,
+  "scientific_success_claimed": false,
+  "paper_speed_qualified": false
+}

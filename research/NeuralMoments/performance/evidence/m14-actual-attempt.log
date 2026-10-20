@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/mnt/data/W1_M14_work/research/NeuralMoments/performance/m14_native_build_custody.py", line 232, in <module>
+    main()
+    ~~~~^^
+  File "/mnt/data/W1_M14_work/research/NeuralMoments/performance/m14_native_build_custody.py", line 227, in main
+    report=execute(args.root,args.archive,args.m13_artifacts,args.output)
+  File "/mnt/data/W1_M14_work/research/NeuralMoments/performance/m14_native_build_custody.py", line 209, in execute
+    result=custody(root,archive,artifacts)
+  File "/mnt/data/W1_M14_work/research/NeuralMoments/performance/m14_native_build_custody.py", line 87, in custody
+    identity=protected_checkout(root)
+  File "/mnt/data/W1_M14_work/research/NeuralMoments/performance/m14_native_build_custody.py", line 51, in protected_checkout
+    identity=m10.repo_identity(root)
+  File "/mnt/data/W1_M14_work/research/NeuralMoments/performance/m10_native_host_runner.py", line 52, in repo_identity
+    raise ValueError('M10_FULL_GIT_CHECKOUT_REQUIRED')
+ValueError: M10_FULL_GIT_CHECKOUT_REQUIRED

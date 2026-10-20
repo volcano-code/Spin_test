@@ -1,0 +1,8 @@
+{
+  "error": "ValueError: M10_FULL_GIT_CHECKOUT_REQUIRED",
+  "full_solver_speedup": null,
+  "paper_speed_qualified": false,
+  "schema": "w1-m14-fail-closed-v1",
+  "status": "BLOCKED_OR_FAILED_NO_FRESH_NATIVE_CERTIFICATION",
+  "verified_native_calls": 0
+}

@@ -1,0 +1,44 @@
+test_absent_boost_shared_rejected (test_m13.TestM13.test_absent_boost_shared_rejected) ... ok
+test_build_worker_ceiling_is_strict_integer (test_m13.TestM13.test_build_worker_ceiling_is_strict_integer) ... ok
+test_cherchi_arithmetic_required (test_m13.TestM13.test_cherchi_arithmetic_required) ... ok
+test_compiler_and_source_hash_scope_no_production_math_claim (test_m13.TestM13.test_compiler_and_source_hash_scope_no_production_math_claim) ... ok
+test_core_build_matches_native_workflow (test_m13.TestM13.test_core_build_matches_native_workflow) ... ok
+test_corrupt_real_h8_archive_rejected (test_m13.TestM13.test_corrupt_real_h8_archive_rejected) ... ok
+test_dirty_pinned_source_refuses_fetch_even_at_correct_commit (test_m13.TestM13.test_dirty_pinned_source_refuses_fetch_even_at_correct_commit) ... ok
+test_do_not_write_existing_build_dir (test_m13.TestM13.test_do_not_write_existing_build_dir) ... ok
+test_empty_placeholder_sources_can_be_fetched_explicitly (test_m13.TestM13.test_empty_placeholder_sources_can_be_fetched_explicitly) ... ok
+test_frozen_dependencies_explicit (test_m13.TestM13.test_frozen_dependencies_explicit) ... ok
+test_missing_pinned_sources_only_fetch_after_explicit_optin (test_m13.TestM13.test_missing_pinned_sources_only_fetch_after_explicit_optin) ... ok
+test_native_build_worker_not_rerouted_to_other_branch (test_m13.TestM13.test_native_build_worker_not_rerouted_to_other_branch) ... ok
+test_no_nonpic_static_boost_after_patch (test_m13.TestM13.test_no_nonpic_static_boost_after_patch) ... ok
+test_non_native_preflight_writes_only_blocked_files (test_m13.TestM13.test_non_native_preflight_writes_only_blocked_files) ... ok
+test_nonzero_build_exits_fail_closed (test_m13.TestM13.test_nonzero_build_exits_fail_closed) ... ok
+test_only_m11_coordinator_may_run_two_serial_hour_limited_jobs (test_m13.TestM13.test_only_m11_coordinator_may_run_two_serial_hour_limited_jobs) ... ok
+test_pinned_source_rejects_modified_tracked_code (test_m13.TestM13.test_pinned_source_rejects_modified_tracked_code) ... ok
+test_preflight_is_failsafe_on_unsupported_host (test_m13.TestM13.test_preflight_is_failsafe_on_unsupported_host) ... ok
+test_source_check_requires_both_revisions_and_headers (test_m13.TestM13.test_source_check_requires_both_revisions_and_headers) ... ok
+test_stage_timeout_cannot_exceed_60min (test_m13.TestM13.test_stage_timeout_cannot_exceed_60min) ... ok
+test_wrong_existing_source_cannot_be_overwritten (test_m13.TestM13.test_wrong_existing_source_cannot_be_overwritten) ... ok
+test_altered_binary_rejected (test_m14.TestSyntheticBuildCustody.test_altered_binary_rejected) ... ok
+test_blocked_without_build_reports_no_success (test_m14.TestSyntheticBuildCustody.test_blocked_without_build_reports_no_success) ... ok
+test_five_parallel_compile_workers_rejected (test_m14.TestSyntheticBuildCustody.test_five_parallel_compile_workers_rejected) ... ok
+test_foreign_binary_not_in_new_build_rejected (test_m14.TestSyntheticBuildCustody.test_foreign_binary_not_in_new_build_rejected) ... ok
+test_m11_proof_changed_and_summary_updated_but_independent_audit_rejects (test_m14.TestSyntheticBuildCustody.test_m11_proof_changed_and_summary_updated_but_independent_audit_rejects) ... ok
+test_missing_build_stage_fails (test_m14.TestSyntheticBuildCustody.test_missing_build_stage_fails) ... ok
+test_missing_m11_material_proof_rejected (test_m14.TestSyntheticBuildCustody.test_missing_m11_material_proof_rejected) ... ok
+test_synthetic_structure_is_accepted_only_under_mock (test_m14.TestSyntheticBuildCustody.test_synthetic_structure_is_accepted_only_under_mock) ... ok
+test_tampered_build_log_fails (test_m14.TestSyntheticBuildCustody.test_tampered_build_log_fails) ... ok
+test_wrong_cgal_provenance_rejected (test_m14.TestSyntheticBuildCustody.test_wrong_cgal_provenance_rejected) ... ok
+test_wrong_original_source_commit_rejected (test_m14.TestSyntheticBuildCustody.test_wrong_original_source_commit_rejected) ... ok
+test_clean_synthetic_w1_checkout_passes (test_m14.TestTrackedCheckoutProvenance.test_clean_synthetic_w1_checkout_passes) ... ok
+test_heartbeat_workflow_dirty_fails (test_m14.TestTrackedCheckoutProvenance.test_heartbeat_workflow_dirty_fails) ... ok
+test_other_window_committed_changes_rejected (test_m14.TestTrackedCheckoutProvenance.test_other_window_committed_changes_rejected) ... ok
+test_performance_only_committed_changes_pass (test_m14.TestTrackedCheckoutProvenance.test_performance_only_committed_changes_pass) ... ok
+test_production_commit_drifts_from_freeze (test_m14.TestTrackedCheckoutProvenance.test_production_commit_drifts_from_freeze) ... ok
+test_staged_production_modified (test_m14.TestTrackedCheckoutProvenance.test_staged_production_modified) ... ok
+test_unstaged_production_modified (test_m14.TestTrackedCheckoutProvenance.test_unstaged_production_modified) ... ok
+
+----------------------------------------------------------------------
+Ran 39 tests in 0.510s
+
+OK

@@ -1,0 +1,70 @@
+{
+  "branch": "research/neuralmoments-w1-native-20261019",
+  "files": {
+    "M14_RESULTS.md": {
+      "bytes": 6778,
+      "git_blob_sha1": "1658e53ca01abd6fe84ff508b8ba2f3cef2a343d",
+      "sha256": "8c88108c38508d02cfa448f00cc2fcfb0540883122546dde637879ea23c67ded"
+    },
+    "evidence/m14-actual-attempt.log": {
+      "bytes": 1053,
+      "git_blob_sha1": "163025c9120923cc45f46d0906f916ca0a004f8a",
+      "sha256": "e82913ddede4fe3dd9ea0cc88a01c28450cd05aabcb5aab32b810eab7fe2f8d4"
+    },
+    "evidence/m14-actual-failure.json": {
+      "bytes": 255,
+      "git_blob_sha1": "f8ed3b08df17cc948c31dfe196ef8cd73389cf49",
+      "sha256": "c5b9097232ad937d4ec0a144fbd6332870f92547b776f13988571d329254dbc6"
+    },
+    "evidence/m14-baseline-performance.json": {
+      "bytes": 1358,
+      "git_blob_sha1": "7bff9ea2995f6ee0fc5d0e9068c9c44dfa5cc1be",
+      "sha256": "37c040afc376535f05a5f765435961dcd8aa4f2d067e12874161bd4479debd61"
+    },
+    "evidence/m14-before_after.json": {
+      "bytes": 481,
+      "git_blob_sha1": "287809625fea58c508c7986dde0133e8a6efda01",
+      "sha256": "4581c18f5496028feb67d4876eabad6f913841e84acf99b6d83c52f4fa8b0f9a"
+    },
+    "evidence/m14-regression-m11-m12.log": {
+      "bytes": 3267,
+      "git_blob_sha1": "8439d77ff327c9b7f214b7cb178886e56985639e",
+      "sha256": "22889dd49e3f6f2c143896607705c1b62a96b641d9cef95b092084a8e97aa4ce"
+    },
+    "evidence/m14-regression-m13-m14.log": {
+      "bytes": 4925,
+      "git_blob_sha1": "335e6485d738222d499e904fe982fd222f6efad0",
+      "sha256": "4cb8ff1328370b138143f8583f29cab349fa196f640af9bdfc02570291b48775"
+    },
+    "evidence/m14-regression-m5-m8.log": {
+      "bytes": 6154,
+      "git_blob_sha1": "11481668261bd3eb0dfa69815fc43523f87aee30",
+      "sha256": "d62930c3f50fb7e72b171ac309efb2a00a900c7624ba3a55616bd728fe987752"
+    },
+    "evidence/m14-regression-m9-m10.log": {
+      "bytes": 4429,
+      "git_blob_sha1": "21937d34a08550cb1b543d2900efc861f2fcd473",
+      "sha256": "5fff71b712ff2bd6801a28ccd2b98181e011c825994d98643287572a414b88f8"
+    },
+    "m14_native_build_custody.py": {
+      "bytes": 11282,
+      "git_blob_sha1": "71ae6f0c6a362a948b4e77f7dcc01f747df3057c",
+      "sha256": "a29545ad9ec25be3ca630e2c73755e4128f54d759a0c35c2b34da69299180e40"
+    },
+    "test_m13.py": {
+      "bytes": 14715,
+      "git_blob_sha1": "7001fa5714f4c670ccd58a9d11931a3998b191d7",
+      "sha256": "fff437d357bc9d73386c9dd206fa41a662c299c46652fb4ec0030697ad59ec8f"
+    },
+    "test_m14.py": {
+      "bytes": 12993,
+      "git_blob_sha1": "070094adc791a8e2c46e7645a0a029775f5691bc",
+      "sha256": "2c75b20d96b2e63639fa194b91288804dee7a790c4eb5cdacc5921a63866f2d8"
+    }
+  },
+  "original_parent_commit_sha": "5f2e5fcb3abeaa24393c271e86b80e5983a3ee68",
+  "remote_ci_run": false,
+  "schema": "w1-m14-commit-source-manifest-v1",
+  "self_sha256_included": false,
+  "source_paths": "research/NeuralMoments/performance/"
+}
