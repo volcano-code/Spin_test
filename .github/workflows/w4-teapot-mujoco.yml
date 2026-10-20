@@ -272,6 +272,45 @@ jobs:
           PY
           fi
 
+      - name: P10 independent exact-decimal material receipt and P11 preflight tests
+        env:
+          W4_REAL_P9_OBJ: ${{ github.workspace }}/research/SpinIt2014_Teapot_20261018/P1/p9-cherchi-handle-variants/cherchi-body-spout-handle-03.obj
+          W4_REAL_P9_JOURNAL: ${{ github.workspace }}/research/SpinIt2014_Teapot_20261018/P1/p9-cherchi-handle-variants/p9-source-deviation-sweep.json
+        run: |
+          set -euo pipefail
+          mkdir -p "$P1/p10-cherchi-seal"
+          python -m unittest discover -s "$P1" -p 'test_p10_p11_material.py' -v 2>&1 | tee "$P1/p10-cherchi-seal/local-seven-tests.log"
+          python "$P1/p10_cherchi_material_baseline.py" --source "$W4_REAL_P9_OBJ" --p0 research/SpinIt2014_Teapot_20261018/input/teapot-public-original.obj --p1 "$P1/teapot-topology-candidate-p1.obj" --journal "$W4_REAL_P9_JOURNAL" --output "$P1/p10-cherchi-seal" | tee "$P1/p10-cherchi-seal/p10-native-source-audit.log"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('research/SpinIt2014_Teapot_20261018/P1/p10-cherchi-seal/p10-numeric-source-seal.json').read_text())
+          assert r['status']=='NUMERIC_CLOSED_DECIMAL_EXACT_MOMENTS_ONLY'
+          assert r['topology']['one_component_closed_preflight']
+          assert r['max_abs_error_vs_P9_production_ten']<1e-9
+          assert r['source_obj_sha256']=='154cdfc9ec94b6885a95e596c36ac1382dd2d36ed99e19d0b36c2b9de80b6df4'
+          assert not r['native_exact_set_identity_certified']
+          assert not r['W0_tip_axis_scale_density_F_D_approved']
+          print('P10 independent serialized-OBJ decimal exact moments and numeric geometry PASS')
+          PY
+
+      - name: P11 actual Cherchi native subtraction with provisional F/D and independent ten-moment check
+        run: |
+          set -euo pipefail
+          python "$P1/p11_cherchi_partition_feasibility.py" --material "$P1/p10-cherchi-seal/cherchi-p9-numeric-original-yup.obj" --native-bin build/w4-cherchi-reference/bin/w4_cherchi_reference_native --output "$P1/p11-trial-FD" --timeout 90 | tee "$P1/p10-cherchi-seal/p11-native-subtraction.log"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('research/SpinIt2014_Teapot_20261018/P1/p11-trial-FD/p11-experimental-FD-partition.json')
+          j=json.loads(p.read_text())
+          assert j['status']=='EXPERIMENTAL_CHERCHI_FD_NUMERIC_ADDENDUM_PASS'
+          assert j['max_abs_ten_moment_partition_error']<5e-7
+          assert not j['material_partition_approved']
+          assert not j['W0_fixed_F_removable_D_authorized']
+          assert not j['SpinIt_optimization_performed']
+          print('P11 real Cherchi subtraction: provisional F/D only, not W0-authorized or optimized')
+          PY
+
       - name: Always retain Cherchi compile/native source and failed validation evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -281,6 +320,8 @@ jobs:
             research/SpinIt2014_Teapot_20261018/P1/p7-cherchi-native/**
             research/SpinIt2014_Teapot_20261018/P1/p8-cherchi-forensics/**
             research/SpinIt2014_Teapot_20261018/P1/p9-cherchi-handle-variants/**
+            research/SpinIt2014_Teapot_20261018/P1/p10-cherchi-seal/**
+            research/SpinIt2014_Teapot_20261018/P1/p11-trial-FD/**
             build/w4-cherchi-reference/CMakeCache.txt
             build/w4-cherchi-reference/CMakeFiles/CMakeConfigureLog.yaml
           if-no-files-found: warn
