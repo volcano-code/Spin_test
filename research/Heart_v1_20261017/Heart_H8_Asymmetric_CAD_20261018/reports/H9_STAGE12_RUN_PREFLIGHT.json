@@ -1,0 +1,26 @@
+{
+  "artifact_sha256_expected": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "blocked_reasons": [
+    "NOT_FROZEN_W3_BRANCH_OR_ANCESTOR",
+    "LESS_THAN_24GIB_EFFECTIVE_MEMORY",
+    "NOT_A_COMPLETE_SOURCE_CHECKOUT"
+  ],
+  "git_ref": {
+    "branch": null,
+    "frozen_ancestor_is_ancestor": false,
+    "head_sha": null
+  },
+  "machine_memory": {
+    "container_memory_limit_bytes": 4294967296,
+    "effective_memory_bytes": 4294967296,
+    "mem_available_bytes": 4935794688,
+    "physical_mem_bytes": 6236856320,
+    "physical_swap_bytes": 0
+  },
+  "newton_admitted": false,
+  "python": "3.13.5",
+  "ready": false,
+  "repo": "/mnt/data/w3_stage12_work",
+  "source_contract": null,
+  "status": "BLOCKED_NO_NATIVE_EVALUATION"
+}

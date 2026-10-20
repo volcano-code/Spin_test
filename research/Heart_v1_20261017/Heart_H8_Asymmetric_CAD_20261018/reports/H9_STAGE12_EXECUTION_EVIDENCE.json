@@ -1,0 +1,68 @@
+{
+  "actual_newton_accepted_step_observed": false,
+  "branch": "research/neuralmoments-w3-heart-h9-20261019",
+  "cgroup_memory_limit_bytes": 4294967296,
+  "changed_git_blob_sha": {
+    "source/h9_same_call_capture.py": "b99dcab5aa97a03f706ca8591722bce6f42e04d0",
+    "tests/test_h9_stage12_forensic_commit.py": "a1f371b7629808da22208d37ebe30e5b166b29ab",
+    "tests/test_h9_stage8_handoff_contract.py": "a330b4877f0d7727f995f331044baf42f02931b3"
+  },
+  "elapsed_related_tests_seconds": 27.855,
+  "final_heart_obj_available": false,
+  "forensic_fault_injection": [
+    "actual subprocess os._exit before side metadata; original gzip and SHA manifest retained",
+    "post-Cherchi metadata-write error",
+    "fsync error",
+    "hardlink failure",
+    "foreign orphan packet never overwritten",
+    "same-inode interrupted orphan may be recovered and retried"
+  ],
+  "frozen_H8f_ancestor": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "historical_workflow_conclusion": "failure",
+  "historical_workflow_run_id": 39123384402,
+  "initial_combined_regression": "90 executed; 2 old error-code expectations failed; corrected assertions; final 90/90 passed",
+  "local_test_log_sha256": "696d907524f0b7df551dec9d59cb986af5f96d583d3ab29ca7fb15164a945f9c",
+  "milestone": "CRASH_CONSISTENT_FORENSIC_PROMOTION_OF_GENUINE_SAME_CALL_PACKET",
+  "new_four_sample_materials_complete": false,
+  "new_native_cherchi_boolean_calls": 0,
+  "new_tests_passed": 7,
+  "newton_admitted": false,
+  "no_newton_scope": "FOUR_FINITE_SAMPLES_ARE_NOT_CONTINUOUS_SMOOTH_PROOF",
+  "original_actions_artifact_id": 12135528290,
+  "preflight_blockers": {
+    "build": [
+      "NOT_FROZEN_W3_BRANCH_OR_ANCESTOR",
+      "LESS_THAN_24GIB_EFFECTIVE_MEMORY",
+      "NOT_A_COMPLETE_SOURCE_CHECKOUT"
+    ],
+    "inner_native": [
+      "INSUFFICIENT_EFFECTIVE_MEMORY_FOR_24GIB_ISOLATED_NATIVE_JOB",
+      "NOT_A_FROZEN_W3_GIT_CHECKOUT",
+      "PINNED_NATIVE_EXTENSIONS_UNAVAILABLE"
+    ]
+  },
+  "previous_head_sha": "8322f381ee23f26ef6be0378bba7d4cececbb60e",
+  "related_old_and_new_tests_passed": 90,
+  "remote_ci_run_not_triggered": true,
+  "repo": "volcano-code/Spin_test",
+  "run_results": {
+    "audit": {
+      "exit_code": 1
+    },
+    "build": {
+      "exit_code": 2
+    },
+    "inner": {
+      "exit_code": 2
+    },
+    "inputs": {
+      "exit_code": 0
+    },
+    "run": {
+      "exit_code": 2
+    }
+  },
+  "schema": "heart-h9-stage12-forensic-safe-promotion-evidence-v1",
+  "verified_source_artifact_zip_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "window": "W3"
+}

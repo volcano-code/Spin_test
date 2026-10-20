@@ -1,0 +1,47 @@
+{
+  "actual_native_boolean_result_available": false,
+  "all_four_coefficients_are_finite_and_ordered": true,
+  "certificate_recomputed_from_frozen_actual_material": true,
+  "exact_certificate_bytes_sha256": "74a6064f3c7736960f816332291fbac7cb82360aef901bf1087640603604b9e6",
+  "final_heart_obj_produced": false,
+  "four_new_native_calls_completed_by_this_gate": 0,
+  "four_new_native_probe_plan": [
+    {
+      "c7": 2.1805862283444328e-06,
+      "distance_from_proxy_root": "-1/10000000",
+      "expected_proxy_event_sign": 1,
+      "index": 0,
+      "side": "left-coarse"
+    },
+    {
+      "c7": 2.2705862283444327e-06,
+      "distance_from_proxy_root": "-1/100000000",
+      "expected_proxy_event_sign": 1,
+      "index": 1,
+      "side": "left-near"
+    },
+    {
+      "c7": 2.2905862283444326e-06,
+      "distance_from_proxy_root": "1/100000000",
+      "expected_proxy_event_sign": -1,
+      "index": 2,
+      "side": "right-near"
+    },
+    {
+      "c7": 2.3805862283444325e-06,
+      "distance_from_proxy_root": "1/10000000",
+      "expected_proxy_event_sign": -1,
+      "index": 3,
+      "side": "right-coarse"
+    }
+  ],
+  "frozen_request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+  "historical_run_conclusion": "failure",
+  "historical_run_id": 39123384402,
+  "newton_admitted": false,
+  "production_continuous_branch_certified": false,
+  "schema": "heart-h9-frozen-input-gate-v1",
+  "source_artifact_id": 12135528290,
+  "source_artifact_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "status": "FROZEN_INPUT_READY_FOR_NATIVE_ATTEMPT_ONLY"
+}

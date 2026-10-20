@@ -11,6 +11,7 @@ import gzip
 from hashlib import sha256
 import json
 import os
+import stat
 from pathlib import Path
 import tempfile
 
@@ -111,8 +112,24 @@ def capture_same_call(output, *, index, side, coefficients, material, backend_id
     return proof
 
 
+def _sync_directory(folder):
+    """Persist directory-entry transitions on the Linux W3 native runner."""
+    fd = os.open(folder, os.O_RDONLY | getattr(os, 'O_DIRECTORY', 0))
+    try:
+        os.fsync(fd)
+    finally:
+        os.close(fd)
+
+
 def promote_after_full_audit(output, capture, side_metadata):
-    """Finalize only a complete producer audit; incomplete captures stay distinct."""
+    """Commit a verified packet without ever moving away its last forensic copy.
+
+    A verified `side-*.json.gz` without its `side-*.json` is NOT a qualified
+    packet. Keep the unverified gzip + manifest in place until the complete
+    pair is durable. Use a hard link, not os.replace(pending, final), so an
+    interrupted side metadata write cannot destroy the capture checkpoint.
+    All paths live in the same W3 output directory/filesystem.
+    """
     path = Path(output)
     need(type(capture) is dict and capture.get('schema') ==
          'heart-h9-unverified-same-call-checkpoint-v1', 'INVALID_CAPTURE_MANIFEST')
@@ -122,7 +139,7 @@ def promote_after_full_audit(output, capture, side_metadata):
     manifest_path = path / f'unverified-{identity}.json'
     final = path / f'side-{identity}.json.gz'
     final_metadata = path / f'side-{identity}.json'
-    need(not final.exists() and not final_metadata.exists(), 'VALIDATED_NATIVE_PACKET_ALREADY_PRESENT')
+    need(not final_metadata.exists(), 'VALIDATED_NATIVE_PACKET_ALREADY_PRESENT')
     need(manifest_path.is_file() and pending.is_file(), 'UNVERIFIED_SAME_CALL_PACKET_NOT_FOUND')
     need(json.loads(manifest_path.read_text(encoding='utf8')) == capture
          and digest(pending) == capture['archive_sha256'],
@@ -133,11 +150,44 @@ def promote_after_full_audit(output, capture, side_metadata):
          and side_metadata.get('material_sha256') == capture['archive_sha256']
          and side_metadata.get('native_geometry_valid') is True,
          'UNVALIDATED_OR_MISMATCHED_NATIVE_SIDE_METADATA')
-    # Preserve the same compressed bytes, rather than reserializing the same-call
-    # packet *after* the original engine/material objects may have been mutated.
-    os.replace(pending, final)
-    _atomic_write_json(final_metadata, side_metadata)
-    manifest_path.unlink()
+    # If an earlier process crashed after the hard link but before metadata,
+    # only an inode-identical *regular-file* orphan may be removed for retry.
+    # A foreign file/symlink, even with identical contents, is never replaced.
+    if final.exists() or final.is_symlink():
+        source_st, orphan_st = os.stat(pending), os.lstat(final)
+        need(stat.S_ISREG(orphan_st.st_mode)
+             and source_st.st_dev == orphan_st.st_dev
+             and source_st.st_ino == orphan_st.st_ino,
+             'FOREIGN_ORPHAN_NATIVE_SIDE_PACKET_DO_NOT_OVERWRITE')
+        final.unlink()
+        _sync_directory(path)
+    # Do not consume the only unverified forensic copy before metadata is
+    # written and fsync'ed. Both links initially reference identical gzip bytes.
+    # os.link is atomic and fails rather than overwriting an existing side.
+    linked = False
+    try:
+        os.link(pending, final)
+        linked = True
+        _atomic_write_json(final_metadata, side_metadata)
+        _sync_directory(path)
+    except (OSError, ValueError, TypeError):
+        # Any incomplete promotion leaves the original capture + SHA manifest
+        # untouched, ready for safe investigation or an explicit retry.
+        final_metadata.unlink(missing_ok=True)
+        if linked:
+            final.unlink(missing_ok=True)
+        raise
+    # After the durable pair exists, forensic cleanup is best-effort only.
+    # A cleanup failure must NOT remove or invalidate the completed evidence.
+    cleanup_errors = []
+    for stale in (manifest_path, pending):
+        try:
+            stale.unlink()
+        except OSError as exc:
+            cleanup_errors.append(f'{stale.name}:{type(exc).__name__}')
+    _sync_directory(path)
     return {'side': side, 'material_sha256': capture['archive_sha256'],
             'archive': str(final), 'complete_material_metadata': str(final_metadata),
+            'forensic_cleanup_incomplete': bool(cleanup_errors),
+            'forensic_cleanup_errors': cleanup_errors,
             'newton_admitted': False}

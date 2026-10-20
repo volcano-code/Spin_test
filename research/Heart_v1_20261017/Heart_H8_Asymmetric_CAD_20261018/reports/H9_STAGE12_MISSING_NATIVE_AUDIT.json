@@ -1,0 +1,8 @@
+{
+  "historical_h8f_ci_conclusion": "failure",
+  "new_native_samples_reintegrated_and_qualified": 0,
+  "newton_admitted": false,
+  "reason": "ValueError: NO_COMPLETED_NEW_REAL_CHERCHI_RUN_REPORT",
+  "schema": "heart-h9-independent-new-side-audit-failure-v1",
+  "status": "FAILED_CLOSED_NO_NEWTON"
+}

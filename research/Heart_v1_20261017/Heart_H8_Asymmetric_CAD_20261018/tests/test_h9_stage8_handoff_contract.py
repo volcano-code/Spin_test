@@ -15,7 +15,7 @@ import audit_h9_new_native_sides as auditor
 class H9Stage8HandoffContracts(unittest.TestCase):
     def test_unverified_archive_not_accepted_as_new_native(self):
         with tempfile.TemporaryDirectory() as root:
-            with self.assertRaisesRegex(gate.HandoffRejected,'NOT_THE_HISTORICAL_FAILED_H8F_ARCHIVE'):
+            with self.assertRaisesRegex(gate.HandoffRejected,'HISTORICAL_H8F_SHA_CHANGED'):
                 gate.verify_handoff(root,original_archive_sha256='f'*64,
                      module_sha256={'_make_it_stand':'a'*64,
                          '_cherchi_core_boolean':'b'*64,
@@ -23,7 +23,7 @@ class H9Stage8HandoffContracts(unittest.TestCase):
 
     def test_missing_serial_result_never_accepted(self):
         with tempfile.TemporaryDirectory() as root:
-            with self.assertRaisesRegex(gate.HandoffRejected,'MISSING_OR_OVERSIZED_HANDOFF_JSON'):
+            with self.assertRaisesRegex(gate.HandoffRejected,'MISSING_OR_OVERSIZED_EVIDENCE:run_status.json'):
                 gate.verify_handoff(root,original_archive_sha256=gate.H8F_SHA256,
                      module_sha256={'_make_it_stand':'a'*64,
                          '_cherchi_core_boolean':'b'*64,
