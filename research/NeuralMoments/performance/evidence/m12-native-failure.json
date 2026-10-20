@@ -1,0 +1,13 @@
+{
+  "blockers": [
+    "git",
+    "source",
+    "native_modules",
+    "native_abi_import"
+  ],
+  "native_calls": 0,
+  "paper_speed_qualified": false,
+  "schema": "w1-m11-native-blocked-v1",
+  "solver_speedup": null,
+  "status": "BLOCKED_BEFORE_BOOLEAN"
+}

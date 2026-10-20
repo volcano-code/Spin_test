@@ -1,0 +1,68 @@
+test_double_count_stage_rejected (test_m5.M5Tests.test_double_count_stage_rejected) ... ok
+test_historical_failure_cannot_be_erased (test_m5.M5Tests.test_historical_failure_cannot_be_erased) ... ok
+test_historical_mixed_run_forbidden (test_m5.M5Tests.test_historical_mixed_run_forbidden) ... ok
+test_instrumented_ast_failure_equivalence (test_m5.M5Tests.test_instrumented_ast_failure_equivalence) ... ok
+test_instrumented_ast_return_equivalence (test_m5.M5Tests.test_instrumented_ast_return_equivalence) ... ok
+test_missing_native_is_fail_closed (test_m5.M5Tests.test_missing_native_is_fail_closed) ... ok
+test_nested_exclusive_accounting_and_fail (test_m5.M5Tests.test_nested_exclusive_accounting_and_fail) ... ok
+test_original_25point_accounting (test_m5.M5Tests.test_original_25point_accounting) ... ok
+test_replay_ledger_disjoint (test_m5.M5Tests.test_replay_ledger_disjoint) ... ok
+test_source_hash_uses_git_blob_frame (test_m5.M5Tests.test_source_hash_uses_git_blob_frame) ... ok
+test_strict_exact_audit_gates (test_m5.M5Tests.test_strict_exact_audit_gates) ... ok
+test_archive_original_h8e_failure_preserved (test_m6.M6Tests.test_archive_original_h8e_failure_preserved) ... ok
+test_exact_tetra_analytic_and_old_python (test_m6.M6Tests.test_exact_tetra_analytic_and_old_python) ... ok
+test_exclusive_timer_disjoint_fail_closed (test_m6.M6Tests.test_exclusive_timer_disjoint_fail_closed) ... ok
+test_missing_binary_blocks_without_success (test_m6.M6Tests.test_missing_binary_blocks_without_success) ... ok
+test_no_out_of_bounds_jobs (test_m6.M6Tests.test_no_out_of_bounds_jobs) ... ok
+test_python_reject_inconsistent_faces (test_m6.M6Tests.test_python_reject_inconsistent_faces) ... ok
+test_real_first_packet_exact_python_vs_gmp (test_m6.M6Tests.test_real_first_packet_exact_python_vs_gmp) ... M6_ARCHIVED_H8 1 / 1 GMP TETRA OK
+ok
+test_reject_invalid_face (test_m6.M6Tests.test_reject_invalid_face) ... ok
+test_reject_noncanonical_fraction_both (test_m6.M6Tests.test_reject_noncanonical_fraction_both) ... ok
+test_reject_truncated_and_extra_data (test_m6.M6Tests.test_reject_truncated_and_extra_data) ... ok
+test_wrong_archive_hash_and_no_fabricated_baseline (test_m6.M6Tests.test_wrong_archive_hash_and_no_fabricated_baseline) ... ok
+test_abba_summary_matched_and_scope_preserved (test_m7.M7Tests.test_abba_summary_matched_and_scope_preserved) ... ok
+test_bitwise_scientific_equivalence (test_m7.M7Tests.test_bitwise_scientific_equivalence) ... ok
+test_changed_scientific_receipt_fails (test_m7.M7Tests.test_changed_scientific_receipt_fails) ... ok
+test_decode_backend_validation (test_m7.M7Tests.test_decode_backend_validation) ... ok
+test_decoder_rejects_nonfinite_and_malformed_archive_json (test_m7.M7Tests.test_decoder_rejects_nonfinite_and_malformed_archive_json) ... ok
+test_historical_25_point_failure_is_immutable (test_m7.M7Tests.test_historical_25_point_failure_is_immutable) ... ok
+test_invalid_ab_sequence_and_missing_native_fail_closed (test_m7.M7Tests.test_invalid_ab_sequence_and_missing_native_fail_closed) ... ok
+test_missing_required_identity_and_nan_fails (test_m7.M7Tests.test_missing_required_identity_and_nan_fails) ... ok
+test_mutated_jacobian_or_quadric_fails_parity (test_m7.M7Tests.test_mutated_jacobian_or_quadric_fails_parity) ... ok
+test_one_real_packet_both_decoders_complete_and_identical (test_m7.M7Tests.test_one_real_packet_both_decoders_complete_and_identical) ... M7_AB_STARTED 1/2 stdlib 1 points
+M6_ARCHIVED_H8 1 / 1 GMP TETRA OK
+M7_AB_COMPLETED 1/2  wall=0.895s parse=0.145s
+M7_AB_STARTED 2/2 orjson 1 points
+M6_ARCHIVED_H8 1 / 1 GMP TETRA OK
+M7_AB_COMPLETED 2/2  wall=0.868s parse=0.082s
+ok
+test_scientific_receipt_checks_original_failure (test_m7.M7Tests.test_scientific_receipt_checks_original_failure) ... ok
+test_wrong_archive_sha_no_false_speedup (test_m7.M7Tests.test_wrong_archive_sha_no_false_speedup) ... ok
+test_cached_parser_is_bounded_per_call (test_m8.TestM8.test_cached_parser_is_bounded_per_call) ... ok
+test_candidate_first_actual_point_reproduces_full_archive (test_m8.TestM8.test_candidate_first_actual_point_reproduces_full_archive) ... ok
+test_exact_identity_target_and_nongeneric_fallback (test_m8.TestM8.test_exact_identity_target_and_nongeneric_fallback) ... ok
+test_float_drift_rejected (test_m8.TestM8.test_float_drift_rejected) ... ok
+test_fraction_semantics_exact_and_errors (test_m8.TestM8.test_fraction_semantics_exact_and_errors) ... ok
+test_fraction_target_drift_rejected (test_m8.TestM8.test_fraction_target_drift_rejected) ... ok
+test_frozen_request_checksum_and_zip_drift_rejected (test_m8.TestM8.test_frozen_request_checksum_and_zip_drift_rejected) ... ok
+test_nested_unregistered_stages_rejected (test_m8.TestM8.test_nested_unregistered_stages_rejected) ... ok
+test_original_and_candidate_real_12_24_parity (test_m8.TestM8.test_original_and_candidate_real_12_24_parity) ... ok
+test_original_first_actual_point_reproduces_full_archive (test_m8.TestM8.test_original_first_actual_point_reproduces_full_archive) ... ok
+test_out_of_range_job_rejected_and_original_hash_failure_kept (test_m8.TestM8.test_out_of_range_job_rejected_and_original_hash_failure_kept) ... ok
+test_real_single_point_scope_does_not_claim_solver_speed (test_m8.TestM8.test_real_single_point_scope_does_not_claim_solver_speed) ... M8_REPLAY 0 original 0.82 seconds
+M8_REPLAY 1 optimized 0.824 seconds
+M8_REPLAY 2 optimized 0.846 seconds
+M8_REPLAY 3 original 0.832 seconds
+ok
+test_reference_provenance_change_rejected (test_m8.TestM8.test_reference_provenance_change_rejected) ... ok
+test_bad_parser_always_rejected (test_m8_native_paired.TestNativeGate.test_bad_parser_always_rejected) ... ok
+test_native_guard_fail_closed_before_fake_success (test_m8_native_paired.TestNativeGate.test_native_guard_fail_closed_before_fake_success) ... ok
+test_original_function_global_untouched (test_m8_native_paired.TestNativeGate.test_original_function_global_untouched) ... ok
+test_two_clones_return_exact_same_coordinates (test_m8_native_paired.TestNativeGate.test_two_clones_return_exact_same_coordinates) ... ok
+
+----------------------------------------------------------------------
+Ran 51 tests in 25.492s
+
+OK
+wall=26.97 rss=282156

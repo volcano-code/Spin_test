@@ -1,0 +1,12 @@
+{
+  "schema": "w1-m12-synthetic-timing-tamper-reproduction-v1",
+  "scope": "SYNTHETIC_FIXTURE_NOT_REAL_CHERCHI",
+  "original_m11_git_blob_sha1": "d19bbe16c851c4996fbda29cea6e1fc78f5abad8",
+  "tampering": "Both candidate complete_validation_ns changed 200 -> 120; stage_ledger.wall_ns remains 200; recomputed m9 parity and all point reports",
+  "forged_validation_inclusive_ratio": 1.6666666666666667,
+  "original_gate_accepted": true,
+  "patched_gate_rejected": true,
+  "patched_gate_error": "M11_M9_COMPLETE_WALL_LEDGER_MISMATCH",
+  "full_solver_speedup": null,
+  "native_boolean_calls": 0
+}
