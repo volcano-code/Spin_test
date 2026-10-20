@@ -52,3 +52,12 @@ Scientific denial flags always remain FALSE:
 W0_physical_case_admitted; W0_spindle_approved; W0_fixed_F_design_D_admitted; printability_certified; faster_optimization_performed; real_optimized_MuJoCo_validated.
 
 A pointlike tip is NOT a printability certificate, and this is NOT a Spin-It Faster optimized object. W0 must approve the final shaft, tip, shell, removable domain, metric units, density and optimized objectives. Only then may P14 start genuine three-goal optimization and same-conditions MuJoCo before/after testing.
+
+
+## First remote native gate was deliberately blocked before geometric evaluation
+
+The initial P13 GitHub Actions run [39444871666](https://github.com/volcano-code/Spin_test/actions/runs/39444871666) passed P13 source preflight and 11 tests, but its new native Cherchi step exited in input authentication: it used a **freshly generated** P11 report whose run-duration field made its SHA different from the byte-pinned authentic historical P11 report. It did NOT run P13 Boolean union or subtraction and must NOT be counted as a native geometric result. Historical P11 regenerated geometries are still separate research evidence; no input identity check was disabled.
+
+Correction: the subsequent branch-only workflow retrieves original successful P11 artifact from Run 39403411538 and independently checks its **four pinned source bytes**. Native executable still comes freshly from pinned Cherchi source in the current run. It then attempts three **new** Cherchi Boolean calls. All input and output SHA are persisted. The native stage additionally writes per-call sidecar JSON with real subprocess exit code/stdout/stderr even if independent geometry validation rejects a mesh.
+
+The new negative regression verifies that a fake native executable returning exit 0 but producing no OBJ is **not accepted** and retains the trace. Until a separate genuine remote native run actually passes, W0 material/domain approval and all P13 optimizer and MuJoCo flags remain false.

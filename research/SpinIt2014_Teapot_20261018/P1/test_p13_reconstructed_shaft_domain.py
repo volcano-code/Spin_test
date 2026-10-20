@@ -125,4 +125,19 @@ class P13ReconstructedReferenceCase(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'M_HASH_MISMATCH'):
                 prepare({**FILES,'M':bad},P11,Path(dest)/'forbidden')
 
+    def test_failed_native_cli_logs_are_preserved(self):
+        from p13_reconstructed_shaft_domain import _native
+        with tempfile.TemporaryDirectory() as td:
+            d=Path(td)
+            fake=d/'fake-native';fake.write_text('#!/bin/sh\nexit 0\n');fake.chmod(0o755)
+            out=d/'not-produced.obj'
+            with self.assertRaisesRegex(RuntimeError,'CHERCHI_NATIVE_UNION_NOT_COMPLETED'):
+                _native(fake,'union',
+                        [self.out/'p13-m-reference.obj',
+                         self.out/'p13-shaft-reference.obj'],out,5)
+            record=json.loads((d/'not-produced.native-call.json').read_text())
+            self.assertEqual(record['exit'],0)
+            self.assertFalse(record['native_output_exists'])
+            self.assertFalse(out.exists())
+
 if __name__=='__main__': unittest.main()

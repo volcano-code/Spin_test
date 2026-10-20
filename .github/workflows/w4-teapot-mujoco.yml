@@ -343,14 +343,22 @@ jobs:
           print('P11 real Cherchi subtraction: provisional F/D only, not W0-authorized or optimized')
           PY
 
+      - name: Restore byte-locked genuine P11 material independently of this run's timing metadata
+        uses: actions/download-artifact@v4
+        with:
+          name: W4-P7-real-Cherchi-reference-geometry-or-failure-not-optimized
+          run-id: 39403411538
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/w4-p13-frozen-P11
       - name: P13 native Cherchi shaft-and-design overlap repair (exploratory only)
         run: |
           set -euo pipefail
+          P13_ARCHIVE="$RUNNER_TEMP/w4-p13-frozen-P11/research/SpinIt2014_Teapot_20261018/P1"
           python "$P1/p13_reconstructed_shaft_domain.py" \
-            --m "$P1/p10-cherchi-seal/cherchi-p9-numeric-original-yup.obj" \
-            --f "$P1/p11-trial-FD/p11-F-trial-cherchi-subtraction-unapproved.obj" \
-            --d "$P1/p11-trial-FD/p11-D-trial-sphere-unapproved.obj" \
-            --p11-report "$P1/p11-trial-FD/p11-experimental-FD-partition.json" \
+            --m "$P13_ARCHIVE/p10-cherchi-seal/cherchi-p9-numeric-original-yup.obj" \
+            --f "$P13_ARCHIVE/p11-trial-FD/p11-F-trial-cherchi-subtraction-unapproved.obj" \
+            --d "$P13_ARCHIVE/p11-trial-FD/p11-D-trial-sphere-unapproved.obj" \
+            --p11-report "$P13_ARCHIVE/p11-trial-FD/p11-experimental-FD-partition.json" \
             --native-bin build/w4-cherchi-reference/bin/w4_cherchi_reference_native \
             --upstream-checkout "$NATIVE_ROOT" \
             --out "$P1/p13-native-Cherchi-domain" --timeout 90 | tee "$P1/p10-cherchi-seal/p13-real-native-csg.log"
