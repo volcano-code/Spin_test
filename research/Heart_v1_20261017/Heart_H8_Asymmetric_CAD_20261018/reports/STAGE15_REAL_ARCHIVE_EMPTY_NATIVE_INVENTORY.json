@@ -1,0 +1,44 @@
+{
+  "accepted_newton_step_observed": false,
+  "continuous_smooth_neighborhood_certified": false,
+  "final_heart_obj_produced": false,
+  "four_planned_side_points": [
+    {
+      "c7": 2.1805862283444328e-06,
+      "distance_from_proxy_root": "-1/10000000",
+      "expected_proxy_event_sign": 1,
+      "index": 0,
+      "side": "left-coarse"
+    },
+    {
+      "c7": 2.2705862283444327e-06,
+      "distance_from_proxy_root": "-1/100000000",
+      "expected_proxy_event_sign": 1,
+      "index": 1,
+      "side": "left-near"
+    },
+    {
+      "c7": 2.2905862283444326e-06,
+      "distance_from_proxy_root": "1/100000000",
+      "expected_proxy_event_sign": -1,
+      "index": 2,
+      "side": "right-near"
+    },
+    {
+      "c7": 2.3805862283444325e-06,
+      "distance_from_proxy_root": "1/10000000",
+      "expected_proxy_event_sign": -1,
+      "index": 3,
+      "side": "right-coarse"
+    }
+  ],
+  "historical_ci_conclusion": "failure",
+  "new_cherchi_calls_verified_by_this_inventory": 0,
+  "newton_admitted": false,
+  "original_h8f_artifact_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "promoted_complete_structural_pairs": 0,
+  "schema": "heart-h9-partial-native-forensic-inventory-v1",
+  "side_records": [],
+  "status": "NO_NATIVE_SIDE_DIRECTORY",
+  "unverified_complete_checkpoints": 0
+}

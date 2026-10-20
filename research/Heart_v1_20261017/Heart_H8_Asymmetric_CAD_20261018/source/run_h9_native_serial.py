@@ -132,6 +132,22 @@ def run_once(artifact,certificate,output):
     if result!=0:
         status={'status':'REAL_NATIVE_PROBE_FAILED_NO_ADMISSION','probe_exit_code':result,
                 'newton_admitted':False,'new_native_calls_verified':0}
+        # A failed native process may have returned one or more genuine
+        # same-call packets before an expensive audit failed. Preserve a
+        # READ-ONLY inventory (not an attestation, resume or Newton approval).
+        # Do not allow a secondary forensic error to conceal the real exit.
+        try:
+            from h9_capture_inventory import inventory
+            evidence=inventory(artifact,certificate,native_dir)
+            with (out/'forensic-inventory.json').open('x') as saved:
+                json.dump(evidence,saved,indent=2,sort_keys=True,allow_nan=False)
+                saved.write('\n')
+            status['forensic_inventory_status']=evidence['status']
+            status['unverified_checkpoints_observed']=evidence.get('unverified_complete_checkpoints',0)
+            status['promoted_structural_pairs_observed']=evidence.get('promoted_complete_structural_pairs',0)
+        except Exception as exc:
+            status['forensic_inventory_status']='FAILED_CLOSED_NO_FORENSIC_CERTIFICATION'
+            status['forensic_inventory_error']=f'{type(exc).__name__}: {exc}'
         (out/'run_status.json').write_text(json.dumps(status,indent=2)+'\n')
         return result
     remain=int(MAX_SECONDS-(time.monotonic()-start)-30)

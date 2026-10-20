@@ -1,0 +1,56 @@
+{
+  "branch": "research/neuralmoments-w3-heart-h9-20261019",
+  "combined_long_run": "TIMEOUT_NOT_COUNTED_AS_PASSED",
+  "completed_test_runs": {
+    "earlier_runner_compatibility": {
+      "passed": 35,
+      "seconds": 13.59
+    },
+    "stage11_to15": {
+      "passed": 41,
+      "seconds": 21.12,
+      "subtests_passed": 4
+    },
+    "stage15_new": {
+      "passed": 9,
+      "seconds": 13.69
+    }
+  },
+  "container_memory_max_bytes": 4294967296,
+  "exit_codes": {
+    "forensic_inventory_empty_native": 0,
+    "frozen_input": 0,
+    "inner_native_serial_preflight": 2,
+    "native_build_preflight": 2,
+    "outer_native_launch_preflight": 2
+  },
+  "historical_workflow_conclusion": "failure",
+  "installed_native_extensions": 0,
+  "new_true_cherchi_samples_completed": 0,
+  "newton_admitted": false,
+  "original_h8f_zip_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "schema": "h9-w3-stage15-execution-v1",
+  "source_file_sha": {
+    "reports/H9_STAGE15_PARTIAL_CAPTURE_INVENTORY_CN.md": {
+      "bytes": 4524,
+      "git_blob_sha1": "0f0d82de1a77788e2e55847f052a690547d11f30",
+      "sha256": "48528a0d4f22d53e31b7fdc40eb39c633b082315a4cac04bac1f26cac0dc0e1d"
+    },
+    "source/h9_capture_inventory.py": {
+      "bytes": 10835,
+      "git_blob_sha1": "b25d019551c2511cadb6d1d3e77ab62a4f66df23",
+      "sha256": "cd6c1a94562f563cea07837f70aa43563e0768f314d02b4086368b8759d81ebf"
+    },
+    "source/run_h9_native_serial.py": {
+      "bytes": 8343,
+      "git_blob_sha1": "7d56e670769a6a944ed1d3b9d81edf2befaa6fa6",
+      "sha256": "4740d3568b74f3f99313b3396c81ed521eed279832f37c93b5b6d841db218699"
+    },
+    "tests/test_h9_stage15_forensic_inventory.py": {
+      "bytes": 7497,
+      "git_blob_sha1": "564c9d9ab67b88b3a320d5d8d6df0bad11c4b6cb",
+      "sha256": "56829d85edea40da89ad2ef2048b4715e9bfb63459e9b9758884b29b2d6b5bf6"
+    }
+  },
+  "stage": 15
+}
