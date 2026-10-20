@@ -1,0 +1,13 @@
+{
+  "blockers": [
+    "git",
+    "source",
+    "native_modules",
+    "native_abi_import"
+  ],
+  "executed_m5": false,
+  "executed_m9": false,
+  "full_solver_speedup": null,
+  "schema": "w1-m10-not-run-v1",
+  "status": "BLOCKED_NATIVE_PREFLIGHT"
+}

@@ -1,0 +1,45 @@
+{
+  "branch": "research/neuralmoments-w1-native-20261019",
+  "completed_native_full_solver": false,
+  "executable_native_cherchi_calls": 0,
+  "files": {
+    "M10_RESULTS.md": {
+      "git_blob_sha1": "8c0be05695640c8c9f6e0c0e978a0bf6236a4b4d",
+      "sha256": "5cd1d83552b351acf1fc2ce9124816fac851a42549e1687e378b77be16bbee4b",
+      "size": 5684
+    },
+    "evidence/m10-failure.json": {
+      "git_blob_sha1": "846707bdba896e6ee842383512b367a3c4c3230c",
+      "sha256": "79a7f8b1a4ba5585440df3a4c7d43e380ad23c0719812f7866bb9982b00f4e5f",
+      "size": 247
+    },
+    "evidence/m10-native-attempt.log": {
+      "git_blob_sha1": "de34bfd12ea9004a0f4ce1408a51c31cfb88777a",
+      "sha256": "40e5204a3577c711f5f0b77a330a83f587d9eca7cfafc48a7848ea8007e3f0c3",
+      "size": 92
+    },
+    "evidence/m10-preflight.json": {
+      "git_blob_sha1": "db2879a41d1b41427fb704cbfaf92bded75d73d5",
+      "sha256": "7d52b379cac9d5c7390e5b38a7d41d0ed977b3ef7b55e61ea4b4204e3baa5425",
+      "size": 2430
+    },
+    "evidence/m10-tests.log": {
+      "git_blob_sha1": "3cfdb28d9a5b67190b89381dcd9b64d6f1b6f334",
+      "sha256": "ca632be7299ce5ed17147158943c019f1051d532ccded7f714d696f541920075",
+      "size": 10506
+    },
+    "m10_native_host_runner.py": {
+      "git_blob_sha1": "5f7cd0f9844097c82b86a9e07626190e2f1f8447",
+      "sha256": "44d66e09ef178c5447ae5ae2a4a922710fd4bf18c019c26a9b094cd9fbb3aaf9",
+      "size": 17659
+    },
+    "test_m10.py": {
+      "git_blob_sha1": "59c438afb1a632a52c39d01a8794839c4c551f06",
+      "sha256": "40c2eeb2e5c9719b3c985921433be0cc1f07d7f706425630ccccfda24e8a60b0",
+      "size": 10805
+    }
+  },
+  "frozen": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "remote_ci_verified": false,
+  "schema": "w1-m10-reproducibility-manifest-v1"
+}
