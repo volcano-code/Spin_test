@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M9_H8F_81_ARCHIVED_NATIVE_EXACT_REPLAY_PASSED_POINT60_BRANCH_UNCERTIFIED",
+  "status": "M10_READONLY_81_ARCHIVE_GATE_PASSED_DERIVATIVE_TRAINING_BLOCKED",
   "native_teacher_runs": 0,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "W3 true point60 construction-event/one-sided native proof, W0 independently verifiable continuous-stratum derivative contract, actual completed and independently sealed Newton solution; finite H8f 81-point evidence alone not sufficient",
+  "pending_dependency": "W0 independent MomentContractV1 derivative verifier upgrade to W2 v2 + W3 actual native one-sided/crossing and certified continuity + independently sealed Newton endpoint",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -172,5 +172,40 @@
     "training_admitted": 0,
     "W0_M9_report_blob_sha1": "177fe9126d76d94236ecdca2d4750232f78f627a",
     "w0_handoff_document_blob_sha1": "5f95bdeeb9f6b5bd9156aa796d3b72f9f1649de7"
+  },
+  "m10_readonly_consumer_gate": {
+    "schema": "w2-m10-consumer-readonly-gate-v1",
+    "program_path": "research/NeuralMoments/teacher/w2_consumer_gate.py",
+    "program_git_blob_sha1": "e22060d6bd199529662de93c844439db9d38bcd0",
+    "test_path": "research/NeuralMoments/teacher/test_w2_consumer_gate.py",
+    "test_git_blob_sha1": "a31b9a746cca659d4d878a403b24ee32082f65e9",
+    "run_output_path": "research/NeuralMoments/teacher/M10_REAL_81_READONLY_GATE_RESULT.json",
+    "run_output_git_blob_sha1": "be9d37a4287c4a72b51f18ecbc5e885258dd9572",
+    "run_output_sha256": "a1e1bfb6d1e48e018dbe29fcb51ae4d7185f3f8f12a134308e3a880c12b4b0eb",
+    "evidence_origin": "HISTORICAL_H8F_ACTIONS_39123384402_ORIGINAL_FAILURE",
+    "historical_materials_rebound": 81,
+    "exact_ten_moments_previously_independently_reintegrated": 810,
+    "archive_jacobian_digests_rebound_without_releasing_values": 81,
+    "max_fixed_plus_variable_disagreement": 2.220446049250313e-16,
+    "source_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+    "source_candidate_index_sha256": "fcfccf626af7166c577ba15cc95c5ae0b345cd58a15000d708d5e68e9b85019a",
+    "local_unit_tests_passed": 37,
+    "local_unit_tests_failed": 0,
+    "previous_m9_regression_passed": 14,
+    "previous_m9_regression_failed": 0,
+    "local_manifest_test_input": "GITHUB_FETCHED_M9_FIELDS_RECONSTRUCTED_FIXTURE_NOT_BYTE_IDENTICAL_W2_MANIFEST",
+    "original_workflow_status": "failure",
+    "point60_true_feature_change": true,
+    "w0_m9_teacher_gate_git_blob_sha1": "b42ec6d9b389675123250d79f9cc9efb1b658c07",
+    "w0_m9_gate_supports_w2_v2": false,
+    "w3_stage9_evidence_git_blob_sha1": "ec6995c2b60cb5158d94f79a783a60d9ad64f23d",
+    "w3_conditional_analytic_crossing_documented": true,
+    "w3_new_native_cherchi_calls": 0,
+    "w3_native_continuity_and_newton_accepted": false,
+    "native_evaluations_this_milestone": 0,
+    "w0_derivative_verifier_integrated": false,
+    "derivative_training_admitted": false,
+    "train_export_supported": false,
+    "ci_status": "NOT_CONFIRMED"
   }
 }
