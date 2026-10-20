@@ -1,0 +1,25 @@
+test_01_real_archive_25_and_original_failure (test_m16.M16RealNativeForensics.test_01_real_archive_25_and_original_failure) ... ok
+test_02_full_same_run_wall_closed (test_m16.M16RealNativeForensics.test_02_full_same_run_wall_closed) ... ok
+test_03_genuine_console_binding (test_m16.M16RealNativeForensics.test_03_genuine_console_binding) ... ok
+test_04_tamper_report_stage_rejected (test_m16.M16RealNativeForensics.test_04_tamper_report_stage_rejected) ... ok
+test_05_tamper_point_wall_rejected (test_m16.M16RealNativeForensics.test_05_tamper_point_wall_rejected) ... ok
+test_06_absent_native_stage_rejected (test_m16.M16RealNativeForensics.test_06_absent_native_stage_rejected) ... ok
+test_07_negative_native_stage_rejected (test_m16.M16RealNativeForensics.test_07_negative_native_stage_rejected) ... ok
+test_08_nonfinite_moment_rejected (test_m16.M16RealNativeForensics.test_08_nonfinite_moment_rejected) ... ok
+test_09_missing_snapshot_digest_rejected (test_m16.M16RealNativeForensics.test_09_missing_snapshot_digest_rejected) ... ok
+test_10_feature_history_cannot_be_promoted (test_m16.M16RealNativeForensics.test_10_feature_history_cannot_be_promoted) ... ok
+test_11_changed_point_indices_rejected (test_m16.M16RealNativeForensics.test_11_changed_point_indices_rejected) ... ok
+test_12_nonfinite_jacobian_rejected (test_m16.M16RealNativeForensics.test_12_nonfinite_jacobian_rejected) ... ok
+test_13_wrong_original_binary_sha_rejected (test_m16.M16RealNativeForensics.test_13_wrong_original_binary_sha_rejected) ... ok
+test_14_incomplete_console_rejected (test_m16.M16RealNativeForensics.test_14_incomplete_console_rejected) ... ok
+test_15_forged_console_point_time_rejected (test_m16.M16RealNativeForensics.test_15_forged_console_point_time_rejected) ... ok
+test_16_wrong_console_final_state_rejected (test_m16.M16RealNativeForensics.test_16_wrong_console_final_state_rejected) ... ok
+test_17_archive_hash_fail_closed (test_m16.M16RealNativeForensics.test_17_archive_hash_fail_closed) ... ok
+test_18_no_original_newton_or_full_solver_claim (test_m16.M16RealNativeForensics.test_18_no_original_newton_or_full_solver_claim) ... ok
+test_19_missing_point_rejected (test_m16.M16RealNativeForensics.test_19_missing_point_rejected) ... ok
+test_20_rational_boundary_flag_rejected (test_m16.M16RealNativeForensics.test_20_rational_boundary_flag_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.125s
+
+OK

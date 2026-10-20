@@ -1,0 +1,18 @@
+{
+  "schema": "w1-m16-real-github-native-rerun-launch-v1",
+  "workflow_run_id": 39121571756,
+  "original_job_id": 117658066974,
+  "new_job_id": 118689837052,
+  "attempt": 2,
+  "workflow_head_sha": "fd7459f7bf10344269d3b9b3ada39d3e81edde48",
+  "linked_branch": "research/heart-p0-p3-20261017",
+  "branch_writes_by_w1": 0,
+  "original_25point_h8e_status": "FAILED_FEATURE_HASH_DRIFT",
+  "connector_rerun_action_accepted": true,
+  "remote_status_at_last_observation": "in_progress",
+  "last_running_step": "Build native core with strict pinned dependencies",
+  "new_native_result_at_observation": null,
+  "new_cad_material_at_observation": null,
+  "full_faster_speedup": null,
+  "actions_url": "https://github.com/volcano-code/Spin_test/actions/runs/39121571756"
+}
