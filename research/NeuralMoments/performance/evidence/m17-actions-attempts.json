@@ -1,0 +1,35 @@
+{
+  "schema": "w1-m17-actions-two-real-original-attempts-v1",
+  "run_id": 39121571756,
+  "attempts": [
+    {
+      "attempt": 1,
+      "job_id": 117658066974,
+      "artifact_id": 12134772056,
+      "archive_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+      "completed_native_evaluations": 25,
+      "workflow_status": "completed",
+      "workflow_conclusion": "failure",
+      "scientific_reason": "EIGHT_ORIGINAL_CHANGED_FEATURE_HASHES"
+    },
+    {
+      "attempt": 2,
+      "job_id": 118689837052,
+      "artifact_id": 12275408088,
+      "archive_sha256": "b763aabfdcaddb821a8766bf661fb25c184f416aa96cb24609874b15f9bc08e1",
+      "completed_native_evaluations": 25,
+      "workflow_status": "completed",
+      "workflow_conclusion": "failure",
+      "scientific_reason": "EIGHT_ORIGINAL_CHANGED_FEATURE_HASHES"
+    }
+  ],
+  "unchanged_three_native_module_binaries": true,
+  "unchanged_full_non_jacobian_materials": true,
+  "jacobian_bitwise_unequal_entries": 1096,
+  "jacobian_max_scaled_error": 2.1384136821605478e-16,
+  "fresh_w1_optimized_abba_calls": 0,
+  "full_solver_speedup": null,
+  "workflow_template_activated": false,
+  "w0_math_contract_production_admitted": false,
+  "w2_real_teacher_production_admitted": false
+}

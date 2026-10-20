@@ -1,0 +1,103 @@
+# INACTIVE HANDOFF. W1 ownership allows only research/NeuralMoments/performance/.
+# A separately authorized CI owner must review/activate a workflow in an
+# APPROVED CI workflow ref (not W1, main, or another window from this W1 task).
+# M14 requires W1 checkout tracked paths outside performance to remain frozen;
+# adding this under W1 .github/workflows would itself FAIL M14 custody.
+# Workflow dispatch availability also depends on the repository default-branch
+# registration. Committing this template here DOES NOT activate or run any CI.
+# Manual dispatch ONLY. Runs real old/candidate native one-q ABBA and strong
+# material/Jacobian audits, not complete Newton or paper speed.
+name: W1 real Cherchi pinned build and diagnostic ABBA
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: w1-real-native-single-host
+  cancel-in-progress: false
+jobs:
+  w1-native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    env:
+      DEBIAN_FRONTEND: noninteractive
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      W1_BRANCH: research/neuralmoments-w1-native-20261019
+    steps:
+      - name: Checkout ONLY W1 branch with full ancestry
+        uses: actions/checkout@v4
+        with:
+          ref: research/neuralmoments-w1-native-20261019
+          fetch-depth: 0
+          submodules: recursive
+          persist-credentials: false
+      - name: Reject wrong ref/ancestor before installing dependencies
+        run: |
+          git fetch --no-tags origin "$W1_BRANCH"
+          git switch -C "$W1_BRANCH" "origin/$W1_BRANCH"
+          test "$(git symbolic-ref --short HEAD)" = "$W1_BRANCH"
+          git merge-base --is-ancestor 0bcc187b3005478baa586a6d6f450e73811ca342 HEAD
+          git status --short
+      - name: Install ephemeral native build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build cmake libgmp-dev libmpfr-dev \
+            libboost-all-dev libtbb-dev libeigen3-dev libgl1-mesa-dev \
+            libglu1-mesa-dev libx11-dev libxi-dev libxrandr-dev \
+            libxinerama-dev libxcursor-dev pkg-config
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned Python dependencies
+        run: |
+          python -m pip install 'pybind11==3.0.1' 'numpy>=2,<3' 'pytest>=8,<10' \
+            'scipy>=1.14,<2' 'shapely>=2,<3' 'scikit-image>=0.24,<1' 'trimesh>=4,<5'
+      - name: Download exact archived nonauthor H8c input, not a reconstructed ZIP
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts
+          curl --fail --location --retry 3 --silent --show-error \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H 'Accept: application/vnd.github+json' \
+            https://api.github.com/repos/volcano-code/Spin_test/actions/artifacts/12132634988/zip \
+            --output artifacts/w1-h8c-reference.zip
+          echo '78749e99abd25ab2d2571440991ffa4e907a1565b4c7faf5210496431389cdd7  artifacts/w1-h8c-reference.zip' | sha256sum --check
+      - name: Prestage pinned CGAL source on ephemeral runner
+        run: |
+          mkdir -p libigl/external/cgal
+          git -C libigl/external/cgal init
+          git -C libigl/external/cgal fetch --depth=1 --filter=blob:none \
+            https://github.com/CGAL/cgal.git \
+            f7c3c8212b56c0d6dae63787efc99093f4383415
+          git -C libigl/external/cgal checkout --detach FETCH_HEAD
+          test "$(git -C libigl/external/cgal rev-parse HEAD)" = 'f7c3c8212b56c0d6dae63787efc99093f4383415'
+      - name: Execute pinned native build and strictly audited M5/M9/M11
+        run: |
+          python research/NeuralMoments/performance/m13_pinned_native_build.py \
+            --execute --fetch-pinned-sources --workers 2 \
+            --root "$PWD" \
+            --archive "$PWD/artifacts/w1-h8c-reference.zip" \
+            --output "$PWD/artifacts/w1-m17-native"
+      - name: Independently validate build origin and M11 receipts
+        run: |
+          python research/NeuralMoments/performance/m14_native_build_custody.py \
+            --root "$PWD" \
+            --archive "$PWD/artifacts/w1-h8c-reference.zip" \
+            --m13-artifacts "$PWD/artifacts/w1-m17-native" \
+            --output "$PWD/artifacts/w1-m17-custody"
+      - name: Always retain precise evidence, even if strict ABBA fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: w1-real-native-abba-proofs-or-failure
+          path: |
+            artifacts/w1-m17-native/
+            artifacts/w1-m17-custody/
+            build/w1-m13-core/CMakeCache.txt
+            build/w1-m13-cherchi/CMakeCache.txt
+            build/w1-m13-core/CMakeFiles/CMakeConfigureLog.yaml
+            build/w1-m13-cherchi/CMakeFiles/CMakeConfigureLog.yaml
+          if-no-files-found: warn

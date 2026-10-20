@@ -1,0 +1,18 @@
+test_workflow_template_is_explicitly_inactive_and_pinned (test_m17.M17CloudHandoff.test_workflow_template_is_explicitly_inactive_and_pinned) ... ok
+test_one_real_unchanged_geometry_but_jittered_jacobian (test_m17.M17TrueArtifactBasePoint.test_one_real_unchanged_geometry_but_jittered_jacobian) ... ok
+test_archive_digests_are_pinned_independently (test_m17.M17Unit.test_archive_digests_are_pinned_independently) ... ok
+test_bitwise_nan_is_denied (test_m17.M17Unit.test_bitwise_nan_is_denied) ... ok
+test_exact_moment_changes_denied (test_m17.M17Unit.test_exact_moment_changes_denied) ... ok
+test_geometry_and_provenance_drift_denied (test_m17.M17Unit.test_geometry_and_provenance_drift_denied) ... ok
+test_jacobian_nonfinite_denied (test_m17.M17Unit.test_jacobian_nonfinite_denied) ... ok
+test_jacobian_stays_full_10_by_10 (test_m17.M17Unit.test_jacobian_stays_full_10_by_10) ... ok
+test_missing_material_field_denied (test_m17.M17Unit.test_missing_material_field_denied) ... ok
+test_report_cannot_promote_historical_failed_branch (test_m17.M17Unit.test_report_cannot_promote_historical_failed_branch) ... ok
+test_same_original_exact_succeeds (test_m17.M17Unit.test_same_original_exact_succeeds) ... ok
+test_signed_zero_moment_drift_is_denied (test_m17.M17Unit.test_signed_zero_moment_drift_is_denied) ... ok
+test_subulp_jacobian_difference_is_reported_not_silenced (test_m17.M17Unit.test_subulp_jacobian_difference_is_reported_not_silenced) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 11.941s
+
+OK
