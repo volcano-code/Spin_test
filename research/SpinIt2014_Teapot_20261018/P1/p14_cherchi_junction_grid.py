@@ -44,7 +44,7 @@ def digest(path):
 CANONICAL={
  'outer':'def3bd6f93214d5fce36c7b58547e6afb730fc454fd0b9e001a9087ef005bd20',
  'failed':'9760dff5a6ab6e37a7ec3eac21e7523ab123cfb9d270e285b7c96071279597f3'}
-SOURCE_M_SHA='46774afb1eaf4c7687c694493becfd96babe77b7c54748cfc03b9e3b75dec61c'
+SOURCE_M_SHA='46774afb1eaf4c7687c694493becfd96babe77b7c54748cfc03b3e9b75dec61c'
 
 def canonical_geometry_sha(path):
     """Exact binary64 vertex multiset + orientation-preserving face multiset."""
