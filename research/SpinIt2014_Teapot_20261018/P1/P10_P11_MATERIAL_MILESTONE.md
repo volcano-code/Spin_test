@@ -31,3 +31,13 @@ The workflow uses the *same fixed Cherchi reference native executable* to run `F
 Python 3.13 / NumPy 2.x / Trimesh 4.x; actual P9 full artifact from GitHub. Local `python -m unittest -v test_p10_p11_material` executed **7/7 pass** (1.726 seconds). It covers real P9 seal, analytic exact tetrahedron, nonmanifold/boundary adversarial cases, hash tamper, enclosed D, analytic test sphere ten moments, and no-native abort.
 
 The W4 user-authorized `.github/workflows/w4-teapot-mujoco.yml` invokes these same assertions after P9, then runs the **real native Cherchi subtraction**. P11 success/failure is only determined by that cloud run, not by local geometry smoke. Historical GitHub success/failure logs are preserved. On failure the `if: always()` artifact upload retains failure receipt, F (if any), and input D.
+
+## 2026-10-20 GitHub Actions first attempt: explicit upstream-regeneration failure
+
+[Run 39402670170](https://github.com/volcano-code/Spin_test/actions/runs/39402670170), committed source `c3653e801c939bfdc14aa4cb4fd689ca06a5828b`, had PASS for all previous MuJoCo diagnostic work and for pinned Cherchi native build, P7/P8 checks. The newly rebuilt P8 body+spout source did **not** pass numeric geometry; consequently P9 reported `BLOCKED_PRECURSOR_BODY_SPOUT_NOT_VALID`. P10 and P11 **did not execute** in that job. This cross-environment Cherchi regeneration failure is preserved as a separate scientific reproducibility defect; no CI green claim was made.
+
+### Remediation by independent immutable P9 input custody (rather than hidden CGAL fallback)
+
+The next workflow revision explicitly downloads the *previously successful native Cherchi* P9 material from W4's own archived [run 39362437035](https://github.com/volcano-code/Spin_test/actions/runs/39362437035), artifact `12237748683`, under `runner.temp`; it checks candidate OBJ SHA `154cdfc9ec94b6885a95e596c36ac1382dd2d36ed99e19d0b36c2b9de80b6df4` AND original trial manifest SHA `14eea8e8bdb58b91d5602d5fa8079743ad0be4dbc5b4c69c444f2e7a8a0ced9c`, verifies native commit/binary identity and shift value, and only then executes P10. It does **not** present its own failed P9 recomputation as successful, and does **not** alter historical originals.
+
+P11 remains a fresh native Cherchi subtraction in the current cloud job. Its (F,D) are explicitly experimental geometry only; none of the original author CAD, W0/F/D, teacher, physical printability or optimization gates can be inferred from archived P9 success. If subtraction fails, all logs and candidates are preserved and the Cherchi job fails.

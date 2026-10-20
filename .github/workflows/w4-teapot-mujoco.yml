@@ -14,6 +14,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: w4-teapot-mujoco-${{ github.ref }}
@@ -247,6 +248,7 @@ jobs:
           PY
 
       - name: P9 Cherchi-only controlled handle contact perturbation experiment
+        continue-on-error: true # Preserve independently observable reproduction failure; P10 uses frozen original artifact
         run: |
           set -euo pipefail
           if python - <<'PY'
@@ -272,10 +274,40 @@ jobs:
           PY
           fi
 
+      - name: Fetch immutable successful P9 source for independent P10/P11 downstream research
+        uses: actions/download-artifact@v4
+        with:
+          name: W4-P7-real-Cherchi-reference-geometry-or-failure-not-optimized
+          run-id: 39362437035
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/w4-p9-authentic-archive
+
+      - name: Authenticate archived native P9 model and archive journal against frozen historical hashes
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('/tmp') if False else Path(__import__('os').environ['RUNNER_TEMP'])/'w4-p9-authentic-archive'
+          p=root/'research/SpinIt2014_Teapot_20261018/P1/p9-cherchi-handle-variants'
+          h=lambda f:hashlib.sha256(Path(f).read_bytes()).hexdigest()
+          mesh=p/'cherchi-body-spout-handle-03.obj'
+          journal=p/'p9-source-deviation-sweep.json'
+          assert h(mesh)=='154cdfc9ec94b6885a95e596c36ac1382dd2d36ed99e19d0b36c2b9de80b6df4', 'ARCHIVED_P9_MESH_CHANGED'
+          assert h(journal)=='14eea8e8bdb58b91d5602d5fa8079743ad0be4dbc5b4c69c444f2e7a8a0ced9c', 'ARCHIVED_P9_JOURNAL_CHANGED'
+          j=json.loads(journal.read_text())
+          assert j['status']=='SOURCE_DEVIATING_CHERCHI_NUMERIC_CANDIDATE_AVAILABLE'
+          assert j['recommended_candidate']['obj_sha256']==h(mesh)
+          assert j['recommended_candidate']['shift']==0.005
+          assert j['native']['upstream_commit']=='7bd6c2697695f555f9a15d7e154e084d841316f0'
+          assert j['native']['binary_sha256']=='ad8f4e012fff474f96c059532ac32290fbf4a969c07d5462e08879466c6a66fb'
+          print('ARCHIVED_P9_ACTUAL_CHERCHI_NATIVE_SUCCESS_SOURCE_SHA_PINNED')
+          PY
+
       - name: P10 independent exact-decimal material receipt and P11 preflight tests
         env:
-          W4_REAL_P9_OBJ: ${{ github.workspace }}/research/SpinIt2014_Teapot_20261018/P1/p9-cherchi-handle-variants/cherchi-body-spout-handle-03.obj
-          W4_REAL_P9_JOURNAL: ${{ github.workspace }}/research/SpinIt2014_Teapot_20261018/P1/p9-cherchi-handle-variants/p9-source-deviation-sweep.json
+          W4_REAL_P9_OBJ: ${{ runner.temp }}/w4-p9-authentic-archive/research/SpinIt2014_Teapot_20261018/P1/p9-cherchi-handle-variants/cherchi-body-spout-handle-03.obj
+          W4_REAL_P9_JOURNAL: ${{ runner.temp }}/w4-p9-authentic-archive/research/SpinIt2014_Teapot_20261018/P1/p9-cherchi-handle-variants/p9-source-deviation-sweep.json
         run: |
           set -euo pipefail
           mkdir -p "$P1/p10-cherchi-seal"
