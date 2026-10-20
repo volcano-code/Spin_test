@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-20",
+  "forensic_unverified_packets_count_as_native_completed": false,
+  "historical_conclusion": "failure",
+  "historical_h8f_run": 39123384402,
+  "new_completed_four_side_materials": 0,
+  "new_native_cherchi_boolean_calls": 0,
+  "newton_admitted": false,
+  "observed_w3_head": "d69a9c91bf3a9359cf2a480fc22fec8bc8393ca3",
+  "schema": "W0_M14_W3_STAGE12_READONLY_NO_NATIVE_OBSERVATION_V1",
+  "stage10_source_lock_can_be_reused_after_stage12_source_edits": false,
+  "training_admissible": false,
+  "w3_branch": "research/neuralmoments-w3-heart-h9-20261019",
+  "w3_evidence_git_blob_sha1": "23a593a3c902d493e7acb72a163b2d37db394c97",
+  "w3_report_tests_90_are_read_only_metadata_not_w0_retested": true
+}

@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "W0 M14 historical archived signed ray diagnostic only",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status",
+    "source_archive_sha256",
+    "original_ci_status",
+    "historical_run",
+    "w2_m12_ledger_git_blob_sha1",
+    "w2_m12_ledger_sha256",
+    "w2_all81_crosswalk_git_blob_sha1",
+    "w2_full_original_loaded_locally",
+    "sample_count",
+    "unit_c_samples",
+    "nonunit_c_samples",
+    "unit_sample_indices",
+    "different_signed_positive_rays",
+    "original_binary64_unit_display_same_rational_ray",
+    "nonunit_binary64_display_same_rational_ray",
+    "point60_raw_c7",
+    "point60_monomial_q7",
+    "raw_archived_r_J_never_assigned_to_display_vector",
+    "MomentContractV1_changed",
+    "new_native_evaluations",
+    "derivative_J_D",
+    "newton_admitted",
+    "training_admissible",
+    "rows"
+  ],
+  "properties": {
+    "schema": {
+      "const": "W0_M14_ARCHIVED_SIGNED_RAY_COMPATIBILITY_V1"
+    },
+    "status": {
+      "const": "81_ARCHIVED_EXACT_SIGNED_RAYS_AND_NATIVE_MATERIAL_SHA_CROSSCHECKED"
+    },
+    "source_archive_sha256": {
+      "const": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9"
+    },
+    "original_ci_status": {
+      "const": "failure"
+    },
+    "historical_run": {
+      "const": 39123384402
+    },
+    "w2_m12_ledger_git_blob_sha1": {
+      "const": "2d4cf4aae1368e22e760803d9bfe49479125ac4b"
+    },
+    "w2_m12_ledger_sha256": {
+      "const": "255769c4401a89449ef864bf0ef72ec99403d0085b5eb04891512dfe2daab473"
+    },
+    "w2_all81_crosswalk_git_blob_sha1": {
+      "const": "051a9bb7149ff63af92d7018019165face426f52"
+    },
+    "w2_full_original_loaded_locally": {
+      "type": "boolean"
+    },
+    "sample_count": {
+      "const": 81
+    },
+    "unit_c_samples": {
+      "const": 17
+    },
+    "nonunit_c_samples": {
+      "const": 64
+    },
+    "unit_sample_indices": {
+      "const": [
+        0,
+        21,
+        22,
+        23,
+        24,
+        61,
+        62,
+        63,
+        64,
+        69,
+        70,
+        71,
+        72,
+        77,
+        78,
+        79,
+        80
+      ]
+    },
+    "different_signed_positive_rays": {
+      "const": 81
+    },
+    "original_binary64_unit_display_same_rational_ray": {
+      "const": 17
+    },
+    "nonunit_binary64_display_same_rational_ray": {
+      "const": 0
+    },
+    "point60_raw_c7": {
+      "const": 3e-06
+    },
+    "point60_monomial_q7": {
+      "const": 6e-06
+    },
+    "raw_archived_r_J_never_assigned_to_display_vector": {
+      "const": true
+    },
+    "MomentContractV1_changed": {
+      "const": false
+    },
+    "new_native_evaluations": {
+      "const": 0
+    },
+    "derivative_J_D": {
+      "type": "null"
+    },
+    "newton_admitted": {
+      "const": false
+    },
+    "training_admissible": {
+      "const": false
+    },
+    "rows": {
+      "type": "array",
+      "minItems": 81,
+      "maxItems": 81,
+      "items": {
+        "$ref": "#/$defs/row"
+      }
+    }
+  },
+  "$defs": {
+    "sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "index",
+        "raw_native_c_sha256",
+        "signed_projective_ray_sha256",
+        "original_material_gzip_sha256",
+        "v1_native_unit_compatible",
+        "unit_display_rationally_identical",
+        "native_c_replaced",
+        "J_D",
+        "training_admissible"
+      ],
+      "properties": {
+        "index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 80
+        },
+        "raw_native_c_sha256": {
+          "$ref": "#/$defs/sha"
+        },
+        "signed_projective_ray_sha256": {
+          "$ref": "#/$defs/sha"
+        },
+        "original_material_gzip_sha256": {
+          "$ref": "#/$defs/sha"
+        },
+        "v1_native_unit_compatible": {
+          "type": "boolean"
+        },
+        "unit_display_rationally_identical": {
+          "type": "boolean"
+        },
+        "native_c_replaced": {
+          "const": false
+        },
+        "J_D": {
+          "type": "null"
+        },
+        "training_admissible": {
+          "const": false
+        }
+      }
+    }
+  }
+}
