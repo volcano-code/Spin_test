@@ -17,8 +17,12 @@ def require(ok,error):
     if not ok:raise ValueError(error)
 
 def create_heart_spec(archive,directory):
-    from .native_cherchi_teacher import digest
-    from .frozen_model_binding import validate_model_binding
+    try:
+        from .native_cherchi_teacher import digest
+        from .frozen_model_binding import validate_model_binding
+    except ImportError:
+        from native_cherchi_teacher import digest
+        from frozen_model_binding import validate_model_binding
     import numpy as np
     archive=Path(archive)
     require(archive.is_file() and sha(archive.read_bytes())==ARCHIVE_SHA,"UNPINNED_H8F_HISTORIC_ARCHIVE")
@@ -92,3 +96,15 @@ def create_heart_spec(archive,directory):
     with (output/"preparation_attestation.json").open("x") as f:
         json.dump(attestation,f,sort_keys=True,indent=2,allow_nan=False)
     return attestation
+
+
+def main(argv=None):
+    import argparse
+    p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--archive",required=True)
+    p.add_argument("--output",required=True)
+    a=p.parse_args(argv)
+    result=create_heart_spec(a.archive,a.output)
+    print(canonical(result))
+
+if __name__=="__main__":main()
