@@ -1,0 +1,17 @@
+{
+  "actual_full_solver_speedup": null,
+  "after": {
+    "falsified_ratio_admitted": false,
+    "rejection": "M11_M9_COMPLETE_WALL_LEDGER_MISMATCH"
+  },
+  "before": {
+    "falsified_ratio": 1.6666666666666667,
+    "incorrectly_admitted_by_original_M11": true
+  },
+  "frozen_H8_scientific_outputs_modified": false,
+  "paired_actual_solver_runs": 0,
+  "paper_speed_qualified": false,
+  "production_math_modified": false,
+  "schema": "w1-m12-before-after-v1",
+  "scope": "SYNTHETIC_RECEIPT_INTEGRITY_CHECK_NOT_ALGORITHM_TIMING"
+}

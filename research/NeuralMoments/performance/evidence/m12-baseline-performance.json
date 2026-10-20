@@ -1,0 +1,30 @@
+{
+  "actual_tests_passed": 109,
+  "blockers": [
+    "full_git_checkout",
+    "pinned_production_source",
+    "native_compiled_extensions",
+    "native_abi_import"
+  ],
+  "branch": "research/neuralmoments-w1-native-20261019",
+  "environment": {
+    "cgroup_mem_cap_bytes": 4294967296,
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "swap_gib": 0
+  },
+  "full_native_boolean_samples": 0,
+  "full_solver_wall_seconds": null,
+  "h8_request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+  "input_artifact_sha256": "78749e99abd25ab2d2571440991ffa4e907a1565b4c7faf5210496431389cdd7",
+  "native_module_sha256": {
+    "_cherchi_core_boolean": null,
+    "_cherchi_rational_moments": null,
+    "_make_it_stand": null
+  },
+  "native_stage_timings": [],
+  "paper_speed_qualified": false,
+  "schema": "w1-m12-baseline-performance-v1",
+  "scope": "REPORT_INTEGRITY_AND_VALIDATION_TESTS_NO_FRESH_NATIVE_EXECUTION",
+  "source_freeze": "0bcc187b3005478baa586a6d6f450e73811ca342"
+}

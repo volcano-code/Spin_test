@@ -1,0 +1,44 @@
+{
+  "branch": "research/neuralmoments-w1-native-20261019",
+  "files": {
+    "M12_RESULTS.md": {
+      "bytes": 5920,
+      "git_blob_sha1": "2518a0100dd20214d4493b7c4c779ed6ac976ede",
+      "sha256": "bd7f310c4e78193c52afaa595135d76e638496246d8fd426705250b76b4713fa"
+    },
+    "m11_native_evidence_gate.py": {
+      "bytes": 17992,
+      "git_blob_sha1": "fae49818615753b76f59b7813733f20ad968810d",
+      "sha256": "6ac4b63931d1af71d202420bd7c91b436b942ce9fd198a5be7163ae1d88d952c"
+    },
+    "test_m11.py": {
+      "bytes": 14001,
+      "git_blob_sha1": "1008f2d828f9710d452c0ef3b5b248efb83fcbbe",
+      "sha256": "85c882321c91a32ef5ed5a5183ed738cbd446bd7ea7de7361b3bda361ac32835"
+    },
+    "test_m12.py": {
+      "bytes": 7177,
+      "git_blob_sha1": "a58441670357efc5b931ccccb1e5ed9ad14b798e",
+      "sha256": "ce03b8b1531132cdb7d1532a23705ac4f81a54a5c908f2e9aeb2f46f571bb6e1"
+    }
+  },
+  "freeze_sha": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "native_preflight": {
+    "exitcode": 2,
+    "fresh_cherchi_calls": 0,
+    "full_solver_speedup": null,
+    "state": "BLOCKED"
+  },
+  "schema": "w1-m12-source-manifest-v1",
+  "unit_results": {
+    "failed": 0,
+    "first_monolithic_run": "TIMED_OUT_NOT_COUNTED",
+    "group_counts": [
+      24,
+      51,
+      34
+    ],
+    "skipped": 0,
+    "tests_passed": 109
+  }
+}
