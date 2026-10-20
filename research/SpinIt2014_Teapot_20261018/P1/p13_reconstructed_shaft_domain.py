@@ -7,7 +7,7 @@ experiment code (not original author's paper CAD). There is NO W0 signoff,
 no proof of global manufacturability and no optimization or MuJoCo claim.
 
 P13 addresses a substantive P11 incompatibility: the proposed P11 interior
-sphere overlaps the fixed center shaft, so D must be replaced with D\shaft
+sphere overlaps the fixed center shaft, so D must be replaced with D-minus-shaft
 and F must be generated from the whole combined material, not just assumed.
 """
 from __future__ import annotations
@@ -219,19 +219,32 @@ def verify_preflight(receipt_path,out):
 def _native(executable,op,operands,out,limit):
     cmd=[str(Path(executable).resolve()),op,*map(lambda x:str(Path(x).resolve()),operands),str(Path(out).resolve())]
     start=time.monotonic()
+    trace=Path(out).with_suffix('.native-call.json')
     try:
         p=subprocess.run(cmd,capture_output=True,text=True,timeout=limit,check=False,
                          env={**os.environ,'OMP_NUM_THREADS':'1'})
-    except subprocess.TimeoutExpired as e:raise RuntimeError('CHERCHI_NATIVE_TIMEOUT_'+op) from e
+    except subprocess.TimeoutExpired as e:
+        trace.write_text(json.dumps(dict(operation=op,status='NATIVE_TIMEOUT',
+                                         timeout_s=limit,elapsed_s=time.monotonic()-start),indent=2)+'\n')
+        raise RuntimeError('CHERCHI_NATIVE_TIMEOUT_'+op) from e
     audit=dict(op=op,argc_operands=len(operands),source_sha256=[digest(x) for x in operands],
                exit=p.returncode,seconds=time.monotonic()-start,
-               stdout_tail=p.stdout[-4000:],stderr_tail=p.stderr[-4000:])
+               stdout_tail=p.stdout[-4000:],stderr_tail=p.stderr[-4000:],
+               native_output_exists=Path(out).is_file())
+    # Persist raw native stdout/exit evidence BEFORE topology validation,
+    # otherwise a rejected mesh would silently lose its actual process facts.
+    trace.write_text(json.dumps(audit,indent=2)+'\n')
     if p.returncode!=0 or not Path(out).is_file():
         raise RuntimeError(f'CHERCHI_NATIVE_{op.upper()}_NOT_COMPLETED')
     mesh=trimesh.load_mesh(out,process=False)
+    audit.update(sha256=digest(out),volume=float(mesh.volume),
+                 faces=len(mesh.faces),vertices=len(mesh.vertices),
+                 watertight=bool(mesh.is_watertight),
+                 is_volume=bool(mesh.is_volume),
+                 winding_consistent=bool(mesh.is_winding_consistent))
+    trace.write_text(json.dumps(audit,indent=2)+'\n')
     if not mesh.is_volume or not mesh.is_winding_consistent:
         raise ValueError(f'CHERCHI_NATIVE_{op.upper()}_NONVOLUME')
-    audit.update(sha256=digest(out),volume=float(mesh.volume),faces=len(mesh.faces),vertices=len(mesh.vertices))
     return mesh,audit
 
 
