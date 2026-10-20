@@ -53,7 +53,7 @@ W2_M9_CANDIDATES=/new/fresh/path/candidates_81_exact.json \
 
 1. `completed_samples=81` 与 `complete_eighty_one_samples=false` **可以同时成立**：前者是 81 点原生运行完成，后者表示严格构造/连续性准入仍失败。历史 Actions status 必须保留为 `failure`。
 2. **没有获得整个连续邻域的光滑证明**，point60 不可用作平滑导数标签。30 个有限差分数值通过不能单独批准 `J_D` 进入训练。
-3. W0 已有 [M9_HANDOFF](../contracts/M9_REAL_H8F_81_HANDOFF.md) 的独立 81 点复验与真实特征变化记录，但 W0 的独立原生/连续局部证明、W3 事件定位与完成的 Newton 终点证据仍是另行依赖。
+3. W0 已有 [W0 M9_HANDOFF](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/NeuralMoments/contracts/M9_REAL_H8F_81_HANDOFF.md) 的独立 81 点复验与真实特征变化记录，但 W0 的独立原生/连续局部证明、W3 事件定位与完成的 Newton 终点证据仍是另行依赖。
 4. 当前完成的是对 H8 **重建 CAD 非作者原 CAD** 已归档材料的独立数值核验；没有证明整个 CAD 几何/打印/接触稳定性，也没有解决原生模块本环境缺失。
 5. 不新增正式 `train`、`val`、`test` 标签。本阶段 81 条**仅为 excluded 的候选物理矩**，无权作为 W5/W6 已认证平滑 Jacobian 教师。
 
