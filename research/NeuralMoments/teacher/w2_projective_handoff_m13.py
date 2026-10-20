@@ -162,7 +162,7 @@ def primitive_positive_ray(raw_c):
 
 def review_m13(candidate_path,manifest_path,archive_path,*,index=60,
                w0_schema_path=None,w3_stage11_path=None):
-    """Real H8f 81-material rebind + exact algebraic W0 handoff, no release."""
+    """Real H8f ZIP SHA and one focus packet rebind; 81-ray algebra, no release."""
     require(type(index) is int and index in ALLOWED_INDEXES,
             'INVALID_PROJECTIVE_FOCUS_INDEX')
     require(archive_path is not None, 'H8F_REAL_ARCHIVE_REQUIRED_FOR_M13')
