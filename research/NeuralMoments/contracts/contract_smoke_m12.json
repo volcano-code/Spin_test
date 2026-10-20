@@ -1,0 +1,77 @@
+{
+  "actual_stage10_observation": {
+    "four_native_samples_ready": false,
+    "new_cherchi_calls": 0,
+    "new_material_files": 0,
+    "newton_admitted": false,
+    "observed_w3_head": "324256786bc189abbbb93452ed2627cfe0b28a13",
+    "original_h8f_run_conclusion": "failure",
+    "plan_validated": true,
+    "schema": "W0_M12_STAGE10_READ_ONLY_W3_OBSERVATION_V1",
+    "smooth_neighborhood_proven": false,
+    "stage10_execution_git_blob": "254e93076d6fbec0a60632cee4c4731945f579d4",
+    "stage10_input_git_blob": "8a352efca5f7f88dda24c359b7d5225f10f9cf66",
+    "status": "BLOCKED_MISSING_FOUR_NEW_CHERCHI_SIDE_MATERIALS",
+    "training_admissible": false
+  },
+  "branch": "research/neuralmoments-w0-contract-20261019",
+  "claims": {
+    "accepted_newton_step": false,
+    "real_four_side_material_certified": false,
+    "smooth_topological_neighborhood": false,
+    "training_admissible": false
+  },
+  "date": "2026-10-20",
+  "github_ci": "not_yet_verified",
+  "m12_new_tests": 41,
+  "native": {
+    "new_native_runs_in_w0_m12": 0,
+    "resource_effective_cgroup_limit_bytes": 4294967296,
+    "stage10_gate_exit_code": 3,
+    "w3_build_preflight_exit_code": 2,
+    "w3_current_new_side_material_files": 0,
+    "w3_new_cherchi_calls": 0,
+    "w3_run_preflight_exit_code": 2
+  },
+  "original_h8f_workflow_conclusion": "failure",
+  "schema": "W0_M12_SOURCE_PINNED_FOUR_SIDE_CUSTODY_SMOKE_V1",
+  "source_git_blobs": {
+    "test_w3_custody_m12.py": {
+      "git_blob_sha1": "6470edaf9966f9e04368e4b4181b4f38119ff697",
+      "sha256": "d143f248b933bd35cad1efdddcf7dabd353717d3b97f08f8c08af8a8ba907220",
+      "size": 11980
+    },
+    "w3_custody_m12.py": {
+      "git_blob_sha1": "87779a9b19eb22c26bc9a8820a393e1d979f5f59",
+      "sha256": "d0976d62cae779b9f78178ac73d8e9e4a26a98ebfbcb0b35a479f72938891388",
+      "size": 17668
+    },
+    "w3_stage10_execution_snapshot_m12.json": {
+      "git_blob_sha1": "254e93076d6fbec0a60632cee4c4731945f579d4",
+      "sha256": "7f80525c2d87ab38f03bd679e57febd78d318b198fa172a087e27f5e161d2484",
+      "size": 1001
+    },
+    "w3_stage10_input_snapshot_m12.json": {
+      "git_blob_sha1": "8a352efca5f7f88dda24c359b7d5225f10f9cf66",
+      "sha256": "ef2e4dc902423b217bf319a949a848eaaceb8a37fee435a35130e63f18014784",
+      "size": 1620
+    }
+  },
+  "source_identity_limit": "source and output SHA establish only byte integrity; independently frozen pre-run digest and authenticated native logs required",
+  "stage10_original_github_blobs": {
+    "execution": "254e93076d6fbec0a60632cee4c4731945f579d4",
+    "input": "8a352efca5f7f88dda24c359b7d5225f10f9cf66"
+  },
+  "test_execution": {
+    "command": "python -m pytest -q test_real_h8e_archive_m8.py test_real_h8f_81_m9.py test_h9_event_admission_m10.py test_w3_four_side_replay_m11.py test_w3_custody_m12.py",
+    "failed": 0,
+    "genuine_h8e_h8f_archive_env_supplied": true,
+    "log_sha256": "5e6868ec889c784854bdde849072d26674bba7369d8d0882ea108075ce936415",
+    "passed": 178,
+    "python": "3.13.5",
+    "seconds": 28.6,
+    "skipped": 0
+  },
+  "test_only_positive_receipts_are_synthetic": true,
+  "w3_observed_head": "324256786bc189abbbb93452ed2627cfe0b28a13"
+}
