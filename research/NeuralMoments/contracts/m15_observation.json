@@ -1,0 +1,64 @@
+{
+  "schema": "W0_M15_CROSS_WINDOW_OBSERVATION_V1",
+  "frozen_source": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "branch_observations": {
+    "W0": {
+      "branch": "research/neuralmoments-w0-contract-20261019",
+      "sha": "83f9709c220e51a5927e053537bdd98ecc20f7c0",
+      "observed_message": "M14 ray validation"
+    },
+    "W1": {
+      "branch": "research/neuralmoments-w1-native-20261019",
+      "sha": "4d9c8dff019da9df0fd1b513b95e9447185a10b2",
+      "observed_message": "M15 native performance"
+    },
+    "W2": {
+      "branch": "research/neuralmoments-w2-teacher-20261019",
+      "sha": "69fbabeeeb4cdf9704acbf16dbea2ec806da91f3",
+      "observed_message": "M13 teacher exclusion"
+    },
+    "W3": {
+      "branch": "research/neuralmoments-w3-heart-h9-20261019",
+      "sha": "1c9b77135835cdb26cc2d60624769d49e8fce287",
+      "observed_message": "Stage14 race repair"
+    },
+    "W4": {
+      "branch": "research/neuralmoments-w4-teapot-p1-20261019",
+      "sha": "a3364c2f74678eeae955fe573bd8e1cdf1630271",
+      "observed_message": "P12 CI fix"
+    },
+    "W5": {
+      "branch": "research/neuralmoments-w5-deeponet-20261019",
+      "sha": "219cc548fd5f37a1f88b666242cdea92d8e408cd",
+      "observed_message": "M14 P0 voxel"
+    },
+    "W6": {
+      "branch": "research/neuralmoments-w6-pcraft-20261019",
+      "sha": "42d9a3b10df7d12d97a7db6e076d2306b8f0c6ae",
+      "observed_message": "M9 P0 atoms"
+    }
+  },
+  "w2": {
+    "archive_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+    "archived_samples": 81,
+    "unit_native_c": 17,
+    "nonunit_native_c": 64,
+    "new_native_teacher_samples": 0,
+    "released_J_D": 0,
+    "train_splits_present": false,
+    "continuous_neighborhood_certified": false,
+    "formal_teacher_release": false
+  },
+  "w3": {
+    "new_side_materials": 0,
+    "required_side_materials": 4,
+    "accepted_newton_steps": 0,
+    "continuous_neighborhood_certified": false,
+    "final_heart_obj": false
+  },
+  "consumer_policy": {
+    "w5_requires_formal_teacher": true,
+    "w6_requires_formal_teacher": true,
+    "analytic_p0_is_real_teacher": false
+  }
+}

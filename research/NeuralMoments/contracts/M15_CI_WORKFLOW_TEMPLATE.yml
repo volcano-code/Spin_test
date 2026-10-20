@@ -1,0 +1,20 @@
+# NOT ACTIVE. Outside .github/workflows by design: W0 has no ownership there.
+# Integration owner must review and copy this to .github/workflows/ if authorized.
+name: W0 contract lightweight CI
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'research/NeuralMoments/contracts/**'
+      - 'research/ParallelLaunch/**'
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install 'numpy>=2,<3' 'pytest>=8,<10'
+      - run: python -m pytest -q research/NeuralMoments/contracts/test_contract_v1.py research/NeuralMoments/contracts/test_validate_contract_v1.py research/NeuralMoments/contracts/test_w2_teacher_gate.py research/NeuralMoments/contracts/test_cross_window_release_m15.py
