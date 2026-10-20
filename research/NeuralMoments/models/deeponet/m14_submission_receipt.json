@@ -1,0 +1,76 @@
+{
+  "combined_local_regression": "262 passed, 42 subtests passed, 0 skips",
+  "expected_files": {
+    "research/NeuralMoments/models/deeponet/M14_README.md": {
+      "bytes": 7491,
+      "git_blob_sha1": "9195e2bfb6855072e28fe442b69f842e677ab045",
+      "raw_sha256": "f5f5628acccc2351ee1d7eede2fbff40aaa6f7f8be471caa56a63fc8c4e25090"
+    },
+    "research/NeuralMoments/models/deeponet/m14_dependency_ledger.json": {
+      "bytes": 1139,
+      "git_blob_sha1": "3e6117bd872c1b98c3d2d6a752b6bc664baccbdf",
+      "raw_sha256": "e962c49077ced7734618ddb200d53ab233ef3e97c005abfc8e405651525aee01"
+    },
+    "research/NeuralMoments/models/deeponet/m14_error_bounds.py": {
+      "bytes": 3499,
+      "git_blob_sha1": "b6cb249f1436e82d3af440d27277c29ca5918f9e",
+      "raw_sha256": "98a4bb5a1822b4de0331b91d5ce6f0e44a9bc9fac490c52276d63494e8d9d6dd"
+    },
+    "research/NeuralMoments/models/deeponet/m14_oblique_analytic.py": {
+      "bytes": 4535,
+      "git_blob_sha1": "27772de3a1362563211972a5a256db6a130343ec",
+      "raw_sha256": "7f52b1417b2c38d71aae2ec456ee2b814303c2febc3336b740f14eac89a34100"
+    },
+    "research/NeuralMoments/models/deeponet/m14_oblique_benchmark.py": {
+      "bytes": 9107,
+      "git_blob_sha1": "1a8a55f12c91f3ba5e6babc6d0cbffbca6b08cf1",
+      "raw_sha256": "4db98efc2e7e2a25feefa358fdffb572d008b0685ded95559dcf234a4277c95a"
+    },
+    "research/NeuralMoments/models/deeponet/m14_oblique_cell_integrals.py": {
+      "bytes": 9566,
+      "git_blob_sha1": "9b14119e0ac5ffe3c44fd03457087f9b1b25e6cc",
+      "raw_sha256": "82d050ae70e0877872e6d53658cc6949dd1b22a3b2ca3c2453ac16709b661fb9"
+    },
+    "research/NeuralMoments/models/deeponet/m14_oblique_seed79_83_89_cpu.json": {
+      "bytes": 95705,
+      "git_blob_sha1": "a0ec81a2f5310563461923c78a0a6164d773874e",
+      "raw_sha256": "dd4636153335ff8835dbd482a6fd400bfc3b0b68dd49eb1baa0295529a5c6d32"
+    },
+    "research/NeuralMoments/models/deeponet/m14_seed79.json": {
+      "bytes": 31066,
+      "git_blob_sha1": "3a646828a8a75f0a3a523e3ac665297084c7c7b2",
+      "raw_sha256": "62cfeaac6c58749a3d872ffd440c752f44db7cb4a942a8eb41bdea6aa90162dc"
+    },
+    "research/NeuralMoments/models/deeponet/m14_seed83.json": {
+      "bytes": 31052,
+      "git_blob_sha1": "cb32b7ae644cbd9ea818c0d284b974ac36953e9b",
+      "raw_sha256": "77dee907341632b757a169747456bdb0c6c9b1099ed19a65c813b07963bab82e"
+    },
+    "research/NeuralMoments/models/deeponet/m14_seed89.json": {
+      "bytes": 31084,
+      "git_blob_sha1": "88ab8aa0da0b9281b11ee776b2ac677f35beabd4",
+      "raw_sha256": "3b306bf78a8d478df246ae2bd9d4acff58de998b915aaeed3d0554f9b5819f73"
+    },
+    "research/NeuralMoments/models/deeponet/m14_test_log.txt": {
+      "bytes": 399,
+      "git_blob_sha1": "139144d5baac55faf65f2120ae1a42a876fb2ce0",
+      "raw_sha256": "e0dbeb8e20bd8038505f4b44c7404b1c517c3e469379af4914ac966dc7dfffe7"
+    },
+    "tests/python/test_w5_m14_benchmark.py": {
+      "bytes": 2257,
+      "git_blob_sha1": "35125b31ef2eae1f49b663b38fc38b15f7c9e092",
+      "raw_sha256": "a8b16ed51dbe9ebbc1c43580e53d12ce1069a03000303f66849bb530ad3c59d2"
+    },
+    "tests/python/test_w5_m14_oblique_cell_integrals.py": {
+      "bytes": 7872,
+      "git_blob_sha1": "983e037e187c13155d9bd54fed82dc738ccafcb7",
+      "raw_sha256": "08caf50d6a10d3021e368645042a9617c8202e9737915831a40edd63ba990f9a"
+    }
+  },
+  "file_count_without_receipt": 13,
+  "full_experiment_sha256": "dd4636153335ff8835dbd482a6fd400bfc3b0b68dd49eb1baa0295529a5c6d32",
+  "native_Cherchi_calls": 0,
+  "new_specialized_m14_cases": 33,
+  "schema": "W5_M14_COMMIT_SOURCE_RECEIPT_V1",
+  "w5_parent_sha": "33363d833d0623627afb2a7d5eff5dde5c46dffc"
+}

@@ -1,0 +1,22 @@
+{
+  "W2_H8f_point60_branch_uncertainty_unresolved": true,
+  "W2_original_H8f_failed_workflow": 39123384402,
+  "W2_published_eligible_native_J_labels": 0,
+  "W2_published_manifest_git_blob": "41e7c4dc65a029a3cc7ce746c694bc8a03cdad70",
+  "W5_M14_independent_analytic_P0_evaluations": 72,
+  "W5_new_native_Cherchi_evaluations": 0,
+  "W5_parent_sha": "33363d833d0623627afb2a7d5eff5dde5c46dffc",
+  "W6_M9_real_comparison_scope": "M9_CELL_BOUNDING_SUPPORT_HAS_PRIVILEGED_ANALYTIC_GEOMETRY;NOT_A_TRAINED_MODEL",
+  "W6_read_only_M9_doc_git_blob": "5a3c23168be209702d67bb080cfcd40c65a05cc2",
+  "frozen_native_source_sha": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "interior_q_Jc_ambient_is_local_cell_reference_only": true,
+  "new_native_training_may_start": false,
+  "only_planar_native_coefficients_supported": true,
+  "only_writable_branch": "research/neuralmoments-w5-deeponet-20261019",
+  "read_only_heads_checked": {
+    "W0": "83f9709c220e51a5927e053537bdd98ecc20f7c0",
+    "W2": "69fbabeeeb4cdf9704acbf16dbea2ec806da91f3",
+    "W6": "42d9a3b10df7d12d97a7db6e076d2306b8f0c6ae"
+  },
+  "schema": "W5_M14_UPSTREAM_DEPENDENCY_READONLY_V1"
+}
