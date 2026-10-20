@@ -1,0 +1,36 @@
+{
+  "CPU_threads": 1,
+  "GPU_hours": 0,
+  "H8f_full_smooth_J_certified": false,
+  "W0_head_readonly": "64fa50ca171bc8e964edc5ded5e0b967cbbdb0a8",
+  "W2_head_readonly": "36eb96a0abac1e1b6620264ac79b83f3345bbcb4",
+  "W2_latest_teacher_manifest_git_blob": "38bb837a6552bacec2bf3935a5db9299deb08203",
+  "W6_gauss_encoder_git_blob": "85d0ead6ee0dec9fc3212750e849310230d7878a",
+  "W6_head_readonly": "27d51678cf741233c7a2e6c54c78d9a4667bec00",
+  "analytical_continuum_P0_only": true,
+  "exact_native_shape_training": false,
+  "files_sha256": {
+    "m11_seed41.json": "30f5ccc93fb427f77ccb35fc2c6f1d337bd19c8e11b348fad0233143352184bc",
+    "m11_seed41_43_47_full.json": "f46695c4d040fe8805247543432c6aed0ed5b7d82c2f8c877919313ed6d81cd8",
+    "m11_seed43.json": "5a04487e1067d84311c79bbbb0e3376f9112ab35cd4acc0b722e94840b966a40",
+    "m11_seed47.json": "9865bf60f1b6bada04a40ed612fae3cc3031255a018adc64e1de231d625bf98a",
+    "m11_test_log.txt": "4f0e390a91fe5ecc74a38f84b23bee1d5594e680f1c009d3fac9f3ad86a95540"
+  },
+  "model_count": 5,
+  "new_real_native_evaluations": 0,
+  "original_native_H8f_GitHub_workflow": "failure",
+  "parent_W5_sha": "b753ceee68163f40fb939cb4f0ec53afcfdfcb87",
+  "real_W2_training_labels": 0,
+  "schema": "W5_M11_EVIDENCE_RECEIPT_V1",
+  "tests": {
+    "failed": 0,
+    "pytest_passed": 159,
+    "skipped": 0,
+    "subtests_passed": 42
+  },
+  "train_seed_set": [
+    41,
+    43,
+    47
+  ]
+}
