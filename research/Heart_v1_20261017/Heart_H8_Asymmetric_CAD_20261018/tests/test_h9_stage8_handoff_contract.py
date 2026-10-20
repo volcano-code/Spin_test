@@ -39,14 +39,16 @@ class H9Stage8HandoffContracts(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             tmp=Path(tmp)
             artifact=tmp/'test-only-archive';artifact.write_bytes(b'synthetic')
-            preflight={'ready':True,'blocked_reasons':[]}
+            preflight={'ready':True,'blocked_reasons':[],'source_contract':None,'git_ref':{'head_sha':'0'*40}}
             hashes={'_make_it_stand':'a'*64,'_cherchi_core_boolean':'b'*64,
                     '_cherchi_rational_moments':'c'*64}
             with patch.object(launcher,'check_runtime',return_value=preflight),\
                  patch.object(launcher,'sha_file',return_value=launcher.HISTORICAL_ARTIFACT_SHA256),\
                  patch.object(launcher,'native_module_smoke',return_value=hashes),\
                  patch.object(launcher,'verify_build_evidence',return_value='e'*64),\
-                 patch.object(launcher.subprocess,'run',return_value=SimpleNamespace(returncode=0)):
+                 patch.object(launcher,'source_contract',return_value=None),\
+                 patch.object(launcher,'git_ref',return_value={'head_sha':'0'*40}),\
+                 patch.object(launcher,'run_process_group',return_value=0):
                 code=launcher.launch(tmp,artifact,tmp/'cert',tmp/'output',tmp/'build.json')
             result=json.loads((tmp/'output/launch_result.json').read_text())
             self.assertEqual(code,1)

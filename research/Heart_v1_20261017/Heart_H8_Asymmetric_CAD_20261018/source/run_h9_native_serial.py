@@ -19,6 +19,7 @@ import resource
 import subprocess
 import sys
 import time
+from h9_process_isolation import run_process_group
 
 BRANCH='research/neuralmoments-w3-heart-h9-20261019'
 ANCESTOR='0bcc187b3005478baa586a6d6f450e73811ca342'
@@ -105,9 +106,8 @@ def capped_exec(argv,seconds,stdout_path,stderr_path):
                 'MKL_NUM_THREADS':'1','PYTHONUNBUFFERED':'1'})
     with stdout_path.open('x') as stdout,stderr_path.open('x') as stderr:
         try:
-            proc=subprocess.run(argv,stdout=stdout,stderr=stderr,env=env,
-                                timeout=seconds,preexec_fn=impose_limit)
-            return proc.returncode
+            return run_process_group(argv,stdout=stdout,stderr=stderr,env=env,
+                                     timeout=seconds,preexec_fn=impose_limit)
         except subprocess.TimeoutExpired:
             return 124
 

@@ -1,0 +1,20 @@
+{
+  "expected_parent_commit": "63f7dc490313013bc821eed32d30b848a7289c99",
+  "files": {
+    "reports/H9_STAGE9_BUILD_PREFLIGHT.json": "3739b7774445337780dc406d92002351065daba4",
+    "reports/H9_STAGE9_EXECUTION_EVIDENCE.json": "ec6995c2b60cb5158d94f79a783a60d9ad64f23d",
+    "reports/H9_STAGE9_EXIT_CODES.txt": "effe8e420389483a1e4df2c30d9d6192b701dd0e",
+    "reports/H9_STAGE9_INNER_NATIVE_PREFLIGHT.json": "9a337b8bead608bb7cda26969aac9c80637e0017",
+    "reports/H9_STAGE9_LOCAL_TESTS.log": "241eb6af6b94d50ac06d88878df725a25bdb5dfd",
+    "reports/H9_STAGE9_RUN_PREFLIGHT.json": "bb49320ef51c92463959aa14f397919102859ff9",
+    "reports/H9_STAGE9_SOURCE_AND_PROCESS_GUARD_CN.md": "60bb580a3e9f87c6103998859216b2f36f822044",
+    "source/h9_process_isolation.py": "dad812da2411f249a8568973408f5ae3bf0c926e",
+    "source/prepare_h9_pinned_native.py": "0f901f12404c5516f540e16e0e874cbc1b313f31",
+    "source/run_h9_native_serial.py": "63544ccbbbc734f7e080368929fa4fe5f248d068",
+    "tests/test_h9_stage7_native_handoff.py": "72020d1ee3ee0e70f3941d0961c883e5e2221413",
+    "tests/test_h9_stage8_handoff_contract.py": "92c2888aa8e1da2bb94f57aa5e5fd873dd75ad23",
+    "tests/test_h9_stage8_live_handoff.py": "aa3782e76a01343a1d0b79ecf98095ee1d3a9d15",
+    "tests/test_h9_stage9_native_source_and_process_guard.py": "097eec8e87995f2eb02a38fbb287429e192213f8"
+  },
+  "source_branch": "research/neuralmoments-w3-heart-h9-20261019"
+}

@@ -102,8 +102,14 @@ class H9Stage7NativeHandoffContracts(unittest.TestCase):
                 'pinned_H8f_workflow_blob_sha256':build.H8F_WORKFLOW_BLOB_SHA,
                 'head_after_build':'f'*40,
                 'module_sha256':{'_make_it_stand':'a'*64}}
+            contract={'schema':'heart-h9-clean-source-contract-v1','head_sha':'f'*40,
+                      'frozen_workflow_blob_sha':build.H8F_WORKFLOW_BLOB_SHA,
+                      'tracked_source_clean':True,'untracked_importable_source_absent':True}
+            legitimate['source_contract_before_build']=contract
+            legitimate['source_contract_after_build']=contract
             proof.write_text(json.dumps(legitimate))
-            with patch.object(build,'git_ref',return_value={'head_sha':'f'*40}):
+            with patch.object(build,'git_ref',return_value={'head_sha':'f'*40}),\
+                 patch.object(build,'source_contract',return_value=contract):
                 self.assertEqual(len(build.verify_build_evidence(repo,proof,legitimate['module_sha256'])),64)
                 with self.assertRaisesRegex(build.BuildBlocked,'LOCAL_NATIVE_BUILD_PROVENANCE_OR_BINARY_SHA_DRIFT'):
                     build.verify_build_evidence(repo,proof,{'_make_it_stand':'b'*64})

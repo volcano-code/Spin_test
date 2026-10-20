@@ -1,0 +1,59 @@
+{
+  "accepted_newton_step_observed": false,
+  "branch": "research/neuralmoments-w3-heart-h9-20261019",
+  "executable_tests_completed": 63,
+  "executable_tests_failed": 0,
+  "frozen_ancestor_sha": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "grandchild_timeout_cleanup_real_process": true,
+  "historical_actions_conclusion": "failure",
+  "historical_actions_run_id": 39123384402,
+  "historical_artifact_id": 12135528290,
+  "historical_artifact_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "laboratory_context": "local sandbox 4GiB cgroup memory not a W3 native checkout; only offline tests and fail-closed preflights",
+  "native_attempt_blocks": {
+    "inner_runner": [
+      "INSUFFICIENT_EFFECTIVE_MEMORY_FOR_24GIB_ISOLATED_NATIVE_JOB",
+      "NOT_A_FROZEN_W3_GIT_CHECKOUT",
+      "PINNED_NATIVE_EXTENSIONS_UNAVAILABLE"
+    ],
+    "outer_build": [
+      "NOT_FROZEN_W3_BRANCH_OR_ANCESTOR",
+      "LESS_THAN_24GIB_EFFECTIVE_MEMORY",
+      "NOT_A_COMPLETE_SOURCE_CHECKOUT"
+    ],
+    "outer_launch": [
+      "NOT_FROZEN_W3_BRANCH_OR_ANCESTOR",
+      "LESS_THAN_24GIB_EFFECTIVE_MEMORY",
+      "NOT_A_COMPLETE_SOURCE_CHECKOUT"
+    ]
+  },
+  "native_attempt_exit_codes": {
+    "build_exit": 2,
+    "inner_native_exit": 2,
+    "plan_exit": 0,
+    "run_exit": 2
+  },
+  "new_native_cherchi_calls": 0,
+  "new_native_four_point_material_archives": 0,
+  "newton_admitted": false,
+  "normal_parent_exit_cleanup_real_process": true,
+  "original_heart_obj_produced": false,
+  "prior_head_sha": "63f7dc490313013bc821eed32d30b848a7289c99",
+  "process_cap": {
+    "build_compile_deadline_seconds": 3500,
+    "kills_child_process_group_on_timeout_and_exit": true,
+    "native_launch_wall_deadline_seconds": 3600,
+    "uses_new_process_session": true
+  },
+  "qualified_continuous_neighborhood": false,
+  "remote_workflow_ci_status": "not_triggered_and_not_claimed",
+  "schema": "heart-h9-stage9-real-execution-and-source-integrity-v1",
+  "source_contract": {
+    "frozen_h8f_workflow_blob_sha": "a6dda4d04998f1244ce0a7f80991d6198c037cdb",
+    "requires_clean_tracked_worktree": true,
+    "requires_no_untracked_python_or_source": true,
+    "requires_source_contract_in_build_manifest": true,
+    "requires_source_ref_unchanged_during_run": true
+  },
+  "source_integrity_checks_real_git_repo": true
+}

@@ -1,0 +1,35 @@
+{
+  "blockers": [
+    "INSUFFICIENT_EFFECTIVE_MEMORY_FOR_24GIB_ISOLATED_NATIVE_JOB",
+    "NOT_A_FROZEN_W3_GIT_CHECKOUT",
+    "PINNED_NATIVE_EXTENSIONS_UNAVAILABLE"
+  ],
+  "branch_state": {
+    "branch": null,
+    "frozen_ancestor_is_ancestor": false,
+    "head_sha": null
+  },
+  "cpu_threads": 1,
+  "gpu_training": false,
+  "max_independent_audit_wall_seconds": 360,
+  "max_probe_wall_seconds": 3100,
+  "max_total_wall_seconds": 3600,
+  "memory": {
+    "container_memory_limit_bytes": 4294967296,
+    "effective_memory_bytes": 4294967296,
+    "mem_available_bytes": 4942032896,
+    "physical_mem_bytes": 6236856320,
+    "physical_swap_bytes": 0
+  },
+  "module_import_spec_presence": {
+    "_cherchi_core_boolean": false,
+    "_cherchi_rational_moments": false,
+    "_make_it_stand": false
+  },
+  "newton_admitted": false,
+  "original_h8f_artifact_sha256_expected": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "process_virtual_memory_cap_bytes": 25769803776,
+  "repo_path": "/mnt/data/w3_stage9_work",
+  "schema": "heart-h9-stage5-serial-native-preflight-v1",
+  "status": "BLOCKED_NO_NATIVE_EVALUATION"
+}

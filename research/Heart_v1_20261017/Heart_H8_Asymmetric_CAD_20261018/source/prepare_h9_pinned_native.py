@@ -22,6 +22,7 @@ import subprocess
 import sys
 import time
 
+from h9_process_isolation import run_process_group
 from run_h9_native_serial import (
     BRANCH, ANCESTOR, MAX_SECONDS, git_ref, preflight, read_machine_memory,
 )
@@ -73,6 +74,43 @@ def python_path_env(repo: Path, environ=None):
     return env
 
 
+def source_contract(repo):
+    """Bind build/launch to the *on-disk* clean W3 tracked source tree.
+
+    HEAD equality alone is insufficient: local edits or an untracked Python
+    module can otherwise change code compiled/imported without changing SHA.
+    Build outputs under /build are intentionally excluded. New source under
+    repo/python, src, bindings, research, .github is never silently accepted.
+    """
+    repo=Path(repo).resolve()
+    def git(*args):
+        try:
+            result=subprocess.run(['git','-C',str(repo),*args],capture_output=True,
+                                  text=True,timeout=15,check=False)
+        except (OSError,subprocess.TimeoutExpired) as exc:
+            raise BuildBlocked('SOURCE_GIT_CHECK_UNAVAILABLE') from exc
+        die_unless(result.returncode==0,'SOURCE_GIT_COMMAND_FAILED:'+' '.join(args[:2]))
+        return result.stdout.strip()
+    die_unless(Path(git('rev-parse','--show-toplevel')).resolve()==repo,
+               'SOURCE_CHECKOUT_ROOT_MISMATCH')
+    head=git('rev-parse','HEAD')
+    die_unless(len(head)==40 and all(x in '0123456789abcdef' for x in head),
+               'SOURCE_HEAD_NOT_A_COMMIT_SHA')
+    tracked=git('status','--porcelain=v1','--untracked-files=no',
+                '--ignore-submodules=untracked')
+    die_unless(not tracked,'DIRTY_TRACKED_W3_SOURCE_TREE')
+    untracked=git('ls-files','--others','--exclude-standard','--',
+                  'python','src','bindings','research','.github')
+    die_unless(not untracked,'UNTRACKED_SOURCE_SHADOWING_RISK')
+    historical=repo/'.github/workflows/heart-h8f-81-point.yml'
+    die_unless(historical.is_file(),'MISSING_FROZEN_H8F_WORKFLOW_SOURCE')
+    blob=git('hash-object',str(historical))
+    die_unless(blob==H8F_WORKFLOW_BLOB_SHA,'FROZEN_H8F_WORKFLOW_BLOB_DRIFT')
+    return {'schema':'heart-h9-clean-source-contract-v1',
+            'head_sha':head,'frozen_workflow_blob_sha':blob,
+            'tracked_source_clean':True,'untracked_importable_source_absent':True}
+
+
 def check_runtime(repo):
     """Fail before a compiler/network task if the W3 branch and resources are wrong."""
     reasons=[]
@@ -92,9 +130,17 @@ def check_runtime(repo):
     for executable in ('git','cmake','ninja','c++','pkg-config'):
         if shutil.which(executable) is None:
             reasons.append('MISSING_TOOL:'+executable)
+    contract=None
     if not (repo/'.git').exists() or not (repo/'CMakeLists.txt').is_file():
         reasons.append('NOT_A_COMPLETE_SOURCE_CHECKOUT')
-    return {'repo':str(repo.resolve()),'git_ref':ref,'machine_memory':mem,
+    else:
+        try:
+            contract=source_contract(repo)
+            if contract['head_sha']!=ref.get('head_sha'):
+                reasons.append('W3_GIT_HEAD_CHANGED_DURING_PREFLIGHT')
+                contract=None
+        except BuildBlocked as exc:reasons.append(str(exc))
+    return {'repo':str(repo.resolve()),'git_ref':ref,'source_contract':contract,'machine_memory':mem,
             'python':sys.version.split()[0],'blocked_reasons':reasons,
             'ready':not reasons,'newton_admitted':False}
 
@@ -133,6 +179,8 @@ def build_plan(repo):
         'max_build_seconds':BUILD_SECONDS,'max_native_job_seconds':MAX_SECONDS,
         'python_minor':'3.13',
         'boost_abi_policy':'SHARED_LIB_ONLY_NO_SYSTEM_STATIC_ARCHIVE_MUTATION',
+        'source_integrity_policy':'CLEAN_TRACKED_TREE_NO_UNTRACKED_IMPORTABLE_CODE_PINNED_H8F_WORKFLOW',
+        'child_process_policy':'NEW_SESSION_KILL_PROCESS_GROUP_ON_SUCCESS_FAILURE_TIMEOUT',
         'paths':{'cherchi':str(cherchi),'cgal':str(cgal),
                  'core':str(core),'cherchi_build':str(ext)},
         'steps':[
@@ -156,9 +204,9 @@ def run_command(argv, timeout_seconds, log_handle, *, cwd=None, env=None):
     """No shell expansion; enforce the same remaining deadline per step."""
     die_unless(timeout_seconds>0, 'BUILD_DEADLINE_EXHAUSTED')
     log_handle.write('EXEC '+json.dumps(argv,ensure_ascii=False)+'\n');log_handle.flush()
-    result=subprocess.run(argv,cwd=cwd,env=env,stdout=log_handle,
-                          stderr=subprocess.STDOUT,timeout=timeout_seconds,check=False)
-    die_unless(result.returncode==0,'BUILD_SUBPROCESS_FAILED:'+str(result.returncode)+':'+argv[0])
+    exit_code=run_process_group(argv,cwd=cwd,env=env,stdout=log_handle,
+                                stderr=subprocess.STDOUT,timeout=timeout_seconds)
+    die_unless(exit_code==0,'BUILD_SUBPROCESS_FAILED:'+str(exit_code)+':'+argv[0])
 
 
 def git_head(path):
@@ -262,7 +310,8 @@ def build(repo, output):
     evidence={'schema':'heart-h9-native-build-evidence-v1','status':'FAILED_OR_INCOMPLETE',
               'branch_head_before_build':state['git_ref']['head_sha'],
               'source_revisions':{},'pinned_H8f_workflow_blob_sha256':H8F_WORKFLOW_BLOB_SHA,
-              'new_real_native_calls':0,'newton_admitted':False}
+              'new_real_native_calls':0,'newton_admitted':False,
+              'source_contract_before_build':state['source_contract']}
     try:
         with (out/'build.log').open('x') as log:
             run_command(plan['steps'][0]['argv'],int(deadline-time.monotonic()),log)
@@ -280,6 +329,9 @@ def build(repo, output):
             log.write('COMPILED_ALL_REQUESTED_PINNED_TARGETS\n')
         evidence['module_sha256']=native_module_smoke(repo)
         evidence['head_after_build']=git_ref(repo)['head_sha']
+        evidence['source_contract_after_build']=source_contract(repo)
+        die_unless(evidence['source_contract_after_build']==evidence['source_contract_before_build'],
+                   'W3_SOURCE_TREE_CHANGED_DURING_NATIVE_BUILD')
         die_unless(evidence['head_after_build']==evidence['branch_head_before_build'],
                    'W3_BRANCH_CHANGED_DURING_BUILD')
         evidence['status']='NATIVE_BINARIES_BUILT_AND_IMPORTABLE_NOT_YET_EVALUATED'
@@ -301,13 +353,17 @@ def verify_build_evidence(repo, evidence_file, module_hashes):
                and saved.get("source_revisions")=={"cherchi":CHERCHI_COMMIT,"cgal":CGAL_COMMIT}
                and saved.get("pinned_H8f_workflow_blob_sha256")==H8F_WORKFLOW_BLOB_SHA
                and saved.get("head_after_build")==git_ref(repo)["head_sha"]
-               and saved.get("module_sha256")==module_hashes,
+               and saved.get("module_sha256")==module_hashes
+               and saved.get("source_contract_before_build") is not None
+               and saved.get("source_contract_before_build")==saved.get("source_contract_after_build")
+               and saved.get("source_contract_after_build")==source_contract(repo),
                "LOCAL_NATIVE_BUILD_PROVENANCE_OR_BINARY_SHA_DRIFT")
     return sha_file(evidence_file)
 
 
 def launch(repo,artifact,certificate,output,build_evidence):
-    """Exact 60-minute W3 runner; distinct build and evaluation phases."""
+    """Hard 60-minute total deadline for W3 evaluation and outer checks."""
+    start=time.monotonic()
     repo=Path(repo).resolve();out=Path(output)
     out.mkdir(parents=True,exist_ok=False)
     status=check_runtime(repo)
@@ -337,17 +393,28 @@ def launch(repo,artifact,certificate,output,build_evidence):
     status['status']='ELIGIBLE_TO_ATTEMPT_REAL_NATIVE_FOUR_POINT_JOB_NOT_NEWTON'
     (out/'launch_preflight.json').write_text(json.dumps(status,indent=2,sort_keys=True)+'\n')
     try:
-        proc=subprocess.run([sys.executable,str(repo/'research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/run_h9_native_serial.py'),
+        deadline=MAX_SECONDS-(time.monotonic()-start)
+        die_unless(deadline>0,'W3_WALL_CLOCK_LIMIT_BEFORE_NATIVE_LAUNCH')
+        exit_code=run_process_group([sys.executable,str(repo/'research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/run_h9_native_serial.py'),
                              '--artifact',str(artifact),'--certificate',str(certificate),
                              '--output',str(out/'serial-native')],
-                            env=python_path_env(repo),check=False,timeout=MAX_SECONDS+30)
-        exit_code=proc.returncode
+                            env=python_path_env(repo),timeout=deadline)
     except subprocess.TimeoutExpired:
         exit_code=124
     from verify_h9_live_handoff import verify_handoff, HandoffRejected
     audit_file=out/'serial-native/independent-audit.json'
     handoff=None
     handoff_error=None
+    # Neither branch HEAD nor tracked bytes may change while the native
+    # process is running. Child success alone is insufficient evidence.
+    if exit_code==0:
+        try:
+            die_unless(source_contract(repo)==status['source_contract']
+                       and git_ref(repo)['head_sha']==status['git_ref']['head_sha'],
+                       'W3_SOURCE_OR_REF_CHANGED_DURING_NATIVE_RUN')
+        except (BuildBlocked, OSError, subprocess.TimeoutExpired) as exc:
+            exit_code=1
+            handoff_error=f'{type(exc).__name__}: {exc}'
     if exit_code==0:
         try:
             handoff=verify_handoff(out/'serial-native',
