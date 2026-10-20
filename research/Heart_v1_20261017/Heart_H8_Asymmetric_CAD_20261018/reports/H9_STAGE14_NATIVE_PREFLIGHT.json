@@ -1,0 +1,87 @@
+{
+  "branch": "research/neuralmoments-w3-heart-h9-20261019",
+  "final_heart_obj_produced": false,
+  "four_fresh_native_points_certified": 0,
+  "h8f_artifact_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "historical_ci_conclusion": "failure",
+  "historical_run_id": 39123384402,
+  "native_preflight": {
+    "build_exit_code": 2,
+    "build_reasons": [
+      "NOT_FROZEN_W3_BRANCH_OR_ANCESTOR",
+      "LESS_THAN_24GIB_EFFECTIVE_MEMORY",
+      "NOT_A_COMPLETE_SOURCE_CHECKOUT"
+    ],
+    "effective_memory_bytes": 4294967296,
+    "inner_run_exit_code": 2,
+    "inner_run_reasons": [
+      "INSUFFICIENT_EFFECTIVE_MEMORY_FOR_24GIB_ISOLATED_NATIVE_JOB",
+      "NOT_A_FROZEN_W3_GIT_CHECKOUT",
+      "PINNED_NATIVE_EXTENSIONS_UNAVAILABLE"
+    ],
+    "outer_run_exit_code": 2,
+    "outer_run_reasons": [
+      "NOT_FROZEN_W3_BRANCH_OR_ANCESTOR",
+      "LESS_THAN_24GIB_EFFECTIVE_MEMORY",
+      "NOT_A_COMPLETE_SOURCE_CHECKOUT"
+    ],
+    "plan_exit_code": 0
+  },
+  "new_native_calls": 0,
+  "new_stage14_tests": 7,
+  "newton_admitted": false,
+  "original_capture_git_blob": "8f597a2380a5fd8298e240ac09e11e61ff88268c",
+  "parent_git_sha": "0366dd65bfe373aa3657c3fc03463d4cd59d0760",
+  "race_after": {
+    "fixture": "SYNTHETIC_STORAGE_FIXTURE_NOT_CHERCHI",
+    "formal_gzip_exists": true,
+    "formal_json_exists": true,
+    "formal_sha_matches_source": true,
+    "lock_exists": true,
+    "metadata_denies_newton": true,
+    "mode": "fixed",
+    "new_cherchi_evaluations": 0,
+    "newton_admitted": false,
+    "original_h8f_artifact_untouched": true,
+    "processes": [
+      {
+        "actor": "A",
+        "result": "success"
+      },
+      {
+        "actor": "B",
+        "error": "VALIDATED_NATIVE_PACKET_ALREADY_PRESENT",
+        "result": "rejected"
+      }
+    ],
+    "schema": "heart-h9-stage14-promotion-race-reproduction-v1"
+  },
+  "race_before": {
+    "fixture": "SYNTHETIC_STORAGE_FIXTURE_NOT_CHERCHI",
+    "formal_gzip_exists": false,
+    "formal_json_exists": true,
+    "formal_sha_matches_source": false,
+    "lock_exists": false,
+    "metadata_denies_newton": true,
+    "mode": "original",
+    "new_cherchi_evaluations": 0,
+    "newton_admitted": false,
+    "original_h8f_artifact_untouched": true,
+    "processes": [
+      {
+        "actor": "A",
+        "error": "CAPTURE_METADATA_ALREADY_EXISTS_DO_NOT_OVERWRITE",
+        "result": "rejected"
+      },
+      {
+        "actor": "B",
+        "result": "success"
+      }
+    ],
+    "schema": "heart-h9-stage14-promotion-race-reproduction-v1"
+  },
+  "schema": "heart-h9-stage14-actual-execution-summary-v1",
+  "stage11_13_legacy_tests": 25,
+  "test_run_log_sha256": "e01917f36bd0cd61609782d906548b80069614fd4f295ccdd200fa53512d9da0",
+  "total_actual_tests": 32
+}

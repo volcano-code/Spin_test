@@ -1,0 +1,24 @@
+{
+  "fixture": "SYNTHETIC_STORAGE_FIXTURE_NOT_CHERCHI",
+  "formal_gzip_exists": true,
+  "formal_json_exists": true,
+  "formal_sha_matches_source": true,
+  "lock_exists": true,
+  "metadata_denies_newton": true,
+  "mode": "fixed",
+  "new_cherchi_evaluations": 0,
+  "newton_admitted": false,
+  "original_h8f_artifact_untouched": true,
+  "processes": [
+    {
+      "actor": "A",
+      "result": "success"
+    },
+    {
+      "actor": "B",
+      "error": "VALIDATED_NATIVE_PACKET_ALREADY_PRESENT",
+      "result": "rejected"
+    }
+  ],
+  "schema": "heart-h9-stage14-promotion-race-reproduction-v1"
+}

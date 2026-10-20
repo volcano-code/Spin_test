@@ -8,6 +8,8 @@ all `unverified-*` files. No surrogate/backend fallback is implemented.
 from __future__ import annotations
 
 import gzip
+import fcntl
+from contextlib import contextmanager
 from hashlib import sha256
 import json
 import os
@@ -147,7 +149,51 @@ def _sync_directory(folder):
         os.close(fd)
 
 
+@contextmanager
+def _exclusive_promotion_lease(output, identity):
+    """Serialize all promotions for one side across Linux processes.
+
+    Never unlink the lease file: unlink/recreate permits two simultaneous
+    locks on different inodes. flock is automatically released on crash.
+    Using O_NOFOLLOW and inode checks prevents accepting a renamed lock path.
+    """
+    folder = Path(output)
+    lock = folder / f'.h9-promotion-{identity}.lock'
+    flags = os.O_RDWR | os.O_CREAT | getattr(os, 'O_CLOEXEC', 0) | getattr(os, 'O_NOFOLLOW', 0)
+    descriptor = os.open(lock, flags, 0o600)
+    acquired = False
+    try:
+        stat_fd = os.fstat(descriptor)
+        stat_path = os.lstat(lock)
+        need(stat.S_ISREG(stat_fd.st_mode)
+             and stat_fd.st_ino == stat_path.st_ino
+             and stat_fd.st_dev == stat_path.st_dev
+             and stat_fd.st_uid == os.getuid(),
+             'UNTRUSTED_OR_REPLACED_H9_PROMOTION_LEASE')
+        fcntl.flock(descriptor, fcntl.LOCK_EX)
+        acquired = True
+        stat_again = os.lstat(lock)
+        need(stat.S_ISREG(stat_again.st_mode)
+             and stat_again.st_ino == stat_fd.st_ino
+             and stat_again.st_dev == stat_fd.st_dev,
+             'H9_PROMOTION_LEASE_NAME_REPLACED_WHILE_WAITING')
+        yield
+    finally:
+        if acquired:
+            fcntl.flock(descriptor, fcntl.LOCK_UN)
+        os.close(descriptor)
+
+
 def promote_after_full_audit(output, capture, side_metadata):
+    """One-owner durable publication; crash-safe recovery still supported."""
+    need(type(capture) is dict and capture.get('schema') ==
+         'heart-h9-unverified-same-call-checkpoint-v1', 'INVALID_CAPTURE_MANIFEST')
+    identity = key(capture.get('index'), capture.get('side'))
+    with _exclusive_promotion_lease(output, identity):
+        return _promote_after_full_audit_locked(output, capture, side_metadata)
+
+
+def _promote_after_full_audit_locked(output, capture, side_metadata):
     """Commit a verified packet without ever moving away its last forensic copy.
 
     A verified `side-*.json.gz` without its `side-*.json` is NOT a qualified
