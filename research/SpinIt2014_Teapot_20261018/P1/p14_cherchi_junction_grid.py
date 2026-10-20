@@ -39,18 +39,59 @@ TOL_TEN=5e-7
 def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
+# Previous binary OBJ SHA is kept in PIN. Cherchi face/vertex order may
+# differ across native runs while the full oriented geometric surface is equal.
+CANONICAL={
+ 'outer':'def3bd6f93214d5fce36c7b58547e6afb730fc454fd0b9e001a9087ef005bd20',
+ 'failed':'9760dff5a6ab6e37a7ec3eac21e7523ab123cfb9d270e285b7c96071279597f3'}
+SOURCE_M_SHA='46774afb1eaf4c7687c694493becfd96babe77b7c54748cfc03b9e3b75dec61c'
+
+def canonical_geometry_sha(path):
+    """Exact binary64 vertex multiset + orientation-preserving face multiset."""
+    m=trimesh.load_mesh(path,process=False)
+    vertices=np.asarray(m.vertices,dtype=float)
+    if not np.isfinite(vertices).all():raise ValueError('NONFINITE_CANONICAL_GEOMETRY')
+    def key(p):return tuple(float(0. if float(x)==0 else x).hex() for x in p)
+    refs=[key(p) for p in vertices]
+    triangles=[]
+    for a,b,c in np.asarray(m.faces,dtype=int):
+        tri=(refs[int(a)],refs[int(b)],refs[int(c)])
+        triangles.append(min(tri,tri[1:]+tri[:1],tri[2:]+tri[:2]))
+    data={'v':sorted(refs),'tri':sorted(triangles)}
+    return hashlib.sha256(json.dumps(data,ensure_ascii=True,
+                     separators=(',',':')).encode()).hexdigest()
+
 def load_pinned(directory):
-    folder=Path(directory)
-    result={}
-    for key,(name,expected) in PIN.items():
-        path=folder/name
-        if not path.is_file() or digest(path)!=expected:
-            raise ValueError('PINNED_REAL_P13_ARCHIVE_SHA_MISMATCH_'+key)
-        result[key]=path
-    receipt=json.loads(result['failure_receipt'].read_text())
-    if receipt.get('exit')!=0 or receipt.get('sha256')!=PIN['failed'][1]:
-        raise ValueError('REAL_P13_NATIVE_EXIT_AND_OUTPUT_BINDING_FAILED')
-    return result
+    root=Path(directory)
+    out={k:root/name for k,(name,_) in PIN.items()}
+    if any(not p.is_file() for p in out.values()):
+        raise ValueError('PINNED_P13_NATIVE_FILES_MISSING')
+    for k in ('D','shaft'):
+        if digest(out[k])!=PIN[k][1]:
+            raise ValueError('PINNED_REAL_P13_ARCHIVE_SHA_MISMATCH_'+k)
+    for k in ('outer','failed'):
+        if canonical_geometry_sha(out[k])!=CANONICAL[k]:
+            raise ValueError('P13_ORIENTED_GEOMETRY_IDENTITY_MISMATCH_'+k)
+    bad=json.loads(out['failure_receipt'].read_text())
+    if (bad.get('exit')!=0 or bad.get('op')!='subtraction' or
+        bad.get('sha256')!=digest(out['failed']) or
+        bad.get('source_sha256')!=[digest(out['D']),digest(out['shaft'])]):
+        raise ValueError('P13_BAD_NATIVE_CALL_PROVENANCE')
+    M=root/'p13-m-reference.obj'
+    outerreceipt=root/'p13-outer-cherchi-union.native-call.json'
+    native_report=root/'p13-native-csg-audit.json'
+    if not (M.is_file() and outerreceipt.is_file() and native_report.is_file()):
+        raise ValueError('P13_NATIVE_OUTER_SOURCE_CUSTODY_MISSING')
+    if digest(M)!=SOURCE_M_SHA:raise ValueError('P13_FROZEN_M_IDENTITY_CHANGED')
+    good=json.loads(outerreceipt.read_text())
+    if (good.get('exit')!=0 or good.get('op')!='union' or
+        good.get('sha256')!=digest(out['outer']) or
+        good.get('source_sha256')!=[digest(M),digest(out['shaft'])]):
+        raise ValueError('P13_GOOD_NATIVE_UNION_PROVENANCE')
+    if json.loads(native_report.read_text()).get('native',{}).get('upstream_commit')!= \
+       '7bd6c2697695f555f9a15d7e154e084d841316f0':
+        raise ValueError('P13_CHERCHI_REFERENCE_REVISION_MISMATCH')
+    return out
 
 def geometry(path):
     mesh=trimesh.load_mesh(path,process=False)
@@ -166,7 +207,10 @@ def study(input_dir,native_binary,source_dir,output,timeout=90):
     initial=trimesh.load_mesh(inp['D'],process=False)
     outer=trimesh.load_mesh(inp['outer'],process=False)
     report=dict(schema=SCHEMA,old_native_run=SOURCE_RUN,source_sha256={k:digest(v) for k,v in inp.items()},
-        current_native=ident,baseline=base,original_input_modified=False,
+        current_native=ident,baseline=base,
+        canonical_original_geometry_sha256={k:canonical_geometry_sha(inp[k]) for k in CANONICAL},
+        historical_byte_SHA_match={k:(digest(inp[k])==PIN[k][1]) for k in PIN},
+        original_input_modified=False,
         W0_approved=False,original_author_CAD_proven=False,
         printable_material_certified=False,
         real_SpinIt_Faster_optimization_complete=False,

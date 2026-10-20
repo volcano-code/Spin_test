@@ -8,8 +8,8 @@ import json,os,tempfile,unittest
 from pathlib import Path
 import numpy as np
 import trimesh
-from p14_cherchi_junction_grid import (PIN,CASES,load_pinned,geometry,variant,
-                                       raw_ten,native_call,write_obj,digest)
+from p14_cherchi_junction_grid import (PIN,CANONICAL,CASES,load_pinned,geometry,variant,
+                                       raw_ten,native_call,write_obj,digest,canonical_geometry_sha)
 
 ARCHIVE=Path(os.environ.get('W4_P14_NATIVE_ARCHIVE_DIR',
                            'research/SpinIt2014_Teapot_20261018/P1/p14-source-archive'))
@@ -32,14 +32,37 @@ class RealCherchiAxisJunction(unittest.TestCase):
         self.assertLess(r['nonmanifold_locus']['max_distance_to_shaft_radius'],.0004)
 
     def test_original_archived_geometry_provenance_unmodified(self):
-        self.assertEqual({key:digest(path) for key,path in self.files.items()},
-                         {key:pin[1] for key,pin in PIN.items()})
+        self.assertEqual({key:digest(self.files[key]) for key in ('D','shaft')},
+                         {key:PIN[key][1] for key in ('D','shaft')})
+        self.assertEqual({key:canonical_geometry_sha(self.files[key]) for key in CANONICAL},
+                         CANONICAL)
+        receipt=json.loads(self.files['failure_receipt'].read_text())
+        self.assertEqual(receipt['sha256'],digest(self.files['failed']))
+        self.assertEqual(receipt['source_sha256'],
+                         [digest(self.files['D']),digest(self.files['shaft'])])
         for name in ('D','shaft','outer'):
             m=trimesh.load_mesh(self.files[name],process=False)
             self.assertTrue(m.is_volume,name)
         outer=geometry(self.files['outer'])
         self.assertEqual(outer['non_two_incident_edges'],0)
         self.assertEqual(outer['low_area_triangles'],28)
+
+    def test_native_vertex_reordering_not_misclassified_as_geometric_change(self):
+        native=trimesh.load_mesh(self.files['failed'],process=False)
+        with tempfile.TemporaryDirectory() as tmp:
+            perm=np.random.default_rng(42).permutation(len(native.vertices))
+            remap=np.empty(len(perm),dtype=int)
+            remap[perm]=np.arange(len(perm))
+            mesh=trimesh.Trimesh(vertices=native.vertices[perm],
+                                 faces=remap[native.faces[::-1]],process=False)
+            output=Path(tmp)/'reindexed.obj'
+            write_obj(output,mesh)
+            self.assertNotEqual(digest(output),digest(self.files['failed']))
+            self.assertEqual(canonical_geometry_sha(output),CANONICAL['failed'])
+            bad=mesh.faces.copy();bad[0]=bad[0,[0,2,1]]
+            inverted=Path(tmp)/'inverted.obj'
+            write_obj(inverted,trimesh.Trimesh(vertices=mesh.vertices,faces=bad,process=False))
+            self.assertNotEqual(canonical_geometry_sha(inverted),CANONICAL['failed'])
 
     def test_zero_shift_identity_and_reloaded_geometry(self):
         src=trimesh.load_mesh(self.files['D'],process=False)

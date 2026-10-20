@@ -49,3 +49,28 @@ The authorized W4 workflow now has an \`if: always()\` P14 step following the hi
 
 - If any **numerically legal** whole F/D candidate passes: freeze the actual source/output hashes and request independent exact material certification and W0 physical contact/shaft/designed-domain authorization. Any altered D is **an explicit source deviation**, not reproduction of original CAD.
 - If every case fails: isolate native intersection classification/triangulation of the shaft-crossing loops at the actual 162 triple edges; inspect Cherchi arrangement labels and exact implicit-point classes on the original input. Do not silently swap in CGAL or invent an inertia tensor.
+
+## P14 first cloud replay: authenticated indexing difference, not geometric drift
+
+[GitHub Actions Run 39459463702](https://github.com/volcano-code/Spin_test/actions/runs/39459463702) completed with failure **before executing P14's 11 native variants**: the cross-run download step reported \`Bad credentials\`. Therefore the P14 local archive tests were skipped on that runner, and no new material result may be claimed. P12 and actual MuJoCo regression jobs passed; native P13 again generated the familiar invalid \`D − shaft\` output.
+
+However the same run emitted the full fresh P13 native output in its *own* artifact. Comparing the actual previous run 39446111126 and new run 39459463702 showed:
+
+| Mesh | historical raw SHA | new raw SHA | sorted **exact binary64** vertex coordinates | oriented per-triangle coordinates |
+|---|---|---|---|---|
+| \`M∪shaft\` | \`f3ac662e0d3c175b30a2cbcc6f1efd04785ad9d599d5ca666d7ea44b39718db5\` | \`5fdebdc2514b02f0bf7acabc67355a77eab3657c58cdadfe4d85f501942225da\` | **IDENTICAL** | **IDENTICAL** |
+| \`D−shaft\` (invalid) | \`855d7819f7ccbbb2cb05ccf9c18ab7ac6a1e6eca1456dd231967c3f9a48e30c0\` | \`faa48b1bf03573dcf9b0ce772ef89ac66d5ce45ebb1d889335d238d88e0bfbd8\` | **IDENTICAL** | **IDENTICAL** |
+
+The difference is output vertex indexing / face serialization order. **It must not be characterized as random geometric drift.** The new P14 gate uses two complementary identities:
+
+1. Strict original bytewise SHA for the D and shaft inputs, and for *each current native output versus its same-call native receipt*, with pinned native source commit and original M input.
+2. SHA256 of a canonical multiset of exact binary64 vertex-coordinate tuples and *oriented* face-coordinate triples, normalized only for vertex/face reordering and cyclic triangle corner shifts — never winding reversal.
+
+The historical canonical geometry SHA256 are:
+
+- Outer \`def3bd6f93214d5fce36c7b58547e6afb730fc454fd0b9e001a9087ef005bd20\`
+- Invalid D/shaft subtraction \`9760dff5a6ab6e37a7ec3eac21e7523ab123cfb9d270e285b7c96071279597f3\`
+
+They match **both** independently downloaded native outputs exactly. A new adversarial unit test checks that arbitrary vertex reindexing / triangle ordering preserves canonical identity, whereas changing an oriented face does not.
+
+The P14 workflow now consumes the **fresh P13 same-run outputs** after their native CLI and independent provenance checks, so it does not need cross-run artifact read permissions. On *any* geometry mismatch it still fails closed and never supplies a bogus authorized F/D or optimized Teapot.
