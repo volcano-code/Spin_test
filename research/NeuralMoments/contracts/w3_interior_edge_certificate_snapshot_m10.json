@@ -1,0 +1,136 @@
+{
+  "actual_in_between_native_boolean_samples_evaluated": 0,
+  "actual_native_cherchi_newton_accepted": false,
+  "artifact_id": 12135528290,
+  "artifact_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "at_surrogate_root_cross_squared_bound": {
+    "lower": 1.8198974368743486e-05,
+    "upper": 1.8198974368743486e-05
+  },
+  "at_surrogate_root_design_parameter_bound": {
+    "lower": 0.4475643757150983,
+    "upper": 0.44756437571509833
+  },
+  "at_surrogate_root_det_bound": {
+    "lower": -2.656143220957037e-21,
+    "upper": 2.290246985726631e-21
+  },
+  "at_surrogate_root_source_parameter_bound": {
+    "lower": 0.6140500773065187,
+    "upper": 0.6140500773065187
+  },
+  "conditional_analytic_interior_edge_crossing_certified": true,
+  "exact_native_binary64_projected_line_witnesses": {
+    "59": {
+      "design_parameter": {
+        "approximate": 0.4476520309721671,
+        "denominator": "187889625425006679969705282020353522404666111950848",
+        "numerator": "84109172420103970455750785135404770920251880057675"
+      },
+      "exact_native_binary64_material_source": true,
+      "historical_c7": 1.5e-06,
+      "infinite_line_min_squared_distance": {
+        "approximate": 1.3424617471982359e-11,
+        "denominator": "443641834792991931784514164127878274391580786545508205695880334204207104",
+        "numerator": "5955721926664311053169687471200910385152056080302479002051251"
+      },
+      "signed_determinant": {
+        "approximate": 1.5630561011148573e-08,
+        "denominator": "680564733841876926926749214863536422912",
+        "numerator": "10637608594351547676717446076387"
+      },
+      "source_parameter": {
+        "approximate": 0.6140709255537691,
+        "denominator": "349971699388710185829001072832110379644979",
+        "numerator": "214907445361250694040371457828198859632191"
+      }
+    },
+    "60": {
+      "design_parameter": {
+        "approximate": 0.4474835883856242,
+        "denominator": "58284051579162567245068441184440033148426864558080",
+        "numerator": "26081156546296471351836316679974691751990493364129"
+      },
+      "exact_native_binary64_material_source": true,
+      "historical_c7": 3e-06,
+      "infinite_line_min_squared_distance": {
+        "approximate": 1.1402896329483086e-11,
+        "denominator": "3931980738046898909683025764256421528786970231355596265562839002906624",
+        "numerator": "44835968725473178413748142570863346542989751755073252307263"
+      },
+      "signed_determinant": {
+        "approximate": -1.4405585247826644e-08,
+        "denominator": "1361129467683753853853498429727072845824",
+        "numerator": "-19607866580047215960245688626015"
+      },
+      "source_parameter": {
+        "approximate": 0.6140308627115632,
+        "denominator": "27140626487863514220839571759309635101085",
+        "numerator": "16665182296875137100909149485491114665359"
+      }
+    }
+  },
+  "final_heart_obj_produced": false,
+  "final_independently_integrated_metrics_available": false,
+  "full_coefficient_interval": [
+    1.5e-06,
+    3e-06
+  ],
+  "historical_run_conclusion": "failure",
+  "historical_run_id": 39123384402,
+  "input_design_edge": [
+    5517,
+    5518
+  ],
+  "input_source_edge": [
+    24,
+    90
+  ],
+  "native_production_continuity_or_topology_certified": false,
+  "newton_admitted": false,
+  "real_native_endpoint_indices": [
+    59,
+    60
+  ],
+  "request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+  "schema": "heart-h9-native-endpoints-and-conditional-interior-event-v1",
+  "scope": "REAL_NATIVE_BINARY64_FINITE_ENDPOINTS_AND_FIXED_NORMAL_ANALYTIC_SURROGATE_ONLY",
+  "surrogate_assumptions": [
+    "fixed inverse-Gauss normal per source vertex",
+    "unchanged source triangulation and continuous fixed-normal motion",
+    "roundoff of unknown in-between native source not strictly bounded"
+  ],
+  "surrogate_root_exact_interval": [
+    "16048198887747/7036874417766400000",
+    "40120497219369/17592186044416000000"
+  ],
+  "surrogate_root_interval_width": 8.526512829121202e-20,
+  "surrogate_root_midpoint_display": 2.2805862283444327e-06,
+  "verified_material_sample_indices": [
+    0,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64
+  ],
+  "whole_interval_cross_squared_bound": {
+    "lower": 1.8197065806728744e-05,
+    "upper": 1.8200884091775884e-05
+  },
+  "whole_interval_design_parameter_bound": {
+    "lower": 0.4471624614633606,
+    "upper": 0.44797330092528315
+  },
+  "whole_interval_event_derivative_bound": {
+    "lower": -0.020025039532999528,
+    "upper": -0.020023155419618938
+  },
+  "whole_interval_source_parameter_bound": {
+    "lower": 0.6139295228187618,
+    "upper": 0.6141722896202955
+  }
+}

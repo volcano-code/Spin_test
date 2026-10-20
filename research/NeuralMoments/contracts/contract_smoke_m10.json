@@ -1,0 +1,94 @@
+{
+  "actual_continuous_native_event_location_certified": false,
+  "actual_new_in_between_native_samples": 0,
+  "asserted_scope": "TWO_REAL_NATIVE_ENDPOINTS_PLUS_W3_CONDITIONAL_SURROGATE",
+  "literal_c7_interval_offsets": {
+    "left": 1.5e-06,
+    "right": 3e-06
+  },
+  "local_testing": {
+    "elapsed_seconds": 27.28,
+    "exact_W3_certificate_source_passed_to_local_audit": false,
+    "failed": 0,
+    "log_sha256": "9821fe1717f82fe693877ff7fd612da0d67f7cf76aa0b0e46a5f4cf8e2a1388b",
+    "original_W3_sha_pinned_and_read_via_GitHub_connector": true,
+    "passed": 71,
+    "pytest": "run from /mnt/data/w0_m10",
+    "python": "3.13",
+    "real_in_between_Cherchi_samples_added": 0,
+    "tests_total": 71
+  },
+  "native_endpoint_exact_line_witness": {
+    "59": {
+      "design_edge_parameter": 0.4476520309721671,
+      "design_edge_parameter_exact": "84109172420103970455750785135404770920251880057675/187889625425006679969705282020353522404666111950848",
+      "det_approx": 1.5630561011148573e-08,
+      "infinite_lines_min_squared_distance": 1.3424617471982359e-11,
+      "sign": 1,
+      "signed_determinant": "10637608594351547676717446076387/680564733841876926926749214863536422912",
+      "source_edge_parameter": 0.6140709255537691,
+      "source_edge_parameter_exact": "214907445361250694040371457828198859632191/349971699388710185829001072832110379644979"
+    },
+    "60": {
+      "design_edge_parameter": 0.4474835883856242,
+      "design_edge_parameter_exact": "26081156546296471351836316679974691751990493364129/58284051579162567245068441184440033148426864558080",
+      "det_approx": -1.4405585247826644e-08,
+      "infinite_lines_min_squared_distance": 1.1402896329483086e-11,
+      "sign": -1,
+      "signed_determinant": "-19607866580047215960245688626015/1361129467683753853853498429727072845824",
+      "source_edge_parameter": 0.6140308627115632,
+      "source_edge_parameter_exact": "16665182296875137100909149485491114665359/27140626487863514220839571759309635101085"
+    }
+  },
+  "newton_admitted": false,
+  "newton_terminal_certified": false,
+  "next_scientific_dependency": "W3 real native in-between samples, independent derivative neighborhood and terminal geometry seal",
+  "original_finite_difference_checks": 30,
+  "original_h8f_job": {
+    "artifact": 12135528290,
+    "conclusion": "failure",
+    "run": 39123384402,
+    "source_commit": "0bcc187b3005478baa586a6d6f450e73811ca342",
+    "zip_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9"
+  },
+  "original_native_completed_points": 81,
+  "point60_structural_transition": {
+    "added_feature_count": 2,
+    "added_oriented_triangles": 17,
+    "changed_vertex_indices": [
+      8043,
+      8044,
+      8045,
+      8046,
+      8047
+    ],
+    "removed_feature_count": 2,
+    "removed_oriented_triangles": 17
+  },
+  "real_archived_secant_Jc_diagnostic": {
+    "endpoint_Jc_column7_l2_difference": 1.3018788333120816e-05,
+    "max_absolute_secant_minus_endpoint_J_average": 6.11608878342898e-10,
+    "max_scaled_secant_minus_endpoint_J_average": 6.11608878342898e-10,
+    "no_continuity_or_differentiability_certified": true,
+    "step": 1.5e-06
+  },
+  "schema": "W0_M10_NATIVE_ENDPOINT_EVENT_ADMISSION_V1",
+  "smooth_parameter_neighborhood_certified": false,
+  "source_sha256": {
+    "h9_event_admission_m10.py": "4abfc7b4effe592b8d038aaa0d6d8314556bcc11ec3d56ae9dfe6158b7cca73b",
+    "test_h9_event_admission_m10.py": "97f77841e1196a60e388051be911fa0cd35b6c9370de7fde80259c7d4e5e0ac6"
+  },
+  "surrogate_root_from_read_only_W3": {
+    "approximate_midpoint": 2.2805862283444327e-06,
+    "branch": "research/neuralmoments-w3-heart-h9-20261019",
+    "certificate_evaluation": null,
+    "conditional_only": true,
+    "exact_interval": [
+      "16048198887747/7036874417766400000",
+      "40120497219369/17592186044416000000"
+    ],
+    "git_blob_sha1": "213d0d7f7bfec6ffa293cfd735556d8b10316601",
+    "verified_against_supplied_W3_source": false
+  },
+  "training_admissible": false
+}
