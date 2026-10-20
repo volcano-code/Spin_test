@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M11_W0_V2_READONLY_STRUCTURAL_DIAGNOSTIC_17_OF_81_UNIT_C_NO_TRAINING",
+  "status": "M12_EXACT_SIGNED_PROJECTIVE_RAYS_81_REAL_ARCHIVED_REBOUND_W0_UNSAMPLED_NOT_RUN",
   "native_teacher_runs": 0,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "W0 independently tested structural/physical v2 interface, W3 real native event one-sided proof, accepted independently sealed Newton result. M11 diagnostic W0-shaped record is not a published label.",
+  "pending_dependency": "W0 independent projective-ray and W2-v2 verifier acceptance, W3 new native left/right point60 side evidence, actual trusted smooth-neighborhood and sealed Newton solution; M12 NOT_RUN projected display cannot release J_D",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -54,7 +54,7 @@
     "w0_verifier_integrated": false
   },
   "source_replay": {
-    "native_one_call_spec_schema": "w2-one-cherchi-request-v2",
+    "native_one_call_spec_schema": "w2-one-cherchi-request-v3",
     "required_sha_pins": [
       "model",
       "native_module",
@@ -238,5 +238,41 @@
     "test_environment_scope": "Exact W2 M10 Git blob copy, authentic archived H8f-81 ZIP, genuine M9 candidate SHA; M9 manifest test fixture reconstructs pinned fields; no direct W0 independent validator",
     "source_git_blob_sha1": "96ef6b41ca3e29bf599dd6469603b519c9ddd4c9",
     "tests_git_blob_sha1": "508496a6f46049f78086861e475a1735a0f9c85b"
+  },
+  "m12_projective_handoff": {
+    "schema": "w2-m12-exact-positive-projective-ray-v1",
+    "current_repo_branch": "research/neuralmoments-w2-teacher-20261019",
+    "result_path": "research/NeuralMoments/teacher/M12_H8F_81_PROJECTIVE_RAYS.json",
+    "result_sha256": "255769c4401a89449ef864bf0ef72ec99403d0085b5eb04891512dfe2daab473",
+    "result_git_blob_sha1": "2d4cf4aae1368e22e760803d9bfe49479125ac4b",
+    "raw_candidate_sha256": "fcfccf626af7166c577ba15cc95c5ae0b345cd58a15000d708d5e68e9b85019a",
+    "original_81_artifact_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+    "original_workflow_conclusion": "failure",
+    "original_native_completed_evaluations": 81,
+    "current_new_native_evaluations": 0,
+    "archived_materials_rebound": 81,
+    "exact_positive_projective_ray_identities": 81,
+    "distinct_exact_positive_rays": 81,
+    "W0_raw_c_unit_compatible": 17,
+    "W0_raw_c_nonunit": 64,
+    "W0_unit_display_native_evaluations": 0,
+    "W0_unsampled_preview_moments_status": "NOT_RUN",
+    "W0_unsampled_preview_jacobian_type": "UNAVAILABLE",
+    "W0_independent_v2_verifier_executed": false,
+    "W0_current_v1_legacy_gate_sha1": "b42ec6d9b389675123250d79f9cc9efb1b658c07",
+    "W0_reference_schema_sha1": "52c2cfa54567d7dc2164c4b9eb56e8385c0ee1dc",
+    "W3_latest_observed_stage11_git_blob_sha1": "342b5e6968ba029c2af389de8de4a394543f422e",
+    "W3_stage11_new_native_calls": 0,
+    "W3_stage11_native_side_count": 0,
+    "W3_continuous_neighborhood_certified": false,
+    "W3_newton_admitted": false,
+    "true_point60_feature_change_preserved": true,
+    "exact_algebraic_positive_ray_identity_not_native_sampling_identity": true,
+    "formal_training_labels_admitted": 0,
+    "local_test_run": {
+      "passed": 21,
+      "failed": 0,
+      "scope": "Real original H8f 81-point ZIP plus SHA-pinned candidate; GitHub M10 exact blob mirrored locally; manifest reconstructed as an explicit semantic fixture"
+    }
   }
 }
