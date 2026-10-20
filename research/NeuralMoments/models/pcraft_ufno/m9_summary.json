@@ -1,0 +1,424 @@
+{
+  "schema": "W6_M9_ANTI_ALIAS_BOUND_ATOM_SUMMARY_V1",
+  "status": "P0_GEOMETRY_PRIVILEGED_NOT_NATIVE_W2",
+  "branch": "research/neuralmoments-w6-pcraft-20261019",
+  "parent": "2e5f8b66017dc342a0692d8a4c4a5d61fee74232",
+  "source_PIN": "volcano-code/Spin_test@0bcc187b3005478baa586a6d6f450e73811ca342",
+  "upstream_readonly_W0": "83f9709c220e51a5927e053537bdd98ecc20f7c0",
+  "upstream_readonly_W2": "4b1301c6b478437f29836e78be0b773b9d145787",
+  "w2_native_admitted_labels": 0,
+  "w2_h8f_archived_excluded": 81,
+  "seeds": [
+    19,
+    23,
+    29,
+    31,
+    37,
+    41
+  ],
+  "test_geometries_per_seed": 20,
+  "total_unique_heldout_shapes": 120,
+  "support_control_count_per_geometry": [
+    0,
+    1,
+    2
+  ],
+  "independent_target_controls_per_geometry": 8,
+  "trained_neural_weights": false,
+  "fixed_gate": "0.5 neutral (untrained) with optional frozen M7 gate transfer; NO checkpoint consumed",
+  "disclosure": "Capacity sampler has analytic primitive shape center/axes, extra information not available to M8 D8-only. Do NOT compare errors directly to trained M8/W5.",
+  "evaluation": {
+    "8": {
+      "atom_count": 512,
+      "mean_relative_mass_error": {
+        "mean": 0.0024685690175151255,
+        "sd": 0.0018753126463130633,
+        "min": 6.253700661796564e-05,
+        "max": 0.009053754197723566
+      },
+      "mean_relative_interval_width": {
+        "mean": 0.5121677445159329,
+        "sd": 0.04283046779418498,
+        "min": 0.42195384414081244,
+        "max": 0.6238430644734143
+      },
+      "old_binary_Gauss6_mass_error": {
+        "mean": 0.4272981546434779,
+        "sd": 0.05992407450286714,
+        "min": 0.2839027964157829,
+        "max": 0.5622821600448402
+      },
+      "geometry_sampling_seconds": {
+        "mean": 0.0014397810833258972,
+        "sd": 0.00032984974512352734,
+        "min": 0.0010180070000842534,
+        "max": 0.002843054999971173
+      },
+      "query": {
+        "0": {
+          "r_mae": {
+            "mean": 0.028478868086259598,
+            "sd": 0.009269552746824773,
+            "min": 0.013200987659695637,
+            "max": 0.05760593266335638
+          },
+          "J_mae": {
+            "mean": 0.011394480652709132,
+            "sd": 0.003097798857919166,
+            "min": 0.005761167835890995,
+            "max": 0.021955336046588118
+          },
+          "directional_mae": {
+            "mean": 0.00801407918544496,
+            "sd": 0.0034623900215178718,
+            "min": 0.0026610768067510727,
+            "max": 0.0174667724812471
+          },
+          "physical_necessary_pass_rate": {
+            "mean": 1.0,
+            "sd": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "est_capacity_shortfall_count": 0,
+          "legacy_binary_capacity_shortfall_count": 0,
+          "total_admitted_native_query_count": 0,
+          "total_analytic_support_observations": 0
+        },
+        "1": {
+          "r_mae": {
+            "mean": 0.008122836352292441,
+            "sd": 0.006077284206210693,
+            "min": 0.002345968013164155,
+            "max": 0.03788879457480121
+          },
+          "J_mae": {
+            "mean": 0.006601949947623785,
+            "sd": 0.0030582405967862756,
+            "min": 0.002327609403921774,
+            "max": 0.018457527520319244
+          },
+          "directional_mae": {
+            "mean": 0.004025608443087243,
+            "sd": 0.0021478200382601766,
+            "min": 0.0011304596837487658,
+            "max": 0.012250682648871008
+          },
+          "physical_necessary_pass_rate": {
+            "mean": 1.0,
+            "sd": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "est_capacity_shortfall_count": 0,
+          "legacy_binary_capacity_shortfall_count": 49,
+          "total_admitted_native_query_count": 0,
+          "total_analytic_support_observations": 120
+        },
+        "2": {
+          "r_mae": {
+            "mean": 0.00635825336107433,
+            "sd": 0.00340274574905831,
+            "min": 0.0024888508915425615,
+            "max": 0.023902204117307792
+          },
+          "J_mae": {
+            "mean": 0.0052204468003899844,
+            "sd": 0.002124084390524581,
+            "min": 0.002160933712800116,
+            "max": 0.013882424754952036
+          },
+          "directional_mae": {
+            "mean": 0.0033099990555116904,
+            "sd": 0.001647121204389441,
+            "min": 0.0011271926552048246,
+            "max": 0.009486984336540338
+          },
+          "physical_necessary_pass_rate": {
+            "mean": 1.0,
+            "sd": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "est_capacity_shortfall_count": 0,
+          "legacy_binary_capacity_shortfall_count": 78,
+          "total_admitted_native_query_count": 0,
+          "total_analytic_support_observations": 240
+        }
+      }
+    },
+    "16": {
+      "atom_count": 4096,
+      "mean_relative_mass_error": {
+        "mean": 0.0006243438493546587,
+        "sd": 0.0004947042888825444,
+        "min": 2.8611566384714372e-06,
+        "max": 0.0021968955261051676
+      },
+      "mean_relative_interval_width": {
+        "mean": 0.2559203267965964,
+        "sd": 0.02114965374759665,
+        "min": 0.21136262028260075,
+        "max": 0.308244770379462
+      },
+      "old_binary_Gauss6_mass_error": {
+        "mean": 0.4272981546434779,
+        "sd": 0.05992407450286714,
+        "min": 0.2839027964157829,
+        "max": 0.5622821600448402
+      },
+      "geometry_sampling_seconds": {
+        "mean": 0.004196212141667388,
+        "sd": 0.0013777309967551027,
+        "min": 0.002888551999944866,
+        "max": 0.016325241999993523
+      },
+      "query": {
+        "0": {
+          "r_mae": {
+            "mean": 0.028752539673967296,
+            "sd": 0.009336376200687451,
+            "min": 0.013377426758750085,
+            "max": 0.05792404477429262
+          },
+          "J_mae": {
+            "mean": 0.011454421438712946,
+            "sd": 0.003120218275394463,
+            "min": 0.005737977229134867,
+            "max": 0.02216205372856693
+          },
+          "directional_mae": {
+            "mean": 0.008176242188707696,
+            "sd": 0.0035038237121178843,
+            "min": 0.002695193270144677,
+            "max": 0.017616087713682477
+          },
+          "physical_necessary_pass_rate": {
+            "mean": 1.0,
+            "sd": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "est_capacity_shortfall_count": 0,
+          "legacy_binary_capacity_shortfall_count": 0,
+          "total_admitted_native_query_count": 0,
+          "total_analytic_support_observations": 0
+        },
+        "1": {
+          "r_mae": {
+            "mean": 0.00824192829465051,
+            "sd": 0.006164468630525067,
+            "min": 0.0023017190919163133,
+            "max": 0.03835681535931983
+          },
+          "J_mae": {
+            "mean": 0.0067198448782500786,
+            "sd": 0.003061073230393889,
+            "min": 0.002331768331946249,
+            "max": 0.01881970090580358
+          },
+          "directional_mae": {
+            "mean": 0.004256162063535643,
+            "sd": 0.002189159704675824,
+            "min": 0.0011987798321090428,
+            "max": 0.012703658018636188
+          },
+          "physical_necessary_pass_rate": {
+            "mean": 1.0,
+            "sd": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "est_capacity_shortfall_count": 0,
+          "legacy_binary_capacity_shortfall_count": 49,
+          "total_admitted_native_query_count": 0,
+          "total_analytic_support_observations": 120
+        },
+        "2": {
+          "r_mae": {
+            "mean": 0.006334969178204137,
+            "sd": 0.003456044227774953,
+            "min": 0.002392721139373823,
+            "max": 0.024512661567388377
+          },
+          "J_mae": {
+            "mean": 0.005338820387876273,
+            "sd": 0.002149136820049632,
+            "min": 0.0022725673552286604,
+            "max": 0.014384230179230056
+          },
+          "directional_mae": {
+            "mean": 0.0035126216805299736,
+            "sd": 0.0016836728987701841,
+            "min": 0.001181176281994149,
+            "max": 0.010356387928519542
+          },
+          "physical_necessary_pass_rate": {
+            "mean": 1.0,
+            "sd": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "est_capacity_shortfall_count": 0,
+          "legacy_binary_capacity_shortfall_count": 78,
+          "total_admitted_native_query_count": 0,
+          "total_analytic_support_observations": 240
+        }
+      }
+    },
+    "24": {
+      "atom_count": 13824,
+      "mean_relative_mass_error": {
+        "mean": 0.0002354900550067201,
+        "sd": 0.0001929761109658451,
+        "min": 6.078995266296463e-07,
+        "max": 0.0009787237943120462
+      },
+      "mean_relative_interval_width": {
+        "mean": 0.17062231886979906,
+        "sd": 0.014118749964015591,
+        "min": 0.1408941284027634,
+        "max": 0.20587893731164644
+      },
+      "old_binary_Gauss6_mass_error": {
+        "mean": 0.4272981546434779,
+        "sd": 0.05992407450286714,
+        "min": 0.2839027964157829,
+        "max": 0.5622821600448402
+      },
+      "geometry_sampling_seconds": {
+        "mean": 0.009214573166664764,
+        "sd": 0.0016077293343452965,
+        "min": 0.0064519379999410376,
+        "max": 0.01721452100002807
+      },
+      "query": {
+        "0": {
+          "r_mae": {
+            "mean": 0.02880866270541367,
+            "sd": 0.009344855692435525,
+            "min": 0.013434843537969272,
+            "max": 0.05798952844694074
+          },
+          "J_mae": {
+            "mean": 0.01146732235384049,
+            "sd": 0.0031217804798021956,
+            "min": 0.005727174076068083,
+            "max": 0.022185821686890463
+          },
+          "directional_mae": {
+            "mean": 0.008208480922723044,
+            "sd": 0.0035108638332764456,
+            "min": 0.0027092601991394348,
+            "max": 0.01763764147031534
+          },
+          "physical_necessary_pass_rate": {
+            "mean": 1.0,
+            "sd": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "est_capacity_shortfall_count": 0,
+          "legacy_binary_capacity_shortfall_count": 0,
+          "total_admitted_native_query_count": 0,
+          "total_analytic_support_observations": 0
+        },
+        "1": {
+          "r_mae": {
+            "mean": 0.008291533454745741,
+            "sd": 0.0061878775866665665,
+            "min": 0.0023284567226551575,
+            "max": 0.03832811504072385
+          },
+          "J_mae": {
+            "mean": 0.006749028925360868,
+            "sd": 0.0030591793027568786,
+            "min": 0.0023705950660214497,
+            "max": 0.018752501419091006
+          },
+          "directional_mae": {
+            "mean": 0.004307818469675164,
+            "sd": 0.0021955606203188645,
+            "min": 0.0012340041884420336,
+            "max": 0.012731000708955428
+          },
+          "physical_necessary_pass_rate": {
+            "mean": 1.0,
+            "sd": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "est_capacity_shortfall_count": 0,
+          "legacy_binary_capacity_shortfall_count": 49,
+          "total_admitted_native_query_count": 0,
+          "total_analytic_support_observations": 120
+        },
+        "2": {
+          "r_mae": {
+            "mean": 0.006365182245729198,
+            "sd": 0.003473074295155939,
+            "min": 0.0024312511055237674,
+            "max": 0.024867302983295942
+          },
+          "J_mae": {
+            "mean": 0.0053774815845462785,
+            "sd": 0.002160750205691203,
+            "min": 0.0022983591551426477,
+            "max": 0.01444580215375511
+          },
+          "directional_mae": {
+            "mean": 0.003566329329025457,
+            "sd": 0.0016931390500113095,
+            "min": 0.0012122183772110403,
+            "max": 0.01045960979841123
+          },
+          "physical_necessary_pass_rate": {
+            "mean": 1.0,
+            "sd": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "est_capacity_shortfall_count": 0,
+          "legacy_binary_capacity_shortfall_count": 78,
+          "total_admitted_native_query_count": 0,
+          "total_analytic_support_observations": 240
+        }
+      }
+    }
+  },
+  "tests": {
+    "M4_through_M8_repeated": 112,
+    "M9_new": 24,
+    "total": 136,
+    "status": "LOCAL_PASS",
+    "remote_CI": "UNVERIFIED"
+  },
+  "environment": {
+    "python": "3.13.5",
+    "torch": "2.10.0+cpu",
+    "numpy": "2.3.5",
+    "device": "cpu",
+    "torch_threads": 1,
+    "cuda_hours": 0.0
+  },
+  "artifacts": {
+    "first_seeds": "m9_analytic_three_seed_cpu.json.gz",
+    "confirmatory_seeds": "m9_confirmatory_three_seed_cpu.json.gz",
+    "depth_study": "m9_depth_interval_cpu.json"
+  },
+  "limitations": [
+    "Analytic ellipsoid metadata is geometry oracle unavailable from M8 D8-only binary voxels",
+    "Floating point interval bounds are not rational Cherchi geometry certification",
+    "Depth2 interval mass brackets remain broad even when midpoint volume estimates are accurate",
+    "Increasing resolution does not monotonically reduce r/J heldout error",
+    "No learned M7 training or checkpoint, so not comparable to trained M8/DeepONet",
+    "No real W2 labels, certified derivative neighborhoods, native CAD/material, GPU or Newton A/B timing",
+    "Model J is smooth normalized sigmoid surrogate native derivative, not true native W0 continuum derivative"
+  ],
+  "local_artifact_sha256": {
+    "m9_analytic_three_seed_cpu.json": "67acfdfeb48a962f5b02f0fbff122ad6f5ba2e0550e1e1f7a68f9e9d8c28a835",
+    "m9_confirmatory_three_seed_cpu.json": "310d9c6f488f018182d45c03acfd4fd09c13c44a9760eed0f7bb7eba908651af",
+    "m9_depth_interval_cpu.json": "396010d39b3a15b0fc3af0fde8e338afb819780aeaafca48ab1cd6ddc1feb1b3",
+    "m9_full_regression.log": "868f3e3be0a4e50d236ee8a1a7d271659b0874708edad07afb4900f03bf094c1"
+  }
+}

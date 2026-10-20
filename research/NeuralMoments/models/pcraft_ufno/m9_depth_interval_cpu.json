@@ -1,0 +1,48 @@
+{
+  "schema": "W6_M9_DEPTH_INTERVAL_P0_V1",
+  "source": "analytic shape only, not teacher or exact rational CAD certificate",
+  "seed": 19,
+  "geometries": 20,
+  "depths": {
+    "8^3_depth0": {
+      "mean_relative_interval_width": 2.087215780805554,
+      "full_mass_within_numerical_bounds": 20,
+      "wall_seconds": 0.01738348000003498
+    },
+    "8^3_depth1": {
+      "mean_relative_interval_width": 1.0353558171033526,
+      "full_mass_within_numerical_bounds": 20,
+      "wall_seconds": 0.019819789999928616
+    },
+    "8^3_depth2": {
+      "mean_relative_interval_width": 0.5162337032189303,
+      "full_mass_within_numerical_bounds": 20,
+      "wall_seconds": 0.0361187250000512
+    },
+    "8^3_depth3": {
+      "mean_relative_interval_width": 0.25784434210869683,
+      "full_mass_within_numerical_bounds": 20,
+      "wall_seconds": 0.08643549199996414
+    },
+    "16^3_depth0": {
+      "mean_relative_interval_width": 1.0353558171033526,
+      "full_mass_within_numerical_bounds": 20,
+      "wall_seconds": 0.04662629800009199
+    },
+    "16^3_depth1": {
+      "mean_relative_interval_width": 0.5162337032189303,
+      "full_mass_within_numerical_bounds": 20,
+      "wall_seconds": 0.06205889299985756
+    },
+    "16^3_depth2": {
+      "mean_relative_interval_width": 0.25784434210869683,
+      "full_mass_within_numerical_bounds": 20,
+      "wall_seconds": 0.0847776350001368
+    },
+    "16^3_depth3": {
+      "mean_relative_interval_width": 0.128890930918593,
+      "full_mass_within_numerical_bounds": 20,
+      "wall_seconds": 0.34341320599992287
+    }
+  }
+}
