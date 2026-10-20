@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M13_PRIMITIVE_POSITIVE_PROJECTIVE_ALGEBRA_READY_W0_FORMAL_ACCEPTANCE_PENDING",
+  "status": "M15_REAL_FROZEN_HEART_FD_SOURCE_RECHECK_PASSED_NATIVE_PRECHECK_BLOCKED_NOODLES_V7_TERMINAL_AUDITED_INPUTS_MISSING",
   "native_teacher_runs": 0,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "W0 must independently accept a native-c projective identity format without substituting rounded display c, and W3 must supply new authenticated native one-sided Cherchi data plus qualified continuity/Newton proof; Noodles V7 W2 teacher validation outstanding",
+  "pending_dependency": "Install exact frozen Spin/Cherchi/GMP native build in >=24GiB/swap0 research host and run M15 Heart once; stage original Noodles V7 outer/design/fixed binary64 input and independent source SHA proof before Noodles teacher. W0/W3 derivatives still unverified.",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -309,5 +309,53 @@
     "w3_native_four_point_sides_obtained": false,
     "newton_admitted": false,
     "training_admitted": 0
+  },
+  "m15_dual_model_teacher": {
+    "schema": "w2-m15-native-dual-campaign-manifest-v1",
+    "branch": "research/neuralmoments-w2-teacher-20261019",
+    "campaign_program": "research/NeuralMoments/teacher/m15_dual_teacher_campaign.py",
+    "results": "research/NeuralMoments/teacher/M15_DUAL_MODEL_PREFLIGHT_RESULT.json",
+    "heart": {
+      "frozen_h8f_archive_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+      "frozen_request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+      "asset_sources_sha_verified": 3,
+      "verified_ordered_outer_and_design_verts_and_faces": true,
+      "verified_fixed_moments_max_abs_diff": 7.704947790898586e-14,
+      "verified_F_plus_D_vs_outer_max_abs_diff": 2.220446049250313e-16,
+      "predeclared_case_abs_tolerance": 1e-9,
+      "verified_normalized_model_view_sha256": "929abe196ce4811b545599e79f17cfb1f4ea22482e8695583883de2dee29989e",
+      "native_attempt_exit_code": 2,
+      "native_attempt_blocker": "COMPILED_NATIVE_MODULE_FILE_ABSENT",
+      "cgroup_effective_bytes": 4294967296,
+      "source_is_original_author_cad": false,
+      "new_native_evals": 0
+    },
+    "noodles_v7": {
+      "historical_snapshot_commit": "053756f5091ab3e07d6bd29c40baab146e910121",
+      "optimized_final_obj_sha256": "e979bd3980a5efaf9b03d047c4e19e9296ddb426267a7322ff4e1a4b954fe80a",
+      "historical_final_obj_git_blob_sha1": "f803c45274d7721b854cfd19a5173e4b43e79af1",
+      "historical_final_obj_independent_audit": "research/NeuralMoments/teacher/M15_NOODLES_V7_HISTORICAL_OBJ_AUDIT.json",
+      "audited_vertices": 42932,
+      "audited_faces": 86076,
+      "reference_ten_moment_max_abs_error": 6.661338147750939e-16,
+      "actual_native_frozen_F_D_request_present": false,
+      "source_CAD_author_original": false,
+      "output_obj_is_teacher_input": false,
+      "new_native_evals": 0
+    },
+    "current_training": {
+      "J_D_released": 0,
+      "training_admitted": 0,
+      "W0_accepted_projective": false,
+      "W3_certified_newton_neighborhood": false
+    },
+    "local_test_execution": {
+      "total": 21,
+      "passed": 20,
+      "skipped": 1,
+      "failed": 0,
+      "reason_skipped": "Noodles 4.23MB final OBJ only available to GitHub connector code path, not staged in Python container"
+    },
+    "new_native_teacher_calls": 0
   }
 }
