@@ -195,6 +195,7 @@ jobs:
           set -euo pipefail
           python -m unittest discover -v -s "$P1" -p 'test_p7_cherchi_reference.py' 2>&1 | tee "$P1/p7-cherchi-native/local-scope-tests.log"
           python -m unittest discover -v -s "$P1" -p 'test_p8_cherchi_union_forensics.py' 2>&1 | tee "$P1/p7-cherchi-native/p8-independent-topology-tests.log"
+          python -m unittest discover -v -s "$P1" -p 'test_p9_cherchi_handle_joint_sweep.py' 2>&1 | tee "$P1/p7-cherchi-native/p9-geometry-perturbation-tests.log"
 
       - name: Clone the actual Cherchi 2022 reference code at fixed commit
         run: |
@@ -226,7 +227,10 @@ jobs:
           cat "$P1/p7-cherchi-native/cherchi-run.log" | tail -n 50
           printf '%s\n' "$rc" > "$P1/p7-cherchi-native/p7-exit-code.txt"
 
+      # A failed P8 means original unperturbed geometry is still invalid.
+      # Continue into P9 *only for a recorded counterfactual geometry test*.
       - name: P8 real Cherchi pairwise/order diagnostic with independent solid gate
+        continue-on-error: true
         run: |
           set -euo pipefail
           python "$P1/p8_cherchi_union_forensics.py" --p0 research/SpinIt2014_Teapot_20261018/input/teapot-public-original.obj --p1 "$P1/teapot-topology-candidate-p1.obj" --native-bin build/w4-cherchi-reference/bin/w4_cherchi_reference_native --upstream-checkout "$NATIVE_ROOT" --out "$P1/p8-cherchi-forensics" --timeout 90 | tee "$P1/p7-cherchi-native/p8-forensics-stdout.log"
@@ -242,6 +246,32 @@ jobs:
           print('Cherchi numerical solid passes only; still NOT exact/physical/optimized')
           PY
 
+      - name: P9 Cherchi-only controlled handle contact perturbation experiment
+        run: |
+          set -euo pipefail
+          if python - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path('research/SpinIt2014_Teapot_20261018/P1/p8-cherchi-forensics/p8-cherchi-permutations.json')
+          import sys
+          sys.exit(0 if json.loads(p.read_text()).get('accepted') is True else 1)
+          PY
+          then
+            echo 'P8 original source geometry passed; P9 source deviation unnecessary'
+          else
+            python "$P1/p9_cherchi_handle_joint_sweep.py" --p0 research/SpinIt2014_Teapot_20261018/input/teapot-public-original.obj --p1 "$P1/teapot-topology-candidate-p1.obj" --native-bin build/w4-cherchi-reference/bin/w4_cherchi_reference_native --upstream-checkout "$NATIVE_ROOT" --out "$P1/p9-cherchi-handle-variants" --timeout 90 | tee "$P1/p7-cherchi-native/p9-shift-sweep-stdout.log"
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('research/SpinIt2014_Teapot_20261018/P1/p9-cherchi-handle-variants/p9-source-deviation-sweep.json').read_text())
+          assert j['status']=='SOURCE_DEVIATING_CHERCHI_NUMERIC_CANDIDATE_AVAILABLE'
+          assert j['accepted_candidates']
+          assert j['source_meshes_unchanged'] and j['geometry_deviation_is_intentional']
+          assert not j['exact_source_conformance'] and not j['actual_optimization_performed']
+          print('PASS: strict Cherchi native, deliberately modified handle geometry only; no original-shape/optimization claim')
+          PY
+          fi
+
       - name: Always retain Cherchi compile/native source and failed validation evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -250,6 +280,7 @@ jobs:
           path: |
             research/SpinIt2014_Teapot_20261018/P1/p7-cherchi-native/**
             research/SpinIt2014_Teapot_20261018/P1/p8-cherchi-forensics/**
+            research/SpinIt2014_Teapot_20261018/P1/p9-cherchi-handle-variants/**
             build/w4-cherchi-reference/CMakeCache.txt
             build/w4-cherchi-reference/CMakeFiles/CMakeConfigureLog.yaml
           if-no-files-found: warn

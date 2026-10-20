@@ -1,0 +1,13 @@
+# W4 P9 — explicit handle junction perturbation (Cherchi-native only)
+
+**This experiment deliberately departs from the unmodified public Utah Teapot geometry; it does NOT repair, optimize, or certify the author's original Teapot.**
+
+Background: Original P7 real Cherchi 3-input `UNION` returned a nonmanifold output in archived run 39280601698. The new P8 real native permutations in run 39361566390 showed body+spout alone can pass numerical geometry checking (2,856 vertices, 5,708 faces, signed volume integral 25.598027010758113), whereas body+handle is closed but contains 4 nearly zero-area triangles (smallest ~1.95e-17) and six conservative nonincident triangle contact witnesses; whole 3-part unions fail with nonmanifold triple-incidence edges. The original P0 and P1 SHA pins remain unchanged.
+
+P9 uses a **true Cherchi reference binary** at fixed revision `7bd6c2697695f555f9a15d7e154e084d841316f0` to compute a body+spout solid, then intersects its design problem by unioning a translated **copy** of the P1 handle. It sweeps x-axis shifts in **unspecified original OBJ units**: `0, +0.0005, +0.002, +0.005, +0.01, -0.0005, -0.002, -0.005`. This is a controlled source **geometry perturbation**, not an allowable paper-reproduction geometric repair by assumption. No source OBJ files are overwritten. Each trial records Euclidean max displacement and displacement normalized by the bounding-box diagonal; a hard limit of 0.01 source units is enforced and no shift is interpreted as millimetres without a W0 physical case.
+
+Every native OBJ must pass independent closed oriented 2-manifold, indexed connectivity, no finite-precision self-contact SAT evidence, necessary union-volume bounds, saved OBJ hash, and double-implemented ten raw unit-density moments before being labelled `CHERCHI_NUMERIC_GEOMETRY_PASS_SOURCE_DEVIATED`. Even when that happens, `exact_source_conformance=false`, `actual_optimization_performed=false`, `W0_F_D_partition_certified=false`, and `W2_teacher_admitted=false` remain immutable.
+
+If no shift generates a closed candidate, the output is `NO_CHERCHI_CLOSED_SOLID_WITHIN_DOCUMENTED_SHIFT_SWEEP` and the native CI job fails while preserving all generated files and negative evidence. No automatic CGAL fallback exists.
+
+Local tests `test_p9_cherchi_handle_joint_sweep.py` verify source hashes and parts, zero-shift identity, rigid translation on x only, topology/volume invariance, nonfinite/out-of-budget rejection and explicit sweep declaration. The previously user-authorized W4-specific GitHub Actions workflow has an additional serial P9 job step after P8. Tests/native execution status must be reported from actual CI rather than assumed here.
