@@ -13,7 +13,7 @@
 
 | Window | Role | Branch / exact instructions | Dependencies | Earliest evidence target | State |
 |---|---|---|---|---|---|
-| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M14_W0_W2_ALL81_EXACT_RAY_AND_GZIP_MATCH; 239_GROUPED_LOCAL_TESTS; W3_STAGE12_0_OF_4; NEWTON_TRAINING_DENIED` |
+| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M15_7_WINDOW_OBSERVATION; CI_TEMPLATE_NOT_ACTIVE; REAL_TEACHER_NEWTON_BLOCKED` |
 | W1 | Cherchi/Faster 性能 | [research/neuralmoments-w1-native-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w1-native-20261019/research/ParallelLaunch/W1_START_HERE.md) | 可独立 profiling；合并需 W0/W2 | 冻结同输入逐段耗时＋原生改造对照 | `BRANCH_AND_CHARTER_CREATED; DEVELOPMENT_NOT_STARTED` |
 | W2 | 精确教师与标签 | [research/neuralmoments-w2-teacher-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w2-teacher-20261019/research/ParallelLaunch/W2_START_HERE.md) | 正式发布标签需 W0 | 真实 r,J＋SHA＋可微/失败状态 | `W2_M12_GIT_LEDGER_81_RAYS_17_UNIT_64_NONUNIT; ZERO_TRAINING_RELEASE_OBSERVED` |
 | W3 | Heart H9 | [research/neuralmoments-w3-heart-h9-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w3-heart-h9-20261019/research/ParallelLaunch/W3_START_HERE.md) | 无 | 81 点 point60 构造变化诊断 | `W3_STAGE12_FORENSIC_COMMIT; LOCAL_90_TESTS_REPORTED; NEW_NATIVE_SIDES_0_OF_4; NEWTON_DENIED` |
@@ -171,3 +171,11 @@
 - Exactly **17 unit-compatible, 64 nonunit** original c. 81 distinct signed exact positive rays; float64 display's exact rational ray agrees for 17/17 originally unit, **0/64** originally nonunit. Point 60 retains original c[7]=3e-6 and monomial q[7]=6e-6; no silent normalization or Jacobian reparameterization. W0 MomentContractV1 and its source/schema unchanged.
 - New **diagnostic-only** schema/code/CLI, never a new native label. Local actual tests completed in three separate successful runs: M8–M12 `178 passed in 31.92s`, M13 `34 passed in 28.83s`, M14 `27 passed in 14.56s`; **239/239 distinct tests**. Earlier combined timeout excluded. CLI separately re-opened the real pinned 81-point H8f ZIP and produced 81-row `contract_smoke_m14.json` with `training_admissible=false`.
 - Read-only W3 Stage12 at `d69a9c91bf3a9359cf2a480fc22fec8bc8393ca3` reports no new native side samples or Newton; its source-lock must be regenerated for every future changed W3 checkout. Original historical H8f Actions `39123384402` remains failure, no claim of W0 GitHub CI green. Review [M14 evidence](W0_M14_EVIDENCE_20261020.md), [signed-ray contract](../NeuralMoments/contracts/M14_W2_SIGNED_RAY_HANDOFF.md) and [M14 JSON](../NeuralMoments/contracts/contract_smoke_m14.json).
+
+
+## W0 M15 integration (2026-10-20)
+
+- Seven branch SHA observations frozen in research/NeuralMoments/contracts/m15_observation.json. A commit subject alone does not certify tests or scientific outputs; W1/W4/W5/W6 moved beyond their old, stale status cells.
+- cross_window_release_m15.py is a fail-closed source-bound training gate: historical H8f 81 sample failure and 17/64 coefficient distribution stay recorded, W2 has no certified released J_D, W3 has zero new four-side samples and no accepted Newton terminal.
+- M15_CI_WORKFLOW_TEMPLATE.yml is NOT ACTIVE: the .github/workflows/ directory is outside W0 write scope, requiring separately approved workflow activation.
+- Local 18/18 tests validate the precursor implementation; the submitted refactor still requires an exact committed-source checkout/CI test. No GitHub CI green or native certificate is claimed.
