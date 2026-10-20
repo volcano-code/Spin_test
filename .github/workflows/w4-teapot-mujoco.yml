@@ -365,7 +365,7 @@ jobs:
     timeout-minutes: 15
     env:
       P1: research/SpinIt2014_Teapot_20261018/P1
-      W4_P12_REAL_INPUT_DIR: ${{ runner.temp }}/w4-p12-real
+      W4_P12_REAL_INPUT_DIR: research/SpinIt2014_Teapot_20261018/P1/p12-real-input
       OPENBLAS_NUM_THREADS: '1'
     steps:
       - uses: actions/checkout@v4
