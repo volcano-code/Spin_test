@@ -1,0 +1,37 @@
+W3 H9 Stage11 — actual local test groups and native blocker record
+GitHub repository: volcano-code/Spin_test
+Allowed branch: research/neuralmoments-w3-heart-h9-20261019
+Base remote HEAD: 324256786bc189abbbb93452ed2627cfe0b28a13
+Frozen historical Actions run: 39123384402 (failure)
+Original artifact SHA256 verified: 99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9
+
+TEST GROUP: Stage4-8
+unittest patterns: crossing(5), interior(6), stage5(13), stage6(12), stage7(10), stage8(19)
+Result: 65/65 PASS; skip 0.
+TEST GROUP: Stage9
+Result: 9/9 PASS; skip 0.
+TEST GROUP: Stage10 and Stage11
+Result: 12/12 + 8/8 PASS; skip 0.
+TOTAL: 94/94 PASS; skip 0. All groups returned success.
+
+Initial single-batch attempt: two obsolete Stage8 assertion identifiers failed.
+Updated tests assert current strict rejection errors and H8F_SHA256 identifier.
+Second single-batch attempt: local execution command timeout; excluded from passing counts.
+Subsequent completed grouped runs: all passed.
+
+NEW Stage11 test: actual H8f sample 59 material can be captured before strict audit;
+an injected failure retains unverified gzip and manifest; the independent auditor
+refuses to count this as a completed NEW native sample.
+Strict side metadata contract: full 10-element q now recorded and checked.
+Other tests: tamper/overwrite/backend mismatch/deterministic gzip/promotion.
+
+ACTUAL EXECUTION:
+--phase inputs: exit 0; verified frozen historical ZIP and conditional certificate.
+--phase build: exit 2; wrong/incomplete checkout and <24GiB effective memory.
+--phase run: exit 2; same resource/checkout preflight.
+independent new-side audit with absent report: exit 1;
+  ValueError: NO_COMPLETED_NEW_REAL_CHERCHI_RUN_REPORT
+cgroup memory limit: 4294967296 bytes; swap: 0.
+New REAL Cherchi Boolean calls: 0/4.
+New W3 GitHub Actions CI: none triggered.
+Newton admitted: false. Final Heart OBJ: none.

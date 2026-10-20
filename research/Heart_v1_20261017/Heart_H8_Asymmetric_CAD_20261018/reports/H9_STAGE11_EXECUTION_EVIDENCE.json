@@ -1,0 +1,49 @@
+{
+  "schema": "heart-h9-stage11-execution-evidence-v1",
+  "repository": "volcano-code/Spin_test",
+  "branch": "research/neuralmoments-w3-heart-h9-20261019",
+  "baseline_head_sha": "324256786bc189abbbb93452ed2627cfe0b28a13",
+  "frozen_ancestor_sha": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "historical_workflow_run_id": 39123384402,
+  "historical_workflow_run_conclusion": "failure",
+  "historical_artifact_id": 12135528290,
+  "historical_zip_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "local_python": "3.13.5",
+  "cgroup_effective_memory_bytes": 4294967296,
+  "swap_bytes": 0,
+  "tests": {
+    "stage4_to_stage8": {
+      "passed": 65,
+      "skipped": 0
+    },
+    "stage9": {
+      "passed": 9,
+      "skipped": 0
+    },
+    "stage10_to_stage11": {
+      "passed": 20,
+      "skipped": 0
+    },
+    "total_passed": 94,
+    "total_skipped": 0,
+    "execution": "completed grouped unittest runs"
+  },
+  "earlier_failed_batch": "2 obsolete historical assertion names; updated without weakening rejection; original failed log retained in downloadable evidence ZIP",
+  "timed_out_batch": "single combined command timed out in execution environment; not counted as a pass; completed grouped reruns passed",
+  "real_historical_material_replayed": "sample 59 real H8f packet tested for unverified forensic capture; not new native execution",
+  "inputs_phase_exit": 0,
+  "build_preflight_exit": 2,
+  "run_preflight_exit": 2,
+  "missing_new_native_report_audit_exit": 1,
+  "new_cherchi_native_calls": 0,
+  "new_real_native_side_count": 0,
+  "newton_admitted": false,
+  "heart_final_obj_produced": false,
+  "remote_w3_ci": "not triggered",
+  "source_changes": [
+    "first same-call packet saved as unverified gzip plus SHA manifest, before strict boundary and Fraction checks",
+    "full 10-coefficient q recorded in each completed side metadata and required for promotion",
+    "historical stage8 strict-rejection tests updated to currently enforced error codes and constant"
+  ],
+  "provenance_limit": "a captured unverified material is not a completed or runtime-attested Cherchi sample"
+}

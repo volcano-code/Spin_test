@@ -11,7 +11,6 @@ from __future__ import annotations
 
 import argparse
 from fractions import Fraction as Q
-import gzip
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -20,6 +19,7 @@ import time
 import traceback
 import zipfile
 
+from h9_same_call_capture import capture_same_call, promote_after_full_audit
 from certify_h9_interior_edge_crossing import (
     SOURCE_IDS, DESIGN_IDS, archival_data, exact_line_witness, qvec,
     solve as offline_solve, need, sha, REQUEST_SHA,
@@ -130,6 +130,14 @@ def run(artifact:Path,certificate_path:Path,output:Path):
                 value=engine(q)
                 material=engine.material(q)
                 engine.validate_same_call_material(material,q,request)
+                # Preserve this real same-call packet immediately. Strict boundary,
+                # Fraction integration, and exact branch checks below may fail or
+                # time out. Until they pass, it remains `unverified-*` and MUST
+                # NOT count as a completed new native sample.
+                stage=f"PRESERVE_UNVERIFIED_TRUE_SAME_CALL_PACKET_{item['index']}"
+                capture=capture_same_call(output,index=item['index'],side=item['side'],
+                    coefficients=q.tolist(),material=material,
+                    backend_identity=value['boolean_backend_identity'])
                 need(value['boolean_backend_identity'].startswith(BACKEND_PREFIX),
                      'NEW_NATIVE_BACKEND_MISMATCH')
                 stage=f"STRICT_EXACT_NATIVE_BOUNDARY_{item['index']}"
@@ -172,10 +180,11 @@ def run(artifact:Path,certificate_path:Path,output:Path):
                 det_sign=(segment['determinant']>0)-(segment['determinant']<0)
                 stage=f"ARCHIVE_NEW_REAL_SAME_CALL_MATERIAL_{item['index']}"
                 name=f"side-{item['index']:02d}-{item['side']}"
-                snapshot=output/(name+'.json.gz')
-                with gzip.open(snapshot,'wt',encoding='utf-8') as f:
-                    json.dump(material,f,sort_keys=True,allow_nan=False)
-                fact={**item,'native_event_sign':det_sign,
+                # The exact already-captured gzip bytes are only promoted
+                # after all native geometry, mass and provenance gates pass.
+                fact={**item,'q':q.tolist(),'newton_admitted':False,
+                      'actual_accepted_step':False,
+                      'native_event_sign':det_sign,
                       'agrees_with_analytic_proxy_sign':det_sign==item['expected_proxy_event_sign'],
                       'native_source_param':float(segment['source_segment_parameter']),
                       'native_design_param':float(segment['design_segment_parameter']),
@@ -189,10 +198,10 @@ def run(artifact:Path,certificate_path:Path,output:Path):
                       'symbolic_vs_right':compare_right,
                       'native_material_geometry_hash':material['geometry_hash'],
                       'native_feature_branch_hash':material['topology_hash'],
-                      'material_sha256':sha256(snapshot.read_bytes()).hexdigest(),
+                      'material_sha256':capture['archive_sha256'],
                       'vertex_count':len(coordinates),'face_count':len(faces),
                       'elapsed_seconds':time.perf_counter()-start}
-                (output/(name+'.json')).write_text(json.dumps(fact,indent=2,allow_nan=False)+'\n')
+                promote_after_full_audit(output,capture,fact)
                 results.append(fact)
                 report['new_real_native_calls']+=1
                 report['finished_indices'].append(item['index'])
