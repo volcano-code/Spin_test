@@ -46,8 +46,9 @@ W0 `MomentContractV1` 规定：原生二次曲面系数 `c` 以 native symmetric
 
 ```bash
 cd Spin_test
-python -m unittest discover -s research/NeuralMoments/teacher \
-  -p 'test_w2_projective_ray_m12.py' -v
+W2_H8F_ARCHIVE=/absolute/path/h8f_81_real.zip \
+  python -m unittest discover -s research/NeuralMoments/teacher \
+    -p 'test_w2_projective_ray_m12.py' -v
 
 python research/NeuralMoments/teacher/w2_projective_ray_m12.py \
   --candidate research/NeuralMoments/teacher/M9_H8F_81_EXCLUDED_CANDIDATES.json \
@@ -57,3 +58,7 @@ python research/NeuralMoments/teacher/w2_projective_ray_m12.py \
 ```
 
 该命令只执行 CPU 归档审核，不与 W1/W3 原生 Cherchi 作业竞争。禁止覆盖既存输出；正式交接仍需 W0 在其独占分支对 raw-c 项、projective display 与 source identity 做**独立审查**，并需 W3 后续真实原生左右侧导数与连续性/独立 Newton 终点证据。只有另行建立并经过可信验收的正式发布门槛后，才能考虑 `train/val/test`，不得修改本里程碑的 `excluded` 状态来绕过认证。
+
+## M12 最终回归修复和测试说明
+
+先前回归脚本假设历史 64MB ZIP 位于测试目录且写入该目录的测试夹具。已修复为优先使用环境变量 `W2_H8F_ARCHIVE` 指定实际历史 ZIP；完整 W2 checkout 自动读取真正的 `teacher_manifest.json`，隔离测试环境则将语义 fixture 放入临时目录，不污染源码目录。没有配置历史 ZIP 时真实档案测试显式跳过，绝不报告为全部执行。变更后使用真实历史 ZIP 的本地测试 **21/21 PASS，13.891 秒**，完整日志本地 SHA256 `987c5cc8023e4e9c18e429c68cb658372c926877621bf3a08d8e60c7ab20139d`（注意：这个 SHA 来自更早一轮 12.756 秒的日志；最终 13.891 秒的独立日志与其不同，不得把该值冒称最终日志校验结果）。修订测试 Git blob SHA1 `38bbe1c9bf00c85fdfb22f12fe8845bc9599d767` 已由 GitHub 重读核实。
