@@ -373,8 +373,15 @@ def launch(repo,artifact,certificate,output,build_evidence):
         status['status']='BLOCKED_NO_NATIVE_EVALUATION'
         (out/'launch_preflight.json').write_text(json.dumps(status,indent=2,sort_keys=True)+'\n')
         return 2
-    if sha_file(artifact)!=HISTORICAL_ARTIFACT_SHA256:
-        status.update(status='FROZEN_H8F_ARTIFACT_SHA_DRIFT')
+    # Recompute the conditional event certificate from real archived Cherchi
+    # material BEFORE importing native modules or starting the 60-minute job.
+    # A stale/tampered certificate would otherwise waste scarce native time.
+    from h9_frozen_input_gate import validate_pair, FrozenInputRejected
+    try:
+        status['verified_input_gate']=validate_pair(artifact,certificate)
+    except (FrozenInputRejected, OSError, EOFError, ValueError, TypeError) as exc:
+        status.update(status='FROZEN_INPUT_GATE_REJECTED',
+                      failure=f'{type(exc).__name__}: {exc}')
         (out/'launch_preflight.json').write_text(json.dumps(status,indent=2,sort_keys=True)+'\n')
         return 2
     try:
@@ -444,7 +451,7 @@ def launch(repo,artifact,certificate,output,build_evidence):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--repo',type=Path,default=Path(__file__).resolve().parents[4])
-    parser.add_argument('--phase',required=True,choices=('plan','build','run'))
+    parser.add_argument('--phase',required=True,choices=('plan','inputs','build','run'))
     parser.add_argument('--output',type=Path)
     parser.add_argument('--artifact',type=Path)
     parser.add_argument('--certificate',type=Path)
@@ -453,7 +460,12 @@ def main():
     if a.phase=='plan':
         print(json.dumps({'plan':build_plan(a.repo),'preflight':check_runtime(a.repo)},indent=2,sort_keys=True))
         return 0
-    if a.output is None:parser.error('--output required for build/run phases')
+    if a.output is None:parser.error('--output required for inputs/build/run phases')
+    if a.phase=='inputs':
+        if a.artifact is None or a.certificate is None:
+            parser.error('--artifact and --certificate required for inputs phase')
+        from h9_frozen_input_gate import run_inputs
+        return run_inputs(a.artifact,a.certificate,a.output)
     if a.phase=='build':return build(a.repo,a.output)
     if a.artifact is None or a.certificate is None or a.build_evidence is None:
         parser.error('--artifact, --certificate and --build-evidence required for run phase')

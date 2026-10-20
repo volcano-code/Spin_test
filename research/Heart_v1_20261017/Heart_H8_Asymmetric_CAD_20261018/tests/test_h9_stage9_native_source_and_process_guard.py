@@ -106,6 +106,7 @@ class NativeSourceAndTimeoutGuardTests(unittest.TestCase):
                  'git_ref':{'head_sha':'a'*40}}
         with patch.object(build,'check_runtime',return_value=initial),\
              patch.object(build,'sha_file',return_value=build.HISTORICAL_ARTIFACT_SHA256),\
+             patch('h9_frozen_input_gate.validate_pair',return_value={'status':'EXPLICIT_TEST_ONLY_MOCK_NO_BOOLEAN'}),\
              patch.object(build,'native_module_smoke',return_value={'_make_it_stand':'b'*64}),\
              patch.object(build,'verify_build_evidence',return_value='f'*64),\
              patch.object(build,'run_process_group',return_value=0),\
@@ -182,6 +183,7 @@ class NativeSourceAndTimeoutGuardTests(unittest.TestCase):
                'git_ref':{'head_sha':'a'*40},'source_contract':{'schema':'test'}}
         with patch.object(build,'check_runtime',return_value=ready),\
              patch.object(build,'sha_file',return_value=build.HISTORICAL_ARTIFACT_SHA256),\
+             patch('h9_frozen_input_gate.validate_pair',return_value={'status':'EXPLICIT_TEST_ONLY_MOCK_NO_BOOLEAN'}),\
              patch.object(build,'native_module_smoke',return_value={'_make_it_stand':'b'*64}),\
              patch.object(build,'verify_build_evidence',return_value='f'*64),\
              patch.object(build,'run_process_group',return_value=17) as grouped:

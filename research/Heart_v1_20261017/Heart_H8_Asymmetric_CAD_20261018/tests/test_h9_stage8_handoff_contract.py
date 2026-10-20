@@ -44,7 +44,8 @@ class H9Stage8HandoffContracts(unittest.TestCase):
                     '_cherchi_rational_moments':'c'*64}
             with patch.object(launcher,'check_runtime',return_value=preflight),\
                  patch.object(launcher,'sha_file',return_value=launcher.HISTORICAL_ARTIFACT_SHA256),\
-                 patch.object(launcher,'native_module_smoke',return_value=hashes),\
+                 patch('h9_frozen_input_gate.validate_pair',return_value={'status':'EXPLICIT_TEST_ONLY_MOCK_NO_BOOLEAN'}),\
+             patch.object(launcher,'native_module_smoke',return_value=hashes),\
                  patch.object(launcher,'verify_build_evidence',return_value='e'*64),\
                  patch.object(launcher,'source_contract',return_value=None),\
                  patch.object(launcher,'git_ref',return_value={'head_sha':'0'*40}),\

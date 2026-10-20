@@ -191,6 +191,7 @@ class H9Stage8LiveHandoffTests(unittest.TestCase):
         base={'ready':True,'blocked_reasons':[], 'git_ref':{'head_sha':'0'*40}, 'source_contract':None}
         with patch.object(launch,'check_runtime',return_value=base),\
              patch.object(launch,'sha_file',return_value=launch.HISTORICAL_ARTIFACT_SHA256),\
+             patch('h9_frozen_input_gate.validate_pair',return_value={'status':'EXPLICIT_TEST_ONLY_MOCK_NO_BOOLEAN'}),\
              patch.object(launch,'native_module_smoke',return_value=SHA_MAP),\
              patch.object(launch,'verify_build_evidence',return_value='f'*64),\
              patch.object(launch,'source_contract',return_value=None),\
@@ -215,6 +216,7 @@ class H9Stage8LiveHandoffTests(unittest.TestCase):
             return 0
         with patch.object(launch,'check_runtime',return_value=base),\
              patch.object(launch,'sha_file',return_value=launch.HISTORICAL_ARTIFACT_SHA256),\
+             patch('h9_frozen_input_gate.validate_pair',return_value={'status':'EXPLICIT_TEST_ONLY_MOCK_NO_BOOLEAN'}),\
              patch.object(launch,'native_module_smoke',return_value=SHA_MAP),\
              patch.object(launch,'verify_build_evidence',return_value='f'*64),\
              patch.object(launch,'source_contract',return_value=None),\

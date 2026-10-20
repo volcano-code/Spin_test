@@ -1,0 +1,30 @@
+{
+  "build_blocked_reasons": [
+    "NOT_FROZEN_W3_BRANCH_OR_ANCESTOR",
+    "LESS_THAN_24GIB_EFFECTIVE_MEMORY",
+    "NOT_A_COMPLETE_SOURCE_CHECKOUT"
+  ],
+  "command_exit_codes": {
+    "build": 2,
+    "inputs": 0,
+    "plan": 0,
+    "run": 2
+  },
+  "container_cgroup_effective_memory_limit_bytes": 4294967296,
+  "continuous_cherchi_boolean_stratum_proven": false,
+  "final_heart_obj_produced": false,
+  "frozen_artifact_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "github_W3_native_CI_triggered": false,
+  "historical_H8f_run_conclusion": "failure",
+  "historical_H8f_run_id": 39123384402,
+  "new_native_material_files": 0,
+  "new_real_cherchi_boolean_calls_completed": 0,
+  "newton_admitted": false,
+  "python": "3.13.5",
+  "run_status": "BLOCKED_NO_NATIVE_EVALUATION",
+  "schema": "heart-h9-stage10-actual-execution-v1",
+  "swap_bytes": 0,
+  "whole_H9_local_unittest_passed": 86,
+  "whole_H9_local_unittest_seconds": 33.087,
+  "whole_H9_local_unittest_skipped": 0
+}

@@ -1,0 +1,21 @@
+H9_STAGE10_REAL_LOCAL_TEST_SUMMARY
+date: 2026-10-20
+repo: volcano-code/Spin_test
+branch: research/neuralmoments-w3-heart-h9-20261019
+historical H8f GitHub Actions run: 39123384402 (conclusion failure unchanged)
+historical artifact id: 12135528290
+historical ZIP SHA256: 99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9
+python version: 3.13.5
+test command: python -m unittest discover -v -s <H8-Heart>/tests -p 'test_h9*.py'
+environment: H9_EVIDENCE_ZIP=original H8f ZIP; H9_CROSSING_CERTIFICATE=stage4 real archive-recomputed certificate
+actual unittest terminal excerpt:
+----------------------------------------------------------------------
+Ran 86 tests in 33.087s
+
+OK
+actual input gate: phase inputs exit 0; certificate independently recomputed
+actual build preflight: exit 2, no native build
+actual run preflight: exit 2, no new Cherchi Boolean
+new native points produced: 0/4
+newton_admitted: false
+This is a summary of an actual local execution; full 96-line test log is retained in the downloadable Stage10 evidence archive. There was no new W3 GitHub Actions job.
