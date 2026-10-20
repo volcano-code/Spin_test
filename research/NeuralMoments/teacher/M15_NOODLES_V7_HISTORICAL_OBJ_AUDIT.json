@@ -1,0 +1,74 @@
+{
+  "schema": "w2-m15-noodles-v7-historical-final-obj-independent-audit-v1",
+  "source": {
+    "repo": "volcano-code/Spin_test",
+    "revision_note": "Frozen 2026-10-17 V7 evidence at 053756f5091ab3e07d6bd29c40baab146e910121; final OBJ assembled and committed later on main by GitHub workflow 39015376793",
+    "final_obj_git_blob_sha1": "f803c45274d7721b854cfd19a5173e4b43e79af1",
+    "final_obj_expected_sha256": "e979bd3980a5efaf9b03d047c4e19e9296ddb426267a7322ff4e1a4b954fe80a",
+    "observed_actual_obj_bytes": 4233138,
+    "status_git_blob_sha1": "7233e25162f287c9584b68bea447095deca4549",
+    "historical_solver_git_blob_sha1": "2ae059052d28893afc3d289944551e4eaa857f11",
+    "historical_request_summary_git_blob_sha1": "fac1fd017a95846d8a918a924395fbe546404f42",
+    "geometry_kind": "OPTIMIZED_COMPLETE_OBJ_NOT_FROZEN_OUTER_DESIGN_FIXED_TEACHER_INPUT",
+    "source_CAD": "PHOTO_GUIDED_RECONSTRUCTION_NOT_AUTHOR_ORIGINAL"
+  },
+  "analysis_method": "Independent signed tetrahedron integration with Kahan compensated summation on full immutable GitHub git-blob OBJ; directed closed edge pair checking",
+  "source_coordinate_frame": "millimeters, independent historical raw moments target frame=(x_mm/25,y_mm/25,(z_mm+4)/25)",
+  "numbers": {
+    "vertices": 42932,
+    "faces": 86076,
+    "undirected_edges": 129114,
+    "oriented_open_nonmanifold_edges": 0,
+    "zero_area_faces_measured_in_source_binary64": 0,
+    "euler_characteristic": -106,
+    "mass_g_at_1200kg_m3": 18.483894783801567,
+    "raw_ten_moments": [
+      0.9858077218027503,
+      4.3767125384803654e-14,
+      -7.80195730537598e-16,
+      0.9939894479131942,
+      0.21042996239210685,
+      0.15175169536911148,
+      1.0318556681301227,
+      -2.7339235760996273e-16,
+      4.0252082344896876e-14,
+      0.000011886815084290273
+    ],
+    "archived_raw_ten_moments": [
+      0.985807721802751,
+      4.3883919715881344e-14,
+      -9.798289587100347e-16,
+      0.9939894479131947,
+      0.21042996239210696,
+      0.15175169536911137,
+      1.0318556681301232,
+      -3.799175222714742e-16,
+      4.028558731079101e-14,
+      0.000011886815084125177
+    ],
+    "per_component_abs_error": [
+      6.661338147750939e-16,
+      1.1679433107768978e-16,
+      1.9963322817243673e-16,
+      4.440892098500626e-16,
+      1.1102230246251565e-16,
+      1.1102230246251565e-16,
+      4.440892098500626e-16,
+      1.0652516466151148e-16,
+      3.3504965894136114e-17,
+      1.650968858152302e-16
+    ],
+    "max_abs_error": 6.661338147750939e-16,
+    "predeclared_per_case_ten_moment_threshold": 1e-10
+  },
+  "status": "REAL_FINAL_OBJ_INDEPENDENT_GEOMETRY_AND_MOMENTS_AUDITED_NATIVE_TEACHER_INPUT_NOT_AVAILABLE",
+  "native_cherchi_runs_this_milestone": 0,
+  "verified_derivative_jacobian_training_labels": 0,
+  "training_admitted": false,
+  "limitations": [
+    "This is the historical optimized complete OBJ, not a genuine new native Cherchi same-call input",
+    "Original fixed/design/outer rational source meshes were not all included in the published V7 model asset snapshot",
+    "Existing historical solver used an older compiled native checkpoint",
+    "Oriented edge pairing and mass moments do not independently prove absence of self-intersections or physical stability"
+  ]
+}
