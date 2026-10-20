@@ -113,6 +113,64 @@ def _ledger(record, *, require_boolean=True):
     return len(rows)
 
 
+
+# Tie reported performance windows to the actual mutually exclusive M5/M9
+# timing spans.  A forged ratio can otherwise survive a self-consistent edit
+# to M9's summary and point JSON while leaving the source time ledger intact.
+# Every native audit is part of the recorded cost, not an optional fast path.
+_M5_AUDITS = frozenset((
+    'audit:same_call_material', 'audit:native_exact_rational_boundary',
+    'audit:independent_fraction_ten', 'audit:complete_material_snapshot'))
+_M9_AUDITS = frozenset((
+    'audit:same_call_material', 'audit:native_exact_rational_boundary',
+    'audit:independent_fraction_ten', 'audit:exact_material_serialization'))
+
+
+def _required_spans(ledger, required, *, context):
+    names = [row['name'] for row in ledger['exclusive_stages']]
+    for name in required | {'native:boolean'}:
+        if names.count(name) != 1:
+            reject(context + '_REQUIRED_STAGE_MISSING_OR_REPEATED:' + name)
+    for name in names:
+        if (not isinstance(name, str) or not name.startswith(('python:', 'native:', 'audit:'))):
+            reject(context + '_UNKNOWN_STAGE:' + str(name))
+    eval_only = sum(row['exclusive_ns'] for row in ledger['exclusive_stages']
+                    if row['name'].startswith(('native:', 'python:')))
+    checks_only = sum(row['exclusive_ns'] for row in ledger['exclusive_stages']
+                      if row['name'].startswith('audit:'))
+    return eval_only, checks_only
+
+
+def _bind_m5_timing(m5):
+    """All measured stages fit in the single original evaluation+audit window."""
+    profile = m5['profiler']
+    sample = m5.get('sample_and_validation_wall_ns')
+    if (type(sample) is not int or sample <= 0 or
+            sample > profile['wall_ns']):
+        reject('M5_SAMPLE_AND_VALIDATION_WALL_UNBOUND')
+    evaluation, checks = _required_spans(profile, _M5_AUDITS, context='M5')
+    if evaluation + checks > sample:
+        reject('M5_STAGES_EXCEED_MEASURED_SAMPLE')
+    return sample
+
+
+def _bind_m9_timing(row):
+    """The saved ABBA wall must literally equal that call's stage-ledger wall."""
+    ledger = row['stage_ledger']
+    wall = row.get('complete_validation_ns')
+    evaluation_wall = row.get('eval_wall_ns')
+    if (type(wall) is not int or type(evaluation_wall) is not int or
+            wall != ledger.get('wall_ns') or
+            evaluation_wall <= 0 or evaluation_wall > wall):
+        reject('M9_COMPLETE_WALL_LEDGER_MISMATCH')
+    evaluation, checks = _required_spans(ledger, _M9_AUDITS, context='M9')
+    if evaluation > evaluation_wall:
+        reject('M9_EVALUATION_SPANS_EXCEED_EVAL_WALL')
+    if checks > wall - evaluation_wall:
+        reject('M9_AUDITS_EXCEED_VALIDATION_WALL')
+    return wall
+
+
 def _module_receipt(preflight):
     if (preflight.get('schema') != 'w1-m10-native-host-preflight-v1' or
             preflight.get('state') != 'READY_FOR_REAL_NATIVE_ABBA' or
@@ -204,6 +262,7 @@ def verify(m10_preflight, m5_dir, m9_dir):
             not _ten(m5.get('q'))):
         reject('M5_SCOPE_OR_PROOF_MISMATCH')
     _ledger(m5.get('profiler'))
+    _bind_m5_timing(m5)
     m5_raw = _decompress(m5_dir/'same-call-material.json.gz')
     m5_material = _json_bytes(m5_raw)
     _material(m5_raw, m5['q'],m5['geometry_hash'],m5['topology_hash'],
@@ -245,6 +304,7 @@ def verify(m10_preflight, m5_dir, m9_dir):
         if row.get('iteration') != i:
             reject('M9_SAMPLE_INDEX_DRIFT')
         _ledger(row.get('stage_ledger'))
+        _bind_m9_timing(row)
         if not _flags(row.get('boundary_flags')):
             reject('M9_MISSING_NATIVE_AUDIT_FLAGS')
         if type(row.get('eval_wall_ns')) is not int or not _positive_int(row['eval_wall_ns']):
