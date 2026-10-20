@@ -1,0 +1,68 @@
+{
+  "schema": "W6_M8_BOX_ANALYTIC_P0_SMOKE",
+  "status": "UNTRAINED_ANALYTIC_ONLY",
+  "seed": 19,
+  "teacher": "closed-form full cube vertical cut, not W2",
+  "support_h": [
+    -0.4,
+    0.22
+  ],
+  "heldout_h": [
+    -0.3,
+    -0.15,
+    0.1,
+    0.32,
+    0.46
+  ],
+  "encoding_once_ms": 5.31357099998786,
+  "parameters_real": 13448,
+  "native_Cherchi_calls": 0,
+  "training_steps": 0,
+  "queries": {
+    "0": {
+      "oracle_queries_used": 0,
+      "heldout_r_mae": 0.46741074323654175,
+      "necessary_conditions_pass": true,
+      "support_loss_before": [
+        0.0
+      ],
+      "support_loss_after": [
+        0.0
+      ],
+      "support_capacity_exceeded": [
+        false
+      ],
+      "fit_ms": 0.28161499994894257
+    },
+    "1": {
+      "oracle_queries_used": 1,
+      "heldout_r_mae": 0.032784100621938705,
+      "necessary_conditions_pass": true,
+      "support_loss_before": [
+        0.012685716712697822
+      ],
+      "support_loss_after": [
+        7.294471107471407e-05
+      ],
+      "support_capacity_exceeded": [
+        false
+      ],
+      "fit_ms": 1.9330610000451998
+    },
+    "2": {
+      "oracle_queries_used": 2,
+      "heldout_r_mae": 0.0511363223195076,
+      "necessary_conditions_pass": true,
+      "support_loss_before": [
+        0.00845837150510575
+      ],
+      "support_loss_after": [
+        8.055839752390797e-05
+      ],
+      "support_capacity_exceeded": [
+        false
+      ],
+      "fit_ms": 1.50678699992568
+    }
+  }
+}

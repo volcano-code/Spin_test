@@ -1,0 +1,347 @@
+{
+  "schema": "W6_M8_ATOMIC_ADAPTATION_SUMMARY_V1",
+  "status": "ANALYTIC_P0_ONLY_REAL_W2_NOT_ADMITTED",
+  "parent_sha": "9d1758ea1ef527577b835f2b6bcfc5f0439d933d",
+  "upstream_pins": {
+    "W0": "d0a1b136b61b7c809311278c6c5051b62469d29a",
+    "W2": "33a2ce05e005227bf69f260efa992b7553e91112"
+  },
+  "W2_native_teacher_admitted_count": 0,
+  "W2_archived_excluded_candidates": 81,
+  "seeds": [
+    19,
+    23,
+    29,
+    31,
+    37,
+    41
+  ],
+  "train_full_geometries": 40,
+  "train_eligible_after_validation_geometry_split": 32,
+  "train_labels_used_for_fit": 64,
+  "train_labels_for_validation": 16,
+  "heldout_test_geometries_per_seed": 20,
+  "analytic_target_queries_per_geometry": 8,
+  "analytic_support_queries_per_geometry": [
+    0,
+    1,
+    2
+  ],
+  "train_steps_max": 400,
+  "selection": "validation by entire geometry id; heldout ellipsoids excluded",
+  "weights": "M7 tau0.12, 13448 real trainable parameters, no additional learned adaptation params",
+  "ridge": 0.0001,
+  "max_adapter_iterations": 5,
+  "data_source": "independently closed-form continuum vertical cuts on box/sphere/ellipsoid, not voxel intersection truth",
+  "W0_B_diag": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2
+  ],
+  "projective_positive_scale_only": true,
+  "discrete_measure_realisability": "nonnegative bounded sampled atomic weights; not exact CAD Boolean/material",
+  "tests": {
+    "m4_through_m7": 87,
+    "m8_new": 25,
+    "total": 112,
+    "status": "LOCAL_PASS",
+    "remote_CI": "NOT_VERIFIED"
+  },
+  "first_three_seed_results": "m8_three_seed_cpu.json.gz",
+  "independent_three_seed_results": "m8_confirmatory_cpu.json.gz",
+  "box_smoke_file": "m8_box_analytic_cpu.json",
+  "combined_results": {
+    "0": {
+      "r_mae": {
+        "mean": 0.025607542134821415,
+        "sample_sd": 0.001470481444175415,
+        "per_seed": {
+          "19": 0.0253739133477211,
+          "23": 0.02311849594116211,
+          "29": 0.02715594321489334,
+          "31": 0.025868192315101624,
+          "37": 0.02698054350912571,
+          "41": 0.025148164480924606
+        }
+      },
+      "J_mae": {
+        "mean": 0.010053951293230057,
+        "sample_sd": 0.0004986296005994661,
+        "per_seed": {
+          "19": 0.00977252796292305,
+          "23": 0.009400841780006886,
+          "29": 0.010466385632753372,
+          "31": 0.009893149137496948,
+          "37": 0.01078800205141306,
+          "41": 0.010002801194787025
+        }
+      },
+      "directional_derivative_mae": {
+        "mean": 0.007051632894823949,
+        "sample_sd": 0.0006141861250805155,
+        "per_seed": {
+          "19": 0.006363250780850649,
+          "23": 0.00663677416741848,
+          "29": 0.008088430389761925,
+          "31": 0.006884400267153978,
+          "37": 0.007402914110571146,
+          "41": 0.006934027653187513
+        }
+      },
+      "necessary_condition_pass_fraction": {
+        "mean": 1.0,
+        "sample_sd": 0.0,
+        "per_seed": {
+          "19": 1.0,
+          "23": 1.0,
+          "29": 1.0,
+          "31": 1.0,
+          "37": 1.0,
+          "41": 1.0
+        }
+      },
+      "support_mass_exceeds_sampled_capacity_count": {
+        "mean": 0.0,
+        "sample_sd": 0.0,
+        "per_seed": {
+          "19": 0.0,
+          "23": 0.0,
+          "29": 0.0,
+          "31": 0.0,
+          "37": 0.0,
+          "41": 0.0
+        }
+      },
+      "support_mse_after_mean": {
+        "mean": 0.0,
+        "sample_sd": 0.0,
+        "per_seed": {
+          "19": 0.0,
+          "23": 0.0,
+          "29": 0.0,
+          "31": 0.0,
+          "37": 0.0,
+          "41": 0.0
+        }
+      },
+      "fit_wall_seconds_total": {
+        "mean": 0.0007344680000187509,
+        "sample_sd": 0.00011959164837757623,
+        "per_seed": {
+          "19": 0.000815031000001909,
+          "23": 0.0006949300000087533,
+          "29": 0.0006105530000013459,
+          "31": 0.0009335309999869423,
+          "37": 0.000646987000095578,
+          "41": 0.0007057760000179769
+        }
+      }
+    },
+    "1": {
+      "r_mae": {
+        "mean": 0.025597585054735344,
+        "sample_sd": 0.0014633427368791368,
+        "per_seed": {
+          "19": 0.025366492569446564,
+          "23": 0.02311842516064644,
+          "29": 0.027136044576764107,
+          "31": 0.02586759813129902,
+          "37": 0.026959752663969994,
+          "41": 0.025137197226285934
+        }
+      },
+      "J_mae": {
+        "mean": 0.010053394051889578,
+        "sample_sd": 0.000497989906515193,
+        "per_seed": {
+          "19": 0.009772422723472118,
+          "23": 0.009400776587426662,
+          "29": 0.01046544685959816,
+          "31": 0.009892993606626987,
+          "37": 0.010786204598844051,
+          "41": 0.010002519935369492
+        }
+      },
+      "directional_derivative_mae": {
+        "mean": 0.0070514622299621505,
+        "sample_sd": 0.000614028267052521,
+        "per_seed": {
+          "19": 0.006363199558109045,
+          "23": 0.006636731792241335,
+          "29": 0.00808783434331417,
+          "31": 0.006884322967380285,
+          "37": 0.007402993272989988,
+          "41": 0.006933691445738077
+        }
+      },
+      "necessary_condition_pass_fraction": {
+        "mean": 1.0,
+        "sample_sd": 0.0,
+        "per_seed": {
+          "19": 1.0,
+          "23": 1.0,
+          "29": 1.0,
+          "31": 1.0,
+          "37": 1.0,
+          "41": 1.0
+        }
+      },
+      "support_mass_exceeds_sampled_capacity_count": {
+        "mean": 8.166666666666666,
+        "sample_sd": 2.228601953392904,
+        "per_seed": {
+          "19": 10.0,
+          "23": 7.0,
+          "29": 9.0,
+          "31": 7.0,
+          "37": 11.0,
+          "41": 5.0
+        }
+      },
+      "support_mse_after_mean": {
+        "mean": 5.3031008084337095e-05,
+        "sample_sd": 1.1521311856503932e-05,
+        "per_seed": {
+          "19": 6.442183930482446e-05,
+          "23": 4.9963389107192406e-05,
+          "29": 4.44182129372123e-05,
+          "31": 4.885854924212229e-05,
+          "37": 6.980502127466317e-05,
+          "41": 4.071903664000795e-05
+        }
+      },
+      "fit_wall_seconds_total": {
+        "mean": 0.012559873166689309,
+        "sample_sd": 0.002640096765734464,
+        "per_seed": {
+          "19": 0.01174661200002447,
+          "23": 0.011485977999996067,
+          "29": 0.01771139699997093,
+          "31": 0.01277860100003636,
+          "37": 0.011256443000092986,
+          "41": 0.010380208000015045
+        }
+      }
+    },
+    "2": {
+      "r_mae": {
+        "mean": 0.025597635035713513,
+        "sample_sd": 0.001463336434355637,
+        "per_seed": {
+          "19": 0.025366494432091713,
+          "23": 0.023118434473872185,
+          "29": 0.027136093005537987,
+          "31": 0.025867532938718796,
+          "37": 0.02695978619158268,
+          "41": 0.025137469172477722
+        }
+      },
+      "J_mae": {
+        "mean": 0.01005336937184135,
+        "sample_sd": 0.0004979665770846447,
+        "per_seed": {
+          "19": 0.009772424586117268,
+          "23": 0.00940078403800726,
+          "29": 0.010465300641953945,
+          "31": 0.009892943315207958,
+          "37": 0.0107862064614892,
+          "41": 0.010002557188272476
+        }
+      },
+      "directional_derivative_mae": {
+        "mean": 0.007051445543766022,
+        "sample_sd": 0.0006139925946027269,
+        "per_seed": {
+          "19": 0.006363200955092907,
+          "23": 0.006636734586209059,
+          "29": 0.008087730035185814,
+          "31": 0.006884304340928793,
+          "37": 0.007402992807328701,
+          "41": 0.006933710537850857
+        }
+      },
+      "necessary_condition_pass_fraction": {
+        "mean": 1.0,
+        "sample_sd": 0.0,
+        "per_seed": {
+          "19": 1.0,
+          "23": 1.0,
+          "29": 1.0,
+          "31": 1.0,
+          "37": 1.0,
+          "41": 1.0
+        }
+      },
+      "support_mass_exceeds_sampled_capacity_count": {
+        "mean": 13.0,
+        "sample_sd": 2.756809750418044,
+        "per_seed": {
+          "19": 14.0,
+          "23": 15.0,
+          "29": 15.0,
+          "31": 10.0,
+          "37": 15.0,
+          "41": 9.0
+        }
+      },
+      "support_mse_after_mean": {
+        "mean": 5.4030339417502685e-05,
+        "sample_sd": 1.0903748342980208e-05,
+        "per_seed": {
+          "19": 6.668856027258513e-05,
+          "23": 5.045426857547181e-05,
+          "29": 5.401632378383233e-05,
+          "31": 4.545391360023243e-05,
+          "37": 6.697091067295628e-05,
+          "41": 4.059805959993814e-05
+        }
+      },
+      "fit_wall_seconds_total": {
+        "mean": 0.011459911333380054,
+        "sample_sd": 0.001591837584952582,
+        "per_seed": {
+          "19": 0.01086056400004054,
+          "23": 0.010640000000080363,
+          "29": 0.01209720200006359,
+          "31": 0.014084436000075584,
+          "37": 0.01168895600005726,
+          "41": 0.009388309999962985
+        }
+      }
+    }
+  },
+  "untrained_box_smoke": {
+    "query_counts": {
+      "0": {
+        "r_mae": 0.46741074323654175,
+        "supports": 0,
+        "feasible": true
+      },
+      "1": {
+        "r_mae": 0.032784100621938705,
+        "supports": 1,
+        "feasible": true
+      },
+      "2": {
+        "r_mae": 0.0511363223195076,
+        "supports": 2,
+        "feasible": true
+      }
+    }
+  },
+  "limitations": [
+    "0/1/2 query adaptations can fail to improve unseen controls",
+    "P0 truth can exceed sampled 8^3 quadrature mass capacity",
+    "No independently admitted Cherchi labels",
+    "W0 native tangent smooth-stratum not certified",
+    "Native material/optimizer/GPU not tested",
+    "Atom existence does not prove CAD geometry or exact physical region"
+  ]
+}
