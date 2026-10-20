@@ -1,0 +1,19 @@
+{
+  "schema": "W4P12PhysicalCaseProposalV1",
+  "admission": "EXPLORATORY_NOT_W0_APPROVED",
+  "coordinate_transform": [[1,0,0],[0,0,-1],[0,1,0]],
+  "diagnostic_assumptions": {
+    "height_m": 0.15,
+    "uniform_density_kg_m3": 1240.0,
+    "previous_demo_mass_kg": 0.25,
+    "spin_axis": [0,0,1],
+    "tip_contact": "VIRTUAL_NOT_MATERIALIZED"
+  },
+  "W0_teapot_case_authorized": false,
+  "W0_design_F_D_authorized": false,
+  "real_tip_or_shaft_merged": false,
+  "manufacturing_pass": false,
+  "actual_Cherchi_Faster_optimization_complete": false,
+  "official_before_after_MuJoCo_complete": false,
+  "notice": "15 cm and PLA-like density are hypothetical. Neither the virtual tip nor an actual shaft is present. No W0 Teapot-specific physics signoff."
+}

@@ -358,3 +358,77 @@ jobs:
             build/w4-cherchi-reference/CMakeFiles/CMakeConfigureLog.yaml
           if-no-files-found: warn
           retention-days: 30
+
+  p12-real-material-physical-preflight:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      P1: research/SpinIt2014_Teapot_20261018/P1
+      W4_P12_REAL_INPUT_DIR: ${{ runner.temp }}/w4-p12-real
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install audit-only dependencies (no native Boolean or optimization)
+        run: |
+          set -euo pipefail
+          python -m pip install 'numpy>=2,<3' 'trimesh>=4,<5' 'networkx>=3,<4'
+      - name: Retrieve immutable native Cherchi P11 success artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: W4-P7-real-Cherchi-reference-geometry-or-failure-not-optimized
+          run-id: 39403411538
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/w4-p11-saved-source
+      - name: Stage pinned real P9/P11 M/F/D with original byte identities
+        run: |
+          set -euo pipefail
+          source="${RUNNER_TEMP}/w4-p11-saved-source/research/SpinIt2014_Teapot_20261018/P1"
+          mkdir -p "$W4_P12_REAL_INPUT_DIR" "$P1/p12-cloud-output"
+          cp "$source/p10-cherchi-seal/cherchi-p9-numeric-original-yup.obj" "$W4_P12_REAL_INPUT_DIR/P10_Cherchi_Original_Yup.obj"
+          cp "$source/p11-trial-FD/p11-F-trial-cherchi-subtraction-unapproved.obj" "$W4_P12_REAL_INPUT_DIR/P11_F_Trial_Cherchi_Real_Subtraction.obj"
+          cp "$source/p11-trial-FD/p11-D-trial-sphere-unapproved.obj" "$W4_P12_REAL_INPUT_DIR/P11_D_Trial_Interior_Sphere.obj"
+          cp "$source/p11-trial-FD/p11-experimental-FD-partition.json" "$W4_P12_REAL_INPUT_DIR/P11_real_Cherchi_subtraction_audit.json"
+          sha256sum "$W4_P12_REAL_INPUT_DIR/"* | tee "$P1/p12-cloud-output/authentic-input-digests.txt"
+      - name: Execute eight independent P12 material/physical assumption regressions
+        run: |
+          set -euo pipefail
+          python -m unittest discover -v -s "$P1" -p test_p12_physical_case.py 2>&1 | tee "$P1/p12-cloud-output/p12-tests.log"
+      - name: Recompute dimensional W0-order ten moments and fail-closed approval
+        run: |
+          set -euo pipefail
+          python "$P1/p12_physical_case.py" \
+            --m "$W4_P12_REAL_INPUT_DIR/P10_Cherchi_Original_Yup.obj" \
+            --f "$W4_P12_REAL_INPUT_DIR/P11_F_Trial_Cherchi_Real_Subtraction.obj" \
+            --d "$W4_P12_REAL_INPUT_DIR/P11_D_Trial_Interior_Sphere.obj" \
+            --p11-report "$W4_P12_REAL_INPUT_DIR/P11_real_Cherchi_subtraction_audit.json" \
+            --case "$P1/p12_teapot_proposed_case.json" \
+            --output "$P1/p12-cloud-output/p12_physical_preflight.json" | tee "$P1/p12-cloud-output/p12-cli.log"
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          x=json.loads(Path('research/SpinIt2014_Teapot_20261018/P1/p12-cloud-output/p12_physical_preflight.json').read_text())
+          assert x['status']=='DIAGNOSTIC_PHYSICAL_CASE_ONLY'
+          assert not x['W0_contract_approval'] and not x['actual_optimized_geometry_available']
+          assert not x['P12_final_SpinIt_Faster_optimization_performed']
+          assert x['raw_additivity_max_abs']<1e-10
+          assert x['SI_additivity_max_abs']<1e-12
+          assert 3.45<x['material']['M']['mass_kg']<3.48
+          assert x['assumed_solid_mass_divided_by_old_demo_mass']>13
+          print('P12 real Cherchi material PHYSICAL_DIAGNOSTIC_ONLY; W0 authorization DENIED')
+          PY
+      - name: Preserve P12 diagnostics without a false physical approval
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-P12-real-Cherchi-MFD-SI-case-NOT-W0-authorized
+          path: |
+            research/SpinIt2014_Teapot_20261018/P1/p12-cloud-output/**
+            research/SpinIt2014_Teapot_20261018/P1/p12_teapot_proposed_case.json
+          if-no-files-found: warn
+          retention-days: 30

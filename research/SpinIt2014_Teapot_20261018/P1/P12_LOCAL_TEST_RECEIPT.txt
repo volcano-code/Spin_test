@@ -1,0 +1,20 @@
+W4 P12 -- current container Python 3.13.5 / NumPy / Trimesh; inputs genuine P9/P11 immutable bytes
+$ cd /mnt/data/w4_p12_work && python -m unittest -v test_p12_physical_case
+test_SI_mass_scale_density_invariants ... ok
+test_archived_real_Cherchi_source_ID_and_raw_partition ... ok
+test_physical_inertia_and_axis ... ok
+test_real_FD_candidate_report_is_not_optimization ... ok
+test_reject_fake_material_record ... ok
+test_reject_invalid_virtual_tip ... ok
+test_reject_promoted_W0_approval ... ok
+test_reject_tampered_real_M ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.618s
+OK
+
+Cli: DIAGNOSTIC_PHYSICAL_CASE_ONLY
+M=3.460898891676966 kg, F=3.3931640976330772 kg, D=0.06773479404388826 kg.
+Raw ten residual=4.873879078104437e-14. SI moment residual=3.469446951953614e-16.
+W0 approval=false; optimizer run=false; 0.25 kg old MuJoCo scenario not physically comparable.
+No native Cherchi boolean run in this P12 local pass: uses frozen genuine P11 archive.
