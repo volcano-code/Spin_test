@@ -1,0 +1,31 @@
+{
+  "schema": "w1-m11-verified-local-scope-summary-v1",
+  "branch": "research/neuralmoments-w1-native-20261019",
+  "freeze": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "full_regressions": {
+    "passed": 99,
+    "failed": 0,
+    "skipped": 0,
+    "m11_specific_tests": 14,
+    "unit_seconds": 16.245,
+    "wrapped_seconds": 17.18
+  },
+  "real_preflight": {
+    "exit_code": 2,
+    "state": "BLOCKED",
+    "blockers": [
+      "git",
+      "source",
+      "native_modules",
+      "native_abi_import"
+    ],
+    "h8c_archive_authenticated": true,
+    "swap_entries": 0,
+    "cgroup_ceiling_bytes": 4294967296
+  },
+  "fresh_native_boolean_calls": 0,
+  "newton_solves": 0,
+  "full_solver_speedup": null,
+  "paper_speed_qualified": false,
+  "remote_ci_verified": false
+}
