@@ -31,15 +31,22 @@ jobs:
             research/NeuralMoments/contracts/test_validate_contract_v1.py \
             research/NeuralMoments/contracts/test_w2_teacher_gate.py \
             research/NeuralMoments/contracts/test_cross_window_release_m15.py \
-            research/NeuralMoments/contracts/test_cross_window_interface_m16.py
+            research/NeuralMoments/contracts/test_cross_window_interface_m16.py \
+            research/NeuralMoments/contracts/test_consumer_v2_preview_m17.py
       - name: Independently audit frozen W2 W5 W6 source interface
         run: |
           python -m research.NeuralMoments.contracts.cross_window_interface_m16 \
             --output "$RUNNER_TEMP/w0-m16-interface-audit.json"
+      - name: Run pinned W5 legacy-vs-W0 native-c counterexample
+        run: |
+          python -m research.NeuralMoments.contracts.consumer_v2_preview_m17 \
+            --output "$RUNNER_TEMP/w0-m17-w5-v2-migration-block.json"
       - name: Upload CI interface denial evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: w0-m16-ci-nonnative-interface-evidence
-          path: ${{ runner.temp }}/w0-m16-interface-audit.json
+          name: w0-m17-ci-nonnative-interface-evidence
+          path: |
+            ${{ runner.temp }}/w0-m16-interface-audit.json
+            ${{ runner.temp }}/w0-m17-w5-v2-migration-block.json
           if-no-files-found: warn
