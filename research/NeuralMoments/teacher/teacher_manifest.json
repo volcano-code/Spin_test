@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M10_READONLY_81_ARCHIVE_GATE_PASSED_DERIVATIVE_TRAINING_BLOCKED",
+  "status": "M11_W0_V2_READONLY_STRUCTURAL_DIAGNOSTIC_17_OF_81_UNIT_C_NO_TRAINING",
   "native_teacher_runs": 0,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "W0 independent MomentContractV1 derivative verifier upgrade to W2 v2 + W3 actual native one-sided/crossing and certified continuity + independently sealed Newton endpoint",
+  "pending_dependency": "W0 independently tested structural/physical v2 interface, W3 real native event one-sided proof, accepted independently sealed Newton result. M11 diagnostic W0-shaped record is not a published label.",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -207,5 +207,36 @@
     "derivative_training_admitted": false,
     "train_export_supported": false,
     "ci_status": "NOT_CONFIRMED"
+  },
+  "m11_w0_v2_handoff": {
+    "schema": "w2-m11-w0-v2-handoff-v1",
+    "evaluated_h8f_historical_samples": 81,
+    "native_c_unit_norm_tolerance": 1e-12,
+    "w0_unit_c_compatible_samples": 17,
+    "w0_unit_c_incompatible_samples": 64,
+    "max_unit_c_norm_deviation": 0.000002282620930493806,
+    "point60_original_c7": 0.000003,
+    "point60_polynomial_q7": 0.000006,
+    "point60_unit_c_compatible": false,
+    "unit_c_norm_handling": "DO_NOT_RENORMALIZE_SAVED_NATIVE_C_OR_RENAME_AS_REEVALUATED_SAMPLE",
+    "source_historical_original_run": 39123384402,
+    "source_historical_original_status": "failure",
+    "source_original_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+    "source_m9_candidate_sha256": "fcfccf626af7166c577ba15cc95c5ae0b345cd58a15000d708d5e68e9b85019a",
+    "W0_observed_schema_git_blob": "52c2cfa54567d7dc2164c4b9eb56e8385c0ee1dc",
+    "W0_legacy_v1_gate_git_blob": "b42ec6d9b389675123250d79f9cc9efb1b658c07",
+    "W0_v2_authenticator_integrated": false,
+    "W3_observed_stage9_report_git_blob": "ec6995c2b60cb5158d94f79a783a60d9ad64f23d",
+    "W3_new_native_four_side_proof": false,
+    "W3_Newton_accepted": false,
+    "diagnostic_labels_issued": 1,
+    "formal_w0_v2_records_released": 0,
+    "Jacobian_J_D_admitted": 0,
+    "training_export_enabled": false,
+    "tests_locally_passed": 22,
+    "tests_failed": 0,
+    "test_environment_scope": "Exact W2 M10 Git blob copy, authentic archived H8f-81 ZIP, genuine M9 candidate SHA; M9 manifest test fixture reconstructs pinned fields; no direct W0 independent validator",
+    "source_git_blob_sha1": "96ef6b41ca3e29bf599dd6469603b519c9ddd4c9",
+    "tests_git_blob_sha1": "508496a6f46049f78086861e475a1735a0f9c85b"
   }
 }
