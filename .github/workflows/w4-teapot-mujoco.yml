@@ -394,6 +394,41 @@ jobs:
             echo "Native D-minus-shaft OBJ not created; no geometry success claimed"
           fi
 
+      - name: Download genuine frozen P13 native failure geometry for P14 only
+        if: always()
+        uses: actions/download-artifact@v4
+        with:
+          name: W4-P7-real-Cherchi-reference-geometry-or-failure-not-optimized
+          run-id: 39446111126
+          github-token: \${{ github.token }}
+          path: \${{ runner.temp }}/w4-p14-authentic-p13
+
+      - name: P14 pinned historical Cherchi shaft junction sweep and independent checks
+        if: always()
+        run: |
+          set -euo pipefail
+          export W4_P14_NATIVE_ARCHIVE_DIR="$RUNNER_TEMP/w4-p14-authentic-p13/research/SpinIt2014_Teapot_20261018/P1/p13-native-Cherchi-domain"
+          mkdir -p "$P1/p14-cherchi-junction-study"
+          python -m unittest discover -v -s "$P1" -p 'test_p14_cherchi_junction_grid.py' 2>&1 | tee "$P1/p14-cherchi-junction-study/p14-real-archive-regression.log"
+          test -x build/w4-cherchi-reference/bin/w4_cherchi_reference_native
+          python "$P1/p14_cherchi_junction_grid.py" \
+            --input-dir "$W4_P14_NATIVE_ARCHIVE_DIR" \
+            --native-bin build/w4-cherchi-reference/bin/w4_cherchi_reference_native \
+            --native-source "$NATIVE_ROOT" \
+            --output "$P1/p14-cherchi-junction-study" \
+            --timeout 90 2>&1 | tee "$P1/p14-cherchi-junction-study/p14-native-sweep.log"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('research/SpinIt2014_Teapot_20261018/P1/p14-cherchi-junction-study/p14-junction-native-study.json')
+          j=json.loads(p.read_text())
+          assert len(j['cases'])==11
+          assert j['baseline']['non_two_incident_edges']==162
+          assert not j['W0_approved'] and not j['genuine_Faster_optimization_performed']
+          assert j['admissible_candidate'] is not None
+          print('Cherchi-only two-Boolean NUMERIC PRECHECK candidate exists, not W0 authorized')
+          PY
+
       - name: Always retain Cherchi compile/native source and failed validation evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -406,6 +441,7 @@ jobs:
             research/SpinIt2014_Teapot_20261018/P1/p10-cherchi-seal/**
             research/SpinIt2014_Teapot_20261018/P1/p11-trial-FD/**
             research/SpinIt2014_Teapot_20261018/P1/p13-native-Cherchi-domain/**
+            research/SpinIt2014_Teapot_20261018/P1/p14-cherchi-junction-study/**
             build/w4-cherchi-reference/CMakeCache.txt
             build/w4-cherchi-reference/CMakeFiles/CMakeConfigureLog.yaml
           if-no-files-found: warn
