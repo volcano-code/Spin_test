@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -18,8 +19,8 @@ from w2_projective_ray_m12 import (
 
 ROOT=Path(__file__).parent
 CAND=ROOT/'M9_H8F_81_EXCLUDED_CANDIDATES.json'
-ARCHIVE=ROOT/'h8f_81_real.zip'
-MANIFEST=ROOT/'teacher_manifest_semantic_fixture.json'
+ARCHIVE=Path(os.environ.get('W2_H8F_ARCHIVE',str(ROOT/'h8f_81_real.zip')))
+MANIFEST=ROOT/'teacher_manifest.json'
 
 
 def fixture():
@@ -98,12 +99,22 @@ class TestRayPure(unittest.TestCase):
 class TestRealM12(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        if not ARCHIVE.is_file():
+            raise unittest.SkipTest('W2_H8F_ARCHIVE real GitHub Actions 81-point ZIP required')
         assert hashlib.sha256(CAND.read_bytes()).hexdigest()==gate.CANDIDATE_SHA256
         assert hashlib.sha256(ARCHIVE.read_bytes()).hexdigest()==gate.ARCHIVE_SHA256
-        MANIFEST.write_text(json.dumps(fixture(),sort_keys=True))
+        cls.tmp=tempfile.TemporaryDirectory()
+        cls.actual_manifest=MANIFEST if MANIFEST.is_file() else Path(cls.tmp.name)/'semantic_fixture.json'
+        cls.manifest_was_exact_repo_file=MANIFEST.is_file()
+        if not cls.manifest_was_exact_repo_file:
+            cls.actual_manifest.write_text(json.dumps(fixture(),sort_keys=True))
         cls.candidate=json.loads(CAND.read_text())
-        cls.full=review_m12(CAND,MANIFEST,archive_path=ARCHIVE,index=60)
-        cls.index_only=review_m12(CAND,MANIFEST,archive_path=None,index=0)
+        cls.full=review_m12(CAND,cls.actual_manifest,archive_path=ARCHIVE,index=60)
+        cls.index_only=review_m12(CAND,cls.actual_manifest,archive_path=None,index=0)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
 
     def test_all_archived_materials_rebound(self):
         self.assertEqual(self.full['m10_rebind_status'],
@@ -168,12 +179,12 @@ class TestRealM12(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             p=Path(d)/'w3.json';p.write_text('{}')
             with self.assertRaisesRegex(M12Rejected,'W3_STAGE11_GIT_BLOB_DRIFT'):
-                review_m12(CAND,MANIFEST,w3_stage11_path=p)
+                review_m12(CAND,self.actual_manifest,w3_stage11_path=p)
     def test_fake_w0_schema_sha_rejected(self):
         with tempfile.TemporaryDirectory() as d:
             p=Path(d)/'w0.json';p.write_text('{}')
             with self.assertRaisesRegex(M12Rejected,'W0_SCHEMA_GIT_BLOB_DRIFT'):
-                review_m12(CAND,MANIFEST,w0_schema_path=p)
+                review_m12(CAND,self.actual_manifest,w0_schema_path=p)
     def test_reject_unpinned_candidate_sha(self):
         with tempfile.TemporaryDirectory() as d:
             p=Path(d)/'c.json'
