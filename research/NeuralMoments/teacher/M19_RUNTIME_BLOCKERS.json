@@ -1,0 +1,22 @@
+{
+  "cgroup_effective_memory_max_bytes": 4294967296,
+  "checked_at": "2026-10-21",
+  "historic_exact_CSG_backend_expected_SHA256": "d6803f184047f6172b177b9f436b16f22cdb6a949126d1df88a5d084f3dd9df3",
+  "historic_exact_CSG_executable_available": false,
+  "independently_certified_FDA": false,
+  "native_extension_imports": {
+    "_cherchi_core_boolean": false,
+    "_cherchi_rational_moments": false,
+    "make_it_stand": false
+  },
+  "new_GMP_CGAL_boolean_calls": 0,
+  "new_native_Cherchi_calls": 0,
+  "original_historical_six_rational_packets_available": false,
+  "python_version": "3.13.5",
+  "required_native_memory_bytes": 25769803776,
+  "resource_qualified": false,
+  "schema": "w2-m19-execution-environment-preflight-v1",
+  "scientific_status": "NOT_READY_FOR_NATIVE_NOODLES_TEACHER",
+  "source_corpus_original_94_sha_passed": true,
+  "training_admitted": 0
+}
