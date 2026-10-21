@@ -1,0 +1,32 @@
+{
+  "schema": "W0_M18_W5_V2_PROPOSAL_TESTED_NOT_ADOPTED",
+  "tested_w0_commit": "654ba8166e2046f28138aef159de4369dab17f82",
+  "w5_branch_observed_head": "219cc548fd5f37a1f88b666242cdea92d8e408cd",
+  "w5_original_source_blob": "14b2ab225a032188fe16570414ef321af9a81e00",
+  "w5_migration_candidate_blob": "4c97aacc1d50366c7cc97876064f4183469d9910",
+  "w2_manifest_blob": "bda72a68010ad984d6e6fb02b2841b82f1e87cc1",
+  "w2_schema": "w2-cherchi-teacher-v2-pre-w0",
+  "w2_real_teacher_samples": 0,
+  "w2_training_samples": 0,
+  "real_h8f_historical_samples_excluded": 81,
+  "w5_migration_applied_to_w5_branch": false,
+  "ci": {
+    "initial_failed": {
+      "run_id": 39548751329,
+      "passed": 126,
+      "failed": 14,
+      "reason": "distinct dynamically imported exception classes in test fixture"
+    },
+    "corrected": {
+      "run_id": 39548862852,
+      "conclusion": "success",
+      "passed": 141,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "handoff_issue": "https://github.com/volcano-code/Spin_test/issues/2",
+  "new_native_cherchi_evaluations": 0,
+  "newton_admitted": false,
+  "training_admitted": false
+}
