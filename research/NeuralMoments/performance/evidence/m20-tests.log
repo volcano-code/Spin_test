@@ -1,0 +1,30 @@
+test_actual_instrument_call_native_observer_restoration (test_m19.TestM19.test_actual_instrument_call_native_observer_restoration) ... ok
+test_cloud_template_is_diagnostic_only_and_in_scope (test_m19.TestM19.test_cloud_template_is_diagnostic_only_and_in_scope) ... ok
+test_dangling_nested_stage_rejected (test_m19.TestM19.test_dangling_nested_stage_rejected) ... ok
+test_duplicate_index_rejected (test_m19.TestM19.test_duplicate_index_rejected) ... ok
+test_duplicate_point_loop_rejected (test_m19.TestM19.test_duplicate_point_loop_rejected) ... ok
+test_duplicate_stage_rejected (test_m19.TestM19.test_duplicate_stage_rejected) ... ok
+test_exception_behavior_preserved (test_m19.TestM19.test_exception_behavior_preserved) ... ok
+test_exception_failing_span_recorded (test_m19.TestM19.test_exception_failing_span_recorded) ... ok
+test_expected_25_required (test_m19.TestM19.test_expected_25_required) ... ok
+test_missing_evaluator_import_rejected (test_m19.TestM19.test_missing_evaluator_import_rejected) ... ok
+test_missing_real_stage_rejected (test_m19.TestM19.test_missing_real_stage_rejected) ... ok
+test_nested_exclusivity (test_m19.TestM19.test_nested_exclusivity) ... ok
+test_original_vs_wrapped_return_and_bytes (test_m19.TestM19.test_original_vs_wrapped_return_and_bytes) ... ok
+test_partial_rows_do_not_count_as_full_25 (test_m19.TestM19.test_partial_rows_do_not_count_as_full_25) ... ok
+test_production_evaluator_pin_rejects_fake (test_m19.TestM19.test_production_evaluator_pin_rejects_fake) ... ok
+test_real_host_preflight_failure_not_success (test_m19.TestM19.test_real_host_preflight_failure_not_success) ... ok
+test_six_strict_phases_preserved (test_m19.TestM19.test_six_strict_phases_preserved) ... ok
+test_source_is_pinned_by_default (test_m19.TestM19.test_source_is_pinned_by_default) ... ok
+test_unknown_native_stage_fails_closed (test_m19.TestM19.test_unknown_native_stage_fails_closed) ... ok
+test_unregistered_stage_rejected (test_m19.TestM19.test_unregistered_stage_rejected) ... ok
+test_authentic_replayed_github_artifact_bytes (test_m20_artifact_activation.TestM20H8cDeployment.test_authentic_replayed_github_artifact_bytes) ... ok
+test_checksum_before_native_build_and_no_main_or_other_branch (test_m20_artifact_activation.TestM20H8cDeployment.test_checksum_before_native_build_and_no_main_or_other_branch) ... ok
+test_checksum_matches_immutable_archive_authority (test_m20_artifact_activation.TestM20H8cDeployment.test_checksum_matches_immutable_archive_authority) ... ok
+test_published_m19_status_and_erratum_tied_to_real_artifact (test_m20_artifact_activation.TestM20H8cDeployment.test_published_m19_status_and_erratum_tied_to_real_artifact) ... ok
+test_tampered_or_wrong_sha_is_rejected (test_m20_artifact_activation.TestM20H8cDeployment.test_tampered_or_wrong_sha_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.348s
+
+OK

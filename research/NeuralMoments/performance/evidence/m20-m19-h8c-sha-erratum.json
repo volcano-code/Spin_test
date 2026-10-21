@@ -1,0 +1,18 @@
+{
+  "actual_local_zip_sha256": "78749e99abd25ab2d2571440991ffa4e907a1565b4c7faf5210496431389cdd7",
+  "fresh_cherchi_boolean_runs": 0,
+  "h8c_artifact_id": 12132634988,
+  "historical_ci_artifacts_modified": false,
+  "historical_github_actions_run": 39118951636,
+  "independently_verified_sha256": "78749e99abd25ab2d2571440991ffa4e907a1565b4c7faf5210496431389cdd7",
+  "modified_w1_files": [
+    "m19-w1-real-h8e-stage-profile.workflow.template.yml",
+    "evidence/m19-runtime-status.json"
+  ],
+  "original_incorrect_sha256": "78749e99abd25ab2d2571440991ffa4e907a1565b4e20298f8516e061c",
+  "paper_speed_qualified": false,
+  "production_speedup": null,
+  "schema": "w1-v2-m20-m19-h8c-artifact-checksum-erratum-v1",
+  "scope": "REPAIR_INACTIVE_CI_TEMPLATE_AND_STATUS_METADATA_ONLY_NOT_NATIVE_RUN",
+  "workflow_activated": false
+}

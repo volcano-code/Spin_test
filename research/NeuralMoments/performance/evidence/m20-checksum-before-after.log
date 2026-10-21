@@ -1,0 +1,6 @@
+=== original M19 checksum invocation ===
+sha256sum: 'standard input': no properly formatted checksum lines found
+exit=1
+=== corrected M19 checksum invocation ===
+h8c-reference-39118951636.zip: OK
+exit=0

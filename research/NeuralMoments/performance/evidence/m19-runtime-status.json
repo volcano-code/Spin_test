@@ -5,7 +5,7 @@
   "frozen_evaluator_git_blob": "f9fa539f699df8baf8b8d30729048269a26ecb3c",
   "full_solver_speedup": null,
   "git_branch": "research/neuralmoments-w1-native-20261019",
-  "h8c_archive_sha256": "78749e99abd25ab2d2571440991ffa4e907a1565b4e20298f8516e061c",
+  "h8c_archive_sha256": "78749e99abd25ab2d2571440991ffa4e907a1565b4c7faf5210496431389cdd7",
   "live_cloud_workflow_activated": false,
   "local_tests_passed": 20,
   "new_native_boolean_calls": 0,

@@ -66,7 +66,7 @@ jobs:
             -H 'Accept: application/vnd.github+json' \
             'https://api.github.com/repos/volcano-code/Spin_test/actions/artifacts/12132634988/zip' \
             --output artifacts/w1-h8c-reference.zip
-          echo '78749e99abd25ab2d2571440991ffa4e907a1565b4e20298f8516e061c  artifacts/w1-h8c-reference.zip' | sha256sum --check
+          echo '78749e99abd25ab2d2571440991ffa4e907a1565b4c7faf5210496431389cdd7  artifacts/w1-h8c-reference.zip' | sha256sum --check
       - name: Build actual native modules WITHOUT prematurely running strict M9
         run: |
           python research/NeuralMoments/performance/m13_pinned_native_build.py \
