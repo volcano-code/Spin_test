@@ -33,7 +33,8 @@ jobs:
             research/NeuralMoments/contracts/test_cross_window_release_m15.py \
             research/NeuralMoments/contracts/test_cross_window_interface_m16.py \
             research/NeuralMoments/contracts/test_consumer_v2_preview_m17.py \
-            research/NeuralMoments/contracts/test_w5_contract_gate_v2_m18.py
+            research/NeuralMoments/contracts/test_w5_contract_gate_v2_m18.py \
+            research/NeuralMoments/contracts/test_w5_live_handoff_m19.py
       - name: Independently audit frozen W2 W5 W6 source interface
         run: |
           python -m research.NeuralMoments.contracts.cross_window_interface_m16 \
@@ -42,6 +43,24 @@ jobs:
         run: |
           python -m research.NeuralMoments.contracts.consumer_v2_preview_m17 \
             --output "$RUNNER_TEMP/w0-m17-w5-v2-migration-block.json"
+      - name: Audit live W5 W2 Git refs (read-only, fail closed on new drift)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin refs/heads/research/neuralmoments-w5-deeponet-20261019
+          w5_head="$(git rev-parse FETCH_HEAD)"
+          w5_blob="$(git rev-parse 'FETCH_HEAD:research/NeuralMoments/models/deeponet/contract_gate.py')"
+          git show 'FETCH_HEAD:research/NeuralMoments/models/deeponet/contract_gate.py' > "$RUNNER_TEMP/w0-m19-current-w5-gate.py"
+          git fetch --no-tags --depth=1 origin refs/heads/research/neuralmoments-w2-teacher-20261019
+          w2_head="$(git rev-parse FETCH_HEAD)"
+          w2_blob="$(git rev-parse 'FETCH_HEAD:research/NeuralMoments/teacher/teacher_manifest.json')"
+          git show 'FETCH_HEAD:research/NeuralMoments/teacher/teacher_manifest.json' > "$RUNNER_TEMP/w0-m19-current-w2-manifest.json"
+          python -m research.NeuralMoments.contracts.w5_live_handoff_m19 \
+            --w5-source "$RUNNER_TEMP/w0-m19-current-w5-gate.py" \
+            --w5-head "$w5_head" --w5-blob "$w5_blob" \
+            --w2-manifest "$RUNNER_TEMP/w0-m19-current-w2-manifest.json" \
+            --w2-head "$w2_head" --w2-blob "$w2_blob" \
+            --output "$RUNNER_TEMP/w0-m19-live-w5-w2-adoption.json"
       - name: Upload CI interface denial evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -50,4 +69,5 @@ jobs:
           path: |
             ${{ runner.temp }}/w0-m16-interface-audit.json
             ${{ runner.temp }}/w0-m17-w5-v2-migration-block.json
+            ${{ runner.temp }}/w0-m19-live-w5-w2-adoption.json
           if-no-files-found: warn
