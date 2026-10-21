@@ -32,7 +32,8 @@ jobs:
             research/NeuralMoments/contracts/test_w2_teacher_gate.py \
             research/NeuralMoments/contracts/test_cross_window_release_m15.py \
             research/NeuralMoments/contracts/test_cross_window_interface_m16.py \
-            research/NeuralMoments/contracts/test_consumer_v2_preview_m17.py
+            research/NeuralMoments/contracts/test_consumer_v2_preview_m17.py \
+            research/NeuralMoments/contracts/test_w5_contract_gate_v2_m18.py
       - name: Independently audit frozen W2 W5 W6 source interface
         run: |
           python -m research.NeuralMoments.contracts.cross_window_interface_m16 \
