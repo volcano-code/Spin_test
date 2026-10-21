@@ -1,0 +1,99 @@
+{
+  "schema": "W4P19CanonicalSourceReplayCorrectionV1",
+  "first_commit": "c644a875c5e39818f99271f9bed311cee55320b5",
+  "first_run": 39644621237,
+  "first_job": 119376793003,
+  "first_job_conclusion": "failure",
+  "first_CI_tests_passed": 137,
+  "first_CI_tests_skipped": 0,
+  "first_CI_test_elapsed_seconds": 44.43,
+  "first_CI_native_calls": 0,
+  "first_CI_fresh_geometry_passed": true,
+  "first_CI_committed_replay_passed": false,
+  "canonical_report_origin": "Exact bytes of first CI fresh-complete-report.json, generated using unchanged canonical Git source",
+  "canonical_report_sha256": "f30fabc8ce348b9b8f42ff20649e683557349582ef31baf6c05d35e17b448601",
+  "original_report_sha256_preserved": "62212e828e6c9a021bca8085bfa85a4c20f5d1a3607e978aa264dbaceebc7b6b",
+  "failure_evidence_zip_sha256": "f41a11e2a789f9313a61d3a39ed15aee718922a522d33837389f12154c659d26",
+  "failure_evidence_entries": [
+    {
+      "path": "github-artifact-original.zip",
+      "bytes": 31392,
+      "sha256": "9f5ba02f63118516a3a871ebdaec3dc3f90da7c847077ee47527d7e7827d8b93"
+    },
+    {
+      "path": "diagnosis-and-extracted/actual-job.log",
+      "bytes": 57382,
+      "sha256": "b76fa24910fb04e288b537a80937d51604013fe6f11adf58d60a651029162d55"
+    },
+    {
+      "path": "diagnosis-and-extracted/audit.log",
+      "bytes": 120,
+      "sha256": "bc67498858133494b2fe72682347fdead0992aa118aad2d11d879a162b893230"
+    },
+    {
+      "path": "diagnosis-and-extracted/canonical-p15_inherited_sliver_repair.py",
+      "bytes": 14486,
+      "sha256": "f925f9fcc3690feb79d2474129c006c9ed5a482668f5c360879ee96e5897b6a3"
+    },
+    {
+      "path": "diagnosis-and-extracted/canonical-p16_exact_binary64_chain.py",
+      "bytes": 13329,
+      "sha256": "d020cc3899707aeea1bb5641e09a0603f62868d0babdc260a2e038b67694191e"
+    },
+    {
+      "path": "diagnosis-and-extracted/committed-report-replay.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "diagnosis-and-extracted/fresh-complete-report.json",
+      "bytes": 111126,
+      "sha256": "f30fabc8ce348b9b8f42ff20649e683557349582ef31baf6c05d35e17b448601"
+    },
+    {
+      "path": "diagnosis-and-extracted/local-p15_inherited_sliver_repair.py",
+      "bytes": 14487,
+      "sha256": "991890a99fb2a4565f4f8e8fcf223a7e2938be21301a120cdb09d017c2ee17eb"
+    },
+    {
+      "path": "diagnosis-and-extracted/local-p16_exact_binary64_chain.py",
+      "bytes": 13330,
+      "sha256": "cbc5098db56426d562bb0f5802f7a3d435fae00bde46957afaa5e5f4e4129508"
+    },
+    {
+      "path": "diagnosis-and-extracted/original-committed-workflow.yml",
+      "bytes": 56367,
+      "sha256": "e81d38dc4060e533a0a883d27e7089614734f685e860904094172cb9d2d3ebdb"
+    },
+    {
+      "path": "diagnosis-and-extracted/report-field-differences.json",
+      "bytes": 1468,
+      "sha256": "fba8e4f6b8cc29fe8d019dbe8166a7ebf399210dbcde92ec6a46150520f86e44"
+    },
+    {
+      "path": "diagnosis-and-extracted/source-byte-diagnosis.json",
+      "bytes": 1365,
+      "sha256": "3384ed971dfd508f87db520748fc6982551e3152cca804fbbba04ba750a9837b"
+    },
+    {
+      "path": "diagnosis-and-extracted/tests.log",
+      "bytes": 25821,
+      "sha256": "8c4d4d29789154c5fa50f687bea7de0d568cd8e631fc1d14184b7e6adf00489f"
+    },
+    {
+      "path": "diagnosis-and-extracted/w4-commit.txt",
+      "bytes": 41,
+      "sha256": "5f8274d1d7a56679e427d1bc91ded7fd55a1e8aba7191cd9be2cb47e1e803c73"
+    }
+  ],
+  "local_source_restoration_only_no_remote_historical_source_changes": true,
+  "code_changes_in_correction": false,
+  "frozen_material_bytes_changed": false,
+  "source_hash_or_geometry_comparison_relaxed": false,
+  "new_independent_job": "p19-canonical-source-complete-material",
+  "new_native_calls_claimed_before_observed_CI": 0,
+  "optimization_admitted": false,
+  "training_admitted": false,
+  "canonical_local_full_replay_passed": true,
+  "canonical_local_full_replay_sha256": "f6d87d4ba0a4af8db295a4834ab9bdcdcb6d4082ffce485c5f706864adbb7592"
+}

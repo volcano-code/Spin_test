@@ -1,0 +1,2508 @@
+{
+  "schema": "W4P19FrozenNativeCandidateCompleteSavedGeometryV1",
+  "status": "P19_EXACT_SAVED_SOLID_AND_COMPLETE_ORIGINAL_SHAFT_PASS_NOT_ADMITTED",
+  "source_P18_commit": "b33fc93bd1fecd5b42fbd8d2eabfefd6ec9db7be",
+  "frozen_manifest_sha256": "c6bd67f872f344da46c1f774f8b68c28a2ecfa4c5a5c000d9e6bf5229e3412d6",
+  "source_code_and_test_sha256": {
+    "P19_TEST_INVENTORY.json": "2d22bedba3a346fa5a8597711a26f808ee9802ad55f3af5b76265d01f53742cd",
+    "p15_inherited_sliver_repair.py": "f925f9fcc3690feb79d2474129c006c9ed5a482668f5c360879ee96e5897b6a3",
+    "p16_exact_binary64_chain.py": "d020cc3899707aeea1bb5641e09a0603f62868d0babdc260a2e038b67694191e",
+    "p17_boundary_certificate.py": "391a09c06d9846b42820b26e549675026dc0a8e5c4f93e3c79289ac6a6c15c2d",
+    "p17_material_candidate.py": "15066373023cb941abdb4cc7c893be36df38604e7ab1974e95bc07a6d658448b",
+    "p17_physical_case.py": "ec78c9912484863fd9532d28c061322c64bd0b0d5c1a1ae6dd0f4c51f83d36e8",
+    "p18_exact_surface.py": "b26ab7739b6d3f5f01bcf89880767958fa31510dd138de22a595baf9d95c5cc4",
+    "p18_shaft_domain.py": "548387dbf0f3159a4cd280e830406a77e4aa3414868c45a33f3267b0fd6a4357",
+    "p18_solid_domain.py": "ca449b64b89dddf76c744a980bfae486a179e2470436d387dad0c5204634351e",
+    "p19_guard_certificate.py": "ff9b8df95562de1986ae11523f9b96778e3b235cf55fe45bdeaec9e21db09485",
+    "p19_guard_construction.py": "7e168576645610c3ed359e35b0b1bdf3396a4aa2630bdf808c355c4f09576bba",
+    "p19_material_audit.py": "58eb4dfbea4f8297edb08ca139d5b8c7af935d4f6f16b3b22fb39442535e10e7",
+    "p19_material_candidate.py": "63eb6d58871e63e06a0b781b5c245ee409051bef34f5ab0c07edd35a6cd3f0c7",
+    "p19_native_smoke.py": "a6748c2540e580814b60dc33c711ebb2b30ba5e27d7630b5abf94decac232cad",
+    "p19_serialization_repair.py": "80770b17aab6929ab2ea525a9a908d36454b0f1d285e658e612341d3678b09f9",
+    "p19_shaft_containment.py": "5fde5d371f984ea286ae028d4dc0388fa38d4e89bb105df404bcdf58671710d1",
+    "p7_cherchi_native_union.py": "6fe83568802c23580fbab16dd0819adbab9b7bbbfec2a04e15b0084430bfeee2",
+    "p7_cherchi_reference_cli/CMakeLists.txt": "f8ce4a096a8e404f9fec4539dbfc4ce1d45dd5c3b724fd6198a66119437c8c69",
+    "test_p19_guard_certificate.py": "d1e02899c9c57a737f1f367bc9039fe30750b1ebcfd0476d08607b7c762d1bad",
+    "test_p19_guard_construction.py": "388e0079bd899586afd05707f8d1a209ae9dd320ad85b60373c6926cac90acf4",
+    "test_p19_material_audit.py": "2412910aee8ba85be6eef8eb9b2253565e7fb03e7719bf645e539df9cd34dac0",
+    "test_p19_material_candidate.py": "83c04c254f3e7519605cc8e60258a34aedb64806b658533f74984c97eb59a1bb",
+    "test_p19_native_smoke.py": "2724a3f7ca2b24a07ab926a0941d3ed5c389fd54cc107900d8a495010ae936be",
+    "test_p19_serialization_repair.py": "9c9fabfabedb8b6c4ee566e759dc49e16ab53e04b1be2a17e50f065fe865a0de",
+    "test_p19_shaft_containment.py": "ef15a5d14a8ea8a15fdf841d92d28c81deb99cfbe0ae12c0fa8edcc345657683"
+  },
+  "native_construction": {
+    "classification": "NEW_UNMODIFIED_CHERCHI_BINARY64_CANDIDATE_NOT_PHYSICALLY_APPROVED",
+    "upstream_commit": "7bd6c2697695f555f9a15d7e154e084d841316f0",
+    "historical_binary_sha256": "dfd285727c760b2616e6c8628614b9ee57980f1402950e020d854f878c7c8e5c",
+    "actual_selected_construction_calls": 3,
+    "new_native_calls_in_this_saved_packet_audit": 0,
+    "selected_outputs_modified_after_native_save": false,
+    "APAP_exporter_used_for_selected_materials": false,
+    "CGAL_used": false,
+    "receipts_authenticated": true,
+    "registered_guard_bytes_regenerated": {
+      "shaft-envelope.obj": "b624294716c8001e5aa85ee5e3a126b108720a7cea884d435d276261d5c0548d",
+      "inner_guard.obj": "21e76e412d80fac7d635561b67b075ce1b02fd775475b3e29d1e09dd123ad9ba"
+    },
+    "implicit_rational_coordinate_equality_certified": false
+  },
+  "geometry": {
+    "schema": "W4P19RecomputedCompleteMaterialGeometryV1",
+    "status": "EXACT_SAVED_MATERIAL_AND_COMPLETE_SHAFT_GEOMETRY_PASS_NOT_ADMITTED",
+    "arithmetic": "EXACT_RATIONALS_OF_SAVED_BINARY64_COORDINATES",
+    "cavity_center_exact": [
+      "0",
+      "0",
+      "6034823500676465/9007199254740992"
+    ],
+    "cavity_center_convention": "EXACT_BINARY64_0_67_NOT_DECIMAL_67_OVER_100",
+    "geometry_modified": false,
+    "geometric_tolerance": null,
+    "external_PASS_or_surface_certificate_accepted": false,
+    "scientific_approval": false,
+    "physical_approval": false,
+    "optimization_admitted": false,
+    "training_admitted": false,
+    "scientific_flags": {
+      "native_Cherchi_implicit_region_partition_certified": false,
+      "raw_native_export_vs_repaired_set_equality_certified": false,
+      "original_author_CAD_certified": false,
+      "physical_equivalence_certified": false,
+      "W0_physical_tip_or_FD_approved": false,
+      "W2_teacher_training_allowed": false,
+      "printability_or_strength_certified": false,
+      "Faster_optimization_executed": false,
+      "MuJoCo_real_optimized_before_after_executed": false
+    },
+    "proof_scope": "Saved binary64 regular solids only; raw/native/repaired physical equivalence and external admission are not certified.",
+    "partition_geometry_valid": true,
+    "design_strictly_inside_outer": true,
+    "fixed_and_design_union_equals_outer": true,
+    "fixed_and_design_interiors_disjoint": true,
+    "all_material_surfaces_exact_embedded_closed_oriented": true,
+    "M_and_D_single_embedded_outward_solids": true,
+    "individual_single_embedded_outward_solids": {
+      "M": true,
+      "D": true
+    },
+    "exact_signed_volumes": {
+      "M": {
+        "numerator": "7451519477356814783513330108425493544428051260534207",
+        "denominator": "4489733029880533764721719806104421436383024772022272",
+        "decimal_projection": 1.659679857970328
+      },
+      "F": {
+        "numerator": "29331848976934496620977017660586648665707142031264257",
+        "denominator": "17958932119522135058886879224417685745532099088089088",
+        "decimal_projection": 1.633273558902175
+      },
+      "D": {
+        "numerator": "474228932492762513076302773115325512005063010872571",
+        "denominator": "17958932119522135058886879224417685745532099088089088",
+        "decimal_projection": 0.02640629906815312
+      }
+    },
+    "exact_ten_moment_partition": {
+      "executed": true,
+      "moment_order": [
+        "M",
+        "LX",
+        "LY",
+        "LZ",
+        "QXX",
+        "QYY",
+        "QZZ",
+        "QYZ",
+        "QXZ",
+        "QXY"
+      ],
+      "cross_moment_convention": "ORDINARY_UNDOUBLED",
+      "raw_ten_exact": {
+        "M": {
+          "M": {
+            "numerator": "7451519477356814783513330108425493544428051260534207",
+            "denominator": "4489733029880533764721719806104421436383024772022272",
+            "decimal_projection": 1.659679857970328
+          },
+          "LX": {
+            "numerator": "784850665449208574268508795684060071409647155485605526026614436418536103",
+            "denominator": "56539106072908298546665520023773392506479484700019806659891398441363832832",
+            "decimal_projection": 0.013881554201389885
+          },
+          "LY": {
+            "numerator": "61737068042500815524901738906065127855749477307593637133857625041439",
+            "denominator": "28269553036454149273332760011886696253239742350009903329945699220681916416",
+            "decimal_projection": 2.1838713885178746e-06
+          },
+          "LZ": {
+            "numerator": "957005703844320290681330310636393232692962478953206285568838542489472929",
+            "denominator": "883423532389192164791648750371459257913741948437809479060803100646309888",
+            "decimal_projection": 1.0832920663276056
+          },
+          "QXX": {
+            "numerator": "996954010673806129464956765992388906025953946586399542211020898777996823127183286108867367857",
+            "denominator": "3911109074562213285635415721746006069218819315838597601221389662760412095545606475872122961920",
+            "decimal_projection": 0.2549031468229761
+          },
+          "QYY": {
+            "numerator": "13754670818211018674016286823818185602903022045297555525757148089995036819745983328777173581",
+            "denominator": "65185151242703554760590262029100101153646988597309960020356494379340201592426774597868716032",
+            "decimal_projection": 0.21100926447187826
+          },
+          "QZZ": {
+            "numerator": "316108666635604490363356852219768438962005511905307418512601867956928849640559044439744113",
+            "denominator": "381944245562716141175333566576758405197150323812363046994276334253946493705625632409387008",
+            "decimal_projection": 0.8276303945092391
+          },
+          "QYZ": {
+            "numerator": "49347362392649062710291613246722288737557448819999279605982736152477450019629121895307",
+            "denominator": "30555539645017291294026685326140672415772025904989043759542106740315719496450050592750960640",
+            "decimal_projection": 1.6150054283428819e-06
+          },
+          "QXZ": {
+            "numerator": "96966940134975185141069406610739722367578273463503974140717150149344229245399068385687581",
+            "denominator": "10185179881672430431342228442046890805257341968329681253180702246771906498816683530916986880",
+            "decimal_projection": 0.009520395443330451
+          },
+          "QXY": {
+            "numerator": "1076443405959550926311348225517183778282127304557326355757832237540604162589576464220857",
+            "denominator": "488888634320276660704426965218250758652352414479824700152673707845051511943200809484015370240",
+            "decimal_projection": 2.2018172041495246e-06
+          }
+        },
+        "F": {
+          "M": {
+            "numerator": "29331848976934496620977017660586648665707142031264257",
+            "denominator": "17958932119522135058886879224417685745532099088089088",
+            "decimal_projection": 1.633273558902175
+          },
+          "LX": {
+            "numerator": "2354551996347625725872188951621176246251979866505996476561972989582940149",
+            "denominator": "169617318218724895639996560071320177519438454100059419979674195324091498496",
+            "decimal_projection": 0.013881554201389885
+          },
+          "LY": {
+            "numerator": "185211204127502569689566609374076067787236698718255143854551306419293",
+            "denominator": "84808659109362447819998280035660088759719227050029709989837097662045749248",
+            "decimal_projection": 2.183871388517876e-06
+          },
+          "LZ": {
+            "numerator": "2824127940072733209428485061911113431622413519803488106109342455422482147",
+            "denominator": "2650270597167576494374946251114377773741225845313428437182409301938929664",
+            "decimal_projection": 1.065599845951943
+          },
+          "QXX": {
+            "numerator": "995993905871601898273549345370882138926123845111141641988227993225498367693530765845499876273",
+            "denominator": "3911109074562213285635415721746006069218819315838597601221389662760412095545606475872122961920",
+            "decimal_projection": 0.2546576653536792
+          },
+          "QYY": {
+            "numerator": "68693344435675613897420521039902559536069388848014714141841602325692838338981543594466400129",
+            "denominator": "325925756213517773802951310145500505768234942986549800101782471896701007962133872989343580160",
+            "decimal_projection": 0.2107637801741382
+          },
+          "QZZ": {
+            "numerator": "519187125131828579203472972163588771041620823377026061574757960214264168213692051669310823",
+            "denominator": "636573742604526901958889277627930675328583873020605078323793890423244156176042720682311680",
+            "decimal_projection": 0.8155961994404393
+          },
+          "QYZ": {
+            "numerator": "49347362392649124856006650231189073574769529862340591601358042118255707202851441865611",
+            "denominator": "30555539645017291294026685326140672415772025904989043759542106740315719496450050592750960640",
+            "decimal_projection": 1.615005428342884e-06
+          },
+          "QXZ": {
+            "numerator": "290900820404925555757001921511556349853480767335648794725933578856098758883408666322077783",
+            "denominator": "30555539645017291294026685326140672415772025904989043759542106740315719496450050592750960640",
+            "decimal_projection": 0.009520395443330451
+          },
+          "QXY": {
+            "numerator": "1076379315707414816813647584704820101750160416755581281684185704801701383799890866070201",
+            "denominator": "488888634320276660704426965218250758652352414479824700152673707845051511943200809484015370240",
+            "decimal_projection": 2.201686110383712e-06
+          }
+        },
+        "D": {
+          "M": {
+            "numerator": "474228932492762513076302773115325512005063010872571",
+            "denominator": "17958932119522135058886879224417685745532099088089088",
+            "decimal_projection": 0.02640629906815312
+          },
+          "LX": {
+            "numerator": "-748696915177977546880624609387006811152863691486165",
+            "denominator": "41410478080743382724608535173662152714706653833022319330975145342795776",
+            "decimal_projection": -1.807989064309149e-20
+          },
+          "LY": {
+            "numerator": "-240458713657531016961367164583584910610259723498623",
+            "denominator": "165641912322973530898434140694648610858826615332089277323900581371183104",
+            "decimal_projection": -1.4516779617267244e-21
+          },
+          "LZ": {
+            "numerator": "22895103252064288386477475584993294168200154812563843065025962913055",
+            "denominator": "1294077440023230710144016724176942272334582932281947479092973291962368",
+            "decimal_projection": 0.017692220375662593
+          },
+          "QXX": {
+            "numerator": "29300073309455297589337787521568820185244795997860724572537400894117902638321541240463",
+            "denominator": "119357576738348794117291739555237001624109476191363452185711354454358279283008010127933440",
+            "decimal_projection": 0.00024548146929696655
+          },
+          "QYY": {
+            "numerator": "78134429081522922520422928894891092232149783665101061468884886994478281004270556073699",
+            "denominator": "318286871302263450979444638813965337664291936510302539161896945211622078088021360341155840",
+            "decimal_projection": 0.0002454842977400786
+          },
+          "QZZ": {
+            "numerator": "701353692094015936473551776369503225255282269148526240195784275569206041312227392297",
+            "denominator": "58280066766771872127583857204705567199272205171564185637554372292167128556156254945280",
+            "decimal_projection": 0.012034195068799916
+          },
+          "QYZ": {
+            "numerator": "-10114862473467523890761264987148818572915913949538700888213415091141",
+            "denominator": "4973232364097866421553822481468208401004561507973477174404639768931594970125333755330560",
+            "decimal_projection": -2.033860823895434e-21
+          },
+          "QXZ": {
+            "numerator": "-8149260294905692938250633470340255671479055869337550565117467313599",
+            "denominator": "745984854614679963233073372220231260150684226196021576160695965339739245518800063299584",
+            "decimal_projection": -1.0924163197810486e-20
+          },
+          "QXY": {
+            "numerator": "7823517106458678918535255415487857906114233611459237505680265979343113975292743",
+            "denominator": "59678788369174397058645869777618500812054738095681726092855677227179139641504005063966720",
+            "decimal_projection": 1.310937658127745e-10
+          }
+        }
+      },
+      "M_minus_F_minus_D_exact": {
+        "M": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal_projection": 0.0
+        },
+        "LX": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal_projection": 0.0
+        },
+        "LY": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal_projection": 0.0
+        },
+        "LZ": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal_projection": 0.0
+        },
+        "QXX": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal_projection": 0.0
+        },
+        "QYY": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal_projection": 0.0
+        },
+        "QZZ": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal_projection": 0.0
+        },
+        "QYZ": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal_projection": 0.0
+        },
+        "QXZ": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal_projection": 0.0
+        },
+        "QXY": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal_projection": 0.0
+        }
+      },
+      "all_ten_residuals_zero": true,
+      "volume_residual_zero": true,
+      "independent_exact_volumes_match_ten_mass_components": true,
+      "alone_is_not_region_partition_certificate": true
+    },
+    "exact_signed_boundary_chain": {
+      "status": "EXACT_SAVED_BINARY64_SIGNED_CHAIN_PASS",
+      "certificate": "EXACT_SAVED_BINARY64_ORIENTED_SIMPLICIAL_CHAIN",
+      "exact_signed_triangle_chain_zero": true,
+      "signed_triangle_residual_terms": 0,
+      "signed_triangle_residual_l1_multiplicity": 0,
+      "legacy_cyclic_multiset_residual_terms": 800,
+      "legacy_reverse_orientation_pairs": 400,
+      "residual_witnesses": [],
+      "tolerance_used": null,
+      "proof_scope": "Exact finite oriented triangle chain at saved binary64 coordinates; no claim about native implicit points or ordinary solid regions.",
+      "orientation_relations": [
+        "[a,b,c]=[b,c,a]=[c,a,b]",
+        "[a,b,c]=-[a,c,b]"
+      ],
+      "geometry_modified": false,
+      "scientific_flags": {
+        "native_Cherchi_implicit_geometry_certified": false,
+        "native_provenance_authenticated_by_chain_audit": false,
+        "ordinary_solid_region_equality_certified": false,
+        "original_native_vs_microweld_set_equality_certified": false,
+        "W0_physical_tip_or_FD_approved": false,
+        "W2_teacher_training_allowed": false,
+        "Faster_optimization_executed": false,
+        "MuJoCo_real_optimized_before_after_executed": false,
+        "printability_certified": false
+      }
+    },
+    "fixed_component_correspondence": {
+      "exact_outer_and_reversed_cavity_components": true,
+      "fixed_boundary_components": 2,
+      "no_hidden_duplicate_cancellation": true,
+      "component_face_counts": [
+        8070,
+        400
+      ],
+      "matches": [
+        {
+          "target": "M_outward",
+          "component": 0,
+          "unique_match": true
+        },
+        {
+          "target": "D_reversed",
+          "component": 1,
+          "unique_match": true
+        }
+      ],
+      "alone_is_not_an_embedded_solid_certificate": true
+    },
+    "center_in_outer": {
+      "classification": "INSIDE",
+      "method": "EXACT_INTEGER_RAY",
+      "point_exact": [
+        "0",
+        "0",
+        "6034823500676465/9007199254740992"
+      ],
+      "crossings": 1,
+      "direction": [
+        1,
+        2,
+        5
+      ],
+      "rejected_degenerate_rays": 1,
+      "surface_validity_must_be_certified_separately": true
+    },
+    "cavity_ball_and_clearance_certificate": {
+      "method": "EXACT_POINT_TRIANGLE_DISTANCE_AND_CONVEX_ENCLOSING_BALL",
+      "center_exact": [
+        "0",
+        "0",
+        "6034823500676465/9007199254740992"
+      ],
+      "outer_faces_tested": 8070,
+      "design_vertices_tested": 200,
+      "nearest_outer_face": 7006,
+      "farthest_design_vertex": 3,
+      "minimum_center_to_outer_distance_squared": {
+        "numerator": "12287560418776839221493430860071504506112570722847655338958531441",
+        "denominator": "44760071832722356525251616452578879314104389889193044626773114880",
+        "decimal_projection": 0.27452056968759997
+      },
+      "maximum_design_vertex_radius_squared": {
+        "numerator": "25961484619217704698865662596925",
+        "denominator": "649037107316853453566312041152512",
+        "decimal_projection": 0.040000000503120026
+      },
+      "outer_distance_lower_bound": {
+        "numerator": "104789421",
+        "denominator": "200000000",
+        "decimal_projection": 0.523947105
+      },
+      "outer_distance_upper_bound": {
+        "numerator": "261973553",
+        "denominator": "500000000",
+        "decimal_projection": 0.523947106
+      },
+      "design_ball_radius_upper_bound": {
+        "numerator": "100000001",
+        "denominator": "500000000",
+        "decimal_projection": 0.200000002
+      },
+      "cavity_to_outer_clearance_lower_bound_reference": {
+        "numerator": "323947103",
+        "denominator": "1000000000",
+        "decimal_projection": 0.323947103
+      },
+      "sqrt_grid_denominator": 1000000000,
+      "positive_gap_proved": true,
+      "entire_solid_containment_requires_closed_embedded_surfaces_and_center_inside": true,
+      "whole_object_wall_thickness_or_printability_certified": false
+    },
+    "set_semantics": "CERTIFIED: M=F union D; int(F) intersect int(D) is empty; F and D share the cavity boundary",
+    "containment_proof": "CERTIFIED: The convex enclosing ball contains the entire bounded D solid; its radius is strictly below the exact distance from the inside center to every M boundary triangle, so the entire D solid is strictly in M.",
+    "literal_component_requirement_is_sufficient_not_necessary": true,
+    "inputs": {
+      "M": {
+        "sha256": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
+        "vertices": 4035,
+        "faces": 8070,
+        "strict_binary64_triangle_parse_passed": true,
+        "input_geometry_error": null
+      },
+      "F": {
+        "sha256": "5c5db73792bd8d6566a954e6d0eef6d22e248a7ad2f8a7a8d8e6d4f2ad9d86a8",
+        "vertices": 4235,
+        "faces": 8470,
+        "strict_binary64_triangle_parse_passed": true,
+        "input_geometry_error": null
+      },
+      "D": {
+        "sha256": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
+        "vertices": 200,
+        "faces": 400,
+        "strict_binary64_triangle_parse_passed": true,
+        "input_geometry_error": null
+      },
+      "S": {
+        "sha256": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
+        "vertices": 258,
+        "faces": 512,
+        "strict_binary64_triangle_parse_passed": true,
+        "input_geometry_error": null
+      }
+    },
+    "exact_surface_audits": {
+      "M": {
+        "all_triangles_exactly_nondegenerate": true,
+        "common_integer_coordinate_scale_power_of_two": 111,
+        "component_signed_volumes_exact": [
+          "7451519477356814783513330108425493544428051260534207/4489733029880533764721719806104421436383024772022272"
+        ],
+        "coverage": {
+          "aabb_candidate_pairs": 60905,
+          "adjacent_candidates_excluded": 0,
+          "all_candidate_pairs_checked": true,
+          "candidate_pair_index_stream_sha256": "6e39fe1dd7da029486f994953bc98ab91280183392058434054870d0a06c2143",
+          "candidate_pairs_by_shared_original_vertex_count": {
+            "0": 10072,
+            "1": 38728,
+            "2": 12105,
+            "3": 0
+          },
+          "exact_noncoplanar_shared_edge_theorem_checks": 11973,
+          "exact_triangle_intersection_checks": 48932,
+          "strictly_disjoint_aabb_pairs": 32497510,
+          "total_unordered_face_pairs": 32558415
+        },
+        "elapsed_seconds": 6.516991208000007,
+        "exact_embedded_closed_oriented_2manifold": true,
+        "exact_predicate_arithmetic": "Python integers plus Fraction for rational intersections; no tolerance",
+        "forbidden_intersection_kinds": {},
+        "forbidden_intersection_pair_count": 0,
+        "forbidden_intersection_witnesses": [],
+        "frozen_sha256_checked": true,
+        "geometry_modified": false,
+        "input": {
+          "faces": 8070,
+          "sha256": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
+          "vertices": 4035
+        },
+        "saved_surface_only_not_native_implicit_certificate": true,
+        "scientific_flags": {
+          "Faster_optimization_executed": false,
+          "MuJoCo_real_optimized_before_after_executed": false,
+          "W0_physical_tip_or_FD_approved": false,
+          "W2_teacher_training_allowed": false,
+          "native_Cherchi_implicit_geometry_certified": false,
+          "native_provenance_authenticated_by_chain_audit": false,
+          "ordinary_solid_region_equality_certified": false,
+          "original_native_vs_microweld_set_equality_certified": false,
+          "printability_certified": false
+        },
+        "status": "EXACT_SAVED_BINARY64_EMBEDDED_CLOSED_ORIENTED_2MANIFOLD_PASS",
+        "topology": {
+          "component_face_counts": [
+            8070
+          ],
+          "duplicate_coordinate_index_groups": 0,
+          "duplicate_coordinate_index_witnesses": [],
+          "duplicate_face_groups": 0,
+          "edge_incidence_error_count": 0,
+          "edge_orientation_error_count": 0,
+          "euler_characteristic": 0,
+          "indexed_closed_consistently_oriented_2manifold": true,
+          "indexed_edges": 12105,
+          "surface_components": 1,
+          "unused_vertex_count": 0,
+          "vertex_link_non_circle_count": 0,
+          "vertex_link_witnesses": []
+        }
+      },
+      "F": {
+        "all_triangles_exactly_nondegenerate": true,
+        "common_integer_coordinate_scale_power_of_two": 111,
+        "component_signed_volumes_exact": [
+          "7451519477356814783513330108425493544428051260534207/4489733029880533764721719806104421436383024772022272",
+          "-474228932492762513076302773115325512005063010872571/17958932119522135058886879224417685745532099088089088"
+        ],
+        "coverage": {
+          "aabb_candidate_pairs": 63923,
+          "adjacent_candidates_excluded": 0,
+          "all_candidate_pairs_checked": true,
+          "candidate_pair_index_stream_sha256": "757188cc86ff3a6f8b7bb5fd881dc9991197ebdaae1f60df7ae4568fcefd5ff8",
+          "candidate_pairs_by_shared_original_vertex_count": {
+            "0": 10511,
+            "1": 40707,
+            "2": 12705,
+            "3": 0
+          },
+          "exact_noncoplanar_shared_edge_theorem_checks": 12538,
+          "exact_triangle_intersection_checks": 51385,
+          "strictly_disjoint_aabb_pairs": 35802292,
+          "total_unordered_face_pairs": 35866215
+        },
+        "elapsed_seconds": 7.083612260999985,
+        "exact_embedded_closed_oriented_2manifold": true,
+        "exact_predicate_arithmetic": "Python integers plus Fraction for rational intersections; no tolerance",
+        "forbidden_intersection_kinds": {},
+        "forbidden_intersection_pair_count": 0,
+        "forbidden_intersection_witnesses": [],
+        "frozen_sha256_checked": true,
+        "geometry_modified": false,
+        "input": {
+          "faces": 8470,
+          "sha256": "5c5db73792bd8d6566a954e6d0eef6d22e248a7ad2f8a7a8d8e6d4f2ad9d86a8",
+          "vertices": 4235
+        },
+        "saved_surface_only_not_native_implicit_certificate": true,
+        "scientific_flags": {
+          "Faster_optimization_executed": false,
+          "MuJoCo_real_optimized_before_after_executed": false,
+          "W0_physical_tip_or_FD_approved": false,
+          "W2_teacher_training_allowed": false,
+          "native_Cherchi_implicit_geometry_certified": false,
+          "native_provenance_authenticated_by_chain_audit": false,
+          "ordinary_solid_region_equality_certified": false,
+          "original_native_vs_microweld_set_equality_certified": false,
+          "printability_certified": false
+        },
+        "status": "EXACT_SAVED_BINARY64_EMBEDDED_CLOSED_ORIENTED_2MANIFOLD_PASS",
+        "topology": {
+          "component_face_counts": [
+            8070,
+            400
+          ],
+          "duplicate_coordinate_index_groups": 0,
+          "duplicate_coordinate_index_witnesses": [],
+          "duplicate_face_groups": 0,
+          "edge_incidence_error_count": 0,
+          "edge_orientation_error_count": 0,
+          "euler_characteristic": 0,
+          "indexed_closed_consistently_oriented_2manifold": true,
+          "indexed_edges": 12705,
+          "surface_components": 2,
+          "unused_vertex_count": 0,
+          "vertex_link_non_circle_count": 0,
+          "vertex_link_witnesses": []
+        }
+      },
+      "D": {
+        "all_triangles_exactly_nondegenerate": true,
+        "common_integer_coordinate_scale_power_of_two": 61,
+        "component_signed_volumes_exact": [
+          "474228932492762513076302773115325512005063010872571/17958932119522135058886879224417685745532099088089088"
+        ],
+        "coverage": {
+          "aabb_candidate_pairs": 3018,
+          "adjacent_candidates_excluded": 0,
+          "all_candidate_pairs_checked": true,
+          "candidate_pair_index_stream_sha256": "ff4f3bf721854059e69917649781a24f1ea4387e2b3dea372d708da8e622ec69",
+          "candidate_pairs_by_shared_original_vertex_count": {
+            "0": 439,
+            "1": 1979,
+            "2": 600,
+            "3": 0
+          },
+          "exact_noncoplanar_shared_edge_theorem_checks": 565,
+          "exact_triangle_intersection_checks": 2453,
+          "strictly_disjoint_aabb_pairs": 76782,
+          "total_unordered_face_pairs": 79800
+        },
+        "elapsed_seconds": 0.16310711299999525,
+        "exact_embedded_closed_oriented_2manifold": true,
+        "exact_predicate_arithmetic": "Python integers plus Fraction for rational intersections; no tolerance",
+        "forbidden_intersection_kinds": {},
+        "forbidden_intersection_pair_count": 0,
+        "forbidden_intersection_witnesses": [],
+        "frozen_sha256_checked": true,
+        "geometry_modified": false,
+        "input": {
+          "faces": 400,
+          "sha256": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
+          "vertices": 200
+        },
+        "saved_surface_only_not_native_implicit_certificate": true,
+        "scientific_flags": {
+          "Faster_optimization_executed": false,
+          "MuJoCo_real_optimized_before_after_executed": false,
+          "W0_physical_tip_or_FD_approved": false,
+          "W2_teacher_training_allowed": false,
+          "native_Cherchi_implicit_geometry_certified": false,
+          "native_provenance_authenticated_by_chain_audit": false,
+          "ordinary_solid_region_equality_certified": false,
+          "original_native_vs_microweld_set_equality_certified": false,
+          "printability_certified": false
+        },
+        "status": "EXACT_SAVED_BINARY64_EMBEDDED_CLOSED_ORIENTED_2MANIFOLD_PASS",
+        "topology": {
+          "component_face_counts": [
+            400
+          ],
+          "duplicate_coordinate_index_groups": 0,
+          "duplicate_coordinate_index_witnesses": [],
+          "duplicate_face_groups": 0,
+          "edge_incidence_error_count": 0,
+          "edge_orientation_error_count": 0,
+          "euler_characteristic": 0,
+          "indexed_closed_consistently_oriented_2manifold": true,
+          "indexed_edges": 600,
+          "surface_components": 1,
+          "unused_vertex_count": 0,
+          "vertex_link_non_circle_count": 0,
+          "vertex_link_witnesses": []
+        }
+      },
+      "S": {
+        "all_triangles_exactly_nondegenerate": true,
+        "common_integer_coordinate_scale_power_of_two": 114,
+        "component_signed_volumes_exact": [
+          "47653627069003535135966401252292528171165599762857717605141758893443/2588154880046461420288033448353884544669165864563894958185946583924736"
+        ],
+        "coverage": {
+          "aabb_candidate_pairs": 4283,
+          "adjacent_candidates_excluded": 0,
+          "all_candidate_pairs_checked": true,
+          "candidate_pair_index_stream_sha256": "0e90d4bcb8e54692ab4cb71a4249e438d6e39bc8671e3e85da1bc31622eca618",
+          "candidate_pairs_by_shared_original_vertex_count": {
+            "0": 539,
+            "1": 2976,
+            "2": 768,
+            "3": 0
+          },
+          "exact_noncoplanar_shared_edge_theorem_checks": 704,
+          "exact_triangle_intersection_checks": 3579,
+          "strictly_disjoint_aabb_pairs": 126533,
+          "total_unordered_face_pairs": 130816
+        },
+        "elapsed_seconds": 0.2795131120000178,
+        "exact_embedded_closed_oriented_2manifold": true,
+        "exact_predicate_arithmetic": "Python integers plus Fraction for rational intersections; no tolerance",
+        "forbidden_intersection_kinds": {},
+        "forbidden_intersection_pair_count": 0,
+        "forbidden_intersection_witnesses": [],
+        "frozen_sha256_checked": true,
+        "geometry_modified": false,
+        "input": {
+          "faces": 512,
+          "sha256": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
+          "vertices": 258
+        },
+        "saved_surface_only_not_native_implicit_certificate": true,
+        "scientific_flags": {
+          "Faster_optimization_executed": false,
+          "MuJoCo_real_optimized_before_after_executed": false,
+          "W0_physical_tip_or_FD_approved": false,
+          "W2_teacher_training_allowed": false,
+          "native_Cherchi_implicit_geometry_certified": false,
+          "native_provenance_authenticated_by_chain_audit": false,
+          "ordinary_solid_region_equality_certified": false,
+          "original_native_vs_microweld_set_equality_certified": false,
+          "printability_certified": false
+        },
+        "status": "EXACT_SAVED_BINARY64_EMBEDDED_CLOSED_ORIENTED_2MANIFOLD_PASS",
+        "topology": {
+          "component_face_counts": [
+            512
+          ],
+          "duplicate_coordinate_index_groups": 0,
+          "duplicate_coordinate_index_witnesses": [],
+          "duplicate_face_groups": 0,
+          "edge_incidence_error_count": 0,
+          "edge_orientation_error_count": 0,
+          "euler_characteristic": 2,
+          "indexed_closed_consistently_oriented_2manifold": true,
+          "indexed_edges": 768,
+          "surface_components": 1,
+          "unused_vertex_count": 0,
+          "vertex_link_non_circle_count": 0,
+          "vertex_link_witnesses": []
+        }
+      }
+    },
+    "all_surfaces_freshly_recomputed_here": true,
+    "input_sha256_checked_before_and_after": true,
+    "after_input_sha256": {
+      "M": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
+      "F": "5c5db73792bd8d6566a954e6d0eef6d22e248a7ad2f8a7a8d8e6d4f2ad9d86a8",
+      "D": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
+      "S": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+    },
+    "original_shaft_identity_enforced": true,
+    "whole_shaft_containment": {
+      "schema": "W4P19WholeShaftContainmentByExactStarTetrahedraV1",
+      "status": "EXACT_WHOLE_SAVED_SHAFT_CONTAINED",
+      "full_original_shaft_contained_in_material": true,
+      "exact_material_boundary_excludes_shaft_open_interior": true,
+      "inputs": {
+        "material": {
+          "sha256": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
+          "vertices": 4035,
+          "faces": 8070
+        },
+        "shaft": {
+          "sha256": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
+          "vertices": 258,
+          "faces": 512
+        }
+      },
+      "frozen_sha256_manifest_checked": true,
+      "material_exact_surface": {
+        "all_triangles_exactly_nondegenerate": true,
+        "common_integer_coordinate_scale_power_of_two": 111,
+        "component_signed_volumes_exact": [
+          "7451519477356814783513330108425493544428051260534207/4489733029880533764721719806104421436383024772022272"
+        ],
+        "coverage": {
+          "aabb_candidate_pairs": 60905,
+          "adjacent_candidates_excluded": 0,
+          "all_candidate_pairs_checked": true,
+          "candidate_pair_index_stream_sha256": "6e39fe1dd7da029486f994953bc98ab91280183392058434054870d0a06c2143",
+          "candidate_pairs_by_shared_original_vertex_count": {
+            "0": 10072,
+            "1": 38728,
+            "2": 12105,
+            "3": 0
+          },
+          "exact_noncoplanar_shared_edge_theorem_checks": 11973,
+          "exact_triangle_intersection_checks": 48932,
+          "strictly_disjoint_aabb_pairs": 32497510,
+          "total_unordered_face_pairs": 32558415
+        },
+        "elapsed_seconds": 6.516991208000007,
+        "exact_embedded_closed_oriented_2manifold": true,
+        "exact_predicate_arithmetic": "Python integers plus Fraction for rational intersections; no tolerance",
+        "forbidden_intersection_kinds": {},
+        "forbidden_intersection_pair_count": 0,
+        "forbidden_intersection_witnesses": [],
+        "frozen_sha256_checked": true,
+        "geometry_modified": false,
+        "input": {
+          "faces": 8070,
+          "sha256": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
+          "vertices": 4035
+        },
+        "saved_surface_only_not_native_implicit_certificate": true,
+        "scientific_flags": {
+          "Faster_optimization_executed": false,
+          "MuJoCo_real_optimized_before_after_executed": false,
+          "W0_physical_tip_or_FD_approved": false,
+          "W2_teacher_training_allowed": false,
+          "native_Cherchi_implicit_geometry_certified": false,
+          "native_provenance_authenticated_by_chain_audit": false,
+          "ordinary_solid_region_equality_certified": false,
+          "original_native_vs_microweld_set_equality_certified": false,
+          "printability_certified": false
+        },
+        "status": "EXACT_SAVED_BINARY64_EMBEDDED_CLOSED_ORIENTED_2MANIFOLD_PASS",
+        "topology": {
+          "component_face_counts": [
+            8070
+          ],
+          "duplicate_coordinate_index_groups": 0,
+          "duplicate_coordinate_index_witnesses": [],
+          "duplicate_face_groups": 0,
+          "edge_incidence_error_count": 0,
+          "edge_orientation_error_count": 0,
+          "euler_characteristic": 0,
+          "indexed_closed_consistently_oriented_2manifold": true,
+          "indexed_edges": 12105,
+          "surface_components": 1,
+          "unused_vertex_count": 0,
+          "vertex_link_non_circle_count": 0,
+          "vertex_link_witnesses": []
+        }
+      },
+      "shaft_exact_surface": {
+        "all_triangles_exactly_nondegenerate": true,
+        "common_integer_coordinate_scale_power_of_two": 114,
+        "component_signed_volumes_exact": [
+          "47653627069003535135966401252292528171165599762857717605141758893443/2588154880046461420288033448353884544669165864563894958185946583924736"
+        ],
+        "coverage": {
+          "aabb_candidate_pairs": 4283,
+          "adjacent_candidates_excluded": 0,
+          "all_candidate_pairs_checked": true,
+          "candidate_pair_index_stream_sha256": "0e90d4bcb8e54692ab4cb71a4249e438d6e39bc8671e3e85da1bc31622eca618",
+          "candidate_pairs_by_shared_original_vertex_count": {
+            "0": 539,
+            "1": 2976,
+            "2": 768,
+            "3": 0
+          },
+          "exact_noncoplanar_shared_edge_theorem_checks": 704,
+          "exact_triangle_intersection_checks": 3579,
+          "strictly_disjoint_aabb_pairs": 126533,
+          "total_unordered_face_pairs": 130816
+        },
+        "elapsed_seconds": 0.2795131120000178,
+        "exact_embedded_closed_oriented_2manifold": true,
+        "exact_predicate_arithmetic": "Python integers plus Fraction for rational intersections; no tolerance",
+        "forbidden_intersection_kinds": {},
+        "forbidden_intersection_pair_count": 0,
+        "forbidden_intersection_witnesses": [],
+        "frozen_sha256_checked": true,
+        "geometry_modified": false,
+        "input": {
+          "faces": 512,
+          "sha256": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
+          "vertices": 258
+        },
+        "saved_surface_only_not_native_implicit_certificate": true,
+        "scientific_flags": {
+          "Faster_optimization_executed": false,
+          "MuJoCo_real_optimized_before_after_executed": false,
+          "W0_physical_tip_or_FD_approved": false,
+          "W2_teacher_training_allowed": false,
+          "native_Cherchi_implicit_geometry_certified": false,
+          "native_provenance_authenticated_by_chain_audit": false,
+          "ordinary_solid_region_equality_certified": false,
+          "original_native_vs_microweld_set_equality_certified": false,
+          "printability_certified": false
+        },
+        "status": "EXACT_SAVED_BINARY64_EMBEDDED_CLOSED_ORIENTED_2MANIFOLD_PASS",
+        "topology": {
+          "component_face_counts": [
+            512
+          ],
+          "duplicate_coordinate_index_groups": 0,
+          "duplicate_coordinate_index_witnesses": [],
+          "duplicate_face_groups": 0,
+          "edge_incidence_error_count": 0,
+          "edge_orientation_error_count": 0,
+          "euler_characteristic": 2,
+          "indexed_closed_consistently_oriented_2manifold": true,
+          "indexed_edges": 768,
+          "surface_components": 1,
+          "unused_vertex_count": 0,
+          "vertex_link_non_circle_count": 0,
+          "vertex_link_witnesses": []
+        }
+      },
+      "in_process_verified_surface_cache_reused": {
+        "material": true,
+        "shaft": true
+      },
+      "kernel_point_exact": [
+        "0",
+        "0",
+        "1/64"
+      ],
+      "scientific_flags": {
+        "native_Cherchi_implicit_geometry_certified": false,
+        "original_native_vs_microweld_set_equality_certified": false,
+        "original_author_CAD_certified": false,
+        "W0_physical_tip_or_FD_approved": false,
+        "W2_teacher_training_allowed": false,
+        "printability_or_strength_certified": false,
+        "Faster_optimization_executed": false,
+        "MuJoCo_real_optimized_before_after_executed": false
+      },
+      "geometry_modified": false,
+      "tolerance_used": null,
+      "strict_kernel": {
+        "every_outward_face_value_strictly_negative": true,
+        "faces_checked": 512,
+        "violating_face_indices": [],
+        "largest_oriented_face_value_exact_original_units": "-21713892299226247517227906981899/170141183460469231731687303715884105728"
+      },
+      "kernel_in_shaft": {
+        "classification": "INSIDE",
+        "method": "EXACT_INTEGER_RAY",
+        "point_exact": [
+          "0",
+          "0",
+          "1/64"
+        ],
+        "crossings": 1,
+        "direction": [
+          1,
+          1,
+          2
+        ],
+        "rejected_degenerate_rays": 0,
+        "surface_validity_must_be_certified_separately": true
+      },
+      "kernel_in_material": {
+        "classification": "INSIDE",
+        "method": "EXACT_INTEGER_RAY",
+        "point_exact": [
+          "0",
+          "0",
+          "1/64"
+        ],
+        "crossings": 1,
+        "direction": [
+          1,
+          2,
+          5
+        ],
+        "rejected_degenerate_rays": 1,
+        "surface_validity_must_be_certified_separately": true
+      },
+      "shaft_not_contained_counterexample_certified": false,
+      "positive_volume_shaft_minus_material_certified": false,
+      "coverage": {
+        "material_triangles": 8070,
+        "shaft_star_tetrahedra": 512,
+        "total_triangle_tetrahedron_pairs": 4131840,
+        "closed_aabb_candidate_pairs": 17060,
+        "strictly_disjoint_aabb_pairs": 4114780,
+        "exact_tetrahedron_clips_executed": 17060,
+        "nonempty_closed_clip_pairs": 2144,
+        "strict_shaft_interior_clip_pairs": 0,
+        "material_faces_with_strict_shaft_intrusion": 0,
+        "intruding_material_face_indices": [],
+        "candidate_pair_index_stream_sha256": "cb613690a194dbcc6ea345014904f3fbb010be8a58ec67bb1db11ff93317ad38",
+        "all_candidate_pairs_checked": true,
+        "internal_tetrahedron_seams_excluded": 0,
+        "coincident_external_base_facets_allowed": true
+      },
+      "counterexample_witnesses": [],
+      "proof_scope": "Whole saved binary64 regular shaft, including boundary and both ends; no native implicit or physical approval.",
+      "elapsed_seconds": 1.8264815930000111
+    },
+    "whole_shaft_design_gap": {
+      "schema": "W4P19ExactRadialShaftExclusionV1",
+      "status": "EXACT_COMPLETE_SHAFT_DESIGN_GAP_CERTIFIED_NOT_ADMITTED",
+      "inputs": {
+        "design": {
+          "sha256": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
+          "vertices": 200,
+          "faces": 400
+        },
+        "shaft": {
+          "sha256": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
+          "vertices": 258,
+          "faces": 512
+        }
+      },
+      "arithmetic": "EXACT_RATIONALS_OF_SAVED_BINARY64_COORDINATES",
+      "geometric_tolerance": null,
+      "geometry_modified": false,
+      "registered_minimum_gap_reference_exact": "1/500",
+      "sqrt_grid_denominator": 1000000000000,
+      "design_triangles_exactly_processed": 400,
+      "shaft_vertices_exactly_processed": 258,
+      "minimum_design_surface_projected_radius": {
+        "squared_distance_exact": "936620404758726362504313445643826524657944754325886741181116125/239774823618233999597815379693772354008266436707884779362733522944",
+        "face_index": 293,
+        "feature": "PROJECTED_EDGE_OR_VERTEX",
+        "closest_xy_exact": [
+          "13686638774795850967646401272885/831886030957497411834259472599482750116797874176",
+          "-103985753869687165464501519972081964839933843615/1663772061914994823668518945198965500233595748352"
+        ],
+        "edge": 0,
+        "edge_parameter_exact": "11014780914102853378924665890657/23089475635826234629473504361682",
+        "lower_bound_reference_exact": "62499999999/1000000000000",
+        "upper_bound_reference_exact": "1/16"
+      },
+      "maximum_shaft_vertex_projected_radius": {
+        "squared_distance_exact": "37384537381450763058204122566565/10384593717069655257060992658440192",
+        "vertex_index": 168,
+        "lower_bound_reference_exact": "3/50",
+        "upper_bound_reference_exact": "60000000001/1000000000000"
+      },
+      "radial_gap_lower_bound_reference": {
+        "numerator": "1249999999",
+        "denominator": "500000000000",
+        "decimal_projection": 0.002499999998
+      },
+      "full_solid_distance_lower_bound_reference": {
+        "numerator": "1249999999",
+        "denominator": "500000000000",
+        "decimal_projection": 0.002499999998
+      },
+      "radial_bounds_meet_registered_gap": true,
+      "radial_bounds_alone_do_not_prove_full_solid_separation": true,
+      "axis_anchor_exact": [
+        "0",
+        "0",
+        "-292125634148465/562949953421312"
+      ],
+      "axis_anchor_strictly_below_all_design_vertices": true,
+      "axis_anchor_classification": {
+        "classification": "OUTSIDE",
+        "method": "EXACT_INTEGER_RAY",
+        "point_exact": [
+          "0",
+          "0",
+          "-292125634148465/562949953421312"
+        ],
+        "crossings": 0,
+        "direction": [
+          1,
+          1,
+          2
+        ],
+        "rejected_degenerate_rays": 0,
+        "surface_validity_must_be_certified_separately": true
+      },
+      "surface_audits": {
+        "design": {
+          "status": "EXACT_SAVED_BINARY64_EMBEDDED_CLOSED_ORIENTED_2MANIFOLD_PASS",
+          "exact_embedded_closed_oriented_2manifold": true,
+          "input": {
+            "sha256": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
+            "vertices": 200,
+            "faces": 400
+          },
+          "frozen_sha256_checked": true,
+          "exact_predicate_arithmetic": "Python integers plus Fraction for rational intersections; no tolerance",
+          "common_integer_coordinate_scale_power_of_two": 61,
+          "all_triangles_exactly_nondegenerate": true,
+          "topology": {
+            "indexed_closed_consistently_oriented_2manifold": true,
+            "duplicate_coordinate_index_groups": 0,
+            "duplicate_coordinate_index_witnesses": [],
+            "duplicate_face_groups": 0,
+            "edge_incidence_error_count": 0,
+            "edge_orientation_error_count": 0,
+            "vertex_link_non_circle_count": 0,
+            "vertex_link_witnesses": [],
+            "unused_vertex_count": 0,
+            "surface_components": 1,
+            "component_face_counts": [
+              400
+            ],
+            "indexed_edges": 600,
+            "euler_characteristic": 0
+          },
+          "component_signed_volumes_exact": [
+            "474228932492762513076302773115325512005063010872571/17958932119522135058886879224417685745532099088089088"
+          ],
+          "coverage": {
+            "total_unordered_face_pairs": 79800,
+            "aabb_candidate_pairs": 3018,
+            "strictly_disjoint_aabb_pairs": 76782,
+            "candidate_pairs_by_shared_original_vertex_count": {
+              "0": 439,
+              "1": 1979,
+              "2": 600,
+              "3": 0
+            },
+            "exact_noncoplanar_shared_edge_theorem_checks": 565,
+            "exact_triangle_intersection_checks": 2453,
+            "candidate_pair_index_stream_sha256": "ff4f3bf721854059e69917649781a24f1ea4387e2b3dea372d708da8e622ec69",
+            "all_candidate_pairs_checked": true,
+            "adjacent_candidates_excluded": 0
+          },
+          "forbidden_intersection_pair_count": 0,
+          "forbidden_intersection_kinds": {},
+          "forbidden_intersection_witnesses": [],
+          "elapsed_seconds": 0.15765391300001852,
+          "scientific_flags": {
+            "native_Cherchi_implicit_geometry_certified": false,
+            "native_provenance_authenticated_by_chain_audit": false,
+            "ordinary_solid_region_equality_certified": false,
+            "original_native_vs_microweld_set_equality_certified": false,
+            "W0_physical_tip_or_FD_approved": false,
+            "W2_teacher_training_allowed": false,
+            "Faster_optimization_executed": false,
+            "MuJoCo_real_optimized_before_after_executed": false,
+            "printability_certified": false
+          },
+          "saved_surface_only_not_native_implicit_certificate": true,
+          "geometry_modified": false
+        },
+        "shaft": {
+          "status": "EXACT_SAVED_BINARY64_EMBEDDED_CLOSED_ORIENTED_2MANIFOLD_PASS",
+          "exact_embedded_closed_oriented_2manifold": true,
+          "input": {
+            "sha256": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
+            "vertices": 258,
+            "faces": 512
+          },
+          "frozen_sha256_checked": true,
+          "exact_predicate_arithmetic": "Python integers plus Fraction for rational intersections; no tolerance",
+          "common_integer_coordinate_scale_power_of_two": 114,
+          "all_triangles_exactly_nondegenerate": true,
+          "topology": {
+            "indexed_closed_consistently_oriented_2manifold": true,
+            "duplicate_coordinate_index_groups": 0,
+            "duplicate_coordinate_index_witnesses": [],
+            "duplicate_face_groups": 0,
+            "edge_incidence_error_count": 0,
+            "edge_orientation_error_count": 0,
+            "vertex_link_non_circle_count": 0,
+            "vertex_link_witnesses": [],
+            "unused_vertex_count": 0,
+            "surface_components": 1,
+            "component_face_counts": [
+              512
+            ],
+            "indexed_edges": 768,
+            "euler_characteristic": 2
+          },
+          "component_signed_volumes_exact": [
+            "47653627069003535135966401252292528171165599762857717605141758893443/2588154880046461420288033448353884544669165864563894958185946583924736"
+          ],
+          "coverage": {
+            "total_unordered_face_pairs": 130816,
+            "aabb_candidate_pairs": 4283,
+            "strictly_disjoint_aabb_pairs": 126533,
+            "candidate_pairs_by_shared_original_vertex_count": {
+              "0": 539,
+              "1": 2976,
+              "2": 768,
+              "3": 0
+            },
+            "exact_noncoplanar_shared_edge_theorem_checks": 704,
+            "exact_triangle_intersection_checks": 3579,
+            "candidate_pair_index_stream_sha256": "0e90d4bcb8e54692ab4cb71a4249e438d6e39bc8671e3e85da1bc31622eca618",
+            "all_candidate_pairs_checked": true,
+            "adjacent_candidates_excluded": 0
+          },
+          "forbidden_intersection_pair_count": 0,
+          "forbidden_intersection_kinds": {},
+          "forbidden_intersection_witnesses": [],
+          "elapsed_seconds": 0.2630957730000034,
+          "scientific_flags": {
+            "native_Cherchi_implicit_geometry_certified": false,
+            "native_provenance_authenticated_by_chain_audit": false,
+            "ordinary_solid_region_equality_certified": false,
+            "original_native_vs_microweld_set_equality_certified": false,
+            "W0_physical_tip_or_FD_approved": false,
+            "W2_teacher_training_allowed": false,
+            "Faster_optimization_executed": false,
+            "MuJoCo_real_optimized_before_after_executed": false,
+            "printability_certified": false
+          },
+          "saved_surface_only_not_native_implicit_certificate": true,
+          "geometry_modified": false
+        }
+      },
+      "surface_certificates_recomputed_here": true,
+      "supplied_surface_certificates_compared": {
+        "design": true,
+        "shaft": true
+      },
+      "design_embedded_connected_outward_bounded_solid": true,
+      "shaft_embedded_connected_outward_bounded_solid": true,
+      "all_z_axis_cylinder_excluded_from_design_solid": true,
+      "full_original_shaft_disjoint_from_design": true,
+      "positive_full_solid_distance_certified": true,
+      "full_original_shaft_in_F_requires_separate_outer_containment": true,
+      "proof_scope": "Complete saved S and D regular solids, every z; no native implicit-set identity",
+      "optimization_admitted": false,
+      "training_admitted": false,
+      "scientific_flags": {
+        "native_Cherchi_implicit_region_partition_certified": false,
+        "original_author_CAD_certified": false,
+        "full_original_shaft_contained_in_fixed_material": false,
+        "W0_physical_tip_or_FD_approved": false,
+        "W2_teacher_training_allowed": false,
+        "Faster_optimization_executed": false,
+        "MuJoCo_real_optimized_before_after_executed": false,
+        "printability_or_strength_certified": false
+      }
+    },
+    "whole_shaft_design_gap_local_flag_scope": {
+      "flag": "scientific_flags.full_original_shaft_contained_in_fixed_material",
+      "meaning": "False in the standalone gap certificate means that certificate does not evaluate F or whole S-in-F containment.",
+      "not_a_negative_whole_material_containment_result": true,
+      "whole_material_conclusion_field": "complete_original_shaft_in_fixed"
+    },
+    "full_original_shaft_contained_in_outer": true,
+    "design_shaft_separation_certified": true,
+    "complete_original_shaft_in_fixed": true,
+    "research_geometry_gate_passed": true,
+    "complete_shaft_proof": "CERTIFIED: The regular partition is F=closure(M\\D); the complete original S is contained in M and has the registered strict positive distance from D, hence every point of S is in F.",
+    "shaft_evaluated": true,
+    "audit_elapsed_seconds": 20.961451124000007
+  },
+  "physical_proposal": {
+    "schema": "W4P17UnifiedPhysicalCaseProposalV1",
+    "status": "P13_UNIFIED_PHYSICAL_CASE_PROPOSAL_NOT_W0_APPROVED",
+    "case_config": {
+      "schema": "W4P17P13PhysicalConfigurationV1",
+      "case_id": "P13_RECONSTRUCTED_REFERENCE_UNIFORM_SOLID_PROPOSAL",
+      "scale_m_per_unit": 0.025,
+      "density_kg_m3": 1200.0,
+      "coordinate_frame": "P13_REFERENCE_ALREADY_Z_UP",
+      "spin_axis_reference": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "tip_reference": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_model": "ASSUMED_UNIFORM_SOLID_NOT_PRINTED_MATERIAL_CERTIFICATE",
+      "source_parameter_document": "P13_REFERENCE_SHAFT_AND_DESIGN_GATE.md",
+      "W0_physical_tip_or_FD_approved": false,
+      "W2_teacher_training_allowed": false,
+      "native_implicit_point_exact_identity_certified": false,
+      "full_boolean_region_equality_certified": false,
+      "printability_certified": false,
+      "Faster_optimization_executed": false,
+      "MuJoCo_real_optimized_before_after_executed": false
+    },
+    "materials": {
+      "M": {
+        "schema": "W4P17SavedMeshPhysicalMomentsV1",
+        "status": "DIAGNOSTIC_PHYSICAL_MOMENTS_ONLY_NOT_APPROVED",
+        "arithmetic": "EXACT_FRACTION_OF_SAVED_BINARY64_VERTICES_AND_EXPLICIT_SI_PARAMETERS",
+        "source_coordinates_are_native_implicit_rationals": false,
+        "moment_order": [
+          "M",
+          "LX",
+          "LY",
+          "LZ",
+          "QXX",
+          "QYY",
+          "QZZ",
+          "QYZ",
+          "QXZ",
+          "QXY"
+        ],
+        "cross_moment_convention": "ORDINARY_UNDOUBLED",
+        "scale_m_per_unit": 0.025,
+        "density_kg_m3": 1200.0,
+        "source_raw_ten": [
+          1.659679857970328,
+          0.013881554201389885,
+          2.1838713885178746e-06,
+          1.0832920663276056,
+          0.2549031468229761,
+          0.21100926447187826,
+          0.8276303945092391,
+          1.6150054283428819e-06,
+          0.009520395443330451,
+          2.2018172041495246e-06
+        ],
+        "source_raw_ten_exact": [
+          {
+            "numerator": "7451519477356814783513330108425493544428051260534207",
+            "denominator": "4489733029880533764721719806104421436383024772022272"
+          },
+          {
+            "numerator": "784850665449208574268508795684060071409647155485605526026614436418536103",
+            "denominator": "56539106072908298546665520023773392506479484700019806659891398441363832832"
+          },
+          {
+            "numerator": "61737068042500815524901738906065127855749477307593637133857625041439",
+            "denominator": "28269553036454149273332760011886696253239742350009903329945699220681916416"
+          },
+          {
+            "numerator": "957005703844320290681330310636393232692962478953206285568838542489472929",
+            "denominator": "883423532389192164791648750371459257913741948437809479060803100646309888"
+          },
+          {
+            "numerator": "996954010673806129464956765992388906025953946586399542211020898777996823127183286108867367857",
+            "denominator": "3911109074562213285635415721746006069218819315838597601221389662760412095545606475872122961920"
+          },
+          {
+            "numerator": "13754670818211018674016286823818185602903022045297555525757148089995036819745983328777173581",
+            "denominator": "65185151242703554760590262029100101153646988597309960020356494379340201592426774597868716032"
+          },
+          {
+            "numerator": "316108666635604490363356852219768438962005511905307418512601867956928849640559044439744113",
+            "denominator": "381944245562716141175333566576758405197150323812363046994276334253946493705625632409387008"
+          },
+          {
+            "numerator": "49347362392649062710291613246722288737557448819999279605982736152477450019629121895307",
+            "denominator": "30555539645017291294026685326140672415772025904989043759542106740315719496450050592750960640"
+          },
+          {
+            "numerator": "96966940134975185141069406610739722367578273463503974140717150149344229245399068385687581",
+            "denominator": "10185179881672430431342228442046890805257341968329681253180702246771906498816683530916986880"
+          },
+          {
+            "numerator": "1076443405959550926311348225517183778282127304557326355757832237540604162589576464220857",
+            "denominator": "488888634320276660704426965218250758652352414479824700152673707845051511943200809484015370240"
+          }
+        ],
+        "si_raw_ten": [
+          0.031118997336943656,
+          6.5069785319015106e-06,
+          1.023689713367754e-09,
+          0.0005077931560910652,
+          2.9871462518317524e-06,
+          2.472764818029824e-06,
+          9.69879368565515e-06,
+          1.8925844863393153e-11,
+          1.1156713410152875e-07,
+          2.580254536112725e-11
+        ],
+        "si_raw_ten_exact": [
+          {
+            "numerator": "8712326333408080474349393211308021326218681989479167242869752717542985431918013754384690707581900275",
+            "denominator": "279968092772225526319680285071055534765205687154331191862498637620473983897520118172609686658950889472"
+          },
+          {
+            "numerator": "9918530663525792438008868526236126538756970861189485341143742099107909193873100664625356926997603648137656138313867633688877653664305725",
+            "denominator": "1524291284333980581729295522359944485228807686848130444755447734192076044345588681699368214386470689042884243711624327585667956874652483059712"
+          },
+          {
+            "numerator": "780200653974408986571512702075841175829363723920594158293414286317729571107502144622038541115459855586528639235616851997164109981925",
+            "denominator": "762145642166990290864647761179972242614403843424065222377723867096038022172794340849684107193235344521442121855812163792833978437326241529856"
+          },
+          {
+            "numerator": "12094135657407112865292358143158592431408903510822140312906910740234169663125591562198067711784604707653839197141437865329072189799683675",
+            "denominator": "23817051317718446589520242536874132581700120107002038199303870846751188192899823151552628349788604516295066307994130118526061826166445047808"
+          },
+          {
+            "numerator": "3026174286743251823571663792823707258165450450887770630309495693924672377316632369979790319465024392263701168292840471783422123107052749767267971251573711120728940306023745",
+            "denominator": "1013065324433836171511818326096474890383898005918563696288002277756507034036354527929615978746851512277392062160962106733983191180520452956027069051297354415786421338721071661056"
+          },
+          {
+            "numerator": "626268073156489911345566506521297020038508759309018063811600813107423326680657196111654568601096615468238626713116066483387094677562643069768287395827712494590090251636275",
+            "denominator": "253266331108459042877954581524118722595974501479640924072000569439126758509088631982403994686712878069348015540240526683495797795130113239006767262824338603946605334680267915264"
+          },
+          {
+            "numerator": "4797613072155798664993030560844689529816280126356122674826618968785311388017029180513447256398248154809914982653137745841797300415825065067653967731289172907318733163525",
+            "denominator": "494660802946209068121005042039294380070262698202423679828126112185794450213063734340632802122486089979195342852032278678702730068613502419935092310203786335833213544297398272"
+          },
+          {
+            "numerator": "149789977864983100739850872491571852004172938772509997138266058507052946075664510475502531416377053881862469535052065115458254215273817970725128432522731909619671995",
+            "denominator": "7914572847139345089936080672628710081124203171238778877250017794972711203409019749450124833959777439667125485632516458859243681097816038718961476963260581373331416708758372352"
+          },
+          {
+            "numerator": "883006210193113513858771353938923952011962818158370748398271412201089900619785229405038824094871522774345538421677483579242333214473949490235614001333283551556836797255",
+            "denominator": "7914572847139345089936080672628710081124203171238778877250017794972711203409019749450124833959777439667125485632516458859243681097816038718961476963260581373331416708758372352"
+          },
+          {
+            "numerator": "3267457998436143976838449057259893777936469431372104550325609494156954883820119064493083618166888313727736249582537986049235545855331607666773757975347427481259628745",
+            "denominator": "126633165554229521438977290762059361297987250739820462036000284719563379254544315991201997343356439034674007770120263341747898897565056619503383631412169301973302667340133957632"
+          }
+        ],
+        "si_moment_units": [
+          "kg",
+          "kg*m",
+          "kg*m",
+          "kg*m",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2"
+        ],
+        "mass_kg": 0.031118997336943656,
+        "center_of_mass_m": [
+          0.00020909987752647146,
+          3.289597355222163e-08,
+          0.016317786546683703
+        ],
+        "full_inertia_origin_kg_m2": [
+          [
+            1.2171558503684973e-05,
+            -2.580254536112725e-11,
+            -1.1156713410152875e-07
+          ],
+          [
+            -2.580254536112725e-11,
+            1.2685939937486901e-05,
+            -1.8925844863393153e-11
+          ],
+          [
+            -1.1156713410152875e-07,
+            -1.8925844863393153e-11,
+            5.459911069861577e-06
+          ]
+        ],
+        "full_inertia_com_kg_m2": [
+          [
+            3.885498172690457e-06,
+            -2.5588491967436944e-11,
+            -5.387647354106609e-09
+          ],
+          [
+            -2.5588491967436944e-11,
+            4.398518998111973e-06,
+            -2.221494630622323e-12
+          ],
+          [
+            -5.387647354106609e-09,
+            -2.221494630622323e-12,
+            5.458550461413813e-06
+          ]
+        ],
+        "principal_inertia_kg_m2": [
+          3.8854797191320305e-06,
+          4.398518999384678e-06,
+          5.458568913699529e-06
+        ],
+        "bounds_m": [
+          [
+            -0.029950000000000004,
+            -0.020000000000000004,
+            0.0
+          ],
+          [
+            0.03434,
+            0.020000000000000004,
+            0.04275
+          ]
+        ],
+        "vertex_count": 4035,
+        "triangle_count": 8070,
+        "closed_consistently_oriented_edge_audit": true,
+        "closed_edge_audit_is_not_full_solid_region_certificate": true,
+        "W0_physical_tip_or_FD_approved": false,
+        "W2_teacher_training_allowed": false,
+        "native_implicit_point_exact_identity_certified": false,
+        "full_boolean_region_equality_certified": false,
+        "printability_certified": false,
+        "Faster_optimization_executed": false,
+        "MuJoCo_real_optimized_before_after_executed": false,
+        "source_file_name": "M_native.obj",
+        "source_obj_sha256": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
+        "frozen_input_sha256_verified": true
+      },
+      "F": {
+        "schema": "W4P17SavedMeshPhysicalMomentsV1",
+        "status": "DIAGNOSTIC_PHYSICAL_MOMENTS_ONLY_NOT_APPROVED",
+        "arithmetic": "EXACT_FRACTION_OF_SAVED_BINARY64_VERTICES_AND_EXPLICIT_SI_PARAMETERS",
+        "source_coordinates_are_native_implicit_rationals": false,
+        "moment_order": [
+          "M",
+          "LX",
+          "LY",
+          "LZ",
+          "QXX",
+          "QYY",
+          "QZZ",
+          "QYZ",
+          "QXZ",
+          "QXY"
+        ],
+        "cross_moment_convention": "ORDINARY_UNDOUBLED",
+        "scale_m_per_unit": 0.025,
+        "density_kg_m3": 1200.0,
+        "source_raw_ten": [
+          1.633273558902175,
+          0.013881554201389885,
+          2.183871388517876e-06,
+          1.065599845951943,
+          0.2546576653536792,
+          0.2107637801741382,
+          0.8155961994404393,
+          1.615005428342884e-06,
+          0.009520395443330451,
+          2.201686110383712e-06
+        ],
+        "source_raw_ten_exact": [
+          {
+            "numerator": "29331848976934496620977017660586648665707142031264257",
+            "denominator": "17958932119522135058886879224417685745532099088089088"
+          },
+          {
+            "numerator": "2354551996347625725872188951621176246251979866505996476561972989582940149",
+            "denominator": "169617318218724895639996560071320177519438454100059419979674195324091498496"
+          },
+          {
+            "numerator": "185211204127502569689566609374076067787236698718255143854551306419293",
+            "denominator": "84808659109362447819998280035660088759719227050029709989837097662045749248"
+          },
+          {
+            "numerator": "2824127940072733209428485061911113431622413519803488106109342455422482147",
+            "denominator": "2650270597167576494374946251114377773741225845313428437182409301938929664"
+          },
+          {
+            "numerator": "995993905871601898273549345370882138926123845111141641988227993225498367693530765845499876273",
+            "denominator": "3911109074562213285635415721746006069218819315838597601221389662760412095545606475872122961920"
+          },
+          {
+            "numerator": "68693344435675613897420521039902559536069388848014714141841602325692838338981543594466400129",
+            "denominator": "325925756213517773802951310145500505768234942986549800101782471896701007962133872989343580160"
+          },
+          {
+            "numerator": "519187125131828579203472972163588771041620823377026061574757960214264168213692051669310823",
+            "denominator": "636573742604526901958889277627930675328583873020605078323793890423244156176042720682311680"
+          },
+          {
+            "numerator": "49347362392649124856006650231189073574769529862340591601358042118255707202851441865611",
+            "denominator": "30555539645017291294026685326140672415772025904989043759542106740315719496450050592750960640"
+          },
+          {
+            "numerator": "290900820404925555757001921511556349853480767335648794725933578856098758883408666322077783",
+            "denominator": "30555539645017291294026685326140672415772025904989043759542106740315719496450050592750960640"
+          },
+          {
+            "numerator": "1076379315707414816813647584704820101750160416755581281684185704801701383799890866070201",
+            "denominator": "488888634320276660704426965218250758652352414479824700152673707845051511943200809484015370240"
+          }
+        ],
+        "si_raw_ten": [
+          0.030623879229415785,
+          6.5069785319015106e-06,
+          1.0236897133677546e-09,
+          0.0004994999277899734,
+          2.9842695158634286e-06,
+          2.4698880489156825e-06,
+          9.55776796219265e-06,
+          1.892584486339318e-11,
+          1.1156713410152875e-07,
+          2.5801009106059132e-11
+        ],
+        "si_raw_ten_exact": [
+          {
+            "numerator": "34294836244586034892122541456667366188898531573086478099845983182881794562344273701537599981642616525",
+            "denominator": "1119872371088902105278721140284222139060822748617324767449994550481895935590080472690438746635803557888"
+          },
+          {
+            "numerator": "9918530663525792450927159024193557264086717480532056073814049921801910829362570815296656028698426526903774596487245309141044507436081725",
+            "denominator": "1524291284333980581729295522359944485228807686848130444755447734192076044345588681699368214386470689042884243711624327585667956874652483059712"
+          },
+          {
+            "numerator": "780200653974409505191840370770626046914823436484444432240830175959285922835782759591001307456470827982693496674890861295656665028325",
+            "denominator": "762145642166990290864647761179972242614403843424065222377723867096038022172794340849684107193235344521442121855812163792833978437326241529856"
+          },
+          {
+            "numerator": "11896615413370453497847649975492075360796812075295334096839910732302503470126181464389803771562483468002707793589618724281444570397187675",
+            "denominator": "23817051317718446589520242536874132581700120107002038199303870846751188192899823151552628349788604516295066307994130118526061826166445047808"
+          },
+          {
+            "numerator": "3023259965286191359432604958707343495584884259276223926099112248092879493407815708238484584855504057750671403702565757082296692209429468495860925515242151173290874479658305",
+            "denominator": "1013065324433836171511818326096474890383898005918563696288002277756507034036354527929615978746851512277392062160962106733983191180520452956027069051297354415786421338721071661056"
+          },
+          {
+            "numerator": "625539484397505149900228518850547463789429149141836367807976365908721652284844960904430704185285049261046109715471375170470904158509800936238423781067789842283648280799795",
+            "denominator": "253266331108459042877954581524118722595974501479640924072000569439126758509088631982403994686712878069348015540240526683495797795130113239006767262824338603946605334680267915264"
+          },
+          {
+            "numerator": "4727853174551768846388952661940243115115098349834203149402052226197780427104630864283333892677909400170084812774310961655364482039731837400434396077687390168580216540165",
+            "denominator": "494660802946209068121005042039294380070262698202423679828126112185794450213063734340632802122486089979195342852032278678702730068613502419935092310203786335833213544297398272"
+          },
+          {
+            "numerator": "149789977864983289378206165420448626907150931445508167223974052839027129244756745171591703737058159512834493559290142153082593979445427445762673891147667484395592635",
+            "denominator": "7914572847139345089936080672628710081124203171238778877250017794972711203409019749450124833959777439667125485632516458859243681097816038718961476963260581373331416708758372352"
+          },
+          {
+            "numerator": "883006210193113514871975479990992118025784469643304937476423715360373738836641861691145606835555181432498969284985583258183474556964915973033763944305951038820261923655",
+            "denominator": "7914572847139345089936080672628710081124203171238778877250017794972711203409019749450124833959777439667125485632516458859243681097816038718961476963260581373331416708758372352"
+          },
+          {
+            "numerator": "3267263457593769408809205535260063284396412147134585671264546968373616760251766993292739020040721593632819294187206803843404673292120156246152830342395795712910915785",
+            "denominator": "126633165554229521438977290762059361297987250739820462036000284719563379254544315991201997343356439034674007770120263341747898897565056619503383631412169301973302667340133957632"
+          }
+        ],
+        "si_moment_units": [
+          "kg",
+          "kg*m",
+          "kg*m",
+          "kg*m",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2"
+        ],
+        "mass_kg": 0.030623879229415785,
+        "center_of_mass_m": [
+          0.00021248054445209633,
+          3.3427826229945706e-08,
+          0.01631079864337299
+        ],
+        "full_inertia_origin_kg_m2": [
+          [
+            1.2027656011108334e-05,
+            -2.5801009106059132e-11,
+            -1.1156713410152875e-07
+          ],
+          [
+            -2.5801009106059132e-11,
+            1.2542037478056079e-05,
+            -1.892584486339318e-11
+          ],
+          [
+            -1.1156713410152875e-07,
+            -1.892584486339318e-11,
+            5.454157564779111e-06
+          ]
+        ],
+        "full_inertia_com_kg_m2": [
+          [
+            3.880413266512508e-06,
+            -2.558349495841274e-11,
+            -5.4331174909324105e-09
+          ],
+          [
+            -2.558349495841274e-11,
+            4.393412127153277e-06,
+            -2.228648075359519e-12
+          ],
+          [
+            -5.4331174909324105e-09,
+            -2.228648075359519e-12,
+            5.452774958403695e-06
+          ]
+        ],
+        "principal_inertia_kg_m2": [
+          3.880394491938814e-06,
+          4.393412128425522e-06,
+          5.452793731705147e-06
+        ],
+        "bounds_m": [
+          [
+            -0.029950000000000004,
+            -0.020000000000000004,
+            0.0
+          ],
+          [
+            0.03434,
+            0.020000000000000004,
+            0.04275
+          ]
+        ],
+        "vertex_count": 4235,
+        "triangle_count": 8470,
+        "closed_consistently_oriented_edge_audit": true,
+        "closed_edge_audit_is_not_full_solid_region_certificate": true,
+        "W0_physical_tip_or_FD_approved": false,
+        "W2_teacher_training_allowed": false,
+        "native_implicit_point_exact_identity_certified": false,
+        "full_boolean_region_equality_certified": false,
+        "printability_certified": false,
+        "Faster_optimization_executed": false,
+        "MuJoCo_real_optimized_before_after_executed": false,
+        "source_file_name": "F_native.obj",
+        "source_obj_sha256": "5c5db73792bd8d6566a954e6d0eef6d22e248a7ad2f8a7a8d8e6d4f2ad9d86a8",
+        "frozen_input_sha256_verified": true
+      },
+      "D": {
+        "schema": "W4P17SavedMeshPhysicalMomentsV1",
+        "status": "DIAGNOSTIC_PHYSICAL_MOMENTS_ONLY_NOT_APPROVED",
+        "arithmetic": "EXACT_FRACTION_OF_SAVED_BINARY64_VERTICES_AND_EXPLICIT_SI_PARAMETERS",
+        "source_coordinates_are_native_implicit_rationals": false,
+        "moment_order": [
+          "M",
+          "LX",
+          "LY",
+          "LZ",
+          "QXX",
+          "QYY",
+          "QZZ",
+          "QYZ",
+          "QXZ",
+          "QXY"
+        ],
+        "cross_moment_convention": "ORDINARY_UNDOUBLED",
+        "scale_m_per_unit": 0.025,
+        "density_kg_m3": 1200.0,
+        "source_raw_ten": [
+          0.02640629906815312,
+          -1.807989064309149e-20,
+          -1.4516779617267244e-21,
+          0.017692220375662593,
+          0.00024548146929696655,
+          0.0002454842977400786,
+          0.012034195068799916,
+          -2.033860823895434e-21,
+          -1.0924163197810486e-20,
+          1.310937658127745e-10
+        ],
+        "source_raw_ten_exact": [
+          {
+            "numerator": "474228932492762513076302773115325512005063010872571",
+            "denominator": "17958932119522135058886879224417685745532099088089088"
+          },
+          {
+            "numerator": "-748696915177977546880624609387006811152863691486165",
+            "denominator": "41410478080743382724608535173662152714706653833022319330975145342795776"
+          },
+          {
+            "numerator": "-240458713657531016961367164583584910610259723498623",
+            "denominator": "165641912322973530898434140694648610858826615332089277323900581371183104"
+          },
+          {
+            "numerator": "22895103252064288386477475584993294168200154812563843065025962913055",
+            "denominator": "1294077440023230710144016724176942272334582932281947479092973291962368"
+          },
+          {
+            "numerator": "29300073309455297589337787521568820185244795997860724572537400894117902638321541240463",
+            "denominator": "119357576738348794117291739555237001624109476191363452185711354454358279283008010127933440"
+          },
+          {
+            "numerator": "78134429081522922520422928894891092232149783665101061468884886994478281004270556073699",
+            "denominator": "318286871302263450979444638813965337664291936510302539161896945211622078088021360341155840"
+          },
+          {
+            "numerator": "701353692094015936473551776369503225255282269148526240195784275569206041312227392297",
+            "denominator": "58280066766771872127583857204705567199272205171564185637554372292167128556156254945280"
+          },
+          {
+            "numerator": "-10114862473467523890761264987148818572915913949538700888213415091141",
+            "denominator": "4973232364097866421553822481468208401004561507973477174404639768931594970125333755330560"
+          },
+          {
+            "numerator": "-8149260294905692938250633470340255671479055869337550565117467313599",
+            "denominator": "745984854614679963233073372220231260150684226196021576160695965339739245518800063299584"
+          },
+          {
+            "numerator": "7823517106458678918535255415487857906114233611459237505680265979343113975292743",
+            "denominator": "59678788369174397058645869777618500812054738095681726092855677227179139641504005063966720"
+          }
+        ],
+        "si_raw_ten": [
+          0.0004951181075278711,
+          -8.474948738949139e-24,
+          -6.804740445594022e-25,
+          8.293228301091843e-06,
+          2.8767359683238274e-09,
+          2.876769114141547e-09,
+          1.4102572346249906e-07,
+          -2.3834306530024625e-26,
+          -1.2801753747434167e-25,
+          1.5362550681184515e-15
+        ],
+        "si_raw_ten_exact": [
+          {
+            "numerator": "554469089046287005275031388564719115976196384830190871633027687290147165327781316001162848684984575",
+            "denominator": "1119872371088902105278721140284222139060822748617324767449994550481895935590080472690438746635803557888"
+          },
+          {
+            "numerator": "-3153879516102888360676207670737932307780836870774902743039421423503735132251177460636259389202484784045939173284125",
+            "denominator": "372141426839350727961253789638658321589064376671906846864122981980487315514059736743009817965446945567110411062408283101969716033850703872"
+          },
+          {
+            "numerator": "-1012930327477919501701338788501101270066303546659456164749469298076111255403009787055461259487186082049411118271575",
+            "denominator": "1488565707357402911845015158554633286356257506687627387456491927921949262056238946972039271861787782268441644249633132407878864135402815488"
+          },
+          {
+            "numerator": "96445431658525081760111409993416538384810271253323347688964847622883883300493211820441377061582636548404005640536689964661923536375",
+            "denominator": "11629419588729710248789180926208072549658261770997088964503843186890228609814366773219056811420217048972200345700258846936553626057834496"
+          },
+          {
+            "numerator": "88938032747206547212488834117546465471380359239096197826643244378444943506367850991996295456553177277519671334067221103681362842507363019013846933946531599062067455",
+            "denominator": "30916300184138066757562815127455898754391418637651479989257882011612153138316483396289550132655380623699708928252017417418920629288343901245943269387736645989575846518587392"
+          },
+          {
+            "numerator": "711512459946056098962878584716363524491806803888375003539499217482103902160385944554555093565982624211442380512393860269717303762541146025257436288986965143009737145",
+            "denominator": "247330401473104534060502521019647190035131349101211839914063056092897225106531867170316401061243044989597671426016139339351365034306751209967546155101893167916606772148699136"
+          },
+          {
+            "numerator": "2128903125122980304079525723402295370519463394833969892107139361191740750500436896670940054941978596186223446009118169751978099856360707617784779467827842368729145",
+            "denominator": "15095849699286165408966218323953075563667684881665761713504825200982496649568595408344506900710635070165873500123055379599082338519699170530245737005730784174597581307904"
+          },
+          {
+            "numerator": "-92108571920375428112745594722984862387737162106607409269125533317722699791172207571108873058605584998553527509650474418688983176493469206823621055",
+            "denominator": "3864537523017258344695351890931987344298927329706434998657235251451519142289560424536193766581922577962463616031502177177365078661042987655742908673467080748696980814823424"
+          },
+          {
+            "numerator": "-123682144293465352296609088316032005502704138569248515407331131870862644377524860676044119978431164511589494792784541806982196037960530699128836075",
+            "denominator": "966134380754314586173837972732996836074731832426608749664308812862879785572390106134048441645480644490615904007875544294341269665260746913935727168366770187174245203705856"
+          },
+          {
+            "numerator": "23747661422676761382265869119933293464023954775253791633609104411392037152352441448315200948085949086542406656638452860213935938897878493765580194290987347255",
+            "denominator": "15458150092069033378781407563727949377195709318825739994628941005806076569158241698144775066327690311849854464126008708709460314644171950622971634693868322994787923259293696"
+          }
+        ],
+        "si_moment_units": [
+          "kg",
+          "kg*m",
+          "kg*m",
+          "kg*m",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2"
+        ],
+        "mass_kg": 0.0004951181075278711,
+        "center_of_mass_m": [
+          -1.711702442325252e-20,
+          -1.3743671140548967e-21,
+          0.01675
+        ],
+        "full_inertia_origin_kg_m2": [
+          [
+            1.439024925766406e-07,
+            -1.5362550681184515e-15,
+            1.2801753747434167e-25
+          ],
+          [
+            -1.5362550681184515e-15,
+            1.4390245943082289e-07,
+            2.3834306530024625e-26
+          ],
+          [
+            1.2801753747434167e-25,
+            2.3834306530024625e-26,
+            5.753505082465374e-09
+          ]
+        ],
+        "full_inertia_com_kg_m2": [
+          [
+            4.990918533352237e-09,
+            -1.5362550681184515e-15,
+            -1.3937853903056407e-26
+          ],
+          [
+            -1.5362550681184515e-15,
+            4.990885387534517e-09,
+            1.2436366283654635e-26
+          ],
+          [
+            -1.3937853903056407e-26,
+            1.2436366283654635e-26,
+            5.753505082465374e-09
+          ]
+        ],
+        "principal_inertia_kg_m2": [
+          4.99088531648388e-09,
+          4.9909186044028735e-09,
+          5.753505082465374e-09
+        ],
+        "bounds_m": [
+          [
+            -0.004998286624877787,
+            -0.004998286624877787,
+            0.012027015795405972
+          ],
+          [
+            0.004998286624877787,
+            0.004998286624877787,
+            0.021472984204594037
+          ]
+        ],
+        "vertex_count": 200,
+        "triangle_count": 400,
+        "closed_consistently_oriented_edge_audit": true,
+        "closed_edge_audit_is_not_full_solid_region_certificate": true,
+        "W0_physical_tip_or_FD_approved": false,
+        "W2_teacher_training_allowed": false,
+        "native_implicit_point_exact_identity_certified": false,
+        "full_boolean_region_equality_certified": false,
+        "printability_certified": false,
+        "Faster_optimization_executed": false,
+        "MuJoCo_real_optimized_before_after_executed": false,
+        "source_file_name": "D_native.obj",
+        "source_obj_sha256": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
+        "frozen_input_sha256_verified": true
+      },
+      "S": {
+        "schema": "W4P17SavedMeshPhysicalMomentsV1",
+        "status": "DIAGNOSTIC_PHYSICAL_MOMENTS_ONLY_NOT_APPROVED",
+        "arithmetic": "EXACT_FRACTION_OF_SAVED_BINARY64_VERTICES_AND_EXPLICIT_SI_PARAMETERS",
+        "source_coordinates_are_native_implicit_rationals": false,
+        "moment_order": [
+          "M",
+          "LX",
+          "LY",
+          "LZ",
+          "QXX",
+          "QYY",
+          "QZZ",
+          "QYZ",
+          "QXZ",
+          "QXY"
+        ],
+        "cross_moment_convention": "ORDINARY_UNDOUBLED",
+        "scale_m_per_unit": 0.025,
+        "density_kg_m3": 1200.0,
+        "source_raw_ten": [
+          0.018412200690303387,
+          -2.5294623301423582e-20,
+          8.8390130076404e-21,
+          0.01639190365151877,
+          1.6238090966583573e-05,
+          1.6238090966583573e-05,
+          0.01872691924165964,
+          7.877455764196903e-21,
+          -2.2674325009326613e-20,
+          1.5418962331901667e-22
+        ],
+        "source_raw_ten_exact": [
+          {
+            "numerator": "47653627069003535135966401252292528171165599762857717605141758893443",
+            "denominator": "2588154880046461420288033448353884544669165864563894958185946583924736"
+          },
+          {
+            "numerator": "-1359683989073559284904676409754266857757130275627108697194225896713920333010893051435",
+            "denominator": "53753873812267301053378614733642662674919491933631588837599738423131004908323862689141059838518570778624"
+          },
+          {
+            "numerator": "39594265819807608365485614453744082373983580020555341958224724487685072738274337553",
+            "denominator": "4479489484355608421114884561136888556243290994469299069799978201927583742360321890761754986543214231552"
+          },
+          {
+            "numerator": "2038018643722678295438257782013578058988475649663316669290798822298451769620645787703",
+            "denominator": "124330809102446660538845562036705210025114037699336929360115994223289874253133343883264"
+          },
+          {
+            "numerator": "1888395731703619674553295433429988108224554832311225160013691620020663045068790043104606775305420779236871901863626196052340510948181",
+            "denominator": "116294195887297102487891809262080725496582617709970889645038431868902286098143667732190568114202170489722003457002588469365536260578344960"
+          },
+          {
+            "numerator": "708148399388857344620854580623773204603650082394781012788639338771084003899643413405582195540343747086648056437018775044148614696817",
+            "denominator": "43610323457736413432959428473280272061218481641239083616889411950838357286803875399571463042825813933645751296375970676012076097716879360"
+          },
+          {
+            "numerator": "8053155630469540947534079672315371622208440010939288037940982625148071520578669360529951585820704929751",
+            "denominator": "430030990498138408427028917869141301399355935469052710700797907385048039266590901513128478708148566228992"
+          },
+          {
+            "numerator": "30512338780098703144867648404938294605624086717743422347784411130680296599928026394853744923080014421",
+            "denominator": "3873374817130362884483878758004517811494558689243835269245989034810971433025261791944468029920206747153854757959121240064"
+          },
+          {
+            "numerator": "-351304637946219555509071763183007455453831551712272310317798991243437821690064571757859711812478579739",
+            "denominator": "15493499268521451537935515032018071245978234756975341076983956139243885732101047167777872119680826988615419031836484960256"
+          },
+          {
+            "numerator": "3981561360177971551406085969175701645120070930734883093780307598617394766184741013249279010036844369",
+            "denominator": "25822498780869085896559191720030118743297057928292235128306593565406476220168411946296453532801378314359031719727474933760"
+          }
+        ],
+        "si_raw_ten": [
+          0.00034522876294318855,
+          -1.1856854672542306e-23,
+          4.143287347331438e-24,
+          7.683704836649424e-06,
+          1.902901285146513e-10,
+          1.902901285146513e-10,
+          2.1945608486319893e-07,
+          9.231393473668248e-26,
+          -2.657147462030463e-25,
+          1.8069096482697272e-27
+        ],
+        "si_raw_ten_exact": [
+          {
+            "numerator": "55716683188883931534791912761772801993851973690178391957526402800215291091675231337040366952299273799435843839935975",
+            "denominator": "161390617380431786853494948250188242145606612051826469551916209783790476376052574664352834580008614464743948248296718336"
+          },
+          {
+            "numerator": "-5727657473375281205829628812405292024679675776834658841199546938581924444538061246947614990821526005117576909147134688736046894041260486641587355875",
+            "denominator": "483067190377157293086918986366498418037365916213304374832154406431439892786195053067024220822740322245307952003937772147170634832630373456967863584183385093587122601852928"
+          },
+          {
+            "numerator": "500371544450155716952021703693998838630847970359475611656963143621108015205305582790593234977271435682687737365385595338740739381914481570040114475",
+            "denominator": "120766797594289323271729746591624604509341479053326093708038601607859973196548763266756055205685080561326988000984443036792658708157593364241965896045846273396780650463232"
+          },
+          {
+            "numerator": "25755409660041609418895933909879771336371663470898074062036733451818165716349399123739050978575364811347748445483319391063821056156018106587673775725",
+            "denominator": "3351951982485649274893506249551461531869841455148098344430890360930441007518386744200468574541725856922507964546621512713438470702986642486608412251521024"
+          },
+          {
+            "numerator": "17196223332152188771033831986470299920161822262335876659771890439807581823545658795793941429144884234523557871905191625844713929037561070755014913667400067546943588298226667321958443423103977596925492853639910255",
+            "denominator": "90368446678662959902371482950548091627243325179250480789868861787606202571558351996987965471847359903068731695945087890499945499708108510324049698831582275405785474927446915858324226319766512887160235503322704971703517184"
+          },
+          {
+            "numerator": "2149527916519023495188547096323881022962285956244603560457222734792382458651824254134278288683024612546867186799589985254474863091190156186681073264363037733818092360390815709881475132890697237225903196622937345",
+            "denominator": "11296055834832869987796435368818511453405415647406310098733607723450775321444793999623495683980919987883591461993135986312493187463513563790506212353947784425723184365930864482290528289970814110895029437915338121462939648"
+          },
+          {
+            "numerator": "122223554121606720570182106695806038630211396280657280536882843900920037916926687089432801172723567096233095736945222823626628925427557760467082866557658139755035170834593597010312675",
+            "denominator": "556938551955834377275533643273961343370755433013740225900780336657626363184653001282460059975265063449541297555370411048668054775558525146271076821255153099151854818647493280039413353545728"
+          },
+          {
+            "numerator": "463088838883988418950851734443950634036257353150514509626830927548814964339363924822031639133101349107036978881788621817008002786988959845370390234385023680673409358366994674442425",
+            "denominator": "5016456510113118655434598811035278955030765345404790744303017523831112055108147451509157692220295382716162651878526895249385292291816524375083746691371804094271873160484737966720260389217684476157468082176"
+          },
+          {
+            "numerator": "-5331785873693307487858789685538870455991071062778719607182775520926982649015071560552382755926345414368103672633086588140113902694099413775946537038553147821500532167709005934035575",
+            "denominator": "20065826040452474621738395244141115820123061381619162977212070095324448220432589806036630768881181530864650607514107580997541169167266097500334986765487216377087492641938951866881041556870737904629872328704"
+          },
+          {
+            "numerator": "36257134672995511922217295653105111904829251356737106748455888928766658591958874874589605853563197333653349454039945697866728158180383137014129059583131727055465034491865562744995",
+            "denominator": "20065826040452474621738395244141115820123061381619162977212070095324448220432589806036630768881181530864650607514107580997541169167266097500334986765487216377087492641938951866881041556870737904629872328704"
+          }
+        ],
+        "si_moment_units": [
+          "kg",
+          "kg*m",
+          "kg*m",
+          "kg*m",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2",
+          "kg*m^2"
+        ],
+        "mass_kg": 0.00034522876294318855,
+        "center_of_mass_m": [
+          -3.4344921238481775e-20,
+          1.200157052966431e-20,
+          0.02225685012784948
+        ],
+        "full_inertia_origin_kg_m2": [
+          [
+            2.196463749917136e-07,
+            -1.8069096482697272e-27,
+            2.657147462030463e-25
+          ],
+          [
+            -1.8069096482697272e-27,
+            2.196463749917136e-07,
+            -9.231393473668248e-26
+          ],
+          [
+            2.657147462030463e-25,
+            -9.231393473668248e-26,
+            3.805802570293026e-10
+          ]
+        ],
+        "full_inertia_com_kg_m2": [
+          [
+            4.863130801577518e-08,
+            -1.8069096482697272e-27,
+            1.8185087685803964e-27
+          ],
+          [
+            -1.8069096482697272e-27,
+            4.863130801577518e-08,
+            -9.740921051163033e-29
+          ],
+          [
+            1.8185087685803964e-27,
+            -9.740921051163033e-29,
+            3.805802570293026e-10
+          ]
+        ],
+        "principal_inertia_kg_m2": [
+          3.805802570292994e-10,
+          4.863130801577518e-08,
+          4.863130801577518e-08
+        ],
+        "bounds_m": [
+          [
+            -0.0015,
+            -0.0015,
+            0.0
+          ],
+          [
+            0.0015,
+            0.0015,
+            0.04275
+          ]
+        ],
+        "vertex_count": 258,
+        "triangle_count": 512,
+        "closed_consistently_oriented_edge_audit": true,
+        "closed_edge_audit_is_not_full_solid_region_certificate": true,
+        "W0_physical_tip_or_FD_approved": false,
+        "W2_teacher_training_allowed": false,
+        "native_implicit_point_exact_identity_certified": false,
+        "full_boolean_region_equality_certified": false,
+        "printability_certified": false,
+        "Faster_optimization_executed": false,
+        "MuJoCo_real_optimized_before_after_executed": false,
+        "source_file_name": "shaft-reference.obj",
+        "source_obj_sha256": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
+        "frozen_input_sha256_verified": true
+      }
+    },
+    "physical_table": [
+      {
+        "material": "M",
+        "source_obj_sha256": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
+        "mass_kg": 0.031118997336943656,
+        "center_of_mass_m": [
+          0.00020909987752647146,
+          3.289597355222163e-08,
+          0.016317786546683703
+        ],
+        "full_inertia_com_kg_m2": [
+          [
+            3.885498172690457e-06,
+            -2.5588491967436944e-11,
+            -5.387647354106609e-09
+          ],
+          [
+            -2.5588491967436944e-11,
+            4.398518998111973e-06,
+            -2.221494630622323e-12
+          ],
+          [
+            -5.387647354106609e-09,
+            -2.221494630622323e-12,
+            5.458550461413813e-06
+          ]
+        ],
+        "principal_inertia_kg_m2": [
+          3.8854797191320305e-06,
+          4.398518999384678e-06,
+          5.458568913699529e-06
+        ]
+      },
+      {
+        "material": "F",
+        "source_obj_sha256": "5c5db73792bd8d6566a954e6d0eef6d22e248a7ad2f8a7a8d8e6d4f2ad9d86a8",
+        "mass_kg": 0.030623879229415785,
+        "center_of_mass_m": [
+          0.00021248054445209633,
+          3.3427826229945706e-08,
+          0.01631079864337299
+        ],
+        "full_inertia_com_kg_m2": [
+          [
+            3.880413266512508e-06,
+            -2.558349495841274e-11,
+            -5.4331174909324105e-09
+          ],
+          [
+            -2.558349495841274e-11,
+            4.393412127153277e-06,
+            -2.228648075359519e-12
+          ],
+          [
+            -5.4331174909324105e-09,
+            -2.228648075359519e-12,
+            5.452774958403695e-06
+          ]
+        ],
+        "principal_inertia_kg_m2": [
+          3.880394491938814e-06,
+          4.393412128425522e-06,
+          5.452793731705147e-06
+        ]
+      },
+      {
+        "material": "D",
+        "source_obj_sha256": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
+        "mass_kg": 0.0004951181075278711,
+        "center_of_mass_m": [
+          -1.711702442325252e-20,
+          -1.3743671140548967e-21,
+          0.01675
+        ],
+        "full_inertia_com_kg_m2": [
+          [
+            4.990918533352237e-09,
+            -1.5362550681184515e-15,
+            -1.3937853903056407e-26
+          ],
+          [
+            -1.5362550681184515e-15,
+            4.990885387534517e-09,
+            1.2436366283654635e-26
+          ],
+          [
+            -1.3937853903056407e-26,
+            1.2436366283654635e-26,
+            5.753505082465374e-09
+          ]
+        ],
+        "principal_inertia_kg_m2": [
+          4.99088531648388e-09,
+          4.9909186044028735e-09,
+          5.753505082465374e-09
+        ]
+      },
+      {
+        "material": "S",
+        "source_obj_sha256": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
+        "mass_kg": 0.00034522876294318855,
+        "center_of_mass_m": [
+          -3.4344921238481775e-20,
+          1.200157052966431e-20,
+          0.02225685012784948
+        ],
+        "full_inertia_com_kg_m2": [
+          [
+            4.863130801577518e-08,
+            -1.8069096482697272e-27,
+            1.8185087685803964e-27
+          ],
+          [
+            -1.8069096482697272e-27,
+            4.863130801577518e-08,
+            -9.740921051163033e-29
+          ],
+          [
+            1.8185087685803964e-27,
+            -9.740921051163033e-29,
+            3.805802570293026e-10
+          ]
+        ],
+        "principal_inertia_kg_m2": [
+          3.805802570292994e-10,
+          4.863130801577518e-08,
+          4.863130801577518e-08
+        ]
+      }
+    ],
+    "spin_axis_reference": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "tip_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "overlapping_material_masses_not_summed": true,
+    "geometry_or_inertial_parameters_modified": false,
+    "old_P12_15cm_or_0_25kg_case_not_used": true,
+    "W0_physical_tip_or_FD_approved": false,
+    "W2_teacher_training_allowed": false,
+    "native_implicit_point_exact_identity_certified": false,
+    "full_boolean_region_equality_certified": false,
+    "printability_certified": false,
+    "Faster_optimization_executed": false,
+    "MuJoCo_real_optimized_before_after_executed": false
+  },
+  "candidate_intentionally_differs_from_P18": true,
+  "changes_from_P18_saved_materials": {
+    "M": {
+      "old_sha256": "4c2e4d480d1041f4817128a8b4b61675d80a699e448e7a5a253311c1805a3aa2",
+      "new_sha256": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
+      "old_volume_reference": {
+        "numerator": "4292559731377204443463891368985659641467910230067655198348272105152643",
+        "denominator": "2588154880046461420288033448353884544669165864563894958185946583924736",
+        "decimal_projection": 1.65854051643932
+      },
+      "new_volume_reference": {
+        "numerator": "7451519477356814783513330108425493544428051260534207",
+        "denominator": "4489733029880533764721719806104421436383024772022272",
+        "decimal_projection": 1.659679857970328
+      },
+      "volume_change_reference": {
+        "numerator": "982930781172669894820623175040473039370349615427989703159242033791",
+        "denominator": "862718293348820473429344482784628181556388621521298319395315527974912",
+        "decimal_projection": 0.0011393415310080185
+      },
+      "relative_volume_change": {
+        "numerator": "2948792343518009684461869525121419118111048846283969109477726101373",
+        "denominator": "4292559731377204443463891368985659641467910230067655198348272105152643",
+        "decimal_projection": 0.0006869542948845427
+      },
+      "old_mass_kg_proposed": 0.031097634683237254,
+      "new_mass_kg_proposed": 0.031118997336943656,
+      "old_com_m_proposed": [
+        0.0002092435195853981,
+        3.2918571582537755e-08,
+        0.01630740108233499
+      ],
+      "new_com_m_proposed": [
+        0.00020909987752647146,
+        3.289597355222163e-08,
+        0.016317786546683703
+      ],
+      "old_faces": 7558,
+      "new_faces": 8070,
+      "old_bounds_m": [
+        [
+          -0.029950000000000004,
+          -0.020000000000000004,
+          0.0
+        ],
+        [
+          0.03434,
+          0.020000000000000004,
+          0.04275
+        ]
+      ],
+      "new_bounds_m": [
+        [
+          -0.029950000000000004,
+          -0.020000000000000004,
+          0.0
+        ],
+        [
+          0.03434,
+          0.020000000000000004,
+          0.04275
+        ]
+      ]
+    },
+    "F": {
+      "old_sha256": "47c08ee597d5666069416985e0dc8900d204481c590b73596f90daccd2b068d1",
+      "new_sha256": "5c5db73792bd8d6566a954e6d0eef6d22e248a7ad2f8a7a8d8e6d4f2ad9d86a8",
+      "old_volume_reference": {
+        "numerator": "4220000403443240468879618754482123433123363774413577151009350870193411",
+        "denominator": "2588154880046461420288033448353884544669165864563894958185946583924736",
+        "decimal_projection": 1.6305053596203194
+      },
+      "new_volume_reference": {
+        "numerator": "29331848976934496620977017660586648665707142031264257",
+        "denominator": "17958932119522135058886879224417685745532099088089088",
+        "decimal_projection": 1.633273558902175
+      },
+      "volume_change_reference": {
+        "numerator": "2388176160091718951841005805968932076056806153208293211788868991231",
+        "denominator": "862718293348820473429344482784628181556388621521298319395315527974912",
+        "decimal_projection": 0.0027681992818553974
+      },
+      "relative_volume_change": {
+        "numerator": "7164528480275156855523017417906796228170418459624879635366606973693",
+        "denominator": "4220000403443240468879618754482123433123363774413577151009350870193411",
+        "decimal_projection": 0.0016977554017363072
+      },
+      "old_mass_kg_proposed": 0.030571975492880994,
+      "new_mass_kg_proposed": 0.030623879229415785,
+      "old_com_m_proposed": [
+        0.00021284128444420375,
+        3.348457850249604e-08,
+        0.016299790969316073
+      ],
+      "new_com_m_proposed": [
+        0.00021248054445209633,
+        3.3427826229945706e-08,
+        0.01631079864337299
+      ],
+      "old_faces": 8198,
+      "new_faces": 8470,
+      "old_bounds_m": [
+        [
+          -0.029950000000000004,
+          -0.020000000000000004,
+          0.0
+        ],
+        [
+          0.03434,
+          0.020000000000000004,
+          0.04275
+        ]
+      ],
+      "new_bounds_m": [
+        [
+          -0.029950000000000004,
+          -0.020000000000000004,
+          0.0
+        ],
+        [
+          0.03434,
+          0.020000000000000004,
+          0.04275
+        ]
+      ]
+    },
+    "D": {
+      "old_sha256": "1d4a0673e9297d95adfb5722158ba1d859a83099046d01116a2b363cb3cb386b",
+      "new_sha256": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
+      "old_volume_reference": {
+        "numerator": "566869749484093551439629800808876627691769184797484744835322148119",
+        "denominator": "20219960000362979846000261315264723005227858316905429360827707686912",
+        "decimal_projection": 0.0280351568190005
+      },
+      "new_volume_reference": {
+        "numerator": "474228932492762513076302773115325512005063010872571",
+        "denominator": "17958932119522135058886879224417685745532099088089088",
+        "decimal_projection": 0.02640629906815312
+      },
+      "volume_change_reference": {
+        "numerator": "-10978479522805070757971739304128586224112941701408621161168960605",
+        "denominator": "6739986666787659948666753771754907668409286105635143120275902562304",
+        "decimal_projection": -0.0016288577508473791
+      },
+      "relative_volume_change": {
+        "numerator": "-32935438568415212273915217912385758672338825104225863483506881815",
+        "denominator": "566869749484093551439629800808876627691769184797484744835322148119",
+        "decimal_projection": -0.058100540024211306
+      },
+      "old_mass_kg_proposed": 0.0005256591903562594,
+      "new_mass_kg_proposed": 0.0004951181075278711,
+      "old_com_m_proposed": [
+        -1.2547908277229826e-21,
+        -8.351386713946608e-21,
+        0.01675
+      ],
+      "new_com_m_proposed": [
+        -1.711702442325252e-20,
+        -1.3743671140548967e-21,
+        0.01675
+      ],
+      "old_faces": 640,
+      "new_faces": 400,
+      "old_bounds_m": [
+        [
+          -0.004998286624877787,
+          -0.004998286624877787,
+          0.01198659040539675
+        ],
+        [
+          0.004998286624877787,
+          0.004998286624877787,
+          0.021513409594603253
+        ]
+      ],
+      "new_bounds_m": [
+        [
+          -0.004998286624877787,
+          -0.004998286624877787,
+          0.012027015795405972
+        ],
+        [
+          0.004998286624877787,
+          0.004998286624877787,
+          0.021472984204594037
+        ]
+      ]
+    }
+  },
+  "original_shaft_bytes_preserved": true,
+  "original_tip_and_axis_preserved": true,
+  "all_original_shaft_envelope_z_coordinates_preserved": true,
+  "tip_reference": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "axis_reference": [
+    0.0,
+    0.0,
+    1.0
+  ],
+  "original_top_z_exact": "1925288840700887/1125899906842624",
+  "envelope_vertex_correspondence_max_displacement_squared": {
+    "numerator": "1211115409936657473690298238813",
+    "denominator": "10384593717069655257060992658440192",
+    "decimal_projection": 0.00011662617170529155
+  },
+  "envelope_vertex_correspondence_max_displacement_upper_reference": {
+    "numerator": "10799359783",
+    "denominator": "1000000000000",
+    "decimal_projection": 0.010799359783
+  },
+  "envelope_radius_upper_reference": {
+    "numerator": "67500000001",
+    "denominator": "1000000000000",
+    "decimal_projection": 0.067500000001
+  },
+  "original_shaft_radius_upper_reference": {
+    "numerator": "60000000001",
+    "denominator": "1000000000000",
+    "decimal_projection": 0.060000000001
+  },
+  "displacement_bound_is_not_outer_M_Hausdorff_or_native_implicit_error_bound": true,
+  "geometry_change_is_not_mass_optimization": true,
+  "physical_model_and_material_not_experimentally_validated": true,
+  "scientific_flags": {
+    "W0_physical_tip_or_FD_approved": false,
+    "W2_Teapot_teacher_admitted": false,
+    "native_implicit_exact_region_certified": false,
+    "original_geometry_exact_identity_certified": false,
+    "printability_certified": false,
+    "optimization_admitted": false,
+    "training_admitted": false,
+    "optimized_MuJoCo_comparison_executed": false
+  },
+  "optimization_admitted": false,
+  "training_admitted": false
+}
