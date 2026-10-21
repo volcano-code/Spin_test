@@ -1,0 +1,85 @@
+{
+  "source_git_sha_check": {
+    "m4_lite_model.py": {
+      "expected_git_blob_sha1": "853ea92054e5895abe06d33092615a0be4b58772",
+      "local_git_blob_sha1": "853ea92054e5895abe06d33092615a0be4b58772",
+      "matches_original": true
+    },
+    "m5_potential.py": {
+      "expected_git_blob_sha1": "b5f976af0b2ef0621fd3f557ea93ae08a48ba99a",
+      "local_git_blob_sha1": "b5f976af0b2ef0621fd3f557ea93ae08a48ba99a",
+      "matches_original": true
+    },
+    "m6_gauss_potential.py": {
+      "expected_git_blob_sha1": "85d0ead6ee0dec9fc3212750e849310230d7878a",
+      "local_git_blob_sha1": "85d0ead6ee0dec9fc3212750e849310230d7878a",
+      "matches_original": true
+    },
+    "m7_realizable.py": {
+      "expected_git_blob_sha1": "a0e45b278de050329bed60cf5cb2b27e2fdd3c64",
+      "local_git_blob_sha1": "a0e45b278de050329bed60cf5cb2b27e2fdd3c64",
+      "matches_original": true
+    },
+    "m8_bounded_adapter.py": {
+      "expected_git_blob_sha1": "e624e93f9fcc6f152a7a6795956874b1c8e2f8a9",
+      "local_git_blob_sha1": "e624e93f9fcc6f152a7a6795956874b1c8e2f8a9",
+      "matches_original": true
+    },
+    "m9_antialias.py": {
+      "expected_git_blob_sha1": "1140959156921d1af9082cca40e80009f0c2cd6a",
+      "local_git_blob_sha1": "1140959156921d1af9082cca40e80009f0c2cd6a",
+      "matches_original": true
+    },
+    "m10_decision.py": {
+      "expected_git_blob_sha1": "23b008704106b87d53a0706bedc11b2d92db469e",
+      "local_git_blob_sha1": "23b008704106b87d53a0706bedc11b2d92db469e",
+      "matches_original": true
+    },
+    "m10_experiment.py": {
+      "expected_git_blob_sha1": "b605712b501f7a25c2a392dc6ebcfa65a77cdecf",
+      "local_git_blob_sha1": "b605712b501f7a25c2a392dc6ebcfa65a77cdecf",
+      "matches_original": true
+    },
+    "m10_w5_readonly.py": {
+      "expected_git_blob_sha1": "ecdf920371771811fb9b6e1cf657f2359237c36f",
+      "local_git_blob_sha1": "ecdf920371771811fb9b6e1cf657f2359237c36f",
+      "matches_original": true
+    },
+    "m11_anchor_cache.py": {
+      "expected_git_blob_sha1": "a5006f53cecaa03f76cf4652decc8b2d0f7d2cb6",
+      "local_git_blob_sha1": "a5006f53cecaa03f76cf4652decc8b2d0f7d2cb6",
+      "matches_original": true
+    },
+    "m11_experiment.py": {
+      "expected_git_blob_sha1": "41db6de74f5fb7373dda950dd0f8666fcbc5f634",
+      "local_git_blob_sha1": "41db6de74f5fb7373dda950dd0f8666fcbc5f634",
+      "matches_original": true
+    },
+    "m11_merge.py": {
+      "expected_git_blob_sha1": "2fdf82cd56cac70e4003a820e81e6437086ac7be",
+      "local_git_blob_sha1": "2fdf82cd56cac70e4003a820e81e6437086ac7be",
+      "matches_original": true
+    },
+    "analytic_cut.py": {
+      "expected_git_blob_sha1": "031e40151b6a28f8bdef809bc1ba710cdc7c3e4b",
+      "local_git_blob_sha1": "7a527113c1b1d20e19c6101a4bc7cf4ec4fa0036",
+      "matches_original": false,
+      "source_status": "LOCALLY_RECONSTRUCTED_SAME_DOCUMENTED_SEMANTICS_NOT_EXACT_ORIGINAL_BLOB"
+    },
+    "fixed_moments.py": {
+      "expected_git_blob_sha1": "81e80752567ce8162aedf3ff62a86572293c54dd",
+      "local_git_blob_sha1": "025aca71863ef6269bf7cdf66cf4d4ba37908913",
+      "matches_original": false,
+      "source_status": "LOCALLY_RECONSTRUCTED_SAME_DOCUMENTED_SEMANTICS_NOT_EXACT_ORIGINAL_BLOB"
+    },
+    "teacher_gate.py": {
+      "expected_git_blob_sha1": "24dafd66dce83d3076d4133cae8fdeff34671dae",
+      "local_git_blob_sha1": "826103a79c2bbab91d153fbf52c31e198279997c",
+      "matches_original": false,
+      "source_status": "LOCALLY_RECONSTRUCTED_SAME_DOCUMENTED_SEMANTICS_NOT_EXACT_ORIGINAL_BLOB"
+    }
+  },
+  "pinning_note": "All 12 later core scripts exact, earliest three locally reconstructed: remote unchanged and exact-checkout CI still required",
+  "frozen_three_seed_dataset_sha_test_passed": true,
+  "remote_w6_parent": "028dc5951744a1a8d8348750874fe33f2d57a6ff"
+}

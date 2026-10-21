@@ -1,0 +1,458 @@
+{
+  "full_report_file": "m12_full_three_new_seeds.json.gz",
+  "model_seed_receipts": [
+    {
+      "checkpoint_selection_val_score": 0.033197184558957815,
+      "checkpoint_step": 90,
+      "development_data_sha256": "3cb887efc461e55652948342104bdbd1ca39318f6f5f8072ec80c40a64f620c3",
+      "fit_data_sha256": "7ed9163a3c7327f89811efad3e7b8bd3970968ad3caa71d8b02b8126171f923f",
+      "frozen_policy": {
+        "calibration_geometry_sha256": "de4cb98f1b109e0ddc24f2f574261cb666180701084691fd0afdced818953efe",
+        "calibration_seed": 107,
+        "high": 0.18806969675167248,
+        "low": 0.0,
+        "protocol": "W6_M12_VALIDATION_ONLY_P0_NO_NATIVE",
+        "unit_query_cost": 0.2
+      },
+      "heldout_aggregate_model_risk_cost_ms": 2.1101163499338327,
+      "heldout_by_K": {
+        "0": {
+          "acceptance": 0.84375,
+          "geometries_by_K": {
+            "0": 20,
+            "1": 0,
+            "2": 0
+          },
+          "mean_true_decrease": 0.0014205789526358487,
+          "negative_goal_acceptance": 1,
+          "positive_goal_acceptance": 0.6875,
+          "selection_calls_per_target": 0.0,
+          "selection_r_only_queries": 0
+        },
+        "1": {
+          "acceptance": 0.95625,
+          "geometries_by_K": {
+            "0": 0,
+            "1": 20,
+            "2": 0
+          },
+          "mean_true_decrease": 0.0018311866944298975,
+          "negative_goal_acceptance": 0.9875,
+          "positive_goal_acceptance": 0.925,
+          "selection_calls_per_target": 0.125,
+          "selection_r_only_queries": 20
+        },
+        "2": {
+          "acceptance": 1.0,
+          "geometries_by_K": {
+            "0": 0,
+            "1": 0,
+            "2": 20
+          },
+          "mean_true_decrease": 0.002055495518139465,
+          "negative_goal_acceptance": 1,
+          "positive_goal_acceptance": 1,
+          "selection_calls_per_target": 0.25,
+          "selection_r_only_queries": 40
+        },
+        "voi_frozen": {
+          "acceptance": 0.95625,
+          "geometries_by_K": {
+            "0": 0,
+            "1": 20,
+            "2": 0
+          },
+          "mean_true_decrease": 0.0018311866944298975,
+          "negative_goal_acceptance": 0.9875,
+          "positive_goal_acceptance": 0.925,
+          "selection_calls_per_target": 0.125,
+          "selection_r_only_queries": 20
+        }
+      },
+      "heldout_data_sha256": "08882a584e00379a451b03991d281065dd1e3648d9e12005c62e943a6c1ce42b",
+      "minibatch_schedule_sha256": "c7a73bc6dc9eb7084803a1521638fc83f9376480274aaa906c28dc9a22ecbb94",
+      "model": "w6_m7_base",
+      "model_parameters_real": 13448,
+      "seed": 107,
+      "validation_only_policy_utility": 0.940625
+    },
+    {
+      "checkpoint_selection_val_score": 0.04367421241477132,
+      "checkpoint_step": 100,
+      "development_data_sha256": "3cb887efc461e55652948342104bdbd1ca39318f6f5f8072ec80c40a64f620c3",
+      "fit_data_sha256": "7ed9163a3c7327f89811efad3e7b8bd3970968ad3caa71d8b02b8126171f923f",
+      "frozen_policy": {
+        "calibration_geometry_sha256": "de4cb98f1b109e0ddc24f2f574261cb666180701084691fd0afdced818953efe",
+        "calibration_seed": 107,
+        "high": 0.0,
+        "low": 0.0,
+        "protocol": "W6_M12_VALIDATION_ONLY_P0_NO_NATIVE",
+        "unit_query_cost": 0.2
+      },
+      "heldout_aggregate_model_risk_cost_ms": 2.7816077999887057,
+      "heldout_by_K": {
+        "0": {
+          "acceptance": 0.73125,
+          "geometries_by_K": {
+            "0": 20,
+            "1": 0,
+            "2": 0
+          },
+          "mean_true_decrease": -0.00018726239009914585,
+          "negative_goal_acceptance": 0.5125,
+          "positive_goal_acceptance": 0.95,
+          "selection_calls_per_target": 0.0,
+          "selection_r_only_queries": 0
+        },
+        "1": {
+          "acceptance": 0.9125,
+          "geometries_by_K": {
+            "0": 0,
+            "1": 20,
+            "2": 0
+          },
+          "mean_true_decrease": 0.0014082929516478426,
+          "negative_goal_acceptance": 0.85,
+          "positive_goal_acceptance": 0.975,
+          "selection_calls_per_target": 0.125,
+          "selection_r_only_queries": 20
+        },
+        "2": {
+          "acceptance": 0.94375,
+          "geometries_by_K": {
+            "0": 0,
+            "1": 0,
+            "2": 20
+          },
+          "mean_true_decrease": 0.0016816235173762147,
+          "negative_goal_acceptance": 0.9125,
+          "positive_goal_acceptance": 0.975,
+          "selection_calls_per_target": 0.25,
+          "selection_r_only_queries": 40
+        },
+        "voi_frozen": {
+          "acceptance": 0.94375,
+          "geometries_by_K": {
+            "0": 0,
+            "1": 0,
+            "2": 20
+          },
+          "mean_true_decrease": 0.0016816235173762147,
+          "negative_goal_acceptance": 0.9125,
+          "positive_goal_acceptance": 0.975,
+          "selection_calls_per_target": 0.25,
+          "selection_r_only_queries": 40
+        }
+      },
+      "heldout_data_sha256": "08882a584e00379a451b03991d281065dd1e3648d9e12005c62e943a6c1ce42b",
+      "minibatch_schedule_sha256": "c7a73bc6dc9eb7084803a1521638fc83f9376480274aaa906c28dc9a22ecbb94",
+      "model": "w5_voxel_deeponet",
+      "model_parameters_real": 13939,
+      "seed": 107,
+      "validation_only_policy_utility": 0.903125
+    },
+    {
+      "checkpoint_selection_val_score": 0.03423387371003628,
+      "checkpoint_step": 90,
+      "development_data_sha256": "24ec1ca6d0931e637eaebb5b270413356698dca3976d70c0e4881bdafaa351df",
+      "fit_data_sha256": "14d6d07a069e34e8dc73b246f25b0afbd5867bed3c895456b1a7801e64496dad",
+      "frozen_policy": {
+        "calibration_geometry_sha256": "040a6a40e1c98eeac3c2135d815a95683b67d3cfd8518ee5b791f26459688b60",
+        "calibration_seed": 109,
+        "high": 0.07244338654608341,
+        "low": 0.03793827894269094,
+        "protocol": "W6_M12_VALIDATION_ONLY_P0_NO_NATIVE",
+        "unit_query_cost": 0.2
+      },
+      "heldout_aggregate_model_risk_cost_ms": 2.3556567000014184,
+      "heldout_by_K": {
+        "0": {
+          "acceptance": 0.89375,
+          "geometries_by_K": {
+            "0": 20,
+            "1": 0,
+            "2": 0
+          },
+          "mean_true_decrease": 0.0021636102819517287,
+          "negative_goal_acceptance": 0.9875,
+          "positive_goal_acceptance": 0.8,
+          "selection_calls_per_target": 0.0,
+          "selection_r_only_queries": 0
+        },
+        "1": {
+          "acceptance": 0.95,
+          "geometries_by_K": {
+            "0": 0,
+            "1": 20,
+            "2": 0
+          },
+          "mean_true_decrease": 0.0025037736498965506,
+          "negative_goal_acceptance": 0.975,
+          "positive_goal_acceptance": 0.925,
+          "selection_calls_per_target": 0.125,
+          "selection_r_only_queries": 20
+        },
+        "2": {
+          "acceptance": 0.99375,
+          "geometries_by_K": {
+            "0": 0,
+            "1": 0,
+            "2": 20
+          },
+          "mean_true_decrease": 0.0027528169574733545,
+          "negative_goal_acceptance": 0.9875,
+          "positive_goal_acceptance": 1,
+          "selection_calls_per_target": 0.25,
+          "selection_r_only_queries": 40
+        },
+        "voi_frozen": {
+          "acceptance": 0.98125,
+          "geometries_by_K": {
+            "0": 5,
+            "1": 7,
+            "2": 8
+          },
+          "mean_true_decrease": 0.0026528493741703667,
+          "negative_goal_acceptance": 0.9875,
+          "positive_goal_acceptance": 0.975,
+          "selection_calls_per_target": 0.14375,
+          "selection_r_only_queries": 23
+        }
+      },
+      "heldout_data_sha256": "73c012095c98a41a3dae42d70dd4ff9a1e50df7fa2ffd8acd0c70e44727ba22a",
+      "minibatch_schedule_sha256": "4c46637983830a5d0229ac776afa7710f9b63120b4d1327eae4f673ad66600c2",
+      "model": "w6_m7_base",
+      "model_parameters_real": 13448,
+      "seed": 109,
+      "validation_only_policy_utility": 0.984375
+    },
+    {
+      "checkpoint_selection_val_score": 0.04789843084290624,
+      "checkpoint_step": 80,
+      "development_data_sha256": "24ec1ca6d0931e637eaebb5b270413356698dca3976d70c0e4881bdafaa351df",
+      "fit_data_sha256": "14d6d07a069e34e8dc73b246f25b0afbd5867bed3c895456b1a7801e64496dad",
+      "frozen_policy": {
+        "calibration_geometry_sha256": "040a6a40e1c98eeac3c2135d815a95683b67d3cfd8518ee5b791f26459688b60",
+        "calibration_seed": 109,
+        "high": 0.10392012975250932,
+        "low": 0.03448409249167782,
+        "protocol": "W6_M12_VALIDATION_ONLY_P0_NO_NATIVE",
+        "unit_query_cost": 0.2
+      },
+      "heldout_aggregate_model_risk_cost_ms": 2.753448549992754,
+      "heldout_by_K": {
+        "0": {
+          "acceptance": 0.775,
+          "geometries_by_K": {
+            "0": 20,
+            "1": 0,
+            "2": 0
+          },
+          "mean_true_decrease": 0.0015610642684097608,
+          "negative_goal_acceptance": 0.8875,
+          "positive_goal_acceptance": 0.6625,
+          "selection_calls_per_target": 0.0,
+          "selection_r_only_queries": 0
+        },
+        "1": {
+          "acceptance": 0.9375,
+          "geometries_by_K": {
+            "0": 0,
+            "1": 20,
+            "2": 0
+          },
+          "mean_true_decrease": 0.002417957797889995,
+          "negative_goal_acceptance": 0.9625,
+          "positive_goal_acceptance": 0.9125,
+          "selection_calls_per_target": 0.125,
+          "selection_r_only_queries": 20
+        },
+        "2": {
+          "acceptance": 0.95625,
+          "geometries_by_K": {
+            "0": 0,
+            "1": 0,
+            "2": 20
+          },
+          "mean_true_decrease": 0.002597348224860083,
+          "negative_goal_acceptance": 0.9875,
+          "positive_goal_acceptance": 0.925,
+          "selection_calls_per_target": 0.25,
+          "selection_r_only_queries": 40
+        },
+        "voi_frozen": {
+          "acceptance": 0.94375,
+          "geometries_by_K": {
+            "0": 4,
+            "1": 6,
+            "2": 10
+          },
+          "mean_true_decrease": 0.0024848942828052333,
+          "negative_goal_acceptance": 0.9625,
+          "positive_goal_acceptance": 0.925,
+          "selection_calls_per_target": 0.1625,
+          "selection_r_only_queries": 26
+        }
+      },
+      "heldout_data_sha256": "73c012095c98a41a3dae42d70dd4ff9a1e50df7fa2ffd8acd0c70e44727ba22a",
+      "minibatch_schedule_sha256": "4c46637983830a5d0229ac776afa7710f9b63120b4d1327eae4f673ad66600c2",
+      "model": "w5_voxel_deeponet",
+      "model_parameters_real": 13939,
+      "seed": 109,
+      "validation_only_policy_utility": 0.959375
+    },
+    {
+      "checkpoint_selection_val_score": 0.022683490999042988,
+      "checkpoint_step": 70,
+      "development_data_sha256": "7d31ceb82d0938ee5c55aa88d5a54aa7ea6214d2a2958846c6429292f920d3f4",
+      "fit_data_sha256": "6d764fad3f4cf755f1df338c2e436be0b7f172065d4c7d6e42920352e1ee70ff",
+      "frozen_policy": {
+        "calibration_geometry_sha256": "df371752c17e8211ab52a4d76811774fdfc4502c458919a5a48ace079244435b",
+        "calibration_seed": 113,
+        "high": 0.05267724899763331,
+        "low": 0.044515332131993865,
+        "protocol": "W6_M12_VALIDATION_ONLY_P0_NO_NATIVE",
+        "unit_query_cost": 0.2
+      },
+      "heldout_aggregate_model_risk_cost_ms": 2.2352602999944793,
+      "heldout_by_K": {
+        "0": {
+          "acceptance": 0.875,
+          "geometries_by_K": {
+            "0": 20,
+            "1": 0,
+            "2": 0
+          },
+          "mean_true_decrease": 0.0014771974200857199,
+          "negative_goal_acceptance": 1,
+          "positive_goal_acceptance": 0.75,
+          "selection_calls_per_target": 0.0,
+          "selection_r_only_queries": 0
+        },
+        "1": {
+          "acceptance": 0.9375,
+          "geometries_by_K": {
+            "0": 0,
+            "1": 20,
+            "2": 0
+          },
+          "mean_true_decrease": 0.0017613462400871357,
+          "negative_goal_acceptance": 0.9625,
+          "positive_goal_acceptance": 0.9125,
+          "selection_calls_per_target": 0.125,
+          "selection_r_only_queries": 20
+        },
+        "2": {
+          "acceptance": 1.0,
+          "geometries_by_K": {
+            "0": 0,
+            "1": 0,
+            "2": 20
+          },
+          "mean_true_decrease": 0.00207550613912482,
+          "negative_goal_acceptance": 1,
+          "positive_goal_acceptance": 1,
+          "selection_calls_per_target": 0.25,
+          "selection_r_only_queries": 40
+        },
+        "voi_frozen": {
+          "acceptance": 1.0,
+          "geometries_by_K": {
+            "0": 5,
+            "1": 0,
+            "2": 15
+          },
+          "mean_true_decrease": 0.0020284050512285323,
+          "negative_goal_acceptance": 1,
+          "positive_goal_acceptance": 1,
+          "selection_calls_per_target": 0.1875,
+          "selection_r_only_queries": 30
+        }
+      },
+      "heldout_data_sha256": "5d2eeb3f7ef17f664fa3786a3c053717445e55271430624c1f7640576b8f3b0c",
+      "minibatch_schedule_sha256": "b8c93ed2a5396b1d794b795f3111348c4bb57b609d5eceeed9d47cf85b211749",
+      "model": "w6_m7_base",
+      "model_parameters_real": 13448,
+      "seed": 113,
+      "validation_only_policy_utility": 0.959375
+    },
+    {
+      "checkpoint_selection_val_score": 0.031767376232892275,
+      "checkpoint_step": 100,
+      "development_data_sha256": "7d31ceb82d0938ee5c55aa88d5a54aa7ea6214d2a2958846c6429292f920d3f4",
+      "fit_data_sha256": "6d764fad3f4cf755f1df338c2e436be0b7f172065d4c7d6e42920352e1ee70ff",
+      "frozen_policy": {
+        "calibration_geometry_sha256": "df371752c17e8211ab52a4d76811774fdfc4502c458919a5a48ace079244435b",
+        "calibration_seed": 113,
+        "high": 0.05857589211289172,
+        "low": 0.0357515752193489,
+        "protocol": "W6_M12_VALIDATION_ONLY_P0_NO_NATIVE",
+        "unit_query_cost": 0.2
+      },
+      "heldout_aggregate_model_risk_cost_ms": 2.72098824996192,
+      "heldout_by_K": {
+        "0": {
+          "acceptance": 0.825,
+          "geometries_by_K": {
+            "0": 20,
+            "1": 0,
+            "2": 0
+          },
+          "mean_true_decrease": 0.0012743470407915486,
+          "negative_goal_acceptance": 0.925,
+          "positive_goal_acceptance": 0.725,
+          "selection_calls_per_target": 0.0,
+          "selection_r_only_queries": 0
+        },
+        "1": {
+          "acceptance": 0.9375,
+          "geometries_by_K": {
+            "0": 0,
+            "1": 20,
+            "2": 0
+          },
+          "mean_true_decrease": 0.0018028515184021657,
+          "negative_goal_acceptance": 1,
+          "positive_goal_acceptance": 0.875,
+          "selection_calls_per_target": 0.125,
+          "selection_r_only_queries": 20
+        },
+        "2": {
+          "acceptance": 0.95625,
+          "geometries_by_K": {
+            "0": 0,
+            "1": 0,
+            "2": 20
+          },
+          "mean_true_decrease": 0.0019446316685495723,
+          "negative_goal_acceptance": 1,
+          "positive_goal_acceptance": 0.9125,
+          "selection_calls_per_target": 0.25,
+          "selection_r_only_queries": 40
+        },
+        "voi_frozen": {
+          "acceptance": 0.94375,
+          "geometries_by_K": {
+            "0": 3,
+            "1": 6,
+            "2": 11
+          },
+          "mean_true_decrease": 0.0018729034969186226,
+          "negative_goal_acceptance": 1,
+          "positive_goal_acceptance": 0.8875,
+          "selection_calls_per_target": 0.175,
+          "selection_r_only_queries": 28
+        }
+      },
+      "heldout_data_sha256": "5d2eeb3f7ef17f664fa3786a3c053717445e55271430624c1f7640576b8f3b0c",
+      "minibatch_schedule_sha256": "b8c93ed2a5396b1d794b795f3111348c4bb57b609d5eceeed9d47cf85b211749",
+      "model": "w5_voxel_deeponet",
+      "model_parameters_real": 13939,
+      "seed": 113,
+      "validation_only_policy_utility": 0.94375
+    }
+  ],
+  "schema": "W6_M12_PER_SEED_RECEIPTS_V1",
+  "source_analytic_only": true,
+  "training_teacher_W2_admitted": 0
+}

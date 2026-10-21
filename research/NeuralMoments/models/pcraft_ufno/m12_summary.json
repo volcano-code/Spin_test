@@ -1,0 +1,378 @@
+{
+  "GPU_runs": 0,
+  "W2_training_admitted": 0,
+  "base_W6_commit": "028dc5951744a1a8d8348750874fe33f2d57a6ff",
+  "distinct_model_geometry_test_pairs": 120,
+  "fairness": "Same center-cell geometry, W0-native c/r/J, 100-step Adam, validation-only checkpoint, new seeds 107/109/113",
+  "model_results": {
+    "w5_voxel_deeponet": {
+      "exploratory_1500_seed_geometry_bootstrap_voi_minus_fixed2": {
+        "NOT_confirmatory": "Only 3 independent seeds, seed/geometry cluster bootstrap with frozen test outcomes",
+        "abstract_utility_percentile95": [
+          -0.009999999999999983,
+          0.013333333333333348
+        ],
+        "acceptance_percentile95": [
+          -0.025,
+          0.0
+        ]
+      },
+      "extra_risk_cpu_ms_per_geometry_mean": 2.752014866647793,
+      "fixed_and_voi_aggregates": {
+        "0": {
+          "individual_seed_K_mix": [
+            {
+              "0": 20,
+              "1": 0,
+              "2": 0
+            },
+            {
+              "0": 20,
+              "1": 0,
+              "2": 0
+            },
+            {
+              "0": 20,
+              "1": 0,
+              "2": 0
+            }
+          ],
+          "individual_seed_acceptance": [
+            0.73125,
+            0.775,
+            0.825
+          ],
+          "mean_acceptance": 0.7770833333333333,
+          "mean_calibration_utility_accept_minus_price": 0.7770833333333333,
+          "mean_negative_goal_acceptance": 0.775,
+          "mean_online_r_oracle_per_target": 0.0,
+          "mean_positive_goal_acceptance": 0.7791666666666667,
+          "mean_true_decrease": 0.0008827163063673878
+        },
+        "1": {
+          "individual_seed_K_mix": [
+            {
+              "0": 0,
+              "1": 20,
+              "2": 0
+            },
+            {
+              "0": 0,
+              "1": 20,
+              "2": 0
+            },
+            {
+              "0": 0,
+              "1": 20,
+              "2": 0
+            }
+          ],
+          "individual_seed_acceptance": [
+            0.9125,
+            0.9375,
+            0.9375
+          ],
+          "mean_acceptance": 0.9291666666666667,
+          "mean_calibration_utility_accept_minus_price": 0.9041666666666667,
+          "mean_negative_goal_acceptance": 0.9375,
+          "mean_online_r_oracle_per_target": 0.125,
+          "mean_positive_goal_acceptance": 0.9208333333333333,
+          "mean_true_decrease": 0.0018763674226466678
+        },
+        "2": {
+          "individual_seed_K_mix": [
+            {
+              "0": 0,
+              "1": 0,
+              "2": 20
+            },
+            {
+              "0": 0,
+              "1": 0,
+              "2": 20
+            },
+            {
+              "0": 0,
+              "1": 0,
+              "2": 20
+            }
+          ],
+          "individual_seed_acceptance": [
+            0.94375,
+            0.95625,
+            0.95625
+          ],
+          "mean_acceptance": 0.9520833333333334,
+          "mean_calibration_utility_accept_minus_price": 0.9020833333333333,
+          "mean_negative_goal_acceptance": 0.9666666666666667,
+          "mean_online_r_oracle_per_target": 0.25,
+          "mean_positive_goal_acceptance": 0.9375,
+          "mean_true_decrease": 0.002074534470261957
+        },
+        "voi_frozen": {
+          "individual_seed_K_mix": [
+            {
+              "0": 0,
+              "1": 0,
+              "2": 20
+            },
+            {
+              "0": 4,
+              "1": 6,
+              "2": 10
+            },
+            {
+              "0": 3,
+              "1": 6,
+              "2": 11
+            }
+          ],
+          "individual_seed_acceptance": [
+            0.94375,
+            0.94375,
+            0.94375
+          ],
+          "mean_acceptance": 0.94375,
+          "mean_calibration_utility_accept_minus_price": 0.9045833333333333,
+          "mean_negative_goal_acceptance": 0.9583333333333334,
+          "mean_online_r_oracle_per_target": 0.19583333333333333,
+          "mean_positive_goal_acceptance": 0.9291666666666667,
+          "mean_true_decrease": 0.0020131404323666903
+        }
+      },
+      "parameters_real": 13939,
+      "risk_additional_surrogate_r_and_J_evaluations_per_geometry": 8,
+      "risk_proxy_mass_evaluations_per_geometry": 9
+    },
+    "w6_m7_base": {
+      "atom_policy": {
+        "0": {
+          "acceptance_by_seed": [
+            0.84375,
+            0.89375,
+            0.875
+          ],
+          "fraction_fallback": 0.0,
+          "mean_acceptance": 0.8708333333333333,
+          "mean_online_r_oracle_per_target": 0.0,
+          "mean_true_decrease": 0.0016871288848910992
+        },
+        "1": {
+          "acceptance_by_seed": [
+            0.8625,
+            0.89375,
+            0.8875
+          ],
+          "fraction_fallback": 0.0,
+          "mean_acceptance": 0.88125,
+          "mean_online_r_oracle_per_target": 0.125,
+          "mean_true_decrease": 0.0017235051421154476
+        },
+        "2": {
+          "acceptance_by_seed": [
+            0.8625,
+            0.8875,
+            0.875
+          ],
+          "fraction_fallback": 0.0,
+          "mean_acceptance": 0.875,
+          "mean_online_r_oracle_per_target": 0.25,
+          "mean_true_decrease": 0.0017082084397755538
+        },
+        "voi_frozen": {
+          "acceptance_by_seed": [
+            0.8625,
+            0.8875,
+            0.875
+          ],
+          "fraction_fallback": 0.0,
+          "mean_acceptance": 0.875,
+          "mean_online_r_oracle_per_target": 0.15208333333333332,
+          "mean_true_decrease": 0.0017008551068565519
+        }
+      },
+      "exploratory_1500_seed_geometry_bootstrap_voi_minus_fixed2": {
+        "NOT_confirmatory": "Only 3 independent seeds, seed/geometry cluster bootstrap with frozen test outcomes",
+        "abstract_utility_percentile95": [
+          -0.02480208333333331,
+          0.015833333333333355
+        ],
+        "acceptance_percentile95": [
+          -0.04791666666666667,
+          0.0
+        ]
+      },
+      "extra_risk_cpu_ms_per_geometry_mean": 2.23367778330991,
+      "fixed_and_voi_aggregates": {
+        "0": {
+          "individual_seed_K_mix": [
+            {
+              "0": 20,
+              "1": 0,
+              "2": 0
+            },
+            {
+              "0": 20,
+              "1": 0,
+              "2": 0
+            },
+            {
+              "0": 20,
+              "1": 0,
+              "2": 0
+            }
+          ],
+          "individual_seed_acceptance": [
+            0.84375,
+            0.89375,
+            0.875
+          ],
+          "mean_acceptance": 0.8708333333333333,
+          "mean_calibration_utility_accept_minus_price": 0.8708333333333333,
+          "mean_negative_goal_acceptance": 0.9958333333333333,
+          "mean_online_r_oracle_per_target": 0.0,
+          "mean_positive_goal_acceptance": 0.7458333333333333,
+          "mean_true_decrease": 0.0016871288848910992
+        },
+        "1": {
+          "individual_seed_K_mix": [
+            {
+              "0": 0,
+              "1": 20,
+              "2": 0
+            },
+            {
+              "0": 0,
+              "1": 20,
+              "2": 0
+            },
+            {
+              "0": 0,
+              "1": 20,
+              "2": 0
+            }
+          ],
+          "individual_seed_acceptance": [
+            0.95625,
+            0.95,
+            0.9375
+          ],
+          "mean_acceptance": 0.9479166666666666,
+          "mean_calibration_utility_accept_minus_price": 0.9229166666666666,
+          "mean_negative_goal_acceptance": 0.975,
+          "mean_online_r_oracle_per_target": 0.125,
+          "mean_positive_goal_acceptance": 0.9208333333333334,
+          "mean_true_decrease": 0.002032102194804528
+        },
+        "2": {
+          "individual_seed_K_mix": [
+            {
+              "0": 0,
+              "1": 0,
+              "2": 20
+            },
+            {
+              "0": 0,
+              "1": 0,
+              "2": 20
+            },
+            {
+              "0": 0,
+              "1": 0,
+              "2": 20
+            }
+          ],
+          "individual_seed_acceptance": [
+            1.0,
+            0.99375,
+            1.0
+          ],
+          "mean_acceptance": 0.9979166666666667,
+          "mean_calibration_utility_accept_minus_price": 0.9479166666666666,
+          "mean_negative_goal_acceptance": 0.9958333333333333,
+          "mean_online_r_oracle_per_target": 0.25,
+          "mean_positive_goal_acceptance": 1,
+          "mean_true_decrease": 0.0022946062049125464
+        },
+        "voi_frozen": {
+          "individual_seed_K_mix": [
+            {
+              "0": 0,
+              "1": 20,
+              "2": 0
+            },
+            {
+              "0": 5,
+              "1": 7,
+              "2": 8
+            },
+            {
+              "0": 5,
+              "1": 0,
+              "2": 15
+            }
+          ],
+          "individual_seed_acceptance": [
+            0.95625,
+            0.98125,
+            1.0
+          ],
+          "mean_acceptance": 0.9791666666666666,
+          "mean_calibration_utility_accept_minus_price": 0.94875,
+          "mean_negative_goal_acceptance": 0.9916666666666667,
+          "mean_online_r_oracle_per_target": 0.15208333333333332,
+          "mean_positive_goal_acceptance": 0.9666666666666667,
+          "mean_true_decrease": 0.0021708137066095987
+        }
+      },
+      "parameters_real": 13448,
+      "risk_additional_surrogate_r_and_J_evaluations_per_geometry": 8,
+      "risk_proxy_mass_evaluations_per_geometry": 9
+    }
+  },
+  "n_models": 2,
+  "native_calls": 0,
+  "observed_W0_head": "51cbfd33d08063404d7e0c40e4256dd0e38efa1a",
+  "observed_W2_head": "1093a115cde928122de6aee98233fec8b18e5774",
+  "observed_W5_head": "219cc548fd5f37a1f88b666242cdea92d8e408cd",
+  "offline_scored_target_decisions_total": 960,
+  "oracle_selection_price_is_abstract": 0.2,
+  "policy_development_per_seed": {
+    "box": 4,
+    "cases": 64,
+    "geometries": 8,
+    "oracle_sweep_0_1_2": "calibration_offline_only",
+    "sphere": 4
+  },
+  "policy_selection_features": "D, cached model predictions/J, external target moments, cheap piecewise constant proxy mass",
+  "schema": "W6_M12_VOI_SUMMARY_V1",
+  "scientific_limits": [
+    "Selection utility uses a subjective 0.2 abstract price per r-only oracle amortized over targets, NOT a Cherchi timing ratio",
+    "Risk computation adds 8 surrogate r/J evaluations and 9 voxel-proxy mass calculations per heldout geometry",
+    "Policy-validation is eight boxes/spheres per seed; threshold generalization on heldout ellipsoids limited to 3 seeds",
+    "Goal r* is externally supplied in deployed task, here synthesized by a distinct analytic reference with its own cost",
+    "Offline benchmark actually runs every K policy (plus constrained adapter) separately; simulated online K budget is never their total executed calls",
+    "M11 anchor correction cannot be interpreted as physically realizable material, only decision input; guard falls back",
+    "M8 bounded atom fitting preserves sampled nonnegative material moments but may harm candidate acceptance",
+    "No W2 admissible J, actual native/Cherchi evaluation, 10D Newton, CAD mesh topology or GPU benchmark"
+  ],
+  "seeds": [
+    107,
+    109,
+    113
+  ],
+  "status": "LOCAL_ANALYTIC_P0_COMPLETED_W2_NATIVE_DENIED",
+  "test_per_seed": {
+    "ellipsoid_geometries": 20,
+    "mixed_goal_targets_per_geometry": 8,
+    "negative_targets": 4,
+    "positive_targets": 4
+  },
+  "train_per_seed": {
+    "box": 20,
+    "checkpoint_holdout_geometries": 8,
+    "labels": 80,
+    "sphere": 20
+  },
+  "trust_source": "W0 analytic vertical smooth cut only; original CAD/native Cherchi unverified"
+}

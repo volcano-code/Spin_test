@@ -1,0 +1,19 @@
+{
+  "independent_heldout_geometry_model_evaluations": 120,
+  "native_W2_admitted_training_labels": 0,
+  "native_W2_calls": 0,
+  "offline_target_model_evaluations": 960,
+  "online_teacher_cost_simulated_from_separate_policy_paths": true,
+  "per_model_seed_runs": {
+    "w5_voxel_deeponet": 3,
+    "w6_m7_base": 3
+  },
+  "same_full_report_per_case_recomputed": true,
+  "schema": "W6_M12_AUDITED_P0_OFFLINE_REPLAY_V1",
+  "seeds": [
+    107,
+    109,
+    113
+  ],
+  "status": "PASS_NOT_NATIVE"
+}
