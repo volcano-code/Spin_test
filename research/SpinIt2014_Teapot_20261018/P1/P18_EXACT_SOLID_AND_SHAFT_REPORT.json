@@ -1,0 +1,1640 @@
+{
+  "P17_provenance_and_physical_replay": {
+    "Faster_optimization_executed": false,
+    "MuJoCo_real_optimized_before_after_executed": false,
+    "W0_physical_tip_or_FD_approved": false,
+    "W2_teacher_training_allowed": false,
+    "all_six_material_sources_replayed_by_verify": false,
+    "all_six_report_digest_authenticated": true,
+    "exact_Cherchi_implicit_geometry_certified": false,
+    "full_exact_embedded_solid_partition_certified": false,
+    "original_author_CAD_certified": false,
+    "original_native_vs_microweld_set_equality_certified": false,
+    "printable_wall_thickness_certified": false,
+    "recomputed_geometry_and_physics": true,
+    "selected_candidate": "rotate_1p5",
+    "selected_material_replayed_here": true,
+    "source_files_verified": 19,
+    "status": "P17_PACKET_VERIFIED_NOT_W0_ADMITTED"
+  },
+  "audit_elapsed_seconds": 26.423806775999765,
+  "cavity_ball_and_clearance_certificate": {
+    "cavity_to_outer_clearance_lower_bound_m": {
+      "decimal_projection": 0.008077094850000001,
+      "denominator": "72057594037927936000000000",
+      "numerator": "582016021707138468845109"
+    },
+    "cavity_to_outer_clearance_lower_bound_reference": {
+      "decimal_projection": 0.323083794,
+      "denominator": "500000000",
+      "numerator": "161541897"
+    },
+    "center_exact": [
+      "0",
+      "0",
+      "6034823500676465/9007199254740992"
+    ],
+    "design_ball_radius_upper_bound": {
+      "decimal_projection": 0.200000002,
+      "denominator": "500000000",
+      "numerator": "100000001"
+    },
+    "design_vertices_tested": 320,
+    "entire_solid_containment_requires_closed_embedded_surfaces_and_center_inside": true,
+    "farthest_design_vertex": 3,
+    "maximum_design_vertex_radius_squared": {
+      "decimal_projection": 0.040000000503120026,
+      "denominator": "649037107316853453566312041152512",
+      "numerator": "25961484619217704698865662596925"
+    },
+    "method": "EXACT_POINT_TRIANGLE_DISTANCE_AND_CONVEX_ENCLOSING_BALL",
+    "minimum_center_to_outer_distance_squared": {
+      "decimal_projection": 0.27361665828458903,
+      "denominator": "2664642642671013623297606055319575904981286610801864852621657949339648",
+      "numerator": "729090615410259040270263054977715894860267294437186196486738240595769"
+    },
+    "nearest_outer_face": 7044,
+    "outer_distance_lower_bound": {
+      "decimal_projection": 0.523083796,
+      "denominator": "250000000",
+      "numerator": "130770949"
+    },
+    "outer_distance_upper_bound": {
+      "decimal_projection": 0.523083797,
+      "denominator": "1000000000",
+      "numerator": "523083797"
+    },
+    "outer_faces_tested": 7558,
+    "positive_gap_proved": true,
+    "sqrt_grid_denominator": 1000000000,
+    "whole_object_wall_thickness_or_printability_certified": false
+  },
+  "center_point_classifications": {
+    "D": {
+      "classification": "OUTSIDE",
+      "crossings": 2,
+      "direction": [
+        1,
+        2,
+        5
+      ],
+      "method": "EXACT_INTEGER_RAY",
+      "point_exact": [
+        "0",
+        "0",
+        "6034823500676465/9007199254740992"
+      ],
+      "rejected_degenerate_rays": 1,
+      "surface_validity_must_be_certified_separately": true
+    },
+    "F": {
+      "classification": "INSIDE",
+      "crossings": 3,
+      "direction": [
+        1,
+        2,
+        5
+      ],
+      "method": "EXACT_INTEGER_RAY",
+      "point_exact": [
+        "0",
+        "0",
+        "6034823500676465/9007199254740992"
+      ],
+      "rejected_degenerate_rays": 1,
+      "surface_validity_must_be_certified_separately": true
+    },
+    "M": {
+      "classification": "INSIDE",
+      "crossings": 1,
+      "direction": [
+        1,
+        2,
+        5
+      ],
+      "method": "EXACT_INTEGER_RAY",
+      "point_exact": [
+        "0",
+        "0",
+        "6034823500676465/9007199254740992"
+      ],
+      "rejected_degenerate_rays": 1,
+      "surface_validity_must_be_certified_separately": true
+    }
+  },
+  "conservative_axis_core_excluded_from_design_domain": true,
+  "conservative_axis_core_radius_m": {
+    "decimal_projection": 0.0014927770900000001,
+    "denominator": "360287970189639680000000000",
+    "numerator": "537829627701697099514473"
+  },
+  "conservative_core_anchor_classification": {
+    "classification": "OUTSIDE",
+    "crossings": 0,
+    "direction": [
+      1,
+      1,
+      2
+    ],
+    "method": "EXACT_INTEGER_RAY",
+    "point_exact": [
+      "0",
+      "0",
+      "10979120459542667/36028797018963968"
+    ],
+    "rejected_degenerate_rays": 0,
+    "surface_validity_must_be_certified_separately": true
+  },
+  "dependency_snapshot": {
+    "W0": {
+      "files_git_blob": {
+        "research/NeuralMoments/contracts/M6_NATIVE_HANDOFF.md": "d650228bbd69c8927f64e815fe9dc935463c55d9",
+        "research/NeuralMoments/contracts/README.md": "7c7c767c3c6c8efa48852587e3f1e115de4d839a",
+        "research/NeuralMoments/contracts/schema_v1.json": "52c2cfa54567d7dc2164c4b9eb56e8385c0ee1dc",
+        "research/ParallelLaunch/MASTER_BOARD.md": "2feff744f64807da424a0d93302e3c92294f266f"
+      },
+      "head": "51cbfd33d08063404d7e0c40e4256dd0e38efa1a",
+      "material_specific_P17_admission_found_in_reviewed_records": false,
+      "saved_surface_proof_does_not_replace_native_M6_region_predicates": true
+    },
+    "W2": {
+      "J_D_released": false,
+      "Teapot_native_teacher_receipt_found": false,
+      "files_git_blob": {
+        "research/NeuralMoments/teacher/M19_EVIDENCE.md": "3e36f940202c862bbbaacf5bc07911297f95b068",
+        "research/NeuralMoments/teacher/teacher_manifest.json": "d58a26fd5eb053fd487b7db514938bec82db1586"
+      },
+      "head": "fef549dd57ea7b8bc72ab4ca4e5b307e4063762b",
+      "latest_result_subject": "Noodles 94 unmerged source components, 940 exact moments",
+      "training_samples": 0
+    },
+    "observation_scope": "Published W0/W2 records at the pinned commits; no claim about unpublished channels",
+    "observed_client_date": "2026-10-21",
+    "reference_to_SI_scale_is_not_automatically_W0_optimizer_normalization": true
+  },
+  "design_boundary_point_in_outer": {
+    "classification": "INSIDE",
+    "crossings": 1,
+    "direction": [
+      1,
+      1,
+      2
+    ],
+    "method": "EXACT_INTEGER_RAY",
+    "point_exact": [
+      "-7573987617531819/72057594037927936",
+      "-3173309531498899/1152921504606846976",
+      "7567219751037431/9007199254740992"
+    ],
+    "rejected_degenerate_rays": 0,
+    "surface_validity_must_be_certified_separately": true
+  },
+  "design_strictly_inside_saved_outer": true,
+  "exact_saved_surface_boundaries_embedded": true,
+  "exact_shaft_surface_audit": {
+    "all_triangles_exactly_nondegenerate": true,
+    "common_integer_coordinate_scale_power_of_two": 114,
+    "component_signed_volumes_exact": [
+      "47653627069003535135966401252292528171165599762857717605141758893443/2588154880046461420288033448353884544669165864563894958185946583924736"
+    ],
+    "coverage": {
+      "aabb_candidate_pairs": 4283,
+      "adjacent_candidates_excluded": 0,
+      "all_candidate_pairs_checked": true,
+      "candidate_pair_index_stream_sha256": "0e90d4bcb8e54692ab4cb71a4249e438d6e39bc8671e3e85da1bc31622eca618",
+      "candidate_pairs_by_shared_original_vertex_count": {
+        "0": 539,
+        "1": 2976,
+        "2": 768,
+        "3": 0
+      },
+      "exact_noncoplanar_shared_edge_theorem_checks": 704,
+      "exact_triangle_intersection_checks": 3579,
+      "strictly_disjoint_aabb_pairs": 126533,
+      "total_unordered_face_pairs": 130816
+    },
+    "elapsed_seconds": 0.42022003500005667,
+    "exact_embedded_closed_oriented_2manifold": true,
+    "exact_predicate_arithmetic": "Python integers plus Fraction for rational intersections; no tolerance",
+    "forbidden_intersection_kinds": {},
+    "forbidden_intersection_pair_count": 0,
+    "forbidden_intersection_witnesses": [],
+    "frozen_sha256_checked": true,
+    "geometry_modified": false,
+    "input": {
+      "faces": 512,
+      "sha256": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
+      "vertices": 258
+    },
+    "saved_surface_only_not_native_implicit_certificate": true,
+    "scientific_flags": {
+      "Faster_optimization_executed": false,
+      "MuJoCo_real_optimized_before_after_executed": false,
+      "W0_physical_tip_or_FD_approved": false,
+      "W2_teacher_training_allowed": false,
+      "native_Cherchi_implicit_geometry_certified": false,
+      "native_provenance_authenticated_by_chain_audit": false,
+      "ordinary_solid_region_equality_certified": false,
+      "original_native_vs_microweld_set_equality_certified": false,
+      "printability_certified": false
+    },
+    "status": "EXACT_SAVED_BINARY64_EMBEDDED_CLOSED_ORIENTED_2MANIFOLD_PASS",
+    "topology": {
+      "component_face_counts": [
+        512
+      ],
+      "duplicate_coordinate_index_groups": 0,
+      "duplicate_coordinate_index_witnesses": [],
+      "duplicate_face_groups": 0,
+      "edge_incidence_error_count": 0,
+      "edge_orientation_error_count": 0,
+      "euler_characteristic": 2,
+      "indexed_closed_consistently_oriented_2manifold": true,
+      "indexed_edges": 768,
+      "surface_components": 1,
+      "unused_vertex_count": 0,
+      "vertex_link_non_circle_count": 0,
+      "vertex_link_witnesses": []
+    }
+  },
+  "exact_signed_volumes": {
+    "D": {
+      "decimal_projection": 0.0280351568190005,
+      "denominator": "20219960000362979846000261315264723005227858316905429360827707686912",
+      "numerator": "566869749484093551439629800808876627691769184797484744835322148119"
+    },
+    "F": {
+      "decimal_projection": 1.6305053596203194,
+      "denominator": "2588154880046461420288033448353884544669165864563894958185946583924736",
+      "numerator": "4220000403443240468879618754482123433123363774413577151009350870193411"
+    },
+    "M": {
+      "decimal_projection": 1.65854051643932,
+      "denominator": "2588154880046461420288033448353884544669165864563894958185946583924736",
+      "numerator": "4292559731377204443463891368985659641467910230067655198348272105152643"
+    }
+  },
+  "exact_surface_audits": {
+    "D": {
+      "all_triangles_exactly_nondegenerate": true,
+      "common_integer_coordinate_scale_power_of_two": 110,
+      "component_signed_volumes_exact": [
+        "566869749484093551439629800808876627691769184797484744835322148119/20219960000362979846000261315264723005227858316905429360827707686912"
+      ],
+      "coverage": {
+        "aabb_candidate_pairs": 5384,
+        "adjacent_candidates_excluded": 0,
+        "all_candidate_pairs_checked": true,
+        "candidate_pair_index_stream_sha256": "7fcd32373f10733631363ccfa9503e7e4a478706d9235d8945e59c3e1f33b3d1",
+        "candidate_pairs_by_shared_original_vertex_count": {
+          "0": 694,
+          "1": 3730,
+          "2": 960,
+          "3": 0
+        },
+        "exact_noncoplanar_shared_edge_theorem_checks": 960,
+        "exact_triangle_intersection_checks": 4424,
+        "strictly_disjoint_aabb_pairs": 199096,
+        "total_unordered_face_pairs": 204480
+      },
+      "elapsed_seconds": 0.2827297580006416,
+      "exact_embedded_closed_oriented_2manifold": true,
+      "exact_predicate_arithmetic": "Python integers plus Fraction for rational intersections; no tolerance",
+      "forbidden_intersection_kinds": {},
+      "forbidden_intersection_pair_count": 0,
+      "forbidden_intersection_witnesses": [],
+      "frozen_sha256_checked": true,
+      "geometry_modified": false,
+      "input": {
+        "faces": 640,
+        "sha256": "1d4a0673e9297d95adfb5722158ba1d859a83099046d01116a2b363cb3cb386b",
+        "vertices": 320
+      },
+      "saved_surface_only_not_native_implicit_certificate": true,
+      "scientific_flags": {
+        "Faster_optimization_executed": false,
+        "MuJoCo_real_optimized_before_after_executed": false,
+        "W0_physical_tip_or_FD_approved": false,
+        "W2_teacher_training_allowed": false,
+        "native_Cherchi_implicit_geometry_certified": false,
+        "native_provenance_authenticated_by_chain_audit": false,
+        "ordinary_solid_region_equality_certified": false,
+        "original_native_vs_microweld_set_equality_certified": false,
+        "printability_certified": false
+      },
+      "status": "EXACT_SAVED_BINARY64_EMBEDDED_CLOSED_ORIENTED_2MANIFOLD_PASS",
+      "topology": {
+        "component_face_counts": [
+          640
+        ],
+        "duplicate_coordinate_index_groups": 0,
+        "duplicate_coordinate_index_witnesses": [],
+        "duplicate_face_groups": 0,
+        "edge_incidence_error_count": 0,
+        "edge_orientation_error_count": 0,
+        "euler_characteristic": 0,
+        "indexed_closed_consistently_oriented_2manifold": true,
+        "indexed_edges": 960,
+        "surface_components": 1,
+        "unused_vertex_count": 0,
+        "vertex_link_non_circle_count": 0,
+        "vertex_link_witnesses": []
+      }
+    },
+    "F": {
+      "all_triangles_exactly_nondegenerate": true,
+      "common_integer_coordinate_scale_power_of_two": 114,
+      "component_signed_volumes_exact": [
+        "4292559731377204443463891368985659641467910230067655198348272105152643/2588154880046461420288033448353884544669165864563894958185946583924736",
+        "-566869749484093551439629800808876627691769184797484744835322148119/20219960000362979846000261315264723005227858316905429360827707686912"
+      ],
+      "coverage": {
+        "aabb_candidate_pairs": 61888,
+        "adjacent_candidates_excluded": 0,
+        "all_candidate_pairs_checked": true,
+        "candidate_pair_index_stream_sha256": "50ab5a925e03fc819b65d9366e5f933a4c9e58a347d928170e4bc53d84f16b10",
+        "candidate_pairs_by_shared_original_vertex_count": {
+          "0": 10042,
+          "1": 39549,
+          "2": 12297,
+          "3": 0
+        },
+        "exact_noncoplanar_shared_edge_theorem_checks": 12165,
+        "exact_triangle_intersection_checks": 49723,
+        "strictly_disjoint_aabb_pairs": 33537615,
+        "total_unordered_face_pairs": 33599503
+      },
+      "elapsed_seconds": 9.286250684000152,
+      "exact_embedded_closed_oriented_2manifold": true,
+      "exact_predicate_arithmetic": "Python integers plus Fraction for rational intersections; no tolerance",
+      "forbidden_intersection_kinds": {},
+      "forbidden_intersection_pair_count": 0,
+      "forbidden_intersection_witnesses": [],
+      "frozen_sha256_checked": true,
+      "geometry_modified": false,
+      "input": {
+        "faces": 8198,
+        "sha256": "47c08ee597d5666069416985e0dc8900d204481c590b73596f90daccd2b068d1",
+        "vertices": 4099
+      },
+      "saved_surface_only_not_native_implicit_certificate": true,
+      "scientific_flags": {
+        "Faster_optimization_executed": false,
+        "MuJoCo_real_optimized_before_after_executed": false,
+        "W0_physical_tip_or_FD_approved": false,
+        "W2_teacher_training_allowed": false,
+        "native_Cherchi_implicit_geometry_certified": false,
+        "native_provenance_authenticated_by_chain_audit": false,
+        "ordinary_solid_region_equality_certified": false,
+        "original_native_vs_microweld_set_equality_certified": false,
+        "printability_certified": false
+      },
+      "status": "EXACT_SAVED_BINARY64_EMBEDDED_CLOSED_ORIENTED_2MANIFOLD_PASS",
+      "topology": {
+        "component_face_counts": [
+          7558,
+          640
+        ],
+        "duplicate_coordinate_index_groups": 0,
+        "duplicate_coordinate_index_witnesses": [],
+        "duplicate_face_groups": 0,
+        "edge_incidence_error_count": 0,
+        "edge_orientation_error_count": 0,
+        "euler_characteristic": 0,
+        "indexed_closed_consistently_oriented_2manifold": true,
+        "indexed_edges": 12297,
+        "surface_components": 2,
+        "unused_vertex_count": 0,
+        "vertex_link_non_circle_count": 0,
+        "vertex_link_witnesses": []
+      }
+    },
+    "M": {
+      "all_triangles_exactly_nondegenerate": true,
+      "common_integer_coordinate_scale_power_of_two": 114,
+      "component_signed_volumes_exact": [
+        "4292559731377204443463891368985659641467910230067655198348272105152643/2588154880046461420288033448353884544669165864563894958185946583924736"
+      ],
+      "coverage": {
+        "aabb_candidate_pairs": 56504,
+        "adjacent_candidates_excluded": 0,
+        "all_candidate_pairs_checked": true,
+        "candidate_pair_index_stream_sha256": "4d5e1fa9c0ac1fff03efa187cfe489e128f22de4c9945d53ad654d53723901ec",
+        "candidate_pairs_by_shared_original_vertex_count": {
+          "0": 9348,
+          "1": 35819,
+          "2": 11337,
+          "3": 0
+        },
+        "exact_noncoplanar_shared_edge_theorem_checks": 11205,
+        "exact_triangle_intersection_checks": 45299,
+        "strictly_disjoint_aabb_pairs": 28501399,
+        "total_unordered_face_pairs": 28557903
+      },
+      "elapsed_seconds": 5.100067403000139,
+      "exact_embedded_closed_oriented_2manifold": true,
+      "exact_predicate_arithmetic": "Python integers plus Fraction for rational intersections; no tolerance",
+      "forbidden_intersection_kinds": {},
+      "forbidden_intersection_pair_count": 0,
+      "forbidden_intersection_witnesses": [],
+      "frozen_sha256_checked": true,
+      "geometry_modified": false,
+      "input": {
+        "faces": 7558,
+        "sha256": "4c2e4d480d1041f4817128a8b4b61675d80a699e448e7a5a253311c1805a3aa2",
+        "vertices": 3779
+      },
+      "saved_surface_only_not_native_implicit_certificate": true,
+      "scientific_flags": {
+        "Faster_optimization_executed": false,
+        "MuJoCo_real_optimized_before_after_executed": false,
+        "W0_physical_tip_or_FD_approved": false,
+        "W2_teacher_training_allowed": false,
+        "native_Cherchi_implicit_geometry_certified": false,
+        "native_provenance_authenticated_by_chain_audit": false,
+        "ordinary_solid_region_equality_certified": false,
+        "original_native_vs_microweld_set_equality_certified": false,
+        "printability_certified": false
+      },
+      "status": "EXACT_SAVED_BINARY64_EMBEDDED_CLOSED_ORIENTED_2MANIFOLD_PASS",
+      "topology": {
+        "component_face_counts": [
+          7558
+        ],
+        "duplicate_coordinate_index_groups": 0,
+        "duplicate_coordinate_index_witnesses": [],
+        "duplicate_face_groups": 0,
+        "edge_incidence_error_count": 0,
+        "edge_orientation_error_count": 0,
+        "euler_characteristic": 0,
+        "indexed_closed_consistently_oriented_2manifold": true,
+        "indexed_edges": 11337,
+        "surface_components": 1,
+        "unused_vertex_count": 0,
+        "vertex_link_non_circle_count": 0,
+        "vertex_link_witnesses": []
+      }
+    }
+  },
+  "external_W0_material_specific_receipt": null,
+  "external_W2_Teapot_teacher_receipt": null,
+  "fixed_and_design_have_no_positive_volume_overlap": true,
+  "fixed_and_design_union_equals_saved_outer": true,
+  "fixed_component_correspondence": {
+    "alone_is_not_an_embedded_solid_certificate": true,
+    "component_face_counts": [
+      7558,
+      640
+    ],
+    "exact_outer_and_reversed_cavity_components": true,
+    "fixed_boundary_components": 2,
+    "matches": [
+      {
+        "component": 0,
+        "target": "M_outward",
+        "unique_match": true
+      },
+      {
+        "component": 1,
+        "target": "D_reversed",
+        "unique_match": true
+      }
+    ],
+    "no_hidden_duplicate_cancellation": true
+  },
+  "full_original_shaft_preservation_refuted_by_design_overlap": true,
+  "geometry_modified": false,
+  "material_sha256": {
+    "D": "1d4a0673e9297d95adfb5722158ba1d859a83099046d01116a2b363cb3cb386b",
+    "F": "47c08ee597d5666069416985e0dc8900d204481c590b73596f90daccd2b068d1",
+    "M": "4c2e4d480d1041f4817128a8b4b61675d80a699e448e7a5a253311c1805a3aa2"
+  },
+  "new_native_Boolean_calls": 0,
+  "optimization_admitted": false,
+  "outer_design_cross_surface_audit": {
+    "aabb_candidate_pairs": 0,
+    "all_candidate_pairs_checked": true,
+    "contact_pair_count": 0,
+    "contact_witnesses": [],
+    "cross_index_adjacency_exclusions": 0,
+    "exact_pairs_checked": 0,
+    "exact_surface_disjointness_certified": true,
+    "method": "EXACT_ALL_CROSS_SURFACE_TRIANGLE_PAIRS",
+    "total_cross_face_pairs": 4837120
+  },
+  "p18_proof_source_sha256": {
+    "p18_exact_surface.py": "b26ab7739b6d3f5f01bcf89880767958fa31510dd138de22a595baf9d95c5cc4",
+    "p18_shaft_domain.py": "548387dbf0f3159a4cd280e830406a77e4aa3414868c45a33f3267b0fd6a4357",
+    "p18_solid_domain.py": "ca449b64b89dddf76c744a980bfae486a179e2470436d387dad0c5204634351e"
+  },
+  "positive_volume_design_shaft_overlap_proved": true,
+  "proof_scope": "Regular closed solids represented by the saved binary64 repaired OBJ coordinates only",
+  "saved_repaired_solid_partition_certified": true,
+  "schema": "W4P18ExactSavedSolidAndProtectedDomainV1",
+  "scientific_flags": {
+    "Faster_optimization_executed": false,
+    "MuJoCo_real_optimized_before_after_executed": false,
+    "W0_physical_tip_or_FD_approved": false,
+    "W2_teacher_training_allowed": false,
+    "full_original_shaft_contained_in_fixed_material": false,
+    "native_Cherchi_implicit_region_partition_certified": false,
+    "original_author_CAD_certified": false,
+    "original_native_vs_microweld_set_equality_certified": false,
+    "printability_or_strength_certified": false
+  },
+  "shaft_center_classification": {
+    "classification": "INSIDE",
+    "crossings": 1,
+    "direction": [
+      1,
+      1,
+      2
+    ],
+    "method": "EXACT_INTEGER_RAY",
+    "point_exact": [
+      "0",
+      "0",
+      "6034823500676465/9007199254740992"
+    ],
+    "rejected_degenerate_rays": 0,
+    "surface_validity_must_be_certified_separately": true
+  },
+  "shaft_domain_audit": {
+    "D_embeddedness_certificate_consumed": false,
+    "Faster_optimization_executed": false,
+    "MuJoCo_real_optimized_before_after_executed": false,
+    "W0_physical_tip_or_FD_approved": false,
+    "W2_teacher_training_allowed": false,
+    "arithmetic": "EXACT_FRACTIONS_OF_SAVED_BINARY64_OBJ_COORDINATES",
+    "conservative_axis_core": {
+      "D_surface_radius_squared_lower_bound_exact": "15453710126703644637873183526031026433287311881592833548752769/4334338809852033234554918090141734613037653809548774593609596928",
+      "anchor_is_inside_verified_shaft_prism": true,
+      "anchor_strictly_below_all_D_boundary_vertices": true,
+      "core_does_not_certify_entire_original_shaft": true,
+      "cylinder_z_interval_exact": [
+        "1170935903116329/9007199254740992",
+        "1925288840700887/1125899906842624"
+      ],
+      "outside_anchor_ray_classification_performed": false,
+      "outside_anchor_reference_exact": [
+        "0",
+        "0",
+        "10979120459542667/36028797018963968"
+      ],
+      "positive_radius_available": true,
+      "protected_if_D_is_embedded_bounded_regular_solid": true,
+      "radius_reference_exact": "149277709/2500000000",
+      "radius_reference_float": 0.0597110836,
+      "rational_sqrt_floor_denominator": 1000000000000,
+      "shaft_inradius_squared_exact": "212772484154517989376116652571338321184488962329346751360407041/59676804351724282273115319560738211171961962123202928068882595840",
+      "sqrt_floor_is_proof_bound_not_geometric_tolerance": true,
+      "squared_radius_strictly_below_D_surface": true,
+      "squared_radius_strictly_below_shaft_walls": true,
+      "unconditionally_protected": false
+    },
+    "design_triangles_exactly_processed": 640,
+    "entire_shaft_protected_certified": false,
+    "frozen_input_sha256_manifest_checked": true,
+    "geometry_modified": false,
+    "inputs": {
+      "design": {
+        "faces": 640,
+        "sha256": "1d4a0673e9297d95adfb5722158ba1d859a83099046d01116a2b363cb3cb386b",
+        "vertices": 320
+      },
+      "shaft": {
+        "faces": 512,
+        "sha256": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
+        "vertices": 258
+      }
+    },
+    "minimum_design_surface_projected_radius": {
+      "closest_xy_exact": [
+        "1718513377097280377408662674859375439778675083/30075517145150784910044004031732624384038273024",
+        "-260652666838654012724655590613847344751409039/15037758572575392455022002015866312192019136512"
+      ],
+      "edge": 2,
+      "edge_parameter_exact": "60400097055012206240020980671/834763290301376440217917652468",
+      "face_index": 319,
+      "feature": "PROJECTED_EDGE_OR_VERTEX",
+      "radius_float": 0.05971108360033179,
+      "squared_distance_exact": "15453710126703644637873183526031026433287311881592833548752769/4334338809852033234554918090141734613037653809548774593609596928",
+      "squared_distance_float": 0.0035654135047258123
+    },
+    "native_Cherchi_implicit_geometry_certified": false,
+    "positive_volume_overlap_certified_if_D_is_embedded_bounded_regular_solid": true,
+    "positive_volume_overlap_unconditionally_certified": false,
+    "schema": "W4P18ExactShaftDesignExclusionV1",
+    "status": "STRICT_SHAFT_SURFACE_INTRUSION_FOUND_CONDITIONAL_POSITIVE_VOLUME_OVERLAP",
+    "strict_intruding_face_count": 283,
+    "strict_intruding_face_indices": [
+      288,
+      289,
+      290,
+      291,
+      292,
+      293,
+      295,
+      297,
+      298,
+      306,
+      307,
+      308,
+      309,
+      311,
+      312,
+      315,
+      316,
+      319,
+      320,
+      321,
+      322,
+      323,
+      325,
+      326,
+      327,
+      328,
+      331,
+      332,
+      333,
+      334,
+      335,
+      336,
+      337,
+      339,
+      340,
+      342,
+      344,
+      346,
+      347,
+      348,
+      349,
+      350,
+      351,
+      352,
+      353,
+      354,
+      357,
+      358,
+      359,
+      360,
+      361,
+      362,
+      363,
+      366,
+      367,
+      368,
+      369,
+      370,
+      371,
+      372,
+      377,
+      378,
+      379,
+      381,
+      382,
+      383,
+      384,
+      385,
+      386,
+      387,
+      388,
+      389,
+      390,
+      391,
+      392,
+      393,
+      394,
+      399,
+      400,
+      401,
+      402,
+      403,
+      404,
+      408,
+      409,
+      410,
+      411,
+      414,
+      415,
+      416,
+      418,
+      419,
+      420,
+      421,
+      422,
+      424,
+      425,
+      426,
+      427,
+      428,
+      429,
+      430,
+      434,
+      435,
+      436,
+      437,
+      438,
+      439,
+      440,
+      441,
+      442,
+      443,
+      444,
+      445,
+      446,
+      447,
+      448,
+      449,
+      450,
+      451,
+      452,
+      453,
+      454,
+      455,
+      456,
+      457,
+      459,
+      460,
+      461,
+      464,
+      465,
+      466,
+      467,
+      468,
+      470,
+      471,
+      472,
+      474,
+      475,
+      476,
+      477,
+      478,
+      479,
+      480,
+      481,
+      482,
+      483,
+      484,
+      485,
+      486,
+      487,
+      489,
+      490,
+      492,
+      494,
+      495,
+      496,
+      497,
+      498,
+      499,
+      500,
+      502,
+      503,
+      504,
+      505,
+      506,
+      507,
+      508,
+      509,
+      511,
+      513,
+      514,
+      515,
+      516,
+      517,
+      519,
+      520,
+      521,
+      522,
+      523,
+      524,
+      525,
+      526,
+      527,
+      528,
+      529,
+      530,
+      531,
+      532,
+      533,
+      534,
+      535,
+      536,
+      537,
+      538,
+      539,
+      541,
+      542,
+      543,
+      545,
+      546,
+      547,
+      548,
+      551,
+      552,
+      553,
+      554,
+      555,
+      556,
+      557,
+      558,
+      559,
+      560,
+      561,
+      562,
+      563,
+      564,
+      565,
+      566,
+      567,
+      568,
+      569,
+      570,
+      571,
+      572,
+      573,
+      574,
+      577,
+      578,
+      579,
+      580,
+      581,
+      582,
+      583,
+      586,
+      587,
+      588,
+      589,
+      590,
+      591,
+      592,
+      593,
+      594,
+      595,
+      596,
+      597,
+      598,
+      599,
+      600,
+      601,
+      602,
+      603,
+      604,
+      606,
+      607,
+      608,
+      609,
+      610,
+      612,
+      613,
+      614,
+      616,
+      617,
+      618,
+      620,
+      621,
+      622,
+      623,
+      624,
+      625,
+      626,
+      627,
+      628,
+      629,
+      630,
+      631,
+      632,
+      633,
+      634,
+      635,
+      636,
+      637,
+      639
+    ],
+    "strict_intruding_vertex_count": 74,
+    "strict_intruding_vertex_indices": [
+      156,
+      157,
+      159,
+      160,
+      161,
+      166,
+      174,
+      175,
+      176,
+      177,
+      178,
+      183,
+      187,
+      191,
+      193,
+      197,
+      200,
+      201,
+      203,
+      204,
+      205,
+      209,
+      212,
+      214,
+      216,
+      218,
+      220,
+      222,
+      223,
+      224,
+      228,
+      229,
+      230,
+      231,
+      232,
+      239,
+      241,
+      243,
+      244,
+      246,
+      247,
+      248,
+      250,
+      251,
+      253,
+      254,
+      257,
+      259,
+      264,
+      265,
+      270,
+      274,
+      276,
+      279,
+      281,
+      283,
+      284,
+      285,
+      288,
+      290,
+      292,
+      293,
+      297,
+      299,
+      301,
+      303,
+      305,
+      307,
+      309,
+      310,
+      312,
+      314,
+      315,
+      316
+    ],
+    "strict_intrusion_witnesses": [
+      {
+        "barycentric_exact": [
+          "478113727474263457684445976811231/956227454948526958675942363552508",
+          "59764215934282938399191991272485/119528431868565894589037772128388",
+          "1386770963714724402881201969176622090764968741137/14287046024958395996212919964776578444093720745002775687994424638"
+        ],
+        "clipped_vertex_count": 4,
+        "face_index": 288,
+        "halfplane_signs_exact": [
+          "312851827077465024282766300160697021816711711376904067073568556991124750323092104908575727230701586260345772301/222725772353052414160304181039155318028218685643039013600424052023848370695257381466105762688846005633208834588672",
+          "8798804820480736068147557523999434675982997888664907243084470194089338140536484383082233918007097/6330247184480765956786404474290615042611383547723534479712954294650682262933326611178749848501354496",
+          "533659119571339799526470747750414684342523934712265687331106325610817188466340015605063423670755/395640449030047872299150279643163440163211471732720904982059643415667641433332913198671865531334656",
+          "8121008605802987481827847197210435933275337323187154103502866448669675825412166277406730623386363/6330247184480765956786404474290615042611383547723534479712954294650682262933326611178749848501354496",
+          "7562238623028738668979816937496048592657789901009052214512389103340452033194159075163729814490273/6330247184480765956786404474290615042611383547723534479712954294650682262933326611178749848501354496",
+          "13767418363789780501385084730378899179836407769161514005884419796618779385786382780453437808959981/12660494368961531913572808948581230085222767095447068959425908589301364525866653222357499697002708992",
+          "1358110175177910973807555426138921586668926028843090480448298846376128607794050096344504647027839/1406721596551281323730312105397914453913640788383007662158434287700151613985183691373055521889189888",
+          "23757722785835941692955246040876770670172812960495505342287873085308751553454480807808301743565430132521152585953/28508898861190709012518935173011880707611991762308993740854278659052591448992944827661537624172288721050730827350016",
+          "6616057850202127610630541895846119240023097266604539463555818055805132044236853737046459206923085054519995984949/9502966287063569670839645057670626902537330587436331246951426219684197149664314942553845874724096240350243609116672",
+          "885143304973229589657217215989627907625886895612550598920950879142100278893589268686755418298123/1582561796120191489196601118572653760652845886930883619928238573662670565733331652794687462125338624",
+          "1354378736482483020611685740838916418319776625135706912790532101253883284898183913718334120835939/3165123592240382978393202237145307521305691773861767239856477147325341131466663305589374924250677248",
+          "1943698826410829816392120043198723817130765212699959997194641778912888233922446475177008150940321/6330247184480765956786404474290615042611383547723534479712954294650682262933326611178749848501354496",
+          "318699513741926661548971199379144162723537077640427984207143407083227055413586935439785177947095/1582561796120191489196601118572653760652845886930883619928238573662670565733331652794687462125338624",
+          "242586880052766837953733588846940398615218074449847686246572538488246163789440488505935493884613/2110082394826921985595468158096871680870461182574511493237651431550227420977775537059583282833784832",
+          "323608923051623486424880176260720054185832056676450584906776494873435442494737615694194519977403/6330247184480765956786404474290615042611383547723534479712954294650682262933326611178749848501354496",
+          "12979037914197532580843141478262320058012835478577964951064052407659708348534872392219905699933/1055041197413460992797734079048435840435230591287255746618825715775113710488887768529791641416892416",
+          "92816140363298695/2658455991569831745807614120560689152",
+          "5165494638108614879467882610984109993086793980853476422637616162660810723437800050682851947963/351680399137820330932578026349478613478410197095751915539608571925037903496295922843263880472297472",
+          "353237810825254475458819224075863754755000789876845721210786517037804627440058981625248219017007/6330247184480765956786404474290615042611383547723534479712954294650682262933326611178749848501354496",
+          "385387559081861963056658979993988608537894114222093897411324248824932668960562193410982008176179/3165123592240382978393202237145307521305691773861767239856477147325341131466663305589374924250677248",
+          "443181700312656465738246674824512719855741229771431045876128387645557134686569757900709878653835/2110082394826921985595468158096871680870461182574511493237651431550227420977775537059583282833784832",
+          "4016149084143578497035215262198806619406677407454837276459919259989414515409804668440333472345929/12660494368961531913572808948581230085222767095447068959425908589301364525866653222357499697002708992",
+          "11121151742664432992247747622843358546818416815963695236213567084939312984316980084284944194021623/25320988737923063827145617897162460170445534190894137918851817178602729051733306444714999394005417984",
+          "16287311080079573329717450077652012122586700984562705338863615024928765016044726871718361166635688783579066923317/28508898861190709012518935173011880707611991762308993740854278659052591448992944827661537624172288721050730827350016",
+          "20196860315309119678808088531862544133300153712401081197849432579927376847750803879159455914151598903285022197451/28508898861190709012518935173011880707611991762308993740854278659052591448992944827661537624172288721050730827350016",
+          "3567473669382523933984937016110526137947193383841139837407348679313054299040969017903875282440985/4220164789653843971190936316193743361740922365149022986475302863100454841955551074119166565667569664",
+          "12366052502003424274212225829699403656572943799258574688716669150656664391094983674707473144502989/12660494368961531913572808948581230085222767095447068959425908589301364525866653222357499697002708992",
+          "6948084897555885871331296209276090028666855830303986226203792826356791357195916603488565948902559/6330247184480765956786404474290615042611383547723534479712954294650682262933326611178749848501354496",
+          "1904246417249750882559114157575348365140681769193844092629821241878779143864885402045498909963641/1582561796120191489196601118572653760652845886930883619928238573662670565733331652794687462125338624",
+          "510251442738024372653887229044269043854943049323919403097804435399455917586624626600945354354237/395640449030047872299150279643163440163211471732720904982059643415667641433332913198671865531334656",
+          "4284087400457534762232860530106309681972609828493704667691141435610734649263564937381564538434483/3165123592240382978393202237145307521305691773861767239856477147325341131466663305589374924250677248",
+          "103370623760498640592432637560290261194379550159798248093382804045400729117349556190878290965666628287382413905/74241924117684138053434727013051772676072895214346337866808017341282790231752460488701920896282001877736278196224"
+        ],
+        "minimum_halfplane_sign_exact": "92816140363298695/2658455991569831745807614120560689152",
+        "minimum_halfplane_sign_float": 3.4913551571899555e-20,
+        "point_exact": [
+          "40818955571537235611297547760307617023405685996402535200801108854144460628885899/686326774978429421900008380255589907353883565946235838544607013963472985351258112",
+          "234352020095433670315397846206521486164127333152379163047867380100924495450743009/43924913598619483001600536336357754070648548220559093666854848893662271062480519168",
+          "61795634326617826338200868394052584871818848532234050556419651120506949520668107/128686270308455516606251571297923107628853168614919219727113815118151184753360896"
+        ],
+        "triangle_exact": [
+          [
+            "8624667506670345/144115188075855872",
+            "7227035740479509/4611686018427387904",
+            "8645293271607625/18014398509481984"
+          ],
+          [
+            "8517695792319349/144115188075855872",
+            "5247787637401037/576460752303423488",
+            "8655871495039167/18014398509481984"
+          ],
+          [
+            "6152806279848413/72057594037927936",
+            "244239881467069/4503599627370496",
+            "1120194530661889/2251799813685248"
+          ]
+        ]
+      },
+      {
+        "barycentric_exact": [
+          "7217841734988341/239056863737131739668985590888127",
+          "7217841734988341/353047560742219046023214487198043",
+          "84398442621079395163250041156165864840579909318735264477562991491/84398442621079399436966067634476266029777746088966656072106335461"
+        ],
+        "clipped_vertex_count": 3,
+        "face_index": 289,
+        "halfplane_signs_exact": [
+          "2772183304761297855615934502237179569302768357238601177891021087622966464869077168649338708610292922234558303521/1973575393262172863028227366582540444084244142737557929517456068801856940118883413702431556135675791977828084350976",
+          "77478941101201140367270470641041396031450766868372480770278344224234488997097721971801613131923323/56092386366292796055524472836354460812465394574745628503861100534830283667101963763526315350863904768",
+          "4669009559215491762443369339129115952449046613632725591831889493053031344945241344078461602100677/3505774147893299753470279552272153800779087160921601781491318783426892729193872735220394709428994048",
+          "70572457467112535538091598967699050852187033515169051756538595074977410793850343625474756507629809/56092386366292796055524472836354460812465394574745628503861100534830283667101963763526315350863904768",
+          "65242633400422497595674821064995197793322559249858039335863969023409825550048657896992358505919971/56092386366292796055524472836354460812465394574745628503861100534830283667101963763526315350863904768",
+          "117839005794521826322073006359054258516177941327120065839712454208183879881575089183557142830045927/112184772732585592111048945672708921624930789149491257007722201069660567334203927527052630701727809536",
+          "103692120633624999080794306464275457412230387210646742780726445385182434530260710897518285368177797/112184772732585592111048945672708921624930789149491257007722201069660567334203927527052630701727809536",
+          "199483045785174131828089584341538874332596303001199602074857745276455195000565376445052295047686076002112770573379/252617650337558126467613102922565176842783250270407414978234376806637688335217076953911239185366501373161994796924928",
+          "164624312852374409824843255765919133658715825074533137224017315917236388261585300717858470960915813577102045314845/252617650337558126467613102922565176842783250270407414978234376806637688335217076953911239185366501373161994796924928",
+          "7230732717168958744781234958555240457091507902046166025829161594036021332436568374689128610315681/14023096591573199013881118209088615203116348643686407125965275133707570916775490940881578837715976192",
+          "10847180296245588564973462314132099483531728867385821520760571061229297703468099604567085998160585/28046193183146398027762236418177230406232697287372814251930550267415141833550981881763157675431952384",
+          "15146019581691443107810464314541947335376366395561793230013592763898953175608770231107670960626755/56092386366292796055524472836354460812465394574745628503861100534830283667101963763526315350863904768",
+          "2382389227242335958707527057362555708819386702825881790122071004277891023281253392491362232375133/14023096591573199013881118209088615203116348643686407125965275133707570916775490940881578837715976192",
+          "5060810085089196569003932790807831219102837659100927568987981096024824426029732366062040874303757/56092386366292796055524472836354460812465394574745628503861100534830283667101963763526315350863904768",
+          "1911510544390636082878560845586377938718038229992947367410039866538168921142622388967721451957745/56092386366292796055524472836354460812465394574745628503861100534830283667101963763526315350863904768",
+          "101342051037570892454782510324127203329624267350015923295841022625634927309413016289940397868125/28046193183146398027762236418177230406232697287372814251930550267415141833550981881763157675431952384",
+          "7217841734988341/664613997892457936451903530140172288",
+          "655623637270702338095631981415119084009663352366044204844704782189396527619218723636562440038009/28046193183146398027762236418177230406232697287372814251930550267415141833550981881763157675431952384",
+          "4086035428294678157625777625060494949069019002333404175181064982885701402680605605259810202308237/56092386366292796055524472836354460812465394574745628503861100534830283667101963763526315350863904768",
+          "4108865454315093389982485295549550918322582023409715341207957108331213479431947434438385716989833/28046193183146398027762236418177230406232697287372814251930550267415141833550981881763157675431952384",
+          "13547554975320193355581168030834517950499379222619308905899819291599249691991134185093428045519747/56092386366292796055524472836354460812465394574745628503861100534830283667101963763526315350863904768",
+          "39741370956963069270969176078003722823293672139031998806174010841297434518602881582094343904319163/112184772732585592111048945672708921624930789149491257007722201069660567334203927527052630701727809536",
+          "107776512235720755167625186485912801441275356388266123443034180160222289078143579137389697478618661/224369545465171184222097891345417843249861578298982514015444402139321134668407855054105261403455619072",
+          "155356417224271904109909821462577672444275609397719017797439430197095081069755689530414873073786015316593449417119/252617650337558126467613102922565176842783250270407414978234376806637688335217076953911239185366501373161994796924928",
+          "190215150157071512163948602374754866474085961199324797182085833048311809327094424090897103763697317216814440072801/252617650337558126467613102922565176842783250270407414978234376806637688335217076953911239185366501373161994796924928",
+          "99734515014133645661566360570371554694515290039733555182247376159832217065088531656681659149800545/112184772732585592111048945672708921624930789149491257007722201069660567334203927527052630701727809536",
+          "114191655566502514391249828555015719853414402281486634688263431579052091037576297784087541358590151/112184772732585592111048945672708921624930789149491257007722201069660567334203927527052630701727809536",
+          "63644168794051318455634494507888988713982196950588481119299069984634012149203024572401771763803965/56092386366292796055524472836354460812465394574745628503861100534830283667101963763526315350863904768",
+          "17315157866693342151025810950892545107945744262321234605929410341627126170314313847901418382970635/14023096591573199013881118209088615203116348643686407125965275133707570916775490940881578837715976192",
+          "4608086143165833968497705177532106448137720289809533181413577230449143748338265452701551781666079/3505774147893299753470279552272153800779087160921601781491318783426892729193872735220394709428994048",
+          "38439338915675961248230638143861657811989914744711484003551611173331222491274619624604252312024457/28046193183146398027762236418177230406232697287372814251930550267415141833550981881763157675431952384",
+          "2765051991897395152262845577551299155054847437089491263693432521630349003797619172753305369069958574569771938527/1973575393262172863028227366582540444084244142737557929517456068801856940118883413702431556135675791977828084350976"
+        ],
+        "minimum_halfplane_sign_exact": "7217841734988341/664613997892457936451903530140172288",
+        "minimum_halfplane_sign_float": 1.086020119629841e-20,
+        "point_exact": [
+          "727908505687605061624561897878327690984711157814843660801976049444468258857408899/12163097431646187873249402412290632455243607898820463261336101366226802621118676992",
+          "609950561263350538266396760129745459776877963684837223910708719374601772504642819/389219117812678011943980877193300238567795452762254824362755243719257683875797663744",
+          "729649288126179939833085482646306707377844483624322151636421104846668092444232517/1520387178955773484156175301536329056905450987352557907667012670778350327639834624"
+        ],
+        "triangle_exact": [
+          [
+            "6152806279848413/72057594037927936",
+            "244239881467069/4503599627370496",
+            "1120194530661889/2251799813685248"
+          ],
+          [
+            "7573987617531819/72057594037927936",
+            "3173309531498899/1152921504606846976",
+            "4502427250315499/9007199254740992"
+          ],
+          [
+            "8624667506670345/144115188075855872",
+            "7227035740479509/4611686018427387904",
+            "8645293271607625/18014398509481984"
+          ]
+        ]
+      },
+      {
+        "barycentric_exact": [
+          "1778668801587467/10914656472812436",
+          "1778668801587467/3006365821062553818979261220316",
+          "190736951919580579922278956579251416795624518/227871181725711644301188103379006127457921179"
+        ],
+        "clipped_vertex_count": 3,
+        "face_index": 290,
+        "halfplane_signs_exact": [
+          "290640177978361452671417277330599149518339395748386253093012958891851719406589166433597466285/255770192787959264366367971627402653806160117003875054864621224230214686520155866912797252124672",
+          "280828713295303887423411184833177199317940746225851273036706286606941569906005/227169565636806027312360331318255161120376432574263829579860306955487458076131328",
+          "74714075148886354323026930691755067687958489380717033500823397561438186670053/56792391409201506828090082829563790280094108143565957394965076738871864519032832",
+          "155765152904473974841391485585150479344543670314591007725703396161189744276543/113584782818403013656180165659127580560188216287131914789930153477743729038065664",
+          "159181837011411563206686977804139379553405721701886909670341829615327225164661/113584782818403013656180165659127580560188216287131914789930153477743729038065664",
+          "9971681335278372904748484644472989512939774039310229317104537797435030504401/7099048926150188353511260353695473785011763517945744674370634592358983064879104",
+          "26141052790874384512284793201945578371873446646176013498970871358128575337209/18930797136400502276030027609854596760031369381188652464988358912957288173010944",
+          "340435799278351150705186263077972964781427180810149779522225130262889875133341555012288188765/255770192787959264366367971627402653806160117003875054864621224230214686520155866912797252124672",
+          "107168520889802656777803911193970887022214276259372722604598774402693534939584328958900997749/85256730929319754788789323875800884602053372334625018288207074743404895506718622304265750708224",
+          "131949240588909509435103483718083653625034673534292299143197566973256002944981/113584782818403013656180165659127580560188216287131914789930153477743729038065664",
+          "59558121771983780307356106317692807628581655261845855167770072817281111076575/56792391409201506828090082829563790280094108143565957394965076738871864519032832",
+          "104771325033042568174152762967187025949078606111314334057875889014222287998343/113584782818403013656180165659127580560188216287131914789930153477743729038065664",
+          "89465752229784516065119398364578921703916914793417558755970863935253852447543/113584782818403013656180165659127580560188216287131914789930153477743729038065664",
+          "192155494045726255871002139110450415497546081989615177338489164023543300717/295793705256257848062969181403978074375490146581072694765443108014957627703296",
+          "116679391731835159202696112601425237304587722547543932782626552224419422172781/227169565636806027312360331318255161120376432574263829579860306955487458076131328",
+          "29143579463785780761283769738377741671849241154501592523296892677740610855749/75723188545602009104120110439418387040125477524754609859953435651829152692043776",
+          "20317822916908353269318148742838152154264566421511644709451221420470241227817/75723188545602009104120110439418387040125477524754609859953435651829152692043776",
+          "12755029811201583817090786068913256833984970588086263555228741932408938271577/75723188545602009104120110439418387040125477524754609859953435651829152692043776",
+          "10118751066681591581940424122864191556006570426975022324050477926867460385147/113584782818403013656180165659127580560188216287131914789930153477743729038065664",
+          "3781748459980693304707501667086339307802271185933857094178232109931893575357/113584782818403013656180165659127580560188216287131914789930153477743729038065664",
+          "121688117681041254991961753251857072990257993967279393937946967281733152413/37861594272801004552060055219709193520062738762377304929976717825914576346021888",
+          "1778668801587467/124615124604835863084731911901282304",
+          "5401169238416647544932460455561139256084835430312292171026762933427792691939/227169565636806027312360331318255161120376432574263829579860306955487458076131328",
+          "18831883488186545562363929536909446277663163511787630611968463999771714040482601538527419581/255770192787959264366367971627402653806160117003875054864621224230214686520155866912797252124672",
+          "37762120097129691786800581028005820098579695502083244277987344166746964954198109246560936771/255770192787959264366367971627402653806160117003875054864621224230214686520155866912797252124672",
+          "9199220258515037664315349779916304957157078523188826508199274915527831793279/37861594272801004552060055219709193520062738762377304929976717825914576346021888",
+          "5053832227560796563200087697986509039169112299411534587633565144998338352339/14198097852300376707022520707390947570023527035891489348741269184717966129758208",
+          "27387788165706081353061336409236424556176657557997466213146972944349922672929/56792391409201506828090082829563790280094108143565957394965076738871864519032832",
+          "8760143641833769884664494140417288253816443477725330497238949548603148414309/14198097852300376707022520707390947570023527035891489348741269184717966129758208",
+          "3298430448111357534222447747231896729207819202779962402268287691975658762001/4368645493015500525237698679197214636930316011043535184228082826067066501464064",
+          "202414410997073732647534429707916788057536599029001219153236459574533680281073/227169565636806027312360331318255161120376432574263829579860306955487458076131328",
+          "86943140852175600681672518909811417702095685411546825895636335133565982282885196213150959729/85256730929319754788789323875800884602053372334625018288207074743404895506718622304265750708224"
+        ],
+        "minimum_halfplane_sign_exact": "1778668801587467/124615124604835863084731911901282304",
+        "minimum_halfplane_sign_float": 1.427329794218609e-20,
+        "point_exact": [
+          "25298875240506433274578930149300125912649772301949668364278305/788152757075243165897500169780384580710182298218329752167514112",
+          "19919946005480749906017335052383636555264733518177089854835765/394076378537621582948750084890192290355091149109164876083757056",
+          "30763368685780893520746013445144337193903688537377025709541/64140035569274346183064792462596401424982283383653137383424"
+        ],
+        "triangle_exact": [
+          [
+            "8667564241863141/288230376151711744",
+            "3720481384583603/72057594037927936",
+            "4318624326655005/9007199254740992"
+          ],
+          [
+            "4482649628256839/144115188075855872",
+            "7696563431276159/144115188075855872",
+            "4321552385044353/9007199254740992"
+          ],
+          [
+            "4682826958753033/144115188075855872",
+            "7254394416405495/144115188075855872",
+            "1080098797662549/2251799813685248"
+          ]
+        ]
+      },
+      {
+        "barycentric_exact": [
+          "236990972172815557053406551449006614753442000813856347620602942372775814918483/2468800649001744092199538547840748436691160398521054620000128738341448694294694552552757927040",
+          "49687026968835067653014378322971755232567576423/99374053937670139065157016885986027195368088960",
+          "24843513484417536716618095574886855499456725641/49687026968835081093022134096596925130375794198"
+        ],
+        "clipped_vertex_count": 4,
+        "face_index": 291,
+        "halfplane_signs_exact": [
+          "9539350073066844472496578810973/187072209578355573530071658587684226515959365500928",
+          "1262375790574868582382568308693662465635038798225970963894911605467388740205586882683454728607339640726306591248566132863493/136733289111045327817257379771403831462273457755684253795032635991962587131389685582974057599892013903168224133109564211944488960",
+          "1156249774679012741656827832749843991415652770052590337580791413009009224203326106298481958528178428726256995856969552966861/25637491708320998965735758707138218399176273329190797586568619248492985087135566046807635799979752606844042024958043289739591680",
+          "43573199763931536168808715137858724589147189162432485856725985557276440850395088432559355274551348113172083250151645519818493/410199867333135983451772139314211494386820373267052761385097907975887761394169056748922172799676041709504672399328692635833466880",
+          "15608637666933618556807650024850808830937946254547111316123169886466390283826368921617943098183722764339180812544102881013083/82039973466627196690354427862842298877364074653410552277019581595177552278833811349784434559935208341900934479865738527166693376",
+          "48234119910916607844470755539022276807683910258923884264447387384653660422618828933943042786239520964697963155899155832993567/164079946933254393380708855725684597754728149306821104554039163190355104557667622699568869119870416683801868959731477054333386752",
+          "339129329213909966278699223701733774615799124446419787284926061771858260108963481470499925954107871209341435573245554291327393/820399734666271966903544278628422988773640746534105522770195815951775522788338113497844345599352083419009344798657385271666933760",
+          "1004748723241988323879256278973879344113243743019903651846875708639660377490193846977985220066515738412369158732830748565015941476242428818759/1847375969668938109861136728429422692446954928585838988577196921600821681722079275994881788921899236497350459721578538310398931581690609905172480",
+          "1257094763404682223600915611973994743908565224862293933356657751585516735285903667245122318238664897612770301198459474360634063901965442000569/1847375969668938109861136728429422692446954928585838988577196921600821681722079275994881788921899236497350459721578538310398931581690609905172480",
+          "4933935495528537145865141377616204126627794372309024934376426981615897438982165557525432743435416718023279588337085987997037/6032350990193176227231943225208992564512064312750775902722028058468937667561309658072384894112882966316245182343069009350492160",
+          "65010337781888011675699122353804695385778386530295503674782234976287735643695981915573018158438732608862860385092065347586503/68366644555522663908628689885701915731136728877842126897516317995981293565694842791487028799946006951584112066554782105972244480",
+          "88139570716548234229948005737489655175556848117233413110966906501408803058516985886556887938533443914937379684117898919013211/82039973466627196690354427862842298877364074653410552277019581595177552278833811349784434559935208341900934479865738527166693376",
+          "121367296984909153062503618507998778643356578265556991293595474454831356303425751549227131795383369438691828551246542567680593/102549966833283995862943034828552873596705093316763190346274476993971940348542264187230543199919010427376168099832173158958366720",
+          "522655492490730732619813807913506179792913194247801918541739168895220106470694039781099854533111238141973443040415774906210441/410199867333135983451772139314211494386820373267052761385097907975887761394169056748922172799676041709504672399328692635833466880",
+          "183609239468817670936058029684302298048464025553123665488315162711327316555566820528696609914809783425763568706870332148271839/136733289111045327817257379771403831462273457755684253795032635991962587131389685582974057599892013903168224133109564211944488960",
+          "94817203807337001708775752265412759715864499483424106579664937563555816599106915598638467429273356421140292769941641123632091/68366644555522663908628689885701915731136728877842126897516317995981293565694842791487028799946006951584112066554782105972244480",
+          "576187374304760981201944892750550194071671302846208234573530882986082938640617727613857653262891881098406269501376191870114853/410199867333135983451772139314211494386820373267052761385097907975887761394169056748922172799676041709504672399328692635833466880",
+          "19080008231101215735321523305470398303409093728417339828362195785948836983514567247084803476759011123500357448220550988176603/13673328911104532781725737977140383146227345775568425379503263599196258713138968558297405759989201390316822413310956421194448896",
+          "557687377909896544582370253942252913490020556920196273484107209662816518823839042910785016404362382691259622132138687704779241/410199867333135983451772139314211494386820373267052761385097907975887761394169056748922172799676041709504672399328692635833466880",
+          "266307087270414714713050839691293461702353075852698775030812934960009911068488394644469834668082447688803293159976788301475749/205099933666567991725886069657105747193410186633526380692548953987943880697084528374461086399838020854752336199664346317916733440",
+          "99628837194018658993943861906942471396885611022975319534224330898455836560693327463458977434129281906278184511455393754804315/82039973466627196690354427862842298877364074653410552277019581595177552278833811349784434559935208341900934479865738527166693376",
+          "303734716351645968373371698300032948775423511598214915444194636095149759528908414137758730185250308068398062896058954562115381/273466578222090655634514759542807662924546915511368507590065271983925174262779371165948115199784027806336448266219128423888977920",
+          "1626490838791224265145614616928877131436307065468184296409456011500602140398502731487329762469786930175882058468257592466416161/1640799469332543933807088557256845977547281493068211045540391631903551045576676226995688691198704166838018689597314770543333867520",
+          "1590168520972518567466810405787391175002574863719790288329364476368326655532703323655007540020323997555496552572957043541049217905074689916819/1847375969668938109861136728429422692446954928585838988577196921600821681722079275994881788921899236497350459721578538310398931581690609905172480",
+          "445940826936608439093891410612473803671920693395652288461918551536986267336890092130022638020536945502236666231935514813004415878610144422607/615791989889646036620378909476474230815651642861946329525732307200273893907359758664960596307299745499116819907192846103466310527230203301724160",
+          "160453173739213981084501108472005921237638528639065242527285097830703476207222769859690007091272502405683402659749881883489359/273466578222090655634514759542807662924546915511368507590065271983925174262779371165948115199784027806336448266219128423888977920",
+          "74450139045372498859216653300885056794517373832210492964152129086275397659516661134354738337395472954739012493147006926510015/164079946933254393380708855725684597754728149306821104554039163190355104557667622699568869119870416683801868959731477054333386752",
+          "135489520722020446786952797758741784598775808948682476001673706830265775256380431516228834037649529544878197539470337091629113/410199867333135983451772139314211494386820373267052761385097907975887761394169056748922172799676041709504672399328692635833466880",
+          "1511969772752088739429593703012838870618697188785249501228819309079952622605713826568189225573070814893034707935222504462753/6836664455552266390862868988570191573113672887784212689751631799598129356569484279148702879994600695158411206655478210597224448",
+          "3345742613376767188093367398925350408928569903122176377197439328367198308821502690757943475252737462698132018742844294269171/25637491708320998965735758707138218399176273329190797586568619248492985087135566046807635799979752606844042024958043289739591680",
+          "12679827949154225092433333665307069618751698670444605989479777747234637996420972378941799431901031040818462010969901806078037/205099933666567991725886069657105747193410186633526380692548953987943880697084528374461086399838020854752336199664346317916733440",
+          "64072073836524264512062418424634616255269006176923012391296572083417190345981555552939872890004785807127416841040787449667287325411287883/3608156190759644745822532672713716196185458844894216774564837737501604847113436085927503493988084446283887616643708082637497913245489472471040"
+        ],
+        "minimum_halfplane_sign_exact": "9539350073066844472496578810973/187072209578355573530071658587684226515959365500928",
+        "minimum_halfplane_sign_float": 5.099287646501694e-20,
+        "point_exact": [
+          "-658675794976241467356503603399693276525885791929520579710410804053984429316526925944971498657638299049641067/11118489682896293381231845592811276548703949017776921101289663178438096635305776790396939650981223815016611840",
+          "-4384134943310628359829355947081633022710063852603813309056801010315890458348542291141953904397309670559180581/569266671764290221119070494351937359293642189710178360386030754736030547727655771668323310130238659328850526208",
+          "4778792769539369164184431280605582974024609521505655341203107152894592788157803370651612359110523768405509863/5559244841448146690615922796405638274351974508888460550644831589219048317652888395198469825490611907508305920"
+        ],
+        "triangle_exact": [
+          [
+            "-7573987617531819/72057594037927936",
+            "-3173309531498899/1152921504606846976",
+            "7567219751037431/9007199254740992"
+          ],
+          [
+            "-4258847896159675/72057594037927936",
+            "-655973454675129/72057594037927936",
+            "7741711253833347/9007199254740992"
+          ],
+          [
+            "-8557498551754103/144115188075855872",
+            "-7262581687297517/1152921504606846976",
+            "7743679262315997/9007199254740992"
+          ]
+        ]
+      }
+    ],
+    "tolerance_used": null,
+    "verified_shaft_prism": {
+      "design_z_max_exact": "7751022674697925/9007199254740992",
+      "design_z_min_exact": "8637248653310009/18014398509481984",
+      "exact_rectangle_wall_coverage": true,
+      "exhaustive_shaft_faces_in_slab_verified": true,
+      "halfplanes_ABC_exact": [
+        [
+          "3798625748005844514323090606165/324518553658426726783156020576256",
+          "166147975710797/144115188075855872",
+          "32846379846219056936080573017423069841080306055/46768052394588893382517914646921056628989841375232"
+        ],
+        [
+          "3244201965561041/288230376151711744",
+          "492058953602681/144115188075855872",
+          "14586722872342408361630710043795/20769187434139310514121985316880384"
+        ],
+        [
+          "747468413764741/72057594037927936",
+          "49941273866091/9007199254740992",
+          "3646680718085602017423677320149/5192296858534827628530496329220096"
+        ],
+        [
+          "1310323088366721/144115188075855872",
+          "1075354367755675/144115188075855872",
+          "7293361436171221305377559266439/10384593717069655257060992658440192"
+        ],
+        [
+          "1075354367755675/144115188075855872",
+          "1310323088366721/144115188075855872",
+          "7293361436171221070408838655393/10384593717069655257060992658440192"
+        ],
+        [
+          "799060381857455/144115188075855872",
+          "2989873655058957/288230376151711744",
+          "7293361436171188355110696923533/10384593717069655257060992658440192"
+        ],
+        [
+          "492058953602683/144115188075855872",
+          "3244201965561047/288230376151711744",
+          "14586722872342436785824451687679/20769187434139310514121985316880384"
+        ],
+        [
+          "83073987855399/72057594037927936",
+          "7597251496011688365027009586945/649037107316853453566312041152512",
+          "32846379846219055057411964009947012389057633845/46768052394588893382517914646921056628989841375232"
+        ],
+        [
+          "-166147975710797/144115188075855872",
+          "7597251496011689161370015537407/649037107316853453566312041152512",
+          "65692759692438114623628589637837993377158487189/93536104789177786765035829293842113257979682750464"
+        ],
+        [
+          "-492058953602683/144115188075855872",
+          "405525245695131/36028797018963968",
+          "14586722872342441172130228080431/20769187434139310514121985316880384"
+        ],
+        [
+          "-399530190928727/72057594037927936",
+          "747468413764739/72057594037927936",
+          "7293361436171184452062699692715/10384593717069655257060992658440192"
+        ],
+        [
+          "-1075354367755675/144115188075855872",
+          "1310323088366721/144115188075855872",
+          "14586722872342441535400750777203/20769187434139310514121985316880384"
+        ],
+        [
+          "-1310323088366721/144115188075855872",
+          "268838591938919/36028797018963968",
+          "1823340359042805868098024321101/2596148429267413814265248164610048"
+        ],
+        [
+          "-747468413764739/72057594037927936",
+          "799060381857455/144115188075855872",
+          "7293361436171186557699703578429/10384593717069655257060992658440192"
+        ],
+        [
+          "-3244201965561047/288230376151711744",
+          "492058953602683/144115188075855872",
+          "29173445744684874063707856978041/41538374868278621028243970633760768"
+        ],
+        [
+          "-3373857413896041/288230376151711744",
+          "83073987855399/72057594037927936",
+          "3646680718085614794836631749679/5192296858534827628530496329220096"
+        ],
+        [
+          "-3373857413896033/288230376151711744",
+          "-166147975710797/144115188075855872",
+          "3646680718085606147925347198327/5192296858534827628530496329220096"
+        ],
+        [
+          "-3244201965561045/288230376151711744",
+          "-246029476801341/72057594037927936",
+          "29173445744684853036054162140481/41538374868278621028243970633760768"
+        ],
+        [
+          "-1494936827529483/144115188075855872",
+          "-799060381857457/144115188075855872",
+          "7293361436171209335776154287491/10384593717069655257060992658440192"
+        ],
+        [
+          "-1310323088366719/144115188075855872",
+          "-537677183877837/72057594037927936",
+          "3646680718085605739390803322983/5192296858534827628530496329220096"
+        ],
+        [
+          "-1075354367755675/144115188075855872",
+          "-1310323088366719/144115188075855872",
+          "14586722872342428836884098305629/20769187434139310514121985316880384"
+        ],
+        [
+          "-799060381857457/144115188075855872",
+          "-2989873655058967/288230376151711744",
+          "14586722872342423065434677122647/20769187434139310514121985316880384"
+        ],
+        [
+          "-246029476801341/72057594037927936",
+          "-6488403931122089/576460752303423488",
+          "58346891489369699067521876248453/83076749736557242056487941267521536"
+        ],
+        [
+          "-166147975710797/144115188075855872",
+          "-7597251496011680749175330338731/649037107316853453566312041152512",
+          "65692759692438043468862546956260476150193993337/93536104789177786765035829293842113257979682750464"
+        ],
+        [
+          "166147975710797/144115188075855872",
+          "-7597251496011679888723092146261/649037107316853453566312041152512",
+          "65692759692438035236240824409442740333479315847/93536104789177786765035829293842113257979682750464"
+        ],
+        [
+          "246029476801341/72057594037927936",
+          "-3244201965561045/288230376151711744",
+          "29173445744684852543995208537799/41538374868278621028243970633760768"
+        ],
+        [
+          "799060381857455/144115188075855872",
+          "-2989873655058963/288230376151711744",
+          "14586722872342399670906205332367/20769187434139310514121985316880384"
+        ],
+        [
+          "268838591938919/36028797018963968",
+          "-1310323088366721/144115188075855872",
+          "7293361436171223707360817895449/10384593717069655257060992658440192"
+        ],
+        [
+          "10236899127865/1125899906842624",
+          "-268838591938919/36028797018963968",
+          "1823340359042805133182913694389/2596148429267413814265248164610048"
+        ],
+        [
+          "747468413764741/72057594037927936",
+          "-49941273866091/9007199254740992",
+          "7293361436171204086439322733013/10384593717069655257060992658440192"
+        ],
+        [
+          "3244201965561041/288230376151711744",
+          "-246029476801341/72057594037927936",
+          "29173445744684822065354648394353/41538374868278621028243970633760768"
+        ],
+        [
+          "3798625748005844248875421956011/324518553658426726783156020576256",
+          "-166147975710797/144115188075855872",
+          "32846379846219055433145685811439362451084555897/46768052394588893382517914646921056628989841375232"
+        ]
+      ],
+      "inside_rule": "A*x+B*y+C>0 FOR EVERY WALL",
+      "lower_upper_rings_equal": true,
+      "polygon_ccw_xy_exact": [
+        [
+          "-1080863910568919/18014398509481984",
+          "2384523648010325/324518553658426726783156020576256"
+        ],
+        [
+          "-8480763308840555/144115188075855872",
+          "-3373857413896035/288230376151711744"
+        ],
+        [
+          "-3994352177618937/72057594037927936",
+          "-1654514844864269/72057594037927936"
+        ],
+        [
+          "-3594821986690209/72057594037927936",
+          "-1200991629314505/36028797018963968"
+        ],
+        [
+          "-6114289605624743/144115188075855872",
+          "-6114289605624741/144115188075855872"
+        ],
+        [
+          "-2401983258629011/72057594037927936",
+          "-112338187084069/2251799813685248"
+        ],
+        [
+          "-6618059379457087/288230376151711744",
+          "-7988704355237871/144115188075855872"
+        ],
+        [
+          "-421732176737005/36028797018963968",
+          "-4240381654420277/72057594037927936"
+        ],
+        [
+          "-7153570944030975/649037107316853453566312041152512",
+          "-1080863910568919/18014398509481984"
+        ],
+        [
+          "1686928706948017/144115188075855872",
+          "-8480763308840555/144115188075855872"
+        ],
+        [
+          "3309029689728541/144115188075855872",
+          "-499294022202367/9007199254740992"
+        ],
+        [
+          "4803966517258019/144115188075855872",
+          "-3594821986690209/72057594037927936"
+        ],
+        [
+          "1528572401406185/36028797018963968",
+          "-6114289605624743/144115188075855872"
+        ],
+        [
+          "112338187084069/2251799813685248",
+          "-2401983258629011/72057594037927936"
+        ],
+        [
+          "7988704355237871/144115188075855872",
+          "-103407177804017/4503599627370496"
+        ],
+        [
+          "4240381654420277/72057594037927936",
+          "-3373857413896041/288230376151711744"
+        ],
+        [
+          "1080863910568919/18014398509481984",
+          "0"
+        ],
+        [
+          "8480763308840555/144115188075855872",
+          "3373857413896033/288230376151711744"
+        ],
+        [
+          "7988704355237873/144115188075855872",
+          "3309029689728539/144115188075855872"
+        ],
+        [
+          "112338187084069/2251799813685248",
+          "2401983258629011/72057594037927936"
+        ],
+        [
+          "3057144802812371/72057594037927936",
+          "6114289605624741/144115188075855872"
+        ],
+        [
+          "4803966517258023/144115188075855872",
+          "112338187084069/2251799813685248"
+        ],
+        [
+          "6618059379457079/288230376151711744",
+          "7988704355237873/144115188075855872"
+        ],
+        [
+          "6747714827792069/576460752303423488",
+          "8480763308840555/144115188075855872"
+        ],
+        [
+          "2384523648010325/649037107316853453566312041152512",
+          "1080863910568919/18014398509481984"
+        ],
+        [
+          "-105433044184251/9007199254740992",
+          "8480763308840555/144115188075855872"
+        ],
+        [
+          "-6618059379457077/288230376151711744",
+          "7988704355237873/144115188075855872"
+        ],
+        [
+          "-1200991629314505/36028797018963968",
+          "3594821986690209/72057594037927936"
+        ],
+        [
+          "-6114289605624741/144115188075855872",
+          "3057144802812371/72057594037927936"
+        ],
+        [
+          "-7189643973380417/144115188075855872",
+          "2401983258629011/72057594037927936"
+        ],
+        [
+          "-7988704355237873/144115188075855872",
+          "827257422432135/36028797018963968"
+        ],
+        [
+          "-8480763308840555/144115188075855872",
+          "3373857413896039/288230376151711744"
+        ]
+      ],
+      "side_count": 32,
+      "source_wall_face_indices": [
+        13,
+        14,
+        29,
+        30,
+        45,
+        46,
+        61,
+        62,
+        77,
+        78,
+        93,
+        94,
+        109,
+        110,
+        125,
+        126,
+        141,
+        142,
+        157,
+        158,
+        173,
+        174,
+        189,
+        190,
+        205,
+        206,
+        221,
+        222,
+        237,
+        238,
+        253,
+        254,
+        269,
+        270,
+        285,
+        286,
+        301,
+        302,
+        317,
+        318,
+        333,
+        334,
+        349,
+        350,
+        365,
+        366,
+        381,
+        382,
+        397,
+        398,
+        413,
+        414,
+        429,
+        430,
+        445,
+        446,
+        461,
+        462,
+        477,
+        478,
+        493,
+        494,
+        509,
+        510
+      ],
+      "z_hi_exact": "1925288840700887/1125899906842624",
+      "z_lo_exact": "1170935903116329/9007199254740992"
+    },
+    "whole_shaft_exclusion_still_requires_D_embeddedness_and_outside_anchor": false
+  },
+  "shaft_excluded_from_design_domain": false,
+  "shaft_section_center_in_verified_slab": true,
+  "source_P17_commit": "c0f21c28b58fe05cf46a892934cfbcb2fccdac62",
+  "source_P17_manifest_sha256": "3eef5e245590ebee18ea46e1f0198c81d73c17ffbbb064143a6ceb95a00d5a70",
+  "status": "SAVED_SOLID_PARTITION_CERTIFIED_PROTECTED_SHAFT_REJECTED",
+  "training_admitted": false
+}
