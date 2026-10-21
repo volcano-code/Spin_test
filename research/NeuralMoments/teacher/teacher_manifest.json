@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M19_NOODLES_V7_94_SOURCE_EXACT_TEN_MOMENTS_COMPLETE_FDA_CSG_AND_NATIVE_TEACHER_BLOCKED",
+  "status": "M20_96_OPERATION_EXACT_CSG_PLAN_AND_FDA_MOMENT_GATE_PASS_WITH_SYNTHETIC_CASES_HISTORIC_SIX_BLOCKED",
   "native_teacher_runs": 0,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "Retrieve/recompute 6 real exact CGAL F/D/A rational packets under independently pinned backend on >=24GiB swap0 host; independent exact geometric partition and full W2 native single Cherchi teacher; W0/W3 derivative certification separate",
+  "pending_dependency": "Recover or independently rebuild authentic 6 rational V7 CSG packets via source-frozen CGAL backend on >=24 GiB/swap0 host; verify complete F/D/A Boolean semantics and model-source identity; run at least one new Heart and one new Noodles native Cherchi teacher; W0/W3 independent smooth-Jacobian admission pending",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -513,5 +513,61 @@
     "compiled_modules_present": false,
     "source_is_author_original_CAD": false,
     "historical_H8f_workflow_failure_preserved": true
+  },
+  "m20_noodles_exact_fda_handoff": {
+    "schema": "w2-m20-exact-six-boolean-handoff-v1",
+    "previous_m19_source_sha": "67364abba55c74ccd377eef6174b8c96ee04e4af1aadbd7e505466bafabd2a3a",
+    "original_source_part_count": 94,
+    "original_model_si_obj_count": 188,
+    "original_source_exact_moments_from_M19": 940,
+    "historic_CGAL_expected_operations": 96,
+    "new_CGAL_operations_this_milestone": 0,
+    "historic_CGAL_provenance_sha256": "d6803f184047f6172b177b9f436b16f22cdb6a949126d1df88a5d084f3dd9df3",
+    "actual_historical_rational_packets_available": 0,
+    "required_historical_rational_packet_count": 6,
+    "original_historical_CSG_independent_partition_certified": false,
+    "exact_boolean_plan": {
+      "path": "research/NeuralMoments/teacher/M20_HISTORICAL_96_BOOLEAN_DAG.json",
+      "git_blob_sha1": "1d81b380e934d8b085c86ebf1603669dd915334c",
+      "sha256": "922900847e8b1ed3ceac7bf0e4e81a16547671e139ec5956ae1e21a2804ba3b5",
+      "fixed_union_operations": 92,
+      "final_CSG_operations": 4,
+      "actually_executed": false
+    },
+    "math_checks": {
+      "exact_ten_components_for_synthetic_FDA": 60,
+      "exact_additive_relations_for_synthetic_FDA": 4,
+      "historic_six_exact_material_checks_performed": 0,
+      "experimental_scope": "SYNTHETIC_VOXELS_ONLY_NECESSARY_RELATIONS_NOT_BOOLEAN_SET_CERT"
+    },
+    "input_gate": {
+      "path": "research/NeuralMoments/teacher/M20_REAL_94_INPUT_FDA_PREFLIGHT.json",
+      "git_blob_sha1": "5b6602c10bcd541779f2d617f83046f5bcab8da5",
+      "status": "BLOCKED_NO_SIX_PINNED_RATIONAL_CSG_PACKET_BYTES",
+      "actual_exit_code": 2,
+      "observed_cgroup_bytes": 4294967296,
+      "min_required_bytes": 25769803776
+    },
+    "tests": {
+      "new_test_count": 27,
+      "passed": 27,
+      "failed": 0,
+      "skipped": 0,
+      "actual_real_source_and_synthetic_geometry_run": true,
+      "github_actions_ci_confirmed": false
+    },
+    "files": {
+      "gate_code_blob": "4a5ed60a119561056cffd2a089644a80f14b0fb2",
+      "plan_code_blob": "8ef109dd6494d1c03d74b55d1deda624f127b707",
+      "gate_tests_blob": "1dfd5e93838e0e1d12b8489b1656fe828045d14e",
+      "plan_tests_blob": "d87c73cd05174055b8d86ddec09ccf65d7c8448a"
+    },
+    "native_cherchi_evaluations_this_milestone": 0,
+    "qualified_frozen_heart_native_teacher_complete": false,
+    "w0_verified_derivative_admission": false,
+    "w3_native_continuity_certified": false,
+    "jacobian_J_D": null,
+    "training_admitted": 0,
+    "warning": "SHA and exact ten-moment algebra for six candidate CSG packets are necessary not sufficient: independently validate Boolean semantics, embedding and binary64 partition before any teacher request."
   }
 }
