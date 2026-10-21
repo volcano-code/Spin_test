@@ -1,0 +1,103 @@
+{
+  "schema": "w2-m16-noodles-v7-source-recovery-ledger-v1",
+  "status": "SOURCE_PARTS_RECIPE_AND_HISTORICAL_SHA_LOCATED_NATIVE_INPUT_STILL_BLOCKED",
+  "scope": "READ_ONLY_MAIN_CHECKPOINT_PROVENANCE_NOT_A_NEW_TEACHER_INPUT",
+  "original_repository": "volcano-code/Spin_test",
+  "source_branch": "main",
+  "source_tree_sha1": "8c949de977ef50be337da7aec6c852566e0da565",
+  "source_parts_manifest": {
+    "path": "research/Noodles_v7_20261017/frozen-parts-v7c/manifest.json",
+    "git_blob_sha1": "f476a8c3e87bd30ef186b24442f641c2602c32ec",
+    "source_sha256_claim_in_manifest": "8c1ccc9f2bf2b7bd16cf08335f8bc8b19fed9141eef261d98aca2b517ef93329",
+    "part_count": 94,
+    "fixed_part_count": 93,
+    "outer_part_role": "outer-ellipsoid",
+    "fixed_construction": "EXACT_UNION(ALL fixed_parts)",
+    "design_construction": "EXACT_DIFFERENCE(outer-ellipsoid, fixed)",
+    "initial_construction": "EXACT_UNION(outer-ellipsoid, fixed)",
+    "submitted_source_obj_files_in_main": 0
+  },
+  "historical_exact_csg": {
+    "path": "research/Noodles_v7_20261017/frozen-inputs/author-rational/construction.json",
+    "git_blob_sha1": "1e824c72d5ee13cc484bbf60a0be9b79be86d787",
+    "claimed_source_manifest_sha256": "67364abba55c74ccd377eef6174b8c96ee04e4af1aadbd7e505466bafabd2a3a",
+    "recorded_boolean_count": 96,
+    "recorded_backend_sha256": "d6803f184047f6172b177b9f436b16f22cdb6a949126d1df88a5d084f3dd9df3",
+    "recorded_independent_partition_verified": false,
+    "exact_intermediate_materials_present_in_tree": false,
+    "original_exact_intermediate_sha_expected": [
+      {
+        "name": "design",
+        "expected_sha256": "48e8d3008bba746823eafd9c3704b52d597595b802066450a921ecc0dcb7f611",
+        "archived_absolute_path_only": "/mnt/data/Noodles_v7_paper_geometry_candidate/exact_v7c/design-rational.json",
+        "faces": 108804
+      },
+      {
+        "name": "envelope",
+        "expected_sha256": "92f46d68025467961fcc8b2b52353b4a18c2a981a09ad654ad6af3fb128b73fd",
+        "archived_absolute_path_only": "/mnt/data/Noodles_v7_paper_geometry_candidate/exact_v7c/envelope-rational.json",
+        "faces": 1280
+      },
+      {
+        "name": "fixed",
+        "expected_sha256": "71f9df91fca12fde4f4f2c80dc26e2d1229e8209e09db46e680d0de7baee264a",
+        "archived_absolute_path_only": "/mnt/data/Noodles_v7_paper_geometry_candidate/exact_v7c/fixed-rational.json",
+        "faces": 114942
+      },
+      {
+        "name": "fixed-inside-envelope",
+        "expected_sha256": "a944da4e36e5fe386cee3b28e4acf5800fc3942cde4eb35ba54f5de626f55dc7",
+        "archived_absolute_path_only": "/mnt/data/Noodles_v7_paper_geometry_candidate/exact_v7c/fixed-inside-envelope-rational.json",
+        "faces": 107160
+      },
+      {
+        "name": "fixed-outside-envelope",
+        "expected_sha256": "8c66f71da99773fbc9a76b4f82fc43c55816df1876b643634ae64768f72ba262",
+        "archived_absolute_path_only": "/mnt/data/Noodles_v7_paper_geometry_candidate/exact_v7c/fixed-outside-envelope-rational.json",
+        "faces": 35342
+      },
+      {
+        "name": "initial",
+        "expected_sha256": "640877647134a54152a8e1f63c1f356d752e6c66f7913301580c1e85a356d83b",
+        "archived_absolute_path_only": "/mnt/data/Noodles_v7_paper_geometry_candidate/exact_v7c/initial-rational.json",
+        "faces": 36986
+      }
+    ]
+  },
+  "frozen_solver_request": {
+    "path": "research/Noodles_v7_20261017/evidence/newton/warm-resume/request.json",
+    "git_blob_sha1": "fac1fd017a95846d8a918a924395fbe546404f42",
+    "request_digest": "f28130503c98ecdf4def27708d151457fbd4884379eb778c4942266b3f5bd90a",
+    "native_original_fixed_design_arrays_in_this_request": false,
+    "archived_hashes": {
+      "fixed": "870bb348fc287802b5405815de43a9d94935ebcd10151bd49a10fda94f0a65d9",
+      "design": "299f985429a1dae106cf829d1a114093bc48b553c2e2cb0bf911f16895a16abd",
+      "initial": "83d9457f37793f20d98fd8e14918b36e2996f8c3fb1763ed5d806f9e3f6057b8"
+    },
+    "fixed_gmp_sha256": "71f9df91fca12fde4f4f2c80dc26e2d1229e8209e09db46e680d0de7baee264a",
+    "originally_independent_partition": false
+  },
+  "reproducer_source": {
+    "path": "research/Noodles_v7_20261017/source/build_exact_v7.py",
+    "git_blob_sha1": "0c02cd8f4e7554ab6f3cbde497877253ce5bddec",
+    "fresh_96_exact_boolean_calls_executed_here": 0
+  },
+  "historical_status": {
+    "path": "research/Noodles_v7_20261017/V7_STAGE_STATUS.json",
+    "git_blob_sha1": "7233e25162f287c9584b68bea447095deca4549f",
+    "historical_newton_converged": true,
+    "historical_source_checkpoint": "b0a13e3_not_freshly_recompiled_a17ff49",
+    "formal_separate_F_D_A_binary64_partition_passed": false
+  },
+  "what_w2_still_requires": [
+    "REGENERATE_OR_RETRIEVE_ALL_94_ORIGINAL_MODEL_OBJECT_PARTS_AND_SHA_VERIFY",
+    "REGENERATE_OR_RETRIEVE_EXACT_ORIGINAL_INITIAL_FIXED_DESIGN_BOOLEAN_OUTPUTS_WITH_FROZEN_BACKEND_HASH",
+    "INDEPENDENT_NATIVE_GEOMETRY_AND_FORMAL_F_D_A_PARTITION_AUDIT",
+    "LOCK_FULL_SPIN_IT_FASTER_REQUEST_AND_ORIGINAL_NATIVE_C10_TO_SAVED_SOURCES",
+    "SERIAL_CHERCHI_TEACHER_CALL_WITH_PREDECLARED_TEN_MOMENT_BUDGET"
+  ],
+  "original_v7_final_optimized_obj_is_not_original_teacher_input": true,
+  "new_cherchi_teacher_calls": 0,
+  "training_admitted": 0,
+  "limitations": "Parts and historical checksum receipts are provenance leads only. Missing actual source/csg output bytes prevent reconstructing authenticated teacher geometry from manifest alone."
+}
