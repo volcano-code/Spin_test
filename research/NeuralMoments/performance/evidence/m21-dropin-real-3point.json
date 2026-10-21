@@ -1,0 +1,74 @@
+{
+  "candidate_median_ns": 1961500268.5,
+  "candidate_production_admitted": false,
+  "candidate_sha256": "900cd721a3a448e8807e5a5276831a2cc0ed32f7ec5c03e2c5ed42401aa967e8",
+  "exact_ten_components": 30,
+  "full_solver_speedup": null,
+  "input_zip_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+  "isolated_speed_ratio": 1.460316608159567,
+  "native_boolean_calls": 0,
+  "native_newton_calls": 0,
+  "old_original_git_blob": "79ca86064b2b2d990ab5b42b202e3339b6356509",
+  "original_failed_8_feature_hash_points_preserved": true,
+  "original_median_ns": 2864411419,
+  "points": [
+    0,
+    8,
+    17
+  ],
+  "rows": [
+    {
+      "candidate_median_ns": 1978387850,
+      "candidate_ns": [
+        2050427814,
+        1906347886
+      ],
+      "exact_ten_fraction_equal": true,
+      "native_double_projection_equal": true,
+      "original_median_ns": 2864411419,
+      "original_ns": [
+        3056955248,
+        2671867590
+      ],
+      "paired_speed_ratio": 1.4478512992283086,
+      "point": 0,
+      "saved_original_native_material_gzip_sha256": "9538d11fbc180b7b96e7afe3dc98a6af1a5ddf074a680eb182f63517a48d72e3"
+    },
+    {
+      "candidate_median_ns": 1908964299,
+      "candidate_ns": [
+        1910330946,
+        1907597652
+      ],
+      "exact_ten_fraction_equal": true,
+      "native_double_projection_equal": true,
+      "original_median_ns": 2835331045,
+      "original_ns": [
+        2768383337,
+        2902278753
+      ],
+      "paired_speed_ratio": 1.4852719071201446,
+      "point": 8,
+      "saved_original_native_material_gzip_sha256": "1804f3d4f2d8cf150cfd123da10026d5855273ebabc8b41ed3675279a67a2f45"
+    },
+    {
+      "candidate_median_ns": 1961500268.5,
+      "candidate_ns": [
+        1953412733,
+        1969587804
+      ],
+      "exact_ten_fraction_equal": true,
+      "native_double_projection_equal": true,
+      "original_median_ns": 3095064841.5,
+      "original_ns": [
+        3166779845,
+        3023349838
+      ],
+      "paired_speed_ratio": 1.5779069170695859,
+      "point": 17,
+      "saved_original_native_material_gzip_sha256": "edb99a2253d96a7efc7279431ee61f6185a406e0efb4d1e9925a00ec67451d3d"
+    }
+  ],
+  "schema": "w1-m21-pinned-original-dropin-audit-abba-v1",
+  "scope": "SAVED_NATIVE_CHERCHI_MATERIAL_INDEPENDENT_PYTHON_FRACTION_ONLY"
+}

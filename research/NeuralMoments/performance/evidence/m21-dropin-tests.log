@@ -1,0 +1,15 @@
+test_actual_h8e_0_exact_parity (test_m21_dropin.ExactCandidateTests.test_actual_h8e_0_exact_parity) ... ok
+test_bad_face_same_error (test_m21_dropin.ExactCandidateTests.test_bad_face_same_error) ... ok
+test_degenerate_zero (test_m21_dropin.ExactCandidateTests.test_degenerate_zero) ... ok
+test_evidence_scope (test_m21_dropin.ExactCandidateTests.test_evidence_scope) ... ok
+test_invalid_token_same_exception (test_m21_dropin.ExactCandidateTests.test_invalid_token_same_exception) ... ok
+test_large_denominator (test_m21_dropin.ExactCandidateTests.test_large_denominator) ... ok
+test_parser_not_changed (test_m21_dropin.ExactCandidateTests.test_parser_not_changed) ... ok
+test_source_authentic (test_m21_dropin.ExactCandidateTests.test_source_authentic) ... ok
+test_tetrahedron_negative (test_m21_dropin.ExactCandidateTests.test_tetrahedron_negative) ... ok
+test_tetrahedron_positive (test_m21_dropin.ExactCandidateTests.test_tetrahedron_positive) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 5.266s
+
+OK
