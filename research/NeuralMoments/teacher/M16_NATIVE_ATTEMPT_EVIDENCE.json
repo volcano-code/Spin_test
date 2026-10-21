@@ -1,0 +1,41 @@
+{
+  "schema": "w2-m16-current-container-native-preflight-evidence-v1",
+  "observed_utc_date": "2026-10-21",
+  "invocation": "python m16_native_acceptance.py --heart-archive /mnt/data/h8f_81_real.zip --output-dir /mnt/data/w2_m16/heart_attempt_final --execute-native",
+  "exit_code": 2,
+  "status": "BLOCKED_BEFORE_NATIVE_CALL",
+  "report_sha256": "74ddb283a7e1a96bbb049bf48709a885387c63dc4536790f253a25ed0c38d937",
+  "source_M16_git_blob_sha1": "078855ba5f8fd5f49d06d92c56cb2f387441b55a",
+  "source_test_git_blob_sha1": "118a86e5077db14170bcf306b9b8374493687865",
+  "historical_h8f_archive_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "historical_original_workflow_conclusion": "failure",
+  "heart_source_files_with_sha_matched": 3,
+  "native_c_sha256": "8be318f8e19909a2c63ba5287d712665b9723b1b7a9cca42dc4ba23c16819a47",
+  "outer_F_D_max_abs_difference": 2.220446049250313e-16,
+  "resource_preflight": {
+    "cgroup_limit_bytes": 4294967296,
+    "current_usage_bytes": 820150272,
+    "effective_available_bytes": 3474817024,
+    "required_bytes": 25769803776,
+    "host_swap_bytes": 0
+  },
+  "blockers": [
+    "EFFECTIVE_MEMORY_OR_SWAP_NOT_QUALIFIED",
+    "COMPLETE_W2_CHECKOUT_NOT_SUPPLIED",
+    "THREE_COMPILED_NATIVE_BINARIES_NOT_PINNED",
+    "SEPARATE_PREDECLARED_CHERCHI_TEN_MOMENT_BUDGET_REQUIRED",
+    "NO_NATIVE_EXECUTION_DUE_TO_PREFLIGHT_BLOCK"
+  ],
+  "compiled_Cherchi_subprocess_spawned": false,
+  "new_native_teacher_evaluations": 0,
+  "new_J_D_training_labels": 0,
+  "test_provenance": "Local W2 M16 Git-blob-identical main and tests source",
+  "local_unit_tests": {
+    "passed": 30,
+    "failed": 0,
+    "skipped": 0,
+    "elapsed_seconds": 3.793,
+    "log_sha256": "be833f949af6ee061f5c7f98662367b87e612bf973a22dd6f80517fc4df27f71"
+  },
+  "required_next": "Qualifying host + full source checkout + 3 independent ELF module SHA pins + predeclared 10 per-component Boolean moment tolerances"
+}
