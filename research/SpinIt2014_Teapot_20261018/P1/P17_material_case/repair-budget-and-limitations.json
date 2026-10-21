@@ -1,0 +1,28 @@
+{
+  "Faster_optimization_executed": false,
+  "MuJoCo_real_optimized_before_after_executed": false,
+  "W0_physical_tip_or_FD_approved": false,
+  "W2_teacher_training_allowed": false,
+  "allowed_vertex_displacement_reference": 1e-15,
+  "collapsed_vertex_pairs": 14,
+  "current_milestone_new_native_Boolean_calls": 0,
+  "exact_Cherchi_implicit_geometry_certified": false,
+  "exact_signed_volume_difference_native_minus_repaired": {
+    "decimal_projection": 4.424138952620733e-21,
+    "denominator": "842498333348457493583344221469363458551160763204392890034487820288",
+    "is_zero": false,
+    "numerator": "3727329694084957988057560810167920790317082511"
+  },
+  "existing_P15_F_reconstruction_required_for_chain_closure": false,
+  "full_exact_embedded_solid_partition_certified": false,
+  "native_output_is_modified_by_P15_micro_weld": true,
+  "observed_max_vertex_displacement_reference": 2.225860458774576e-16,
+  "original_author_CAD_certified": false,
+  "original_native_vs_microweld_set_equality_certified": false,
+  "original_public_Teapot_handle_has_P9_source_deviation": true,
+  "printable_wall_thickness_certified": false,
+  "removed_inherited_sliver_faces": 28,
+  "repaired_material_is_original_author_CAD": false,
+  "source_P14_11_variant_native_acceptance_remains_negative": true,
+  "source_cherchi_algorithm_commit": "7bd6c2697695f555f9a15d7e154e084d841316f0"
+}

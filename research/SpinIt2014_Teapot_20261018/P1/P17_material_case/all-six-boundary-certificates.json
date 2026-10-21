@@ -1,0 +1,313 @@
+{
+  "all_six_exact_signed_chains_zero": true,
+  "cases": [
+    {
+      "candidate": "rotate_1p5",
+      "certificate": {
+        "certificate": "EXACT_SAVED_BINARY64_ORIENTED_SIMPLICIAL_CHAIN",
+        "exact_signed_triangle_chain_zero": true,
+        "frozen_sha256_manifest_checked": false,
+        "geometry_modified": false,
+        "inputs": {
+          "design": {
+            "faces": 640,
+            "sha256": "1d4a0673e9297d95adfb5722158ba1d859a83099046d01116a2b363cb3cb386b",
+            "vertices": 320
+          },
+          "outer": {
+            "faces": 7586,
+            "sha256": "c672edff8d2271b9c72972b638a2b5d1d04ba59ba8457b9c4d6776356a9a6217",
+            "vertices": 3793
+          },
+          "retained": {
+            "faces": 8226,
+            "sha256": "8139e3db7fe12b7de7bf4aa77f170f39f8730263b0530e31bcc23bdec1598812",
+            "vertices": 4113
+          }
+        },
+        "legacy_cyclic_multiset_residual_terms": 1280,
+        "legacy_reverse_orientation_pairs": 640,
+        "orientation_relations": [
+          "[a,b,c]=[b,c,a]=[c,a,b]",
+          "[a,b,c]=-[a,c,b]"
+        ],
+        "partition_identity": "boundary(outer)-boundary(retained)-boundary(design)=0",
+        "proof_scope": "Exact finite oriented triangle chain at saved binary64 coordinates; no claim about native implicit points or ordinary solid regions.",
+        "residual_witnesses": [],
+        "scientific_flags": {
+          "Faster_optimization_executed": false,
+          "MuJoCo_real_optimized_before_after_executed": false,
+          "W0_physical_tip_or_FD_approved": false,
+          "W2_teacher_training_allowed": false,
+          "native_Cherchi_implicit_geometry_certified": false,
+          "native_provenance_authenticated_by_chain_audit": false,
+          "ordinary_solid_region_equality_certified": false,
+          "original_native_vs_microweld_set_equality_certified": false,
+          "printability_certified": false
+        },
+        "signed_triangle_residual_l1_multiplicity": 0,
+        "signed_triangle_residual_terms": 0,
+        "status": "EXACT_SAVED_BINARY64_SIGNED_CHAIN_PASS",
+        "tolerance_used": null
+      },
+      "material_version": "native_saved"
+    },
+    {
+      "candidate": "rotate_1p5",
+      "certificate": {
+        "certificate": "EXACT_SAVED_BINARY64_ORIENTED_SIMPLICIAL_CHAIN",
+        "exact_signed_triangle_chain_zero": true,
+        "frozen_sha256_manifest_checked": false,
+        "geometry_modified": false,
+        "inputs": {
+          "design": {
+            "faces": 640,
+            "sha256": "1d4a0673e9297d95adfb5722158ba1d859a83099046d01116a2b363cb3cb386b",
+            "vertices": 320
+          },
+          "outer": {
+            "faces": 7558,
+            "sha256": "4c2e4d480d1041f4817128a8b4b61675d80a699e448e7a5a253311c1805a3aa2",
+            "vertices": 3779
+          },
+          "retained": {
+            "faces": 8198,
+            "sha256": "47c08ee597d5666069416985e0dc8900d204481c590b73596f90daccd2b068d1",
+            "vertices": 4099
+          }
+        },
+        "legacy_cyclic_multiset_residual_terms": 1280,
+        "legacy_reverse_orientation_pairs": 640,
+        "orientation_relations": [
+          "[a,b,c]=[b,c,a]=[c,a,b]",
+          "[a,b,c]=-[a,c,b]"
+        ],
+        "partition_identity": "boundary(outer)-boundary(retained)-boundary(design)=0",
+        "proof_scope": "Exact finite oriented triangle chain at saved binary64 coordinates; no claim about native implicit points or ordinary solid regions.",
+        "residual_witnesses": [],
+        "scientific_flags": {
+          "Faster_optimization_executed": false,
+          "MuJoCo_real_optimized_before_after_executed": false,
+          "W0_physical_tip_or_FD_approved": false,
+          "W2_teacher_training_allowed": false,
+          "native_Cherchi_implicit_geometry_certified": false,
+          "native_provenance_authenticated_by_chain_audit": false,
+          "ordinary_solid_region_equality_certified": false,
+          "original_native_vs_microweld_set_equality_certified": false,
+          "printability_certified": false
+        },
+        "signed_triangle_residual_l1_multiplicity": 0,
+        "signed_triangle_residual_terms": 0,
+        "status": "EXACT_SAVED_BINARY64_SIGNED_CHAIN_PASS",
+        "tolerance_used": null
+      },
+      "material_version": "microweld_saved"
+    },
+    {
+      "candidate": "translate_y_008",
+      "certificate": {
+        "certificate": "EXACT_SAVED_BINARY64_ORIENTED_SIMPLICIAL_CHAIN",
+        "exact_signed_triangle_chain_zero": true,
+        "frozen_sha256_manifest_checked": false,
+        "geometry_modified": false,
+        "inputs": {
+          "design": {
+            "faces": 624,
+            "sha256": "6f97f03343c2c294db6b3601662f6a54d54899ad08dfdd9b99e98e702b53c411",
+            "vertices": 312
+          },
+          "outer": {
+            "faces": 7586,
+            "sha256": "c672edff8d2271b9c72972b638a2b5d1d04ba59ba8457b9c4d6776356a9a6217",
+            "vertices": 3793
+          },
+          "retained": {
+            "faces": 8210,
+            "sha256": "9c148e016b9d1cfaeaa9a4f5fd39a785141df30ac5925982216256423064de10",
+            "vertices": 4105
+          }
+        },
+        "legacy_cyclic_multiset_residual_terms": 1248,
+        "legacy_reverse_orientation_pairs": 624,
+        "orientation_relations": [
+          "[a,b,c]=[b,c,a]=[c,a,b]",
+          "[a,b,c]=-[a,c,b]"
+        ],
+        "partition_identity": "boundary(outer)-boundary(retained)-boundary(design)=0",
+        "proof_scope": "Exact finite oriented triangle chain at saved binary64 coordinates; no claim about native implicit points or ordinary solid regions.",
+        "residual_witnesses": [],
+        "scientific_flags": {
+          "Faster_optimization_executed": false,
+          "MuJoCo_real_optimized_before_after_executed": false,
+          "W0_physical_tip_or_FD_approved": false,
+          "W2_teacher_training_allowed": false,
+          "native_Cherchi_implicit_geometry_certified": false,
+          "native_provenance_authenticated_by_chain_audit": false,
+          "ordinary_solid_region_equality_certified": false,
+          "original_native_vs_microweld_set_equality_certified": false,
+          "printability_certified": false
+        },
+        "signed_triangle_residual_l1_multiplicity": 0,
+        "signed_triangle_residual_terms": 0,
+        "status": "EXACT_SAVED_BINARY64_SIGNED_CHAIN_PASS",
+        "tolerance_used": null
+      },
+      "material_version": "native_saved"
+    },
+    {
+      "candidate": "translate_y_008",
+      "certificate": {
+        "certificate": "EXACT_SAVED_BINARY64_ORIENTED_SIMPLICIAL_CHAIN",
+        "exact_signed_triangle_chain_zero": true,
+        "frozen_sha256_manifest_checked": false,
+        "geometry_modified": false,
+        "inputs": {
+          "design": {
+            "faces": 624,
+            "sha256": "6f97f03343c2c294db6b3601662f6a54d54899ad08dfdd9b99e98e702b53c411",
+            "vertices": 312
+          },
+          "outer": {
+            "faces": 7558,
+            "sha256": "4c2e4d480d1041f4817128a8b4b61675d80a699e448e7a5a253311c1805a3aa2",
+            "vertices": 3779
+          },
+          "retained": {
+            "faces": 8182,
+            "sha256": "fa107270f0bec1217d11e5091418c5a1c4c1e4a686fbb3042843549dbf31dd9a",
+            "vertices": 4091
+          }
+        },
+        "legacy_cyclic_multiset_residual_terms": 1248,
+        "legacy_reverse_orientation_pairs": 624,
+        "orientation_relations": [
+          "[a,b,c]=[b,c,a]=[c,a,b]",
+          "[a,b,c]=-[a,c,b]"
+        ],
+        "partition_identity": "boundary(outer)-boundary(retained)-boundary(design)=0",
+        "proof_scope": "Exact finite oriented triangle chain at saved binary64 coordinates; no claim about native implicit points or ordinary solid regions.",
+        "residual_witnesses": [],
+        "scientific_flags": {
+          "Faster_optimization_executed": false,
+          "MuJoCo_real_optimized_before_after_executed": false,
+          "W0_physical_tip_or_FD_approved": false,
+          "W2_teacher_training_allowed": false,
+          "native_Cherchi_implicit_geometry_certified": false,
+          "native_provenance_authenticated_by_chain_audit": false,
+          "ordinary_solid_region_equality_certified": false,
+          "original_native_vs_microweld_set_equality_certified": false,
+          "printability_certified": false
+        },
+        "signed_triangle_residual_l1_multiplicity": 0,
+        "signed_triangle_residual_terms": 0,
+        "status": "EXACT_SAVED_BINARY64_SIGNED_CHAIN_PASS",
+        "tolerance_used": null
+      },
+      "material_version": "microweld_saved"
+    },
+    {
+      "candidate": "translate_xy_012_m008",
+      "certificate": {
+        "certificate": "EXACT_SAVED_BINARY64_ORIENTED_SIMPLICIAL_CHAIN",
+        "exact_signed_triangle_chain_zero": true,
+        "frozen_sha256_manifest_checked": false,
+        "geometry_modified": false,
+        "inputs": {
+          "design": {
+            "faces": 624,
+            "sha256": "cdb2856dbff680512066e0c56379ea3186cfe7a87f982523cb21b6f81aaa4620",
+            "vertices": 312
+          },
+          "outer": {
+            "faces": 7586,
+            "sha256": "c672edff8d2271b9c72972b638a2b5d1d04ba59ba8457b9c4d6776356a9a6217",
+            "vertices": 3793
+          },
+          "retained": {
+            "faces": 8210,
+            "sha256": "aade5c72daf9e1873252c33f807fcdde8b0a5264e51c16264c1054df859ef83e",
+            "vertices": 4105
+          }
+        },
+        "legacy_cyclic_multiset_residual_terms": 1248,
+        "legacy_reverse_orientation_pairs": 624,
+        "orientation_relations": [
+          "[a,b,c]=[b,c,a]=[c,a,b]",
+          "[a,b,c]=-[a,c,b]"
+        ],
+        "partition_identity": "boundary(outer)-boundary(retained)-boundary(design)=0",
+        "proof_scope": "Exact finite oriented triangle chain at saved binary64 coordinates; no claim about native implicit points or ordinary solid regions.",
+        "residual_witnesses": [],
+        "scientific_flags": {
+          "Faster_optimization_executed": false,
+          "MuJoCo_real_optimized_before_after_executed": false,
+          "W0_physical_tip_or_FD_approved": false,
+          "W2_teacher_training_allowed": false,
+          "native_Cherchi_implicit_geometry_certified": false,
+          "native_provenance_authenticated_by_chain_audit": false,
+          "ordinary_solid_region_equality_certified": false,
+          "original_native_vs_microweld_set_equality_certified": false,
+          "printability_certified": false
+        },
+        "signed_triangle_residual_l1_multiplicity": 0,
+        "signed_triangle_residual_terms": 0,
+        "status": "EXACT_SAVED_BINARY64_SIGNED_CHAIN_PASS",
+        "tolerance_used": null
+      },
+      "material_version": "native_saved"
+    },
+    {
+      "candidate": "translate_xy_012_m008",
+      "certificate": {
+        "certificate": "EXACT_SAVED_BINARY64_ORIENTED_SIMPLICIAL_CHAIN",
+        "exact_signed_triangle_chain_zero": true,
+        "frozen_sha256_manifest_checked": false,
+        "geometry_modified": false,
+        "inputs": {
+          "design": {
+            "faces": 624,
+            "sha256": "cdb2856dbff680512066e0c56379ea3186cfe7a87f982523cb21b6f81aaa4620",
+            "vertices": 312
+          },
+          "outer": {
+            "faces": 7558,
+            "sha256": "4c2e4d480d1041f4817128a8b4b61675d80a699e448e7a5a253311c1805a3aa2",
+            "vertices": 3779
+          },
+          "retained": {
+            "faces": 8182,
+            "sha256": "7d69f89444ebc8bce8bac30faa3aee20886b254a2b8a9976e2533d893d8eae20",
+            "vertices": 4091
+          }
+        },
+        "legacy_cyclic_multiset_residual_terms": 1248,
+        "legacy_reverse_orientation_pairs": 624,
+        "orientation_relations": [
+          "[a,b,c]=[b,c,a]=[c,a,b]",
+          "[a,b,c]=-[a,c,b]"
+        ],
+        "partition_identity": "boundary(outer)-boundary(retained)-boundary(design)=0",
+        "proof_scope": "Exact finite oriented triangle chain at saved binary64 coordinates; no claim about native implicit points or ordinary solid regions.",
+        "residual_witnesses": [],
+        "scientific_flags": {
+          "Faster_optimization_executed": false,
+          "MuJoCo_real_optimized_before_after_executed": false,
+          "W0_physical_tip_or_FD_approved": false,
+          "W2_teacher_training_allowed": false,
+          "native_Cherchi_implicit_geometry_certified": false,
+          "native_provenance_authenticated_by_chain_audit": false,
+          "ordinary_solid_region_equality_certified": false,
+          "original_native_vs_microweld_set_equality_certified": false,
+          "printability_certified": false
+        },
+        "signed_triangle_residual_l1_multiplicity": 0,
+        "signed_triangle_residual_terms": 0,
+        "status": "EXACT_SAVED_BINARY64_SIGNED_CHAIN_PASS",
+        "tolerance_used": null
+      },
+      "material_version": "microweld_saved"
+    }
+  ],
+  "legacy_P16_counter_preserves_orientation_without_reversal_sign": true,
+  "prior_P16_nonzero_volume_delta_remains_valid": true
+}

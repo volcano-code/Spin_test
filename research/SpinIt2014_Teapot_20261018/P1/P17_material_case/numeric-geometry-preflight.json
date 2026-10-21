@@ -1,0 +1,106 @@
+{
+  "cavity_to_exterior_ball_bound_m": 0.008077094884011876,
+  "cavity_to_exterior_ball_bound_reference": 0.32308379536047505,
+  "cross_outer_design": {
+    "aabb_pairs_tested": 0,
+    "exhaustive": true,
+    "method": "FLOAT64_CROSS_SURFACE_SAT",
+    "native_exact_intersection_certificate": false,
+    "tolerance_reference": 1e-11,
+    "witnesses": []
+  },
+  "design_vertices_winding_in_outer": {
+    "count": 320,
+    "maximum": 1.0000000000000002,
+    "minimum": 0.9999999999999999,
+    "tolerance": 1e-08
+  },
+  "full_exact_solid_partition_certified": false,
+  "incident_triangle_contacts_not_exhaustively_certified": true,
+  "local_wall_strength_or_printability_certified": false,
+  "materials": {
+    "D": {
+      "boundary_components": 1,
+      "closed": true,
+      "consistently_oriented": true,
+      "min_triangle_area_reference": 8.684897627240902e-08,
+      "non_two_incident_edges": 0,
+      "nonincident_self_contact_scan": {
+        "exhaustive": true,
+        "pairs_tested": 699,
+        "witnesses": []
+      },
+      "signed_volume_reference": 0.028035156819000498,
+      "triangles": 640,
+      "vertex_links": {
+        "arithmetic": "EXACT_INDEXED_GRAPH_NOT_GEOMETRIC_INTERSECTION",
+        "non_circular_vertex_links": [],
+        "vertices_tested": 320
+      },
+      "vertices": 320
+    },
+    "F": {
+      "boundary_components": 2,
+      "closed": true,
+      "consistently_oriented": true,
+      "min_triangle_area_reference": 1.341773688447023e-12,
+      "non_two_incident_edges": 0,
+      "nonincident_self_contact_scan": {
+        "exhaustive": true,
+        "pairs_tested": 10146,
+        "witnesses": []
+      },
+      "signed_volume_reference": 1.6305053596203194,
+      "triangles": 8198,
+      "vertex_links": {
+        "arithmetic": "EXACT_INDEXED_GRAPH_NOT_GEOMETRIC_INTERSECTION",
+        "non_circular_vertex_links": [],
+        "vertices_tested": 4099
+      },
+      "vertices": 4099
+    },
+    "M": {
+      "boundary_components": 1,
+      "closed": true,
+      "consistently_oriented": true,
+      "min_triangle_area_reference": 1.341773688447023e-12,
+      "non_two_incident_edges": 0,
+      "nonincident_self_contact_scan": {
+        "exhaustive": true,
+        "pairs_tested": 9447,
+        "witnesses": []
+      },
+      "signed_volume_reference": 1.65854051643932,
+      "triangles": 7558,
+      "vertex_links": {
+        "arithmetic": "EXACT_INDEXED_GRAPH_NOT_GEOMETRIC_INTERSECTION",
+        "non_circular_vertex_links": [],
+        "vertices_tested": 3779
+      },
+      "vertices": 3779
+    }
+  },
+  "numerical_partition_preflight": true,
+  "point_winding_witnesses": {
+    "off_axis_design": {
+      "D": 1.0,
+      "F": -1.4135798584282297e-16,
+      "M": 0.9999999999999999
+    },
+    "shaft_core": {
+      "D": 0.0,
+      "F": 1.0000000000000007,
+      "M": 1.0
+    }
+  },
+  "protected_core_reference": [
+    0.03,
+    0.0,
+    0.67
+  ],
+  "removable_witness_reference": [
+    0.12,
+    0.0,
+    0.67
+  ]
+}

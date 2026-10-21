@@ -1,0 +1,13 @@
+{
+  "op": "subtraction",
+  "returncode": 0,
+  "wall_seconds": 0.01914606399999741,
+  "stdout": "",
+  "stderr": "",
+  "source_sha256": [
+    "c18b4ac3a9fb71e6169c975e6baab1e487f7d148af908ee4eac4df4077121452",
+    "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+  ],
+  "output_exists": true,
+  "output_sha256": "1d4a0673e9297d95adfb5722158ba1d859a83099046d01116a2b363cb3cb386b"
+}

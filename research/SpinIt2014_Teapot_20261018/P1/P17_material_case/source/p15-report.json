@@ -1,0 +1,195 @@
+{
+  "schema": "W4P15InheritedNativeSliverRepairV1",
+  "status": "FLOAT64_MICROWELD_CANDIDATE_AVAILABLE_NOT_EXACT_CHERCHI",
+  "source_P14_report_sha256": "11485d0659ca9933205179de1c968f42e7c27dfaf0ca77a8c28c96125b60ad72",
+  "original_Cherchi_outer_sha256": "c672edff8d2271b9c72972b638a2b5d1d04ba59ba8457b9c4d6776356a9a6217",
+  "native_source_commit": "7bd6c2697695f555f9a15d7e154e084d841316f0",
+  "inherited_sliver_count": 28,
+  "source_faces_changed_without_explicit_justification": false,
+  "upstream_P14_strict_native_result_was_negative": true,
+  "outer_cleaned_sha256": "4c2e4d480d1041f4817128a8b4b61675d80a699e448e7a5a253311c1805a3aa2",
+  "outer_micro_weld": {
+    "merged_near_vertex_pairs": 14,
+    "removed_exact_sliver_faces": 28,
+    "maximum_vertex_representative_displacement": 2.225860458774576e-16,
+    "max_allowed_displacement": 1e-15,
+    "material_raw_ten_change_max_abs": 6.938893903907228e-18,
+    "non_two_incidence_edges": 0,
+    "remaining_small_triangles": 0,
+    "min_remaining_area": 1.341773688447023e-12,
+    "before_triangles": 7586,
+    "after_triangles": 7558,
+    "before_vertices": 3793,
+    "after_vertices": 3779
+  },
+  "outer_independent_contact_scan": {
+    "exhaustive": true,
+    "pairs_tested": 9447,
+    "witnesses": []
+  },
+  "cases": [
+    {
+      "name": "rotate_1p5",
+      "status": "FLOAT_MESH_POSTPROCESS_CONDITIONAL_PASS_NOT_NATIVE_EXACT",
+      "F_original_native_sha256": "8139e3db7fe12b7de7bf4aa77f170f39f8730263b0530e31bcc23bdec1598812",
+      "D_original_native_sha256": "1d4a0673e9297d95adfb5722158ba1d859a83099046d01116a2b363cb3cb386b",
+      "F_postprocessed_sha256": "47c08ee597d5666069416985e0dc8900d204481c590b73596f90daccd2b068d1",
+      "native_input_D_displacement": 0.005235838228537777,
+      "inherited_sliver_face_count": 28,
+      "all_slivers_from_outer": true,
+      "F_postprocess": {
+        "merged_near_vertex_pairs": 14,
+        "removed_exact_sliver_faces": 28,
+        "maximum_vertex_representative_displacement": 2.225860458774576e-16,
+        "max_allowed_displacement": 1e-15,
+        "material_raw_ten_change_max_abs": 2.7755575615628914e-17,
+        "non_two_incidence_edges": 0,
+        "remaining_small_triangles": 0,
+        "min_remaining_area": 1.341773688447023e-12,
+        "before_triangles": 8226,
+        "after_triangles": 8198,
+        "before_vertices": 4113,
+        "after_vertices": 4099
+      },
+      "F_independent_contact_scan": {
+        "exhaustive": true,
+        "pairs_tested": 10146,
+        "witnesses": []
+      },
+      "D_independent_contact_scan": {
+        "exhaustive": true,
+        "pairs_tested": 699,
+        "witnesses": []
+      },
+      "max_abs_full_raw_ten_material_additivity_residual": 1.7416623698807143e-15,
+      "raw_ten_component_order": [
+        "M",
+        "LX",
+        "LY",
+        "LZ",
+        "QXX",
+        "QYY",
+        "QZZ",
+        "QYZ",
+        "QXZ",
+        "QXY"
+      ],
+      "outer_volume": 1.65854051643932,
+      "F_volume": 1.6305053596203194,
+      "D_volume": 0.028035156819000498,
+      "F_boundary_components": 2,
+      "no_W0_approval": true
+    },
+    {
+      "name": "translate_y_008",
+      "status": "FLOAT_MESH_POSTPROCESS_CONDITIONAL_PASS_NOT_NATIVE_EXACT",
+      "F_original_native_sha256": "9c148e016b9d1cfaeaa9a4f5fd39a785141df30ac5925982216256423064de10",
+      "D_original_native_sha256": "6f97f03343c2c294db6b3601662f6a54d54899ad08dfdd9b99e98e702b53c411",
+      "F_postprocessed_sha256": "fa107270f0bec1217d11e5091418c5a1c4c1e4a686fbb3042843549dbf31dd9a",
+      "native_input_D_displacement": 0.008000000000000007,
+      "inherited_sliver_face_count": 28,
+      "all_slivers_from_outer": true,
+      "F_postprocess": {
+        "merged_near_vertex_pairs": 14,
+        "removed_exact_sliver_faces": 28,
+        "maximum_vertex_representative_displacement": 2.225860458774576e-16,
+        "max_allowed_displacement": 1e-15,
+        "material_raw_ten_change_max_abs": 4.440892098500626e-16,
+        "non_two_incidence_edges": 0,
+        "remaining_small_triangles": 0,
+        "min_remaining_area": 1.341773688447023e-12,
+        "before_triangles": 8210,
+        "after_triangles": 8182,
+        "before_vertices": 4105,
+        "after_vertices": 4091
+      },
+      "F_independent_contact_scan": {
+        "exhaustive": true,
+        "pairs_tested": 10028,
+        "witnesses": []
+      },
+      "D_independent_contact_scan": {
+        "exhaustive": true,
+        "pairs_tested": 581,
+        "witnesses": []
+      },
+      "max_abs_full_raw_ten_material_additivity_residual": 6.036837696399289e-16,
+      "raw_ten_component_order": [
+        "M",
+        "LX",
+        "LY",
+        "LZ",
+        "QXX",
+        "QYY",
+        "QZZ",
+        "QYZ",
+        "QXZ",
+        "QXY"
+      ],
+      "outer_volume": 1.65854051643932,
+      "F_volume": 1.6305012307799036,
+      "D_volume": 0.028039285659416307,
+      "F_boundary_components": 2,
+      "no_W0_approval": true
+    },
+    {
+      "name": "translate_xy_012_m008",
+      "status": "FLOAT_MESH_POSTPROCESS_CONDITIONAL_PASS_NOT_NATIVE_EXACT",
+      "F_original_native_sha256": "aade5c72daf9e1873252c33f807fcdde8b0a5264e51c16264c1054df859ef83e",
+      "D_original_native_sha256": "cdb2856dbff680512066e0c56379ea3186cfe7a87f982523cb21b6f81aaa4620",
+      "F_postprocessed_sha256": "7d69f89444ebc8bce8bac30faa3aee20886b254a2b8a9976e2533d893d8eae20",
+      "native_input_D_displacement": 0.01442220510185597,
+      "inherited_sliver_face_count": 28,
+      "all_slivers_from_outer": true,
+      "F_postprocess": {
+        "merged_near_vertex_pairs": 14,
+        "removed_exact_sliver_faces": 28,
+        "maximum_vertex_representative_displacement": 2.225860458774576e-16,
+        "max_allowed_displacement": 1e-15,
+        "material_raw_ten_change_max_abs": 4.440892098500626e-16,
+        "non_two_incidence_edges": 0,
+        "remaining_small_triangles": 0,
+        "min_remaining_area": 1.341773688447023e-12,
+        "before_triangles": 8210,
+        "after_triangles": 8182,
+        "before_vertices": 4105,
+        "after_vertices": 4091
+      },
+      "F_independent_contact_scan": {
+        "exhaustive": true,
+        "pairs_tested": 10074,
+        "witnesses": []
+      },
+      "D_independent_contact_scan": {
+        "exhaustive": true,
+        "pairs_tested": 627,
+        "witnesses": []
+      },
+      "max_abs_full_raw_ten_material_additivity_residual": 2.42861286636753e-16,
+      "raw_ten_component_order": [
+        "M",
+        "LX",
+        "LY",
+        "LZ",
+        "QXX",
+        "QYY",
+        "QZZ",
+        "QYZ",
+        "QXZ",
+        "QXY"
+      ],
+      "outer_volume": 1.65854051643932,
+      "F_volume": 1.6304916802373193,
+      "D_volume": 0.028048836202000604,
+      "F_boundary_components": 2,
+      "no_W0_approval": true
+    }
+  ],
+  "selected": "rotate_1p5",
+  "original_CAD_shape_certified": false,
+  "exact_Cherchi_implicit_geometry_certified": false,
+  "W0_physical_tip_or_FD_approved": false,
+  "printable_wall_thickness_certified": false,
+  "SpinIt_Faster_optimization_executed": false,
+  "MuJoCo_before_after_optimization_run": false
+}

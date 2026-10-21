@@ -1,0 +1,1920 @@
+{
+  "schema": "W4P14CherchiShaftCavityJunctionStudyV1",
+  "old_native_run": 39446111126,
+  "source_sha256": {
+    "D": "2fee98a34bf26cc536eb424f1013520c87abed05a9af2e439f934e7e5acba5cd",
+    "shaft": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
+    "outer": "c672edff8d2271b9c72972b638a2b5d1d04ba59ba8457b9c4d6776356a9a6217",
+    "failed": "e47f25153d275832969eef54df51c0bfaa393dc1e1f62562fa18776054052974",
+    "failure_receipt": "12bbcac2edefb0f74903049637dc6074ea742496c606943e32a2fdd27de1bb0b"
+  },
+  "current_native": {
+    "upstream_repository": "gcherchi/InteractiveAndRobustMeshBooleans",
+    "upstream_commit": "7bd6c2697695f555f9a15d7e154e084d841316f0",
+    "upstream_main_git_blob": "3f65d2a0f83b10629f99ed5dcd2781409cdca4b5",
+    "binary_sha256": "ad8f4e012fff474f96c059532ac32290fbf4a969c07d5462e08879466c6a66fb",
+    "binary_name": "w4_cherchi_reference_native",
+    "operation": "UNION",
+    "algorithm": "CHERCHI_INTERACTIVE_ROBUST_MESH_BOOLEANS_2022"
+  },
+  "baseline": {
+    "vertices": 324,
+    "triangles": 806,
+    "sha256": "e47f25153d275832969eef54df51c0bfaa393dc1e1f62562fa18776054052974",
+    "non_two_incident_edges": 162,
+    "edge_incidence_histogram": {
+      "2": 966,
+      "3": 162
+    },
+    "low_area_triangles": 8,
+    "min_triangle_area": 2.2905155424995736e-21,
+    "is_volume": false,
+    "watertight": false,
+    "winding_consistent": true,
+    "edge_connected_face_components": 1,
+    "signed_tetrahedral_integral": 0.028132450575778095,
+    "nonmanifold_locus": {
+      "radial_min": 0.05971122577639471,
+      "radial_max": 0.059999999999999984,
+      "max_distance_to_shaft_radius": 0.00028877422360528565,
+      "height_min": 0.4794965402493445,
+      "height_max": 0.8604434273814727,
+      "first_edges": [
+        {
+          "vertex_coordinates": [
+            [
+              0.059999999999999984,
+              0.0,
+              0.4799691762547722
+            ],
+            [
+              0.05926505941302846,
+              0.007461977004291299,
+              0.48046254959126294
+            ]
+          ],
+          "incidence": 3
+        },
+        {
+          "vertex_coordinates": [
+            [
+              0.059999999999999984,
+              0.0,
+              0.4799691762547722
+            ],
+            [
+              0.05974451183004428,
+              -0.0025940149215787313,
+              0.4801406881471339
+            ]
+          ],
+          "incidence": 3
+        },
+        {
+          "vertex_coordinates": [
+            [
+              0.05926505941302846,
+              0.007461977004291299,
+              0.48046254959126294
+            ],
+            [
+              0.059103016593556636,
+              0.00910722536047728,
+              0.4807047757119973
+            ]
+          ],
+          "incidence": 3
+        },
+        {
+          "vertex_coordinates": [
+            [
+              0.031453780567388095,
+              0.050893289338236385,
+              0.479475926358935
+            ],
+            [
+              0.033334213981176135,
+              0.04988817673815271,
+              0.47963721887812005
+            ]
+          ],
+          "incidence": 3
+        },
+        {
+          "vertex_coordinates": [
+            [
+              0.031453780567388095,
+              0.050893289338236385,
+              0.479475926358935
+            ],
+            [
+              0.028311053412086572,
+              0.05257311200000001,
+              0.4797886960000002
+            ]
+          ],
+          "incidence": 3
+        },
+        {
+          "vertex_coordinates": [
+            [
+              0.03377690462316083,
+              0.04952486991737755,
+              0.4796625079872975
+            ],
+            [
+              0.033334213981176135,
+              0.04988817673815271,
+              0.47963721887812005
+            ]
+          ],
+          "incidence": 3
+        },
+        {
+          "vertex_coordinates": [
+            [
+              0.03377690462316083,
+              0.04952486991737755,
+              0.4796625079872975
+            ],
+            [
+              0.035347995300608934,
+              0.048235509119927265,
+              0.47994577470935795
+            ]
+          ],
+          "incidence": 3
+        },
+        {
+          "vertex_coordinates": [
+            [
+              -0.05926505941302847,
+              -0.007461977004291303,
+              0.8595374504087373
+            ],
+            [
+              -0.05937949658400198,
+              -0.006300076908721162,
+              0.8596142732837595
+            ]
+          ],
+          "incidence": 3
+        },
+        {
+          "vertex_coordinates": [
+            [
+              -0.05926505941302847,
+              -0.007461977004291303,
+              0.8595374504087373
+            ],
+            [
+              -0.05884711682419382,
+              -0.011705419320967702,
+              0.8589126981839046
+            ]
+          ],
+          "incidence": 3
+        },
+        {
+          "vertex_coordinates": [
+            [
+              -0.05937949658400198,
+              -0.006300076908721162,
+              0.8596142732837595
+            ],
+            [
+              -0.059999999999999984,
+              0.0,
+              0.8600308237452278
+            ]
+          ],
+          "incidence": 3
+        }
+      ]
+    },
+    "strict_numeric_preflight": false
+  },
+  "canonical_original_geometry_sha256": {
+    "outer": "def3bd6f93214d5fce36c7b58547e6afb730fc454fd0b9e001a9087ef005bd20",
+    "failed": "9760dff5a6ab6e37a7ec3eac21e7523ab123cfb9d270e285b7c96071279597f3"
+  },
+  "historical_byte_SHA_match": {
+    "D": true,
+    "shaft": true,
+    "outer": false,
+    "failed": false,
+    "failure_receipt": false
+  },
+  "original_input_modified": false,
+  "W0_approved": false,
+  "original_author_CAD_proven": false,
+  "printable_material_certified": false,
+  "real_SpinIt_Faster_optimization_complete": false,
+  "status": "COMPLETED_NEGATIVE_NATIVE_JUNCTION_STUDY",
+  "cases": [
+    {
+      "name": "baseline",
+      "dx": 0.0,
+      "dy": 0.0,
+      "angle_degrees": 0.0,
+      "radius_multiplier": 1.0,
+      "max_vertex_displacement": 0.0,
+      "physical_scale_NOT_W0_authorized": true,
+      "D_input_sha256": "96e8c12c23df069629b91e21865f58734802d06b5fe9ba26128a3fba1ea6098b",
+      "numerical_outer_surface_clearance_lower_bound": 0.3230837966182751,
+      "D_native": {
+        "op": "subtraction",
+        "returncode": 0,
+        "wall_seconds": 0.017763748999996665,
+        "stdout": "",
+        "stderr": "",
+        "source_sha256": [
+          "96e8c12c23df069629b91e21865f58734802d06b5fe9ba26128a3fba1ea6098b",
+          "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+        ],
+        "output_exists": true,
+        "output_sha256": "39090c0a175b43da801749cf31a32e460ba13580ccb09a7f11d70092ef375956"
+      },
+      "D_geometry": {
+        "vertices": 324,
+        "triangles": 806,
+        "sha256": "39090c0a175b43da801749cf31a32e460ba13580ccb09a7f11d70092ef375956",
+        "non_two_incident_edges": 162,
+        "edge_incidence_histogram": {
+          "2": 966,
+          "3": 162
+        },
+        "low_area_triangles": 8,
+        "min_triangle_area": 2.2905155424995736e-21,
+        "is_volume": false,
+        "watertight": false,
+        "winding_consistent": true,
+        "edge_connected_face_components": 1,
+        "signed_tetrahedral_integral": 0.028132450575778095,
+        "nonmanifold_locus": {
+          "radial_min": 0.05971122577639471,
+          "radial_max": 0.059999999999999984,
+          "max_distance_to_shaft_radius": 0.00028877422360528565,
+          "height_min": 0.4794965402493445,
+          "height_max": 0.8604434273814727,
+          "first_edges": [
+            {
+              "vertex_coordinates": [
+                [
+                  0.059999999999999984,
+                  0.0,
+                  0.4799691762547722
+                ],
+                [
+                  0.05926505941302846,
+                  0.007461977004291299,
+                  0.48046254959126294
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.059999999999999984,
+                  0.0,
+                  0.4799691762547722
+                ],
+                [
+                  0.05974451183004428,
+                  -0.0025940149215787313,
+                  0.4801406881471339
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.05926505941302846,
+                  0.007461977004291299,
+                  0.48046254959126294
+                ],
+                [
+                  0.059103016593556636,
+                  0.00910722536047728,
+                  0.4807047757119973
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.031453780567388095,
+                  0.050893289338236385,
+                  0.479475926358935
+                ],
+                [
+                  0.033334213981176135,
+                  0.04988817673815271,
+                  0.47963721887812005
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.031453780567388095,
+                  0.050893289338236385,
+                  0.479475926358935
+                ],
+                [
+                  0.028311053412086572,
+                  0.05257311200000001,
+                  0.4797886960000002
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.03377690462316083,
+                  0.04952486991737755,
+                  0.4796625079872975
+                ],
+                [
+                  0.033334213981176135,
+                  0.04988817673815271,
+                  0.47963721887812005
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.03377690462316083,
+                  0.04952486991737755,
+                  0.4796625079872975
+                ],
+                [
+                  0.035347995300608934,
+                  0.048235509119927265,
+                  0.47994577470935795
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05926505941302847,
+                  -0.007461977004291303,
+                  0.8595374504087373
+                ],
+                [
+                  -0.05937949658400198,
+                  -0.006300076908721162,
+                  0.8596142732837595
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05926505941302847,
+                  -0.007461977004291303,
+                  0.8595374504087373
+                ],
+                [
+                  -0.05884711682419382,
+                  -0.011705419320967702,
+                  0.8589126981839046
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05937949658400198,
+                  -0.006300076908721162,
+                  0.8596142732837595
+                ],
+                [
+                  -0.059999999999999984,
+                  0.0,
+                  0.8600308237452278
+                ]
+              ],
+              "incidence": 3
+            }
+          ]
+        },
+        "strict_numeric_preflight": false
+      },
+      "status": "REJECTED_D_NONMANIFOLD_OR_CONTACT"
+    },
+    {
+      "name": "rotate_1p5",
+      "dx": 0.0,
+      "dy": 0.0,
+      "angle_degrees": 1.5,
+      "radius_multiplier": 1.0,
+      "max_vertex_displacement": 0.005235838228537777,
+      "physical_scale_NOT_W0_authorized": true,
+      "D_input_sha256": "c18b4ac3a9fb71e6169c975e6baab1e487f7d148af908ee4eac4df4077121452",
+      "numerical_outer_surface_clearance_lower_bound": 0.3230837966182751,
+      "D_native": {
+        "op": "subtraction",
+        "returncode": 0,
+        "wall_seconds": 0.01914606399999741,
+        "stdout": "",
+        "stderr": "",
+        "source_sha256": [
+          "c18b4ac3a9fb71e6169c975e6baab1e487f7d148af908ee4eac4df4077121452",
+          "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+        ],
+        "output_exists": true,
+        "output_sha256": "1d4a0673e9297d95adfb5722158ba1d859a83099046d01116a2b363cb3cb386b"
+      },
+      "D_geometry": {
+        "vertices": 320,
+        "triangles": 640,
+        "sha256": "1d4a0673e9297d95adfb5722158ba1d859a83099046d01116a2b363cb3cb386b",
+        "non_two_incident_edges": 0,
+        "edge_incidence_histogram": {
+          "2": 960
+        },
+        "low_area_triangles": 0,
+        "min_triangle_area": 8.684897627240902e-08,
+        "is_volume": true,
+        "watertight": true,
+        "winding_consistent": true,
+        "edge_connected_face_components": 1,
+        "signed_tetrahedral_integral": 0.028035156819000498,
+        "strict_numeric_preflight": true,
+        "conservative_nonincident_SAT": {
+          "method": "FLOAT64_SAT_NONINCIDENT_V1",
+          "witnesses": [],
+          "evaluated_nonincident_aabb_pairs": 699,
+          "excluded_incident_pairs": 4690,
+          "exhaustive": true,
+          "tolerance": 1e-11
+        }
+      },
+      "rod_core_D_winding": 0.0,
+      "off_axis_D_winding": 1.0,
+      "F_native": {
+        "op": "subtraction",
+        "returncode": 0,
+        "wall_seconds": 0.025761658000007515,
+        "stdout": "",
+        "stderr": "",
+        "source_sha256": [
+          "c672edff8d2271b9c72972b638a2b5d1d04ba59ba8457b9c4d6776356a9a6217",
+          "1d4a0673e9297d95adfb5722158ba1d859a83099046d01116a2b363cb3cb386b"
+        ],
+        "output_exists": true,
+        "output_sha256": "8139e3db7fe12b7de7bf4aa77f170f39f8730263b0530e31bcc23bdec1598812"
+      },
+      "F_geometry": {
+        "vertices": 4113,
+        "triangles": 8226,
+        "sha256": "8139e3db7fe12b7de7bf4aa77f170f39f8730263b0530e31bcc23bdec1598812",
+        "non_two_incident_edges": 0,
+        "edge_incidence_histogram": {
+          "2": 12339
+        },
+        "low_area_triangles": 28,
+        "min_triangle_area": 8.470329472543003e-22,
+        "is_volume": true,
+        "watertight": true,
+        "winding_consistent": true,
+        "edge_connected_face_components": 2,
+        "signed_tetrahedral_integral": 1.6305053596203196,
+        "strict_numeric_preflight": false
+      },
+      "status": "REJECTED_F_NONMANIFOLD_OR_CONTACT"
+    },
+    {
+      "name": "rotate_7p0",
+      "dx": 0.0,
+      "dy": 0.0,
+      "angle_degrees": 7.0,
+      "radius_multiplier": 1.0,
+      "max_vertex_displacement": 0.02441941581394275,
+      "physical_scale_NOT_W0_authorized": true,
+      "D_input_sha256": "23a26f6180d812429f4282b2a5b8677ba9504acf0e2f853c8f33787221f7662a",
+      "numerical_outer_surface_clearance_lower_bound": 0.3230837966182751,
+      "D_native": {
+        "op": "subtraction",
+        "returncode": 0,
+        "wall_seconds": 0.018233549000001403,
+        "stdout": "",
+        "stderr": "",
+        "source_sha256": [
+          "23a26f6180d812429f4282b2a5b8677ba9504acf0e2f853c8f33787221f7662a",
+          "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+        ],
+        "output_exists": true,
+        "output_sha256": "ba970ef82ada14ae7bcfd0fe68d2adf05eba3302b9924519f57196bd83039127"
+      },
+      "D_geometry": {
+        "vertices": 323,
+        "triangles": 726,
+        "sha256": "ba970ef82ada14ae7bcfd0fe68d2adf05eba3302b9924519f57196bd83039127",
+        "non_two_incident_edges": 82,
+        "edge_incidence_histogram": {
+          "2": 966,
+          "3": 82
+        },
+        "low_area_triangles": 0,
+        "min_triangle_area": 9.596349763990043e-09,
+        "is_volume": false,
+        "watertight": false,
+        "winding_consistent": true,
+        "edge_connected_face_components": 1,
+        "signed_tetrahedral_integral": 0.028083836214625003,
+        "nonmanifold_locus": {
+          "radial_min": 0.059711206312902415,
+          "radial_max": 0.05997775880112452,
+          "max_distance_to_shaft_radius": 0.0002887936870975827,
+          "height_min": 0.8574623240945126,
+          "height_max": 0.8605059448219983,
+          "first_edges": [
+            {
+              "vertex_coordinates": [
+                [
+                  -0.0579418608118821,
+                  -0.014689648459544697,
+                  0.8595157392657196
+                ],
+                [
+                  -0.058847116824193815,
+                  -0.011705419320967704,
+                  0.8596165086334477
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.0579418608118821,
+                  -0.014689648459544697,
+                  0.8595157392657196
+                ],
+                [
+                  -0.057008400845069106,
+                  -0.01776685357585734,
+                  0.8591277669250631
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.058847116824193815,
+                  -0.011705419320967704,
+                  0.8596165086334477
+                ],
+                [
+                  -0.059283076493514476,
+                  -0.007279046516229479,
+                  0.8601505982704168
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.059283076493514476,
+                  -0.007279046516229479,
+                  0.8601505982704168
+                ],
+                [
+                  -0.059379816683517134,
+                  -0.006296826883802926,
+                  0.8600529623413666
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.027704788739678358,
+                  -0.052897167218735754,
+                  0.8603539826885592
+                ],
+                [
+                  -0.025012058546386884,
+                  -0.054336461493160966,
+                  0.8605259442645851
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.027704788739678358,
+                  -0.052897167218735754,
+                  0.8603539826885592
+                ],
+                [
+                  -0.02775595195835586,
+                  -0.05286981990860154,
+                  0.8603444293520918
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.025012058546386884,
+                  -0.054336461493160966,
+                  0.8605259442645851
+                ],
+                [
+                  -0.02296100594190542,
+                  -0.0554327719506772,
+                  0.8602768008261441
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.057008400845069106,
+                  -0.01776685357585734,
+                  0.8591277669250631
+                ],
+                [
+                  -0.05543277195067721,
+                  -0.02296100594190538,
+                  0.858472891031188
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05543277195067721,
+                  -0.02296100594190538,
+                  0.858472891031188
+                ],
+                [
+                  -0.05244346265965622,
+                  -0.028553610267545066,
+                  0.858159874837338
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05244346265965622,
+                  -0.028553610267545066,
+                  0.858159874837338
+                ],
+                [
+                  -0.049888176738152726,
+                  -0.033334213981176114,
+                  0.8578923060461967
+                ]
+              ],
+              "incidence": 3
+            }
+          ]
+        },
+        "strict_numeric_preflight": false
+      },
+      "status": "REJECTED_D_NONMANIFOLD_OR_CONTACT"
+    },
+    {
+      "name": "translate_x_002",
+      "dx": 0.002,
+      "dy": 0.0,
+      "angle_degrees": 0.0,
+      "radius_multiplier": 1.0,
+      "max_vertex_displacement": 0.0020000000000000018,
+      "physical_scale_NOT_W0_authorized": true,
+      "D_input_sha256": "53d3c2566cbf4e31cbb312425ce99a7c624991b189071d845783d3a80083f585",
+      "numerical_outer_surface_clearance_lower_bound": 0.32286030917781566,
+      "D_native": {
+        "op": "subtraction",
+        "returncode": 0,
+        "wall_seconds": 0.017636518999992745,
+        "stdout": "",
+        "stderr": "",
+        "source_sha256": [
+          "53d3c2566cbf4e31cbb312425ce99a7c624991b189071d845783d3a80083f585",
+          "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+        ],
+        "output_exists": true,
+        "output_sha256": "5529c4928dccfbe9665e6d5031b03e89ba40a1fd59a4bc92352386a353d1838c"
+      },
+      "D_geometry": {
+        "vertices": 324,
+        "triangles": 806,
+        "sha256": "5529c4928dccfbe9665e6d5031b03e89ba40a1fd59a4bc92352386a353d1838c",
+        "non_two_incident_edges": 162,
+        "edge_incidence_histogram": {
+          "2": 966,
+          "3": 162
+        },
+        "low_area_triangles": 8,
+        "min_triangle_area": 7.229691989501992e-20,
+        "is_volume": false,
+        "watertight": false,
+        "winding_consistent": true,
+        "edge_connected_face_components": 1,
+        "signed_tetrahedral_integral": 0.0281327361471673,
+        "nonmanifold_locus": {
+          "radial_min": 0.05971122577639471,
+          "radial_max": 0.059999999999999984,
+          "max_distance_to_shaft_radius": 0.00028877422360528565,
+          "height_min": 0.47917310694906057,
+          "height_max": 0.860758022602929,
+          "first_edges": [
+            {
+              "vertex_coordinates": [
+                [
+                  0.059999999999999984,
+                  0.0,
+                  0.4790875670311424
+                ],
+                [
+                  0.05953997333630801,
+                  0.00467072909930799,
+                  0.4793963877630001
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.059999999999999984,
+                  0.0,
+                  0.4790875670311424
+                ],
+                [
+                  0.059745155431659626,
+                  -0.002587480324716315,
+                  0.4792586468669788
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.05953997333630801,
+                  0.00467072909930799,
+                  0.4793963877630001
+                ],
+                [
+                  0.059102539023410824,
+                  0.009112074211539756,
+                  0.48005027675996154
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.059999999999999984,
+                  0.0,
+                  0.8609124329688577
+                ],
+                [
+                  0.05953997333630801,
+                  0.00467072909930799,
+                  0.8606036122370002
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.059999999999999984,
+                  0.0,
+                  0.8609124329688577
+                ],
+                [
+                  0.059539973336308005,
+                  -0.004670729099307988,
+                  0.8606036122370002
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.05953997333630801,
+                  0.00467072909930799,
+                  0.8606036122370002
+                ],
+                [
+                  0.05938004403727769,
+                  0.006294518522333737,
+                  0.8603645454655
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05899014548974891,
+                  -0.010253224909274609,
+                  0.8584712885804745
+                ],
+                [
+                  -0.05937885298238663,
+                  -0.006306611505583578,
+                  0.8587322320036045
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05899014548974891,
+                  -0.010253224909274609,
+                  0.8584712885804745
+                ],
+                [
+                  -0.05884711682419382,
+                  -0.011705419320967702,
+                  0.8582574853467106
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05937885298238663,
+                  -0.006306611505583578,
+                  0.8587322320036045
+                ],
+                [
+                  -0.05999999999999999,
+                  0.0,
+                  0.8591492145215982
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05999999999999999,
+                  0.0,
+                  0.8591492145215982
+                ],
+                [
+                  -0.059999999999999984,
+                  7.347880794884117e-18,
+                  0.859149214521598
+                ]
+              ],
+              "incidence": 3
+            }
+          ]
+        },
+        "strict_numeric_preflight": false
+      },
+      "status": "REJECTED_D_NONMANIFOLD_OR_CONTACT"
+    },
+    {
+      "name": "translate_x_008",
+      "dx": 0.008,
+      "dy": 0.0,
+      "angle_degrees": 0.0,
+      "radius_multiplier": 1.0,
+      "max_vertex_displacement": 0.008000000000000007,
+      "physical_scale_NOT_W0_authorized": true,
+      "D_input_sha256": "1585f6d8cf04cba8ad27f0a4b6a2e50484e8e7234cf7c7d6fd524f64b38089cb",
+      "numerical_outer_surface_clearance_lower_bound": 0.3222347897708962,
+      "D_native": {
+        "op": "subtraction",
+        "returncode": 0,
+        "wall_seconds": 0.017159569000000374,
+        "stdout": "",
+        "stderr": "",
+        "source_sha256": [
+          "1585f6d8cf04cba8ad27f0a4b6a2e50484e8e7234cf7c7d6fd524f64b38089cb",
+          "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+        ],
+        "output_exists": true,
+        "output_sha256": "3ba63e4ba0dd0a4c50d0355b17c468dd73f60b6885714c8e048b4308535da2b6"
+      },
+      "D_geometry": {
+        "vertices": 316,
+        "triangles": 632,
+        "sha256": "3ba63e4ba0dd0a4c50d0355b17c468dd73f60b6885714c8e048b4308535da2b6",
+        "non_two_incident_edges": 0,
+        "edge_incidence_histogram": {
+          "2": 948
+        },
+        "low_area_triangles": 4,
+        "min_triangle_area": 7.04331247314603e-19,
+        "is_volume": true,
+        "watertight": true,
+        "winding_consistent": true,
+        "edge_connected_face_components": 1,
+        "signed_tetrahedral_integral": 0.028039530898770596,
+        "strict_numeric_preflight": false
+      },
+      "status": "REJECTED_D_NONMANIFOLD_OR_CONTACT"
+    },
+    {
+      "name": "translate_y_008",
+      "dx": 0.0,
+      "dy": 0.008,
+      "angle_degrees": 0.0,
+      "radius_multiplier": 1.0,
+      "max_vertex_displacement": 0.008000000000000007,
+      "physical_scale_NOT_W0_authorized": true,
+      "D_input_sha256": "34009e7fdcf8e96cbde7712efb9bdee4d9fc052814d55128b03687a7c148079a",
+      "numerical_outer_surface_clearance_lower_bound": 0.3222347897708962,
+      "D_native": {
+        "op": "subtraction",
+        "returncode": 0,
+        "wall_seconds": 0.016865576000000715,
+        "stdout": "",
+        "stderr": "",
+        "source_sha256": [
+          "34009e7fdcf8e96cbde7712efb9bdee4d9fc052814d55128b03687a7c148079a",
+          "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+        ],
+        "output_exists": true,
+        "output_sha256": "6f97f03343c2c294db6b3601662f6a54d54899ad08dfdd9b99e98e702b53c411"
+      },
+      "D_geometry": {
+        "vertices": 312,
+        "triangles": 624,
+        "sha256": "6f97f03343c2c294db6b3601662f6a54d54899ad08dfdd9b99e98e702b53c411",
+        "non_two_incident_edges": 0,
+        "edge_incidence_histogram": {
+          "2": 936
+        },
+        "low_area_triangles": 0,
+        "min_triangle_area": 4.6691950807888355e-08,
+        "is_volume": true,
+        "watertight": true,
+        "winding_consistent": true,
+        "edge_connected_face_components": 1,
+        "signed_tetrahedral_integral": 0.028039285659416307,
+        "strict_numeric_preflight": true,
+        "conservative_nonincident_SAT": {
+          "method": "FLOAT64_SAT_NONINCIDENT_V1",
+          "witnesses": [],
+          "evaluated_nonincident_aabb_pairs": 581,
+          "excluded_incident_pairs": 4528,
+          "exhaustive": true,
+          "tolerance": 1e-11
+        }
+      },
+      "rod_core_D_winding": 0.0,
+      "off_axis_D_winding": 1.0000000000000002,
+      "F_native": {
+        "op": "subtraction",
+        "returncode": 0,
+        "wall_seconds": 0.02561626799999317,
+        "stdout": "",
+        "stderr": "",
+        "source_sha256": [
+          "c672edff8d2271b9c72972b638a2b5d1d04ba59ba8457b9c4d6776356a9a6217",
+          "6f97f03343c2c294db6b3601662f6a54d54899ad08dfdd9b99e98e702b53c411"
+        ],
+        "output_exists": true,
+        "output_sha256": "9c148e016b9d1cfaeaa9a4f5fd39a785141df30ac5925982216256423064de10"
+      },
+      "F_geometry": {
+        "vertices": 4105,
+        "triangles": 8210,
+        "sha256": "9c148e016b9d1cfaeaa9a4f5fd39a785141df30ac5925982216256423064de10",
+        "non_two_incident_edges": 0,
+        "edge_incidence_histogram": {
+          "2": 12315
+        },
+        "low_area_triangles": 28,
+        "min_triangle_area": 8.470329472543003e-22,
+        "is_volume": true,
+        "watertight": true,
+        "winding_consistent": true,
+        "edge_connected_face_components": 2,
+        "signed_tetrahedral_integral": 1.6305012307799036,
+        "strict_numeric_preflight": false
+      },
+      "status": "REJECTED_F_NONMANIFOLD_OR_CONTACT"
+    },
+    {
+      "name": "translate_xy_012_m008",
+      "dx": 0.012,
+      "dy": -0.008,
+      "angle_degrees": 0.0,
+      "radius_multiplier": 1.0,
+      "max_vertex_displacement": 0.01442220510185597,
+      "physical_scale_NOT_W0_authorized": true,
+      "D_input_sha256": "181340522d1e8d43d12a6df7a5e7ac09669c03674751e5c23382d9627060f32e",
+      "numerical_outer_surface_clearance_lower_bound": 0.32164142570909354,
+      "D_native": {
+        "op": "subtraction",
+        "returncode": 0,
+        "wall_seconds": 0.017266270000007466,
+        "stdout": "",
+        "stderr": "",
+        "source_sha256": [
+          "181340522d1e8d43d12a6df7a5e7ac09669c03674751e5c23382d9627060f32e",
+          "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+        ],
+        "output_exists": true,
+        "output_sha256": "cdb2856dbff680512066e0c56379ea3186cfe7a87f982523cb21b6f81aaa4620"
+      },
+      "D_geometry": {
+        "vertices": 312,
+        "triangles": 624,
+        "sha256": "cdb2856dbff680512066e0c56379ea3186cfe7a87f982523cb21b6f81aaa4620",
+        "non_two_incident_edges": 0,
+        "edge_incidence_histogram": {
+          "2": 936
+        },
+        "low_area_triangles": 0,
+        "min_triangle_area": 8.073605694250241e-09,
+        "is_volume": true,
+        "watertight": true,
+        "winding_consistent": true,
+        "edge_connected_face_components": 1,
+        "signed_tetrahedral_integral": 0.028048836202000604,
+        "strict_numeric_preflight": true,
+        "conservative_nonincident_SAT": {
+          "method": "FLOAT64_SAT_NONINCIDENT_V1",
+          "witnesses": [],
+          "evaluated_nonincident_aabb_pairs": 627,
+          "excluded_incident_pairs": 4501,
+          "exhaustive": true,
+          "tolerance": 1e-11
+        }
+      },
+      "rod_core_D_winding": -1.4135798584282297e-16,
+      "off_axis_D_winding": 1.0,
+      "F_native": {
+        "op": "subtraction",
+        "returncode": 0,
+        "wall_seconds": 0.02598725800000068,
+        "stdout": "",
+        "stderr": "",
+        "source_sha256": [
+          "c672edff8d2271b9c72972b638a2b5d1d04ba59ba8457b9c4d6776356a9a6217",
+          "cdb2856dbff680512066e0c56379ea3186cfe7a87f982523cb21b6f81aaa4620"
+        ],
+        "output_exists": true,
+        "output_sha256": "aade5c72daf9e1873252c33f807fcdde8b0a5264e51c16264c1054df859ef83e"
+      },
+      "F_geometry": {
+        "vertices": 4105,
+        "triangles": 8210,
+        "sha256": "aade5c72daf9e1873252c33f807fcdde8b0a5264e51c16264c1054df859ef83e",
+        "non_two_incident_edges": 0,
+        "edge_incidence_histogram": {
+          "2": 12315
+        },
+        "low_area_triangles": 28,
+        "min_triangle_area": 8.470329472543003e-22,
+        "is_volume": true,
+        "watertight": true,
+        "winding_consistent": true,
+        "edge_connected_face_components": 2,
+        "signed_tetrahedral_integral": 1.6304916802373193,
+        "strict_numeric_preflight": false
+      },
+      "status": "REJECTED_F_NONMANIFOLD_OR_CONTACT"
+    },
+    {
+      "name": "translate_x_020",
+      "dx": 0.02,
+      "dy": 0.0,
+      "angle_degrees": 0.0,
+      "radius_multiplier": 1.0,
+      "max_vertex_displacement": 0.020000000000000004,
+      "physical_scale_NOT_W0_authorized": true,
+      "D_input_sha256": "3141010fe284ec0029048b11780f3738ac6123d186f84008bfc1c581f05a023b",
+      "numerical_outer_surface_clearance_lower_bound": 0.3211867668354826,
+      "D_native": {
+        "op": "subtraction",
+        "returncode": 0,
+        "wall_seconds": 0.017449486000003844,
+        "stdout": "",
+        "stderr": "",
+        "source_sha256": [
+          "3141010fe284ec0029048b11780f3738ac6123d186f84008bfc1c581f05a023b",
+          "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+        ],
+        "output_exists": true,
+        "output_sha256": "fe4d4f4f9254f5244d232746b5305d145deaf55d709765910a8477f92e54acf3"
+      },
+      "D_geometry": {
+        "vertices": 312,
+        "triangles": 699,
+        "sha256": "fe4d4f4f9254f5244d232746b5305d145deaf55d709765910a8477f92e54acf3",
+        "non_two_incident_edges": 77,
+        "edge_incidence_histogram": {
+          "2": 933,
+          "3": 77
+        },
+        "low_area_triangles": 6,
+        "min_triangle_area": 1.2160681142467227e-19,
+        "is_volume": false,
+        "watertight": false,
+        "winding_consistent": true,
+        "edge_connected_face_components": 1,
+        "signed_tetrahedral_integral": 0.02811573871397019,
+        "nonmanifold_locus": {
+          "radial_min": 0.059711096089638975,
+          "radial_max": 0.06,
+          "max_distance_to_shaft_radius": 0.00028890391036102275,
+          "height_min": 0.8505028560209474,
+          "height_max": 0.86419376366785,
+          "first_edges": [
+            {
+              "vertex_coordinates": [
+                [
+                  -0.059373060567848454,
+                  -0.00636542287734533,
+                  0.8507938604822086
+                ],
+                [
+                  -0.05884711682419383,
+                  -0.011705419320967702,
+                  0.8504407889221216
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.059373060567848454,
+                  -0.00636542287734533,
+                  0.8507938604822086
+                ],
+                [
+                  -0.05999999999999999,
+                  0.0,
+                  0.8512147315089302
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05884711682419383,
+                  -0.011705419320967702,
+                  0.8504407889221216
+                ],
+                [
+                  -0.05698994841952194,
+                  -0.0178276830707697,
+                  0.8505888426381005
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.052377117696232565,
+                  -0.02867773296389572,
+                  0.8514337527323371
+                ],
+                [
+                  -0.052419823749379556,
+                  -0.028597835558070824,
+                  0.8514236791719126
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.052377117696232565,
+                  -0.02867773296389572,
+                  0.8514337527323371
+                ],
+                [
+                  -0.04988817673815272,
+                  -0.033334213981176114,
+                  0.8514133348524486
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05999999999999999,
+                  0.0,
+                  0.8512147315089302
+                ],
+                [
+                  -0.06,
+                  7.347880794884118e-18,
+                  0.8512147315089303
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05698994841952194,
+                  -0.0178276830707697,
+                  0.8505888426381005
+                ],
+                [
+                  -0.055432771950677216,
+                  -0.022961005941905383,
+                  0.8507129809564503
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.055432771950677216,
+                  -0.022961005941905383,
+                  0.8507129809564503
+                ],
+                [
+                  -0.052419823749379556,
+                  -0.028597835558070824,
+                  0.8514236791719126
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.027721268380497276,
+                  -0.05288835866720157,
+                  0.8550615840829042
+                ],
+                [
+                  -0.02296100594190542,
+                  -0.055432771950677195,
+                  0.8556271434999058
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.027721268380497276,
+                  -0.05288835866720157,
+                  0.8550615840829042
+                ],
+                [
+                  -0.028642071047054216,
+                  -0.0523961793879137,
+                  0.854952184942418
+                ]
+              ],
+              "incidence": 3
+            }
+          ]
+        },
+        "strict_numeric_preflight": false
+      },
+      "status": "REJECTED_D_NONMANIFOLD_OR_CONTACT"
+    },
+    {
+      "name": "translate_x_012_rotate_7",
+      "dx": 0.012,
+      "dy": 0.0,
+      "angle_degrees": 7.0,
+      "radius_multiplier": 1.0,
+      "max_vertex_displacement": 0.0364044051872702,
+      "physical_scale_NOT_W0_authorized": true,
+      "D_input_sha256": "41b9712f3fb698acc1eb01fbf8473092d462f511ceed075c972b54d5be71d908",
+      "numerical_outer_surface_clearance_lower_bound": 0.3218553182396621,
+      "D_native": {
+        "op": "subtraction",
+        "returncode": 0,
+        "wall_seconds": 0.018653060999994864,
+        "stdout": "",
+        "stderr": "",
+        "source_sha256": [
+          "41b9712f3fb698acc1eb01fbf8473092d462f511ceed075c972b54d5be71d908",
+          "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+        ],
+        "output_exists": true,
+        "output_sha256": "f4173fc102f9feeead15af206c7f340d77391cb79d1d7e7e7c618e3ade2fa35d"
+      },
+      "D_geometry": {
+        "vertices": 318,
+        "triangles": 788,
+        "sha256": "f4173fc102f9feeead15af206c7f340d77391cb79d1d7e7e7c618e3ade2fa35d",
+        "non_two_incident_edges": 156,
+        "edge_incidence_histogram": {
+          "2": 948,
+          "3": 156
+        },
+        "low_area_triangles": 0,
+        "min_triangle_area": 1.8857087355896792e-09,
+        "is_volume": false,
+        "watertight": false,
+        "winding_consistent": true,
+        "edge_connected_face_components": 1,
+        "signed_tetrahedral_integral": 0.02814657962985721,
+        "nonmanifold_locus": {
+          "radial_min": 0.05971123080284946,
+          "radial_max": 0.0599982892198215,
+          "max_distance_to_shaft_radius": 0.00028876919715054017,
+          "height_min": 0.47682742126864935,
+          "height_max": 0.8633212877969321,
+          "first_edges": [
+            {
+              "vertex_coordinates": [
+                [
+                  -0.058847116824193815,
+                  -0.0117054193209677,
+                  0.8545264672965085
+                ],
+                [
+                  -0.05699801273477587,
+                  -0.017801098586119866,
+                  0.85432063265148
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.058847116824193815,
+                  -0.0117054193209677,
+                  0.8545264672965085
+                ],
+                [
+                  -0.05913969179221737,
+                  -0.008734855819475374,
+                  0.8548848978336759
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05699801273477587,
+                  -0.017801098586119866,
+                  0.85432063265148
+                ],
+                [
+                  -0.05543277195067721,
+                  -0.022961005941905376,
+                  0.8541463964994844
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05237911241656052,
+                  -0.028674001104643805,
+                  0.854513660673202
+                ],
+                [
+                  -0.05243064547839532,
+                  -0.02857758952709427,
+                  0.8545074627827158
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05237911241656052,
+                  -0.028674001104643805,
+                  0.854513660673202
+                ],
+                [
+                  -0.04988817673815273,
+                  -0.03333421398117612,
+                  0.8542528301169522
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05913969179221737,
+                  -0.008734855819475374,
+                  0.8548848978336759
+                ],
+                [
+                  -0.05937587175712156,
+                  -0.006336880393663807,
+                  0.8546465310256743
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05543277195067721,
+                  -0.022961005941905376,
+                  0.8541463964994844
+                ],
+                [
+                  -0.05243064547839532,
+                  -0.02857758952709427,
+                  0.8545074627827158
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.014673889869722692,
+                  -0.057946641127842924,
+                  0.8591984989396586
+                ],
+                [
+                  -0.016897727429091357,
+                  -0.057272047379327,
+                  0.8588688797058797
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.014673889869722692,
+                  -0.057946641127842924,
+                  0.8591984989396586
+                ],
+                [
+                  -0.01170541932096772,
+                  -0.058847116824193815,
+                  0.859080717616542
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.016897727429091357,
+                  -0.057272047379327,
+                  0.8588688797058797
+                ],
+                [
+                  -0.018800872473795863,
+                  -0.05669473464159214,
+                  0.8585867938094689
+                ]
+              ],
+              "incidence": 3
+            }
+          ]
+        },
+        "strict_numeric_preflight": false
+      },
+      "status": "REJECTED_D_NONMANIFOLD_OR_CONTACT"
+    },
+    {
+      "name": "radius_099",
+      "dx": 0.0,
+      "dy": 0.0,
+      "angle_degrees": 0.0,
+      "radius_multiplier": 0.99,
+      "max_vertex_displacement": 0.002000000012578039,
+      "physical_scale_NOT_W0_authorized": true,
+      "D_input_sha256": "5cee3986bee2f7d1609e4d70ad7f0385c121ffa3afd1c1e6ed1073401d2fa12f",
+      "numerical_outer_surface_clearance_lower_bound": 0.3250837966182751,
+      "D_native": {
+        "op": "subtraction",
+        "returncode": 0,
+        "wall_seconds": 0.018811109999987252,
+        "stdout": "",
+        "stderr": "",
+        "source_sha256": [
+          "5cee3986bee2f7d1609e4d70ad7f0385c121ffa3afd1c1e6ed1073401d2fa12f",
+          "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+        ],
+        "output_exists": true,
+        "output_sha256": "d74afe2d1e1f7adb9c7969e06a364b1ed113d36d390263cedae95a7a6dc70c04"
+      },
+      "D_geometry": {
+        "vertices": 324,
+        "triangles": 806,
+        "sha256": "d74afe2d1e1f7adb9c7969e06a364b1ed113d36d390263cedae95a7a6dc70c04",
+        "non_two_incident_edges": 162,
+        "edge_incidence_histogram": {
+          "2": 966,
+          "3": 162
+        },
+        "low_area_triangles": 8,
+        "min_triangle_area": 1.0037872838265475e-20,
+        "is_volume": false,
+        "watertight": false,
+        "winding_consistent": true,
+        "edge_connected_face_components": 1,
+        "signed_tetrahedral_integral": 0.027218270315704424,
+        "nonmanifold_locus": {
+          "radial_min": 0.059712557108713746,
+          "radial_max": 0.06,
+          "max_distance_to_shaft_radius": 0.000287442891286252,
+          "height_min": 0.48149719406869806,
+          "height_max": 0.8584576544167695,
+          "first_edges": [
+            {
+              "vertex_coordinates": [
+                [
+                  0.06,
+                  0.0,
+                  0.48213396725931346
+                ],
+                [
+                  0.059189934641914306,
+                  0.008224731605743375,
+                  0.4826777726438291
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.06,
+                  0.0,
+                  0.48213396725931346
+                ],
+                [
+                  0.05974293146660197,
+                  -0.0026100606208828074,
+                  0.4823065400662553
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.059189934641914306,
+                  0.008224731605743375,
+                  0.4826777726438291
+                ],
+                [
+                  0.05910454936867962,
+                  0.009091662833487618,
+                  0.4828054089289228
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.03145378056738809,
+                  0.05089328933823638,
+                  0.4814759263589349
+                ],
+                [
+                  0.033002481391388644,
+                  0.05006549150155192,
+                  0.4816087648075264
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.03145378056738809,
+                  0.05089328933823638,
+                  0.4814759263589349
+                ],
+                [
+                  0.029294627157589223,
+                  0.052047380880000015,
+                  0.4816908090400001
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.033002481391388644,
+                  0.05006549150155192,
+                  0.4816087648075264
+                ],
+                [
+                  0.033334213981176135,
+                  0.04988817673815271,
+                  0.4816856155776538
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05918993464191431,
+                  -0.008224731605743382,
+                  0.857322227356171
+                ],
+                [
+                  -0.05937791622055967,
+                  -0.006316122608025238,
+                  0.8574484213646377
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05918993464191431,
+                  -0.008224731605743382,
+                  0.857322227356171
+                ],
+                [
+                  -0.05884711682419383,
+                  -0.011705419320967702,
+                  0.8568097737320253
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05937791622055967,
+                  -0.006316122608025238,
+                  0.8574484213646377
+                ],
+                [
+                  -0.05999999999999999,
+                  0.0,
+                  0.8578660327406865
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05999999999999999,
+                  0.0,
+                  0.8578660327406865
+                ],
+                [
+                  -0.06,
+                  7.34788079488412e-18,
+                  0.8578660327406866
+                ]
+              ],
+              "incidence": 3
+            }
+          ]
+        },
+        "strict_numeric_preflight": false
+      },
+      "status": "REJECTED_D_NONMANIFOLD_OR_CONTACT"
+    },
+    {
+      "name": "radius_101",
+      "dx": 0.0,
+      "dy": 0.0,
+      "angle_degrees": 0.0,
+      "radius_multiplier": 1.01,
+      "max_vertex_displacement": 0.002000000012578039,
+      "physical_scale_NOT_W0_authorized": true,
+      "D_input_sha256": "e7506a6807b70b5313b8397d93bace2aa7b051669f7b6713ebf26ff5ba585164",
+      "numerical_outer_surface_clearance_lower_bound": 0.3210837966182751,
+      "D_native": {
+        "op": "subtraction",
+        "returncode": 0,
+        "wall_seconds": 0.017761476000003995,
+        "stdout": "",
+        "stderr": "",
+        "source_sha256": [
+          "e7506a6807b70b5313b8397d93bace2aa7b051669f7b6713ebf26ff5ba585164",
+          "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+        ],
+        "output_exists": true,
+        "output_sha256": "ac1edd4b1b623d6052f0fddbf5eb34dd3c7a45a7737348718a718b82867b7b3f"
+      },
+      "D_geometry": {
+        "vertices": 324,
+        "triangles": 806,
+        "sha256": "ac1edd4b1b623d6052f0fddbf5eb34dd3c7a45a7737348718a718b82867b7b3f",
+        "non_two_incident_edges": 162,
+        "edge_incidence_histogram": {
+          "2": 966,
+          "3": 162
+        },
+        "low_area_triangles": 8,
+        "min_triangle_area": 1.7008146844998927e-20,
+        "is_volume": false,
+        "watertight": false,
+        "winding_consistent": true,
+        "edge_connected_face_components": 1,
+        "signed_tetrahedral_integral": 0.02906610941914203,
+        "nonmanifold_locus": {
+          "radial_min": 0.05971144871199475,
+          "radial_max": 0.06,
+          "max_distance_to_shaft_radius": 0.0002885512880052496,
+          "height_min": 0.47749588642999097,
+          "height_max": 0.8624434273814727,
+          "first_edges": [
+            {
+              "vertex_coordinates": [
+                [
+                  0.05999999999999999,
+                  0.0,
+                  0.47780438525023106
+                ],
+                [
+                  0.0593401841841426,
+                  0.006699222402839222,
+                  0.47824732653869667
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.05999999999999999,
+                  0.0,
+                  0.47780438525023106
+                ],
+                [
+                  0.059746092193486575,
+                  -0.0025779692222746555,
+                  0.47797483622801246
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.0593401841841426,
+                  0.006699222402839222,
+                  0.47824732653869667
+                ],
+                [
+                  0.05910148381843363,
+                  0.00912278788746694,
+                  0.478604142495072
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.031453780567388095,
+                  0.05089328933823639,
+                  0.47747592635893504
+                ],
+                [
+                  0.033334213981176135,
+                  0.04988817673815271,
+                  0.47763721887811994
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.031453780567388095,
+                  0.05089328933823639,
+                  0.47747592635893504
+                ],
+                [
+                  0.027327479666583915,
+                  0.05309884312,
+                  0.4778865829600001
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.034612510158295536,
+                  0.048839106177193475,
+                  0.4777102427203213
+                ],
+                [
+                  0.033334213981176135,
+                  0.04988817673815271,
+                  0.47763721887811994
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  0.034612510158295536,
+                  0.048839106177193475,
+                  0.4777102427203213
+                ],
+                [
+                  0.03533588134278185,
+                  0.04824545078818893,
+                  0.4778406661180306
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.0593401841841426,
+                  -0.006699222402839228,
+                  0.8617526734613035
+                ],
+                [
+                  -0.05938107694744428,
+                  -0.006284031209417084,
+                  0.8617801252028812
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.0593401841841426,
+                  -0.006699222402839228,
+                  0.8617526734613035
+                ],
+                [
+                  -0.05884711682419382,
+                  -0.011705419320967704,
+                  0.8610156226357841
+                ]
+              ],
+              "incidence": 3
+            },
+            {
+              "vertex_coordinates": [
+                [
+                  -0.05938107694744428,
+                  -0.006284031209417084,
+                  0.8617801252028812
+                ],
+                [
+                  -0.060000000000000005,
+                  0.0,
+                  0.8621956147497692
+                ]
+              ],
+              "incidence": 3
+            }
+          ]
+        },
+        "strict_numeric_preflight": false
+      },
+      "status": "REJECTED_D_NONMANIFOLD_OR_CONTACT"
+    }
+  ],
+  "admissible_candidate": null,
+  "real_D_native_trials": 11
+}

@@ -1,0 +1,26 @@
+{
+  "Faster_optimization_executed": false,
+  "MuJoCo_real_optimized_before_after_executed": false,
+  "W0_physical_tip_or_FD_approved": false,
+  "W2_teacher_training_allowed": false,
+  "case_id": "P13_RECONSTRUCTED_REFERENCE_UNIFORM_SOLID_PROPOSAL",
+  "coordinate_frame": "P13_REFERENCE_ALREADY_Z_UP",
+  "density_kg_m3": 1200.0,
+  "density_model": "ASSUMED_UNIFORM_SOLID_NOT_PRINTED_MATERIAL_CERTIFICATE",
+  "full_boolean_region_equality_certified": false,
+  "native_implicit_point_exact_identity_certified": false,
+  "printability_certified": false,
+  "scale_m_per_unit": 0.025,
+  "schema": "W4P17P13PhysicalConfigurationV1",
+  "source_parameter_document": "P13_REFERENCE_SHAFT_AND_DESIGN_GATE.md",
+  "spin_axis_reference": [
+    0.0,
+    0.0,
+    1.0
+  ],
+  "tip_reference": [
+    0.0,
+    0.0,
+    0.0
+  ]
+}

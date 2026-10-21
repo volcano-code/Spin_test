@@ -700,3 +700,71 @@ jobs:
             research/SpinIt2014_Teapot_20261018/P1/p16-exact-audit/**
           if-no-files-found: warn
           retention-days: 30
+
+  p17-signed-boundary-and-material-case:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      P1: research/SpinIt2014_Teapot_20261018/P1
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - name: Checkout exact W4 P17 source and durable material packet
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install explicit numerical audit dependencies
+        run: python -m pip install 'numpy==2.3.5' 'scipy==1.17.0' 'trimesh==4.12.2' 'networkx==3.7'
+      - name: Fetch authentic historical P14 native materials
+        uses: actions/download-artifact@v4
+        with:
+          name: W4-P7-real-Cherchi-reference-geometry-or-failure-not-optimized
+          run-id: 39462578208
+          github-token: ${{ github.token }}
+          path: w4-p17-source-p14
+      - name: Fetch authentic historical P15 repaired materials
+        uses: actions/download-artifact@v4
+        with:
+          name: W4-P15-P14-real-native-source-bounded-numeric-repair-NOT-exact-Cherchi
+          run-id: 39555122736
+          github-token: ${{ github.token }}
+          path: w4-p17-source-p15
+      - name: Test signed orientations, SI moments, real materials and packet rejection
+        run: |
+          set -euo pipefail
+          export W4_P17_P14_ROOT="$GITHUB_WORKSPACE/w4-p17-source-p14/research/SpinIt2014_Teapot_20261018/P1"
+          export W4_P17_P15_ROOT="$GITHUB_WORKSPACE/w4-p17-source-p15"
+          mkdir -p "$RUNNER_TEMP/w4-p17-evidence"
+          python -m unittest discover -v -s "$P1" -p 'test_p17*.py' 2>&1 | tee "$RUNNER_TEMP/w4-p17-evidence/tests.log"
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          text=(Path(os.environ['RUNNER_TEMP'])/'w4-p17-evidence/tests.log').read_text()
+          assert '\nOK\n' in text and 'skipped' not in text
+          PY
+      - name: Build a new packet from the real six-source archives
+        run: |
+          set -euo pipefail
+          python "$P1/p17_material_candidate.py" build \
+            --p14-root "$GITHUB_WORKSPACE/w4-p17-source-p14/research/SpinIt2014_Teapot_20261018/P1" \
+            --p15-root "$GITHUB_WORKSPACE/w4-p17-source-p15" \
+            --out "$RUNNER_TEMP/w4-p17-evidence/rebuilt-packet" | tee "$RUNNER_TEMP/w4-p17-evidence/build.log"
+      - name: Independently replay the durable Git material package
+        run: |
+          set -euo pipefail
+          python "$P1/p17_material_candidate.py" verify --packet "$P1/P17_material_case" | tee "$RUNNER_TEMP/w4-p17-evidence/git-packet-replay.log"
+          python "$P1/p17_material_candidate.py" verify --packet "$RUNNER_TEMP/w4-p17-evidence/rebuilt-packet" | tee "$RUNNER_TEMP/w4-p17-evidence/rebuilt-packet-replay.log"
+          git diff --exit-code -- "$P1/P17_material_case"
+      - name: Preserve P17 boundary certificate and physical proposal
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-P17-signed-boundary-corrected-real-material-case-NOT-W0-approved
+          path: ${{ runner.temp }}/w4-p17-evidence/**
+          if-no-files-found: warn
+          retention-days: 30
+

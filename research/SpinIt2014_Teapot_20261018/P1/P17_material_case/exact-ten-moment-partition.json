@@ -1,0 +1,77 @@
+{
+  "moment_order": [
+    "M",
+    "LX",
+    "LY",
+    "LZ",
+    "QXX",
+    "QYY",
+    "QZZ",
+    "QYZ",
+    "QXZ",
+    "QXY"
+  ],
+  "residual": [
+    {
+      "decimal_projection": 0.0,
+      "denominator": "1",
+      "is_zero": true,
+      "numerator": "0"
+    },
+    {
+      "decimal_projection": 0.0,
+      "denominator": "1",
+      "is_zero": true,
+      "numerator": "0"
+    },
+    {
+      "decimal_projection": 0.0,
+      "denominator": "1",
+      "is_zero": true,
+      "numerator": "0"
+    },
+    {
+      "decimal_projection": 0.0,
+      "denominator": "1",
+      "is_zero": true,
+      "numerator": "0"
+    },
+    {
+      "decimal_projection": 0.0,
+      "denominator": "1",
+      "is_zero": true,
+      "numerator": "0"
+    },
+    {
+      "decimal_projection": 0.0,
+      "denominator": "1",
+      "is_zero": true,
+      "numerator": "0"
+    },
+    {
+      "decimal_projection": 0.0,
+      "denominator": "1",
+      "is_zero": true,
+      "numerator": "0"
+    },
+    {
+      "decimal_projection": 0.0,
+      "denominator": "1",
+      "is_zero": true,
+      "numerator": "0"
+    },
+    {
+      "decimal_projection": 0.0,
+      "denominator": "1",
+      "is_zero": true,
+      "numerator": "0"
+    },
+    {
+      "decimal_projection": 0.0,
+      "denominator": "1",
+      "is_zero": true,
+      "numerator": "0"
+    }
+  ],
+  "saved_binary64_raw_ten_additivity_exact": true
+}
