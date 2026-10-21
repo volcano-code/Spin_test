@@ -1,0 +1,62 @@
+{
+  "schema": "W6_M13_LOCAL_SOURCE_RECEIPT_V1",
+  "upstream_w6_parent": "bfa8d0c767fc3cb69216db6a8a2801e200b43365",
+  "upstream_w5_reference": "219cc548fd5f37a1f88b666242cdea92d8e408cd",
+  "upstream_W2_reference": "1093a115cde928122de6aee98233fec8b18e5774",
+  "git_blobs": {
+    "research/NeuralMoments/models/pcraft_ufno/m13_mesh_source.py": {
+      "sha1": "0328a6db46b559f6050a98c63e6695d2915f91d2",
+      "bytes": 9379,
+      "sha256": "6a8d6822f1851db02b0b5629fb523c06695cd06b4c08ba7cf270d3abb81126de"
+    },
+    "research/NeuralMoments/models/pcraft_ufno/m13_cell_integrals.py": {
+      "sha1": "019bd93c5e76ab0e241f33cff6925c4483361334",
+      "bytes": 6708,
+      "sha256": "2e6da6f19c50a3d7b32b4524dfa84fdbff739b5acafa510c5b9b5b15ccd16cfb"
+    },
+    "research/NeuralMoments/models/pcraft_ufno/m13_mesh_cut.py": {
+      "sha1": "b6d639b7499f35c33d2b9ae1f381d255297f94ea",
+      "bytes": 5518,
+      "sha256": "370b7304c17c9c7d9d6d47ace73471f230e41608bbc7024128b98350c6970c30"
+    },
+    "research/NeuralMoments/models/pcraft_ufno/m13_experiment.py": {
+      "sha1": "113e7becedba0d481d08f4bf72ff82665ff77c50",
+      "bytes": 14905,
+      "sha256": "1cccc17beae979dc15aa65007ab68b3aced49a93d6a373383fe0d8aaddde06e0"
+    },
+    "research/NeuralMoments/models/pcraft_ufno/test_m13.py": {
+      "sha1": "7220e24caf73fe8bc50c52ffb30c7ba8c91ac4a0",
+      "bytes": 8603,
+      "sha256": "2ab3398fb2869de0e82565c6283ecf3d097ce4c77ce2106171b2047d88542c00"
+    },
+    "research/NeuralMoments/models/pcraft_ufno/test_m13_mesh_cut.py": {
+      "sha1": "0233ef9085d08debb5ef13cc7b519d0c9604fc67",
+      "bytes": 7117,
+      "sha256": "eda3069a2ef3858ddf15f1e71f4eae2f634268e9bffbd9b49b562b52bf9114d1"
+    },
+    "research/NeuralMoments/models/pcraft_ufno/README_M13.md": {
+      "sha1": "76fc6466d8a8f88c9f1ece29b8b82eabada7e6b2",
+      "bytes": 9240,
+      "sha256": "144bb5fea0a397e6706d63700488f9cba5e25336f81c588e4f13b4a6384de4a2"
+    },
+    "research/NeuralMoments/models/pcraft_ufno/m13_summary.json": {
+      "sha1": "5eb7386115af5de14ad58ab01a8568072244ba4c",
+      "bytes": 6998,
+      "sha256": "1e8bc6d6bcf62224ea2f8585408b3443738c1773f56bf5d0f6d3da51baefb910"
+    },
+    "research/NeuralMoments/models/pcraft_ufno/m13_all_tests_cpu.log": {
+      "sha1": "6ac26d14e91ffcc21edb139aee7c19ab41d3a8de",
+      "bytes": 43092,
+      "sha256": "8f0440260b77b1de494251b4088f8964ded77663c3fda54c7827dd8df6e1406e"
+    },
+    "research/NeuralMoments/models/pcraft_ufno/m13_three_seed_mesh_cpu.json.gz": {
+      "sha1": "f27d0a2760d37cede1e2dc919558f763ec34158c",
+      "bytes": 14344,
+      "sha256": "401c6b44c9e67f1106f57338d02355a5dc4cef0acb48ed1d46aeedfc1010571d"
+    }
+  },
+  "local_mirror_original_blob_match": "10/11 checked pinned W6 files; analytic_cut.py is locally reconstructed and differs",
+  "local_test": "Ran 272 tests, OK (skipped=1)",
+  "measured_neural_source": "three seeded CPU-runs 131,137,139, mesh P0, W2=0",
+  "remote_ci": "NOT_EXECUTED_OR_VERIFIED"
+}

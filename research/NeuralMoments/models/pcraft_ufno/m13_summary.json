@@ -1,0 +1,179 @@
+{
+  "schema": "W6_M13_SOURCE_BOUND_MESH_CELLS_SUMMARY_V1",
+  "status": "LOCAL_CPU_TESTED_P0_MESH_NUMERIC_NOT_W2_NATIVE",
+  "repository": "volcano-code/Spin_test",
+  "write_branch": "research/neuralmoments-w6-pcraft-20261019",
+  "parent": "bfa8d0c767fc3cb69216db6a8a2801e200b43365",
+  "frozen_original_native": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "observed_W0_HEAD": "51cbfd33d08063404d7e0c40e4256dd0e38efa1a",
+  "observed_W2_HEAD": "1093a115cde928122de6aee98233fec8b18e5774",
+  "observed_W5_HEAD": "219cc548fd5f37a1f88b666242cdea92d8e408cd",
+  "W2_teacher_admitted_count": 0,
+  "W2_native_new_calls": 0,
+  "archived_W2_excluded_count": 81,
+  "seed_protocol": {
+    "seeds": [
+      131,
+      137,
+      139
+    ],
+    "train_families": [
+      "box",
+      "sphere"
+    ],
+    "test_family": "ellipsoid",
+    "train_shapes_per_family": 10,
+    "test_shapes_per_seed": 6,
+    "fit_meshes_per_seed": 16,
+    "validation_meshes_per_seed": 4,
+    "fit_controls_per_seed": 32,
+    "validation_controls_per_seed": 8,
+    "test_controls_per_seed": 12,
+    "max_training_steps": 80,
+    "optimizer": "Adam lr .003 batch 8, loss MSE(r)+.5*MSE(Jc), geometry-ID early stopping",
+    "shared_voxel_D": "CELL_CENTERED_MESH_WINDING_8X8X8_SUBCELL_3X3X3_SAME_FOR_W5_W6",
+    "mesh_source": "INDEXED_TRIANGULAR_CLOSED_POSITIVE_SIGNED_VOLUME_CONVEX_FOR_RJ",
+    "ground_truth": "NUMERIC_TRIANGLE_CLIPPED_CONVEX_MESH_VERTICAL_P0_10MOMENTS_J",
+    "no_analytic_shape_params_in_network": true
+  },
+  "representation_experiment": {
+    "n_meshes": 27,
+    "n_mesh_cuts": 54,
+    "mean": {
+      "cells16_sub2": {
+        "cut_J_mae": 0.0021785526803523724,
+        "cut_r_mae": 0.0043316596629192836,
+        "geometry_encoding_seconds": 0.35725228714815144,
+        "mass_cut_bounds_cases": 54,
+        "mass_cut_bounds_covered": 54,
+        "mass_full_relative_error": 0.016618790838257232,
+        "mean_cut_interval_relative_width": 1.2628252755243203,
+        "r_full_mae": 0.006648244782282801
+      },
+      "cells8_sub1": {
+        "cut_J_mae": 0.006975667619608451,
+        "cut_r_mae": 0.012511770915339091,
+        "geometry_encoding_seconds": 0.025555711592527654,
+        "mass_cut_bounds_cases": 54,
+        "mass_cut_bounds_covered": 54,
+        "mass_full_relative_error": 0.04692321860956892,
+        "mean_cut_interval_relative_width": 2.1909350171954185,
+        "r_full_mae": 0.021573618175739873
+      },
+      "cells8_sub3": {
+        "cut_J_mae": 0.003838908369699103,
+        "cut_r_mae": 0.00640137438256948,
+        "geometry_encoding_seconds": 0.14241186292595862,
+        "mass_cut_bounds_cases": 54,
+        "mass_cut_bounds_covered": 54,
+        "mass_full_relative_error": 0.019550400797382655,
+        "mean_cut_interval_relative_width": 2.1909350171954185,
+        "r_full_mae": 0.010180216152886298
+      }
+    }
+  },
+  "matched_trained_models": {
+    "models": {
+      "w5_voxel_deeponet": {
+        "Jc_mae": 0.016543264190355938,
+        "negative_mass_fraction": 0.0,
+        "r_mae": 0.04108641544977824,
+        "r_relative_l2": 0.4475385944048564
+      },
+      "w6_m7": {
+        "Jc_mae": 0.005590209116538365,
+        "negative_mass_fraction": 0.0,
+        "r_mae": 0.00997222245981296,
+        "r_relative_l2": 0.1146445448199908
+      }
+    },
+    "parameter_count": {
+      "w5_voxel_deeponet": 13939,
+      "w6_m7": 13448
+    },
+    "per_seed": [
+      {
+        "seed": 131,
+        "train_sha256": "10d0817ee729ea71b447894983caf2ce8a922838a80eb881e288b117531c09c6",
+        "test_sha256": "36c083dfef6e2c24048168d461eb6dbe81328e678817ca1f2ce36847e41f97e5",
+        "models": {
+          "w5_voxel_deeponet": {
+            "r_mae": 0.02768438681960106,
+            "Jc_mae": 0.01773567870259285,
+            "cache_encode_ms": 0.317529,
+            "warm_J_ms": 1.061961
+          },
+          "w6_m7": {
+            "r_mae": 0.009554807096719742,
+            "Jc_mae": 0.005309637635946274,
+            "cache_encode_ms": 1.140139,
+            "warm_J_ms": 0.293773
+          }
+        }
+      },
+      {
+        "seed": 137,
+        "train_sha256": "d3d134bc8a71998586bbc7248b84ec699c0b65448ac4b2ea051552e31dbc4a29",
+        "test_sha256": "b8f0c531e2491dca0061590ac8bbd3ee66981f8ef0caf730e3a6045ff58aae97",
+        "models": {
+          "w5_voxel_deeponet": {
+            "r_mae": 0.04978270083665848,
+            "Jc_mae": 0.015823185443878174,
+            "cache_encode_ms": 0.24961599999999998,
+            "warm_J_ms": 0.831243
+          },
+          "w6_m7": {
+            "r_mae": 0.009944506920874119,
+            "Jc_mae": 0.006075205281376839,
+            "cache_encode_ms": 0.798314,
+            "warm_J_ms": 0.223657
+          }
+        }
+      },
+      {
+        "seed": 139,
+        "train_sha256": "ca21c047e34e45466cecafbaff844dfee9b1f292cf261b7c4df7f72ce951c1cc",
+        "test_sha256": "2d0c77f2e8e80f004ccd9242ae50ad45c437de7fe6fe7d01719108e2d5b25ead",
+        "models": {
+          "w5_voxel_deeponet": {
+            "r_mae": 0.04579215869307518,
+            "Jc_mae": 0.016070928424596786,
+            "cache_encode_ms": 0.24906599999999998,
+            "warm_J_ms": 0.9812599999999999
+          },
+          "w6_m7": {
+            "r_mae": 0.010417353361845016,
+            "Jc_mae": 0.0053857844322919846,
+            "cache_encode_ms": 0.8103819999999999,
+            "warm_J_ms": 0.23924099999999998
+          }
+        }
+      }
+    ]
+  },
+  "tests": {
+    "total": 272,
+    "passed": 271,
+    "skipped": 1,
+    "failed": 0,
+    "skipped_detail": "M10 freeze previously published three-seed numbers (fixture not yet generated)",
+    "new_m13_passed": 52,
+    "compilation": "SUCCESS",
+    "remote_CI": "NOT_VERIFIED"
+  },
+  "source_sha_note": "10 of 11 pinned core source/test files matched remote Git blob exactly. Local analytic_cut.py differs from remote hash; retain semantic reconstruction warning rather than claim byte-perfect full checkout.",
+  "limitations": [
+    "Triangulated mesh may differ from original smooth primitive",
+    "Mesh topology/embedding and original CAD Boolean not independently certified",
+    "Conservative voxel bounds only conditional on mesh embedding; not exact CAD certificate",
+    "Only positive vertical P0 plane; oblique and quadratic c rejected by local proxy",
+    "Node and cell sampled D have distinct semantics; both models see same cell source",
+    "No independent real Cherchi supervision or 10D Newton terminal",
+    "No GPU or Faster native end-to-end timing",
+    "M13 mesh reference uses float64 clipped oriented triangulation, not independent exact GMP rational material",
+    "Closed oriented and convex-face checks are not complete proof of original CAD/source or printability",
+    "Conditional occupancy bounds are deliberately loose; 54/54 coverage is not tight certification",
+    "A model winning 3 synthetic CPU seeds is not proven best on real CAD or arbitrary c",
+    "No real Faster/Cherchi calls, no native 10D optimization, no GPU VRAM or end-to-end speedup"
+  ]
+}
