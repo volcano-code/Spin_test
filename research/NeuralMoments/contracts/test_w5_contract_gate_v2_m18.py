@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import importlib.util
 import json
+from functools import lru_cache
 from pathlib import Path
 import pytest
 from .validate_contract_v1 import validate_record, ContractError
@@ -19,6 +20,7 @@ def module_at(path,name):
     spec.loader.exec_module(module)
     return module
 
+@lru_cache(maxsize=1)
 def versions():
     return module_at(LEGACY,"legacy_w5_m18"),module_at(MIGRATION,"candidate_w5_m18")
 
@@ -151,3 +153,10 @@ def test_v2_parser_does_not_export_moments_or_jacobians(tmp_path):
     assert "r_D" not in result and "J_native" not in result
     assert "candidate_native_c" not in result
 
+
+
+def test_test_fixture_imports_have_stable_exception_identity():
+    first=versions()[1]
+    second=versions()[1]
+    assert first is second
+    assert first.AdmissionError is second.AdmissionError
