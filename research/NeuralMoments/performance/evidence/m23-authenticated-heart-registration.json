@@ -1,0 +1,47 @@
+{
+  "schema": "w1-m23-real-reconstructed-heart-input-v1",
+  "result": "AUTHENTICATED_INPUT_NOT_NATIVE_NEWTON",
+  "ci_artifact_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+  "frozen_prepared_request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+  "original": [
+    15646,
+    31288
+  ],
+  "fixed": [
+    28768,
+    57532
+  ],
+  "design": [
+    13122,
+    26244
+  ],
+  "shaft": [
+    1580,
+    3156
+  ],
+  "original_and_design_bitwise_equal_to_request": true,
+  "scale_mm": 25,
+  "density_g_mm3": 0.001187,
+  "target_origin_mm": [
+    0,
+    0,
+    -2.874999612569809
+  ],
+  "original_author_cad": false,
+  "verified_native_partition": false,
+  "new_solver_registration_different_normalization_from_single_q": true,
+  "local_tests": {
+    "m22": 13,
+    "m23": 20,
+    "passed": 33,
+    "failed": 0
+  },
+  "native_host_attempt": {
+    "exit_code": 2,
+    "state": "BLOCKED_BEFORE_NATIVE",
+    "newton_calls": 0,
+    "boolean_calls": 0
+  },
+  "full_newton_speedup": null,
+  "w0_w2_admitted": false
+}
