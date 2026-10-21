@@ -547,3 +547,77 @@ jobs:
             research/SpinIt2014_Teapot_20261018/P1/p12_teapot_proposed_case.json
           if-no-files-found: warn
           retention-days: 30
+
+
+  p15-inherited-native-sliver-audit:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      P1: research/SpinIt2014_Teapot_20261018/P1
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - name: Checkout exact W4 postprocess implementation
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install numerical audit dependencies only
+        run: |
+          set -euo pipefail
+          python -m pip install 'numpy>=2,<3' 'scipy>=1.15,<2' 'trimesh>=4,<5' 'networkx>=3,<4'
+      - name: Download frozen authentic P14 native Cherchi source and failed audit
+        uses: actions/download-artifact@v4
+        with:
+          name: W4-P7-real-Cherchi-reference-geometry-or-failure-not-optimized
+          run-id: 39462578208
+          github-token: ${{ github.token }}
+          path: ${{ github.workspace }}/w4-p15-native-archive
+      - name: Verify historical P14 negative provenance and eight P15 regressions
+        run: |
+          set -euo pipefail
+          export W4_P15_P14_DIR="$GITHUB_WORKSPACE/w4-p15-native-archive/research/SpinIt2014_Teapot_20261018/P1/p14-cherchi-junction-study"
+          mkdir -p "$P1/p15-numerical-postprocess"
+          test -s "$W4_P15_P14_DIR/p14-junction-native-study.json"
+          python -m unittest discover -v -s "$P1" -p 'test_p15_inherited_sliver_repair.py' 2>&1 | tee "$P1/p15-numerical-postprocess/p15-eight-tests.log"
+      - name: Run bounded float64 micro-weld with ten raw moments and contact gates
+        run: |
+          set -euo pipefail
+          export W4_P15_P14_DIR="$GITHUB_WORKSPACE/w4-p15-native-archive/research/SpinIt2014_Teapot_20261018/P1/p14-cherchi-junction-study"
+          python "$P1/p15_inherited_sliver_repair.py" --p14-root "$W4_P15_P14_DIR" --out "$P1/p15-numerical-postprocess" 2>&1 | tee "$P1/p15-numerical-postprocess/p15-cli.log"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path('research/SpinIt2014_Teapot_20261018/P1/p15-numerical-postprocess')
+          r=json.loads((base/'p15-inherited-sliver-study.json').read_text())
+          assert r['status']=='FLOAT64_MICROWELD_CANDIDATE_AVAILABLE_NOT_EXACT_CHERCHI'
+          assert r['selected']=='rotate_1p5'
+          assert len(r['cases'])==3
+          assert r['upstream_P14_strict_native_result_was_negative']
+          assert r['outer_micro_weld']['merged_near_vertex_pairs']==14
+          assert r['outer_micro_weld']['removed_exact_sliver_faces']==28
+          for case in r['cases']:
+              assert case['status']=='FLOAT_MESH_POSTPROCESS_CONDITIONAL_PASS_NOT_NATIVE_EXACT'
+              assert case['F_postprocess']['removed_exact_sliver_faces']==28
+              assert case['F_postprocess']['maximum_vertex_representative_displacement']<1e-15
+              assert case['max_abs_full_raw_ten_material_additivity_residual']<1e-10
+              assert not case['F_independent_contact_scan']['witnesses']
+              assert not case['D_independent_contact_scan']['witnesses']
+          for key in ('original_CAD_shape_certified','exact_Cherchi_implicit_geometry_certified',
+                      'W0_physical_tip_or_FD_approved','printable_wall_thickness_certified',
+                      'SpinIt_Faster_optimization_executed','MuJoCo_before_after_optimization_run'):
+              assert r[key] is False
+          print('P15 archived real Cherchi geometry numeric micro-weld passed; EXACT/W0/FASTER NOT admitted')
+          PY
+      - name: Preserve genuine negative source identity and postprocessed trial OBJ
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-P15-P14-real-native-source-bounded-numeric-repair-NOT-exact-Cherchi
+          path: |
+            research/SpinIt2014_Teapot_20261018/P1/p15-numerical-postprocess/**
+          if-no-files-found: warn
+          retention-days: 30
