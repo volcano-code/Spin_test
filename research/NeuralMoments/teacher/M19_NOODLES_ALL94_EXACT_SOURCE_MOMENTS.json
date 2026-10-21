@@ -1,0 +1,1736 @@
+{
+  "J_D": null,
+  "bundle_sha256": "5a82bf031780945084c385dda6fbfd822bc3637a74f0556933690dc1518dae35",
+  "exact_rational_all_source_ten_digest": "d40304c23021ade4f185afc6f363524443798a879e341ac962b9632ce55cbe3b",
+  "historic_CSG_packet_evidence": {
+    "all_original_six_packets_present": false,
+    "historical_CSG_independent_partition_certified": false,
+    "historical_csg_packets_missing": [
+      "design",
+      "envelope",
+      "fixed",
+      "fixed-inside-envelope",
+      "fixed-outside-envelope",
+      "initial"
+    ],
+    "historical_csg_packets_original_sha_match": [],
+    "new_Cherchi_calls": 0,
+    "training_admitted": 0
+  },
+  "historical_CSG_independent_partition_certified": false,
+  "independently_reintegrated_source_meshes": 94,
+  "independently_reintegrated_ten_moment_components": 940,
+  "max_volume_error_relative_to_frozen_f64_source_audit": 1.734723475976807e-18,
+  "native_teacher_request_admitted": false,
+  "new_Cherchi_calls": 0,
+  "new_exact_CSG_calls": 0,
+  "original_CSG_receipt_sha256": "35f74fbdb432ee4eccebf21d7e4f1f07408f63420c659025857f1d83d15abfd0",
+  "original_fixed_parts_count": 93,
+  "original_historic_exact_CSG_calls": 96,
+  "original_manifest_git_blob": "f476a8c3e87bd30ef186b24442f641c2602c32ec",
+  "original_obj_sha256_verified": 188,
+  "original_source_manifest_sha256": "67364abba55c74ccd377eef6174b8c96ee04e4af1aadbd7e505466bafabd2a3a",
+  "schema": "w2-m19-noodles-94-exact-source-moments-v1",
+  "scope": "BINARY64_TRIANGULATED_INPUTS_NOT_AUTHOR_CAD_NOT_BOOLEAN_SOLIDS",
+  "source_corpus_188_digest": "6b2da86949e4426986e2460167f1255f0c44d6e708be87bfec17fb78ce4a69c6",
+  "source_mass_moments_must_not_be_summed_to_fixed_F": true,
+  "source_moment_snapshots": {
+    "hub-fixed": {
+      "exact_rational_ten_sha256": "b7e98921650dad94769cd80be95bde1ea8c4dc8c9cf85c7711802a8a5c057492",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.013441032061311326,
+        4.6046898178140785e-21,
+        -1.9849539992140168e-21,
+        0.014247493984990006,
+        1.0418080544045387e-05,
+        1.0418080544045387e-05,
+        0.017235435412219516,
+        -2.1040512391668577e-21,
+        4.880971206882923e-21,
+        3.3490289210841794e-23
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.013441032061311326
+    },
+    "outer-ellipsoid": {
+      "exact_rational_ten_sha256": "4bddcea1d2d2f0944236b2b14c32388bc735e21e745b34b7c4c1995df4130927",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        1.401599858658712,
+        0.0,
+        0.0,
+        1.4856958501782347,
+        0.2676733004219068,
+        0.1874047555223762,
+        1.6240020849398913,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 1.401599858658712
+    },
+    "pin-fixed": {
+      "exact_rational_ten_sha256": "c89fc18522841d434415a3320298c63feba17dfba43aee170ae48ebbb9fe8304",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.017574654250458722,
+        -3.411453802061832e-20,
+        9.104449260946906e-21,
+        0.0225177354390691,
+        2.0008444916224138e-05,
+        2.0008444916224138e-05,
+        0.03537123902375414,
+        1.3213195313665382e-20,
+        -5.524231050137352e-20,
+        2.6735754603292643e-22
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.017574654250458722
+    },
+    "rib-axial-fixed": {
+      "exact_rational_ten_sha256": "7d139b999b6dd60f56750a685e8fd9f2b8af36c85d7ed37b87f61abc04030a34",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0011837152380322917,
+        2.350185289225728e-22,
+        -3.0061223928114555e-23,
+        0.0012547381523142292,
+        1.3581014914521436e-07,
+        1.3581014914521436e-07,
+        0.001395615365262043,
+        -3.1890316671306425e-23,
+        2.4912705031756213e-22,
+        -1.0537413711975856e-24
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0011837152380322917
+    },
+    "rib-row-00-fixed": {
+      "exact_rational_ten_sha256": "9c928dff53f937816ad556eba8d7a0677604ceb3ea7f8897cc0a32b2be0e373c",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0002699429008723942,
+        -2.2775273006340925e-22,
+        -3.589450594905481e-06,
+        0.00018671742804960716,
+        1.8350540432417373e-08,
+        2.2331408775605548e-06,
+        0.00012916935923445487,
+        -2.4827953653380303e-06,
+        -1.6093356587348245e-22,
+        3.022497448836628e-24
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0002699429008723942
+    },
+    "rib-row-01-fixed": {
+      "exact_rational_ten_sha256": "b49dcd961fc0a2201f17d73c6b1ef422c4b71d02741d2ae562d3c2824275f8b1",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.000777541075986977,
+        -6.627817142074873e-22,
+        -1.5724420731197058e-05,
+        0.0005950940530491969,
+        5.338671522618245e-08,
+        5.244515838899484e-05,
+        0.00045551090903968246,
+        -1.2034745885162215e-05,
+        -5.171663699457107e-22,
+        1.338480085038579e-23
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.000777541075986977
+    },
+    "rib-row-02-fixed": {
+      "exact_rational_ten_sha256": "a399b4497d1d5d4a2e82ebb920a8d19cb602c8031732986cd116772a434677a6",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0007508984027698648,
+        -6.399480326996557e-22,
+        5.5128636885200805e-06,
+        0.0006300153122068975,
+        5.1547746132967746e-08,
+        4.699157260295435e-05,
+        0.0005286440872308685,
+        4.625377447954846e-06,
+        -5.464886436857378e-22,
+        -4.716435915378121e-24
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0007508984027698648
+    },
+    "rib-row-03-fixed": {
+      "exact_rational_ten_sha256": "7b5555d802d3cceb5a0263bd283846f3850e7caf7aa81eb109cf3675b2d114bf",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0009852195480531223,
+        6.310279694387182e-21,
+        4.7415071123080603e-07,
+        0.0008991871456726333,
+        6.772139884983625e-08,
+        0.00010603549439633078,
+        0.0008207350787819189,
+        4.327464122009981e-07,
+        5.8103644777562676e-21,
+        2.513274736013227e-24
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0009852195480531223
+    },
+    "rib-row-04-fixed": {
+      "exact_rational_ten_sha256": "55c40254fd9210d6c9b743ac6d86a06323560a2aac7703d76cdbbe1292f05d6c",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0009685815225847414,
+        -8.26509906088981e-22,
+        1.0639686314225172e-05,
+        0.0009553492088609486,
+        6.657298501166247e-08,
+        0.00010087086589291767,
+        0.0009423642418850384,
+        1.0494331830426153e-05,
+        -8.275706076836345e-22,
+        -9.102708198310843e-24
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0009685815225847414
+    },
+    "rib-row-05-fixed": {
+      "exact_rational_ten_sha256": "7888044b47e8233d0d93ff3dd7e5f2eae198eb560aca5de07b856ad22983fb20",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0009849038406506995,
+        6.308246640814924e-21,
+        -5.7704516426635484e-06,
+        0.0010439980710897415,
+        6.769960763726446e-08,
+        0.0001059671834048894,
+        0.0011067056549627634,
+        -6.116678741223362e-06,
+        6.737842766687858e-21,
+        -3.748284240443522e-23
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0009849038406506995
+    },
+    "rib-row-06-fixed": {
+      "exact_rational_ten_sha256": "27f4113eeca9e380529f71f26b572525c35ae9d102500839b25bfa4712bff407",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0009556710175161352,
+        -8.154451620057012e-22,
+        -5.18282170773685e-06,
+        0.0010834074759803133,
+        6.56818574733151e-08,
+        9.680706806331862e-05,
+        0.0012282830678578976,
+        -5.875565630764098e-06,
+        -9.366254618724258e-22,
+        4.399020172941119e-24
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0009556710175161352
+    },
+    "rib-row-07-fixed": {
+      "exact_rational_ten_sha256": "e54c85cfdc7bba512f7448d72533496538933807229343d6512958ffab833d1c",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0010272529263043607,
+        -8.767933042763226e-22,
+        -1.7981641713827022e-07,
+        0.001240226163763731,
+        7.062268742765752e-08,
+        0.0001201926420064563,
+        0.0014974242908028157,
+        -2.1709651002061008e-07,
+        -1.07167678681039e-21,
+        1.2834031369318653e-25
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0010272529263043607
+    },
+    "rib-row-08-fixed": {
+      "exact_rational_ten_sha256": "b87c7b017d6c7a88847f962f5caed46c8789dcf49e6ce58f688f4c2be4e65491",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0007252217953161878,
+        -6.179423025681064e-22,
+        1.663610163296574e-05,
+        0.000928997962541781,
+        4.977545822697832e-08,
+        4.267997998723606e-05,
+        0.001190081873198073,
+        2.131059025180706e-05,
+        -8.008079252954906e-22,
+        -1.4192666835742944e-23
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0007252217953161878
+    },
+    "rib-row-09-fixed": {
+      "exact_rational_ten_sha256": "2585b37c3685fae7eb50ddeca73229a07f59aab6a9b2f5292f6a1e0db9e74154",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0007383169981874091,
+        -6.291653389806036e-22,
+        -8.867256303445637e-06,
+        0.0010001582819138455,
+        5.067933424397219e-08,
+        4.473733010459892e-05,
+        0.001354911249166258,
+        -1.2011994646631105e-05,
+        -8.616975695560139e-22,
+        7.538517977520632e-24
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0007383169981874091
+    },
+    "rib-row-10-fixed": {
+      "exact_rational_ten_sha256": "1280b96d5590ecf958e63ca29609ab8ab89cb2e28fb1d3d32a50f4e111b0e794",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0003110309410314706,
+        -2.629665847366251e-22,
+        4.23795798902389e-07,
+        0.00044424788562092094,
+        2.1186578518294442e-08,
+        3.34174186037591e-06,
+        0.0006345438589022665,
+        6.05310799539927e-07,
+        -3.7952251052747107e-22,
+        -3.652941978159953e-25
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0003110309410314706
+    },
+    "tube-000-fixed": {
+      "exact_rational_ten_sha256": "73710814a91459bbec3c1a76a26e50fb5029fb58609f0acbb092870204122347",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.002653998720695567,
+        -4.874983750976924e-06,
+        -0.000385273113792389,
+        0.0018357804630541037,
+        0.0002018617627018907,
+        5.76869134919024e-05,
+        0.001270588605857906,
+        -0.00026675417534858603,
+        -3.6656698026434793e-06,
+        -6.411195458047592e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.002653998720695567
+    },
+    "tube-001-fixed": {
+      "exact_rational_ten_sha256": "fc8234abfc05702a5e3ace08badf661600f097f543c03877d69fbda6d120bff6",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0028851418505673157,
+        -1.3141325256040092e-07,
+        -7.590000898240379e-06,
+        0.001995092263375261,
+        0.00026293203064671337,
+        1.5031142877009082e-06,
+        0.0013804582787444244,
+        -5.531561373081311e-06,
+        -4.213947566009715e-07,
+        -8.032538447611775e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0028851418505673157
+    },
+    "tube-002-fixed": {
+      "exact_rational_ten_sha256": "771046feeaed34a027b055e8e8ed7b1d6d04b2393a1a05a1ea9e2e7ee66ff90f",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.002658287258737495,
+        3.4689994010569515e-06,
+        0.0003728241490379638,
+        0.0018377488052784584,
+        0.00020153509680413315,
+        5.447714355161199e-05,
+        0.0012712611125592094,
+        0.0002574623492700528,
+        2.1576456941050717e-06,
+        -4.801498081950585e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.002658287258737495
+    },
+    "tube-003-fixed": {
+      "exact_rational_ten_sha256": "cb3a51072029e295b29116fe71338249972b5315055fc2fe94508417bfafcfee",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0023161011912169603,
+        -5.625813616597192e-06,
+        -0.001028074039753891,
+        0.0017715291995670196,
+        0.0001280118450538423,
+        0.00045889497297451,
+        0.001355668776043274,
+        -0.0007865049719918912,
+        -4.496476247867283e-06,
+        3.8605695594176175e-07
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0023161011912169603
+    },
+    "tube-004-fixed": {
+      "exact_rational_ten_sha256": "60fd7eff2d70a7efb6fcf9868366fed238a3da7197f74e3dc97635e2d84e6238",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.00343215412423704,
+        -4.4960339134973574e-07,
+        -0.0010209833798702763,
+        0.0026245952193918605,
+        0.00044817596024971485,
+        0.0003054223308435348,
+        0.002008045836611885,
+        -0.0007809993182728433,
+        -5.695811863823804e-07,
+        -9.901035283173203e-07
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.00343215412423704
+    },
+    "tube-005-fixed": {
+      "exact_rational_ten_sha256": "eaa297455d5dd33a24cb8800c06039008961cba98e2ae029241467b100f5d9ac",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.003941641707864019,
+        2.1229075906190013e-06,
+        -0.0005989098125516424,
+        0.0030139076630664825,
+        0.000685971647640711,
+        9.240532688317407e-05,
+        0.0023056788181843473,
+        -0.0004582595419511377,
+        1.536365548477649e-06,
+        4.145034499798914e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.003941641707864019
+    },
+    "tube-006-fixed": {
+      "exact_rational_ten_sha256": "bf4dc6b64f608961112ad1e53277992b26b4c8b72754ad4fa3ed0ef23fd690f6",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004098641642568411,
+        1.0757558745965295e-06,
+        -2.3837516558417547e-05,
+        0.003133914758359915,
+        0.0007711821867099829,
+        2.143197322847312e-06,
+        0.002397455604649492,
+        -1.8586703249373216e-05,
+        9.504575071695799e-07,
+        1.0722804525789008e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004098641642568411
+    },
+    "tube-007-fixed": {
+      "exact_rational_ten_sha256": "b1475a625dd17c7846bbfa7e34fb20a6673c608960a4c40e511d58f11a475d2c",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.003947792329138769,
+        -2.9694877523865995e-06,
+        0.0005569088645809734,
+        0.0030187647396735053,
+        0.0006849546854815407,
+        8.162765797505534e-05,
+        0.0023095126358917465,
+        0.0004254857265608229,
+        -1.954360712371731e-06,
+        1.350726406380818e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.003947792329138769
+    },
+    "tube-008-fixed": {
+      "exact_rational_ten_sha256": "c84eb571e7b3f700d09b829c32d1d68c2df358ed36c25f442aec3b4b95fa03ff",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0034434913540305604,
+        -8.33829714592886e-06,
+        0.0009943745352238712,
+        0.0026334614816443665,
+        0.0004470119783027026,
+        0.0002911060510104674,
+        0.0020149800258480064,
+        0.0007601474940465556,
+        -5.990639874232331e-06,
+        9.444400163454498e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0034434913540305604
+    },
+    "tube-009-fixed": {
+      "exact_rational_ten_sha256": "c0dbbbcfd6b93447a6ca6f8bb88b1f9517b21ab3065b248a0807928501780897",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0023315407378169317,
+        -1.2012329789759687e-05,
+        0.0010223431255731309,
+        0.0017832434437581512,
+        0.0001277242755864963,
+        0.00045214416850721645,
+        0.0013645607648977048,
+        0.0007817409972582292,
+        -8.919152451254656e-06,
+        -5.855307672257672e-07
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0023315407378169317
+    },
+    "tube-010-fixed": {
+      "exact_rational_ten_sha256": "0246e9583231481ed5825280f440e7713e2217355a3229b095798c6098c79e81",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0034997696154589627,
+        1.2559453110274964e-05,
+        -0.0015116688170234652,
+        0.0029357473917796507,
+        0.00045899388563724517,
+        0.0006606539522474586,
+        0.00246363907858911,
+        -0.0012682262966988765,
+        1.106933106017264e-05,
+        4.9795453908517976e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0034997696154589627
+    },
+    "tube-011-fixed": {
+      "exact_rational_ten_sha256": "8a8f67593a0c54308fc32160f36767e59334e18a7016b139980aa99faa45479e",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004292937946956817,
+        6.209925655101406e-06,
+        -0.001220834861632952,
+        0.003602012003750648,
+        0.0008758542133296813,
+        0.0003535435075782482,
+        0.0030235377909829386,
+        -0.0010245830918310574,
+        6.019607405581941e-06,
+        9.934557230144958e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004292937946956817
+    },
+    "tube-012-fixed": {
+      "exact_rational_ten_sha256": "967ad2613171871264f86890fa6202d961ae6fbdf602b09d68e74b0778373309",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004698108363944903,
+        1.6774114245578686e-06,
+        -0.0006493088299786426,
+        0.003942975191526587,
+        0.0011626366598602336,
+        9.38796204971905e-05,
+        0.003310585772106381,
+        -0.0005451880774086556,
+        2.3222899629909904e-06,
+        6.253962008425078e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004698108363944903
+    },
+    "tube-013-fixed": {
+      "exact_rational_ten_sha256": "34b2e1c3788aa63e72ddf7633832f6121556f48eea365dde52d30fab77b14a4b",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.00482266747400798,
+        3.958243173952359e-07,
+        3.325994003757728e-05,
+        0.004048446740337005,
+        0.001264739996653892,
+        2.5248273260486025e-06,
+        0.003399923971228312,
+        2.772345964067311e-05,
+        1.1674221876269716e-06,
+        -2.3168161462923245e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.00482266747400798
+    },
+    "tube-014-fixed": {
+      "exact_rational_ten_sha256": "f8140b2977d18cdfc11fa4451d6a67fc88921db6646a20bcf066ace6eb543995",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004692003749665162,
+        2.6002832564670296e-06,
+        0.0007088140594742635,
+        0.003939493595619767,
+        0.0011653789784825395,
+        0.00010882159956340598,
+        0.0033090387600940335,
+        0.0005950267765928309,
+        2.792044697795726e-06,
+        -1.0168441798057141e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004692003749665162
+    },
+    "tube-015-fixed": {
+      "exact_rational_ten_sha256": "f9a66fd961ffc6d4d0ee5576052c421c149153339ab0fa6b883f6c913b4de325",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0042822508134420356,
+        7.461934695690546e-06,
+        0.0012614826504711136,
+        0.003595906860365441,
+        0.0008798761266667215,
+        0.000374485780579373,
+        0.003020812606293244,
+        0.0010592960643985329,
+        6.584456008566487e-06,
+        -1.2131522014815073e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0042822508134420356
+    },
+    "tube-016-fixed": {
+      "exact_rational_ten_sha256": "3bc75eac5ea8ffc20fe1b273d0cfb8bcd3fa0911597229e94c51220020d9cc55",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0034874869431548014,
+        1.3158595923558258e-05,
+        0.0015280204059498889,
+        0.0029286678144444544,
+        0.0004620604596545582,
+        0.0006746002248939441,
+        0.002460401259443637,
+        0.0012832543386242206,
+        1.112579289333921e-05,
+        -5.603276237521833e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0034874869431548014
+    },
+    "tube-017-fixed": {
+      "exact_rational_ten_sha256": "6cd6674373597dfebd069cf0b658b201fbcc486af84fa73ecd7df10c01c5a23e",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0028464246915590316,
+        -1.763341244250977e-05,
+        -0.0016588643694127687,
+        0.002600376092823934,
+        0.00023321383597553396,
+        0.0009747450412272526,
+        0.0023764173514015455,
+        -0.0015155943597290357,
+        -1.6252090318195014e-05,
+        2.981459098690878e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0028464246915590316
+    },
+    "tube-018-fixed": {
+      "exact_rational_ten_sha256": "cb4421976a1c9460a85b8cf8ba474e186fc198d98d97484c9128e44a2e33439b",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004103602687495406,
+        -1.3702930605343049e-05,
+        -0.0017967400428082667,
+        0.0037481284630221778,
+        0.0007633339429644364,
+        0.0007926298208826279,
+        0.003424639603260354,
+        -0.0016412118725910483,
+        -1.2945234378178926e-05,
+        -1.010149179628009e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004103602687495406
+    },
+    "tube-019-fixed": {
+      "exact_rational_ten_sha256": "5e977a6fe13d8e40c6c916460c12ea7b0905829674b0cffa2bdca48a3599f603",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004790104901548245,
+        -7.781004371277509e-06,
+        -0.0014111822178629325,
+        0.004374381314931865,
+        0.0012364246135202481,
+        0.00041893860335847846,
+        0.003996133130892962,
+        -0.0012887298161104756,
+        -7.884479854038819e-06,
+        -1.5572274252378165e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004790104901548245
+    },
+    "tube-020-fixed": {
+      "exact_rational_ten_sha256": "676776404c69ee47b4ef75479c758f04beddebcfc7cb821d791bb15de267f08b",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.005157179869358384,
+        -2.8748135640377303e-06,
+        -0.000779556107564723,
+        0.004708608176716409,
+        0.001550757163363032,
+        0.00011975237087647167,
+        0.004300557906679323,
+        -0.0007116704171081871,
+        -3.697544709040296e-06,
+        -1.1999113625490334e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.005157179869358384
+    },
+    "tube-021-fixed": {
+      "exact_rational_ten_sha256": "10fab977124cfc963441a30d8c38bce63d3eb54cdc453ad8c0f442dd82a598a5",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.005275701774310831,
+        -6.773686301456818e-07,
+        -3.6934427644845685e-05,
+        0.004815688341745116,
+        0.001659107258672296,
+        2.7659950960576087e-06,
+        0.004397325871634803,
+        -3.3564114086953e-05,
+        -1.8375697171940859e-06,
+        -2.3081313998690584e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.005275701774310831
+    },
+    "tube-022-fixed": {
+      "exact_rational_ten_sha256": "2ada818832d6a083e846dd8c4e29f08325dfd1b652a7858eb5dcf2fda7ab2af9",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.005162838025103315,
+        -1.9761805416692613e-06,
+        0.000712979141035417,
+        0.0047115152154418565,
+        0.001547758072751593,
+        0.00010298960412551386,
+        0.004301153119679121,
+        0.0006508233970743478,
+        -2.9761146027928076e-06,
+        8.053135269493503e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.005162838025103315
+    },
+    "tube-023-fixed": {
+      "exact_rational_ten_sha256": "da1d9f95543b150c045db77c4d53e756da02e64f90228c85a314bed919bff49a",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004799838699721532,
+        -6.517394250741721e-06,
+        0.0013642790530845922,
+        0.0043792176291326135,
+        0.001231921066388727,
+        0.0003948309908333202,
+        0.003996856554345736,
+        0.0012448702425191228,
+        -6.888816880953454e-06,
+        1.3247064539263347e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004799838699721532
+    },
+    "tube-024-fixed": {
+      "exact_rational_ten_sha256": "26e21ffe84e9a27ef89423e01a3419bcb689aeb68e0fda72c5c4cee217fd6517",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004114174653979737,
+        -1.2938364447697377e-05,
+        0.001775438956565528,
+        0.003752846693995418,
+        0.0007596207450540561,
+        0.0007751262150934511,
+        0.0034244499350561544,
+        0.001619604294144747,
+        -1.2393090241604228e-05,
+        9.344268709022422e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004114174653979737
+    },
+    "tube-025-fixed": {
+      "exact_rational_ten_sha256": "f4c27fef9294b3cf096ea1bd6a8da19175f59f76ddb5d0666b141baf6e0fdff9",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0028521048073424566,
+        -1.8212100450254158e-05,
+        0.0016579474417529896,
+        0.0026011110802117605,
+        0.00023204502667690066,
+        0.0009724101316097445,
+        0.0023730308731632712,
+        0.0015120911174266991,
+        -1.6828998868919278e-05,
+        -3.388326232659084e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0028521048073424566
+    },
+    "tube-026-fixed": {
+      "exact_rational_ten_sha256": "2caa3bf418575583df6745342f74202c619b8941d330cfdfe60ff2173177527f",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.003318777879200213,
+        1.6733884193626225e-05,
+        -0.0019252819344257248,
+        0.0032711818202150267,
+        0.0003803666572241498,
+        0.0011266302454764118,
+        0.003225227146494183,
+        -0.0018973217224173655,
+        1.628290600077927e-05,
+        2.9741542934506377e-07
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.003318777879200213
+    },
+    "tube-027-fixed": {
+      "exact_rational_ten_sha256": "e5a0a04fb2e4429c8e87662057e5d830ee7066e6c1b03c7a5e88a9227e78ae33",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004439673622983739,
+        1.1131955173184324e-05,
+        -0.001913282921662042,
+        0.004375806980977462,
+        0.0009612033284795618,
+        0.0008339879652729184,
+        0.004314149582169654,
+        -0.0018852848981157956,
+        1.0921677307373235e-05,
+        1.229467878416994e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004439673622983739
+    },
+    "tube-028-fixed": {
+      "exact_rational_ten_sha256": "62f5311df2b17ccfbb4fb0b59e34fc4a0b7332cd93a80b75c4dd069e56b85679",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.005078533615455966,
+        4.941212764015212e-06,
+        -0.001441045673846318,
+        0.005005582944106822,
+        0.0014628220631731157,
+        0.0004162155742128069,
+        0.004935159707598879,
+        -0.0014198400850253554,
+        5.156237111538513e-06,
+        1.4830112211319994e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.005078533615455966
+    },
+    "tube-029-fixed": {
+      "exact_rational_ten_sha256": "a01ba0d1277255dba0bd057c592d0d86a9aefb7893ab8478081266bc93a12c55",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.005421581640753567,
+        7.918182667210308e-07,
+        -0.0007465702283382811,
+        0.0053441400869962165,
+        0.0017940059273412919,
+        0.00010747217752616121,
+        0.005269386086209915,
+        -0.0007354229324797018,
+        1.4618321365607668e-06,
+        8.142957566065543e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.005421581640753567
+    },
+    "tube-030-fixed": {
+      "exact_rational_ten_sha256": "1b8d9379b12bb979232540d2f5eb8fdea44d49bbd2c9a17b90d78972ab4bca0d",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.005528690046476531,
+        -5.505072963404293e-08,
+        4.0318849112891506e-05,
+        0.005450453798155759,
+        0.0019098535690357525,
+        2.9055575851942873e-06,
+        0.005374938304115163,
+        4.018894402838338e-05,
+        9.641078608798302e-07,
+        -3.5482436784311495e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.005528690046476531
+    },
+    "tube-031-fixed": {
+      "exact_rational_ten_sha256": "b8242ca35d6b556c46c5ef5390c52397b06a3353e7d7e4a6fa9612a6043d3bec",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.005415946868324931,
+        2.5746021005317595e-06,
+        0.0008195703421292334,
+        0.005340250831093485,
+        0.0017960348782175518,
+        0.00012608628673446343,
+        0.005267193561271936,
+        0.0008085201887665415,
+        3.7387071539984815e-06,
+        -1.4219740654331305e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.005415946868324931
+    },
+    "tube-032-fixed": {
+      "exact_rational_ten_sha256": "a0f9630d0ea400edf20e6a99b0be842412b39cfc529334fc5c4d17ed2bd31365",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.005068897540177914,
+        7.842340369067355e-06,
+        0.001493347925176257,
+        0.004999075887982952,
+        0.0014656097425814823,
+        0.0004434404367103189,
+        0.004931694378494422,
+        0.0014731663000467695,
+        8.904665699098245e-06,
+        -1.834951854035304e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.005068897540177914
+    },
+    "tube-033-fixed": {
+      "exact_rational_ten_sha256": "247fa37a0741710624d021a6b5d4f8250f92a6390286faed9b49e49771fdeac7",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.00442947080371949,
+        1.4064539520044383e-05,
+        0.0019383166912920553,
+        0.004369407938899432,
+        0.000962908643048859,
+        0.0008547071663343439,
+        0.004311448662302369,
+        0.0019124157451235232,
+        1.4801340081752431e-05,
+        -1.3020999819449196e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.00442947080371949
+    },
+    "tube-034-fixed": {
+      "exact_rational_ten_sha256": "2ba3885c12983a41dfddc355564a2fe8b814250588b5d7dfba359c3ab42e0353",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.003314971494067792,
+        1.864380476549939e-05,
+        0.0019278397955756331,
+        0.003270751619854633,
+        0.0003799964462302047,
+        0.0011304344113843413,
+        0.0032280806637297915,
+        0.0019024569895912222,
+        1.8920433835400803e-05,
+        4.682564301947086e-07
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.003314971494067792
+    },
+    "tube-035-fixed": {
+      "exact_rational_ten_sha256": "f1cbf9301b6c32048ad118742917c56aa0c0ede7a7865f2a20ddcf325d97976f",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0034474098896664354,
+        -1.6521298944612357e-05,
+        -0.002013815705613201,
+        0.003655658032078836,
+        0.0004352538676923198,
+        0.0011844587579445832,
+        0.0038774863768937127,
+        -0.002135304033292264,
+        -1.7032365237972427e-05,
+        -8.29174317695718e-07
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0034474098896664354
+    },
+    "tube-036-fixed": {
+      "exact_rational_ten_sha256": "d87f9a04d17c24ebfc2ede26026c5b21d155466fcb877905bba95b49683e5669",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0045290216125968225,
+        -1.0214917341606303e-05,
+        -0.001992130010252745,
+        0.004803459857646786,
+        0.0010350545503863958,
+        0.0008815018229649311,
+        0.005095845873854465,
+        -0.002112621795973639,
+        -1.0290627035931202e-05,
+        -1.1160802860741395e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0045290216125968225
+    },
+    "tube-037-fixed": {
+      "exact_rational_ten_sha256": "642598176ad538a56b65f58e006fbdc9cceb4c3d81cb461138cdc6a13a794419",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.005156967650125397,
+        -3.833918054350657e-06,
+        -0.0015273010184921668,
+        0.005470022960387957,
+        0.0015469830329282355,
+        0.0004550529275437484,
+        0.0058035845302744655,
+        -0.0016197185683689286,
+        -3.7201192751170632e-06,
+        -1.1351637297247742e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.005156967650125397
+    },
+    "tube-038-fixed": {
+      "exact_rational_ten_sha256": "afc441da800000c93843b76b5e703651cd94b12667791735a3100c995ebb53f9",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.005499139549903529,
+        2.684030581737443e-07,
+        -0.0008355718358136205,
+        0.005833206936733084,
+        0.0018821490255685764,
+        0.00012881833282202672,
+        0.006189171202137621,
+        -0.0008859510920898748,
+        2.68114218949993e-07,
+        -2.7958704228226077e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.005499139549903529
+    },
+    "tube-039-fixed": {
+      "exact_rational_ten_sha256": "2553673fcc734b73a4e447ac06a6fc5af2d02c9e3c9a3b3e278a589ead4e3c20",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0056103506547086875,
+        9.563428553438384e-07,
+        -3.865012174920552e-05,
+        0.005951060474323281,
+        0.0019974281388984764,
+        2.944409265185017e-06,
+        0.006314096957070761,
+        -4.0548575946346515e-05,
+        5.81422432576406e-07,
+        9.600828310906697e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0056103506547086875
+    },
+    "tube-040-fixed": {
+      "exact_rational_ten_sha256": "9a169286a66d66b5d482322ae3a3ccafd1590af92bf9e109a13b9ab233684ce7",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.005504353076195928,
+        -1.8516405994539728e-06,
+        0.0007655720807025686,
+        0.005838191197951328,
+        0.0018801230720037684,
+        0.00011106454508903105,
+        0.006193882064076144,
+        0.0008124802687725926,
+        -2.7481980099092523e-06,
+        1.9650826686822303e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.005504353076195928
+    },
+    "tube-041-fixed": {
+      "exact_rational_ten_sha256": "38d0d3e7252717afe2a0590c8bd5c26fd3e432baa1aa8ea230fc42bb61f7a31e",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.005165839381819267,
+        -7.188088990704304e-06,
+        0.0014770875625906993,
+        0.005478491298029221,
+        0.0015442348260602567,
+        0.0004290998400267727,
+        0.005811572756156163,
+        0.001566931781733331,
+        -8.594167895611467e-06,
+        2.221321109647708e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.005165839381819267
+    },
+    "tube-042-fixed": {
+      "exact_rational_ten_sha256": "a496b956dd47b93544c71e14eaf3741a9a7b468d7ce3301cd84bd9fc7e65625e",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.00453827489015166,
+        -1.3178725911197783e-05,
+        0.0019679901118215847,
+        0.0048122402713215015,
+        0.0010334657076890774,
+        0.0008617913816518966,
+        0.005104067061840461,
+        0.0020871473781498623,
+        -1.4907319384860703e-05,
+        1.5234690724642005e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.00453827489015166
+    },
+    "tube-043-fixed": {
+      "exact_rational_ten_sha256": "1749059e1447989f44c73994f45acc91da14542a96d977cb1bfa50102028b941",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.003450444647375172,
+        -1.7086606427257147e-05,
+        0.002011227124671397,
+        0.0036582832930146243,
+        0.00043584672957302145,
+        0.001180972619084912,
+        0.0038796430063936303,
+        0.0021325809651448896,
+        -1.8773282849379916e-05,
+        1.1299287544622264e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.003450444647375172
+    },
+    "tube-044-fixed": {
+      "exact_rational_ten_sha256": "c7d153f9ef31366a33a1c906125776f277c9a68543059321a6a1984998fd8a37",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.003324781391413629,
+        1.546701015692424e-05,
+        -0.001921446266135128,
+        0.003768211695947969,
+        0.00037928524179570237,
+        0.0011215392295242323,
+        0.00427174626077517,
+        -0.0021775041132512407,
+        1.6993839648911873e-05,
+        -1.7150271279258415e-07
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.003324781391413629
+    },
+    "tube-045-fixed": {
+      "exact_rational_ten_sha256": "0bb3a29b50b4064c5c11a4597b74b708a2931c724918e3d1b382d673cb1007a9",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004441948386631194,
+        8.469505814098156e-06,
+        -0.0019074274460789936,
+        0.005033762233478564,
+        0.0009606208384894473,
+        0.0008296470494860226,
+        0.005705718919326331,
+        -0.002161247252188587,
+        8.79581558391556e-06,
+        8.38357535069577e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004441948386631194
+    },
+    "tube-046-fixed": {
+      "exact_rational_ten_sha256": "0fc4c3c727b19cf21de7fb816ad63d5f69b6ca67ead07b6789daf532fec7ce32",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.005079124495803519,
+        2.4679675191894854e-06,
+        -0.0014376000949632211,
+        0.005755063235799111,
+        0.0014633516020038102,
+        0.00041477341223499956,
+        0.006522438157414126,
+        -0.0016285719591754026,
+        1.9692251041210437e-06,
+        6.367611428691005e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.005079124495803519
+    },
+    "tube-047-fixed": {
+      "exact_rational_ten_sha256": "adfa08e7a8979d765b1b0043ef2db8215ee0e8ee5f6cd07ce8aa48f2efa351da",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0054214854406579,
+        -5.242690678066968e-07,
+        -0.0007478217025856679,
+        0.006142359253965534,
+        0.0017955712792870845,
+        0.00010796020260243208,
+        0.0069606658139001205,
+        -0.0008469439789445173,
+        -1.226985865972307e-06,
+        -3.417812474697633e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0054214854406579
+    },
+    "tube-048-fixed": {
+      "exact_rational_ten_sha256": "c6738122c416a83f967de256415f599f7cb69f2d6b7160cb342c4742cca858e8",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.00552872256770476,
+        2.8199125122126246e-08,
+        3.3796017747721884e-05,
+        0.006263514518129766,
+        0.0019119909166119315,
+        2.900130637028221e-06,
+        0.007097575244074771,
+        3.8513640572379505e-05,
+        -2.5660808119738726e-07,
+        -1.5311322742078928e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.00552872256770476
+    },
+    "tube-049-fixed": {
+      "exact_rational_ten_sha256": "d5faf492ef3aaaf8cc41b8779afe22759ab87ca108fac8339bec768e7d8a911e",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0054168236799924645,
+        3.5889574994981417e-06,
+        0.0008088641855123405,
+        0.006136757389682129,
+        0.001798154888425354,
+        0.00012322217818325098,
+        0.006953953589063701,
+        0.0009164821863904167,
+        4.167092106104295e-06,
+        -2.3287838764542423e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0054168236799924645
+    },
+    "tube-050-fixed": {
+      "exact_rational_ten_sha256": "b7c2cbeab01d23e4966b994d748bdfed9f8bdb815dc9eba066693a4f17354dde",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.005071219755210569,
+        8.771889635039128e-06,
+        0.0014809500737837942,
+        0.0057455857114114,
+        0.0014672263262395261,
+        0.0004368036513937453,
+        0.006511104924769353,
+        0.0016778973028662933,
+        1.0355666392736974e-05,
+        -2.3185805348308616e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.005071219755210569
+    },
+    "tube-051-fixed": {
+      "exact_rational_ten_sha256": "5b3868bf3d673381d39d3d2134a0df645b0c326e302762ccb72d026295081c5e",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004433753787575198,
+        1.3624111613755765e-05,
+        0.0019276726915825968,
+        0.0050240038104187494,
+        0.0009637943874730724,
+        0.0008457914511439972,
+        0.005694121430596772,
+        0.002184246466198993,
+        1.599097336521968e-05,
+        -1.4331487050017483e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004433753787575198
+    },
+    "tube-052-fixed": {
+      "exact_rational_ten_sha256": "edb7a37abcb1f65c520e4a3082963e4d84b82c029c5e61112aaf4bf43ebfdc47",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0033219616566751227,
+        1.5694375678982137e-05,
+        0.0019231083968609664,
+        0.003765077875615441,
+        0.00038024042304821495,
+        0.0011236944575993486,
+        0.004268264376501453,
+        0.0021795737905307704,
+        1.8222167777691625e-05,
+        -3.4897281168071037e-07
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0033219616566751227
+    },
+    "tube-053-fixed": {
+      "exact_rational_ten_sha256": "17acbf95bd9f581beaacb3c44f4bfcc756c5332ed31c1425f03a73c85101f768",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0028300342438125317,
+        -1.3841090064295545e-05,
+        -0.0016635926565313262,
+        0.0034157643790505873,
+        0.00023443688140612333,
+        0.0009838132223959825,
+        0.004123541139953498,
+        -0.0020078432980013892,
+        -1.6262235026548673e-05,
+        2.7364965944533415e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0028300342438125317
+    },
+    "tube-054-fixed": {
+      "exact_rational_ten_sha256": "420d82682b894b1f87e2f00180c6bbb52f57e70dfede31c20978d99c507399b5",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004097173484501013,
+        -7.100726914440859e-06,
+        -0.0018099080372187056,
+        0.004946410539630726,
+        0.0007643785282849303,
+        0.0008035548593859201,
+        0.00597286464932521,
+        -0.002185026874465556,
+        -7.752895862652077e-06,
+        -4.268104638699507e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004097173484501013
+    },
+    "tube-055-fixed": {
+      "exact_rational_ten_sha256": "b952ff84b36bec75b4819af1bb58a012d0a69058df1dc8fbfcf8d69be7d6c522",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004787943428668468,
+        -1.4995734560620323e-06,
+        -0.0014216972814890996,
+        0.005781476187732658,
+        0.0012364549543562844,
+        0.0004244044026421534,
+        0.006982570459106064,
+        -0.0017167321513867494,
+        -7.862926050491396e-07,
+        -1.1683305980656846e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004787943428668468
+    },
+    "tube-056-fixed": {
+      "exact_rational_ten_sha256": "b790770e51249430995947a116ef26019066b375c7d397270ed27bd14117ca13",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0051570074957238005,
+        8.41267039372364e-07,
+        -0.0007819411922289854,
+        0.006228168972154779,
+        0.0015499282934849441,
+        0.00012037752195228017,
+        0.007523326441327119,
+        -0.0009444022668169754,
+        2.040259965957946e-06,
+        8.544177394233863e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0051570074957238005
+    },
+    "tube-057-fixed": {
+      "exact_rational_ten_sha256": "909d1377c243bf0ba9498e87cd6ad4a4ac72c78819390d4ee8ba95eb5c28a236",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0052757438729567905,
+        -4.77367975998567e-07,
+        -2.9307066611408984e-05,
+        0.0063724367264326644,
+        0.0016581107755345122,
+        2.771712549852546e-06,
+        0.007698644180684945,
+        -3.542936193890297e-05,
+        2.5629737862527136e-07,
+        1.8935970601832624e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0052757438729567905
+    },
+    "tube-058-fixed": {
+      "exact_rational_ten_sha256": "5cd5c9dc167b11310a403030a4398fc1b47ded63e1990b11576bfeba43f6f35e",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.005161516125758929,
+        -4.716603112688688e-06,
+        0.0007291132426189039,
+        0.006235062926349336,
+        0.00154738782690636,
+        0.00010705593163107293,
+        0.007533403708065716,
+        0.0008807702678211838,
+        -5.184277718396915e-06,
+        2.4298835849013213e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.005161516125758929
+    },
+    "tube-059-fixed": {
+      "exact_rational_ten_sha256": "f1ec13b30868a9fa932a1a230d2dd777f495a152110cc3975fbbd5c9d1b0d45a",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0047957076682738405,
+        -1.0215858436134298e-05,
+        0.0013844929794157622,
+        0.005793452791183139,
+        0.0012326329587413094,
+        0.00040524297725078875,
+        0.007000176996992772,
+        0.0016725862857564497,
+        -1.2177794024234659e-05,
+        2.133135979267909e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0047957076682738405
+    },
+    "tube-060-fixed": {
+      "exact_rational_ten_sha256": "d25eafcf275a3537d1c91379c8fa2a80c724fa9b16022aeced7af00ab1f59ce8",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0041056095314638205,
+        -1.4720738683185693e-05,
+        0.0017930745046096184,
+        0.0049597667548744616,
+        0.0007611916480552889,
+        0.0007896725391413795,
+        0.0059928236187015895,
+        0.0021661883850487566,
+        -1.78871999745295e-05,
+        1.0587701609485278e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0041056095314638205
+    },
+    "tube-061-fixed": {
+      "exact_rational_ten_sha256": "6166abecc30d2a737bdbe336864744f7a590721c7da933295d6fc80a3c791bc7",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.002834373727988556,
+        -1.5361926286438005e-05,
+        0.001663021109555312,
+        0.003423852187485362,
+        0.00023334636026556586,
+        0.0009821527572332093,
+        0.004136747764493153,
+        0.0020089348996228987,
+        -1.873702932749326e-05,
+        -2.9182288562365538e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.002834373727988556
+    },
+    "tube-062-fixed": {
+      "exact_rational_ten_sha256": "bae8361ca9e40b9dc8278b4feea43ec9bbb8c9ca03a6a5a39dad0e1adbc34dc7",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0035050268468757267,
+        7.823915652760202e-06,
+        -0.0015053171027080646,
+        0.0044917035401439665,
+        0.0004582332512919057,
+        0.000654802594233569,
+        0.005757155039928389,
+        -0.0019292828312227823,
+        9.682498825134793e-06,
+        3.6881657352006054e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0035050268468757267
+    },
+    "tube-063-fixed": {
+      "exact_rational_ten_sha256": "501a59636fdf4601e66ce31bad245d479bd43cfb5ff0e28503db5afe3002e2bc",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004294842662364653,
+        2.307945184530896e-06,
+        -0.0012143289181150438,
+        0.005503331003764219,
+        0.0008749030853799297,
+        0.00034988998702596783,
+        0.007053119876665691,
+        -0.0015562261362250718,
+        2.2907603531080486e-06,
+        4.196444747146694e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004294842662364653
+    },
+    "tube-064-fixed": {
+      "exact_rational_ten_sha256": "c8eaafb01c1f84ccf4392413a6bc532fff7f8fa9792185494ec1112119d497b3",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004698497420914656,
+        -2.829182973727996e-07,
+        -0.000646303559996492,
+        0.006019744616788855,
+        0.0011613910176572807,
+        9.297977910758165e-05,
+        0.0077139081591146765,
+        -0.0008282307984423683,
+        -1.2789546700003696e-06,
+        -2.703370593973136e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004698497420914656
+    },
+    "tube-065-fixed": {
+      "exact_rational_ten_sha256": "c4d5e1137a6d73d607891c75ca8b6a13132e983589ecb5af4e3e571df789b306",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0048226861899020364,
+        6.617877856284848e-07,
+        3.1371646514064826e-05,
+        0.00617788653014605,
+        0.0012629954303508123,
+        2.5323344688762166e-06,
+        0.007915314780131274,
+        4.001376242637157e-05,
+        -1.687828044259426e-07,
+        -1.1732868297476489e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0048226861899020364
+    },
+    "tube-066-fixed": {
+      "exact_rational_ten_sha256": "e59481170fc9c2edd7f14e6f6f552bb7410a346294b657b32e6858043786c671",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004692642927594496,
+        4.580672663152601e-06,
+        0.0007025428740695457,
+        0.00601032323275735,
+        0.0011630540186886187,
+        0.00010736462109840616,
+        0.007699374744852101,
+        0.0008996212163428207,
+        4.9301150378828555e-06,
+        -1.7230335093356396e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004692642927594496
+    },
+    "tube-067-fixed": {
+      "exact_rational_ten_sha256": "2e8039614863fc1bed93831e370105fdc0971361d379939c50accf317b8d8f35",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004284523876087388,
+        1.0040597599838535e-05,
+        0.0012530100505846896,
+        0.005486746942663943,
+        0.0008771900030885396,
+        0.0003702691417094001,
+        0.007027559337054079,
+        0.0016043681768557199,
+        1.215638015422677e-05,
+        -1.536292408446557e-05
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004284523876087388
+    },
+    "tube-068-fixed": {
+      "exact_rational_ten_sha256": "99a694aae4c44835f7258ecec4aaa220bc5a40255800ba7cd3dc844083700e6a",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0034930623535270673,
+        1.4945083723372434e-05,
+        0.0015211042350625156,
+        0.0044725396288213095,
+        0.0004596623106793922,
+        0.0006687317713957695,
+        0.005727684939667325,
+        0.001947382458254571,
+        1.875066199090501e-05,
+        -5.739797800013675e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0034930623535270673
+    },
+    "tube-069-fixed": {
+      "exact_rational_ten_sha256": "4e1817cf99478bcd3d7c9944826579a5eeadd4f2c3595bb03dbff1c7672205c3",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0023277802328972993,
+        -1.1452575988611005e-05,
+        -0.0010241107295735263,
+        0.0031523402156532743,
+        0.00012773863400695185,
+        0.00045406474634342744,
+        0.004269656995399291,
+        -0.0013868963596134608,
+        -1.562691189826484e-05,
+        6.4445278934943e-07
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0023277802328972993
+    },
+    "tube-070-fixed": {
+      "exact_rational_ten_sha256": "c3a008209c0b72e972f97e9a790171590624fffd2046aa201bbc57f643cf3f95",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0034354137935925983,
+        -6.357456124111018e-06,
+        -0.001013803541879974,
+        0.004651474406790567,
+        0.00044833327353761284,
+        0.0003014648402432773,
+        0.006298993286605342,
+        -0.0013727430142883765,
+        -8.690349159798838e-06,
+        -6.892427201182741e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0034354137935925983
+    },
+    "tube-071-fixed": {
+      "exact_rational_ten_sha256": "d947b76e1a5de27fcea30cf135292e491cd569f38bbaaa8564e4a6b3af286b0b",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.003942148677039653,
+        -1.4796739025770475e-06,
+        -0.0005966087043225275,
+        0.005337360486177088,
+        0.000686586917036993,
+        9.17456061950897e-05,
+        0.007227516332471489,
+        -0.0008079104346019777,
+        -1.9064893976412288e-06,
+        -6.803612942241031e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.003942148677039653
+    },
+    "tube-072-fixed": {
+      "exact_rational_ten_sha256": "3fa7e937178d122f03d3c0dad2a2899bc548b605a99fd11955fa741792484844",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.004098793923374515,
+        7.376099525465269e-07,
+        -2.8798759561610668e-05,
+        0.005549542355550422,
+        0.0007717470835044551,
+        2.148471727493929e-06,
+        0.007514971278725822,
+        -3.9205012010161727e-05,
+        1.3089458173224542e-06,
+        -1.2968631673217134e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.004098793923374515
+    },
+    "tube-073-fixed": {
+      "exact_rational_ten_sha256": "30ed333b9e0193c2c23d708df7fd00435d1f92db616955940948858c0f4fc58e",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.003949527004461858,
+        -5.375173170462482e-07,
+        0.0005459442312919004,
+        0.005347749754421229,
+        0.000684908857417392,
+        7.89152582634736e-05,
+        0.0072421275962374675,
+        0.0007389801899153059,
+        -2.7280265249794366e-07,
+        4.7314342127288584e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.003949527004461858
+    },
+    "tube-074-fixed": {
+      "exact_rational_ten_sha256": "2538d246a4e7a77676c353272641f4b393a1ff15a30c9456f5d636b261e043b4",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0034489339785740325,
+        -4.984888244159909e-06,
+        0.0009818601805903708,
+        0.0046702704813233265,
+        0.00044618234727410345,
+        0.00028456082544180107,
+        0.006325112997566972,
+        0.001329343108841043,
+        -6.2974526206260945e-06,
+        6.0495916491933905e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0034489339785740325
+    },
+    "tube-075-fixed": {
+      "exact_rational_ten_sha256": "a86a3ee05f2a69519e0658ba243c731fe77f23337c1f84f3b8f6ce453066fd1a",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0023461662366988643,
+        -1.0553094768436917e-05,
+        0.0010172303933583986,
+        0.003176866975246446,
+        0.00012679339111929935,
+        0.00044620292583983295,
+        0.004302375057274691,
+        0.001377282943032592,
+        -1.4031678376486297e-05,
+        -4.5360704727180454e-07
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0023461662366988643
+    },
+    "tube-076-fixed": {
+      "exact_rational_ten_sha256": "2be8d389b72c05e7a878976572c0cc17bc32f0da0de337200ae3c59d511cbc08",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.002653716631904327,
+        5.228262042415415e-06,
+        -0.00038833142784872195,
+        0.0037904691416201907,
+        0.0002028635480748139,
+        5.8483753661458954e-05,
+        0.0054149387759977,
+        -0.0005548117221583582,
+        7.766073388535073e-06,
+        6.2898632744071485e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.002653716631904327
+    },
+    "tube-077-fixed": {
+      "exact_rational_ten_sha256": "8edf9d7faa4fd06449b2c8d7412378580e11b8de680b919937068a7a769fb87e",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.002885731722393413,
+        1.418059525737005e-07,
+        4.1250312847656634e-06,
+        0.00412241649257487,
+        0.00026399560021949254,
+        1.5084856086197354e-06,
+        0.005889927352247368,
+        5.747136707795819e-06,
+        5.352884533772349e-07,
+        8.393568720874193e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.002885731722393413
+    },
+    "tube-078-fixed": {
+      "exact_rational_ten_sha256": "c4269ab3197eb85e5a1231780d029e17eba940cd464ce9b262b041bbfec57bd3",
+      "is_union_of_fixed_components": false,
+      "r10_normalized_target_frame": [
+        0.0026514897371727715,
+        -4.1340316376045046e-06,
+        0.0003951254068738872,
+        0.003788232462852712,
+        0.00020331808524870883,
+        6.0192223981444505e-05,
+        0.005413091028549185,
+        0.0005644065473142337,
+        -5.661092275784516e-06,
+        5.332053488892181e-06
+      ],
+      "source_exact_rational_integral": true,
+      "volume_model3": 0.0026514897371727715
+    }
+  },
+  "source_parts_identity_checked": 94,
+  "source_triangles_total": 88040,
+  "status": "SOURCE_MOMENTS_VERIFIED_CSG_PACKETS_MISSING_NATIVE_TEACHER_BLOCKED",
+  "training_admitted": 0,
+  "wall_seconds": 11.058562033000044
+}
