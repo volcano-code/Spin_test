@@ -1,0 +1,44 @@
+{
+  "schema": "w1-m22-real-h8e-archived-frame-3point-summary-v1",
+  "scope": "REAL_ARCHIVED_EXACT_COORDINATE_PARITY_ONLY_NOT_NEW_CHERCHI_OR_NEWTON",
+  "source_run_id": 39121571756,
+  "source_artifact_id": 12134772056,
+  "original_artifact_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+  "raw_full_abba_evidence_sha256": "da9d482a2518762dabeab2bdefc26262ff516d25ad37defa6592f75aa815220a",
+  "unit_test_log_sha256": "558da7e3c2092cf135e6b991e581f0f49b52eef2c7f85ea9bf2ad2360fd0a6c7",
+  "replay_log_sha256": "e1aff833c8a1a4a66caab7f451215ca66dee357b8f369736e6c789f69d61d0f9",
+  "points": [
+    {
+      "index": 0,
+      "material_gzip_sha256": "9538d11fbc180b7b96e7afe3dc98a6af1a5ddf074a680eb182f63517a48d72e3",
+      "original_coord_ns": 167289040,
+      "candidate_coord_ns": 49902490,
+      "exact_vertices": 8455
+    },
+    {
+      "index": 8,
+      "material_gzip_sha256": "1804f3d4f2d8cf150cfd123da10026d5855273ebabc8b41ed3675279a67a2f45",
+      "original_coord_ns": 162127782,
+      "candidate_coord_ns": 101064585,
+      "exact_vertices": 8455
+    },
+    {
+      "index": 17,
+      "material_gzip_sha256": "edb99a2253d96a7efc7279431ee61f6185a406e0efb4d1e9925a00ec67451d3d",
+      "original_coord_ns": 181073631,
+      "candidate_coord_ns": 51264463,
+      "exact_vertices": 8455
+    }
+  ],
+  "total_exact_vertex_coordinates": 25365,
+  "total_binary64_components": 76095,
+  "every_exact_rational_target_coordinate_matched": true,
+  "every_binary64_component_matched": true,
+  "tests_passed": 13,
+  "tests_failed": 0,
+  "real_new_boolean_calls": 0,
+  "real_new_newton_solves": 0,
+  "full_solver_speedup": null,
+  "w0_w2_admitted": false,
+  "original_h8e_feature_branch_failure_preserved": true
+}
