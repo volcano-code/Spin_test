@@ -1,0 +1,60 @@
+{
+  "J_D": null,
+  "current_native_preflight": {
+    "backend_protocol_and_compilation_provenance_verified": false,
+    "backend_sha_matches_historic": false,
+    "historical_CGAL_backend_binary_present": false,
+    "native_launch_authorized": false,
+    "observed_cgroup_memory_bytes": 4294967296,
+    "original_expected_backend_sha256": "d6803f184047f6172b177b9f436b16f22cdb6a949126d1df88a5d084f3dd9df3",
+    "reason": "MISSING_PINNED_CGAL_BACKEND_OR_MEMORY_OR_VERIFIED_COMMAND_PROTOCOL",
+    "required_effective_memory_bytes": 25769803776
+  },
+  "elapsed_seconds": 0.8676894009998932,
+  "historic_6_outputs_expected": [
+    {
+      "faces": 108804,
+      "name": "design",
+      "sha256": "48e8d3008bba746823eafd9c3704b52d597595b802066450a921ecc0dcb7f611"
+    },
+    {
+      "faces": 1280,
+      "name": "envelope",
+      "sha256": "92f46d68025467961fcc8b2b52353b4a18c2a981a09ad654ad6af3fb128b73fd"
+    },
+    {
+      "faces": 114942,
+      "name": "fixed",
+      "sha256": "71f9df91fca12fde4f4f2c80dc26e2d1229e8209e09db46e680d0de7baee264a"
+    },
+    {
+      "faces": 107160,
+      "name": "fixed-inside-envelope",
+      "sha256": "a944da4e36e5fe386cee3b28e4acf5800fc3942cde4eb35ba54f5de626f55dc7"
+    },
+    {
+      "faces": 35342,
+      "name": "fixed-outside-envelope",
+      "sha256": "8c66f71da99773fbc9a76b4f82fc43c55816df1876b643634ae64768f72ba262"
+    },
+    {
+      "faces": 36986,
+      "name": "initial",
+      "sha256": "640877647134a54152a8e1f63c1f356d752e6c66f7913301580c1e85a356d83b"
+    }
+  ],
+  "historic_CSG_receipt_sha256": "35f74fbdb432ee4eccebf21d7e4f1f07408f63420c659025857f1d83d15abfd0",
+  "historic_source_manifest_sha256": "67364abba55c74ccd377eef6174b8c96ee04e4af1aadbd7e505466bafabd2a3a",
+  "historical_CGAL_boolean_count_reported_not_reexecuted": 96,
+  "historical_CSG_partition_proof_exists": false,
+  "model_and_SI_sources_verified": 188,
+  "native_new_CSG_operations": 0,
+  "new_Cherchi_teacher_calls": 0,
+  "required_next_proof": "RECOVER_OR_RECOMPUTE_EXACT_SIX_FDA_AND_CERTIFY_BOOLEAN_SEMANTICS_NOT_ONLY_MOMENTS",
+  "schema": "w2-m20-noodles-fda-historical-recovery-v1",
+  "source_binary64_exact_moments_covered_by_M19": 940,
+  "source_bundle_sha256": "5a82bf031780945084c385dda6fbfd822bc3637a74f0556933690dc1518dae35",
+  "source_parts_verified": 94,
+  "status": "BLOCKED_NO_SIX_PINNED_RATIONAL_CSG_PACKET_BYTES",
+  "training_admitted": 0
+}
