@@ -1,0 +1,37 @@
+{
+  "schema": "W0_M19_LIVE_W5_W2_BRANCH_ADOPTION_GUARD_V1",
+  "date": "2026-10-21",
+  "status": "PENDING_W5_OWNER_ADOPTION",
+  "w0_initial_commit": "a84bb16a85d8f5a4154a55434273484ab02139ba",
+  "w5": {
+    "head": "219cc548fd5f37a1f88b666242cdea92d8e408cd",
+    "source_blob": "14b2ab225a032188fe16570414ef321af9a81e00",
+    "reviewed_candidate_blob": "4c97aacc1d50366c7cc97876064f4183469d9910",
+    "adopted": false
+  },
+  "w2": {
+    "head": "ff3abf2b88518045aedb3f2e95fb5b34dc0d586f",
+    "manifest_blob": "fd2b2d8c386b5f179653cd71d155dfbfa0cbfeac",
+    "schema": "w2-cherchi-teacher-v2-pre-w0",
+    "formal_training_labels": 0,
+    "excluded_h8f": 81
+  },
+  "local_test": {
+    "passed": 14,
+    "skipped": 2,
+    "failed": 0
+  },
+  "real_ci": {
+    "run": 39577087692,
+    "conclusion": "success",
+    "passed": 157,
+    "failed": 0,
+    "skipped": 0,
+    "artifact": 12334925647
+  },
+  "handoff_issue": "https://github.com/volcano-code/Spin_test/issues/2",
+  "new_native_cherchi_calls": 0,
+  "newton_admitted": false,
+  "training_admitted": false,
+  "does_not_autotrigger_on_other_branches": true
+}
