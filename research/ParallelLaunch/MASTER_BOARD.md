@@ -13,7 +13,7 @@
 
 | Window | Role | Branch / exact instructions | Dependencies | Earliest evidence target | State |
 |---|---|---|---|---|---|
-| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M17_GITHUB_CI_119_PASS; ACTUAL_W5_W0_NORM_GAP_REPRODUCED; W2_V2_REFERENCE_DENIES_REAL_LABEL` |
+| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `M18_W5_V2_PROPOSAL_141_CI_PASS; W5_ADOPTION_ISSUE_2_PENDING; TRAINING_DENIED` |
 | W1 | Cherchi/Faster 性能 | [research/neuralmoments-w1-native-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w1-native-20261019/research/ParallelLaunch/W1_START_HERE.md) | 可独立 profiling；合并需 W0/W2 | 冻结同输入逐段耗时＋原生改造对照 | `RECENT_COMMITS_OBSERVED; SCIENTIFIC_STATUS_NOT_INDEPENDENTLY_CERTIFIED` |
 | W2 | 精确教师与标签 | [research/neuralmoments-w2-teacher-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w2-teacher-20261019/research/ParallelLaunch/W2_START_HERE.md) | 正式发布标签需 W0 | 真实 r,J＋SHA＋可微/失败状态 | `W2_M12_GIT_LEDGER_81_RAYS_17_UNIT_64_NONUNIT; ZERO_TRAINING_RELEASE_OBSERVED` |
 | W3 | Heart H9 | [research/neuralmoments-w3-heart-h9-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w3-heart-h9-20261019/research/ParallelLaunch/W3_START_HERE.md) | 无 | 81 点 point60 构造变化诊断 | `W3_STAGE12_FORENSIC_COMMIT; LOCAL_90_TESTS_REPORTED; NEW_NATIVE_SIDES_0_OF_4; NEWTON_DENIED` |
