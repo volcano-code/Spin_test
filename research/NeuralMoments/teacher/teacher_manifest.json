@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M16_REAL_FROZEN_HEART_NATIVE_ATTEMPT_BLOCKED_4GIB_NO_COMPILED_MODULES_NOODLES_RECOVERY_LEADS",
+  "status": "M17_NOODLES_THREE_FROZEN_SOURCE_PARTS_BYTE_EXACT_NATIVE_STILL_BLOCKED",
   "native_teacher_runs": 0,
   "training_samples": 0,
   "order": [
@@ -395,5 +395,36 @@
     "noodles_93_fixed_part_receipts_located": true,
     "noodles_authenticated_native_original_fixed_design_assembly": false,
     "github_ci_for_this_commit": "NOT_VERIFIED"
+  },
+  "m17_noodles_source_recovery": {
+    "schema": "w2-m17-noodles-source-recovery-v1",
+    "original_main_manifest_git_blob_sha1": "f476a8c3e87bd30ef186b24442f641c2602c32ec",
+    "original_main_historical_csg_receipt_git_blob_sha1": "1e824c72d5ee13cc484bbf60a0be9b79be86d787",
+    "original_source_parts_total": 94,
+    "original_fixed_source_parts": 93,
+    "restored_parts_verified_sha256": [
+      "outer-ellipsoid",
+      "hub-fixed",
+      "pin-fixed"
+    ],
+    "restored_model_and_SI_OBJ_SHA256_matches": 6,
+    "verified_remaining_parts": 0,
+    "historical_CSG_rational_packets_recovered": 0,
+    "model_status": "PHOTO_GUIDED_RECONSTRUCTION_NOT_AUTHOR_CAD",
+    "source": "research/NeuralMoments/teacher/m17_core_sha_reconstruction.py",
+    "source_git_blob_sha1": "bf170cae1d2f6b13a5c2005a507b7f317524da8c",
+    "tests": "research/NeuralMoments/teacher/test_m17_core_sha_reconstruction.py",
+    "test_git_blob_sha1": "dc6d60d153a0dff0513e3e049ce047180f3be3c8",
+    "committed_code_tests_executed": 9,
+    "committed_code_tests_passed": 9,
+    "supplementary_local_tests_executed": 19,
+    "supplementary_local_tests_passed": 19,
+    "heart_native_preflight_exit_code": 2,
+    "heart_native_status": "BLOCKED_BEFORE_NATIVE_CALL",
+    "heart_cgroup_effective_memory_limit_bytes": 4294967296,
+    "new_native_evaluations": 0,
+    "derivative_training_admitted": 0,
+    "original_H8f_workflow_conclusion": "failure",
+    "pending": "Recover remaining 91 source part meshes with authentic hashes; original six rational CSG outputs + formal binary64 F/D/A source; qualified >=24GiB native Heart and Noodles evaluations; W0/W3 derivative review."
   }
 }
