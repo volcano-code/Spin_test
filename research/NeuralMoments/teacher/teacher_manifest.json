@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M18_NOODLES_ALL_94_SOURCE_PARTS_BYTE_IDENTICAL_FDA_CSG_PENDING_AND_HEART_NATIVE_BLOCKED",
+  "status": "M19_NOODLES_V7_94_SOURCE_EXACT_TEN_MOMENTS_COMPLETE_FDA_CSG_AND_NATIVE_TEACHER_BLOCKED",
   "native_teacher_runs": 0,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "M18 recovered 94 original V7 parts and 188 hashes. Need native qualified host (>=24GiB/swap0) for new single Frozen Heart Cherchi, historical/independent exact V7 F/D/A rational CSG packets plus partition, and W0/W3 derivative certification.",
+  "pending_dependency": "Retrieve/recompute 6 real exact CGAL F/D/A rational packets under independently pinned backend on >=24GiB swap0 host; independent exact geometric partition and full W2 native single Cherchi teacher; W0/W3 derivative certification separate",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -472,5 +472,46 @@
     "admitted_J_D_training_labels": 0,
     "training_admitted": false,
     "limitations": "Full original component geometry SHA and generator identity proved, not output exact CGAL Boolean packets or live Cherchi/Jacobian legality; original V7 is reconstructed nonauthor CAD."
+  },
+  "m19_noodles_source_exact": {
+    "schema": "w2-m19-source-rational-audit-manifest-v1",
+    "milestone_date": "2026-10-21",
+    "source_bundle_sha256": "5a82bf031780945084c385dda6fbfd822bc3637a74f0556933690dc1518dae35",
+    "source_original_main_manifest_sha256": "67364abba55c74ccd377eef6174b8c96ee04e4af1aadbd7e505466bafabd2a3a",
+    "source_original_main_manifest_git_blob_sha1": "f476a8c3e87bd30ef186b24442f641c2602c32ec",
+    "source_original_CSG_receipt_git_blob_sha1": "1e824c72d5ee13cc484bbf60a0be9b79be86d787",
+    "source_original_CSG_receipt_sha256": "35f74fbdb432ee4eccebf21d7e4f1f07408f63420c659025857f1d83d15abfd0",
+    "source_original_backend_sha256": "d6803f184047f6172b177b9f436b16f22cdb6a949126d1df88a5d084f3dd9df3",
+    "original_source_parts_verified": 94,
+    "model_and_SI_OBJ_SHA_verified": 188,
+    "source_triangles_checked": 88040,
+    "exact_rational_source_ten_moments_verified": 940,
+    "exact_rational_full_digest": "d40304c23021ade4f185afc6f363524443798a879e341ac962b9632ce55cbe3b",
+    "max_abs_input_source_volume_vs_historical_float": 1.734723475976807e-18,
+    "approximate_CPU_wall_seconds": 11.058562033000044,
+    "actual_historical_CSG_receipt_operations": 96,
+    "new_CSG_operations": 0,
+    "original_six_rational_CSG_packets_authenticated": 0,
+    "historic_CSG_partition_certified": false,
+    "source_parts_sum_is_fixed_union": false,
+    "native_new_Cherchi_calls": 0,
+    "training_admitted": 0,
+    "J_D_released": false,
+    "source_code": "research/NeuralMoments/teacher/m19_noodles_fda_audit.py",
+    "source_code_git_blob_sha1": "311323500ee82521637e1c86fb86ec4dcf878f44",
+    "regression_tests": "research/NeuralMoments/teacher/test_m19_noodles_fda_audit.py",
+    "regression_tests_git_blob_sha1": "4d5b50a0dce614dfb78dab5a10d5bacd500da860",
+    "local_regression_tests_passed": 24,
+    "local_regression_tests_failed": 0,
+    "local_regression_tests_skipped_with_real_bundle": 0,
+    "full_result": "research/NeuralMoments/teacher/M19_NOODLES_ALL94_EXACT_SOURCE_MOMENTS.json",
+    "full_result_sha256": "ce3e924f0de623dea693b2b61b10d70d25ff0806cc8b9662db9506ed53ea5d2e",
+    "full_result_git_blob_sha1": "120beeb06be1f2aed35d1d244d859155d3ad4e4f",
+    "native_preflight": "research/NeuralMoments/teacher/M19_RUNTIME_BLOCKERS.json",
+    "cgroup_available_memory_max_bytes": 4294967296,
+    "required_memory_bytes": 25769803776,
+    "compiled_modules_present": false,
+    "source_is_author_original_CAD": false,
+    "historical_H8f_workflow_failure_preserved": true
   }
 }
