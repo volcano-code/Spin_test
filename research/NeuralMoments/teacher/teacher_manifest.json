@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M15_REAL_FROZEN_HEART_FD_SOURCE_RECHECK_PASSED_NATIVE_PRECHECK_BLOCKED_NOODLES_V7_TERMINAL_AUDITED_INPUTS_MISSING",
+  "status": "M16_REAL_FROZEN_HEART_NATIVE_ATTEMPT_BLOCKED_4GIB_NO_COMPILED_MODULES_NOODLES_RECOVERY_LEADS",
   "native_teacher_runs": 0,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "Install exact frozen Spin/Cherchi/GMP native build in >=24GiB/swap0 research host and run M15 Heart once; stage original Noodles V7 outer/design/fixed binary64 input and independent source SHA proof before Noodles teacher. W0/W3 derivatives still unverified.",
+  "pending_dependency": "Qualified full W2 checkout host with >=24 GiB effective available memory, 0 swap, compiled true Spin/Cherchi/GMP with independent SHA pins and 10 separately predeclared Cherchi reference budgets; restore Noodles original rational F/D/A bytes and identity for second teacher; W0/W3 certify J_D.",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -357,5 +357,43 @@
       "reason_skipped": "Noodles 4.23MB final OBJ only available to GitHub connector code path, not staged in Python container"
     },
     "new_native_teacher_calls": 0
+  },
+  "m16_actual_native_handoff": {
+    "schema": "w2-m16-native-acceptance-manifest-v1",
+    "branch": "research/neuralmoments-w2-teacher-20261019",
+    "source_sha": "0bcc187b3005478baa586a6d6f450e73811ca342",
+    "source_program": "research/NeuralMoments/teacher/m16_native_acceptance.py",
+    "source_git_blob_sha1": "078855ba5f8fd5f49d06d92c56cb2f387441b55a",
+    "tests": "research/NeuralMoments/teacher/test_m16_native_acceptance.py",
+    "tests_git_blob_sha1": "118a86e5077db14170bcf306b9b8374493687865",
+    "input_H8f_archive_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+    "heart_original_outer_fixed_design_ordered_input_passed": true,
+    "historical_native_call_count_from_H8f": 81,
+    "new_native_calls": 0,
+    "new_native_failure_record": "research/NeuralMoments/teacher/M16_NATIVE_ATTEMPT_EVIDENCE.json",
+    "new_cherchi_boolean_reference_budgets_are_separate_from_input_partition": true,
+    "compiled_module_identity_count_required": 3,
+    "frozen_python_core_git_blobs_required": 5,
+    "actual_native_module_inventory": {
+      "make_it_stand": false,
+      "_cherchi_core_boolean": false,
+      "_cherchi_rational_moments": false
+    },
+    "runtime_limit_bytes": 4294967296,
+    "actual_requested_native_run_exit_code": 2,
+    "local_tests": {
+      "ran": 30,
+      "pass": 30,
+      "fail": 0,
+      "skip": 0
+    },
+    "W0_native_J_D_admission": false,
+    "derivative_training_samples": 0,
+    "newton_run": false,
+    "noodles_v7_recovery_ledger": "research/NeuralMoments/teacher/M16_NOODLES_V7_SOURCE_RECOVERY_LEDGER.json",
+    "noodles_94_source_part_receipts_located": true,
+    "noodles_93_fixed_part_receipts_located": true,
+    "noodles_authenticated_native_original_fixed_design_assembly": false,
+    "github_ci_for_this_commit": "NOT_VERIFIED"
   }
 }
