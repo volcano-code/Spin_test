@@ -53,7 +53,7 @@ class PinnedOriginalGenerator(unittest.TestCase):
   self.assertEqual(obj['manifest_sha'],m.sha(self.hist))
   self.assertEqual(obj['csg_executed_current_process'],96)
   checked=core.inspect_csg(self.out,receipt)
-  self.assertFalse(checked['all_historical_CSG_PACKETS_present'] if 'all_historical_CSG_PACKETS_present' in checked else checked['all_historical_CSG_packets_present'])
+  self.assertFalse(checked['all_historical_CSG_packets_present'])
   self.assertEqual(len(checked['missing_packets']),6)
 
 if __name__=='__main__':unittest.main()
