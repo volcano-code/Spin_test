@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M17_NOODLES_THREE_FROZEN_SOURCE_PARTS_BYTE_EXACT_NATIVE_STILL_BLOCKED",
+  "status": "M18_NOODLES_ALL_94_SOURCE_PARTS_BYTE_IDENTICAL_FDA_CSG_PENDING_AND_HEART_NATIVE_BLOCKED",
   "native_teacher_runs": 0,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "Qualified full W2 checkout host with >=24 GiB effective available memory, 0 swap, compiled true Spin/Cherchi/GMP with independent SHA pins and 10 separately predeclared Cherchi reference budgets; restore Noodles original rational F/D/A bytes and identity for second teacher; W0/W3 certify J_D.",
+  "pending_dependency": "M18 recovered 94 original V7 parts and 188 hashes. Need native qualified host (>=24GiB/swap0) for new single Frozen Heart Cherchi, historical/independent exact V7 F/D/A rational CSG packets plus partition, and W0/W3 derivative certification.",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -426,5 +426,51 @@
     "derivative_training_admitted": 0,
     "original_H8f_workflow_conclusion": "failure",
     "pending": "Recover remaining 91 source part meshes with authentic hashes; original six rational CSG outputs + formal binary64 F/D/A source; qualified >=24GiB native Heart and Noodles evaluations; W0/W3 derivative review."
+  },
+  "m18_noodles_full_source_restoration": {
+    "schema": "w2-m18-full-source-reconstruction-and-authentication-v1",
+    "original_source_manifest_branch": "main",
+    "original_manifest_git_blob_sha1": "f476a8c3e87bd30ef186b24442f641c2602c32ec",
+    "original_manifest_sha256": "67364abba55c74ccd377eef6174b8c96ee04e4af1aadbd7e505466bafabd2a3a",
+    "independent_sha_corpus_text_sha256": "6b2da86949e4426986e2460167f1255f0c44d6e708be87bfec17fb78ce4a69c6",
+    "source_model_parts_regenerated": 94,
+    "source_parts_newly_regenerated_this_milestone": 91,
+    "model_and_si_obj_files_authentic_sha_verified": 188,
+    "fixed_source_parts": 93,
+    "separately_regenerated_v7_original_generator": true,
+    "original_generator_output_manifest_identical_to_original_bytes": true,
+    "original_generator_exit_code": 0,
+    "source_native_exact_selfintersection_verification_in_this_milestone": false,
+    "original_historical_boolean_production_calls_recorded": 96,
+    "new_boolean_calls_in_this_milestone": 0,
+    "historical_csg_receipt_blob_sha1": "1e824c72d5ee13cc484bbf60a0be9b79be86d787",
+    "missing_original_csg_rational_outputs": [
+      "design",
+      "envelope",
+      "fixed",
+      "fixed-inside-envelope",
+      "fixed-outside-envelope",
+      "initial"
+    ],
+    "full_original_rational_F_D_A_material_recovered": false,
+    "independent_separately_rounded_F_D_A_partition_validated": false,
+    "frozen_v7_teacher_request_native_admissible": false,
+    "m18_source_module": "research/NeuralMoments/teacher/m18_noodles_full_source.py",
+    "m18_source_module_git_blob_sha1": "df6eb0f44fe1d1eadd9c08d7c77750281626ca75",
+    "m18_frozen_sha_result": "research/NeuralMoments/teacher/M18_FROZEN_NOODLES_94_SOURCE_IDENTITY.json",
+    "m18_regression_tests": {
+      "source_94_count": 16,
+      "source_94_passed": 16,
+      "original_upstream_generator_count": 3,
+      "original_upstream_generator_passed": 3
+    },
+    "heart_native_preflight_exit": 2,
+    "heart_native_status": "BLOCKED_BEFORE_NATIVE_CALL",
+    "effective_cgroup_memory_bytes": 4294967296,
+    "minimum_native_memory_bytes": 25769803776,
+    "new_native_cherchi_teacher_calls": 0,
+    "admitted_J_D_training_labels": 0,
+    "training_admitted": false,
+    "limitations": "Full original component geometry SHA and generator identity proved, not output exact CGAL Boolean packets or live Cherchi/Jacobian legality; original V7 is reconstructed nonauthor CAD."
   }
 }
