@@ -554,7 +554,16 @@
       "failed": 0,
       "skipped": 0,
       "actual_real_source_and_synthetic_geometry_run": true,
-      "github_actions_ci_confirmed": false
+      "github_actions_ci_confirmed": false,
+      "full_unchanged_M19_and_M20_regression": {
+        "ran": 51,
+        "passed": 51,
+        "failed": 0,
+        "skipped": 0,
+        "elapsed_seconds": 4.154,
+        "log_sha256": "000c029ee8fc4b45b69e0584383e8e923f65818055832c700c8656c9f9ba9b30",
+        "scope": "LOCAL_REAL_M18_ZIP_SYNTHETIC_VOXEL_EXACT_MATH_AND_PREVIOUS_M19_RESULTS_NOT_CI"
+      }
     },
     "files": {
       "gate_code_blob": "4a5ed60a119561056cffd2a089644a80f14b0fb2",
