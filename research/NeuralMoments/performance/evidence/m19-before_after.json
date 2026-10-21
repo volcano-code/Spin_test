@@ -1,0 +1,8 @@
+{
+  "kind": "INCOMPLETE_NATIVE_RUN",
+  "old_new_solver_speedup": null,
+  "paper_speed_qualified": false,
+  "same_host_full_old_new": false,
+  "schema": "w1-m19-before-after-v1",
+  "separately_measured_outer_evaluation_phases": false
+}

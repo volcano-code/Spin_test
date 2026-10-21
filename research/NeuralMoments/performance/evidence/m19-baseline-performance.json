@@ -1,0 +1,23 @@
+{
+  "candidate_ABBA": null,
+  "fresh_W1_native_calls": 0,
+  "fresh_W1_true_native_timing": null,
+  "full_solver_speedup": null,
+  "historical_branch_drift_points": 8,
+  "historical_native_runs": 2,
+  "historical_original_25point_wall_seconds": [
+    379.493727883,
+    371.882780008
+  ],
+  "known_engine_seconds": [
+    77.944304694,
+    74.939924
+  ],
+  "schema": "w1-m19-historical-only-not-new-native-baseline-v1",
+  "science_admitted": false,
+  "scope": "ORIGINAL_H8E_ACTIONS_HISTORICAL_NOT_FRESH_W1_PROFILE",
+  "unknown_inside_points_seconds": [
+    301.363449024,
+    296.770649
+  ]
+}

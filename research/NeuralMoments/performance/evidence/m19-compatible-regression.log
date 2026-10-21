@@ -1,0 +1,71 @@
+test_double_count_stage_rejected (test_m5.M5Tests.test_double_count_stage_rejected) ... ok
+test_historical_failure_cannot_be_erased (test_m5.M5Tests.test_historical_failure_cannot_be_erased) ... ok
+test_historical_mixed_run_forbidden (test_m5.M5Tests.test_historical_mixed_run_forbidden) ... ok
+test_instrumented_ast_failure_equivalence (test_m5.M5Tests.test_instrumented_ast_failure_equivalence) ... ok
+test_instrumented_ast_return_equivalence (test_m5.M5Tests.test_instrumented_ast_return_equivalence) ... ok
+test_missing_native_is_fail_closed (test_m5.M5Tests.test_missing_native_is_fail_closed) ... ok
+test_nested_exclusive_accounting_and_fail (test_m5.M5Tests.test_nested_exclusive_accounting_and_fail) ... ok
+test_original_25point_accounting (test_m5.M5Tests.test_original_25point_accounting) ... ok
+test_replay_ledger_disjoint (test_m5.M5Tests.test_replay_ledger_disjoint) ... ok
+test_source_hash_uses_git_blob_frame (test_m5.M5Tests.test_source_hash_uses_git_blob_frame) ... ok
+test_strict_exact_audit_gates (test_m5.M5Tests.test_strict_exact_audit_gates) ... ok
+test_archived_h8c_q_and_full_reference_are_immutable (test_m9.TestM9ABBAContract.test_archived_h8c_q_and_full_reference_are_immutable) ... ok
+test_four_identical_rows_are_only_single_q_diagnostic (test_m9.TestM9ABBAContract.test_four_identical_rows_are_only_single_q_diagnostic) ... ok
+test_h8c_target_frame_matches_h8e_true_point_zero (test_m9.TestM9ABBAContract.test_h8c_target_frame_matches_h8e_true_point_zero) ... ok
+test_mutated_jacobian_rejected (test_m9.TestM9ABBAContract.test_mutated_jacobian_rejected) ... ok
+test_mutated_saved_full_material_rejected (test_m9.TestM9ABBAContract.test_mutated_saved_full_material_rejected) ... ok
+test_nan_jacobian_rejected (test_m9.TestM9ABBAContract.test_nan_jacobian_rejected) ... ok
+test_native_missing_production_checkout_fails_closed (test_m9.TestM9ABBAContract.test_native_missing_production_checkout_fails_closed) ... ok
+test_nonidentity_frame_cannot_claim_h8c_reference (test_m9.TestM9ABBAContract.test_nonidentity_frame_cannot_claim_h8c_reference) ... ok
+test_nonunit_quadric_rejected (test_m9.TestM9ABBAContract.test_nonunit_quadric_rejected) ... ok
+test_reordered_runs_rejected (test_m9.TestM9ABBAContract.test_reordered_runs_rejected) ... ok
+test_unverified_geometry_or_ten_rejected (test_m9.TestM9ABBAContract.test_unverified_geometry_or_ten_rejected) ... ok
+test_wrong_mesh_or_missing_native_identity_rejected (test_m9.TestM9ABBAContract.test_wrong_mesh_or_missing_native_identity_rejected) ... ok
+test_exception_always_clears_cache_and_restores_globals (test_m9.TestM9CacheLifecycle.test_exception_always_clears_cache_and_restores_globals) ... ok
+test_fresh_lru_on_each_q_call (test_m9.TestM9CacheLifecycle.test_fresh_lru_on_each_q_call) ... ok
+test_nonidentity_axes_falls_back_exactly (test_m9.TestM9CacheLifecycle.test_nonidentity_axes_falls_back_exactly) ... ok
+test_same_class_two_instances_no_shared_fraction_values (test_m9.TestM9CacheLifecycle.test_same_class_two_instances_no_shared_fraction_values) ... ok
+test_two_distinct_real_h8_material_tokens_do_not_reuse_cache (test_m9.TestM9CacheLifecycle.test_two_distinct_real_h8_material_tokens_do_not_reuse_cache)
+Two actually archived 8455-vertex source packets, same candidate class. ... ok
+test_actual_archived_material_and_request_pinned (test_m10.M10Guards.test_actual_archived_material_and_request_pinned) ... ok
+test_actual_memory_and_swap_contract (test_m10.M10Guards.test_actual_memory_and_swap_contract) ... ok
+test_address_space_guard_never_raises_limit (test_m10.M10Guards.test_address_space_guard_never_raises_limit) ... ok
+test_drifted_archive_is_rejected_before_native_import (test_m10.M10Guards.test_drifted_archive_is_rejected_before_native_import) ... ok
+test_duplicate_compiled_candidates_are_blocked (test_m10.M10Guards.test_duplicate_compiled_candidates_are_blocked) ... ok
+test_git_current_branch_and_ancestor_real_local_git (test_m10.M10Guards.test_git_current_branch_and_ancestor_real_local_git) ... ok
+test_job_limit_is_one_hour_not_default_to_longer (test_m10.M10Guards.test_job_limit_is_one_hour_not_default_to_longer) ... ok
+test_missing_checkout_reports_all_prerequisite_blockers (test_m10.M10Guards.test_missing_checkout_reports_all_prerequisite_blockers) ... ok
+test_native_job_lock_blocks_duplicate_w1_process (test_m10.M10Guards.test_native_job_lock_blocks_duplicate_w1_process) ... ok
+test_native_lock_conflict_has_failure_receipt (test_m10.M10Guards.test_native_lock_conflict_has_failure_receipt) ... ok
+test_native_nonzero_exit_stops_second_job (test_m10.M10Guards.test_native_nonzero_exit_stops_second_job) ... ok
+test_native_report_missing_after_success_exit_fails_closed (test_m10.M10Guards.test_native_report_missing_after_success_exit_fails_closed) ... ok
+test_output_is_exclusive_and_prior_failure_is_not_overwritten (test_m10.M10Guards.test_output_is_exclusive_and_prior_failure_is_not_overwritten) ... ok
+test_plain_directory_cannot_claim_w1 (test_m10.M10Guards.test_plain_directory_cannot_claim_w1) ... ok
+test_real_blocked_execution_does_not_start_any_native_jobs (test_m10.M10Guards.test_real_blocked_execution_does_not_start_any_native_jobs) ... ok
+test_real_native_required_not_python_names (test_m10.M10Guards.test_real_native_required_not_python_names) ... ok
+test_strict_extension_suffix_inventory (test_m10.M10Guards.test_strict_extension_suffix_inventory) ... ok
+test_actual_instrument_call_native_observer_restoration (test_m19.TestM19.test_actual_instrument_call_native_observer_restoration) ... ok
+test_cloud_template_is_diagnostic_only_and_in_scope (test_m19.TestM19.test_cloud_template_is_diagnostic_only_and_in_scope) ... ok
+test_dangling_nested_stage_rejected (test_m19.TestM19.test_dangling_nested_stage_rejected) ... ok
+test_duplicate_index_rejected (test_m19.TestM19.test_duplicate_index_rejected) ... ok
+test_duplicate_point_loop_rejected (test_m19.TestM19.test_duplicate_point_loop_rejected) ... ok
+test_duplicate_stage_rejected (test_m19.TestM19.test_duplicate_stage_rejected) ... ok
+test_exception_behavior_preserved (test_m19.TestM19.test_exception_behavior_preserved) ... ok
+test_exception_failing_span_recorded (test_m19.TestM19.test_exception_failing_span_recorded) ... ok
+test_expected_25_required (test_m19.TestM19.test_expected_25_required) ... ok
+test_missing_evaluator_import_rejected (test_m19.TestM19.test_missing_evaluator_import_rejected) ... ok
+test_missing_real_stage_rejected (test_m19.TestM19.test_missing_real_stage_rejected) ... ok
+test_nested_exclusivity (test_m19.TestM19.test_nested_exclusivity) ... ok
+test_original_vs_wrapped_return_and_bytes (test_m19.TestM19.test_original_vs_wrapped_return_and_bytes) ... ok
+test_partial_rows_do_not_count_as_full_25 (test_m19.TestM19.test_partial_rows_do_not_count_as_full_25) ... ok
+test_production_evaluator_pin_rejects_fake (test_m19.TestM19.test_production_evaluator_pin_rejects_fake) ... ok
+test_real_host_preflight_failure_not_success (test_m19.TestM19.test_real_host_preflight_failure_not_success) ... ok
+test_six_strict_phases_preserved (test_m19.TestM19.test_six_strict_phases_preserved) ... ok
+test_source_is_pinned_by_default (test_m19.TestM19.test_source_is_pinned_by_default) ... ok
+test_unknown_native_stage_fails_closed (test_m19.TestM19.test_unknown_native_stage_fails_closed) ... ok
+test_unregistered_stage_rejected (test_m19.TestM19.test_unregistered_stage_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 65 tests in 2.782s
+
+OK

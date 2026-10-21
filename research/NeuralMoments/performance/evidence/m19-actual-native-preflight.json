@@ -1,0 +1,98 @@
+{
+  "blockers": [
+    "git",
+    "source",
+    "native_modules",
+    "native_abi_import",
+    "h8e_original_source",
+    "M19_conservative_memory"
+  ],
+  "checks": {
+    "M19_conservative_memory": {
+      "reason": "M19_H8E_HOST_BELOW_6_GIB_VIRTUAL_MEMORY_CAP",
+      "status": "BLOCKED"
+    },
+    "archive": {
+      "details": {
+        "archived_q": [
+          0.3701323978732728,
+          -0.15863761828595124,
+          -0.0,
+          -0.7608730119328398,
+          0.293773367196206,
+          0.293773367196206,
+          0.293773367196206,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "historical_material_faces": 16910,
+        "historical_material_sha256": "ba47a6d6f9fad2dce2569434bf9340252cceaeaf99c14a82df02b637092b6464",
+        "historical_material_vertices": 8455,
+        "nonauthor_cad_only": true,
+        "request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+        "zip_sha256": "78749e99abd25ab2d2571440991ffa4e907a1565b4c7faf5210496431389cdd7"
+      },
+      "status": "PASS"
+    },
+    "git": {
+      "reason": "ValueError: M10_FULL_GIT_CHECKOUT_REQUIRED",
+      "status": "BLOCKED"
+    },
+    "h8e_original_source": {
+      "reason": "[Errno 2] No such file or directory: '/mnt/data/W1_M19_dev/research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018/source/probe_h8_jacobian.py'",
+      "status": "BLOCKED"
+    },
+    "memory": {
+      "details": {
+        "cgroup_memory_ceiling_bytes": 4294967296,
+        "physical_memory_bytes": 6236856320,
+        "process_address_space_cap_bytes": 4294967296,
+        "resource_cap_bytes": 25769803776
+      },
+      "status": "PASS"
+    },
+    "native_abi_import": {
+      "reason": "M10_MODULE_OR_MEMORY_PREREQUISITE_MISSING",
+      "status": "BLOCKED"
+    },
+    "native_modules": {
+      "modules": {
+        "_cherchi_core_boolean": {
+          "candidate_count": 0,
+          "status": "NOT_FOUND"
+        },
+        "_cherchi_rational_moments": {
+          "candidate_count": 0,
+          "status": "NOT_FOUND"
+        },
+        "_make_it_stand": {
+          "candidate_count": 0,
+          "status": "NOT_FOUND"
+        }
+      },
+      "status": "BLOCKED"
+    },
+    "source": {
+      "reason": "FileNotFoundError: M10_PINNED_PRODUCTION_SOURCE_ABSENT",
+      "status": "BLOCKED"
+    },
+    "swap_disabled": {
+      "details": true,
+      "status": "PASS"
+    }
+  },
+  "freeze": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "full_newton_solves": 0,
+  "full_solver_speedup": null,
+  "machine": {
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "python": "3.13.5"
+  },
+  "native_boolean_calls": 0,
+  "paper_speed_qualified": false,
+  "schema": "w1-m10-native-host-preflight-v1",
+  "state": "BLOCKED",
+  "tested_branch": "research/neuralmoments-w1-native-20261019",
+  "w0_w2_production_admitted": false
+}

@@ -1,0 +1,67 @@
+{
+  "branch": "research/neuralmoments-w1-native-20261019",
+  "files_excluding_self": {
+    "M19_RESULTS.md": {
+      "git_blob_sha1": "77301834d6eb60d2e41ecfb2141917e17973cd30",
+      "sha256": "c6781ebfba42830574d03a6375b2c0cb444a2b98d8610e746df9f0911fcf5cc1",
+      "size": 6943
+    },
+    "evidence/m19-actual-native-blocker.json": {
+      "git_blob_sha1": "85622b9e14fb6848c371c2a184324ff8a255aff7",
+      "sha256": "81c9d54b6dc0b0ddfe0e78f49faa46fbbcd607002186fb208d4bc4003b644355",
+      "size": 211
+    },
+    "evidence/m19-actual-native-preflight.json": {
+      "git_blob_sha1": "c5f9f36cac7707dc741b17969086ab51f448a829",
+      "sha256": "0544905eed51631917888c51ab3e022ce9d722f08cd8c82e44a3467464d521de",
+      "size": 2846
+    },
+    "evidence/m19-baseline-performance.json": {
+      "git_blob_sha1": "333e603298ebb624a288e04cc971e09e4561d0f3",
+      "sha256": "e7f77e96d24f204f414ad00577fb3f3a2ebab90ee8ccf47e85921e381c18df7f",
+      "size": 591
+    },
+    "evidence/m19-before_after.json": {
+      "git_blob_sha1": "f855d728d32ddbaa720a06466b9afb5bff40a754",
+      "sha256": "8cc561a49307858b7a54108814ba4c1c4e997f4b5ac845073d5550009806144f",
+      "size": 235
+    },
+    "evidence/m19-compatible-regression.log": {
+      "git_blob_sha1": "9e014b1e3236c7626e7b46eeb82818eac00b197d",
+      "sha256": "b7ee4a54f9a9d1c2f5a9af7d4446754834281ae5e2e43900bad203b8d1a40305",
+      "size": 7504
+    },
+    "evidence/m19-local-tests.log": {
+      "git_blob_sha1": "d26f639d5f02cf12ac8b1fcddc1cd1e968f34ea8",
+      "sha256": "6764f92a78163bd0f75e89c63eea0e65aa64850a28752c15354cd02235a11ab1",
+      "size": 2103
+    },
+    "evidence/m19-real-preflight.log": {
+      "git_blob_sha1": "e2e8336f8a2370f44d0ae249edfe955dee3c1f22",
+      "sha256": "b5c1e802fa2349ed7f85f0b7f0f45ab8368b2c3c1828ecf677d784eae99c0aa1",
+      "size": 142
+    },
+    "evidence/m19-runtime-status.json": {
+      "git_blob_sha1": "2eba129c5e05430b127dd05cc4dafeb8ea48048c",
+      "sha256": "ddc7293c4300852be19ea479fe3d7526aac6c3474ad2dd59ad497803c613a2f4",
+      "size": 692
+    },
+    "m19-w1-real-h8e-stage-profile.workflow.template.yml": {
+      "git_blob_sha1": "cada651a240973a57d4fef2690cccfb6a1d60c0a",
+      "sha256": "d93a5d9440620018028198787a331fbc342b89712fcfec10dc526269e44990ce",
+      "size": 4595
+    },
+    "m19_real_h8e_profiler.py": {
+      "git_blob_sha1": "cda988a99109733b438ab69f5465028ac5db0979",
+      "sha256": "2b492301db91a689931a91afcb9da962a6d42929f00f8a0e87298bb4b020e543",
+      "size": 21347
+    },
+    "test_m19.py": {
+      "git_blob_sha1": "d1bd4a4a54a4aef6ce3acf49312c8b9bfa18563a",
+      "sha256": "3c645abe565fde671a489121f2730b013da9baeaccce0ecd55f62e732ef4fc20",
+      "size": 11724
+    }
+  },
+  "schema": "w1-m19-manifest-v1",
+  "source_commit": "5479fcbc85ed0cd186d74838965eb8f97fcea2d1"
+}

@@ -1,0 +1,16 @@
+{
+  "actual_preflight_exit_code": 2,
+  "cgroup_memory_max_bytes": 4294967296,
+  "combined_regression_tests_passed": 65,
+  "frozen_evaluator_git_blob": "f9fa539f699df8baf8b8d30729048269a26ecb3c",
+  "full_solver_speedup": null,
+  "git_branch": "research/neuralmoments-w1-native-20261019",
+  "h8c_archive_sha256": "78749e99abd25ab2d2571440991ffa4e907a1565b4e20298f8516e061c",
+  "live_cloud_workflow_activated": false,
+  "local_tests_passed": 20,
+  "new_native_boolean_calls": 0,
+  "original_driver_git_blob": "0c219e34869c454db655e62f23d18e59ba4db494",
+  "previous_branch_head": "5479fcbc85ed0cd186d74838965eb8f97fcea2d1",
+  "schema": "w1-m19-local-runtime-status-v1",
+  "swap_enabled": false
+}
