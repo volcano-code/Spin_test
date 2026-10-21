@@ -1,0 +1,27 @@
+{
+  "schema": "W4P19TipPreservingSourceBodyPlanV1",
+  "body_sha256": "46774afb1eaf4c7687c694493becfd96babe77b7c54748cfc03b3e9b75dec61c",
+  "original_shaft_sha256": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
+  "D_sha256": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
+  "radial_scale_exact": "9/8",
+  "rotation_degrees_display": 7,
+  "cosine_binary64_hex": "0x1.fc2f025a23e8bp-1",
+  "sine_binary64_hex": "0x1.f32d44c4f62d3p-4",
+  "normative_xy_rule": "exact binary64 source as rational; multiply by fixed binary64 cosine/sine and 9/8 exactly; one correctly-rounded binary64 conversion per output coordinate",
+  "z_rule": "identical original binary64 coordinates; no translation or z scale",
+  "original_tip_preserved": [
+    0,
+    0,
+    0
+  ],
+  "original_top_z_preserved": true,
+  "native_binary_sha256": "dfd285727c760b2616e6c8628614b9ee57980f1402950e020d854f878c7c8e5c",
+  "native_operations": [
+    "union(body, envelope) -> M",
+    "subtraction(M, D) -> F only if M surface and complete original shaft containment pass"
+  ],
+  "automatic_postprocess": false,
+  "maximum_native_calls": 2,
+  "W0_approved": false,
+  "optimization_admitted": false
+}

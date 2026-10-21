@@ -1,0 +1,19 @@
+{
+  "operation": "union",
+  "input_sha256": [
+    "46774afb1eaf4c7687c694493becfd96babe77b7c54748cfc03b3e9b75dec61c",
+    "b624294716c8001e5aa85ee5e3a126b108720a7cea884d435d276261d5c0548d"
+  ],
+  "binary_sha256": "dfd285727c760b2616e6c8628614b9ee57980f1402950e020d854f878c7c8e5c",
+  "timeout_seconds": 120,
+  "new_native_process_launched": true,
+  "output_file": "M-native.obj",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "wall_seconds": 0.19549054200069804,
+  "output_exists": true,
+  "inputs_unchanged": true,
+  "binary_unchanged": true,
+  "output_sha256": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704"
+}

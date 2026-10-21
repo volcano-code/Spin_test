@@ -1,0 +1,30 @@
+{
+  "schema": "W4P19ReadOnlyDependencySnapshotV1",
+  "observed_at_utc": "2026-10-21 15:34:32 UTC",
+  "W0": {
+    "head": "51cbfd33d08063404d7e0c40e4256dd0e38efa1a",
+    "branch": "research/neuralmoments-w0-contract-20261019",
+    "files": {
+      "research/NeuralMoments/contracts/M6_NATIVE_HANDOFF.md": "d650228bbd69c8927f64e815fe9dc935463c55d9",
+      "research/ParallelLaunch/MASTER_BOARD.md": "2feff744f64807da424a0d93302e3c92294f266f"
+    },
+    "P19_candidate_approval_observed": false,
+    "native_M6_requires": "Actual same-call owned native regions for M=F+D, D=retained+cavity, and M=F+retained+cavity; six externally precommitted identity pins; exact physical frame inversion and ten raw moments; derivative/training admission remains separate.",
+    "qualified_native_host": "M6 CLI minimum 20 GiB physical preflight for agreed nominal 24 GiB/swap0, full job <=3600s, compile <=4; serialize large tasks."
+  },
+  "W2": {
+    "head": "b52cb2af0260041900fc03560b5dc182cb088750",
+    "branch": "research/neuralmoments-w2-teacher-20261019",
+    "teacher_manifest_git_blob": "cafbeaa6d5ba41d952f9d742b6c8951498be625e",
+    "schema": "w2-cherchi-teacher-v2-pre-w0",
+    "status": "M20_96_OPERATION_EXACT_CSG_PLAN_AND_FDA_MOMENT_GATE_PASS_WITH_SYNTHETIC_CASES_HISTORIC_SIX_BLOCKED",
+    "native_teacher_runs": 0,
+    "training_samples": 0,
+    "derivative_policy": "No W0 trusted neighborhood verifier; keep J_D=null and split excluded; H8 point60 branch-change/unknown; open Teapot excluded",
+    "latest_milestone_scope": "M20 Noodles source/CSG planning; no actual native teacher evaluations, no released derivative Jacobian, no P19 Teapot admission.",
+    "P19_Teapot_teacher_admission_observed": false
+  },
+  "other_branches_modified": false,
+  "messages_sent_to_other_owners": false,
+  "external_approval_claimed": false
+}

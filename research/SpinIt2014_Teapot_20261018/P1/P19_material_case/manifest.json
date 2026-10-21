@@ -1,0 +1,74 @@
+{
+  "schema": "W4P19SavedCherchiProtectedMaterialCaseV1",
+  "classification": "NEW_UNMODIFIED_CHERCHI_BINARY64_CANDIDATE_NOT_PHYSICALLY_APPROVED",
+  "source_P18_commit": "b33fc93bd1fecd5b42fbd8d2eabfefd6ec9db7be",
+  "source_P17_manifest_sha256": "3eef5e245590ebee18ea46e1f0198c81d73c17ffbbb064143a6ceb95a00d5a70",
+  "upstream_Cherchi_commit": "7bd6c2697695f555f9a15d7e154e084d841316f0",
+  "historical_creation_binary_sha256": "dfd285727c760b2616e6c8628614b9ee57980f1402950e020d854f878c7c8e5c",
+  "material_files": {
+    "M": "material/M_native.obj",
+    "F": "material/F_native.obj",
+    "D": "material/D_native.obj",
+    "S": "source/shaft-reference.obj"
+  },
+  "files_sha256": {
+    "inputs/inner_guard.obj": "21e76e412d80fac7d635561b67b075ce1b02fd775475b3e29d1e09dd123ad9ba",
+    "inputs/shaft-envelope.obj": "b624294716c8001e5aa85ee5e3a126b108720a7cea884d435d276261d5c0548d",
+    "material/D_native.obj": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
+    "material/F_native.obj": "5c5db73792bd8d6566a954e6d0eef6d22e248a7ad2f8a7a8d8e6d4f2ad9d86a8",
+    "material/M_native.obj": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
+    "receipts/D_native.obj.native.json": "30c3cb756f283291344872a7370e56f93ec86dd18e6b7b6863d8230138f162cf",
+    "receipts/F_native.obj.native.json": "0f08584c3f231af4e0da53aa9eb58b4ef46407f39f138f642cd700ab3276e0a5",
+    "receipts/M_native.obj.native.json": "2764e94f57d042a4a91fa4d86558d4a36b164ddae0f2d527ebead514460782df",
+    "receipts/primary-registered-plan.json": "bca382181793c1c3eadd31496165d24c1db2d47fc4a498f95f932edccb1c86cd",
+    "receipts/selected-envelope-identity.json": "a99e863cefb6319b9bfe02d6e04576c6bf45b11b499cf060f64748c2ce53df52",
+    "receipts/tip-preserving-registered-plan.json": "dbc1b948791ab7d1c92b8d66e16eb46029bea7dca96d8543f7e048b459075de8",
+    "source/body-reference.obj": "46774afb1eaf4c7687c694493becfd96babe77b7c54748cfc03b3e9b75dec61c",
+    "source/cavity-reference.obj": "c18b4ac3a9fb71e6169c975e6baab1e487f7d148af908ee4eac4df4077121452",
+    "source/shaft-reference.obj": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+  },
+  "construction": {
+    "outer": "union(source/body-reference.obj, inputs/shaft-envelope.obj)",
+    "design": "subtraction(source/cavity-reference.obj, inputs/inner_guard.obj)",
+    "fixed": "subtraction(material/M_native.obj, material/D_native.obj)",
+    "shaft_envelope": {
+      "radial_scale_exact": "9/8",
+      "cosine_binary64_hex": "0x1.fc2f025a23e8bp-1",
+      "sine_binary64_hex": "0x1.f32d44c4f62d3p-4",
+      "rotation_degrees_display": 7,
+      "normative_rule": "exact rational XY affine operation followed by one binary64 rounding; original Z unchanged"
+    },
+    "inner_guard": {
+      "half_width_exact": "1/16",
+      "z_interval_exact": [
+        "3/8",
+        "1"
+      ]
+    },
+    "minimum_original_shaft_to_design_gap_exact": "1/500",
+    "original_tip_reference": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "spin_axis_reference": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "original_shaft_file_unchanged": true,
+    "saved_candidate_postprocessed": false,
+    "selected_native_operations": 3,
+    "first_selected_D_precedes_selected_M": true
+  },
+  "scientific_flags": {
+    "W0_physical_tip_or_FD_approved": false,
+    "W2_Teapot_teacher_admitted": false,
+    "native_implicit_exact_region_certified": false,
+    "original_geometry_exact_identity_certified": false,
+    "printability_certified": false,
+    "optimization_admitted": false,
+    "training_admitted": false,
+    "optimized_MuJoCo_comparison_executed": false
+  }
+}

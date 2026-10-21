@@ -1,0 +1,133 @@
+{
+  "schema": "W4P19PositiveGapConstructionPlanV1",
+  "source_P18_commit": "b33fc93bd1fecd5b42fbd8d2eabfefd6ec9db7be",
+  "source_P17_manifest_sha256": "3eef5e245590ebee18ea46e1f0198c81d73c17ffbbb064143a6ceb95a00d5a70",
+  "sources": {
+    "old_outer": {
+      "path": "material/M_repaired_outer.obj",
+      "sha256": "4c2e4d480d1041f4817128a8b4b61675d80a699e448e7a5a253311c1805a3aa2"
+    },
+    "cavity": {
+      "path": "source/D-hypothesis.obj",
+      "sha256": "c18b4ac3a9fb71e6169c975e6baab1e487f7d148af908ee4eac4df4077121452"
+    },
+    "shaft": {
+      "path": "source/shaft-reference.obj",
+      "sha256": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+    }
+  },
+  "outer_collars": {
+    "cross_section": "DYADIC_CONVEX_OCTAGON",
+    "a": "1/16",
+    "b": "13/512",
+    "polygon_ccw": [
+      [
+        "1/16",
+        "13/512"
+      ],
+      [
+        "13/512",
+        "1/16"
+      ],
+      [
+        "-13/512",
+        "1/16"
+      ],
+      [
+        "-1/16",
+        "13/512"
+      ],
+      [
+        "-1/16",
+        "-13/512"
+      ],
+      [
+        "-13/512",
+        "-1/16"
+      ],
+      [
+        "13/512",
+        "-1/16"
+      ],
+      [
+        "1/16",
+        "-13/512"
+      ]
+    ],
+    "z_intervals": [
+      [
+        "153/1024",
+        "157/1024"
+      ],
+      [
+        "1439/1024",
+        "1443/1024"
+      ]
+    ],
+    "maximum_radial_extent_squared_exact": "1193/262144",
+    "scope": "TWO_LOCAL_SHAFT_BODY_JUNCTION_COLLARS_NOT_WHOLE_TEAPOT_SCALING"
+  },
+  "inner_guard": {
+    "cross_section": "DYADIC_AXIS_ALIGNED_SQUARE",
+    "half_width": "1/16",
+    "z_interval": [
+      "3/8",
+      "1"
+    ],
+    "polygon_ccw": [
+      [
+        "-1/16",
+        "-1/16"
+      ],
+      [
+        "1/16",
+        "-1/16"
+      ],
+      [
+        "1/16",
+        "1/16"
+      ],
+      [
+        "-1/16",
+        "1/16"
+      ]
+    ]
+  },
+  "minimum_design_to_original_shaft_gap_reference": "1/500",
+  "minimum_gap_is_not_maximum_shape_change_budget": true,
+  "outer_shape_and_volume_changes_must_be_reported_separately": true,
+  "native_operations": [
+    {
+      "op": "union",
+      "inputs": [
+        "old_outer",
+        "lower_collar",
+        "upper_collar"
+      ],
+      "output": "M.obj"
+    },
+    {
+      "op": "subtraction",
+      "inputs": [
+        "cavity",
+        "inner_guard"
+      ],
+      "output": "D.obj"
+    },
+    {
+      "op": "subtraction",
+      "inputs": [
+        "M.obj",
+        "D.obj"
+      ],
+      "output": "F.obj"
+    }
+  ],
+  "native_timeout_seconds_per_call": 120,
+  "native_calls_serial": true,
+  "automatic_mesh_postprocess_allowed": false,
+  "W0_physical_approval": false,
+  "W2_Teapot_teacher_admission": false,
+  "optimization_admitted": false,
+  "training_admitted": false
+}

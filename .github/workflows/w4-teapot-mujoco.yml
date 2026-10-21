@@ -842,3 +842,128 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
 
+
+  p19-positive-gap-complete-material:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      P1: research/SpinIt2014_Teapot_20261018/P1
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - name: Checkout frozen P19 candidate and independent proof code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned proof and reference build tools
+        run: |
+          set -euo pipefail
+          python -m pip install 'numpy==2.3.5' 'scipy==1.17.0' 'trimesh==4.12.2' 'networkx==3.7' 'cmake==3.31.6' 'ninja==1.11.1.4'
+          mkdir -p "$RUNNER_TEMP/w4-p19-evidence"
+          git rev-parse HEAD > "$RUNNER_TEMP/w4-p19-evidence/w4-commit.txt"
+      - name: Run the complete frozen P19 inventory without skips
+        run: |
+          set -euo pipefail
+          export W4_P19_CASE_ROOT="$GITHUB_WORKSPACE/$P1/P17_material_case"
+          export W4_P19_FINAL_CASE_ROOT="$GITHUB_WORKSPACE/$P1/P19_material_case"
+          python - <<'PYTEST' 2>&1 | tee "$RUNNER_TEMP/w4-p19-evidence/tests.log"
+          import json,os,sys,unittest
+          from pathlib import Path
+          p=Path(os.environ['P1']).resolve()
+          sys.path.insert(0,str(p))
+          inventory=json.loads((p/'P19_TEST_INVENTORY.json').read_text())
+          suite=unittest.defaultTestLoader.discover(str(p),pattern='test_p19*.py')
+          def ids(s):
+              for x in s:
+                  if isinstance(x,unittest.TestSuite): yield from ids(x)
+                  else: yield x.id()
+          assert sorted(ids(suite))==inventory['test_ids']
+          assert suite.countTestCases()==inventory['expected_tests']==137
+          result=unittest.TextTestRunner(verbosity=2).run(suite)
+          assert result.testsRun==137 and result.wasSuccessful()
+          assert not result.skipped and not result.expectedFailures and not result.unexpectedSuccesses
+          print('P19_MANDATORY_TESTS_PASS_137_NO_SKIPS')
+          PYTEST
+      - name: Recompute complete frozen solids, full original shaft, and physical proposal
+        run: |
+          set -euo pipefail
+          python "$P1/p19_material_candidate.py" audit --packet "$P1/P19_material_case"             --report "$RUNNER_TEMP/w4-p19-evidence/fresh-complete-report.json"             | tee "$RUNNER_TEMP/w4-p19-evidence/audit.log"
+          python "$P1/p19_material_candidate.py" verify --packet "$P1/P19_material_case"             --report "$P1/P19_COMPLETE_MATERIAL_REPORT.json"             | tee "$RUNNER_TEMP/w4-p19-evidence/committed-report-replay.log"
+          python - <<'PYPROOF'
+          import json,os
+          from pathlib import Path
+          r=json.loads((Path(os.environ['RUNNER_TEMP'])/'w4-p19-evidence/fresh-complete-report.json').read_text())
+          assert r['status']=='P19_EXACT_SAVED_SOLID_AND_COMPLETE_ORIGINAL_SHAFT_PASS_NOT_ADMITTED'
+          g=r['geometry']
+          assert all(g[k] is True for k in ('partition_geometry_valid','full_original_shaft_contained_in_outer','design_shaft_separation_certified','complete_original_shaft_in_fixed','research_geometry_gate_passed'))
+          assert all(v is False for v in r['scientific_flags'].values())
+          assert all(v is False for v in g['scientific_flags'].values())
+          assert r['optimization_admitted'] is False and r['training_admitted'] is False
+          print('P19_SAVED_GEOMETRY_PASS_EXTERNAL_ADMISSION_STILL_FALSE')
+          PYPROOF
+          git diff --exit-code -- "$P1/P17_material_case" "$P1/P19_material_case" "$P1/P19_COMPLETE_MATERIAL_REPORT.json"
+      - name: Build the actual unmodified pinned Cherchi reference with one worker
+        run: |
+          set -euo pipefail
+          p19_source="$RUNNER_TEMP/w4-p19-cherchi-source"
+          p19_build="$RUNNER_TEMP/w4-p19-cherchi-build"
+          p19_evidence="$RUNNER_TEMP/w4-p19-evidence"
+          git clone https://github.com/gcherchi/InteractiveAndRobustMeshBooleans.git "$p19_source"
+          git -C "$p19_source" checkout --detach 7bd6c2697695f555f9a15d7e154e084d841316f0
+          test "$(git -C "$p19_source" rev-parse HEAD)" = 7bd6c2697695f555f9a15d7e154e084d841316f0
+          test "$(git -C "$p19_source" hash-object main.cpp)" = 3f65d2a0f83b10629f99ed5dcd2781409cdca4b5
+          test -z "$(git -C "$p19_source" status --porcelain --untracked-files=no)"
+          CC=gcc-13 CXX=g++-13 cmake -S "$P1/p7_cherchi_reference_cli" -B "$p19_build" -G Ninja             -DCMAKE_BUILD_TYPE=Release "-DW4_CHERCHI_SOURCE=$p19_source"             2>&1 | tee "$p19_evidence/native-configure.log"
+          /usr/bin/time -v -o "$p19_evidence/build-resource.txt"             cmake --build "$p19_build" --target w4_cherchi_reference_native --parallel 1             2>&1 | tee "$p19_evidence/native-build.log"
+          python - <<'PYBUILD'
+          import hashlib,json,os,subprocess,sys
+          from pathlib import Path
+          p=Path(os.environ['P1']).resolve();sys.path.insert(0,str(p))
+          from p19_native_smoke import validate_native_identity
+          root=Path(os.environ['RUNNER_TEMP']);e=root/'w4-p19-evidence'
+          binary=root/'w4-p19-cherchi-build/bin/w4_cherchi_reference_native'
+          identity=validate_native_identity(binary,root/'w4-p19-cherchi-source',mode='unmodified')
+          files={name:hashlib.sha256((e/name).read_bytes()).hexdigest() for name in ('native-configure.log','native-build.log','build-resource.txt')}
+          report={'schema':'W4P19ActualCIReferenceBuildV1','w4_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'identity':identity,'compile_workers':1,'configure_and_build_completed_here':True,'log_sha256':files,'compiler':subprocess.check_output(['g++-13','--version'],text=True).splitlines()[0],'cmake':subprocess.check_output(['cmake','--version'],text=True).splitlines()[0],'postprocess_allowed':False}
+          with (e/'native-build-identity.json').open('x') as f:json.dump(report,f,indent=2);f.write('\n')
+          print('P19_ACTUAL_UNMODIFIED_CHERCHI_BUILD',identity['binary_sha256'])
+          PYBUILD
+      - name: Execute three actual analytical Boolean operations and thirty exact moment checks
+        run: |
+          set -euo pipefail
+          python "$P1/p19_native_smoke.py"             --native-bin "$RUNNER_TEMP/w4-p19-cherchi-build/bin/w4_cherchi_reference_native"             --upstream-checkout "$RUNNER_TEMP/w4-p19-cherchi-source" --mode unmodified             --out "$RUNNER_TEMP/w4-p19-evidence/actual-analytical-smoke"             | tee "$RUNNER_TEMP/w4-p19-evidence/analytical-smoke.log"
+      - name: Execute three new Teapot operations and certify exact saved geometry despite index permutations
+        run: |
+          set -euo pipefail
+          python "$P1/p19_material_candidate.py" rebuild --packet "$P1/P19_material_case"             --native-bin "$RUNNER_TEMP/w4-p19-cherchi-build/bin/w4_cherchi_reference_native"             --upstream-checkout "$RUNNER_TEMP/w4-p19-cherchi-source"             --out "$RUNNER_TEMP/w4-p19-evidence/actual-teapot-rebuild"             | tee "$RUNNER_TEMP/w4-p19-evidence/native-rebuild.log"
+          python - <<'PYRESULT'
+          import json,os
+          from pathlib import Path
+          e=Path(os.environ['RUNNER_TEMP'])/'w4-p19-evidence'
+          b=json.loads((e/'native-build-identity.json').read_text())
+          s=json.loads((e/'actual-analytical-smoke/analytical-smoke-report.json').read_text())
+          r=json.loads((e/'actual-teapot-rebuild/native-rebuild-report.json').read_text())
+          assert s['passed'] is True and s['native_operation_calls']==3
+          assert s['exact_moment_comparisons_equal']==30
+          assert r['new_native_calls']==3 and r['status']=='P19_NATIVE_EXACT_SAVED_GEOMETRY_REPRODUCED'
+          assert r['exact_saved_oriented_facet_and_vertex_multisets_match'] is True
+          assert r['geometry']['research_geometry_gate_passed'] is True
+          assert r['native_identity']['binary_sha256']==b['identity']['binary_sha256']
+          assert s['native_identity']['binary_sha256']==b['identity']['binary_sha256']
+          assert r['optimization_admitted'] is False and r['training_admitted'] is False
+          print('P19_ACTUAL_SIX_CALLS_AND_COMPLETE_SAVED_GEOMETRY_PASS_NO_ADMISSION')
+          PYRESULT
+          git diff --exit-code -- "$P1/P17_material_case" "$P1/P19_material_case"
+      - name: Preserve actual P19 proof, build, and six-call evidence including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-P19-complete-original-shaft-positive-gap-native-rebuild-NOT-admitted
+          path: ${{ runner.temp }}/w4-p19-evidence/**
+          if-no-files-found: warn
+          retention-days: 30

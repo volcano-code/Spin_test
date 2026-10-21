@@ -1,0 +1,19 @@
+{
+  "operation": "subtraction",
+  "input_sha256": [
+    "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
+    "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073"
+  ],
+  "binary_sha256": "dfd285727c760b2616e6c8628614b9ee57980f1402950e020d854f878c7c8e5c",
+  "timeout_seconds": 120,
+  "new_native_process_launched": true,
+  "output_file": "F-native.obj",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "wall_seconds": 0.1321028300008038,
+  "output_exists": true,
+  "inputs_unchanged": true,
+  "binary_unchanged": true,
+  "output_sha256": "5c5db73792bd8d6566a954e6d0eef6d22e248a7ad2f8a7a8d8e6d4f2ad9d86a8"
+}

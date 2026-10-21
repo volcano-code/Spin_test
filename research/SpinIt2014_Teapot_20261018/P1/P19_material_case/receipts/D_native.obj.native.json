@@ -1,0 +1,19 @@
+{
+  "operation": "subtraction",
+  "input_sha256": [
+    "c18b4ac3a9fb71e6169c975e6baab1e487f7d148af908ee4eac4df4077121452",
+    "21e76e412d80fac7d635561b67b075ce1b02fd775475b3e29d1e09dd123ad9ba"
+  ],
+  "binary_sha256": "dfd285727c760b2616e6c8628614b9ee57980f1402950e020d854f878c7c8e5c",
+  "timeout_seconds": 120,
+  "new_native_process_launched": true,
+  "output_file": "D.obj",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "wall_seconds": 0.0159481840000808,
+  "output_exists": true,
+  "inputs_unchanged": true,
+  "binary_unchanged": true,
+  "output_sha256": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073"
+}
