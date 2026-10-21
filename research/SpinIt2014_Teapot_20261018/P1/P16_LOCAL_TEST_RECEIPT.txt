@@ -1,0 +1,14 @@
+W4 P16 local source-pinned, exact binary64 Fraction audit
+Input original P14: GitHub Actions 39462578208, original source report SHA256 11485d0659ca9933205179de1c968f42e7c27dfaf0ca77a8c28c96125b60ad72.
+Input real numeric P15: Actions 39555122736, source report SHA256 0e2d48e40efe5110512b3929a3b90718e1b65b5382a11494e5d6bba473193a56.
+Command: python -m unittest -v test_p16_exact_binary64_chain
+Python 3.13; executed 11 tests in 24.132 seconds, all PASS, no skip.
+Parser: exact IEEE-754 binary64 vertex rational; W0 raw moment order M,LX,LY,LZ,QXX,QYY,QZZ,QYZ,QXZ,QXY.
+Exact signed outer native vs float-postprocessed volume difference =
+3727329694084957988057560810167920790317082511/
+842498333348457493583344221469363458551160763204392890034487820288
+Approximate projection +4.424138952620733e-21 reconstructed model units cubed; nonzero exact rational.
+Oriented signed triangular 2-chain micro-weld deltas of outer and all three F are EXACTLY equal (90 noncancelled triangle terms).
+r(native_M)-r(native_F)-r(native_D) and r(clean_M)-r(clean_F)-r(native_D) are EXACTLY ZERO for all ten ordinary signed-tetra moments in each of 3 cases.
+Formal oriented triangular chain residual terms M-F-D: 1280,1248,1248 and unchanged by welding (not an exact set proof).
+No implied exact identity to Cherchi internal implicit rational points, CAD author equivalence, W0, W2, Faster, printability, or optimized MuJoCo.

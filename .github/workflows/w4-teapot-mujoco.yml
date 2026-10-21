@@ -621,3 +621,82 @@ jobs:
             research/SpinIt2014_Teapot_20261018/P1/p15-numerical-postprocess/**
           if-no-files-found: warn
           retention-days: 30
+
+
+  p16-exact-signed-moments-and-chain:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    env:
+      P1: research/SpinIt2014_Teapot_20261018/P1
+    steps:
+      - name: Checkout W4 only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install pinned Python 3.13 standard-library runtime
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Fetch actual historical negative Cherchi P14 source archive
+        uses: actions/download-artifact@v4
+        with:
+          name: W4-P7-real-Cherchi-reference-geometry-or-failure-not-optimized
+          run-id: 39462578208
+          github-token: ${{ github.token }}
+          path: w4-p16-native-p14
+      - name: Fetch independently passing postprocessed P15 source archive
+        uses: actions/download-artifact@v4
+        with:
+          name: W4-P15-P14-real-native-source-bounded-numeric-repair-NOT-exact-Cherchi
+          run-id: 39555122736
+          github-token: ${{ github.token }}
+          path: w4-p16-numeric-p15
+      - name: Run strict eleven-test historical-source and exact-rational verification
+        run: |
+          set -euo pipefail
+          export W4_P16_REAL_P14_DIR="$GITHUB_WORKSPACE/w4-p16-native-p14/research/SpinIt2014_Teapot_20261018/P1"
+          export W4_P16_REAL_P15_DIR="$GITHUB_WORKSPACE/w4-p16-numeric-p15"
+          mkdir -p "$P1/p16-exact-audit"
+          test -s "$W4_P16_REAL_P14_DIR/p14-cherchi-junction-study/p14-junction-native-study.json"
+          test -s "$W4_P16_REAL_P15_DIR/p15-inherited-sliver-study.json"
+          python -m unittest discover -v -s "$P1" -p 'test_p16_exact_binary64_chain.py' 2>&1 | tee "$P1/p16-exact-audit/p16-11-tests.log"
+          grep -q 'Ran 11 tests' "$P1/p16-exact-audit/p16-11-tests.log"
+          grep -q '^OK$' "$P1/p16-exact-audit/p16-11-tests.log"
+          if grep -q "skipped" "$P1/p16-exact-audit/p16-11-tests.log"; then echo 'No skipped real-archive tests admitted'; exit 3; fi
+      - name: Recompute exact original/cleaned ten moments and oriented-chain identity
+        run: |
+          set -euo pipefail
+          export W4_P16_REAL_P14_DIR="$GITHUB_WORKSPACE/w4-p16-native-p14/research/SpinIt2014_Teapot_20261018/P1"
+          export W4_P16_REAL_P15_DIR="$GITHUB_WORKSPACE/w4-p16-numeric-p15"
+          python "$P1/p16_exact_binary64_chain.py" --p14-root "$W4_P16_REAL_P14_DIR" --p15-root "$W4_P16_REAL_P15_DIR" --out "$P1/p16-exact-audit/p16-exact-saved-binary64-proof.json" | tee "$P1/p16-exact-audit/p16-cli.log"
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          report=json.loads(Path('research/SpinIt2014_Teapot_20261018/P1/p16-exact-audit/p16-exact-saved-binary64-proof.json').read_text())
+          assert report['status']=='EXACT_BINARY64_MOMENT_CANCELLATION_WITH_STRICT_SURFACE_NONIDENTITY'
+          delta=report['exact_saved_binary64_outer_volume_difference']
+          assert delta['numerator']=='3727329694084957988057560810167920790317082511'
+          assert delta['denominator']=='842498333348457493583344221469363458551160763204392890034487820288'
+          assert not delta['is_zero']
+          assert report['signed_oriented_chain_change_term_count']==90
+          assert [x['saved_triangle_chain_residual_terms_native'] for x in report['cases']]==[1280,1248,1248]
+          assert all(x['exact_original_signed_tetra_ten_moment_residual_all_zero'] and
+                     x['exact_cleaned_signed_tetra_ten_moment_residual_all_zero'] and
+                     x['exact_oriented_chain_change_identical_for_M_and_F'] for x in report['cases'])
+          assert not report['exact_implicit_Cherchi_surface_certified']
+          assert not report['full_set_equality_original_vs_microweld']
+          assert not report['W0_physical_tip_or_FD_approved']
+          assert not report['Faster_optimization_executed']
+          print('P16 EXACT SAVED BINARY64 MOMENTS PASS; STRICT SOLID IDENTITY REFUTED; W0/FASTER DENIED')
+          PY
+          sha256sum "$P1/p16-exact-audit/"* | tee "$P1/p16-exact-audit/p16-file-hashes.txt"
+      - name: Retain P16 exact proof and negative original-source caveats
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-P16-exact-binary64-moments-chain-delta-NOT-native-implicit-equivalence
+          path: |
+            research/SpinIt2014_Teapot_20261018/P1/p16-exact-audit/**
+          if-no-files-found: warn
+          retention-days: 30
