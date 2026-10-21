@@ -1,0 +1,65 @@
+{
+  "schema": "w2-m17-native-heart-and-noodles-source-recovery-v1",
+  "evidence_date": "2026-10-21",
+  "scope": "W2_ONLY_NO_NATIVE_OR_TRAINING_RELEASE",
+  "noodles": {
+    "historical_branch": "main",
+    "historical_manifest_path": "research/Noodles_v7_20261017/frozen-parts-v7c/manifest.json",
+    "historical_manifest_git_blob_sha1": "f476a8c3e87bd30ef186b24442f641c2602c32ec",
+    "historical_CSG_receipt_path": "research/Noodles_v7_20261017/frozen-inputs/author-rational/construction.json",
+    "historical_CSG_receipt_git_blob_sha1": "1e824c72d5ee13cc484bbf60a0be9b79be86d787",
+    "expected_original_source_parts": 94,
+    "expected_fixed_source_parts": 93,
+    "actually_reproduced_original_source_parts": 3,
+    "actually_SHA_verified_original_OBJ_files": 6,
+    "reproduced_objects": [
+      "outer-ellipsoid",
+      "hub-fixed",
+      "pin-fixed"
+    ],
+    "model_sha256s": [
+      "1a7b1ae060fb3a8e4fa1c35cd9b2d1bdea44564c84bf9c360ec79c0f6bdaaa6f",
+      "4ae1fb276a80cf729e5b262d87c280c34e91daba4954892d4588030d0e7dfbbb",
+      "97a2e7cf4da76bec888ca183de1f62b4d61f2055f8fab7515c251110c660f130"
+    ],
+    "remaining_source_parts_not_recovered": 91,
+    "historical_exact_CSG_operations_reported": 96,
+    "newly_executed_CSG_operations": 0,
+    "historical_F_D_A_rational_packets_recovered": 0,
+    "original_source_status": "THREE_FROZEN_PART_MESHES_BYTE_EXACT_REPRODUCED_NOT_COMPLETE_NATIVE_F_D_A_INPUT",
+    "original_author_CAD": false,
+    "no_new_teacher_request_certified": true
+  },
+  "heart": {
+    "frozen_h8f_archive_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+    "actual_native_preflight_attempted": true,
+    "actual_process_exit_code": 2,
+    "status": "BLOCKED_BEFORE_NATIVE_CALL",
+    "resource_cgroup_limit_bytes": 4294967296,
+    "required_native_memory_bytes": 25769803776,
+    "blockers": [
+      "EFFECTIVE_MEMORY_OR_SWAP_NOT_QUALIFIED",
+      "COMPLETE_W2_CHECKOUT_NOT_SUPPLIED",
+      "THREE_COMPILED_NATIVE_BINARIES_NOT_PINNED",
+      "SEPARATE_PREDECLARED_CHERCHI_TEN_MOMENT_BUDGET_REQUIRED",
+      "NO_NATIVE_EXECUTION_DUE_TO_PREFLIGHT_BLOCK"
+    ],
+    "failed_attempt_record_local_sha256": "0af26402b70ac74ab638a3d90efe87779bd13cf74d4e5d8f6fc9def068dd5683",
+    "latest_real_native_calls": 0
+  },
+  "implementation": {
+    "core_python": "research/NeuralMoments/teacher/m17_core_sha_reconstruction.py",
+    "core_python_git_blob_sha1": "bf170cae1d2f6b13a5c2005a507b7f317524da8c",
+    "unit_tests": "research/NeuralMoments/teacher/test_m17_core_sha_reconstruction.py",
+    "unit_tests_git_blob_sha1": "dc6d60d153a0dff0513e3e049ce047180f3be3c8",
+    "committed_code_exact_local_test_version": true,
+    "committed_unit_tests_executed": 9,
+    "committed_unit_tests_passed": 9,
+    "extended_local_source_audit_tests": 19,
+    "extended_local_source_audit_tests_passed": 19
+  },
+  "new_native_cherchi_calls": 0,
+  "training_admitted": 0,
+  "J_D": null,
+  "next_gate": "Recreate 91 remaining parts from pinned original source generator and exact-verify 94 source OBJ pairs; recover original authenticated F/D/A rational Boolean outputs or reproduce with audited backend, verify target-frame fixed moments and legal material; on qualifying >=24GiB swap0 native host execute Heart then Noodles one fresh teacher. W0/W3 derivative authorization remains independent."
+}
