@@ -1,0 +1,88 @@
+{
+  "admission": {
+    "Faster_optimization_executed": false,
+    "MuJoCo_optimized_before_after_executed": false,
+    "W0_owner_admitted": false,
+    "W2_teacher_training_allowed": false,
+    "derivative_neighborhood_certified": false,
+    "formal_M6_executed": false,
+    "formal_M6_passed": false,
+    "original_author_CAD": false,
+    "physical_validation_passed": false
+  },
+  "boolean_calls_expected": 0,
+  "formal_M6": false,
+  "input_sha256": {
+    "P19_CANONICAL_SOURCE_COMPLETE_REPORT.json": "f30fabc8ce348b9b8f42ff20649e683557349582ef31baf6c05d35e17b448601",
+    "P19_material_case/manifest.json": "c6bd67f872f344da46c1f774f8b68c28a2ecfa4c5a5c000d9e6bf5229e3412d6",
+    "P19_material_case/material/D_native.obj": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
+    "P19_material_case/material/F_native.obj": "5c5db73792bd8d6566a954e6d0eef6d22e248a7ad2f8a7a8d8e6d4f2ad9d86a8",
+    "P19_material_case/material/M_native.obj": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
+    "P19_material_case/source/shaft-reference.obj": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
+    "P20_native_request.json": "74d9cfa64417dd2c82d196ab27094651976954742a4c692667a1b19b1032de62"
+  },
+  "maximum_native_seconds": 900,
+  "native_binary_sha256": {
+    "/workspace/scratch/4987f780331c/w4-p20-cherchi-build/python/_cherchi_core_boolean.cpython-312-x86_64-linux-gnu.so": "0af01afb88abb3febc9af42ad7dd90b1fbe1a74b267b8453487bfd083c3212dd",
+    "/workspace/scratch/4987f780331c/w4-p20-cherchi-build/python/_cherchi_rational_moments.cpython-312-x86_64-linux-gnu.so": "d1c3c23c58ae1141c2690557296f5dafc33a11f19bbbf260437493a31e64ba37",
+    "/workspace/scratch/4987f780331c/w4-p20-core-build/python/_make_it_stand.cpython-312-x86_64-linux-gnu.so": "071148da2fea42a5f4a31f567df773b0ea7c2232c0cf8aa36979f9d668cd8b95"
+  },
+  "registered_utc": "2026-10-22T06:31:35.807668+00:00",
+  "resource_observation": {
+    "formal_M6_resource_preflight_satisfied_by_this_probe": false,
+    "maximum_wall_seconds": 900,
+    "physical": {
+      "MemAvailable_bytes": 9724219392,
+      "MemTotal_bytes": 10451439616,
+      "SwapFree_bytes": 0,
+      "SwapTotal_bytes": 0
+    },
+    "visible_cgroup_v2": {
+      "memory.current": "2246615040",
+      "memory.max": "8589934592",
+      "memory.peak": "4688084992",
+      "memory.swap.current": "0",
+      "memory.swap.max": "max"
+    },
+    "worker_address_space_limit_bytes": 6442450944
+  },
+  "schema": "W4_P20_BOUNDED_PREPARATION_PREREGISTRATION_V1",
+  "self_recorded_before_probe_is_not_independent_runtime_attestation": true,
+  "source_calls_expected": 0,
+  "source_code_sha256": {
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/P19_TEST_INVENTORY.json": "2d22bedba3a346fa5a8597711a26f808ee9802ad55f3af5b76265d01f53742cd",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p15_inherited_sliver_repair.py": "f925f9fcc3690feb79d2474129c006c9ed5a482668f5c360879ee96e5897b6a3",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p16_exact_binary64_chain.py": "d020cc3899707aeea1bb5641e09a0603f62868d0babdc260a2e038b67694191e",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p17_boundary_certificate.py": "391a09c06d9846b42820b26e549675026dc0a8e5c4f93e3c79289ac6a6c15c2d",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p17_material_candidate.py": "15066373023cb941abdb4cc7c893be36df38604e7ab1974e95bc07a6d658448b",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p17_physical_case.py": "ec78c9912484863fd9532d28c061322c64bd0b0d5c1a1ae6dd0f4c51f83d36e8",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p18_exact_surface.py": "b26ab7739b6d3f5f01bcf89880767958fa31510dd138de22a595baf9d95c5cc4",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p18_shaft_domain.py": "548387dbf0f3159a4cd280e830406a77e4aa3414868c45a33f3267b0fd6a4357",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p18_solid_domain.py": "ca449b64b89dddf76c744a980bfae486a179e2470436d387dad0c5204634351e",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p19_guard_certificate.py": "ff9b8df95562de1986ae11523f9b96778e3b235cf55fe45bdeaec9e21db09485",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p19_guard_construction.py": "7e168576645610c3ed359e35b0b1bdf3396a4aa2630bdf808c355c4f09576bba",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p19_material_audit.py": "58eb4dfbea4f8297edb08ca139d5b8c7af935d4f6f16b3b22fb39442535e10e7",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p19_material_candidate.py": "63eb6d58871e63e06a0b781b5c245ee409051bef34f5ab0c07edd35a6cd3f0c7",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p19_native_smoke.py": "a6748c2540e580814b60dc33c711ebb2b30ba5e27d7630b5abf94decac232cad",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p19_serialization_repair.py": "80770b17aab6929ab2ea525a9a908d36454b0f1d285e658e612341d3678b09f9",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p19_shaft_containment.py": "5fde5d371f984ea286ae028d4dc0388fa38d4e89bb105df404bcdf58671710d1",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p20_build_native_ci.py": "7c3ea11173465d6192f79d43a76ec104819d09a5c0595b1ec96d4d4a81bc7ec7",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p20_m6_launch.py": "3f2f9164f73754479bfe923ddb09e022b152985d8e7fc04cf41832ccf4a07e03",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p20_native_factory.py": "34c401592747d6397e958eaff85fed90561d1adc3b06d2561eec2f54bbebd06f",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p20_owned_material_audit.py": "cacb27840f3c85db78fe346759377e14feea50782f8cef108e9fed22ff31622e",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p20_physical_contract.py": "6f71e5d7ce1a2fcb14579beb5f6680ea3b847193ad4d6ba48cfcc962ce008391",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p7_cherchi_native_union.py": "6fe83568802c23580fbab16dd0819adbab9b7bbbfec2a04e15b0084430bfeee2",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/p7_cherchi_reference_cli/CMakeLists.txt": "f8ce4a096a8e404f9fec4539dbfc4ce1d45dd5c3b724fd6198a66119437c8c69",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/test_p19_guard_certificate.py": "d1e02899c9c57a737f1f367bc9039fe30750b1ebcfd0476d08607b7c762d1bad",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/test_p19_guard_construction.py": "388e0079bd899586afd05707f8d1a209ae9dd320ad85b60373c6926cac90acf4",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/test_p19_material_audit.py": "2412910aee8ba85be6eef8eb9b2253565e7fb03e7719bf645e539df9cd34dac0",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/test_p19_material_candidate.py": "83c04c254f3e7519605cc8e60258a34aedb64806b658533f74984c97eb59a1bb",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/test_p19_native_smoke.py": "2724a3f7ca2b24a07ab926a0941d3ed5c389fd54cc107900d8a495010ae936be",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/test_p19_serialization_repair.py": "9c9fabfabedb8b6c4ee566e759dc49e16ab53e04b1be2a17e50f065fe865a0de",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/test_p19_shaft_containment.py": "ef15a5d14a8ea8a15fdf841d92d28c81deb99cfbe0ae12c0fa8edcc345657683",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/test_p20_m6_launch.py": "f647764a94f737b2b0becb0f4dc9608fdc2e746d4fed27736802fabd8833860e",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/test_p20_native_factory.py": "ae42098bd937d9abcedb9b1acd78ef0a06ed0ce2d9a9d97b2c8587434810b067",
+    "/workspace/scratch/4987f780331c/w4-p20/research/SpinIt2014_Teapot_20261018/P1/test_p20_physical_contract.py": "9645f354bac4af1e0513555654803c7d3d51ca8cefe82fc8a109404df91c34db"
+  },
+  "worker_address_limit_gib": 6
+}

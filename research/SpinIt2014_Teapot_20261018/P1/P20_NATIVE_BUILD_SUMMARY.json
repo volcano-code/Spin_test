@@ -1,0 +1,247 @@
+{
+  "cherchi_completed_steps": 36,
+  "ci_builder_script_sha256": "7c3ea11173465d6192f79d43a76ec104819d09a5c0595b1ec96d4d4a81bc7ec7",
+  "ci_builder_status": "Prepared and separately checked for syntax/help/fail-closed startup; the archived builds used the recorded local commands, not a GitHub run of this new script.",
+  "compile_wall_seconds_total": 1115.0454852710004,
+  "complete_archive_index": {
+    "P20_BUILD_EVIDENCE_INDEX.json": {
+      "sha256": "34d9b6796a1a0c196d41a11064960a1f183eb2367bd3bfb579064204ffe038d6",
+      "size_bytes": 3942
+    },
+    "cmake/cherchi-CMakeCache.txt": {
+      "sha256": "113729e2062b82a9fb883cf151121a149def900b2abe9025426c6ece23066841",
+      "size_bytes": 26757
+    },
+    "cmake/core-CMakeCache.txt": {
+      "sha256": "b099c64b092bd9f7d87ef28d3a8dbffeae44cbac286f1b64bc17cbbdeb577c05",
+      "size_bytes": 29288
+    },
+    "import/import-only-report.json": {
+      "sha256": "43062c1daf3e6da22dc1c460dc48509c2c4058a0e6295d16cc28589c93213ada",
+      "size_bytes": 5376
+    },
+    "import/import-only.stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "import/import-only.stdout.log": {
+      "sha256": "15817b15df07a8d0ebc91cac6d97de0a68f377e471fb96350f04855513be248b",
+      "size_bytes": 4439
+    },
+    "logs/build-cherchi.log": {
+      "sha256": "246417815cd8e6105a701fd53db174402768543ada9f6d8ad95b8afc5f28e7b4",
+      "size_bytes": 7206
+    },
+    "logs/build-core.log": {
+      "sha256": "313eedf1ff4695628fc8c9b87b4cfe91083290f584b7d4040188c9a7f6f028d3",
+      "size_bytes": 22129
+    },
+    "logs/cgal-checkout.log": {
+      "sha256": "fda9fbbf1b4e35a5ca25522dc376a38f1903a9ce5822afe70f6a27644ee71dc6",
+      "size_bytes": 1364
+    },
+    "logs/checkout.log": {
+      "sha256": "1fee6502b61203eb925e56e14360c3e349c5fc478d60ff72dca5db6c5c5d24b9",
+      "size_bytes": 1609
+    },
+    "logs/cherchi-checkout.log": {
+      "sha256": "2a299f78a244d3636b15ebc8b2fc8548fb906cc37282a732de9eaac6d0420b2f",
+      "size_bytes": 805
+    },
+    "logs/configure-cherchi.log": {
+      "sha256": "ca7efdedfb1780c7104ff9f164d26e8b3473e5c18ef5dd4c7f6439a1d396d490",
+      "size_bytes": 2699
+    },
+    "logs/configure-core.log": {
+      "sha256": "c1c193cdcdca6ae958ec32e110ec4584471ffd203ce6f7d8737583dc3e23e4e5",
+      "size_bytes": 4181
+    },
+    "logs/eigen-checkout.log": {
+      "sha256": "2ad1c83cc4677496b6ce847503b1877f0c17957650b7f745b6957b141f0b2d45",
+      "size_bytes": 1367
+    },
+    "receipts/build-cherchi-receipt.json": {
+      "sha256": "fc1e475c1af1564fbc354314d3cce544b4424ac9892d1c417bbe34755d57caa8",
+      "size_bytes": 2834
+    },
+    "receipts/build-core-receipt.raw.json": {
+      "sha256": "8454ab6bcbe3f59b9a881b295b64bee825826ab6eb264df57e921fb7bc6f7bd2",
+      "size_bytes": 1873
+    },
+    "receipts/configure-cherchi-receipt.json": {
+      "sha256": "e21feaad550400e59217c490af28b5511d4f7a8bd4001f3080713b036f95d71f",
+      "size_bytes": 2594
+    },
+    "receipts/configure-core-receipt.json": {
+      "sha256": "1fd38c43ed2850f53c102179793e3a02ef04d66b95ca62b4bc9a77d4044dcaec",
+      "size_bytes": 3788
+    },
+    "resources/build-core-process-monitor.json": {
+      "sha256": "bd87f393807d3b61ccca75489d396ab7196ee8e91bd029b40c99d4c8ade7c82f",
+      "size_bytes": 1524
+    },
+    "resources/resource-validation.json": {
+      "sha256": "4b719f919c34e55143f7a2b867963388544b69a4115804e16d2304c244483d7d",
+      "size_bytes": 2202
+    },
+    "sources/build-source-inventory-after.json": {
+      "sha256": "73a2584910b6747e1252fd932de4f0f70a7e22e53016380e53f6b59fbb50fa1e",
+      "size_bytes": 3819
+    },
+    "sources/build-source-inventory-before.json": {
+      "sha256": "c4ddc0380bdb90a54c0f463aba59e2f57e7af66ffaaa1cc6eb7d1212f4056358",
+      "size_bytes": 3569
+    },
+    "sources/downloaded-packages.json": {
+      "sha256": "31d9775f520aded7832358cd29516990be0e5665cbcef7b2e4b2e6728dcedf43",
+      "size_bytes": 6890
+    },
+    "sources/package-index-selection.json": {
+      "sha256": "4a13ccde42a133d31819f3a393273fc9974b5de72a19810c705c8569d8a92025",
+      "size_bytes": 25198
+    }
+  },
+  "configure_wall_seconds_total": 1.8388490149998233,
+  "core_completed_steps": 103,
+  "evaluator_instances_constructed": 0,
+  "evidence_archive": {
+    "contains_elf_payloads": false,
+    "contains_synthetic_preflight_failure": false,
+    "entry_count": 24,
+    "file": "P20_NATIVE_BUILD_EVIDENCE.zip",
+    "sha256": "9d75318e9fbbf290b319a8c1f094c033051c229f277f42e9cc37148bf48961b4",
+    "size_bytes": 43413
+  },
+  "geometry_calls": 0,
+  "gmp_version": "6.3.0",
+  "material_native_admission_performed_by_this_build": false,
+  "native_modules": {
+    "_cherchi_core_boolean": {
+      "path": "/workspace/scratch/4987f780331c/w4-p20-cherchi-build/python/_cherchi_core_boolean.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "0af01afb88abb3febc9af42ad7dd90b1fbe1a74b267b8453487bfd083c3212dd",
+      "size_bytes": 1006448
+    },
+    "_cherchi_rational_moments": {
+      "path": "/workspace/scratch/4987f780331c/w4-p20-cherchi-build/python/_cherchi_rational_moments.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "d1c3c23c58ae1141c2690557296f5dafc33a11f19bbbf260437493a31e64ba37",
+      "size_bytes": 342648
+    },
+    "_make_it_stand": {
+      "path": "/workspace/scratch/4987f780331c/w4-p20-core-build/python/_make_it_stand.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "071148da2fea42a5f4a31f567df773b0ea7c2232c0cf8aa36979f9d668cd8b95",
+      "size_bytes": 11053328
+    }
+  },
+  "numpy_version": "2.3.5",
+  "optimizer_calls": 0,
+  "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "required_core_api_verified": [
+    "ExactMaterialRegion",
+    "make_exact_material_region",
+    "make_exact_material_region_from_rationals",
+    "empty_exact_material_region",
+    "make_exact_interior_difference_region",
+    "check_exact_material_partition",
+    "check_exact_material_subset",
+    "relate_exact_material_regions",
+    "check_exact_boundary_clearance",
+    "SpinTriangulationSettings",
+    "verify_fixed_rational_boundary"
+  ],
+  "resource_validation": {
+    "formal_m6_resource_admission": false,
+    "geometry_calls": 0,
+    "invalid_measurements": [
+      {
+        "field": "observed_subtree_rss_peak_bytes",
+        "file": "receipts/build-core-receipt.raw.json",
+        "raw_value_bytes": 462848,
+        "reason": "The original sampler used an execution PID-namespace child PID against host /proc. It did not identify the compiler subtree. Do not use this field as RSS evidence.",
+        "status": "NOT_VALID"
+      }
+    ],
+    "optimizer_calls": 0,
+    "schema": "w4-p20-build-resource-validation-v1",
+    "teacher_calls": 0,
+    "valid_measurements": {
+      "cherchi": {
+        "rlimit_as_bytes": 6442450944,
+        "ru_maxrss_bytes": 1247285248,
+        "scope": "Maximum individual waited descendant process, not aggregate build-tree RSS",
+        "single_ninja_worker": true,
+        "status": "VALID_LINUX_WAITED_CHILD_MAXRSS",
+        "wall_seconds": 62.079613404000156
+      },
+      "cherchi_host_proc_sampler": {
+        "peak_descendant_rss_bytes": 1243107328,
+        "scope": "Two-second samples of the subtree identified by exact command in host /proc; valid observations, not a proven continuous maximum.",
+        "status": "VALID_OBSERVATIONS_NOT_CONTINUOUS_MAXIMUM"
+      },
+      "core": {
+        "rlimit_as_bytes": 6442450944,
+        "ru_maxrss_bytes": 2602917888,
+        "scope": "Maximum individual waited descendant process, not aggregate build-tree RSS",
+        "single_ninja_worker": true,
+        "status": "VALID_LINUX_WAITED_CHILD_MAXRSS",
+        "wall_seconds": 1052.9658718670003
+      },
+      "core_host_proc_sampler": {
+        "peak_descendant_rss_bytes": 2157518848,
+        "scope": "Read-only observations from mid-build until process exit; initial build samples omitted. Host /proc PIDs are resolved by exact command because execution namespace child PIDs differ. This does not replace final RUSAGE_CHILDREN maxrss.",
+        "status": "VALID_PARTIAL_OBSERVATIONS"
+      },
+      "shared_cgroup": {
+        "cherchi_peak_bytes": 3453022208,
+        "core_peak_bytes": 4655403008,
+        "scope": "Includes other workspace processes and charged file cache; not compiler RSS, not exclusive build consumption.",
+        "status": "VALID_SHARED_CGROUP_OBSERVATIONS_NOT_PROCESS_RSS"
+      }
+    }
+  },
+  "runtime_environment": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/4987f780331c/w4-p20-core-deps/sysroot/usr/lib/x86_64-linux-gnu",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "PYTHONPATH": "/workspace/scratch/4987f780331c/w4-p20-core-src/python:/workspace/scratch/4987f780331c/w4-p20-core-build/python:/workspace/scratch/4987f780331c/w4-p20-cherchi-build/python:/workspace/scratch/4987f780331c/w4-p17-deps"
+  },
+  "schema": "w4-p20-native-build-summary-v1",
+  "source_and_binary_rechecked_after_build": true,
+  "source_repositories": {
+    "cgal": {
+      "head": "f7c3c8212b56c0d6dae63787efc99093f4383415",
+      "path": "/workspace/scratch/4987f780331c/w4-p20-core-src/libigl/external/cgal",
+      "tracked_and_untracked_status": "",
+      "tree": "d754d09b2b6eb0e19ba4e03f4aaab6994bcf3523"
+    },
+    "cherchi": {
+      "head": "7bd6c2697695f555f9a15d7e154e084d841316f0",
+      "path": "/workspace/scratch/4987f780331c/w4-p20-core-src/external/reference-sources-20260917/sources/InteractiveAndRobustMeshBooleans-7bd6c2697695f555f9a15d7e154e084d841316f0",
+      "tracked_and_untracked_status": "",
+      "tree": "9e526e7729738487fbbb569ec9894865824b987d"
+    },
+    "eigen": {
+      "head": "21ae2afd4edaa1b69782c67a54182d34efe43f9c",
+      "path": "/workspace/scratch/4987f780331c/w4-p20-core-src/libigl/external/eigen",
+      "tracked_and_untracked_status": "",
+      "tree": "6f46043d27fc3c0f9f914854452731298ed3d1b5"
+    },
+    "libigl": {
+      "head": "f06fb13014aadff7eb1d7423ac018620441a3657",
+      "path": "/workspace/scratch/4987f780331c/w4-p20-core-src/libigl",
+      "tracked_and_untracked_status": "",
+      "tree": "cbf06f146a69346f84797afc5b2353a0b7c36af5"
+    },
+    "make_it_stand": {
+      "head": "58fd12c1306c1c01679a19172e276eef0cb30542",
+      "path": "/workspace/scratch/4987f780331c/w4-p20-core-src",
+      "tracked_and_untracked_status": "?? external/\n",
+      "tree": "047436a6047d401df2b675e6bbfef85e305e5cb7"
+    }
+  },
+  "source_sha": "58fd12c1306c1c01679a19172e276eef0cb30542",
+  "status": "BUILT_AND_IMPORT_VERIFIED_NO_GEOMETRY",
+  "teacher_calls": 0,
+  "tracked_source_files_modified": false,
+  "untracked_dependency_checkouts_added": true,
+  "w0_or_w2_approval": false
+}

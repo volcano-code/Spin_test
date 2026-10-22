@@ -1,0 +1,21 @@
+{
+  "actual_preparation_exit_code": 0,
+  "actual_preparation_report_sha256": "bdb9d9a677931697969eb629895ad47453775f7bf7533b46014827b52aab8a07",
+  "actual_preparation_status": "P20_OWNED_MFD_AND_FRESH_FACTORY_PREPARATION_PASS",
+  "admission": {
+    "Faster_optimization_executed": false,
+    "MuJoCo_optimized_before_after_executed": false,
+    "W0_owner_admitted": false,
+    "W2_teacher_training_allowed": false,
+    "derivative_neighborhood_certified": false,
+    "formal_M6_executed": false,
+    "formal_M6_passed": false,
+    "original_author_CAD": false,
+    "physical_validation_passed": false
+  },
+  "all_source_and_binary_bytes_unchanged": true,
+  "changed_files": {},
+  "native_modules": 3,
+  "schema": "W4_P20_PREPARATION_SOURCE_BINARY_RECHECK_V1",
+  "source_files": 33
+}

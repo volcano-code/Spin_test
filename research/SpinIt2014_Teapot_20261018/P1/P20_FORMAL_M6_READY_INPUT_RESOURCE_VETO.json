@@ -1,0 +1,43 @@
+{
+  "W0_owner_adoption": false,
+  "W0_physical_case_approved": false,
+  "W2_teacher_training_allowed": false,
+  "byte_binding_is_independent_runtime_attestation": false,
+  "factory_imported": false,
+  "m6_evidence": null,
+  "native_audit_invoked": false,
+  "native_call_counts_observed": {
+    "boolean": 0,
+    "source": 0
+  },
+  "native_full_partition_certified": false,
+  "newton_terminal_certified": false,
+  "resources": {
+    "cgroup_effective_memory_bytes": 8589934592,
+    "cgroup_memory_limits": [
+      {
+        "limit_bytes": 8589934592,
+        "path": "/sys/fs/cgroup/memory.max",
+        "raw": "8589934592",
+        "swap_limit_raw": "max",
+        "version": 2
+      }
+    ],
+    "child_address_space_limit_bytes": 8589934592,
+    "effective_memory_bytes": 8589934592,
+    "effective_memory_gib": 8.0,
+    "minimum_required_bytes": 21474836480,
+    "physical_memory_bytes": 10451439616,
+    "physical_memory_gib": 9.733661651611328,
+    "process_address_space_hard_bytes": null,
+    "process_address_space_soft_bytes": null,
+    "swap_kib": 0
+  },
+  "schema": "W4_P20_M6_RUNTIME_V1",
+  "smooth_neighborhood_certified": false,
+  "status": "BLOCKED_INSUFFICIENT_PHYSICAL_RAM",
+  "training_admissible": false,
+  "w0_commit": "51cbfd33d08063404d7e0c40e4256dd0e38efa1a",
+  "w0_production_baseline": "0bcc187b3005478baa586a6d6f450e73811ca342",
+  "worker_started": false
+}

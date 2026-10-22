@@ -1,0 +1,67 @@
+{
+  "schema": "W4_P20_READONLY_DEPENDENCIES_AND_M6_ENTRY_AUDIT_V1",
+  "observed_at_utc": "2026-10-22 06:28:32 UTC",
+  "W4_baseline": {
+    "branch": "research/neuralmoments-w4-teapot-p1-20261019",
+    "head": "58fd12c1306c1c01679a19172e276eef0cb30542",
+    "tree": "047436a6047d401df2b675e6bbfef85e305e5cb7"
+  },
+  "W0": {
+    "branch": "research/neuralmoments-w0-contract-20261019",
+    "head": "51cbfd33d08063404d7e0c40e4256dd0e38efa1a",
+    "tree": "e392f25d7473af2885ae98e150342dac8c18b6d8",
+    "title": "W0 M19: record true 157-test live W5/W2 CI and owner adoption blocker",
+    "Teapot_owner_admission_observed": false
+  },
+  "W2": {
+    "branch": "research/neuralmoments-w2-teacher-20261019",
+    "head": "b52cb2af0260041900fc03560b5dc182cb088750",
+    "tree": "c71c2e462217c6d951f1fb1748e805b0fc892227",
+    "title": "W2 M20: retain 51/51 local M19+M20 regression in teacher manifest without unlocking derivative training",
+    "Teapot_teacher_or_derivative_training_admission_observed": false
+  },
+  "fixed_W0_public_M6": {
+    "path": "research/NeuralMoments/contracts/full_partition_m6.py",
+    "git_blob": "a226f61c19a465bd3421ea1ec7e56ce7f381b633",
+    "callable": "audit_native_full_partition_once(evaluator=..., problem=..., c=..., pins=...)",
+    "expected_schema": "W0_M6_NATIVE_COMPLETE_MATERIAL_PARTITION_V1",
+    "real_execution_required": true,
+    "material_partitions": [
+      "M=F+D",
+      "D=retained+cavity",
+      "M=F+retained+cavity"
+    ],
+    "all_partitions_use_actual_owned_native_regions": true,
+    "required_source_calls": 1,
+    "required_boolean_calls": 2,
+    "exact_retained_plus_cavity_raw10_equals_design_required": true,
+    "smooth_derivative_admission_if_geometry_passes": false,
+    "training_admission_if_geometry_passes": false
+  },
+  "legacy_W0_CLI_static_defect": {
+    "path": "research/NeuralMoments/contracts/live_native_m6_cli.py",
+    "git_blob": "45cea486061e88741bf29ada1b45da40a090a54d",
+    "defect": "worker report.update(result) at line104 replaces RUNTIME schema by COMPLETE schema; parent line134 still requires RUNTIME",
+    "outer_schema": "W0_M6_NATIVE_FULL_PARTITION_RUNTIME_V1",
+    "overwritten_worker_schema": "W0_M6_NATIVE_COMPLETE_MATERIAL_PARTITION_V1",
+    "rejection": "NATIVE_WORKER_NO_VERIFIABLE_FULL_PARTITION",
+    "defect_verified_from_actual_fixed_source": true,
+    "positive_native_M6_execution_to_demonstrate_bug_performed": false,
+    "W0_file_modified": false,
+    "W4_remedy": "Separate W4 runtime and worker envelopes containing the unchanged W0 COMPLETE evidence",
+    "regression_fixture_scope": "TEST_ONLY_NO_NATIVE_EXECUTION"
+  },
+  "resource_rule": {
+    "nominal_memory_gib": 24,
+    "formal_minimum_physical_gib": 20,
+    "formal_minimum_effective_gib": 20,
+    "swap_kib": 0,
+    "formal_job_max_seconds": 3600,
+    "compile_workers_max": 4,
+    "P20_actual_compile_workers": 1,
+    "bounded_owned_preparation_is_not_formal_M6": true
+  },
+  "other_branches_modified": false,
+  "messages_to_other_owners_sent": false,
+  "external_approval_claimed": false
+}

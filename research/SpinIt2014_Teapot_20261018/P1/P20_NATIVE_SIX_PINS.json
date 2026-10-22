@@ -1,0 +1,8 @@
+{
+  "adapter_sha256": "6cdd03ad9bd1c55f2c40c72ac77c5cd3bc822bd8fb609bdd92cf2cf45162fa37",
+  "bridge_sha256": "0af01afb88abb3febc9af42ad7dd90b1fbe1a74b267b8453487bfd083c3212dd",
+  "c_sha256": "57ac958304df37ebfd36bc1dddeb32c81a113ed5440f65d959f4b45f2a12e6ca",
+  "context_sha256": "a4a79fbdf3ae8e04bec3cb1d558671fccb67c64eb8968cc01104009dc6e14431",
+  "native_sha256": "071148da2fea42a5f4a31f567df773b0ea7c2232c0cf8aa36979f9d668cd8b95",
+  "problem_input_digest": "19e8b9db943714e6c19edea1e824211db9bd04bb073bfa1734c757485228146f"
+}

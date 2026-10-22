@@ -1,0 +1,423 @@
+{
+  "actual_bounded_owned_preparation": {
+    "all_ten_exact_additivity_residuals_zero": true,
+    "elapsed_seconds": 93.51269760000014,
+    "factory_fresh_call_counts": {
+      "boolean": 0,
+      "derivative": 0,
+      "integration": 0,
+      "source": 0
+    },
+    "native_M_equals_F_plus_D_partition": {
+      "algorithm": "nef-inclusive-union-interior-disjoint-partition-v1",
+      "backend": "CGAL-f7c3c8212b56c0d6dae63787efc99093f4383415/Nef_polyhedron_3<Simple_cartesian<Gmpq>>/GMP-6.3.0/MPFR-4.2.1",
+      "complete_partition": true,
+      "completed": true,
+      "empty_protocol": "explicit-empty-allowed-nonempty-ordered-part-list-v1",
+      "error": "",
+      "excess_union_content": false,
+      "missing_whole_content": false,
+      "no_positive_volume_overlap": true,
+      "part_digests": [
+        "15b6ce45a27337dd677f114ab7e6f785608613daa00b19e82858bbfec35ba7ec",
+        "b9b073aeb2674e157f65493e7a421093e352474d5d89a630476d4e4d58267e22"
+      ],
+      "part_explicit_empty": [
+        false,
+        false
+      ],
+      "part_subset_whole": [
+        true,
+        true
+      ],
+      "partition_digest": "81ca886b90fbc9d93529374d83fbee5fd672fdc95114d6907a2a5883ca8a5866",
+      "positive_volume_overlap_pairs": [],
+      "scope": "exact-represented-polyhedral-partition-only",
+      "semantics": "finite-regular-closed-polyhedral-set-v1",
+      "union_equals_whole": true,
+      "whole_digest": "818180bc32d7a0b184651f4eff4042a48f0eec3bbeb8b429eaf67c96a8a1257a",
+      "whole_explicit_empty": false
+    },
+    "source_and_binary_unchanged": true,
+    "status": "P20_OWNED_MFD_AND_FRESH_FACTORY_PREPARATION_PASS",
+    "worker_exit_code": 0,
+    "worker_peak_rss_kib": 419176
+  },
+  "actual_factory_sha256": "34c401592747d6397e958eaff85fed90561d1adc3b06d2561eec2f54bbebd06f",
+  "actual_local_regression": {
+    "inventory": "P20_TEST_INVENTORY.json",
+    "passed": 74,
+    "receipt": "P20_LOCAL_TEST_RECEIPT.txt",
+    "skipped": 0,
+    "tests": 74,
+    "unit_tests_are_not_native_or_owner_admission": true
+  },
+  "actual_native_build": {
+    "cherchi_completed_steps": 36,
+    "compile_wall_seconds_total": 1115.0454852710004,
+    "core_completed_steps": 103,
+    "native_modules": {
+      "_cherchi_core_boolean": {
+        "path": "/workspace/scratch/4987f780331c/w4-p20-cherchi-build/python/_cherchi_core_boolean.cpython-312-x86_64-linux-gnu.so",
+        "sha256": "0af01afb88abb3febc9af42ad7dd90b1fbe1a74b267b8453487bfd083c3212dd",
+        "size_bytes": 1006448
+      },
+      "_cherchi_rational_moments": {
+        "path": "/workspace/scratch/4987f780331c/w4-p20-cherchi-build/python/_cherchi_rational_moments.cpython-312-x86_64-linux-gnu.so",
+        "sha256": "d1c3c23c58ae1141c2690557296f5dafc33a11f19bbbf260437493a31e64ba37",
+        "size_bytes": 342648
+      },
+      "_make_it_stand": {
+        "path": "/workspace/scratch/4987f780331c/w4-p20-core-build/python/_make_it_stand.cpython-312-x86_64-linux-gnu.so",
+        "sha256": "071148da2fea42a5f4a31f567df773b0ea7c2232c0cf8aa36979f9d668cd8b95",
+        "size_bytes": 11053328
+      }
+    },
+    "resource_validation": {
+      "formal_m6_resource_admission": false,
+      "geometry_calls": 0,
+      "invalid_measurements": [
+        {
+          "field": "observed_subtree_rss_peak_bytes",
+          "file": "receipts/build-core-receipt.raw.json",
+          "raw_value_bytes": 462848,
+          "reason": "The original sampler used an execution PID-namespace child PID against host /proc. It did not identify the compiler subtree. Do not use this field as RSS evidence.",
+          "status": "NOT_VALID"
+        }
+      ],
+      "optimizer_calls": 0,
+      "schema": "w4-p20-build-resource-validation-v1",
+      "teacher_calls": 0,
+      "valid_measurements": {
+        "cherchi": {
+          "rlimit_as_bytes": 6442450944,
+          "ru_maxrss_bytes": 1247285248,
+          "scope": "Maximum individual waited descendant process, not aggregate build-tree RSS",
+          "single_ninja_worker": true,
+          "status": "VALID_LINUX_WAITED_CHILD_MAXRSS",
+          "wall_seconds": 62.079613404000156
+        },
+        "cherchi_host_proc_sampler": {
+          "peak_descendant_rss_bytes": 1243107328,
+          "scope": "Two-second samples of the subtree identified by exact command in host /proc; valid observations, not a proven continuous maximum.",
+          "status": "VALID_OBSERVATIONS_NOT_CONTINUOUS_MAXIMUM"
+        },
+        "core": {
+          "rlimit_as_bytes": 6442450944,
+          "ru_maxrss_bytes": 2602917888,
+          "scope": "Maximum individual waited descendant process, not aggregate build-tree RSS",
+          "single_ninja_worker": true,
+          "status": "VALID_LINUX_WAITED_CHILD_MAXRSS",
+          "wall_seconds": 1052.9658718670003
+        },
+        "core_host_proc_sampler": {
+          "peak_descendant_rss_bytes": 2157518848,
+          "scope": "Read-only observations from mid-build until process exit; initial build samples omitted. Host /proc PIDs are resolved by exact command because execution namespace child PIDs differ. This does not replace final RUSAGE_CHILDREN maxrss.",
+          "status": "VALID_PARTIAL_OBSERVATIONS"
+        },
+        "shared_cgroup": {
+          "cherchi_peak_bytes": 3453022208,
+          "core_peak_bytes": 4655403008,
+          "scope": "Includes other workspace processes and charged file cache; not compiler RSS, not exclusive build consumption.",
+          "status": "VALID_SHARED_CGROUP_OBSERVATIONS_NOT_PROCESS_RSS"
+        }
+      }
+    },
+    "status": "BUILT_AND_IMPORT_VERIFIED_NO_GEOMETRY"
+  },
+  "actual_pins_file_sha256": "d067726f7e1b25489087f6577a6f37e8ea148ae9ae58d1b69c4cda05ac06eb96",
+  "actual_six_pins": {
+    "adapter_sha256": "6cdd03ad9bd1c55f2c40c72ac77c5cd3bc822bd8fb609bdd92cf2cf45162fa37",
+    "bridge_sha256": "0af01afb88abb3febc9af42ad7dd90b1fbe1a74b267b8453487bfd083c3212dd",
+    "c_sha256": "57ac958304df37ebfd36bc1dddeb32c81a113ed5440f65d959f4b45f2a12e6ca",
+    "context_sha256": "a4a79fbdf3ae8e04bec3cb1d558671fccb67c64eb8968cc01104009dc6e14431",
+    "native_sha256": "071148da2fea42a5f4a31f567df773b0ea7c2232c0cf8aa36979f9d668cd8b95",
+    "problem_input_digest": "19e8b9db943714e6c19edea1e824211db9bd04bb073bfa1734c757485228146f"
+  },
+  "admission": {
+    "Faster_optimization_executed": false,
+    "MuJoCo_optimized_before_after_executed": false,
+    "W0_owner_admitted": false,
+    "W2_teacher_training_allowed": false,
+    "derivative_neighborhood_certified": false,
+    "formal_M6_executed": false,
+    "formal_M6_passed": false,
+    "original_author_CAD": false,
+    "physical_validation_passed": false
+  },
+  "archived_instead_of_standalone": {
+    "P20_OWNED_EXECUTION_EVIDENCE.zip": [
+      "P20_OWNED_MATERIAL_PREPARATION.worker.json",
+      "P20_OWNED_MATERIAL_PREPARATION.progress.jsonl",
+      "P20_OWNED_PREPARATION_PREREGISTRATION.json",
+      "P20_OWNED_SOURCE_BINARY_RECHECK.json"
+    ],
+    "P20_PRELIMINARY_CHECKS.zip": [
+      "P20_FORMAL_M6_RESOURCE_VETO.json",
+      "P20_INITIAL_LOCAL_TEST_RECEIPT.txt",
+      "P20_INITIAL_TEST_INVENTORY.json"
+    ]
+  },
+  "base_w4_commit": "58fd12c1306c1c01679a19172e276eef0cb30542",
+  "ci_at_index_freeze": {
+    "artifact": "W4-P20-native-owned-MFD-preparation-formal-M6-NOT-admitted",
+    "job": "p20-native-owned-material-preparation",
+    "note": "Immutable precommit local evidence. Actual post-commit CI job and artifacts require independent inspection; no CI pass is claimed here.",
+    "status": "NOT_YET_RUN_FOR_THIS_COMMIT"
+  },
+  "created_utc": "2026-10-22T06:44:32.379803+00:00",
+  "formal_m6": {
+    "actual_cli_exit_code": 3,
+    "evidence": "P20_FORMAL_M6_READY_INPUT_RESOURCE_VETO.json",
+    "factory_imported": false,
+    "native_audit_invoked": false,
+    "native_call_counts_observed": {
+      "boolean": 0,
+      "source": 0
+    },
+    "resources": {
+      "cgroup_effective_memory_bytes": 8589934592,
+      "cgroup_memory_limits": [
+        {
+          "limit_bytes": 8589934592,
+          "path": "/sys/fs/cgroup/memory.max",
+          "raw": "8589934592",
+          "swap_limit_raw": "max",
+          "version": 2
+        }
+      ],
+      "child_address_space_limit_bytes": 8589934592,
+      "effective_memory_bytes": 8589934592,
+      "effective_memory_gib": 8.0,
+      "minimum_required_bytes": 21474836480,
+      "physical_memory_bytes": 10451439616,
+      "physical_memory_gib": 9.733661651611328,
+      "process_address_space_hard_bytes": null,
+      "process_address_space_soft_bytes": null,
+      "swap_kib": 0
+    },
+    "status": "BLOCKED_INSUFFICIENT_PHYSICAL_RAM",
+    "worker_started": false
+  },
+  "local_auxiliary_copy_caveat": {
+    "P20_static_or_dynamic_dependency_found": false,
+    "all_25_existing_executed_source_files_match_baseline_git_blobs": true,
+    "all_33_preregistered_source_files_match_receipt": true,
+    "difference": "one additional terminal LF in each local historical copy",
+    "files": [
+      "p10_cherchi_material_baseline.py",
+      "p12_physical_case.py",
+      "p13_reconstructed_shaft_domain.py",
+      "p14_cherchi_junction_grid.py",
+      "p1_geometry.py",
+      "p2_self_intersection.py",
+      "test_p16_exact_binary64_chain.py"
+    ],
+    "included_in_33_executed_source_preregistration": false,
+    "included_in_publication": false,
+    "recorded_in_47_factory_peer_snapshot": true,
+    "remote_baseline_files_preserved_by_base_tree": true
+  },
+  "published_file_inventory_excluding_this_index": [
+    {
+      "bytes": 139274,
+      "git_blob_sha1": "16a4b4cdf7c1dc6a2de314f22ebbee95364b9c04",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_EXACT_FRAME_AND_PHYSICS_REPORT.json",
+      "sha256": "eaba6b60753fcb2141be425081897a8e891821349c166f5daff143d3ce9ea5fc"
+    },
+    {
+      "bytes": 1902,
+      "git_blob_sha1": "1b25077f7c23f11711717634f07a7fe86760981f",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_FORMAL_M6_CLI_EXECUTION.json",
+      "sha256": "aa56a59e17f777096b0c0b2f233532f8bf603684575ed3b075e53b3edc8bbda4"
+    },
+    {
+      "bytes": 0,
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_FORMAL_M6_CLI_STDERR.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1157,
+      "git_blob_sha1": "311e2ed25756cff089cc9b521e86150e5a895e26",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_FORMAL_M6_CLI_STDOUT.txt",
+      "sha256": "4d31b31f127e449d32ca9e9b228a04c3d6328d609d706a0ca5db49424afe31f7"
+    },
+    {
+      "bytes": 1383,
+      "git_blob_sha1": "93bbb1acafc2f2f97fc142218fa040189ca9b39b",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_FORMAL_M6_READY_INPUT_RESOURCE_VETO.json",
+      "sha256": "67ce002a21a12e2f47ebe1d9eea40a2ef43185474969b80a43876d00030adf9a"
+    },
+    {
+      "bytes": 11429,
+      "git_blob_sha1": "33eb19ca961f205ef14589106b0fd24b878c4735",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_LOCAL_TEST_RECEIPT.txt",
+      "sha256": "a73f944aab17fa685de9cfccf82b84bf8f09c588a68ec63bff3ba1deafb76a14"
+    },
+    {
+      "bytes": 43413,
+      "git_blob_sha1": "63e1336c2e670abaec81a1e61f3597c89ec77636",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_NATIVE_BUILD_EVIDENCE.zip",
+      "sha256": "9d75318e9fbbf290b319a8c1f094c033051c229f277f42e9cc37148bf48961b4"
+    },
+    {
+      "bytes": 10669,
+      "git_blob_sha1": "8e292eef023bff6b707e03c504d75d03d017a844",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_NATIVE_BUILD_SUMMARY.json",
+      "sha256": "a97d907532882c1d486298da277182f3434c4324952c9fbd074a4e295da4c8ca"
+    },
+    {
+      "bytes": 12726,
+      "git_blob_sha1": "84d1d5cf197ceee8e1913a7b67367a359e627616",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_NATIVE_MATERIAL_BRIDGE_AND_M6_HANDOFF.md",
+      "sha256": "9c1142455e50d69209693e014dac8c8f5f86eb5143bdfc38bcd8fadfefc6fc08"
+    },
+    {
+      "bytes": 529,
+      "git_blob_sha1": "e3bbfb5b78485d45ddbc47d75ca2de54761d31f5",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_NATIVE_SIX_PINS.json",
+      "sha256": "d067726f7e1b25489087f6577a6f37e8ea148ae9ae58d1b69c4cda05ac06eb96"
+    },
+    {
+      "bytes": 55501,
+      "git_blob_sha1": "c1fa28f62da5cccee0600dbf8fe1701b398b0f7a",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_OWNED_EXECUTION_EVIDENCE.zip",
+      "sha256": "d6f0164a06ddb013dae393f0e7e670e1f2067d84bb55813092667247d6ddbb98"
+    },
+    {
+      "bytes": 213907,
+      "git_blob_sha1": "a8b2f8a06941d5320c874a2ad8b72926d7d4d902",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_OWNED_MATERIAL_PREPARATION.json",
+      "sha256": "bdb9d9a677931697969eb629895ad47453775f7bf7533b46014827b52aab8a07"
+    },
+    {
+      "bytes": 8613,
+      "git_blob_sha1": "263930c192cb987ccdf0fdab5720dce58df16e0a",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_OWNED_PREPARATION_PREREGISTRATION.json",
+      "sha256": "315d871a8150b63709d9ebecafc9db9769fa348ee2596b20fcb749cb78da8e6d"
+    },
+    {
+      "bytes": 783,
+      "git_blob_sha1": "caafbc1b181f5608876e8c43443f1b4325dcaa8e",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_OWNED_SOURCE_BINARY_RECHECK.json",
+      "sha256": "2254955af55c0e0f304aa72c45d08754171f828129b53fa67dbd12722a744585"
+    },
+    {
+      "bytes": 5609,
+      "git_blob_sha1": "bad1c6c099e060fadbe47c62a21c885c1a78d037",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_PRELIMINARY_CHECKS.zip",
+      "sha256": "791e44cb7288c3c817a2413f31829caab961382111c862f1de20158b64c07c7e"
+    },
+    {
+      "bytes": 7537,
+      "git_blob_sha1": "bb1102fc97ec8dc5aa6d8ba96f2842362db6b1da",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_TEST_INVENTORY.json",
+      "sha256": "baf4a77ba9db01c5a3732afd34fd7fc02c6fdb64345d837e9694124e92dfbab7"
+    },
+    {
+      "bytes": 669653,
+      "git_blob_sha1": "c1bfa5c307a0336323f3a89145d8723bc63a61bb",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_W0_SOURCE_BINDING_REPORT.json",
+      "sha256": "94807cf6d03224e60c285b3595f1ca4d2485c5657856abc97b89764b37731873"
+    },
+    {
+      "bytes": 3056,
+      "git_blob_sha1": "bf15ee73af0f1619c5e878427d64498b6541138e",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_W0_W2_READONLY_SNAPSHOT.json",
+      "sha256": "1d4172fe598ee7e7fd92872c2719d491a649b37c29bbc1a6a5ee48df58c01893"
+    },
+    {
+      "bytes": 12509,
+      "git_blob_sha1": "a30fb7224c4684d5164d0c18c82b81d8850d0b1e",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/P20_native_request.json",
+      "sha256": "74d9cfa64417dd2c82d196ab27094651976954742a4c692667a1b19b1032de62"
+    },
+    {
+      "bytes": 17433,
+      "git_blob_sha1": "29a1ec21570fc9bcaa885d40814427aa3d94abf4",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/p20_build_native_ci.py",
+      "sha256": "7c3ea11173465d6192f79d43a76ec104819d09a5c0595b1ec96d4d4a81bc7ec7"
+    },
+    {
+      "bytes": 36573,
+      "git_blob_sha1": "0a03253a5e1b6e504eae9ead87576d1111dec7a3",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/p20_m6_launch.py",
+      "sha256": "3f2f9164f73754479bfe923ddb09e022b152985d8e7fc04cf41832ccf4a07e03"
+    },
+    {
+      "bytes": 12162,
+      "git_blob_sha1": "e2e94ee8b2e62dea8a7122500cea4a7593d966af",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/p20_native_factory.py",
+      "sha256": "34c401592747d6397e958eaff85fed90561d1adc3b06d2561eec2f54bbebd06f"
+    },
+    {
+      "bytes": 14065,
+      "git_blob_sha1": "287319ea4e5469cd913dce17e08779b1b9d221dc",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/p20_owned_material_audit.py",
+      "sha256": "cacb27840f3c85db78fe346759377e14feea50782f8cef108e9fed22ff31622e"
+    },
+    {
+      "bytes": 45173,
+      "git_blob_sha1": "a76447701842dfce2444f509bce0ee6d664777d6",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/p20_physical_contract.py",
+      "sha256": "6f71e5d7ce1a2fcb14579beb5f6680ea3b847193ad4d6ba48cfcc962ce008391"
+    },
+    {
+      "bytes": 23131,
+      "git_blob_sha1": "260505a0d0c2b0f1ffb7f72f5b5632aea05e9b60",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/test_p20_m6_launch.py",
+      "sha256": "f647764a94f737b2b0becb0f4dc9608fdc2e746d4fed27736802fabd8833860e"
+    },
+    {
+      "bytes": 9469,
+      "git_blob_sha1": "33837ee99be26b05a2571970c65eb7914423ffcb",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/test_p20_native_factory.py",
+      "sha256": "ae42098bd937d9abcedb9b1acd78ef0a06ed0ce2d9a9d97b2c8587434810b067"
+    },
+    {
+      "bytes": 23528,
+      "git_blob_sha1": "4f5f2ee58a65c2a53f9052fcabb1f2645d662b1d",
+      "path": "research/SpinIt2014_Teapot_20261018/P1/test_p20_physical_contract.py",
+      "sha256": "9645f354bac4af1e0513555654803c7d3d51ca8cefe82fc8a109404df91c34db"
+    }
+  ],
+  "readonly_w0_commit": "51cbfd33d08063404d7e0c40e4256dd0e38efa1a",
+  "readonly_w2_commit": "b52cb2af0260041900fc03560b5dc182cb088750",
+  "remaining": [
+    "Actual resource-compliant W0 M6 source, two opposite Cherchi cuts, D=R+C and M=F+R+C, exact moments, same-call J and cross-oracle identity.",
+    "W0 owner adoption and physical case approval.",
+    "W2 derivative neighborhood and teacher/training admission.",
+    "Original Figure 9 Teapot inertia/COM-lowering/mass-reduction three-objective ablations, matched-initial-condition real pre/post-optimization MuJoCo videos, and corresponding physical validation."
+  ],
+  "schema": "W4_P20_PRECOMMIT_EVIDENCE_INDEX_V1",
+  "scope": {
+    "historical_material_code_reports_failure_evidence": "preserved",
+    "new_files_under": "research/SpinIt2014_Teapot_20261018/P1/",
+    "other_branches_changed": false,
+    "workflow": "append-only",
+    "write_branch": "research/neuralmoments-w4-teapot-p1-20261019"
+  },
+  "separate_readonly_w0_source_binding": {
+    "all_tracked_w0_source_blobs_verified": true,
+    "consecutive_snapshot_reads": 2,
+    "evidence": "P20_W0_SOURCE_BINDING_REPORT.json",
+    "factory_peer_sources_and_config_count": 47,
+    "factory_registered_input_file_count": 6,
+    "native_binary_file_count": 3,
+    "status": "PASS_SOURCE_BYTES_ONLY_NO_NATIVE",
+    "w0_source_file_count": 1892
+  },
+  "status": "ACTUAL_NATIVE_OWNED_MFD_PREPARATION_PASSED_FORMAL_M6_RESOURCE_BLOCKED",
+  "workflow_binding": {
+    "baseline_bytes": 66594,
+    "baseline_sha256": "62dbe18b42ba45f635e0bc4a28712a9be01a1a5f18e0ab6fcc54ba6acc3fe96b",
+    "entire_baseline_is_exact_prefix": true,
+    "new_file": {
+      "bytes": 72369,
+      "git_blob_sha1": "1fa72e6c52c005776cdf3110c2a63869cff830f8",
+      "path": ".github/workflows/w4-teapot-mujoco.yml",
+      "sha256": "8e9a8930e371b8f6119a51b94f2df0f514c52a0c30baabb052b8448290c93b40"
+    }
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "schema": "W4_P20_TEAPOT_NATIVE_REQUEST_V1",
+  "purpose": "PREREGISTERED_NONOPTIMIZED_ONE_POINT_MATERIAL_PARTITION_PROBE",
+  "source_w4_commit": "58fd12c1306c1c01679a19172e276eef0cb30542",
+  "source_w0_commit": "51cbfd33d08063404d7e0c40e4256dd0e38efa1a",
+  "source_w2_commit": "b52cb2af0260041900fc03560b5dc182cb088750",
+  "manifest": {
+    "path": "P19_material_case/manifest.json",
+    "sha256": "c6bd67f872f344da46c1f774f8b68c28a2ecfa4c5a5c000d9e6bf5229e3412d6"
+  },
+  "canonical_report": {
+    "path": "P19_CANONICAL_SOURCE_COMPLETE_REPORT.json",
+    "sha256": "f30fabc8ce348b9b8f42ff20649e683557349582ef31baf6c05d35e17b448601"
+  },
+  "material_inputs": {
+    "M": {
+      "path": "P19_material_case/material/M_native.obj",
+      "sha256": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
+      "vertices": 4035,
+      "faces": 8070
+    },
+    "F": {
+      "path": "P19_material_case/material/F_native.obj",
+      "sha256": "5c5db73792bd8d6566a954e6d0eef6d22e248a7ad2f8a7a8d8e6d4f2ad9d86a8",
+      "vertices": 4235,
+      "faces": 8470
+    },
+    "D": {
+      "path": "P19_material_case/material/D_native.obj",
+      "sha256": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
+      "vertices": 200,
+      "faces": 400
+    },
+    "S": {
+      "path": "P19_material_case/source/shaft-reference.obj",
+      "sha256": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
+      "vertices": 258,
+      "faces": 512
+    }
+  },
+  "geometry_policy": {
+    "import": "FROZEN_BINARY64_OBJ_NO_REPAIR_NO_WELD_NO_SCALING",
+    "construction_backend": "cherchi-reference-7bd6c2697695f555f9a15d7e154e084d841316f0",
+    "owned_set_checker": "EXISTING_NATIVE_CGAL_NEF_INDEPENDENT_VERIFICATION_ONLY",
+    "fixed_region": "F",
+    "design_region": "D",
+    "original_region": "M",
+    "shaft_material": "S_ALREADY_INCLUDED_IN_F_NEVER_ADDED_AGAIN"
+  },
+  "units": {
+    "length_unit": "P19_REFERENCE_LENGTH_UNIT",
+    "mass_unit": "P19_REFERENCE_MASS_UNIT",
+    "fixed_density": 1,
+    "design_density": 1,
+    "length_m_per_reference_binary64": 0.025,
+    "length_m_per_reference_exact": "3602879701896397/144115188075855872",
+    "mass_kg_per_reference_rule": "1200 * exact_binary64(0.025)^3",
+    "physical_density_kg_m3": 1200,
+    "original_frame_in_m6": "P19_REFERENCE_LENGTH_AND_MASS_UNITS",
+    "si_is_explicit_external_transform": true,
+    "physical_parameters_approved": false
+  },
+  "target": {
+    "mode": "SPINNING_TOP",
+    "axis": [
+      0,
+      0,
+      1
+    ],
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "support_points": []
+  },
+  "minimum_outer_wall_reference": 0.03125,
+  "minimum_outer_wall_reference_exact": "1/32",
+  "wall_scope": "NEWLY_CARVED_BOUNDARY_TO_ORIGINAL_BOUNDARY_PROBE_ONLY_NOT_GLOBAL_PRINTABILITY",
+  "evaluator_settings": {
+    "derivative_method": "DISCRETE_FULL_RANK_QUADRIC",
+    "icosphere_subdivisions": 1,
+    "maximum_icosphere_subdivisions": 1,
+    "retain_fixed_normal_provenance": true,
+    "exact_binary64_self_intersection": true,
+    "exact_binary64_source_boundary": true,
+    "exact_binary64_material_boundary": true
+  },
+  "solver_settings": {
+    "equation_profile": "DUAL_MONOMIAL_RAW_V1",
+    "maximum_iterations": 1,
+    "maximum_restarts": 1,
+    "maximum_function_evaluations_per_restart": 1,
+    "deterministic_seed": 0
+  },
+  "evaluator_policy": {
+    "branch_identity_policy": "SOURCE_FEATURE_BRANCH_V2",
+    "rational_arithmetic_backend": "NATIVE_GMP_SURFACE_V1",
+    "integral_profile": "EXACT_GMP_V1",
+    "fixed_boundary_reuse": false
+  },
+  "seed": {
+    "reference_quadric": "x^2+y^2+(z-43/64)^2-(1/8)^2",
+    "reference_literal_monomial_order": [
+      "1",
+      "x",
+      "y",
+      "z",
+      "x^2",
+      "y^2",
+      "z^2",
+      "yz",
+      "xz",
+      "xy"
+    ],
+    "reference_literal_coefficients_exact": [
+      "1785/4096",
+      "0",
+      "0",
+      "-43/32",
+      "1",
+      "1",
+      "1",
+      "0",
+      "0",
+      "0"
+    ],
+    "native_coefficient_convention": "NATIVE_MATRIX_ENTRY_P",
+    "explicit_unit_normalization_required_by_w0": true,
+    "optimized": false,
+    "anchors_reference_exact": [
+      [
+        "3/32",
+        "0",
+        "43/64"
+      ],
+      [
+        "3/16",
+        "0",
+        "43/64"
+      ]
+    ]
+  },
+  "admission": {
+    "W0_owner_admitted": false,
+    "W2_teacher_training_allowed": false,
+    "derivative_neighborhood_certified": false,
+    "Faster_optimization_executed": false,
+    "physical_validation_passed": false,
+    "MuJoCo_optimized_before_after_executed": false,
+    "original_author_CAD": false
+  },
+  "runtime_python_git_blobs": {
+    "python/make_it_stand/__init__.py": "54f61d92d8d0336f8e9bf0312aaee2b4a5418493",
+    "python/make_it_stand/cli.py": "cfda2eedadd1d51be248593edbc88a40761691a5",
+    "python/make_it_stand/cli_common.py": "e3a8caa6748f51eb633d1d880e4e26bf38154d59",
+    "python/make_it_stand/io.py": "f888a8443dbf9893b474f1527c4a80628dc2cf5d",
+    "python/make_it_stand/model.py": "c13535c18c9527531426874806fd1a13a41a0525",
+    "python/make_it_stand/official_beta.py": "26b297b35274e7757f3122b58d4cf3359cc69cd6",
+    "python/make_it_stand/paper_compat.py": "b66a6000d075d7be670e2f1734edbfe0672d0ac9",
+    "python/make_it_stand/paper_evidence.py": "5847542833f861baaaf061fdbfbd8cfff161624e",
+    "python/make_it_stand/paper_trace.py": "0504c20662f2e668e39bfe927ce1125d31c8e20d",
+    "python/make_it_stand/pybullet_runner.py": "fa4d94c46622b42e17698554620e7319517c8d5b",
+    "python/make_it_stand/r10.py": "7fa5d110ae0589a022127a4179b8d0bafa4c2b8e",
+    "python/make_it_stand/reachability.py": "ad0ce8b4f7ab9dd8523a5941d4946160a24b20fe",
+    "python/make_it_stand/sealed_artifact.py": "44ab754d4adc9fb9d07af9abaf7d64eced97d142",
+    "python/make_it_stand/spin.py": "1adaacbb89e45bf9a546594cfa684da7ae0f1cf2",
+    "python/make_it_stand/spin2014.py": "8df9742806039a9239ded557eb6e34715c8c775a",
+    "python/make_it_stand/stability_oracle.py": "960d40936c0a5ad712e3303527066c8149153aa2",
+    "python/make_it_stand/verification/__init__.py": "2e84287499125e687a1ec0ac194a425ac7a74f8a",
+    "python/make_it_stand/verification/_coplanar_boundary.py": "5b718cd23f99d30bc2b8a90819f4813057de805a",
+    "python/make_it_stand/verification/_source_job_exec.py": "c6dbe2b3542c68cfad5d349d0307ec26e7c1db64",
+    "python/make_it_stand/verification/_source_supervised_exec.py": "a1d1f4d432924edf7051410254f0b73eb97974a4",
+    "python/make_it_stand/verification/_spin2014_authority.py": "663051cb9e2914202001457dbf4292625f1bb2f4",
+    "python/make_it_stand/verification/authority_hessians.py": "ef333f349bc9d05b556008015adc82b06bdaabb2",
+    "python/make_it_stand/verification/buoyant_application.py": "38a18984cd815f3c5199fd01f47be6033f38ab5d",
+    "python/make_it_stand/verification/buoyant_cad.py": "3dedbb5a3d8ea3ccb65759bf46c536dea808c031",
+    "python/make_it_stand/verification/buoyant_evidence.py": "c6a6add1ca85c3400313618584035c5f8c1481f4",
+    "python/make_it_stand/verification/buoyant_material.py": "1b172754c03732887fcee82ec344a3ea0dad43f0",
+    "python/make_it_stand/verification/cad_coordinates.py": "9ba55d7e792ab58ba4342c9817ac363df390c86c",
+    "python/make_it_stand/verification/cherchi_application.py": "c10302a83abc5ea6ad175cedc985787f2df55d10",
+    "python/make_it_stand/verification/cherchi_cad.py": "5ee02327d72eec5c58fa72a7d69ce6993d42eef6",
+    "python/make_it_stand/verification/cherchi_face_provenance.py": "9f40ec0dbb9a9ebd63516494b2de2c929f396f66",
+    "python/make_it_stand/verification/cherchi_inprocess.py": "f9fa539f699df8baf8b8d30729048269a26ecb3c",
+    "python/make_it_stand/verification/cherchi_motion_differential.py": "9dc9457a48c41f657d738fb25d8e2bc0d9174541",
+    "python/make_it_stand/verification/cherchi_run_evidence.py": "a9c61063ceaedc11ddd593e514db6dc16bf3431e",
+    "python/make_it_stand/verification/cherchi_run_journal.py": "46aeee54f79ee0db4ae0fddc8d5bbed7bc3c36c5",
+    "python/make_it_stand/verification/compiler_dependencies.py": "8484e49bb6e309ce8b68b43b149b30c654a937ef",
+    "python/make_it_stand/verification/compiler_observer.py": "1df9da4a1ebf6557c5fb999316efaa00b38533c9",
+    "python/make_it_stand/verification/coplanar_patch.py": "4fa0f26bfda551911ddf7f4523678fbb04952f56",
+    "python/make_it_stand/verification/derived_material.py": "197b286d447251e89505e364626b20e26859cceb",
+    "python/make_it_stand/verification/digital_cut_plan.py": "c38bb228dcdd474ea4ddafa9c959b157038100da",
+    "python/make_it_stand/verification/faster_facet_connection.py": "1720c2713a6f951f1c9a1c2db4c411e5568ec19e",
+    "python/make_it_stand/verification/faster_infeasibility.py": "5de4475046eddcf7c6c4edffc7014502b9aee1f5",
+    "python/make_it_stand/verification/faster_material.py": "a3c56a395e98e5c19d5924d1568b4e800e94b4d9",
+    "python/make_it_stand/verification/faster_section_6_6.py": "34d1b1fdf52527387394aad2851bfe4729b90929",
+    "python/make_it_stand/verification/faster_theorem_exact.py": "b2a2cb233c337711caf0d7ea99b23377b1b17c75",
+    "python/make_it_stand/verification/faster_timing.py": "9c2d2e745f1ce66587d5398590067def59560f54",
+    "python/make_it_stand/verification/feasibility.py": "bbc5f7f3c6c0f6918f11354de9bdb6fd9354962d",
+    "python/make_it_stand/verification/feature_thickness_contract.py": "9bdd34fded9705de3a7d0c9c36f144155c64f34b",
+    "python/make_it_stand/verification/fixed_boundary_shell.py": "05576f5b78d5160cdb9b874d6d4b87d5fa283055",
+    "python/make_it_stand/verification/fixed_pivot_critical.py": "dc50280d70dd8474c27a590221ec16886da4711e",
+    "python/make_it_stand/verification/inter_cavity_clearance.py": "f55df5fa99a91f520673b5cd3f87b662e80324ab",
+    "python/make_it_stand/verification/mass_moments.py": "49ca3b64a437c03a1b862d8a447e7e0ee8f2764a",
+    "python/make_it_stand/verification/medit_surface.py": "624134fda437cc0993fb8c08ea479587b3705a96",
+    "python/make_it_stand/verification/newton_system_audit.py": "0768d666d2ccdb4b0efe9cff1e72dd5f27ceee01",
+    "python/make_it_stand/verification/planar_material.py": "fd925203b2394d3f316d83976cb6fc374ad6c57a",
+    "python/make_it_stand/verification/quadric_branch.py": "0c521dee3dc76b225f73bbc3ce49a5f9d6488c24",
+    "python/make_it_stand/verification/quadric_point_jobs.py": "3ea9094187413104c088beef606518870a4ce619",
+    "python/make_it_stand/verification/rational_text.py": "c0bbac78107553d1fc4c25f89f9ec25ac28be2ff",
+    "python/make_it_stand/verification/run_evidence.py": "a93b40a54a64a4a6455507f82938de2ba565f9a3",
+    "python/make_it_stand/verification/serial_source_job.py": "191e5a1ae34d3a1a870675293b0b30d83222dbe1",
+    "python/make_it_stand/verification/source_archive_member_audit.py": "734c11580a421b6d0b4cd52aa485d38d48a263bd",
+    "python/make_it_stand/verification/source_checkpoint_store.py": "fa21ac23f75c1074515ba789123351a7a6ba9ace",
+    "python/make_it_stand/verification/source_checkpoint_store_v2.py": "664b75e281190f196f556a8a6416b06faab7c6f7",
+    "python/make_it_stand/verification/source_fingerprint_cache.py": "5637809371175b2326bdcea84ea517aa2a91c351",
+    "python/make_it_stand/verification/source_job.py": "0ed02b84efb735e695bd585c154f328703c0cd1f",
+    "python/make_it_stand/verification/source_run_supervisor.py": "f04826a72744a573235552ecbac3a974a3e44c77",
+    "python/make_it_stand/verification/source_spin_material.py": "a867c95ec360b59971b4397249a0bc9773b3b6a2",
+    "python/make_it_stand/verification/source_trace_archive.py": "d0a6ebe7935f9b12e0a2723c500fcbe9ac0d0dac",
+    "python/make_it_stand/verification/spin2014_givens_reference.py": "01abd2ae310a6777a36b1e73f2b65bfa60715eab",
+    "python/make_it_stand/verification/spin2014_objective_contract.py": "e38055d2e5c8e08a8cf203914f66368b002bbf65",
+    "python/make_it_stand/verification/spin2014_supplement_algorithms.py": "3a81f2e2c10e7bba7656c56962b31e32e7e1e09b",
+    "python/make_it_stand/verification/spin_artifact.py": "b0e2ecdb50165acb7007864cd5ea77d779020a95",
+    "python/make_it_stand/verification/spin_bundle.py": "21b576508a9a4e8fcb5762c769796cc38042acf5",
+    "python/make_it_stand/verification/spin_common.py": "56c908c138c24fd5b90444bfc508904dead71c61",
+    "python/make_it_stand/verification/spin_problem.py": "1d5ab0dc0ea3e07bea68874244e727dcd35c26a8",
+    "python/make_it_stand/verification/spin_view.py": "dd4585ee2092ced0d7ee9d326bfad15b0e279636",
+    "python/make_it_stand/verification/static_material.py": "199faca0e62a2863f28e0f0e22f38af5ff2e16a8",
+    "python/make_it_stand/verification/surface_derivatives.py": "25bf39ce9f2a4112a04975f1c8272bc8de771223"
+  }
+}
