@@ -1,0 +1,85 @@
+{
+  "Faster_optimization_executed": false,
+  "MuJoCo_optimized_before_after_executed": false,
+  "W0_owner_admitted": false,
+  "W2_teacher_training_allowed": false,
+  "actual_public_frozen_MFD_components_recomputed": 30,
+  "all_ten_public_frozen_MFD_residuals_zero": true,
+  "ci_at_index_freeze": "NOT_YET_RUN_FOR_THIS_COMMIT",
+  "created_utc": "2026-10-22T11:58:28.076523+00:00",
+  "derivative_neighborhood_certified": false,
+  "detailed_local_execution_archive_publication": "PENDING_SEPARATE_EXPLICIT_APPROVAL",
+  "files": [
+    {
+      "bytes": 5804,
+      "path": "P21_FROZEN_MFD_ARITHMETIC.json",
+      "sha256": "af7b1677ca216005436f047970574cdaeab587e07d06795e22322aca2544c988"
+    },
+    {
+      "bytes": 10452,
+      "path": "P21_LOCAL_TEST_RECEIPT.txt",
+      "sha256": "e8a2c017875da207486590c60c3dbdd5446de26eec17559666aab30da028e0a5"
+    },
+    {
+      "bytes": 1314,
+      "path": "P21_LOCAL_TEST_RESULT.json",
+      "sha256": "2a6751196a178a805bf64eda1763de5e277a6c9a7248f47be78b30d4cbf7eacf"
+    },
+    {
+      "bytes": 11313,
+      "path": "P21_SAME_CALL_REPLAY_AND_HOST_HANDOFF.md",
+      "sha256": "0ef21b46f74a3c557e2edd600ae96269c02ae94a2dc4aa5e9a0034a880b5caeb"
+    },
+    {
+      "bytes": 6950,
+      "path": "P21_TEST_INVENTORY.json",
+      "sha256": "f11dfd0a713a4e56fa9d529175029182e8ff6b7dfa04fae70fac6059eed39b67"
+    },
+    {
+      "bytes": 19885,
+      "path": "p21_m6_replay.py",
+      "sha256": "c1c3f48daa464131a9fed14ef115644b0a91212bab4b5e2835e9e3d40f7c51c5"
+    },
+    {
+      "bytes": 5008,
+      "path": "p21_native_factory.py",
+      "sha256": "e8183fae635cae5463f246229fe8ed94c53ae8239f06a3e17f24e3563735359f"
+    },
+    {
+      "bytes": 44003,
+      "path": "p21_replay_verify.py",
+      "sha256": "df05ea49bd3d5e271b91da2f8face856f617a4c03d3ffd282a6b5ff07b576baf"
+    },
+    {
+      "bytes": 17468,
+      "path": "p21_same_call_capture.py",
+      "sha256": "fa14f47300c098410d70cd94001ebcf9da846d5156e1e4a1a2cfc8eea8403c7a"
+    },
+    {
+      "bytes": 15209,
+      "path": "test_p21_m6_replay.py",
+      "sha256": "eb4862636a11a1032e40bc7ddba5d8fe869fcf0661bd3f7081b1e3201cb50b67"
+    },
+    {
+      "bytes": 21989,
+      "path": "test_p21_replay_verify.py",
+      "sha256": "b8c24ccb1a6ca7820ce9b20d35917956dc7228cc55acb7cabca5192f5ce9ef72"
+    },
+    {
+      "bytes": 11595,
+      "path": "test_p21_same_call_capture.py",
+      "sha256": "8726176fa844ea43e5a393e6e92394389522f92cf1cce05769efedf901dbd9b2"
+    }
+  ],
+  "formal_M6_executed": false,
+  "formal_M6_passed": false,
+  "physical_validation_passed": false,
+  "positive_cut_and_J_test_scope": "TEST_ONLY_ANALYTIC_FIXTURES_NOT_TEAPOT_NATIVE_EVIDENCE",
+  "previously_unapproved_P20_supplemental_files_included": false,
+  "schema": "W4_P21_IMPLEMENTATION_INDEX_V1",
+  "source_w4_baseline_commit": "c85c7f3b8b985ad68e5db58975123654c57132dd",
+  "status": "SAME_CALL_CAPTURE_AND_OFFLINE_REPLAY_IMPLEMENTED_CONTROL_TESTED",
+  "tests_passed": 72,
+  "tests_skipped": 0,
+  "w0_commit": "51cbfd33d08063404d7e0c40e4256dd0e38efa1a"
+}

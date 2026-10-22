@@ -1,0 +1,26 @@
+{
+  "errors": 0,
+  "executed_utc": "2026-10-22T11:51:54.956519+00:00",
+  "expected_failures": 0,
+  "failures": 0,
+  "formal_M6_executed": false,
+  "inventory_sha256": "f11dfd0a713a4e56fa9d529175029182e8ff6b7dfa04fae70fac6059eed39b67",
+  "log_sha256": "e8a2c017875da207486590c60c3dbdd5446de26eec17559666aab30da028e0a5",
+  "passed": true,
+  "schema": "W4_P21_LOCAL_CONTROL_TEST_RESULT_V1",
+  "scope": "TEST_ONLY_CONTROL_CAPTURE_AND_ARITHMETIC_FIXTURES_NOT_NATIVE_EVIDENCE",
+  "skipped": 0,
+  "test_count": 72,
+  "tested_source_files": {
+    "p21_m6_replay.py": "c1c3f48daa464131a9fed14ef115644b0a91212bab4b5e2835e9e3d40f7c51c5",
+    "p21_native_factory.py": "e8183fae635cae5463f246229fe8ed94c53ae8239f06a3e17f24e3563735359f",
+    "p21_replay_verify.py": "df05ea49bd3d5e271b91da2f8face856f617a4c03d3ffd282a6b5ff07b576baf",
+    "p21_same_call_capture.py": "fa14f47300c098410d70cd94001ebcf9da846d5156e1e4a1a2cfc8eea8403c7a",
+    "test_p21_m6_replay.py": "eb4862636a11a1032e40bc7ddba5d8fe869fcf0661bd3f7081b1e3201cb50b67",
+    "test_p21_replay_verify.py": "b8c24ccb1a6ca7820ce9b20d35917956dc7228cc55acb7cabca5192f5ce9ef72",
+    "test_p21_same_call_capture.py": "8726176fa844ea43e5a393e6e92394389522f92cf1cce05769efedf901dbd9b2"
+  },
+  "tests_run": 72,
+  "unexpected_successes": 0,
+  "wall_seconds": 0.8073075530010101
+}

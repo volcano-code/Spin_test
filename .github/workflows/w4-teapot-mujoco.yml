@@ -1419,3 +1419,166 @@ jobs:
           path: ${{ runner.temp }}/w4-p20-swap0-evidence/**
           if-no-files-found: warn
           retention-days: 30
+
+
+  # P21 checks only portable capture/replay control and frozen-MFD arithmetic.
+  # No factory, native build, Cherchi Boolean or formal M6 is invoked here.
+  p21-replay-evidence-contract:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      P1: research/SpinIt2014_Teapot_20261018/P1
+      P21_EVIDENCE: ${{ runner.temp }}/w4-p21-replay-control-evidence
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONNOUSERSITE: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - name: Checkout the exact W4 P21 revision
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Establish evidence before installing test dependencies
+        run: |
+          set -euo pipefail
+          mkdir "$P21_EVIDENCE"
+          git rev-parse HEAD > "$P21_EVIDENCE/git-commit.txt"
+          python - <<'PYINIT'
+          import datetime, hashlib, json, os
+          from pathlib import Path
+          root=Path(os.environ['P1']); evidence=Path(os.environ['P21_EVIDENCE'])
+          files={}
+          for pattern in ('p21_*.py','test_p21_*.py','P21_TEST_INVENTORY.json'):
+              for path in sorted(root.glob(pattern)):
+                  data=path.read_bytes()
+                  files[path.name]={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
+          receipt={'schema':'W4_P21_CI_CONTROL_EXECUTION_V1',
+              'created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              'git_commit':(evidence/'git-commit.txt').read_text().strip(),
+              'source_files':files,'installation_completed':False,
+              'formal_M6_executed':False,'native_build_executed':False,
+              'scope':'CONTROL_CAPTURE_FIXTURES_AND_FROZEN_MFD_ARITHMETIC_ONLY'}
+          (evidence/'execution-start.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
+          PYINIT
+          python -m pip install 'numpy==2.3.5' > "$P21_EVIDENCE/install.log" 2>&1
+          python - <<'PYINSTALLED'
+          import json, os, sys
+          from pathlib import Path
+          import numpy
+          p=Path(os.environ['P21_EVIDENCE'])/'installation-complete.json'
+          p.write_text(json.dumps({'installation_completed':True,
+              'python_version':sys.version,'numpy_version':numpy.__version__,
+              'formal_M6_executed':False},indent=2,sort_keys=True)+'\n')
+          assert numpy.__version__=='2.3.5'
+          PYINSTALLED
+      - name: Run the exact P21 control and capture test inventory with no skips
+        run: |
+          set -euo pipefail
+          python - <<'PYTEST' 2>&1 | tee "$P21_EVIDENCE/tests.log"
+          import hashlib, json, os, sys, unittest
+          from pathlib import Path
+          root=Path(os.environ['P1']).resolve(); evidence=Path(os.environ['P21_EVIDENCE'])
+          sys.path.insert(0,str(root))
+          inventory_bytes=(root/'P21_TEST_INVENTORY.json').read_bytes()
+          inventory=json.loads(inventory_bytes)
+          modules=['test_p21_same_call_capture','test_p21_replay_verify','test_p21_m6_replay']
+          suite=unittest.defaultTestLoader.loadTestsFromNames(modules)
+          def flatten(group):
+              for item in group:
+                  if isinstance(item,unittest.TestSuite):
+                      yield from flatten(item)
+                  else:
+                      yield item
+          ids=[item.id() for item in flatten(suite)]
+          expected=inventory['test_ids']
+          assert type(expected) is list and expected and all(type(x) is str for x in expected)
+          assert type(inventory['test_count']) is int and inventory['test_count']==len(expected)
+          assert len(ids)==len(set(ids))==len(expected) and sorted(ids)==sorted(expected), 'P21_TEST_INVENTORY_MISMATCH'
+          (evidence/'test-inventory.json').write_bytes(inventory_bytes)
+          (evidence/'discovered-tests.json').write_text(json.dumps({'test_ids':ids,
+              'inventory_sha256':hashlib.sha256(inventory_bytes).hexdigest(),
+              'formal_M6_executed':False},indent=2,sort_keys=True)+'\n')
+          result=unittest.TextTestRunner(stream=sys.stdout,verbosity=2).run(suite)
+          report={'schema':'W4_P21_CI_CONTROL_TEST_RESULT_V1',
+              'tests_run':result.testsRun,'required_tests':len(expected),
+              'skipped':len(result.skipped),'failures':len(result.failures),
+              'errors':len(result.errors),'unexpected_successes':len(result.unexpectedSuccesses),
+              'expected_failures':len(result.expectedFailures),
+              'successful':result.wasSuccessful() and not result.skipped and not result.expectedFailures and result.testsRun==len(expected),
+              'formal_M6_executed':False,
+              'scope':'TEST_ONLY_CONTROL_CAPTURE_AND_ARITHMETIC_FIXTURES_NOT_NATIVE_EVIDENCE'}
+          (evidence/'test-result.json').write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')
+          assert report['successful'], 'P21_MANDATORY_TEST_FAILURE_OR_SKIP'
+          PYTEST
+      - name: Observe actual runner resources without launching native work
+        run: |
+          set -euo pipefail
+          python - <<'PYRAW'
+          import hashlib, json, os
+          from pathlib import Path
+          evidence=Path(os.environ['P21_EVIDENCE']); files={}
+          for name,source in (('meminfo','/proc/meminfo'),('swaps','/proc/swaps'),
+                              ('cgroup','/proc/self/cgroup'),('mountinfo','/proc/self/mountinfo')):
+              data=Path(source).read_bytes(); relative='preflight.'+name+'.txt'
+              (evidence/relative).write_bytes(data)
+              files[name]={'path':relative,'source':source,'bytes':len(data),
+                           'sha256':hashlib.sha256(data).hexdigest()}
+          (evidence/'preflight-raw-files.json').write_text(json.dumps(files,indent=2,sort_keys=True)+'\n')
+          PYRAW
+          set +e
+          python "$P1/p21_m6_replay.py" preflight \
+            --output "$P21_EVIDENCE/actual-resource-preflight.json" \
+            > "$P21_EVIDENCE/preflight.stdout.log" 2> "$P21_EVIDENCE/preflight.stderr.log"
+          P21_PREFLIGHT_RETURN_CODE=$?
+          set -e
+          export P21_PREFLIGHT_RETURN_CODE
+          python - <<'PYPREFLIGHT'
+          import json, os
+          from pathlib import Path
+          evidence=Path(os.environ['P21_EVIDENCE'])
+          code=int(os.environ['P21_PREFLIGHT_RETURN_CODE'])
+          report=json.loads((evidence/'actual-resource-preflight.json').read_text())
+          (evidence/'preflight-execution.json').write_text(json.dumps({
+              'command':'p21_m6_replay.py preflight','returncode':code,
+              'formal_M6_executed':False,'scope':'RESOURCE_OBSERVATION_ONLY'},indent=2,sort_keys=True)+'\n')
+          assert code in (0,3), 'P21_RESOURCE_PREFLIGHT_FAILED_UNEXPECTEDLY'
+          assert report['schema']=='W4_P21_ACTUAL_RESOURCE_PREFLIGHT_V1'
+          assert report['formal_M6_executed'] is False
+          assert report['factory_imported'] is False
+          assert report['native_worker_started'] is False
+          print('P21 actual resource observation completed; formal M6 not executed:',report['status'])
+          PYPREFLIGHT
+      - name: Independently recompute the frozen M F D exact moments
+        run: |
+          set -euo pipefail
+          python - <<'PYMFD' 2>&1 | tee "$P21_EVIDENCE/frozen-mfd.log"
+          import json, os, sys
+          from pathlib import Path
+          root=Path(os.environ['P1']).resolve(); evidence=Path(os.environ['P21_EVIDENCE'])
+          sys.path.insert(0,str(root))
+          from p21_replay_verify import verify_frozen_materials
+          paths={name:root/'P19_material_case'/'material'/(name+'_native.obj') for name in ('M','F','D')}
+          report=verify_frozen_materials(paths,root/'P20_native_request.json')
+          (evidence/'actual-frozen-mfd-arithmetic.json').write_text(json.dumps(report,indent=2,sort_keys=True,allow_nan=False)+'\n')
+          assert report['status']=='FROZEN_MFD_EXACT_MOMENTS_REPLAYED'
+          assert report['all_ten_residuals_zero'] is True
+          assert report['native_set_equality_proved'] is False
+          assert report['geometry_or_factory_executed'] is False
+          assert report['test_only'] is False
+          assert len(report['raw10_order'])==10 and len(report['M_minus_F_minus_D_exact'])==10
+          assert all(len(report['reference_raw10'][name])==10 for name in ('M','F','D'))
+          print('P21 actual frozen M/F/D Fraction arithmetic replay passed; no M6 or new native set proof.')
+          PYMFD
+          git diff --exit-code -- "$P1"
+      - name: Preserve P21 actual control and arithmetic evidence including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-P21-replay-evidence-control-only-formal-M6-NOT-executed
+          path: ${{ runner.temp }}/w4-p21-replay-control-evidence/**
+          if-no-files-found: warn
+          retention-days: 30
