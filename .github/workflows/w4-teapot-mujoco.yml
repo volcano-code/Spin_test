@@ -1211,3 +1211,211 @@ jobs:
           path: ${{ runner.temp }}/w4-p20-evidence/**
           if-no-files-found: warn
           retention-days: 30
+
+  p20-swap0-owned-material-replay:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      P1: research/SpinIt2014_Teapot_20261018/P1
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - name: Checkout P20 additions and unchanged P19 material evidence
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Checkout the independently frozen native source
+        uses: actions/checkout@v4
+        with:
+          ref: 58fd12c1306c1c01679a19172e276eef0cb30542
+          path: p20-frozen-core
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned Python build tools and native system headers
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/w4-p20-swap0-evidence"
+          git rev-parse HEAD > "$RUNNER_TEMP/w4-p20-swap0-evidence/w4-commit.txt"
+          exec > >(tee "$RUNNER_TEMP/w4-p20-swap0-evidence/dependency-install.log") 2>&1
+          python - <<'PYINSTALLSTART'
+          import datetime,json,os
+          from pathlib import Path
+          e=Path(os.environ['RUNNER_TEMP'])/'w4-p20-swap0-evidence'
+          report={'schema':'W4_P20_CI_DEPENDENCY_INSTALLATION_V1','stage':'DEPENDENCY_INSTALLATION','completed':False,
+                  'status':'DEPENDENCY_INSTALL_STARTED','started_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                  'w4_commit':(e/'w4-commit.txt').read_text().strip(),'run_id':os.environ['GITHUB_RUN_ID'],
+                  'job':os.environ['GITHUB_JOB'],'command_log':'dependency-install.log','formal_M6_executed':False}
+          with (e/'dependency-installation.json').open('x') as f: f.write(json.dumps(report,indent=2,sort_keys=True)+'\n')
+          PYINSTALLSTART
+          sudo apt-get update
+          sudo apt-get install -y build-essential git pkg-config libgmp-dev libmpfr-dev libboost-thread-dev libboost-system-dev
+          python -m pip install 'numpy==2.3.5' 'scipy==1.17.0' 'trimesh==4.12.2' 'networkx==3.7' 'cmake==3.31.6' 'ninja==1.11.1.4' 'pybind11==3.0.1'
+          python - <<'PYINSTALLDONE'
+          import datetime,json,os
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP'])/'w4-p20-swap0-evidence/dependency-installation.json'
+          report=json.loads(p.read_text());report.update(status='DEPENDENCY_INSTALL_COMPLETED',completed=True,finished_utc=datetime.datetime.now(datetime.timezone.utc).isoformat())
+          p.write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')
+          PYINSTALLDONE
+      - name: Disable runner swap and verify the actual zero-swap precondition
+        run: |
+          set -euo pipefail
+          python - <<'PYSWAP'
+          import datetime,hashlib,json,os,subprocess,time
+          from pathlib import Path
+          e=Path(os.environ['RUNNER_TEMP'])/'w4-p20-swap0-evidence'
+          e.mkdir(parents=True,exist_ok=True)
+          output=e/'ci-swap0-preflight.json'
+          if output.exists():
+              raise FileExistsError('P20_SWAP_PREFLIGHT_REFUSES_TO_OVERWRITE_EVIDENCE')
+          def stamp():
+              return datetime.datetime.now(datetime.timezone.utc).isoformat()
+          def snapshot(label):
+              raw={name:Path('/proc/'+name).read_bytes() for name in ('meminfo','swaps')}
+              identities={}
+              for name,data in raw.items():
+                  path=e/('ci-swap0-'+label+'-'+name+'.txt')
+                  with path.open('xb') as f: f.write(data)
+                  identities[name]={'path':path.name,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
+              wanted={'MemTotal','MemAvailable','SwapTotal','SwapFree'}
+              physical={}
+              for line in raw['meminfo'].decode().splitlines():
+                  fields=line.split()
+                  key=fields[0].rstrip(':')
+                  if key in wanted:
+                      if len(fields)!=3 or fields[2]!='kB' or int(fields[1])<0:
+                          raise ValueError('P20_INVALID_ACTUAL_MEMINFO_FIELD_'+key)
+                      physical[key+'_bytes']=int(fields[1])*1024
+              if set(physical)!={key+'_bytes' for key in wanted}:
+                  raise ValueError('P20_INCOMPLETE_ACTUAL_MEMINFO')
+              lines=[line for line in raw['swaps'].decode().splitlines() if line.strip()]
+              if not lines or lines[0].split()!=['Filename','Type','Size','Used','Priority']:
+                  raise ValueError('P20_INVALID_ACTUAL_SWAPS_HEADER')
+              return {'observed_utc':stamp(),'physical':physical,'active_swap_entries':len(lines)-1,'raw_files':identities}
+          report={'schema':'W4_P20_CI_ACTUAL_SWAP_ZERO_PREFLIGHT_V1','status':'STARTED','completed':False,
+                  'started_utc':stamp(),'command':['sudo','-n','swapoff','--all'],
+                  'command_timeout_seconds':120,'command_returncode':None,'command_timed_out':False,
+                  'command_stdout':'','command_stderr':'',
+                  'worker_address_space_limit_bytes':6*1024**3,'owned_maximum_wall_seconds':900,
+                  'formal_M6_minimum_memory_bytes':20*1024**3,'formal_M6_resource_admission':False,
+                  'formal_M6_executed':False,'native_source_calls':0,'native_boolean_calls':0,
+                  'W0_owner_admitted':False,'W2_teacher_training_allowed':False}
+          code=1
+          try:
+              report['before']=snapshot('before')
+              output.write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')
+              start=time.monotonic()
+              try:
+                  completed=subprocess.run(report['command'],capture_output=True,text=True,timeout=120,check=False)
+                  report.update(command_returncode=completed.returncode,command_stdout=completed.stdout,command_stderr=completed.stderr)
+              except subprocess.TimeoutExpired as exc:
+                  def partial(value):
+                      if value is None: return ''
+                      return value.decode('utf-8',errors='replace') if isinstance(value,bytes) else value
+                  report.update(command_timed_out=True,command_stdout=partial(exc.stdout),command_stderr=partial(exc.stderr))
+                  raise
+              finally:
+                  report['command_elapsed_seconds']=time.monotonic()-start
+                  report['after']=snapshot('after')
+              after=report['after']
+              if report['command_returncode']!=0:
+                  raise RuntimeError('P20_ACTUAL_SWAPOFF_COMMAND_FAILED')
+              if after['physical']['SwapTotal_bytes']!=0 or after['physical']['SwapFree_bytes']!=0 or after['active_swap_entries']!=0:
+                  raise ValueError('P20_ACTUAL_SWAP_ZERO_NOT_ESTABLISHED')
+              report.update(status='P20_CI_ACTUAL_SWAP_ZERO_VERIFIED',completed=True)
+              code=0
+          except Exception as exc:
+              report.update(status='P20_CI_ACTUAL_SWAP_ZERO_FAILED',error_type=type(exc).__name__,error=str(exc))
+          finally:
+              report['finished_utc']=stamp()
+              output.write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')
+          print(json.dumps({'status':report['status'],'completed':report['completed'],'command_returncode':report['command_returncode'],'formal_M6_executed':False}))
+          raise SystemExit(code)
+          PYSWAP
+      - name: Verify the exact mandatory P20 tests with no skipped cases
+        run: |
+          set -euo pipefail
+          export P20_CORE_SOURCE_ROOT="$GITHUB_WORKSPACE/p20-frozen-core"
+          export W4_P20_CORE_SOURCE_ROOT="$P20_CORE_SOURCE_ROOT"
+          python - <<'PYTEST' 2>&1 | tee "$RUNNER_TEMP/w4-p20-swap0-evidence/tests.log"
+          import json,os,sys,unittest
+          from pathlib import Path
+          p=Path(os.environ['P1']).resolve();sys.path.insert(0,str(p))
+          inventory=json.loads((p/'P20_TEST_INVENTORY.json').read_text())
+          suite=unittest.defaultTestLoader.discover(str(p),pattern='test_p20*.py')
+          def ids(s):
+              for item in s:
+                  if isinstance(item,unittest.TestSuite): yield from ids(item)
+                  else: yield item.id()
+          assert sorted(ids(suite))==inventory['test_ids']
+          assert suite.countTestCases()==inventory['expected_tests']==74
+          result=unittest.TextTestRunner(verbosity=2).run(suite)
+          assert result.testsRun==74 and result.wasSuccessful()
+          assert not result.skipped and not result.expectedFailures and not result.unexpectedSuccesses
+          print('P20_MANDATORY_TESTS_PASS_74_NO_SKIPS_NO_NATIVE_ADMISSION')
+          PYTEST
+      - name: Build and import three actual pinned native extensions serially
+        run: |
+          set -euo pipefail
+          python "$P1/p20_build_native_ci.py" \
+            --source-checkout "$GITHUB_WORKSPACE/p20-frozen-core" \
+            --build-root "$RUNNER_TEMP/w4-p20-swap0-native-build" \
+            --evidence "$RUNNER_TEMP/w4-p20-swap0-evidence/native-build" \
+            --timeout-seconds 2400
+      - name: Execute bounded owned M F D preparation without a formal M6 call
+        run: |
+          set -euo pipefail
+          export PYTHONPATH="$GITHUB_WORKSPACE/p20-frozen-core/python:$RUNNER_TEMP/w4-p20-swap0-native-build/core/python:$RUNNER_TEMP/w4-p20-swap0-native-build/cherchi/python"
+          python "$P1/p20_owned_material_audit.py" \
+            --output "$RUNNER_TEMP/w4-p20-swap0-evidence/actual-owned-preparation.json" \
+            --pins-output "$RUNNER_TEMP/w4-p20-swap0-evidence/actual-six-pins.json" \
+            --seconds 900
+          python - <<'PYRESULT'
+          import hashlib,json,os
+          from pathlib import Path
+          e=Path(os.environ['RUNNER_TEMP'])/'w4-p20-swap0-evidence'
+          preflight=json.loads((e/'ci-swap0-preflight.json').read_text())
+          assert preflight['completed'] is True and preflight['status']=='P20_CI_ACTUAL_SWAP_ZERO_VERIFIED'
+          assert preflight['command']==['sudo','-n','swapoff','--all'] and preflight['command_returncode']==0
+          assert preflight['after']['physical']['SwapTotal_bytes']==preflight['after']['physical']['SwapFree_bytes']==0
+          assert preflight['after']['active_swap_entries']==0
+          assert preflight['formal_M6_resource_admission'] is False and preflight['formal_M6_executed'] is False
+          for label in ('before','after'):
+              for identity in preflight[label]['raw_files'].values():
+                  data=(e/identity['path']).read_bytes()
+                  assert len(data)==identity['bytes'] and hashlib.sha256(data).hexdigest()==identity['sha256']
+          report=json.loads((e/'actual-owned-preparation.json').read_text())
+          build=json.loads((e/'native-build/P20_NATIVE_BUILD_REPORT.json').read_text())
+          assert report['completed'] is True
+          for observation in ('resource_before','resource_after'):
+              assert report[observation]['physical']['SwapTotal_bytes']==report[observation]['physical']['SwapFree_bytes']==0
+          r=report['result'];p=r['native_M_equals_F_plus_D_partition']
+          assert p['completed'] is True and p['complete_partition'] is True
+          assert p['union_equals_whole'] is True and p['no_positive_volume_overlap'] is True
+          assert p['missing_whole_content'] is False and p['excess_union_content'] is False
+          assert p['part_subset_whole']==[True,True]
+          assert r['all_ten_exact_additivity_residuals_zero'] is True
+          assert r['factory_fresh_call_counts']=={'source':0,'boolean':0,'integration':0,'derivative':0}
+          assert all(value is False for value in r['admission'].values())
+          pins=json.loads((e/'actual-six-pins.json').read_text())
+          assert pins==r['observed_six_pins']
+          assert pins['c_sha256']=='57ac958304df37ebfd36bc1dddeb32c81a113ed5440f65d959f4b45f2a12e6ca'
+          assert pins['native_sha256']==build['native_modules']['_make_it_stand']['sha256']
+          assert pins['bridge_sha256']==build['native_modules']['_cherchi_core_boolean']['sha256']
+          assert r['native_arithmetic_identity']['module_sha256']==build['native_modules']['_cherchi_rational_moments']['sha256']
+          assert hashlib.sha256((e/'actual-six-pins.json').read_bytes()).hexdigest()==report['pins_file']['sha256']
+          print('P20_ACTUAL_OWNED_MFD_PARTITION_AND_FRESH_FACTORY_PASS_FORMAL_M6_NOT_EXECUTED')
+          PYRESULT
+          git diff --exit-code -- "$P1/P19_material_case" "$P1/P19_CANONICAL_SOURCE_COMPLETE_REPORT.json"
+      - name: Preserve actual build, owned-region, pins and failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-P20-swap0-native-owned-MFD-preparation-formal-M6-NOT-admitted
+          path: ${{ runner.temp }}/w4-p20-swap0-evidence/**
+          if-no-files-found: warn
+          retention-days: 30
