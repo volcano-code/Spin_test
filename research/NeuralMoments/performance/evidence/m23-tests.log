@@ -1,0 +1,38 @@
+test_all_four_real_cad_meshes_authenticated (test_m23_real_newton_abba.TestH8NativeNewton.test_all_four_real_cad_meshes_authenticated) ... ok
+test_altered_material_rejected_not_speedup (test_m23_real_newton_abba.TestH8NativeNewton.test_altered_material_rejected_not_speedup) ... ok
+test_authenticated_original_archive (test_m23_real_newton_abba.TestH8NativeNewton.test_authenticated_original_archive) ... ok
+test_bad_timeout_rejected_without_output (test_m23_real_newton_abba.TestH8NativeNewton.test_bad_timeout_rejected_without_output) ... ok
+test_bad_zip_rejected (test_m23_real_newton_abba.TestH8NativeNewton.test_bad_zip_rejected) ... ok
+test_blocked_real_run_writes_failure_and_zero_calls (test_m23_real_newton_abba.TestH8NativeNewton.test_blocked_real_run_writes_failure_and_zero_calls) ... ok
+test_existing_output_never_overwritten (test_m23_real_newton_abba.TestH8NativeNewton.test_existing_output_never_overwritten) ... ok
+test_false_completed_terminal_rejected (test_m23_real_newton_abba.TestH8NativeNewton.test_false_completed_terminal_rejected) ... ok
+test_frozen_4_call_order (test_m23_real_newton_abba.TestH8NativeNewton.test_frozen_4_call_order) ... ok
+test_independent_run_isolation (test_m23_real_newton_abba.TestH8NativeNewton.test_independent_run_isolation) ... ok
+test_memory_guard_still_detects_4gib (test_m23_real_newton_abba.TestH8NativeNewton.test_memory_guard_still_detects_4gib) ... ok
+test_missing_archive_rejected (test_m23_real_newton_abba.TestH8NativeNewton.test_missing_archive_rejected) ... ok
+test_missing_original_checkout_and_modules_blocked (test_m23_real_newton_abba.TestH8NativeNewton.test_missing_original_checkout_and_modules_blocked) ... ok
+test_missing_original_saved_geometry_rejected (test_m23_real_newton_abba.TestH8NativeNewton.test_missing_original_saved_geometry_rejected) ... ok
+test_original_author_cad_not_claimed (test_m23_real_newton_abba.TestH8NativeNewton.test_original_author_cad_not_claimed) ... ok
+test_original_geometry_matches_frozen_request (test_m23_real_newton_abba.TestH8NativeNewton.test_original_geometry_matches_frozen_request) ... ok
+test_production_solver_and_partition_are_real (test_m23_real_newton_abba.TestH8NativeNewton.test_production_solver_and_partition_are_real) ... ok
+test_python_cli_exit2_on_actual_host (test_m23_real_newton_abba.TestH8NativeNewton.test_python_cli_exit2_on_actual_host) ... ok
+test_real_journal_sha_and_newton_trace_audit_fixture (test_m23_real_newton_abba.TestH8NativeNewton.test_real_journal_sha_and_newton_trace_audit_fixture) ... ok
+test_real_physical_units_not_silent_fake_request (test_m23_real_newton_abba.TestH8NativeNewton.test_real_physical_units_not_silent_fake_request) ... ok
+test_affine_frame_not_approximated (test_m22_solver_runtime_candidate.TestSolverOverlay.test_affine_frame_not_approximated) ... ok
+test_bounded_fraction_cache (test_m22_solver_runtime_candidate.TestSolverOverlay.test_bounded_fraction_cache) ... ok
+test_cache_per_q_no_cross_call_leak (test_m22_solver_runtime_candidate.TestSolverOverlay.test_cache_per_q_no_cross_call_leak) ... ok
+test_candidate_returns_identical_scaled_offset_coordinates (test_m22_solver_runtime_candidate.TestSolverOverlay.test_candidate_returns_identical_scaled_offset_coordinates) ... ok
+test_different_evaluator_rejected (test_m22_solver_runtime_candidate.TestSolverOverlay.test_different_evaluator_rejected) ... ok
+test_errors_and_restore (test_m22_solver_runtime_candidate.TestSolverOverlay.test_errors_and_restore) ... ok
+test_identity_exact_solver_trace (test_m22_solver_runtime_candidate.TestSolverOverlay.test_identity_exact_solver_trace) ... ok
+test_m8_coordinate_helper_matches_pinned_W1_blob (test_m22_solver_runtime_candidate.TestSolverOverlay.test_m8_coordinate_helper_matches_pinned_W1_blob) ... ok
+test_metadata_does_not_claim_native (test_m22_solver_runtime_candidate.TestSolverOverlay.test_metadata_does_not_claim_native) ... ok
+test_missing_direct_original_call_rejected (test_m22_solver_runtime_candidate.TestSolverOverlay.test_missing_direct_original_call_rejected) ... ok
+test_missing_parser_rejected (test_m22_solver_runtime_candidate.TestSolverOverlay.test_missing_parser_rejected) ... ok
+test_pin_rejects_fake_source (test_m22_solver_runtime_candidate.TestSolverOverlay.test_pin_rejects_fake_source) ... ok
+test_solver_bytecode_and_global_identity (test_m22_solver_runtime_candidate.TestSolverOverlay.test_solver_bytecode_and_global_identity) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 4.965s
+
+OK
