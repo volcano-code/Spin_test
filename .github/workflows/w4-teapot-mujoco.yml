@@ -1429,7 +1429,6 @@ jobs:
     timeout-minutes: 10
     env:
       P1: research/SpinIt2014_Teapot_20261018/P1
-      P21_EVIDENCE: ${{ runner.temp }}/w4-p21-replay-control-evidence
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONNOUSERSITE: '1'
       OPENBLAS_NUM_THREADS: '1'
@@ -1445,6 +1444,8 @@ jobs:
       - name: Establish evidence before installing test dependencies
         run: |
           set -euo pipefail
+          export P21_EVIDENCE="$RUNNER_TEMP/w4-p21-replay-control-evidence"
+          printf '%s\n' "P21_EVIDENCE=$P21_EVIDENCE" >> "$GITHUB_ENV"
           mkdir "$P21_EVIDENCE"
           git rev-parse HEAD > "$P21_EVIDENCE/git-commit.txt"
           python - <<'PYINIT'
