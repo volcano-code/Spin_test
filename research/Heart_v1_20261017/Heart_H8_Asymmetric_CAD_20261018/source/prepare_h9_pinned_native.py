@@ -246,18 +246,34 @@ def pinned_sources(repo, plan, deadline, log):
 
 
 def boost_shared_rewrite(build_file):
-    """Never remove or move host-system .a; modify only W3 build.ninja."""
-    build_file=Path(build_file)
-    text=build_file.read_text()
-    count=0
-    for kind in ('thread','system'):
-        old='/usr/lib/x86_64-linux-gnu/libboost_'+kind+'.a'
-        new='/usr/lib/x86_64-linux-gnu/libboost_'+kind+'.so'
-        die_unless(Path(new).exists(),'SHARED_BOOST_LIBRARY_NOT_INSTALLED:'+kind)
-        count+=text.count(old)
-        text=text.replace(old,new)
-    die_unless('libboost_thread.a' not in text and 'libboost_system.a' not in text,
-               'STATIC_BOOST_REFERENCES_REMAIN')
+    """Replace only Ubuntu shared Boost paths inside generated W3 build.ninja.
+
+    Ubuntu usrmerge may emit /lib/x86_64-linux-gnu rather than /usr/lib.
+    Reject unexpected archive origins instead of silently cross-linking ABIs.
+    Never move or delete system .a files or edit tracked CMake sources.
+    """
+    import re
+    build_file = Path(build_file)
+    text = build_file.read_text()
+    count = 0
+    for kind in ('thread', 'system'):
+        shared_name = 'libboost_' + kind + '.so'
+        canonical = Path('/usr/lib/x86_64-linux-gnu') / shared_name
+        die_unless(canonical.exists(), 'SHARED_BOOST_LIBRARY_NOT_INSTALLED:' + kind)
+        pattern = re.compile(r'(?<![A-Za-z0-9_./-])/(?:usr/)?lib/x86_64-linux-gnu/libboost_'
+                             + kind + r'\.a(?![A-Za-z0-9_.-])')
+
+        def replace(match):
+            candidate = Path(match.group()[:-2] + '.so')
+            die_unless(candidate.exists(),
+                       'SHARED_BOOST_LIBRARY_NOT_INSTALLED:' + str(candidate))
+            return str(candidate)
+
+        text, changed = pattern.subn(replace, text)
+        count += changed
+    remaining = sorted(set(re.findall(
+        r'[^\s"\x27;]*libboost_(?:thread|system)\.a(?![A-Za-z0-9_.-])', text)))
+    die_unless(not remaining, 'STATIC_BOOST_REFERENCES_REMAIN:' + ','.join(remaining[:8]))
     build_file.write_text(text)
     return count
 
