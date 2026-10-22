@@ -309,6 +309,8 @@ def audit_saved_newton_events(run_dir):
         event=json.loads(text)
         if not isinstance(event,dict):raise ValueError('M23_NONOBJECT_JOURNAL_ENTRY')
         rows.append(event)
+    # A merely present terminal receipt is not scientific evidence.  The
+    # production verifier's own record-integrity proof must be checked below.
     maps=[];newton=[]
     for event in rows:
         if event.get('kind')=='MAP_SAVED':
@@ -324,11 +326,28 @@ def audit_saved_newton_events(run_dir):
                 raise ValueError('M23_SAVED_GEOMETRY_HASH_MISMATCH:'+filename)
             if material.get('quadric_coefficients')!=event.get('coefficients'):
                 raise ValueError('M23_SAVED_Q_AND_JOURNAL_DISAGREE:'+filename)
+            # Full 10x10 derivative must be attached to EVERY saved material,
+            # not just claimed by the worker's scientific digest.  Strict
+            # equality in four-call admission remains fail-closed pending W0
+            # approval of an independent comparison rule.
+            jacobian=material.get('moment_jacobian')
+            if (type(jacobian) is not list or len(jacobian)!=10 or any(
+                    type(row) is not list or len(row)!=10 or any(
+                        type(x) not in (int,float) or not math.isfinite(x)
+                        for x in row) for row in jacobian)):
+                raise ValueError('M23_SAVED_FULL_JACOBIAN_MISSING_OR_NONFINITE:'+filename)
+            for field in ('variable_raw_moments','raw_moments'):
+                values=material.get(field)
+                if (type(values) is not list or len(values)!=10 or any(
+                        type(x) not in (int,float) or not math.isfinite(x)
+                        for x in values)):
+                    raise ValueError('M23_SAVED_TEN_MOMENTS_MISSING_OR_NONFINITE:'+filename+':'+field)
             maps.append(dict(coefficients=event['coefficients'],
                              geometry_hash=event['geometry_hash'],
                              topology_hash=material.get('topology_hash'),
-                             variable_raw_moments=material.get('variable_raw_moments'),
-                             raw_moments=material.get('raw_moments'),
+                             variable_raw_moments=material['variable_raw_moments'],
+                             raw_moments=material['raw_moments'],
+                             moment_jacobian=jacobian,
                              source_identity=material.get('quadric_source_identity')))
         elif event.get('kind')=='NEWTON_EVENT':
             if not isinstance(event.get('event'),dict):
@@ -343,6 +362,17 @@ def audit_saved_newton_events(run_dir):
             raise ValueError('M23_MISSING_TERMINAL_OR_TIMING_EVIDENCE:'+name)
     complete=json.loads((run_dir/'complete.json').read_text())
     result=json.loads((run_dir/'result.json').read_text())
+    verification=json.loads((run_dir/'record-verification.json').read_text())
+    rejected=sum(event.get('kind')=='MAP_REJECTED' for event in rows)
+    if (verification.get('record_integrity_valid') is not True or
+            verification.get('saved_materials')!=len(maps) or
+            type(verification.get('accepted_updates')) is not int or
+            verification['accepted_updates']<=0 or
+            verification.get('rejected_evaluations')!=rejected or
+            verification.get('core_admission') is not False):
+        raise ValueError('M23_INDEPENDENT_PRODUCTION_RECORD_PROOF_MISSING_OR_INCONSISTENT')
+    if not rows or rows[-1].get('kind')!='RUN_TERMINATED' or rows[-1].get('status')!='CONVERGED':
+        raise ValueError('M23_MISSING_SUCCESSFUL_NEWTON_TERMINAL_EVENT')
     if (complete.get('complete') is not True or
         complete.get('status')!='CONVERGED' or
         complete.get('evaluation_count')!=len(maps) or
@@ -472,6 +502,10 @@ def main():
         print(json.dumps({k:v for k,v in result.items() if k in
                           ('state','blockers','observed_solver_wall_original_over_candidate')},
                          sort_keys=True))
-        if result['state'] in ('BLOCKED','FAILED'):raise SystemExit(2)
+        # Zero exit is reserved for the ONE evidence-admitted diagnostic state.
+        # In particular FAILED_NONCONVERGED must never silently turn a real
+        # scientific failure into a green GitHub Actions job.
+        if result.get('state') != 'FOUR_NATIVE_RUNS_SAME_SCIENTIFIC_DIGEST_NOT_W0_W2_ADMITTED':
+            raise SystemExit(2)
 
 if __name__=='__main__': main()

@@ -1,0 +1,8 @@
+{
+  "old_bogus_material_accepted": true,
+  "old_cli_exit_code": 0,
+  "patched_bogus_material_accepted": false,
+  "patched_cli_exit_code": 2,
+  "patched_material_rejection": "ValueError:M23_SAVED_FULL_JACOBIAN_MISSING_OR_NONFINITE:evaluation-000001.json",
+  "scope": "SYNTHETIC_NEGATIVE_REPRODUCTION_NOT_NATIVE_SOLVER_EXECUTION"
+}

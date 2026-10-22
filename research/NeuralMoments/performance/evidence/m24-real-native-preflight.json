@@ -1,0 +1,20 @@
+{
+  "archive_sha256": "14de425c18ac8b4704424976983d7130923432cd67a20f314e65c7f48f85ad38",
+  "blockers": [
+    "M23_FULL_W1_GIT_CHECKOUT_REQUIRED",
+    "M23_NATIVE_HOST_BELOW_6_GIB",
+    "M23_NATIVE_MODULE_NOT_UNIQUELY_PRESENT:_make_it_stand",
+    "M23_NATIVE_MODULE_NOT_UNIQUELY_PRESENT:_cherchi_core_boolean",
+    "M23_NATIVE_MODULE_NOT_UNIQUELY_PRESENT:_cherchi_rational_moments"
+  ],
+  "full_solver_speedup": null,
+  "module_sha256": {},
+  "native_binary_candidates": {
+    "_cherchi_core_boolean": [],
+    "_cherchi_rational_moments": [],
+    "_make_it_stand": []
+  },
+  "schema": "w1-m23-native-newton-preflight-v1",
+  "status": "BLOCKED",
+  "w0_w2_admitted": false
+}

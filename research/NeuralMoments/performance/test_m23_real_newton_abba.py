@@ -6,6 +6,8 @@ import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
+from contextlib import redirect_stdout
+from io import StringIO
 
 import numpy as np
 
@@ -132,19 +134,24 @@ class TestH8NativeNewton(unittest.TestCase):
                   'quadric_coefficients':[1.]+[0.]*9,
                   'variable_raw_moments':[1.]+[0.]*9,
                   'raw_moments':[2.]+[0.]*9,
-                  'quadric_source_identity':'pin-source'}
+                  'quadric_source_identity':'pin-source',
+                  'moment_jacobian':[[float(i==j) for j in range(10)] for i in range(10)]}
         packet='evaluation-000001.json'
         (path/packet).write_text(json.dumps(material,sort_keys=True))
         row=dict(kind='MAP_SAVED',evaluation=1,evaluation_file=packet,
              sha256=m23._sha((path/packet).read_bytes()),
              coefficients=material['quadric_coefficients'],geometry_hash='pin-geometry')
         (path/'events.jsonl').write_text(json.dumps(row)+'\n'+json.dumps(
-            dict(kind='NEWTON_EVENT',event={'accepted':True,'iteration':0}))+'\n')
+            dict(kind='NEWTON_EVENT',event={'accepted':True,'iteration':0}))+'\n'+
+            json.dumps(dict(kind='RUN_TERMINATED',status='CONVERGED',evaluation_count=1))+'\n')
         for filename in ('complete.json','result.json','record-verification.json',
                          'terminal-complement.json','terminal-material-reference.json',
                          'timing-scope.json','recording-costs.json'):
             val={'complete':True,'status':'CONVERGED','evaluation_count':1} if filename=='complete.json' else (
-                {'status':'CONVERGED','scientific_digest':'pin-science'} if filename=='result.json' else {})
+                {'status':'CONVERGED','scientific_digest':'pin-science'} if filename=='result.json' else (
+                dict(record_integrity_valid=True,saved_materials=1,accepted_updates=1,
+                     rejected_evaluations=0,core_admission=False)
+                if filename=='record-verification.json' else {}))
             (path/filename).write_text(json.dumps(val))
         return path
 
@@ -184,5 +191,126 @@ class TestH8NativeNewton(unittest.TestCase):
         self.assertIn('solve_cherchi_inprocess_and_seal_faster',source)
         self.assertIn('make_candidate_solver(',source)
         self.assertNotIn('Mock',source)
+
+    def _edit_fixture_material(self, folder, edit):
+        path=Path(folder)/'evaluation-000001.json'
+        content=json.loads(path.read_text())
+        edit(content)
+        path.write_text(json.dumps(content,sort_keys=True))
+        # Keep the self-reported event SHA internally consistent to ensure
+        # independent field checks really detect the invalid attachment.
+        events=Path(folder)/'events.jsonl'
+        lines=[json.loads(s) for s in events.read_text().splitlines()]
+        lines[0]['sha256']=m23._sha(path.read_bytes())
+        events.write_text(''.join(json.dumps(x)+'\n' for x in lines))
+
+    def test_missing_full_jacobian_fails_even_with_recomputed_sha(self):
+        with tempfile.TemporaryDirectory() as t:
+            path=self._journal_fixture(Path(t)/'run')
+            self._edit_fixture_material(path,lambda material:material.pop('moment_jacobian'))
+            with self.assertRaisesRegex(ValueError,'FULL_JACOBIAN_MISSING_OR_NONFINITE'):
+                m23.audit_saved_newton_events(path)
+
+    def test_nan_jacobian_fails_even_with_recomputed_sha(self):
+        with tempfile.TemporaryDirectory() as t:
+            path=self._journal_fixture(Path(t)/'run')
+            self._edit_fixture_material(path,lambda material: material['moment_jacobian'][0].__setitem__(0,float('nan')))
+            with self.assertRaisesRegex(ValueError,'FULL_JACOBIAN_MISSING_OR_NONFINITE'):
+                m23.audit_saved_newton_events(path)
+
+    def test_short_jacobian_fails_even_with_recomputed_sha(self):
+        with tempfile.TemporaryDirectory() as t:
+            path=self._journal_fixture(Path(t)/'run')
+            self._edit_fixture_material(path,lambda material: material['moment_jacobian'].pop())
+            with self.assertRaisesRegex(ValueError,'FULL_JACOBIAN_MISSING_OR_NONFINITE'):
+                m23.audit_saved_newton_events(path)
+
+    def test_missing_one_ten_moment_fails(self):
+        with tempfile.TemporaryDirectory() as t:
+            path=self._journal_fixture(Path(t)/'run')
+            self._edit_fixture_material(path,lambda material: material['variable_raw_moments'].pop())
+            with self.assertRaisesRegex(ValueError,'TEN_MOMENTS_MISSING_OR_NONFINITE'):
+                m23.audit_saved_newton_events(path)
+
+    def test_rejected_record_verifier_false_green_flag(self):
+        with tempfile.TemporaryDirectory() as t:
+            path=self._journal_fixture(Path(t)/'run')
+            proof=path/'record-verification.json'
+            data=json.loads(proof.read_text())
+            data['record_integrity_valid']=False
+            proof.write_text(json.dumps(data))
+            with self.assertRaisesRegex(ValueError,'PRODUCTION_RECORD_PROOF_MISSING'):
+                m23.audit_saved_newton_events(path)
+
+    def test_rejected_record_verifier_wrong_saved_material_count(self):
+        with tempfile.TemporaryDirectory() as t:
+            path=self._journal_fixture(Path(t)/'run')
+            proof=path/'record-verification.json'
+            data=json.loads(proof.read_text());data['saved_materials']=0
+            proof.write_text(json.dumps(data))
+            with self.assertRaisesRegex(ValueError,'PRODUCTION_RECORD_PROOF_MISSING'):
+                m23.audit_saved_newton_events(path)
+
+    def test_missing_terminal_event_cannot_qualify_as_newton(self):
+        with tempfile.TemporaryDirectory() as t:
+            path=self._journal_fixture(Path(t)/'run')
+            journal=path/'events.jsonl'
+            journal.write_text('\n'.join(journal.read_text().splitlines()[:-1])+'\n')
+            with self.assertRaisesRegex(ValueError,'MISSING_SUCCESSFUL_NEWTON_TERMINAL_EVENT'):
+                m23.audit_saved_newton_events(path)
+
+    def test_cli_nonconverged_status_is_nonzero(self):
+        with patch.object(m23,'run_four',return_value={'state':'FAILED_NONCONVERGED','completed':[]}):
+            with patch.object(sys,'argv',[m23.__file__,'--root','/tmp','--archive','/tmp','--output','/tmp/w1-nonconverged']):
+                with redirect_stdout(StringIO()):
+                    with self.assertRaises(SystemExit) as result:
+                        m23.main()
+                    self.assertEqual(result.exception.code,2)
+
+    def test_cli_unexpected_status_is_nonzero(self):
+        with patch.object(m23,'run_four',return_value={'state':'UNKNOWN_STATE'}):
+            with patch.object(sys,'argv',[m23.__file__,'--root','/tmp','--archive','/tmp','--output','/tmp/w1-unknown']):
+                with redirect_stdout(StringIO()):
+                    with self.assertRaises(SystemExit) as result:
+                        m23.main()
+                    self.assertEqual(result.exception.code,2)
+
+    def test_cli_accepted_diagnostic_status_is_zero_but_not_production_release(self):
+        with patch.object(m23,'run_four',return_value={'state':'FOUR_NATIVE_RUNS_SAME_SCIENTIFIC_DIGEST_NOT_W0_W2_ADMITTED'}):
+            with patch.object(sys,'argv',[m23.__file__,'--root','/tmp','--archive','/tmp','--output','/tmp/w1-accepted']):
+                with redirect_stdout(StringIO()):
+                    self.assertIsNone(m23.main())
+
+    def test_four_nonconverged_children_fail_closed_not_diagnostic(self):
+        # Fully synthetic worker outputs; tests parent failure propagation only.
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            def fake_worker(script,worktree,archive,output,mode,module_dirs,max_seconds,memory):
+                (output/'worker.json').write_text(json.dumps(dict(
+                    locked_problem_digest='same-locked-problem',
+                    solver_status='MAX_ITERATIONS',scientific_digest='same-synthetic-digest',
+                    mode=mode,wall_solver_ns=1000)))
+                return 0
+            fake_pre=dict(status='READY_TO_RUN_FOUR_INDEPENDENT_SOLVER_PROCESSES',
+                module_sha256={},native_binary_candidates={})
+            with patch.object(m23,'preflight',return_value=fake_pre), \
+                 patch.object(m23,'_one_worker',side_effect=fake_worker), \
+                 patch.object(m23,'_memory_limit',return_value=8*1024**3):
+                actual=m23.run_four(root,REAL,root/'newton',module_dirs=())
+            self.assertEqual(actual['state'],'FAILED_NONCONVERGED')
+            self.assertEqual(len(actual['completed']),4)
+            self.assertFalse((root/'newton'/'diagnostic.json').exists())
+            failure=json.loads((root/'newton'/'failure.json').read_text())
+            self.assertEqual(failure['status'],'M23_FOUR_SOLVERS_RETURNED_NONCONVERGED')
+            self.assertIsNone(failure['full_solver_speedup'])
+
+    def test_missing_accepted_updates_denied_even_with_saved_complete(self):
+        with tempfile.TemporaryDirectory() as t:
+            path=self._journal_fixture(Path(t)/'run')
+            proof=path/'record-verification.json'
+            data=json.loads(proof.read_text());data['accepted_updates']=0
+            proof.write_text(json.dumps(data))
+            with self.assertRaisesRegex(ValueError,'PRODUCTION_RECORD_PROOF_MISSING'):
+                m23.audit_saved_newton_events(path)
 
 if __name__=='__main__':unittest.main()

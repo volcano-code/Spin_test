@@ -1,0 +1,48 @@
+{
+  "files": {
+    "M24_RESULTS.md": {
+      "bytes": 5667,
+      "git_blob_sha1": "352019057214543b0887672820399981c28a25be",
+      "sha256": "75c185d4a5924a624a95e56dfd6bdd8be040fbce2221d52e614a4aa6d7bd6061"
+    },
+    "evidence/m24-before-after-negative-reproducer.json": {
+      "bytes": 330,
+      "git_blob_sha1": "871385ffa53613f6c9bb072377269ad58c8bf378",
+      "sha256": "c09d755a32a5a7e6ac41142c2647754176dd83632910c782ebf3f4d4b1e63357"
+    },
+    "evidence/m24-combined-45-tests.log": {
+      "bytes": 6418,
+      "git_blob_sha1": "a35552ff1e72685ac04393667c54f71b7cfb1678",
+      "sha256": "a083775f27161853cde1265a1cf182ef74ca7cf0e33be05fe4681bbf877bb9cb"
+    },
+    "evidence/m24-real-native-attempt.log": {
+      "bytes": 292,
+      "git_blob_sha1": "120d957cf75d9e6e42c4039261727faef52b7503",
+      "sha256": "1cc3d9913f2f80e3b5c45cb85b5146d87b66afe38b36ac47c66e3586267031e1"
+    },
+    "evidence/m24-real-native-failure.json": {
+      "bytes": 389,
+      "git_blob_sha1": "e752e3e86d28ef6d828fc85c8c868e51de2af997",
+      "sha256": "ae2da721e8ceb5743b318a024fdb053a5ca40f0ea877ae77d87b5c964d088257"
+    },
+    "evidence/m24-real-native-preflight.json": {
+      "bytes": 673,
+      "git_blob_sha1": "ef721c5abab398549c2e5e049c6540a4038c629c",
+      "sha256": "6538e739fec13dd6f61cc995cd2689f3d51ef9220117e60a18c49b8b7dbd6b10"
+    },
+    "m23_real_newton_abba.py": {
+      "bytes": 27722,
+      "git_blob_sha1": "ad516d85c89467bd08822c4b30c73a99aa6e76f6",
+      "sha256": "0e135ba1879ad393dbfca918d6f79835971315cc5917e0c07e44dbbee8aae7bd"
+    },
+    "test_m23_real_newton_abba.py": {
+      "bytes": 16477,
+      "git_blob_sha1": "b4b2a059a814f3f74ffc360d086c6459b0c404fc",
+      "sha256": "49ada85677139cb484e2e9289b4b76a3c503bdfe6e0619785fd80716e2e4d57b"
+    }
+  },
+  "full_solver_speedup": null,
+  "newton_calls": 0,
+  "schema": "w1-m24-verified-files-v1",
+  "source": "ACTUAL_LOCAL_FINAL_TEST_AND_REAL_ARCHIVE_PRECHECK"
+}
