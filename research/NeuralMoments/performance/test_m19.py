@@ -252,6 +252,43 @@ class TestM19(unittest.TestCase):
         self.assertEqual(partial['points'],1)
         self.assertFalse(partial['production_speedup_admitted'])
 
+    def test_native_zero_swap_recheck_delegates_to_preflight_guard(self):
+        # False negatives caused by Linux /proc/swaps header spacing must not
+        # stop a legitimate native run after a successful M10 preflight.
+        with patch.object(p.native_host, '_swap_guard', return_value=True) as guard:
+            self.assertIsNone(p.require_zero_swap_for_native())
+            guard.assert_called_once_with()
+        with patch.object(p.native_host, '_swap_guard',
+                          side_effect=RuntimeError('M10_REQUIRES_ZERO_SWAP')):
+            with self.assertRaisesRegex(RuntimeError, 'REQUIRES_ZERO_SWAP'):
+                p.require_zero_swap_for_native()
+
+    def test_zero_swap_header_whitespace_and_actual_swap(self):
+        # Simulates the user-host header, which contains extra tabs but NO
+        # swap device rows. Test the *real M10 predicate* under mocked procfs.
+        for header in (
+                'Filename\tType\tSize\tUsed\tPriority\n',
+                'Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n',
+                'Filename    Type    Size    Used    Priority\n'):
+            with self.subTest(header=header):
+                with patch.object(p.native_host, 'Path') as proc:
+                    proc.return_value.is_file.return_value = True
+                    proc.return_value.read_text.return_value = header
+                    self.assertIs(p.native_host._swap_guard(), True)
+        with patch.object(p.native_host, 'Path') as proc:
+            proc.return_value.is_file.return_value = True
+            proc.return_value.read_text.return_value = (
+                'Filename\tType\tSize\tUsed\tPriority\n'
+                '/swapfile\tfile\t1048576\t0\t-2\n')
+            with self.assertRaisesRegex(RuntimeError, 'REQUIRES_ZERO_SWAP'):
+                p.native_host._swap_guard()
+
+    def test_runtime_source_no_longer_compares_proc_header_bytes(self):
+        import inspect
+        source=inspect.getsource(p.run_native)
+        self.assertIn('require_zero_swap_for_native()',source)
+        self.assertNotIn(".strip()!='Filename",source)
+
     def test_real_host_preflight_failure_not_success(self):
         archive=Path('/mnt/data/h8c-reference-39118951636.zip')
         if not archive.is_file():self.skipTest('explicitly unavailable genuine archive')

@@ -314,6 +314,17 @@ def environment_preflight(root,archive,module_dirs):
     return result
 
 
+def require_zero_swap_for_native():
+    """Recheck zero swap at execution using the M10 preflight's exact rule.
+
+    Linux /proc/swaps headers vary in whitespace across kernels; comparing
+    header bytes (tabs/spaces) produces false failures on swap-free hosts.
+    M10 deliberately checks the *number of lines* rather than header bytes.
+    Active swap, a missing swap table and other M10 guard failures stay fatal.
+    """
+    native_host._swap_guard()
+
+
 def run_native(root,archive,output,*,module_dirs=()):
     root,archive,output=Path(root).resolve(),Path(archive).resolve(),Path(output)
     output.mkdir(parents=True,exist_ok=False)
@@ -327,8 +338,7 @@ def run_native(root,archive,output,*,module_dirs=()):
     memory=checks['checks']['memory']['details']['process_address_space_cap_bytes']
     soft,hard=resource.getrlimit(resource.RLIMIT_AS)
     resource.setrlimit(resource.RLIMIT_AS,(min(memory,soft if soft!=resource.RLIM_INFINITY else memory),hard))
-    if Path('/proc/swaps').read_text().strip()!='Filename\tType\tSize\tUsed\tPriority':
-        raise RuntimeError('M19_REQUIRES_ZERO_SWAP')
+    require_zero_swap_for_native()
     from m10_native_host_runner import _native_job_lock
     import importlib.util
     paths=[root/'python',root/H8E_SOURCE_REL.parent,*native_host.module_roots(root,module_dirs)]
