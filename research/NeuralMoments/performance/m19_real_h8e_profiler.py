@@ -23,7 +23,7 @@ import tempfile
 import time
 
 from m5_native_call_instrumentation import (
-    ARCHIVE_SHA, SOURCE_BLOB, git_blob, instrument_call,
+    ARCHIVE_SHA, REQUEST_SHA, SOURCE_BLOB, git_blob, instrument_call,
 )
 import m10_native_host_runner as native_host
 
@@ -32,6 +32,8 @@ H8E_SOURCE_BLOB = '0c219e34869c454db655e62f23d18e59ba4db494'
 REQUEST_MEMBER = 'artifacts/h8-request/prepared-request.json'
 CERT_MEMBER = 'artifacts/h8-cherchi-point/exact-ten-moment-certificate.json'
 REFERENCE_MEMBER = 'artifacts/h8-cherchi-point/result.json'
+H8C_REFERENCE_SHA = 'dd1d46e765ce6e99e58b340db9de5e30e4f23f1d3967b38fed7a6133e321eeba'
+H8C_CERT_SHA = '301ec94084e627b94608d1d904340d9ce9cd1123afffbc42f00611589751541c'
 PHASES = ('EVALUATE_INPROCESS_CHERCHI', 'SAME_CALL_MATERIAL_ATTACHMENT',
           'EXACT_NATIVE_MATERIAL_GEOMETRY_AUDIT',
           'INDEPENDENT_FRACTION_MATERIAL_TEN_MOMENTS',
@@ -291,6 +293,88 @@ def prepare_h8c_inputs(archive,tmp):
     return outputs
 
 
+def cross_build_reference_authority(inputs, source_module_sha256):
+    """Identify a *different binary* run and authenticate the original H8c proof.
+
+    Never describe different compiled module bytes as reproduction of the
+    cloud build. The historical reference remains a numeric anchor, not a
+    cross-build material/Jacobian bitwise identity certificate.
+    """
+    if set(source_module_sha256) != {'_make_it_stand', '_cherchi_core_boolean',
+                                       '_cherchi_rational_moments'}:
+        raise ValueError('M19_FRESH_NATIVE_BINARY_PROVENANCE_INCOMPLETE')
+    reference_bytes=Path(inputs[REFERENCE_MEMBER]).read_bytes()
+    certificate_bytes=Path(inputs[CERT_MEMBER]).read_bytes()
+    request_bytes=Path(inputs[REQUEST_MEMBER]).read_bytes()
+    ref=json.loads(reference_bytes)
+    cert=json.loads(certificate_bytes)
+    if (sha256(reference_bytes).hexdigest()!=H8C_REFERENCE_SHA or
+        sha256(certificate_bytes).hexdigest()!=H8C_CERT_SHA or
+        sha256(request_bytes).hexdigest()!=REQUEST_SHA or
+        ref.get('status')!='ACTUAL_CHERCHI_ONE_POINT_RATIONAL_BOUNDARY_PASSED_NOT_OPTIMIZED' or
+        cert.get('schema')!='h8c-exact-ten-mass-moment-double-implementation-v1' or
+        cert.get('frozen_request_sha256')!=REQUEST_SHA or
+        cert.get('verified_actual_packet_sha256')!=ref.get('actual_packet_archive_sha256') or
+        cert.get('exact_ten_moments_independently_reproduced') is not True or
+        cert.get('full_jacobian_passed') is not False or
+        not all(isinstance(ref.get(key),str) and len(ref[key])==64 for key in
+                ('native_sha256','cherchi_sha256')) or
+        ref.get('material_vertices')!=8455 or ref.get('material_faces')!=16910):
+        raise ValueError('M19_FRESH_NATIVE_ARCHIVED_AUTHORITY_INVALID')
+    original={'_make_it_stand':ref['native_sha256'],
+              '_cherchi_core_boolean':ref['cherchi_sha256']}
+    if all(source_module_sha256[k]==original[k] for k in original):
+        raise ValueError('M19_FRESH_NATIVE_NO_BINARY_DIFFERENCE_USE_STRICT_MODE')
+    return dict(
+        mode='FRESH_NATIVE_DIFFERENT_ELF_BINARY_SAME_PINNED_SOURCE',
+        archived_reference_sha256=sha256(reference_bytes).hexdigest(),
+        archived_certificate_sha256=sha256(certificate_bytes).hexdigest(),
+        frozen_request_sha256=REQUEST_SHA,
+        archived_binary_sha256=original,
+        local_binary_sha256=dict(source_module_sha256),
+        same_binary_as_archived=False,
+        archived_jacobian_admitted=False,
+        cross_build_full_material_sha_identical=None,
+        historical_numeric_anchor_allowed_only_after_first_point_check=True,
+        archived_ten=cert.get('variable_raw_ten_moments_normalized'),
+        archived_q=ref.get('exploratory_q'))
+
+
+def cross_build_first_point_audit(authority, point, request, frozen_module):
+    """Check the fresh same-input point against the historic 10 moments.
+
+    The frozen H8e already compares this same model-to-target moment formula
+    at 1e-10, but its prior mode also requires literal old compiled .so bytes.
+    We keep the *numerical* anchor while honestly distinguishing the binaries.
+    """
+    import numpy as np
+    from probe_h8_native_cherchi import initial_ellipsoid_q
+    q=np.asarray(initial_ellipsoid_q(np.asarray(request.target_origin,dtype=np.float64)))
+    historical_q=np.asarray(authority['archived_q'],dtype=np.float64)
+    archived_ten=np.asarray(authority['archived_ten'],dtype=np.float64)
+    observed=np.asarray(point.get('independent_variable_raw_moments'),dtype=np.float64)
+    if (q.shape!=(10,) or historical_q.shape!=(10,) or not np.array_equal(q,historical_q)
+            or archived_ten.shape!=(10,) or observed.shape!=(10,) or
+            not np.isfinite(archived_ten).all() or not np.isfinite(observed).all()):
+        raise ValueError('M19_FRESH_NATIVE_REFERENCE_Q_OR_TEN_INVALID')
+    mapped=frozen_module.model_to_target_raw_ten_moments(
+        archived_ten,request.target_origin,request.target_axes)
+    if point.get('vertex_count')!=8455 or point.get('triangle_count')!=16910:
+        raise ValueError('M19_FRESH_NATIVE_HISTORICAL_BASE_MESH_COUNT_DIFFERENCE')
+    err=float(np.max(np.abs(mapped-observed)))
+    if not np.isfinite(err) or err>1e-10:
+        raise ValueError('M19_FRESH_NATIVE_HISTORICAL_TEN_MOMENT_DIFFERENCE')
+    return dict(status='PASS_HISTORICAL_TEN_MOMENT_ANCHOR_ONLY',
+                max_abs_model_to_target_ten_error=err,
+                accepted_max_abs_error=1e-10,
+                first_point_vertex_count=point['vertex_count'],
+                first_point_triangle_count=point['triangle_count'],
+                exact_same_call_validation_from_frozen_run=True,
+                historical_binary_sha_parity=False,
+                historical_jacobian_bitwise_parity_not_tested=True,
+                full_newton_solves=0)
+
+
 def environment_preflight(root,archive,module_dirs):
     root,archive=Path(root).resolve(),Path(archive).resolve()
     result=native_host.preflight(root,archive,module_dirs)
@@ -325,7 +409,9 @@ def require_zero_swap_for_native():
     native_host._swap_guard()
 
 
-def run_native(root,archive,output,*,module_dirs=()):
+def run_native(root,archive,output,*,module_dirs=(),baseline_mode='strict'):
+    if baseline_mode not in ('strict','fresh-native'):
+        raise ValueError('M19_INVALID_BASELINE_MODE')
     root,archive,output=Path(root).resolve(),Path(archive).resolve(),Path(output)
     output.mkdir(parents=True,exist_ok=False)
     checks=environment_preflight(root,archive,module_dirs)
@@ -361,8 +447,28 @@ def run_native(root,archive,output,*,module_dirs=()):
             signal.alarm(3600)
             stage='REAL_H8E_25_POINT_CHERCHI'
             orig_output=output/'actual-frozen-h8e'
-            report=timed(manifest[REQUEST_MEMBER],orig_output,'0,4,8',
-                         manifest[CERT_MEMBER],manifest[REFERENCE_MEMBER])
+            authority=None
+            if baseline_mode=='fresh-native':
+                modules=checks['checks']['native_modules']['modules']
+                provenance={key:modules[key]['sha256'] for key in native_host.NATIVE}
+                authority=cross_build_reference_authority(manifest,provenance)
+                # Explicit *different-binary* experiment: the unchanged
+                # frozen H8e runner performs ALL original native/math checks,
+                # but cannot claim the archived ELF byte identity. The
+                # historic first point is checked independently below.
+                report=timed(manifest[REQUEST_MEMBER],orig_output,'0,4,8',None,None)
+                import numpy as np
+                from probe_h8_native_cherchi import request_from_frozen
+                request,_,_=request_from_frozen(manifest[REQUEST_MEMBER])
+                anchor=json.loads((orig_output/'point-000.json').read_text())
+                authority['first_point_audit']=cross_build_first_point_audit(
+                    authority,anchor,request,module)
+                # Never put a cross-build result under the historical same-ELF
+                # name or silently mark historical source feature stability.
+                _dump_new(output/'fresh-native-cross-build-authority.json',authority)
+            else:
+                report=timed(manifest[REQUEST_MEMBER],orig_output,'0,4,8',
+                             manifest[CERT_MEMBER],manifest[REFERENCE_MEMBER])
             science_pass=(report.get('completed_samples')==25 and
                           report.get('all_numerical_checks_passed') is True)
             times=ledger.summarize(expected_points=25)
@@ -380,6 +486,10 @@ def run_native(root,archive,output,*,module_dirs=()):
                 valid_neighborhood_certified=False,actual_faster_newton_runs=0,
                 optimized_cherchi_abba_runs=0,full_solver_speedup=None,
                 paper_speed_qualified=False,platform=platform.platform(),
+                baseline_mode=baseline_mode,
+                cross_build_reference_audit=(authority['first_point_audit']
+                     if authority is not None else None),
+                historical_same_binary_identity=(authority is None),
                 peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
             _dump_new(output/'baseline-performance.json',receipt)
             if receipt['source_branch_stable'] is False:
@@ -421,6 +531,8 @@ def main():
     ap.add_argument('--output',required=True,type=Path)
     ap.add_argument('--module-dir',type=Path,action='append',default=[])
     ap.add_argument('--preflight-only',action='store_true')
+    ap.add_argument('--baseline-mode',choices=('strict','fresh-native'),default='strict',
+        help='strict: same archived native binaries; fresh-native: explicit new-build '             '25-point profiling with independent historic first-point ten-moment audit')
     a=ap.parse_args()
     if a.preflight_only:
         if a.output.exists():raise FileExistsError('M19_OUTPUT_EXISTS')
@@ -434,7 +546,8 @@ def main():
             raise SystemExit(2)
         print('READY_FOR_REAL_H8E_PROFILE_ONLY')
         return
-    result=run_native(a.root,a.archive,a.output,module_dirs=a.module_dir)
+    result=run_native(a.root,a.archive,a.output,module_dirs=a.module_dir,
+                      baseline_mode=a.baseline_mode)
     print(json.dumps(result,sort_keys=True))
     if result['state'] not in ('NATIVE_TIMING_COMPLETE_NOT_NEWTON',):
         raise SystemExit(2)
