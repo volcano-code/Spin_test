@@ -12,8 +12,10 @@ import fcntl
 from contextlib import contextmanager
 from hashlib import sha256
 import json
+import math
 import os
 import stat
+import struct
 from pathlib import Path
 import tempfile
 
@@ -84,6 +86,32 @@ def _atomic_write_json(path, document):
             temp.unlink(missing_ok=True)
 
 
+def same_binary64_coefficients(requested, recorded):
+    """Compare exact native float64 bits while accepting JSON-list or native-tuple.
+
+    The actual InProcessCherchiEvaluator.material() restores its saved JSON
+    coefficients as a tuple, whereas q.tolist() in the W3 probe is a list.
+    Reject non-finite values, booleans, length drift, and even a one-ULP or
+    signed-zero difference. Do not normalize or approximate the original q.
+    """
+    if type(requested) is not list or len(requested) != 10:
+        return False
+    if type(recorded) not in (list, tuple) or len(recorded) != 10:
+        return False
+    try:
+        for expected, observed in zip(requested, recorded):
+            if type(expected) not in (int, float) or type(observed) not in (int, float):
+                return False
+            a, b = float(expected), float(observed)
+            if not (math.isfinite(a) and math.isfinite(b)):
+                return False
+            if struct.pack('!d', a) != struct.pack('!d', b):
+                return False
+    except (TypeError, ValueError, OverflowError, struct.error):
+        return False
+    return True
+
+
 def capture_same_call(output, *, index, side, coefficients, material, backend_identity):
     """Archive engine.validate_same_call_material(...) output BEFORE native audit.
 
@@ -93,8 +121,8 @@ def capture_same_call(output, *, index, side, coefficients, material, backend_id
     path = Path(output)
     need(path.is_dir(), 'CAPTURE_OUTPUT_DIRECTORY_MISSING')
     identity = key(index, side)
-    need(type(coefficients) is list and len(coefficients) == 10
-         and type(material) is dict and material.get('quadric_coefficients') == coefficients,
+    need(type(material) is dict and same_binary64_coefficients(
+         coefficients, material.get('quadric_coefficients')),
          'NEW_NATIVE_CAPTURE_QUADRIC_IDENTITY_MISMATCH')
     need(isinstance(backend_identity, str) and backend_identity.startswith(BACKEND)
          and material.get('boolean_backend_identity') == backend_identity

@@ -1,0 +1,19 @@
+{
+  "schema": "heart-h9-stage17-tuple-identity-fix-evidence-v1",
+  "status": "OFFLINE_REGRESSION_PASS_NATIVE_RETRY_REQUIRED",
+  "original_user_failure_stage": "PRESERVE_UNVERIFIED_TRUE_SAME_CALL_PACKET_0",
+  "original_user_failure_reason": "NEW_NATIVE_CAPTURE_QUADRIC_IDENTITY_MISMATCH",
+  "github_producer_sha1": "f9fa539f699df8baf8b8d30729048269a26ecb3c",
+  "old_capture_sha1": "586b50e8b54c42b58af44cc75246a96cd4af4ce6",
+  "new_capture_sha1": "3a7586ee3ac1c98dd856931bcaff1ed08bcd08b5",
+  "new_test_sha1": "6d6f7b2ee754744c525cbc2f7b8907669ecb4e41",
+  "historical_h8f_zip_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "regression_log_sha256": "9da4a8b38a4350eecd9c9c0c11934d63c3aceff6509f0dc31874563deff9887c",
+  "specialized_test_count": 10,
+  "related_test_count": 42,
+  "tests_failed": 0,
+  "tests_skipped": 0,
+  "local_native_retry_performed": false,
+  "completed_qualified_new_four_point_samples": 0,
+  "newton_admitted": false
+}
