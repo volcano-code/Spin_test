@@ -45,27 +45,52 @@ def check_vec(actual, expected, n, reason):
          all(check_equal_point(a,b) for a,b in zip(actual,expected)),reason)
 
 
-def validate_native_packet_provenance(material,historical_material,arithmetic_sha):
-    """Recognize the exact Cherchi operation/provenance observed in H8f.
+def _is_sha256_hex(value):
+    return type(value) is str and len(value) == 64 and all(
+        symbol in '0123456789abcdef' for symbol in value)
 
-    A textual backend prefix is not a binary-identity or native execution
-    signature. The new material must also agree with the recorded same-call
-    arithmetic module hash; cross-build equality is reported separately.
+
+def validate_native_packet_provenance(material, historical_material, arithmetic_sha,
+                                      *, boolean_sha=None, expected_map_identity=None):
+    """Bind new material to its OWN pinned native modules and same-run map.
+
+    H8f and W3 may have different core/Boolean binary SHAs. As the producer's
+    evaluation_map_identity incorporates those SHAs, equality to the H8f map
+    is neither required nor a valid cross-build acceptance rule. Instead:
+      * require the exact current Boolean SHA when supplied by the run report;
+      * require the exact current GMP arithmetic SHA and frozen algorithm;
+      * require all four new packets to share one same-run map identity;
+      * report (not silently assume) cross-build equivalence separately.
+
+    These checks do not cryptographically attest that a process really ran.
+    The native run logs and independent exact moment/branch checks remain
+    mandatory, and Newton remains denied.
     """
-    need(str(material.get('boolean_backend_identity','')).startswith(BACKEND_PREFIX)
-         and material.get('material_proof',{}).get('schema')=='cherchi-same-call-material-v1'
-         and material.get('boolean_operation')==historical_material['boolean_operation']
+    expected_backend = (BACKEND_PREFIX + boolean_sha if boolean_sha is not None
+                        else historical_material.get('boolean_backend_identity'))
+    arith = material.get('rational_arithmetic_identity', {})
+    historical_arith = historical_material.get('rational_arithmetic_identity', {})
+    current_map = material.get('evaluation_map_identity')
+    need(_is_sha256_hex(arithmetic_sha)
+         and (boolean_sha is None or _is_sha256_hex(boolean_sha))
+         and type(arith) is dict and type(historical_arith) is dict
+         and _is_sha256_hex(current_map)
+         and material.get('boolean_backend_identity') == expected_backend
+         and material.get('material_proof', {}).get('schema') == 'cherchi-same-call-material-v1'
+         and material.get('boolean_operation') == historical_material['boolean_operation']
          and material.get('derivative_defined') is True
-         and material.get('derivative_identity')==historical_material['derivative_identity']
-         and material.get('evaluation_map_identity')==historical_material['evaluation_map_identity']
-         and material.get('rational_arithmetic_identity',{}).get('backend')=='NATIVE_GMP_SURFACE_V1'
-         and material.get('rational_arithmetic_identity',{}).get('module_sha256')==arithmetic_sha,
+         and material.get('derivative_identity') == historical_material['derivative_identity']
+         and arith.get('backend') == 'NATIVE_GMP_SURFACE_V1'
+         and arith.get('algorithm') == historical_arith.get('algorithm')
+         and arith.get('module_sha256') == arithmetic_sha,
          'UNPINNED_OR_CHANGED_CHERCHI_MATERIAL_PROVENANCE')
-    need(material.get('quadric_source_faces')==historical_material['quadric_source_faces']
-         and len(material.get('quadric_source_vertices',[]))==len(historical_material['quadric_source_vertices']),
+    if expected_map_identity is not None:
+        need(current_map == expected_map_identity,
+             'NEW_NATIVE_EVALUATION_MAP_IDENTITY_CHANGED_WITHIN_FOUR_SIDES')
+    need(material.get('quadric_source_faces') == historical_material['quadric_source_faces']
+         and len(material.get('quadric_source_vertices', [])) == len(historical_material['quadric_source_vertices']),
          'NATIVE_SOURCE_TRIANGULATION_CHANGED_IN_PROBE_INTERVAL')
     return True
-
 
 
 def validate_new_same_call_numerics(material, meta):
@@ -195,6 +220,7 @@ def audit(artifact,certificate_path,native_output):
     frozen_q=old_report['target_q']
     data=original['request'];design=tuple(qvec(data['design_vertices'][j]) for j in DESIGN_IDS)
     stats=[];observations=[]
+    new_map_identity=None
     for p in plan:
         i=p['index'];stem=f"side-{i:02d}-{p['side']}"
         meta_path=native_output/(stem+'.json')
@@ -204,7 +230,11 @@ def audit(artifact,certificate_path,native_output):
         raw=compressed_path.read_bytes()
         need(meta.get('material_sha256')==sha(raw),f'NEW_NATIVE_MATERIAL_SHA_DRIFT_{i}')
         material=json.loads(gzip.decompress(raw))
-        validate_native_packet_provenance(material,old_samples[59][1],binary_hashes['arithmetic'])
+        validate_native_packet_provenance(material,old_samples[59][1],binary_hashes['arithmetic'],
+                                          boolean_sha=binary_hashes['boolean'],
+                                          expected_map_identity=new_map_identity)
+        if new_map_identity is None:
+            new_map_identity=material['evaluation_map_identity']
         need(len(material['material_proof']['construction_records'])==len(material['material_proof']['exact_vertices'])
              and len(material['variable_faces'])==meta['face_count']
              and len(material['variable_rational_vertices'])==meta['vertex_count'],
@@ -284,6 +314,9 @@ def audit(artifact,certificate_path,native_output):
             'frozen_artifact_sha256':expected['artifact_sha256'],
             'independent_original_crossing_certificate_reproduced':True,
             'new_native_run_report_sha256':sha(run_bytes),
+            'new_native_evaluation_map_identity':new_map_identity,
+            'evaluation_map_identical_to_historical_h8f':(
+                new_map_identity==old_samples[59][1]['evaluation_map_identity']),
             'new_native_samples_reintegrated':len(stats),
             'original_H8f_binaries_identical_to_new_native':comparables,
             'same_binary_across_runs':all(comparables.values()),

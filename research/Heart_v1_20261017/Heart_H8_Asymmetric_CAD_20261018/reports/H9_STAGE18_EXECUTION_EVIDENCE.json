@@ -1,0 +1,17 @@
+{
+  "schema": "heart-h9-stage18-local-cross-build-audit-fix-v1",
+  "scope": "offline verifier code tests and historical archived native H8f data only",
+  "historical_zip_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "historical_workflow_conclusion": "failure",
+  "real_new_W3_producer_user_reported_four_sides": 4,
+  "real_new_W3_producer_evidence_available_to_this_local_runtime": false,
+  "new_side_materials_independently_audited_in_this_turn": 0,
+  "stage18_new_tests_passed": 12,
+  "stage5_tests_passed": 9,
+  "stage6_tests_passed": 12,
+  "total_local_tests_passed": 33,
+  "total_skipped": 0,
+  "continuous_stratum_certified": false,
+  "newton_admitted": false,
+  "final_heart_obj_produced": false
+}
