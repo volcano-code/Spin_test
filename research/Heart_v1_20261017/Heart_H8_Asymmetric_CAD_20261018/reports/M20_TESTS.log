@@ -1,0 +1,24 @@
+test_binary_rational_grammar (test_h9_m20_precision_replay.PrecisionReplayTests.test_binary_rational_grammar) ... ok
+test_cubic_true_second_order_unscaled_component (test_h9_m20_precision_replay.PrecisionReplayTests.test_cubic_true_second_order_unscaled_component) ... ok
+test_duplicate_json_key_rejected (test_h9_m20_precision_replay.PrecisionReplayTests.test_duplicate_json_key_rejected) ... ok
+test_full_synthetic_six_packet_replay_and_no_input_mutation (test_h9_m20_precision_replay.PrecisionReplayTests.test_full_synthetic_six_packet_replay_and_no_input_mutation) ... M20_REINTEGRATING_SAVED_PACKET side-00-left-coarse
+M20_REINTEGRATING_SAVED_PACKET side-01-left-near
+M20_REINTEGRATING_SAVED_PACKET side-02-right-near
+M20_REINTEGRATING_SAVED_PACKET side-03-right-coarse
+M20_REINTEGRATING_SAVED_PACKET m19-mid-00-left-mid
+M20_REINTEGRATING_SAVED_PACKET m19-mid-01-right-mid
+ok
+test_midpoint_noise_cancels_in_full_interval (test_h9_m20_precision_replay.PrecisionReplayTests.test_midpoint_noise_cancels_in_full_interval) ... ok
+test_open_mesh_rejected (test_h9_m20_precision_replay.PrecisionReplayTests.test_open_mesh_rejected) ... ok
+test_packet_corruption_rejected (test_h9_m20_precision_replay.PrecisionReplayTests.test_packet_corruption_rejected) ... ok
+test_quadratic_trapezoid_exact (test_h9_m20_precision_replay.PrecisionReplayTests.test_quadratic_trapezoid_exact) ... ok
+test_real_historical_sample59_integration_not_new_native (test_h9_m20_precision_replay.PrecisionReplayTests.test_real_historical_sample59_integration_not_new_native) ... ok
+test_rounding_ledger_and_exact_float_conversion_not_recovery (test_h9_m20_precision_replay.PrecisionReplayTests.test_rounding_ledger_and_exact_float_conversion_not_recovery) ... ok
+test_unequal_halves_partition_identity (test_h9_m20_precision_replay.PrecisionReplayTests.test_unequal_halves_partition_identity) ... ok
+test_unit_tetrahedron_exact_ten (test_h9_m20_precision_replay.PrecisionReplayTests.test_unit_tetrahedron_exact_ten) ... ok
+test_wrong_stage18_audit_not_accepted (test_h9_m20_precision_replay.PrecisionReplayTests.test_wrong_stage18_audit_not_accepted) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 4.930s
+
+OK
