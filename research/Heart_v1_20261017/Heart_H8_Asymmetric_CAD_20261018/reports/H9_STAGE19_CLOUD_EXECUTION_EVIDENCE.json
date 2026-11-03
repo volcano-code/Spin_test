@@ -1,0 +1,33 @@
+{
+  "artifacts_sha256": {
+    "reports/m19_full_regression.log": {
+      "bytes": 7292,
+      "sha256": "489d88673028c6ec299941bd0480a84d69277dfaf188712d9611978b8f32cb8c"
+    },
+    "source/h9_stage19_multiscale.py": {
+      "bytes": 13424,
+      "sha256": "898ff838a9d265f7c155da1df465eb127e6b6637d94a994368d5f606e14daa9d"
+    },
+    "source/h9_stage19_native_midpoints.py": {
+      "bytes": 24659,
+      "sha256": "11d31bb7b1f89fcbf15d617bd743c548f23e65ea5105a478060eab2959022195"
+    },
+    "tests/test_h9_stage19_multiscale.py": {
+      "bytes": 13280,
+      "sha256": "9c7190799c5e16e52c0817347954e9ab6a5f8a4a6ebb32416d82c501098974ae"
+    }
+  },
+  "frozen_h8f_archive_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "incomplete_cross_stratum_proof": true,
+  "local_regression_failures": 0,
+  "local_regression_skips": 0,
+  "local_regression_tests_completed": 43,
+  "local_test_seconds": 3.644,
+  "native_host_attempt_exit_code": 2,
+  "new_m19_samples_independently_qualified": 0,
+  "new_native_m19_calls": 0,
+  "newton_admitted": false,
+  "original_m18_user_local_evidence_bytes_seen_in_cloud": false,
+  "schema": "heart-h9-stage19-cloud-execution-evidence-v1",
+  "user_m18_audit_reported_sha256": "68ee61282caac38d160a4226d9e44df694b7723094890fd62cc61ada434e12e2"
+}

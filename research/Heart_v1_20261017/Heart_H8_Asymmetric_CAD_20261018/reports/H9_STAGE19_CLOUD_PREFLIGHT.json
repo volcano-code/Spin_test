@@ -1,0 +1,8 @@
+{
+  "continuous_neighborhood_certified": false,
+  "error": "M19Rejected: M19_NATIVE_HOST_PREFLIGHT_BLOCKED:['NOT_FROZEN_W3_BRANCH_OR_ANCESTOR', 'LESS_THAN_24GIB_EFFECTIVE_MEMORY', 'NOT_A_COMPLETE_SOURCE_CHECKOUT']",
+  "new_qualified_midpoints": 0,
+  "newton_admitted": false,
+  "schema": "heart-h9-m19-local-launch-result-v1",
+  "status": "FAILED_CLOSED_NO_NEWTON"
+}
