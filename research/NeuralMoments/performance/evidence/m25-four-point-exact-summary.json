@@ -1,0 +1,56 @@
+{
+  "schema": "w1-m25-real-saved-boolean-exact-moment-summary-v1",
+  "date": "2026-11-04",
+  "source_archive_sha256": "0c0962173694415b07578bae4375b9702251d0078b5c3a20935836e96d938976",
+  "design_volume_binary64": 17185.70323640518,
+  "real_saved_boolean_calls_in_original_input": 4,
+  "new_boolean_calls_in_m25": 0,
+  "independent_python_fraction_vs_compiled_cpp_gmp": true,
+  "nonempty_points_compared": 3,
+  "ten_exact_components_equal_per_nonempty_point": 10,
+  "native_production_cherchi_moment_reference_present": false,
+  "output_material_global_self_intersection_independently_certified": false,
+  "smooth_neighborhood_certified": false,
+  "jacobian_certified": false,
+  "newton_converged": false,
+  "w0_w2_admitted": false,
+  "full_solver_speedup": null,
+  "points": [
+    {
+      "evaluation": 117,
+      "operation": "difference",
+      "classification": "EXACT_POSITIVE_VOLUME_CLOSED_BOUNDARY",
+      "volume_binary64": 5809.272270251298,
+      "ten_exact_sha256": "f288563b061dc5f899606d972a6a5873f7f1c76dffa2ea912b4065abc60d5b5b",
+      "cpp_gmp_vs_python_exact_match": true,
+      "material_jacobian_computed": false
+    },
+    {
+      "evaluation": 4,
+      "operation": "intersection",
+      "classification": "EXACT_POSITIVE_VOLUME_CLOSED_BOUNDARY",
+      "volume_binary64": 7638.767584325569,
+      "ten_exact_sha256": "d94c464ce337b5b5dbfb13d0339a329383cb281e7f64820894f46a976698c217",
+      "cpp_gmp_vs_python_exact_match": true,
+      "material_jacobian_computed": false
+    },
+    {
+      "evaluation": 116,
+      "operation": "difference",
+      "classification": "EXACT_POSITIVE_VOLUME_CLOSED_BOUNDARY",
+      "volume_binary64": 5809.396912303254,
+      "ten_exact_sha256": "1bb130a4a9084d5e2d62a7763f864199914a307f59f49000b70bf8463c9ef055",
+      "cpp_gmp_vs_python_exact_match": true,
+      "material_jacobian_computed": false
+    },
+    {
+      "evaluation": 123,
+      "operation": "difference",
+      "classification": "EXACT_STRICT_EMPTY_MATERIAL",
+      "volume_binary64": 0,
+      "ten_exact_sha256": "0dcbaec0bfbd48d5b1d40fc0cc574016cec62a56adabfe4e1a08fa299da55cd9",
+      "cpp_gmp_vs_python_exact_match": true,
+      "material_jacobian_computed": false
+    }
+  ]
+}
