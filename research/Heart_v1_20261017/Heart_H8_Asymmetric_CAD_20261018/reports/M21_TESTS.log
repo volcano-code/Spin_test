@@ -1,0 +1,33 @@
+test_ambiguous_operand_rejected (test_h9_m21_layered_replay.ConstructionMathTests.test_ambiguous_operand_rejected) ... ok
+test_broken_operand_binding_rejected (test_h9_m21_layered_replay.ConstructionMathTests.test_broken_operand_binding_rejected) ... ok
+test_duplicate_vertex_slot_rejected (test_h9_m21_layered_replay.ConstructionMathTests.test_duplicate_vertex_slot_rejected) ... ok
+test_explicit (test_h9_m21_layered_replay.ConstructionMathTests.test_explicit) ... ok
+test_finite_affine_source_pair (test_h9_m21_layered_replay.ConstructionMathTests.test_finite_affine_source_pair) ... ok
+test_frame_mismatch_rejected (test_h9_m21_layered_replay.ConstructionMathTests.test_frame_mismatch_rejected) ... ok
+test_lpi_moving_plane (test_h9_m21_layered_replay.ConstructionMathTests.test_lpi_moving_plane) ... ok
+test_lpi_operand_permutation (test_h9_m21_layered_replay.ConstructionMathTests.test_lpi_operand_permutation) ... ok
+test_nan_and_bool_rejected (test_h9_m21_layered_replay.ConstructionMathTests.test_nan_and_bool_rejected) ... ok
+test_open_boundary_rejected (test_h9_m21_layered_replay.ConstructionMathTests.test_open_boundary_rejected) ... ok
+test_singular_lpi_rejected (test_h9_m21_layered_replay.ConstructionMathTests.test_singular_lpi_rejected) ... ok
+test_singular_tpi_rejected (test_h9_m21_layered_replay.ConstructionMathTests.test_singular_tpi_rejected) ... ok
+test_slot_reorder_uses_feature_identity (test_h9_m21_layered_replay.ConstructionMathTests.test_slot_reorder_uses_feature_identity) ... ok
+test_source_velocity_missing_is_unknown_not_zero (test_h9_m21_layered_replay.ConstructionMathTests.test_source_velocity_missing_is_unknown_not_zero) ... ok
+test_tetra_exact_scale_tangent (test_h9_m21_layered_replay.ConstructionMathTests.test_tetra_exact_scale_tangent) ... ok
+test_tetra_translation_tangent (test_h9_m21_layered_replay.ConstructionMathTests.test_tetra_translation_tangent) ... ok
+test_tpi_translating_planes (test_h9_m21_layered_replay.ConstructionMathTests.test_tpi_translating_planes) ... ok
+test_zero_velocity_and_density (test_h9_m21_layered_replay.ConstructionMathTests.test_zero_velocity_and_density) ... ok
+test_original_59_all_exact_constructions (test_h9_m21_layered_replay.RealEvidenceTests.test_original_59_all_exact_constructions) ... ok
+test_original_60_all_exact_constructions_and_changed_features (test_h9_m21_layered_replay.RealEvidenceTests.test_original_60_all_exact_constructions_and_changed_features) ... ok
+test_original_reversed_raw_record_storage (test_h9_m21_layered_replay.RealEvidenceTests.test_original_reversed_raw_record_storage) ... ok
+test_uploaded_m20_ledger_triage_is_not_raw_revalidation (test_h9_m21_layered_replay.RealEvidenceTests.test_uploaded_m20_ledger_triage_is_not_raw_revalidation) ... ok
+test_launch_failure_rejected_even_in_bound_fixture (test_h9_m21_layered_replay.SixPacketIntegrationTests.test_launch_failure_rejected_even_in_bound_fixture) ... ok
+test_metadata_sha_drift_rejected (test_h9_m21_layered_replay.SixPacketIntegrationTests.test_metadata_sha_drift_rejected) ... ok
+test_six_packet_read_and_geometry (test_h9_m21_layered_replay.SixPacketIntegrationTests.test_six_packet_read_and_geometry) ... ok
+test_source_supervisor_nonzero_is_not_accepted (test_h9_m21_layered_replay.SixPacketIntegrationTests.test_source_supervisor_nonzero_is_not_accepted) ... ok
+test_fake_source_only_backend_affine_binding (test_h9_m21_layered_replay.SourceInterfaceTests.test_fake_source_only_backend_affine_binding) ... ok
+test_file_tamper_and_symlink_rejected (test_h9_m21_layered_replay.SourceInterfaceTests.test_file_tamper_and_symlink_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 13.417s
+
+OK

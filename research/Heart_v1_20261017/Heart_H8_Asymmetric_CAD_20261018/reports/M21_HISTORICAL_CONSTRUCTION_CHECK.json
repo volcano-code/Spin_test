@@ -1,0 +1,37 @@
+{
+  "scope": "GENUINE_HISTORICAL_H8F_NOT_USER_NEW_SIX_PACKETS",
+  "archive_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "historical_original_ci": "failure",
+  "records": [
+    {
+      "sample_index": 59,
+      "historical_material_sha256": "fc89f3a9dedaa9f4c2660ccb58ebe14f865ddb53cb5585bcc61aacd6f71fce05",
+      "exact_positions_reconstructed": 8455,
+      "construction_types": {
+        "EXPLICIT3D": 7671,
+        "LPI": 784
+      },
+      "source_velocity_available": false
+    },
+    {
+      "sample_index": 60,
+      "historical_material_sha256": "9e4e6e3f108096985227482bd7717be34989383194ded8ea941e54e4404a83f6",
+      "exact_positions_reconstructed": 8455,
+      "construction_types": {
+        "EXPLICIT3D": 7671,
+        "LPI": 784
+      },
+      "source_velocity_available": false
+    }
+  ],
+  "pair_diagnostic": {
+    "delta_c7": 1.5e-06,
+    "same_retained_constraints_and_oriented_triangles": false,
+    "continuous_neighborhood_certified": false,
+    "newton_admitted": false,
+    "status": "FEATURE_CHANGED_NO_VERTEX_MOTION_COMPARISON"
+  },
+  "new_boolean_calls": 0,
+  "new_native_source_calls": 0,
+  "newton_admitted": false
+}

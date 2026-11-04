@@ -1,0 +1,32 @@
+{
+  "schema": "heart-h9-m21-development-execution-evidence-v1",
+  "base_head": "b1ec4bad3653912565cf9f6e566e71cfe346bb28",
+  "python": "3.13.5",
+  "tests": {
+    "m21": {
+      "passed": 28,
+      "skipped": 0
+    },
+    "m20_regression": {
+      "passed": 13,
+      "skipped": 0
+    }
+  },
+  "actual_uploaded_ledger_cli_exit": 0,
+  "uploaded_ledger_sha256": "95bf2c6d91862bba488dd56118562a1fad826037966ed3f8f0bf382e5fba0703",
+  "historical_samples_exactly_reconstructed": [
+    59,
+    60
+  ],
+  "user_new_six_raw_packets_available_in_this_session": false,
+  "user_new_six_geometry_replay_executed": false,
+  "actual_native_source_calls": 0,
+  "actual_new_boolean_calls": 0,
+  "remote_push_executed": false,
+  "remote_m21_commit_sha": null,
+  "write_tool_discovery": "No create/update/push actions returned by current GitHub connector; plugin search found only the installed GitHub read connector.",
+  "delivery": "tested source + scoped patch + local guarded apply/test/commit/push script",
+  "remote_ci_result": null,
+  "root_cause_determined": false,
+  "newton_admitted": false
+}

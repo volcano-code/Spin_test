@@ -1,0 +1,79 @@
+{
+  "asymptotic_order_certified": false,
+  "continuous_neighborhood_certified": false,
+  "final_heart_obj_produced": false,
+  "ledger_sha256": "95bf2c6d91862bba488dd56118562a1fad826037966ed3f8f0bf382e5fba0703",
+  "new_boolean_calls_this_run": 0,
+  "new_native_source_calls_this_run": 0,
+  "newton_admitted": false,
+  "packet_manifest": [
+    {
+      "material_sha256": "75041a5a38d0fc885582bd79679c44377a9c43ad537994143a170ba3fb766967",
+      "metadata_sha256": "dc944206a5d230b18bb326f1974f109303a0d2d2c5d40b67d37df57e28661392",
+      "stem": "side-00-left-coarse"
+    },
+    {
+      "material_sha256": "78c931ede9c715d5a5816b2caf9605cfd3e3bdb506b51a2f17c607d9b1d19779",
+      "metadata_sha256": "53374eb416a43d42acd7988017ea227dd99a70e713852256fa84d92bddab2bf5",
+      "stem": "side-01-left-near"
+    },
+    {
+      "material_sha256": "21796119e3cbb0001e17a8673527caf979ce8427c8a3d9cbc2c8d65195cabc6e",
+      "metadata_sha256": "6703eed56156efb002888b6a84d92410675e931bff3a8b3601ee7d3a44c7d148",
+      "stem": "side-02-right-near"
+    },
+    {
+      "material_sha256": "1251f0b1a57b049bf0b63e435943069a381aa27d0f62b288e98612af2c64e914",
+      "metadata_sha256": "2265cbd991abe4a3fe5583cac1717e804e5f6ab20ff6d300c0309eacb26bacd4",
+      "stem": "side-03-right-coarse"
+    },
+    {
+      "material_sha256": "027191729e8490ff79b2c3d5662fad23a57eed55d36f72a81a830c9664c88751",
+      "metadata_sha256": "d2ccb1037369544f2e582da7e08625bfd1efb45c5e9f0413c0e92209806037ae",
+      "stem": "m19-mid-00-left-mid"
+    },
+    {
+      "material_sha256": "0032d66ffab8b6923cfebaa9d34ce5081e96968251921f04ca835461080a9ef4",
+      "metadata_sha256": "8aa91fdc2c1b6882445e74e264daaf70b81fa8a952575b61c1604fe6741233e6",
+      "stem": "m19-mid-01-right-mid"
+    }
+  ],
+  "raw_material_bytes_read": false,
+  "root_cause_determined": false,
+  "runtime_origin_cryptographically_attested": false,
+  "schema": "heart-h9-m21-ledger-triage-v1",
+  "source_velocity_available_in_ledger": false,
+  "status": "M20_LEDGER_BOUND_RAW_MOTION_STILL_NEEDED",
+  "two_sides": [
+    {
+      "exact_full_and_half_max_errors": [
+        3.875585606873951e-09,
+        1.746832064607797e-08,
+        9.717121158722654e-09
+      ],
+      "mzz_half_residuals": [
+        1.746832064607797e-08,
+        -9.717121158722654e-09
+      ],
+      "mzz_midpoint_correction": -1.4136803706821244e-14,
+      "mzz_opposite_signs": true,
+      "side": "left",
+      "worst_half_over_full": 4.507272556460939
+    },
+    {
+      "exact_full_and_half_max_errors": [
+        6.930856862281341e-09,
+        1.5845097155572323e-08,
+        4.117712058262049e-09
+      ],
+      "mzz_half_residuals": [
+        1.5845097155572323e-08,
+        -1.9834108223475355e-09
+      ],
+      "mzz_midpoint_correction": 1.3695668947891204e-14,
+      "mzz_opposite_signs": true,
+      "side": "right",
+      "worst_half_over_full": 2.286167132061763
+    }
+  ]
+}
