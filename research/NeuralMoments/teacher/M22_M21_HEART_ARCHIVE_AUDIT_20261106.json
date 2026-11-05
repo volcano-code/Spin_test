@@ -1,0 +1,117 @@
+{
+  "schema": "w2-m22-m21-archive-audit-v1",
+  "audit_status": "ARCHIVE_INTEGRITY_PASS_FULL_NATIVE_REPLAY_PARTIAL_BLOCKED",
+  "run_id": "heart-pilot9-flex-20261105T083338329274558-3159689",
+  "original_archive": {
+    "name": "M21_HEART_NATIVE_EVIDENCE_20261105.tar.gz",
+    "sha256": "259b9f288b629415bafa42e4e09d6503e4f474e0e2253e6cc9eb1cd775a64dfd",
+    "size_bytes": 1423726
+  },
+  "all_original_sha256sum_entries_valid": true,
+  "run_directory_found": true,
+  "outer_logs": {
+    "log1": "m21-flex-20261105T083338329274558-3159689.log",
+    "log2": "m21-m22fix-20261105T083338Z-2114359.log",
+    "byte_identical": true,
+    "sha256": "ebcb505b1c070a86c5750b8c7dfb3eabb3abb938ac81b8076547d993436e4dbe"
+  },
+  "files": {
+    "result": {
+      "path": "M21_PILOT_RESULT.json",
+      "size_bytes": 4396,
+      "sha256": "f84b38c326bc4fd79068d5a89f94500bb60306c5a77289a550a278355dd89dc3"
+    },
+    "label": {
+      "path": "M21_PILOT_LABEL.json",
+      "size_bytes": 103718,
+      "sha256": "747101c819d95959020a39ea54eec5af280fd465b786c3f94312bb7447136729"
+    },
+    "spec": {
+      "path": "M21_PILOT_SPEC.json",
+      "size_bytes": 6309429,
+      "sha256": "4d3cb03ee3a1190142638a99cd90e6aaf0a3e7030b956ef813ebabeb0c6898d0"
+    },
+    "preparation": "M21_PILOT_PREPARATION.json",
+    "frozen_preparation": "frozen_heart_preparation.json",
+    "model_obj": {
+      "path": "frozen_normalized_outer.obj",
+      "size_bytes": 1510016,
+      "sha256": "cde5dbdf894c181c27abf22abe8bce8b82a2a3a68b141cfb24749ef07e864062"
+    },
+    "native_stdout": {
+      "path": "M21_NATIVE_STDOUT.log",
+      "size_bytes": 365
+    },
+    "native_stderr": {
+      "path": "M21_NATIVE_STDERR.log",
+      "size_bytes": 0,
+      "present": true
+    }
+  },
+  "integrity_checks": {
+    "sums_manifest_12_of_12_valid": true,
+    "spec_sha_matches_preparation": true,
+    "result_label_sha_matches_label_file": true,
+    "label_payload_sha_valid": true,
+    "model_sha_matches_obj": true,
+    "native_c_matches_spec": true,
+    "model_and_module_identity_match_spec": true,
+    "q_identity_sha_valid": true,
+    "geometry_identity_sha_valid": true,
+    "frozen_h8f_archive_sha_valid": true,
+    "frozen_request_matches_spec": true,
+    "evaluator_settings_match": true,
+    "logs_byte_identical": true
+  },
+  "result": {
+    "status": "PILOT_EXACT_TEN_MOMENTS_PASSED_DIAGNOSTIC_ONLY",
+    "native_cherchi": true,
+    "same_call_attachment_descriptor_present": true,
+    "independent_within_tolerance": true,
+    "max_absolute_error": 0,
+    "component_tolerances": [
+      1e-10,
+      1e-10,
+      1e-10,
+      1e-10,
+      1e-10,
+      1e-10,
+      1e-10,
+      1e-10,
+      1e-10,
+      1e-10
+    ],
+    "topology_status": "OBSERVED_DISCRETE_MAP",
+    "derivative_status": "UNKNOWN",
+    "J_D": null,
+    "split": "excluded",
+    "training_admitted": false,
+    "native_child_exit_code": 2,
+    "exclusion_reason": "W0_VERIFIER_AND_INDEPENDENT_SOLID_PROOF_NOT_VERIFIED",
+    "wall_seconds": 8.551563279004768,
+    "memory_peak_bytes": 657793024,
+    "oom_events": 0
+  },
+  "attachment": {
+    "descriptor_present": true,
+    "serialized_material_sha256": "b136cbcc09740915cd70615d73fab3ab2aa0b680cdb823cfed12375bed6c20e8",
+    "serialized_material_payload_file_present": false,
+    "exact_boundary_sha256": "48aae36777ed15e705f1ab919edac07756d3a7444100c060ee5baabd310afe20",
+    "vertex_count": 8455,
+    "face_count": 16910,
+    "exact_reference_moment_components": 10
+  },
+  "external_missing": {
+    "compiled_native_shared_objects": true,
+    "native_module_manifest": true,
+    "heart_pilot_budgets_json": true,
+    "same_call_serialized_material_payload": true
+  },
+  "caveats": {
+    "original_missing_files_list_false_positive": "M21_NATIVE_STDERR.log exists but is empty",
+    "frozen_model_is_original_author_cad": false,
+    "historical_h8f_workflow_conclusion": "failure"
+  },
+  "training_samples": 0,
+  "training_admitted": false
+}
