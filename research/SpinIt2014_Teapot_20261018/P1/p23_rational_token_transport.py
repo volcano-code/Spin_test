@@ -66,7 +66,7 @@ class Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.c=CTX;cls.r=CTX["replay"];cls.rt=CTX["rt"]
-        cls.mesh=CTX["mesh"];cls.helper=CTX["helper"]
+        cls.helper=CTX["helper"]
     def convert(self,rows):
         if self.c["fixed"]:
             self.assertTrue(callable(self.helper),"W0 canonical helper missing")
@@ -79,17 +79,17 @@ class Tests(unittest.TestCase):
         self.assertEqual(self.r.frac("0b0/0b1"),Fraction(0))
     def test_mesh_boundary_rejects_raw_binary_and_accepts_canonical(self):
         raw=[["0b101101/0b1101","-0b101/0b11","0/1"]]
-        with self.assertRaises(ValueError): self.mesh(raw)
+        with self.assertRaises(ValueError): self.c["mesh"](raw)
         canonical=self.convert(raw)
         self.assertEqual(canonical,(("45/13","-5/3","0/1"),))
-        self.assertEqual(self.mesh(canonical),canonical)
+        self.assertEqual(self.c["mesh"](canonical),canonical)
     def test_large_binary_rational_roundtrip_is_exact_without_float(self):
         n=(1<<20000)+123456789;d=(1<<19999)+987654321
         canonical=self.convert([[f"0b{n:b}/0b{d:b}","0b1/0b11","0/1"]])
         parsed=self.rt.fraction_from_rational_text(canonical[0][0]);exact=Fraction(n,d)
         self.assertEqual(parsed,exact)
         self.assertNotEqual(Fraction.from_float(float(parsed)),parsed)
-        self.assertEqual(self.mesh(canonical),canonical)
+        self.assertEqual(self.c["mesh"](canonical),canonical)
     def test_malformed_tokens_and_shapes_rejected(self):
         for token in ("0b2/0b1","0b1/-0b1","1/0"):
             with self.subTest(token=token),self.assertRaises(ValueError): self.r.frac(token)
@@ -101,7 +101,7 @@ class Tests(unittest.TestCase):
             self.assertTrue(callable(self.helper));self.assertTrue(a);self.assertTrue(b)
             sample=[["0b101101/0b1101","-0b101/0b11","0/1"]]
             self.assertEqual(self.helper(sample),(("45/13","-5/3","0/1"),))
-            self.assertEqual(self.mesh(self.helper(sample)),self.helper(sample))
+            self.assertEqual(self.c["mesh"](self.helper(sample)),self.helper(sample))
         else:
             self.assertIsNone(self.helper);self.assertFalse(a);self.assertFalse(b)
 def main():
