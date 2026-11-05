@@ -16,7 +16,7 @@ The 10 GiB + 2 GiB reserve pilot repeatedly stopped before native launch when th
 - numerical tolerances unchanged; original native exit codes and training exclusion remain unchanged;
 - no J_D release, no training admission, no formal M16 24 GiB admission.
 
-The complete portable source/test package is stored alongside this report as `evidence/W2_M21_Flexible_9GiB_Pilot.zip`.
+The portable source/test package `W2_M21_Flexible_9GiB_Pilot.zip` is preserved as a separate conversation Library artifact (22,442 bytes; SHA-256 below). This GitHub commit publishes the audit report; it does not claim that the ZIP itself is already committed to the repository.
 
 ## Verification actually run for this package
 
