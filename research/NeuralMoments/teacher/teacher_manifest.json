@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M21_GUARDED_9G_PILOT_SOFTWARE_VERIFIED_FRESH_HEART_NATIVE_RUN_PENDING",
+  "status": "M21_GUARDED_9G_PILOT_AND_DIAGNOSTIC_EXIT_GATE_VERIFIED_FRESH_HEART_NATIVE_RUN_PENDING",
   "native_teacher_runs": 0,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "Run the guarded 9 GiB Frozen Heart pilot on the user's W2 Ubuntu host when MemAvailable >= 11 GiB and swap=0; then recover/rebuild and certify six rational Noodles F/D/A packets, execute fresh Noodles Cherchi teacher, and obtain W0/W3 smooth-Jacobian admission.",
+  "pending_dependency": "Run the corrected 9 GiB Frozen Heart pilot on the user's W2 Ubuntu host when live MemAvailable >= 11 GiB and swap=0; inspect its raw result/label and postflight hashes. Then recover/rebuild and certify six rational Noodles F/D/A packets, execute a fresh Noodles Cherchi teacher, and obtain W0/W3 smooth-Jacobian admission.",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -580,24 +580,27 @@
     "warning": "SHA and exact ten-moment algebra for six candidate CSG packets are necessary not sufficient: independently validate Boolean semantics, embedding and binary64 partition before any teacher request."
   },
   "latest_milestone": {
-    "id": "W2-M21",
-    "report": "research/NeuralMoments/teacher/M21_FLEXIBLE_9G_PILOT_RESULTS.md",
-    "portable_package": "W2_M21_Flexible_9GiB_Pilot.zip",
-    "portable_package_sha256": "b6aa86911dec125d4bbd3623ca7d3239d23142447b0c39c06faabb8e488936e4",
+    "id": "W2-M21-M22-DIAGNOSTIC-GATE-FIX",
+    "report": "research/NeuralMoments/teacher/M21_M22_DIAGNOSTIC_EXIT_SEMANTICS.md",
+    "patch": "research/NeuralMoments/teacher/M21_DIAGNOSTIC_EXIT_SEMANTICS.patch",
+    "regression_tests": "research/NeuralMoments/teacher/test_m21_diagnostic_label_semantics.py",
+    "portable_package": "W2_M21_Flexible_9GiB_Pilot_M22fix.zip",
+    "portable_package_sha256": "cdadbcb84ebbe6635a80bb83cca05f5da38ea5dbaba0675fd4346147ed6e4164",
     "cloud_software_tests": {
-      "ran": 38,
-      "passed": 38,
+      "ran": 48,
+      "passed": 48,
       "failed": 0,
       "skipped": 0,
-      "scope": "9 GiB MemoryHigh/MemoryMax policy, launcher wiring, integer conversion propagation, unchanged numerical budget and training isolation; mock systemd/cgroup only"
+      "scope": "38 original memory/launcher tests plus 10 new diagnostic-vs-W0-exclusion regression tests; synthetic sealed-label fixtures; no native Cherchi"
     },
-    "last_supplied_native_attempt": {
+    "bug_found": "run_native_smoke intentionally writes W0_VERIFIER_AND_INDEPENDENT_SOLID_PROOF_NOT_VERIFIED into payload.failure_reason and exits 2; old M21 gate required exit 0 and null failure_reason, making valid pre-W0 numeric diagnostic success unreachable",
+    "correction": "accept exit 2 only for exact W0 exclusion after sealed digest, q/model/module identity, native Cherchi, same-call attachment, independent ten-moment tolerance, 10-vector, J_D=null and split=excluded checks; arbitrary errors remain rejected",
+    "latest_native_attempt": {
       "host_available_gib": 11.647857666015625,
-      "required_available_gib": 12,
+      "required_for_9g_profile_gib": 11,
       "swap_bytes": 0,
-      "status": "PILOT_REJECTED_HOST_MEMORY_NOT_QUALIFIED",
-      "native_evaluation_started": false,
-      "result_file_created": false
+      "status": "NOT_RUN_WITH_REVISED_PACKAGE",
+      "native_evaluation_started": false
     },
     "proposed_profile": {
       "memory_high_gib": 7,
