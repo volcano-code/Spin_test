@@ -7,7 +7,7 @@ P22 的实际数据和根因见 [P22_CAPACITY_RATIONAL_FORMAT_FAILURE.md](P22_CA
 ## 冻结接口事实
 
 - W0：`51cbfd33d08063404d7e0c40e4256dd0e38efa1a`
-- core：`58fd12c1306c1c01679a19172e276eef0b30542`
+- core：`58fd12c1306c1c01679a19172e276eef0cb30542`
 - Cherchi binding 输出精确二进制 token，例如 `0b101101/0b1101`、`-0b101/0b11`，零可为 `0/1`。
 - W0 `native_teacher_replay.frac()` 已接受二进制 token。
 - core `spin_problem._canonical_rational_vertices()` 的公共边界只接受规范十进制文本。

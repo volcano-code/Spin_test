@@ -5,7 +5,7 @@ import argparse, ast, importlib.util, json, subprocess, sys, unittest
 from fractions import Fraction
 from pathlib import Path
 BASE_W0="51cbfd33d08063404d7e0c40e4256dd0e38efa1a"
-BASE_CORE="58fd12c1306c1c01679a19172e276eef0b30542"
+BASE_CORE="58fd12c1306c1c01679a19172e276eef0cb30542"
 CTX=None
 def load(path,name):
     spec=importlib.util.spec_from_file_location(name,path)
@@ -29,6 +29,25 @@ def adapter(rows,replay,rt):
         if not isinstance(row,(list,tuple)) or len(row)!=3: raise ValueError("EXACT_MESH_VERTEX_TRIPLE_REQUIRED")
         out.append(tuple(rt.fraction_to_rational_text(replay.frac(x)) for x in row))
     return tuple(out)
+def load_mesh_contract(core_python):
+    # Avoid make_it_stand.__init__: this strict input boundary only needs
+    # SPIN_MODES, spin_common, rational_text, spin_problem and NumPy.
+    import types
+    root=core_python/"make_it_stand"
+    package=types.ModuleType("make_it_stand")
+    package.__path__=[str(root)]
+    verification=types.ModuleType("make_it_stand.verification")
+    verification.__path__=[str(root/"verification")]
+    spin=types.ModuleType("make_it_stand.spin")
+    spin.SPIN_MODES=frozenset({"STATIC_BALANCE","BUOYANT_STABILITY","FIDGET_SPINNER","YO_YO","SPINNING_TOP"})
+    sys.modules["make_it_stand"]=package
+    sys.modules["make_it_stand.verification"]=verification
+    sys.modules["make_it_stand.spin"]=spin
+    load(root/"verification/spin_common.py","make_it_stand.verification.spin_common")
+    load(root/"verification/rational_text.py","make_it_stand.verification.rational_text")
+    module=load(root/"verification/spin_problem.py","make_it_stand.verification.spin_problem")
+    return module._canonical_rational_vertices
+
 def configure(a):
     w0,core=a.w0_root.resolve(),a.core_root.resolve();wh,ch=head(w0),head(core)
     if a.require_fixed:
@@ -37,9 +56,9 @@ def configure(a):
     if ch!=BASE_CORE: raise SystemExit("CORE_COMMIT_MISMATCH:"+ch)
     cp=core/"python";sys.path.insert(0,str(cp));contracts=w0/"research/NeuralMoments/contracts"
     replay=load(contracts/"native_teacher_replay.py","_p23_w0_replay")
-    rt=load(cp/"make_it_stand/verification/rational_text.py","_p23_rational_text")
-    from make_it_stand.verification.spin_problem import _canonical_rational_vertices
-    return dict(w0=wh,core=ch,replay=replay,rt=rt,mesh=_canonical_rational_vertices,
+    mesh=load_mesh_contract(cp)
+    rt=sys.modules["make_it_stand.verification.rational_text"]
+    return dict(w0=wh,core=ch,replay=replay,rt=rt,mesh=mesh,
                 helper=getattr(replay,"canonical_mesh_rational_rows",None),
                 replay_path=contracts/"native_teacher_replay.py",
                 partition_path=contracts/"full_partition_m6.py",fixed=a.require_fixed)
