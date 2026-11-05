@@ -1,0 +1,40 @@
+{
+  "archive_sha256": "0c0962173694415b07578bae4375b9702251d0078b5c3a20935836e96d938976",
+  "checker": {
+    "boundary_contact_pairs": 897,
+    "candidate_pairs": 13269,
+    "disjoint_candidate_pairs": 12372,
+    "elapsed_seconds": 0.334046,
+    "exact_pairs_checked": 13269,
+    "interior_cross_boundary_intersections": 0,
+    "other_faces": 632,
+    "output_faces": 10856,
+    "status": "EXACT_NO_INTERIOR_CROSS_BOUNDARY_INTERSECTION"
+  },
+  "evaluation": 117,
+  "full_solver_speedup": null,
+  "full_triangle_interior_cross_boundary_tested": true,
+  "m26_certificate_reused": true,
+  "m26_certificate_sha256": "44867677606ea8437a5d94777df8214b879aca31ccb2fb047dd0e27cef3d79ff",
+  "new_boolean_calls": 0,
+  "new_newton_runs": 0,
+  "operation": "difference",
+  "opposite_operand": "source",
+  "output_faces_tested": 10856,
+  "output_faces_total": 11432,
+  "output_owner": "design",
+  "output_packet_sha256": "e85636e9a8fecc00a84b399b7f6e2dc35a78c14a060f3a97b1b33396dff91b56",
+  "output_vertices": 5718,
+  "owner_face_counts": {
+    "design": 10856,
+    "source": 0
+  },
+  "passed": true,
+  "production_admitted": false,
+  "raw_packet_sha256": "e85636e9a8fecc00a84b399b7f6e2dc35a78c14a060f3a97b1b33396dff91b56",
+  "returncode": 0,
+  "schema": "w1-m28-cross-boundary-replay-v1",
+  "status": "EXACT_NO_INTERIOR_CROSS_BOUNDARY_INTERSECTION",
+  "stderr": "",
+  "wall_seconds": 0.3373225010000169
+}
