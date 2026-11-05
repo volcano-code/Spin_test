@@ -631,5 +631,27 @@
     "training_admitted": false,
     "formal_M16_24GiB_admitted": false,
     "evidence_origin": "USER_SUPPLIED_TERMINAL_OUTPUT_RAW_ARCHIVE_PENDING"
+  },
+  "m22_archive_audit": {
+    "status": "M22_P1_ARCHIVE_INTEGRITY_PASS_FULL_NATIVE_REPLAY_PARTIAL_BLOCKED",
+    "report": "research/NeuralMoments/teacher/M22_M21_HEART_ARCHIVE_AUDIT_20261106.md",
+    "machine_result": "research/NeuralMoments/teacher/M22_M21_HEART_ARCHIVE_AUDIT_20261106.json",
+    "original_uploaded_archive_sha256": "259b9f288b629415bafa42e4e09d6503e4f474e0e2253e6cc9eb1cd775a64dfd",
+    "all_original_sha256sum_entries_valid": true,
+    "run_directory_and_both_logs_found": true,
+    "outer_logs_byte_identical": true,
+    "result_label_spec_and_model_cross_file_hashes_verified": true,
+    "same_call_attachment_descriptor_present": true,
+    "same_call_serialized_material_payload_present": false,
+    "native_shared_objects_and_external_module_manifest_present": false,
+    "external_budget_file_present": false,
+    "stderr_file_present_but_empty": true,
+    "native_cherchi_diagnostic_status": "PILOT_EXACT_TEN_MOMENTS_PASSED_DIAGNOSTIC_ONLY",
+    "independent_ten_moment_within_tolerance": true,
+    "maximum_absolute_error": 0,
+    "J_D": null,
+    "split": "excluded",
+    "training_samples": 0,
+    "full_native_replay": "BLOCKED_MISSING_SERIALIZED_MATERIAL_AND_NATIVE_BINARIES"
   }
 }
