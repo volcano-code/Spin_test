@@ -77,8 +77,30 @@ def frac(value):
     # Exact rational bytes from the Cherchi constructor (not rounded OBJ).
     need(type(value) is str and bool(RATIONAL.fullmatch(value)), 'INVALID_EXACT_RATIONAL_TOKEN')
     a,b = value.split('/')
-    number=lambda s: int(s,2 if s.lstrip('-').startswith('0b') else 10)
-    return Fraction(number(a),number(b))
+    def number(token):
+        if token.lstrip('-').startswith('0b'):
+            return int(token, 2)
+        if len(token) <= 640:  # Smallest enabled Python decimal digit limit.
+            return int(token)
+        from make_it_stand.verification.rational_text import integer_from_decimal_text
+        return integer_from_decimal_text(token)
+
+    denominator = number(b)
+    need(denominator > 0, 'INVALID_EXACT_RATIONAL_TOKEN')
+    return Fraction(number(a), denominator)
+
+
+def canonical_mesh_rational_rows(vertices):
+    from make_it_stand.verification.rational_text import fraction_to_rational_text
+
+    need(isinstance(vertices, (list, tuple)) and len(vertices) > 0,
+         'EXACT_MESH_VERTICES_REQUIRED')
+    rows = []
+    for row in vertices:
+        need(isinstance(row, (list, tuple)) and len(row) == 3,
+             'EXACT_MESH_VERTEX_TRIPLE_REQUIRED')
+        rows.append(tuple(fraction_to_rational_text(frac(token)) for token in row))
+    return tuple(rows)
 
 
 def boundary_rows(vertices, faces):
@@ -315,7 +337,8 @@ def audit_live_native_once(*, evaluator, problem, c, pins):
          expected_fixed_r=fixed)
     # Native *independent* exact-region test on the ACTUAL PHYSICAL rational mesh.
     proof=material['material_proof']
-    retained=MeshSnapshot.from_rationals(proof['exact_vertices'],material['variable_faces'])
+    retained=MeshSnapshot.from_rationals(canonical_mesh_rational_rows(proof['exact_vertices']),
+                                         material['variable_faces'])
     design=MeshSnapshot((evaluator.design.tolist(),[list(row) for row in request.design_faces]))
     subset=native().check_exact_material_subset(retained.exact_region(),design.exact_region())
     need(type(subset) is dict and subset.get('completed') is True and

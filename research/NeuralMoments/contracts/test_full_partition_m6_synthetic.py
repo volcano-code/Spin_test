@@ -1,6 +1,7 @@
 """Synthetic native-shaped interfaces, testing orchestration only (NOT real native proof)."""
 from __future__ import annotations
 from fractions import Fraction as F
+from pathlib import Path
 import sys
 import types
 from unittest.mock import patch
@@ -122,6 +123,7 @@ def fake_imports(monkeypatch):
     n=FakeNative()
     a=types.ModuleType('make_it_stand')
     b=types.ModuleType('make_it_stand.verification')
+    b.__path__ = [str(Path(__file__).resolve().parents[3] / 'python/make_it_stand/verification')]
     c=types.ModuleType('make_it_stand.verification.cherchi_inprocess');c.InProcessCherchiEvaluator=FakeEvaluator
     d=types.ModuleType('make_it_stand.verification.spin_problem');d.MeshSnapshot=FakeMesh;d.SpinArtifactProblem=FakeProblem
     e=types.ModuleType('make_it_stand.verification.spin_common');e.native=lambda:n
@@ -142,7 +144,11 @@ def run_fake(monkeypatch,change=None):
 
 
 def test_synthetic_full_partition_honors_exact_carve_and_fixed_density(monkeypatch):
-    result,n,e=run_fake(monkeypatch)
+    def binary_retained(native, evaluator):
+        rows = evaluator.saved['material_proof']['exact_vertices']
+        rows[0][0] = '0b1/0b10'
+
+    result,n,e=run_fake(monkeypatch, binary_retained)
     assert result['retained_plus_cavity_equals_design_r10_exact']
     assert result['fixed_plus_retained_density_weighted_moments_verified']
     assert [x['part_count'] for x in result['exact_partition_predicates']]==[2,2,3]

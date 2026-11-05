@@ -14,7 +14,7 @@ import resource
 import time
 
 from .native_teacher_replay import (ReplayRejected, affine_target_from_physical,
-    boundary_rows, compare_floats, exact_raw_moments, need, sha256_file,
+    boundary_rows, canonical_mesh_rational_rows, compare_floats, exact_raw_moments, need, sha256_file,
     vector10, digest)
 from .native_m5_bridge import audit_native_w0_w2_once
 
@@ -223,7 +223,7 @@ def audit_native_full_partition_once(*,evaluator,problem,c,pins):
     fixed=[_region(n,region.mesh) for region in fixed_regions if not region.mesh.explicit_empty]
     # Retained physical coordinates, as certified in M4: exact authored
     # constructor boundary; cannot infer from rendered binary64 vertices.
-    retained_v=saved['material_proof']['exact_vertices']
+    retained_v=canonical_mesh_rational_rows(saved['material_proof']['exact_vertices'])
     retained_f=saved['variable_faces']
     retained=MeshSnapshot.from_rationals(retained_v,retained_f)
     retained_region=_region(n,retained)

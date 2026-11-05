@@ -9,7 +9,7 @@ import numpy as np
 from .native_teacher_replay import (
     ReplayRejected, audit_same_call_material, audit_live_native_once,
     affine_target_from_physical, boundary_rows, canonical, digest,
-    exact_raw_moments, frac)
+    canonical_mesh_rational_rows, exact_raw_moments, frac)
 
 P=(('0/1','0/1','0/1'),('1/1','0/1','0/1'),
    ('0/1','1/1','0/1'),('0/1','0/1','1/1'))
@@ -156,3 +156,47 @@ def test_exact_affine_nonidentity_cross_term_representation():
 def test_live_native_execution_blocked_with_fake_evaluator():
     with pytest.raises(ReplayRejected,match='NATIVE_CHERCHI_RUNTIME_UNAVAILABLE'):
         audit_live_native_once(evaluator=object(),problem=None,c=C,pins={})
+
+
+@pytest.fixture
+def core_source(monkeypatch):
+    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[3] / 'python'))
+
+
+def test_exact_mesh_rational_normalization(core_source):
+    huge = Fraction((1 << 20000) + 1, (1 << 19999) + 1)
+    rows = canonical_mesh_rational_rows([
+        ['0b101101/0b1101', '-0b101/0b11', '0b0/0b1'],
+        ['0/1', f'{huge.numerator:#b}/{huge.denominator:#b}', '8/4'],
+    ])
+    assert rows[0] == ('45/13', '-5/3', '0/1')
+    assert rows[1][::2] == ('0/1', '2/1')
+    assert all(part.isdecimal() and len(part) > 4300 for part in rows[1][1].split('/'))
+    assert frac(rows[1][1]) == huge
+
+
+@pytest.mark.parametrize('rows', [[], [['1/1']]] + [
+    [['0/1', '0/1', token]] for token in ('1/0', '1/0b00', '2/-1', '0b2/1', None)])
+def test_invalid_exact_mesh_rejected(core_source, rows):
+    with pytest.raises(ReplayRejected):
+        canonical_mesh_rational_rows(rows)
+
+
+def test_exact_retained_mesh_display_boundary(core_source, monkeypatch):
+    from types import SimpleNamespace
+    from make_it_stand.verification import spin_problem
+
+    # Only the final compiled geometry operation is substituted in this unit test.
+    region = SimpleNamespace(facts={'completed': True, 'valid': True, 'error': ''})
+    native = SimpleNamespace(make_exact_material_region_from_rationals=lambda rows, faces: region)
+    monkeypatch.setattr(spin_problem, 'native', lambda: native)
+    binary = [list(row) for row in P]
+    binary[1][0] = '0b101101/0b1101'
+    rows = canonical_mesh_rational_rows(binary)
+    snapshot = spin_problem.MeshSnapshot.from_rationals(rows, F)
+    display, faces = snapshot.arrays()
+    assert display[1, 0] == float(Fraction(45, 13))
+    mismatched = display.copy()
+    mismatched[1, 0] = np.nextafter(display[1, 0], math.inf)
+    with pytest.raises(ValueError, match='do not match their binary64'):
+        spin_problem.MeshSnapshot((mismatched, faces), rational_vertices=rows)
