@@ -1583,3 +1583,58 @@ jobs:
           path: ${{ runner.temp }}/w4-p21-replay-control-evidence/**
           if-no-files-found: warn
           retention-days: 30
+
+  # P23 reproduces the exact Cherchi binary-rational / W0 decimal-boundary mismatch.
+  # No Cherchi/native geometry or formal M6 call is made.
+  p23-rational-token-transport:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      P23_W0_COMMIT: 51cbfd33d08063404d7e0c40e4256dd0e38efa1a
+      P23_CORE_COMMIT: 58fd12c1306c1c01679a19172e276eef0b30542
+    steps:
+      - name: Checkout exact W4 revision
+        uses: actions/checkout@v4
+        with:
+          path: w4
+          persist-credentials: false
+      - name: Checkout frozen W0 contract
+        uses: actions/checkout@v4
+        with:
+          ref: 51cbfd33d08063404d7e0c40e4256dd0e38efa1a
+          path: w0
+          persist-credentials: false
+      - name: Checkout frozen native/core source
+        uses: actions/checkout@v4
+        with:
+          ref: 58fd12c1306c1c01679a19172e276eef0b30542
+          path: core
+          persist-credentials: false
+      - name: Prepare Python 3.12 and NumPy
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install only the pure-Python boundary test dependency
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check 'numpy==2.3.5'
+      - name: Reproduce and test exact rational transport without native calls
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/w4-p23-rational-evidence"
+          python "w4/research/SpinIt2014_Teapot_20261018/P1/p23_rational_token_transport.py" \
+            --w0-root "$GITHUB_WORKSPACE/w0" \
+            --core-root "$GITHUB_WORKSPACE/core" \
+            --expected-w0-commit "$P23_W0_COMMIT" \
+            --output "$RUNNER_TEMP/w4-p23-rational-evidence/report.json" \
+            2>&1 | tee "$RUNNER_TEMP/w4-p23-rational-evidence/console.log"
+      - name: Preserve P23 source-boundary evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-P23-exact-rational-transport-diagnostic-not-M6
+          path: ${{ runner.temp }}/w4-p23-rational-evidence/**
+          if-no-files-found: warn
+          retention-days: 30
+
