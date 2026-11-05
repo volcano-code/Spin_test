@@ -1,7 +1,7 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M21_GUARDED_9G_PILOT_AND_DIAGNOSTIC_EXIT_GATE_VERIFIED_FRESH_HEART_NATIVE_RUN_PENDING",
-  "native_teacher_runs": 0,
+  "status": "M21_HEART_NATIVE_NUMERIC_DIAGNOSTIC_PASSED_W0_AND_SOLID_PROOF_PENDING",
+  "native_teacher_runs": 1,
   "training_samples": 0,
   "order": [
     "m",
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "Run the corrected 9 GiB Frozen Heart pilot on the user's W2 Ubuntu host when live MemAvailable >= 11 GiB and swap=0; inspect its raw result/label and postflight hashes. Then recover/rebuild and certify six rational Noodles F/D/A packets, execute a fresh Noodles Cherchi teacher, and obtain W0/W3 smooth-Jacobian admission.",
+  "pending_dependency": "Byte-level audit of M21 raw run archive; Heart solid embedding and W0/W3 smooth-Jacobian certification; six exact Noodles V7 F/D/A packets and set-semantics proof; fresh Noodles Cherchi teacher. Keep J_D null and all data excluded until gates pass.",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -81,7 +81,7 @@
     "topology": "ORIENTED_TWO_MANIFOLD_NECESSARY_NOT_EMBEDDING_PROOF",
     "limitations": "Does not certify CAD provenance, original CAD equivalence, watertight exact embedding, design/fixed geometry or W0 derivative neighborhood"
   },
-  "local_native_calls": 0,
+  "local_native_calls": 1,
   "previously_recorded_native_evidence": {
     "scope": "H8_RECONSTRUCTED_CAD_NON_AUTHOR_ORIGINAL",
     "upstream_github_actions_run": 39121571756,
@@ -613,5 +613,23 @@
     "J_D": null,
     "training_samples": 0,
     "formal_M16_24GiB_admission": false
+  },
+  "latest_native_diagnostic": {
+    "report": "research/NeuralMoments/teacher/M21_HEART_NATIVE_DIAGNOSTIC_20261105.md",
+    "result_json": "research/NeuralMoments/teacher/M21_HEART_NATIVE_DIAGNOSTIC_RESULT.json",
+    "run_id": "heart-pilot9-flex-20261105T083338329274558-3159689",
+    "native_cherchi": true,
+    "independent_ten_moment_within_tolerance": true,
+    "maximum_absolute_error": 0,
+    "maximum_normalized_error": 0,
+    "same_call_attachment_present": true,
+    "source_and_module_postflight_verified": true,
+    "topology_status": "OBSERVED_DISCRETE_MAP",
+    "derivative_status": "UNKNOWN",
+    "J_D": null,
+    "split": "excluded",
+    "training_admitted": false,
+    "formal_M16_24GiB_admitted": false,
+    "evidence_origin": "USER_SUPPLIED_TERMINAL_OUTPUT_RAW_ARCHIVE_PENDING"
   }
 }
