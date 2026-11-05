@@ -1,0 +1,17 @@
+{
+  "cherchi_native_calls": 0,
+  "core_commit": "58fd12c1306c1c01679a19172e276eef0cb30542",
+  "errors": 0,
+  "failures": 0,
+  "float_round_trip_used_for_exact_token_conversion": false,
+  "formal_M6_executed": false,
+  "native_set_equality_proved": false,
+  "require_fixed": true,
+  "schema": "W4_P23_RATIONAL_TOKEN_TRANSPORT_V1",
+  "scope": "W4_OWNED_EXACT_TOKEN_BOUNDARY_DIAGNOSTIC_ONLY",
+  "skipped": 0,
+  "status": "P23_W0_RATIONAL_BOUNDARY_FIX_VERIFIED",
+  "successful": true,
+  "tests_run": 5,
+  "w0_commit": "06984ae7ef5b09893e0f1b269d4e00dd5b9f1c58"
+}
