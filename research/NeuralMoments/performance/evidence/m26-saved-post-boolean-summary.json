@@ -1,0 +1,58 @@
+{
+  "schema": "w1-m26-replayed-real-saved-geometry-summary-v1",
+  "archive_sha256": "0c0962173694415b07578bae4375b9702251d0078b5c3a20935836e96d938976",
+  "original_cpp_source_sha256": "2536f7783ff6552ac930c294879e69b8430fc8e527873859b3ec1187d39c6ea0",
+  "original_cpp_binary_sha256": "e7b7cca7f8852922e25ccf2572b84dbccd6b2ced5b8a177a7af462a10f554347",
+  "test_count": 14,
+  "test_failures": 0,
+  "independent_exact_candidate_pairs": 513195,
+  "points": [
+    {
+      "evaluation": 117,
+      "operation": "difference",
+      "vertices": 5718,
+      "faces": 11432,
+      "candidate_pairs": 131720,
+      "packet_sha256": "e85636e9a8fecc00a84b399b7f6e2dc35a78c14a060f3a97b1b33396dff91b56",
+      "status": "EXACT_POST_BOOLEAN_SELF_INTERSECTION_FREE"
+    },
+    {
+      "evaluation": 4,
+      "operation": "intersection",
+      "vertices": 5158,
+      "faces": 10312,
+      "candidate_pairs": 250083,
+      "packet_sha256": "ccd014a1b1ef4fbcd61fa1a4c849eca5e57cf1dd6699ffa1dfa244d91fd8e70e",
+      "status": "EXACT_POST_BOOLEAN_SELF_INTERSECTION_FREE"
+    },
+    {
+      "evaluation": 116,
+      "operation": "difference",
+      "vertices": 5718,
+      "faces": 11432,
+      "candidate_pairs": 131392,
+      "packet_sha256": "bc2dbd7084b0a69826cfed008e30d70753a9636946f02e9d2f95c087b889d125",
+      "status": "EXACT_POST_BOOLEAN_SELF_INTERSECTION_FREE"
+    },
+    {
+      "evaluation": 123,
+      "operation": "difference",
+      "vertices": 0,
+      "faces": 0,
+      "candidate_pairs": 0,
+      "packet_sha256": "4fa9bce0d2c34c3621e943bb03f2583fbfe15ec6cab1446eea51640c554cfacc",
+      "status": "STRICT_EMPTY_NO_POSITIVE_MASS"
+    }
+  ],
+  "saved_output_replay_status": "COMPLETE_SAVED_OUTPUT_SELF_INTERSECTION_CERTIFICATION",
+  "same_saved_material_and_candidate_pair_checks": true,
+  "new_native_boolean_calls": 0,
+  "newton_runs": 0,
+  "global_output_input_set_semantics_certified": false,
+  "production_cherchi_moment_equality_certified": false,
+  "full_jacobian_certified": false,
+  "smooth_neighborhood_certified": false,
+  "converged": false,
+  "w0_w2_admitted": false,
+  "full_solver_speedup": null
+}
