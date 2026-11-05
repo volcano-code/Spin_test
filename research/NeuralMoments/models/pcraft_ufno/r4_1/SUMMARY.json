@@ -1,0 +1,41 @@
+{
+  "schema": "W6_R4_1_REPLAY_SUMMARY_V1",
+  "branch": "research/neuralmoments-w6-pcraft-20261019",
+  "parent_head": "870e972cbeca8866c0b729b2ceae44db64cc6893",
+  "parent_manifest_verified": true,
+  "incremental_files_verified": 16,
+  "full_suite": {
+    "passed": 151,
+    "skipped": 38,
+    "failed": 0,
+    "seconds": 6.05
+  },
+  "benchmark": {
+    "seed": 24041,
+    "random_cases": 36,
+    "max_invariant_residual": 6.661338147750939e-16,
+    "minimum_gram_eigen": -2.4632080739768097e-16,
+    "ratios": [
+      52.007,
+      100.284,
+      123.025
+    ],
+    "r3_r_relative_errors": [
+      9.150987770599984e-7,
+      2.9407341980772855e-7,
+      8.363449709372e-8
+    ],
+    "r3_J_relative_errors": [
+      0.00277759571642028,
+      0.0000557350625182471,
+      0.00024170815745985197
+    ]
+  },
+  "code_archive_sha256": "9d01d8711e6f12e1c0ef059a5229eadfb421837d43da74b4884035dbd12e26b9",
+  "official_algoim_compile": "NOT_RUN_MISSING_OFFICIAL_SOURCE",
+  "native_cherchi_calls": 0,
+  "w0_w2_admitted_training_labels": 0,
+  "native_optimizer_admitted": false,
+  "trusted_teacher": false,
+  "scope": "regular plane cuts of disjoint constant-density axis-aligned boxes only"
+}

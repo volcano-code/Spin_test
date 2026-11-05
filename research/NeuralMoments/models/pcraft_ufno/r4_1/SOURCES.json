@@ -1,0 +1,78 @@
+{
+  "schema": "SPIN_W6_R4_1_UPSTREAM_SOURCE_AUDIT_V1",
+  "audit_date": "2026-11-05",
+  "branch": "research/neuralmoments-w6-pcraft-20261019",
+  "parent_head": "870e972cbeca8866c0b729b2ceae44db64cc6893",
+  "code_archive": "W6_R4_1_CODE_TESTS_BENCH.zip",
+  "code_archive_sha256": "9d01d8711e6f12e1c0ef059a5229eadfb421837d43da74b4884035dbd12e26b9",
+  "scope": "regular plane cuts of disjoint constant-density axis-aligned boxes",
+  "source_projects": [
+    {
+      "name": "P-CRAFT U-FNO",
+      "url": "https://github.com/volcano-code/test",
+      "status": "existing W6 adapter/architecture research; no full upstream weights reproduced"
+    },
+    {
+      "name": "Algoim",
+      "url": "https://github.com/algoim/algoim",
+      "expected_commit": "da1d81499608e1d499695d255f0233140b8c81e8",
+      "status": "R4 C++ adapter only; upstream source unavailable in cloud; not compiled"
+    },
+    {
+      "name": "QuadrANN",
+      "url": "https://github.com/kesmarag/QuadrANN",
+      "license": "MIT",
+      "status": "prior R2 adapter; previous candidates did not beat non-learned baseline"
+    },
+    {
+      "name": "PhysicsNeMo",
+      "url": "https://github.com/NVIDIA/physicsnemo",
+      "license": "Apache-2.0",
+      "status": "future GPU encoder ablation; not integrated in R4.1"
+    },
+    {
+      "name": "fVDB",
+      "url": "https://github.com/openvdb/fvdb-core",
+      "license": "Apache-2.0",
+      "status": "future sparse GPU backend; not integrated in R4.1"
+    },
+    {
+      "name": "Transolver-3",
+      "url": "https://github.com/thuml/Transolver-3",
+      "status": "method reference only; license not established for copying"
+    },
+    {
+      "name": "Opt-RNO",
+      "url": "https://github.com/zecheng-ai/Opt_RNO",
+      "status": "method reference only; license not established for copying"
+    },
+    {
+      "name": "GAOT",
+      "url": "https://github.com/camlab-ethz/GAOT",
+      "status": "method reference only; license not established for copying"
+    }
+  ],
+  "claims": {
+    "new_in_r4_1": [
+      "plane-box polyhedral clipping for ten raw moments",
+      "ambient ten-parameter plane-state Jacobian",
+      "necessary moment/Jacobian physical screen",
+      "additive dispatch gate",
+      "fixed-seed CPU benchmark"
+    ],
+    "inherited": [
+      "P-CRAFT U-FNO",
+      "GNO",
+      "DE-DeepONet",
+      "QuadrANN adapters",
+      "uncompiled Algoim C++ glue"
+    ]
+  },
+  "not_claimed": [
+    "arbitrary CAD",
+    "Cherchi teacher labels",
+    "native Newton admission",
+    "GPU/high-resolution performance",
+    "end-to-end Spin-it Faster acceleration"
+  ]
+}

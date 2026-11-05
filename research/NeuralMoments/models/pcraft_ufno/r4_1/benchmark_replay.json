@@ -1,0 +1,43 @@
+{
+  "schema": "SPIN_W6_R4_1_PLANAR_HARD_CUT_AUDIT_REPLAY_V1",
+  "seed": 24041,
+  "random_cases": 36,
+  "max_invariant_residuals": {
+    "complement_r_abs": 6.661338147750939e-16,
+    "complement_J_abs": 4.440892098500626e-16,
+    "positive_scaling_r_abs": 4.440892098500626e-16,
+    "positive_scaling_J_abs": 4.440892098500626e-16,
+    "jacobian_gram_skew_abs": 1.1102230246251565e-16,
+    "jacobian_null_abs": 1.8041124150158794e-16
+  },
+  "minimum_gram_eigen": -2.4632080739768097e-16,
+  "pairwise": [
+    {
+      "new_median_ms": 1.2303625,
+      "old_r3_median_ms": 63.987298,
+      "ratio": 52.007,
+      "r3_r_relative_error": 9.150987770599984e-7,
+      "r3_J_relative_error": 0.00277759571642028
+    },
+    {
+      "new_median_ms": 0.989784,
+      "old_r3_median_ms": 99.259396,
+      "ratio": 100.284,
+      "r3_r_relative_error": 2.9407341980772855e-7,
+      "r3_J_relative_error": 0.0000557350625182471
+    },
+    {
+      "new_median_ms": 1.163091,
+      "old_r3_median_ms": 143.089172,
+      "ratio": 123.025,
+      "r3_r_relative_error": 8.363449709479372e-8,
+      "r3_J_relative_error": 0.00024170815745985197
+    }
+  ],
+  "caveats": [
+    "approximate comparator is not equal-error",
+    "CPU plane-only subtask, not end-to-end acceleration",
+    "no interval certification",
+    "not arbitrary CAD"
+  ]
+}
