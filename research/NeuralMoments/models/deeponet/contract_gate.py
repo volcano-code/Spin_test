@@ -158,7 +158,7 @@ def check_w0_contract(record: Any) -> dict[str, Any]:
     _require(coeff.get("positive_scale_equivalent") is True and coeff.get("negative_sign_equivalent") is False, "W0 projective sign mismatch")
     _require(coeff.get("retained_side") in ("BETA_POSITIVE", "BETA_NEGATIVE"), "W0 retained side missing")
     c = _vector(coeff.get("c"), 10, "W0 native c")
-    _require(abs(float(np.linalg.norm(c))-1) <= 1e-9, "W0 c not native unit-normalized; do not renormalize saved bit pattern")
+    _require(abs(float(np.linalg.norm(c))-1) <= 1e-12, "W0 c not native unit-normalized; do not renormalize saved bit pattern")
     _require(moments.get("order") == RAW_R_ORDER, "W0 raw moment order mismatch")
     F = _vector(moments.get("fixed_r"), 10, "W0 fixed F")
     _require(moments.get("status") in ("ANALYTIC_ONLY", "NATIVE_VERIFIED", "FAILED_MATERIAL", "NOT_RUN"), "W0 material status invalid")
@@ -201,7 +201,7 @@ def _verify_w2_envelope(envelope: Any, *, c: Sequence[float], model_sha: str, mo
     _require(_sha(envelope["payload_sha256"]) and digest(p) == envelope["payload_sha256"], "W2 payload tampered")
     q = _vector(p.get("q"), 10, "W2 q (native c)")
     _require(q.tolist() == _vector(c, 10, "expected native c").tolist(), "W2 c mismatches expected exact serialized coefficients")
-    _require(abs(float(np.linalg.norm(q))-1) <= 1e-9, "W2 q must contain saved unit-normalized native coefficients")
+    _require(abs(float(np.linalg.norm(q))-1) <= 1e-12, "W2 q must contain saved unit-normalized native coefficients")
     _require(_sha(model_sha) and _sha(module_sha), "W2 unpinned model/module identities")
     _require(p.get("model_sha256") == model_sha and p.get("native_module_sha256") == module_sha, "W2 model/module byte SHA mismatch")
     _require(set(identity) == {"q_sha256", "geometry_sha256", "model_sha256", "native_module_sha256"}, "W2 identity fields mismatch")
@@ -231,6 +231,12 @@ def admit_w2_record(path: str | Path, *, expected_c_native: Sequence[float],
     The W2 pre-W0 teacher's manifest has ZERO real runs and so currently
     provides no legitimate approved hashes. This loader does NOT train.
     """
+    # Native v2 has no independently approved release catalog yet. Do not
+    # reinterpret its q alias as a monomial vector or train on excluded rows.
+    incoming = strict_json(path)
+    if (isinstance(incoming,dict) and isinstance(incoming.get("payload"),dict)
+            and incoming["payload"].get("schema")==W2_V2_SCHEMA):
+        raise AdmissionError("W2_V2_FORMAL_NATIVE_RELEASE_NOT_INDEPENDENTLY_SEALED")
     permitted = frozenset(approved_file_sha256)
     _require(bool(permitted) and all(_sha(x) for x in permitted), "No independently approved W2 label checksum")
     actual_sha = file_sha256(path)
@@ -290,3 +296,107 @@ def audit_family_split(candidates: Sequence[Mapping[str, Any]], *, require_train
         _require(not (split_ids[lhs] & split_ids[rhs]), f"leaked original/F/D geometry identity across {lhs}/{rhs}")
     return {"total":len(candidates),"by_split":{s:sum(r["split"]==s for r in candidates) for s in sorted(_VALID_SPLITS)},
             "families":{s:sorted(v) for s,v in split_families.items()}, "leakage":False}
+
+
+# W5 migration proposal: distinct excluded-v2 inspection, NEVER an admission.
+# Original W5 v1 candidate importer is intentionally kept for compatibility.
+# Reviewed source: volcano-code/Spin_test W5 blob 14b2ab225a032188fe16570414ef321af9a81e00
+W2_V2_SCHEMA = "w2-cherchi-teacher-v2-pre-w0"
+_W2_V2_KEYS = frozenset((
+    "schema","order","coefficient_convention","native_c_order","native_c",
+    "polynomial_q","model_sha256","native_module_sha256","geometry","density",
+    "frame","q","r_D","J_D","r_F","topology_status","derivative_status",
+    "derivative_contract","stage_seconds","peak_rss_bytes","exact_proof",
+    "split","failure_reason","total_policy"
+))
+
+
+def _same_native_binary64(left, right):
+    import struct
+    a=_vector(left,10,"raw native c")
+    b=_vector(right,10,"independently expected native c")
+    return struct.pack("!10d",*a)==struct.pack("!10d",*b)
+
+
+def inspect_w2_v2_excluded_record(path, *, expected_native_c,
+                                  expected_model_sha256,
+                                  expected_native_module_sha256,
+                                  expected_geometry_sha256):
+    """Parse current W2 v2 strictly for diagnostics, NEVER return r/J labels.
+
+    Expected SHA and original c MUST originate in an independent review;
+    copying the envelope's claimed pins is not provenance certification.
+    """
+    import struct
+    doc = strict_json(path)
+    _require(type(doc) is dict and set(doc)=={"payload","payload_sha256","identity"},
+             "V2_ENVELOPE_FIELDS_INVALID")
+    p, identity=doc["payload"],doc["identity"]
+    _require(type(p) is dict and set(p)==_W2_V2_KEYS and type(identity) is dict
+             and set(identity)=={"q_sha256","geometry_sha256","model_sha256",
+                                 "native_module_sha256"}, "V2_PAYLOAD_SHAPE_INVALID")
+    _require(p.get("schema")==W2_V2_SCHEMA and p.get("native_c_order")==
+             NATIVE_C_ORDER.split(",") and p.get("order")==W2_ORDER,
+             "V2_SCHEMA_OR_MOMENT_ORDER_INVALID")
+    _require(p.get("coefficient_convention")==
+             "NATIVE_MATRIX_ENTRIES_C10_POLYNOMIAL_Q_EQUALS_BC_V1" and
+             p.get("total_policy")=="r_total=r_F+r_D;J_total=J_D;fixed_never_in_r_D",
+             "V2_NATIVE_C_AND_FIXED_POLICY_CHANGED")
+    _require(_sha(doc["payload_sha256"]) and doc["payload_sha256"]==digest(p),
+             "V2_PAYLOAD_DIGEST_MISMATCH")
+    for key,expected in (("model_sha256",expected_model_sha256),
+                          ("native_module_sha256",expected_native_module_sha256),
+                          ("geometry_sha256",expected_geometry_sha256)):
+        _require(_sha(expected) and identity.get(key)==expected,
+                 "V2_INDEPENDENT_EXPECTED_SHA_MISMATCH:"+key)
+    _require(p["model_sha256"]==expected_model_sha256 and
+             p["native_module_sha256"]==expected_native_module_sha256 and
+             type(p["geometry"]) is dict and digest(p["geometry"])==
+             expected_geometry_sha256, "V2_UNBOUND_SOURCE_OR_GEOMETRY")
+    raw=_vector(p["native_c"],10,"v2 native c")
+    _require(_same_native_binary64(p["native_c"],expected_native_c) and
+             _same_native_binary64(p["q"],expected_native_c),
+             "V2_ORIGINAL_RAW_NATIVE_C_NOT_BITWISE_PRESERVED")
+    monomial=(raw*B_DIAG).tolist()
+    _require(_same_native_binary64(p["polynomial_q"],monomial),
+             "V2_MONOMIAL_Q_NOT_B_TIMES_NATIVE_C")
+    _require(identity.get("q_sha256")==digest(p["native_c"]),
+             "V2_LEGACY_NATIVE_C_SHA_MISMATCH")
+    _require(p.get("split")=="excluded" and p.get("J_D") is None and
+             p.get("derivative_status") in ("UNKNOWN","INVALID") and
+             p.get("derivative_contract") is None,
+             "V2_REAL_TEACHER_RELEASE_NOT_AUTHORIZED")
+    _require(p.get("topology_status") in
+             ("FAILED","VALID","OBSERVED_DISCRETE_MAP") and
+             type(p.get("exact_proof")) is dict,
+             "V2_TOPOLOGY_OR_SOURCE_PROOF_INVALID")
+    if p["topology_status"]=="FAILED":
+        _require(p["r_D"] is None and p["r_F"] is None and
+                 p["derivative_status"]=="INVALID",
+                 "V2_FAILED_MATERIAL_CANNOT_PUBLISH_MOMENTS")
+    for key in ("r_D","r_F"):
+        if p[key] is not None:_vector(p[key],10,key)
+    _positive(p.get("density"),"v2 density")
+    _check_frame(p.get("frame"))
+    _require(type(p.get("stage_seconds")) is dict and
+             all(type(k) is str and type(v) in (float,int) and
+                 math.isfinite(v) and v>=0
+                 for k,v in p["stage_seconds"].items()), "V2_BAD_TIMING")
+    _require(p.get("peak_rss_bytes") is None or
+             (type(p["peak_rss_bytes"]) is int and p["peak_rss_bytes"]>=0),
+             "V2_BAD_RSS")
+    _require(math.isfinite(float(np.linalg.norm(raw))) and
+             float(np.linalg.norm(raw))>0., "V2_DEGENERATE_C")
+    return {
+       "schema":"W5_MIGRATION_V2_EXCLUDED_DIAGNOSTIC_V1",
+       "archived_raw_native_binary64_sha256":hashlib.sha256(
+           struct.pack("!10d",*raw)).hexdigest(),
+       "native_c_w0_unit_compatible":abs(float(np.linalg.norm(raw))-1.)<=1e-12,
+       "legacy_q_is_native_c_not_polynomial":True,
+       "monomial_q_is_B_times_native_c":True,
+       "status":"READ_ONLY_V2_EXCLUDED_NO_NATIVE_RELEASE",
+       "derivative_J_D":None,
+       "native_material_certified":False,
+       "train_val_test_admitted":False,
+       "training_admitted":False
+    }
