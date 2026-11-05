@@ -15,10 +15,16 @@ import math
 from pathlib import Path
 import re
 import struct
+import subprocess
 import tempfile
 
 LEGACY_W5_BLOB = "14b2ab225a032188fe16570414ef321af9a81e00"
 REVIEWED_M18_BLOB = "4c97aacc1d50366c7cc97876064f4183469d9910"
+# Reviewed together at W2 04ea5c86: terminal-transcribed, excluded Heart
+# diagnostic. Neither hash is a replacement for replaying the raw archive.
+M21_MANIFEST_BLOB = "97d1576b3fbfbdcd557bf17c4319c17b1f65f78f"
+M21_RECEIPT_BLOB = "b7938b4d76822079df72b46ef7d9c7b88d66c1d5"
+M21_RECEIPT_PATH = "research/NeuralMoments/teacher/M21_HEART_NATIVE_DIAGNOSTIC_RESULT.json"
 W2_SCHEMA = "w2-cherchi-teacher-v2-pre-w0"
 W0_UNIT_TOLERANCE = 1e-12
 REQUIRED_W2_EXCLUDED = 81
@@ -187,13 +193,22 @@ def inspect(*, w5_source, w5_head, w5_blob, w2_manifest, w2_head, w2_blob,
            and all(type(v) is list for v in splits.values()),
            "W2_SPLITS_SCHEMA_CHANGED")
     counts = [x.get("count") for x in splits["excluded"] if type(x) is dict]
+    runs = w2.get("native_teacher_runs")
     demand(counts==[REQUIRED_W2_EXCLUDED] and
            not splits["train"] and not splits["val"] and not splits["test"] and
-           type(w2.get("native_teacher_runs")) is int and
-           w2["native_teacher_runs"]==0 and
+           type(runs) is int and
+           ((runs == 0 and "latest_native_diagnostic" not in w2) or
+            (runs == 1 and w2_blob == M21_MANIFEST_BLOB)) and
            type(w2.get("training_samples")) is int and
            w2["training_samples"]==0,
            "W2_NATIVE_RELEASE_CHANGED_REQUIRES_INDEPENDENT_REVIEW")
+    if runs == 1:
+        # Use the same fetched commit as the manifest; a changed/missing
+        # receipt fails closed even if teacher_manifest.json is unchanged.
+        receipt = subprocess.run(["git", "rev-parse", "--verify", w2_head + ":" + M21_RECEIPT_PATH],
+                                 capture_output=True, text=True)
+        demand(receipt.returncode == 0 and receipt.stdout.strip() == M21_RECEIPT_BLOB,
+               "W2_M21_RECEIPT_REQUIRES_INDEPENDENT_REVIEW")
     if w5_blob==LEGACY_W5_BLOB:
         status="PENDING_W5_OWNER_ADOPTION"
         smoke={"actual_W5_candidate_runtime_exercised":False}
@@ -209,7 +224,9 @@ def inspect(*, w5_source, w5_head, w5_blob, w2_manifest, w2_head, w2_blob,
                   "reviewed_candidate_applied":status.startswith("REVIEWED_")},
             "W2":{"branch":W2_BRANCH,"commit_sha":w2_head,"manifest_git_blob":w2_blob,
                   "schema":w2["schema"],"excluded_h8f_samples":81,
-                  "native_teacher_runs":0,"training_samples":0},
+                  "native_teacher_runs":runs,"training_samples":0,
+                  "reviewed_excluded_receipt_blob": M21_RECEIPT_BLOB if runs else None,
+                  "raw_diagnostic_archive_verified_by_W0":False},
             "runtime":smoke,
             "scope":"CODE_IDENTITY_AND_STRUCTURAL_COMPATIBILITY_NOT_NATIVE_TRUTH",
             "W5_full_branch_tests_verified_by_W0":False,

@@ -142,3 +142,42 @@ def test_reviewer_can_replay_real_m18_candidate_without_releasing_labels(tmp_pat
     assert result["runtime"]["forged_train_split_rejected"]
     assert not result["W5_full_branch_tests_verified_by_W0"]
     assert not result["training_admitted"]
+
+
+def test_m21_excluded_receipt_tracks_the_same_w2_commit(tmp_path, monkeypatch):
+    args, manifest = write_inputs(tmp_path, monkeypatch)
+    manifest.update(native_teacher_runs=1, latest_native_diagnostic={
+        "J_D": None, "split": "excluded", "training_admitted": False})
+    args["w2_manifest"].write_text(json.dumps(manifest))
+    args["w2_blob"] = gate.git_blob(args["w2_manifest"].read_bytes())
+    monkeypatch.setattr(gate, "M21_MANIFEST_BLOB", args["w2_blob"])
+    receipt = gate.subprocess.CompletedProcess([], 0, stdout=gate.M21_RECEIPT_BLOB + "\n")
+    def git_lookup(command, **kwargs):
+        assert command == ["git", "rev-parse", "--verify", args["w2_head"] + ":" + gate.M21_RECEIPT_PATH]
+        return receipt
+    monkeypatch.setattr(gate.subprocess, "run", git_lookup)
+    result = gate.inspect(**args)
+    assert result["W2"]["native_teacher_runs"] == 1
+    assert result["W2"]["training_samples"] == 0
+    assert result["W2"]["reviewed_excluded_receipt_blob"] == gate.M21_RECEIPT_BLOB
+    assert not result["W2"]["raw_diagnostic_archive_verified_by_W0"]
+    assert not result["training_admitted"] and not result["W0_full_scientific_admission_certified"]
+    assert not result["Newton_accepted"] and not result["W5_native_teacher_data_released"]
+
+    # A changed receipt at this head is rejected despite the unchanged manifest.
+    receipt.stdout = "f"*40
+    with pytest.raises(gate.HandoffRejected, match="M21_RECEIPT"):
+        gate.inspect(**args)
+    receipt.returncode = 128
+    receipt.stdout = ""
+    with pytest.raises(gate.HandoffRejected, match="M21_RECEIPT"):
+        gate.inspect(**args)
+
+    # Even a correctly rehashed document loses its reviewed identity.
+    for update in ({"native_teacher_runs": 2}, {"native_teacher_runs": 0},
+                   {"latest_native_diagnostic": {"J_D": [], "split": "train"}},
+                   {"training_samples": 1}):
+        args["w2_manifest"].write_text(json.dumps({**manifest, **update}))
+        args["w2_blob"] = gate.git_blob(args["w2_manifest"].read_bytes())
+        with pytest.raises(gate.HandoffRejected, match="W2_NATIVE_RELEASE_CHANGED"):
+            gate.inspect(**args)
