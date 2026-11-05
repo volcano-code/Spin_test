@@ -1,0 +1,46 @@
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 718, in _warm_feature_flows
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 509, in _warm_drawing_and_image_flows
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/generated/interface/models.py", line 32861, in bring_to_front
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/rpc/remote.py", line 764, in __call__
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/rpc/client.py", line 175, in call
+artifact_tool.rpc.client.RemoteError: Element ordering requires an owning element collection.
+test_closed_single_tetra (test_m26_exact_intersection.TestM26.test_closed_single_tetra) ... ok
+test_disjoint_tetra (test_m26_exact_intersection.TestM26.test_disjoint_tetra) ... ok
+test_duplicate_face (test_m26_exact_intersection.TestM26.test_duplicate_face) ... ok
+test_empty (test_m26_exact_intersection.TestM26.test_empty) ... ok
+test_identical_disconnected_shells (test_m26_exact_intersection.TestM26.test_identical_disconnected_shells) ... ok
+test_intersecting_two_closed_tetra (test_m26_exact_intersection.TestM26.test_intersecting_two_closed_tetra) ... ok
+test_invalid_face_index (test_m26_exact_intersection.TestM26.test_invalid_face_index) ... ok
+test_rational_stream_rejects_index_outside_vertices (test_m26_exact_intersection.TestM26.test_rational_stream_rejects_index_outside_vertices) ... ok
+test_rational_stream_rejects_orphan_empty (test_m26_exact_intersection.TestM26.test_rational_stream_rejects_orphan_empty) ... ok
+test_relative_binary_path_executes_without_PATH_lookup (test_m26_exact_intersection.TestM26.test_relative_binary_path_executes_without_PATH_lookup) ... ok
+test_triangle_dangling_open (test_m26_exact_intersection.TestM26.test_triangle_dangling_open) ... ok
+test_vertex_pinched_two_tetra (test_m26_exact_intersection.TestM26.test_vertex_pinched_two_tetra) ... ok
+test_zero_area (test_m26_exact_intersection.TestM26.test_zero_area) ... ok
+test_zero_faces_but_orphan_vertex (test_m26_exact_intersection.TestM26.test_zero_faces_but_orphan_vertex) ... ok
+test_coplanar_adjacent_faces_sharing_only_diagonal_are_allowed (test_m27_intersection_adversarial.TestM27IntersectionAdversarial.test_coplanar_adjacent_faces_sharing_only_diagonal_are_allowed) ... ok
+test_coplanar_positive_area_overlap_is_rejected (test_m27_intersection_adversarial.TestM27IntersectionAdversarial.test_coplanar_positive_area_overlap_is_rejected) ... ok
+test_geometric_point_contact_without_shared_vertex_id_is_rejected (test_m27_intersection_adversarial.TestM27IntersectionAdversarial.test_geometric_point_contact_without_shared_vertex_id_is_rejected) ... ok
+test_sub_ulp_rational_gap_is_not_a_false_intersection (test_m27_intersection_adversarial.TestM27IntersectionAdversarial.test_sub_ulp_rational_gap_is_not_a_false_intersection) ... ok
+test_exact_plane_key_is_scale_and_orientation_invariant (test_m28_saved_boolean_set_semantics.TestM28ExactSemantics.test_exact_plane_key_is_scale_and_orientation_invariant) ... ok
+test_exact_ray_classifies_inside_outside_and_boundary (test_m28_saved_boolean_set_semantics.TestM28ExactSemantics.test_exact_ray_classifies_inside_outside_and_boundary) ... ok
+test_exact_signed_volume_and_orientation (test_m28_saved_boolean_set_semantics.TestM28ExactSemantics.test_exact_signed_volume_and_orientation) ... ok
+test_plane_index_finds_exact_subtriangle_owner (test_m28_saved_boolean_set_semantics.TestM28ExactSemantics.test_plane_index_finds_exact_subtriangle_owner) ... ok
+test_plane_index_rejects_triangle_outside_source_face (test_m28_saved_boolean_set_semantics.TestM28ExactSemantics.test_plane_index_rejects_triangle_outside_source_face) ... ok
+test_ray_direction_is_not_parallel_to_any_tetra_face (test_m28_saved_boolean_set_semantics.TestM28ExactSemantics.test_ray_direction_is_not_parallel_to_any_tetra_face) ... ok
+test_atomic_checkpoint_round_trip (test_m28_saved_boolean_set_semantics.TestM28M26CertificateAndCheckpoints.test_atomic_checkpoint_round_trip) ... ok
+test_certificate_file_tampering_fails_closed (test_m28_saved_boolean_set_semantics.TestM28M26CertificateAndCheckpoints.test_certificate_file_tampering_fails_closed) ... ok
+test_m26_certificate_binds_point_4_packet (test_m28_saved_boolean_set_semantics.TestM28M26CertificateAndCheckpoints.test_m26_certificate_binds_point_4_packet) ... ok
+test_m26_certificate_is_pinned_to_exact_original_archive (test_m28_saved_boolean_set_semantics.TestM28M26CertificateAndCheckpoints.test_m26_certificate_is_pinned_to_exact_original_archive) ... ok
+test_m26_certificate_rejects_geometry_size_drift (test_m28_saved_boolean_set_semantics.TestM28M26CertificateAndCheckpoints.test_m26_certificate_rejects_geometry_size_drift) ... ok
+test_m26_certificate_rejects_operation_drift (test_m28_saved_boolean_set_semantics.TestM28M26CertificateAndCheckpoints.test_m26_certificate_rejects_operation_drift) ... ok
+test_m26_certificate_rejects_packet_sha_drift (test_m28_saved_boolean_set_semantics.TestM28M26CertificateAndCheckpoints.test_m26_certificate_rejects_packet_sha_drift) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.061s
+
+OK

@@ -1,0 +1,223 @@
+{
+  "archive_sha256": "0c0962173694415b07578bae4375b9702251d0078b5c3a20935836e96d938976",
+  "full_solver_speedup": null,
+  "full_triangle_interior_cross_boundary_tested": false,
+  "jacobian_certified": false,
+  "m26_certificate_sha256": "44867677606ea8437a5d94777df8214b879aca31ccb2fb047dd0e27cef3d79ff",
+  "new_boolean_calls": 0,
+  "new_newton_runs": 0,
+  "points": [
+    {
+      "all_output_face_orientations_match_boolean_rule": true,
+      "all_output_faces_owned_by_exactly_one_input_triangle": true,
+      "all_vertex_edge_midpoint_centroid_samples_on_expected_side": true,
+      "evaluation": 4,
+      "exact_output_self_intersection_audit": {
+        "archive_sha256": "0c0962173694415b07578bae4375b9702251d0078b5c3a20935836e96d938976",
+        "m26_candidate_pairs": 250083,
+        "m26_certificate_status": "EXACT_POST_BOOLEAN_SELF_INTERSECTION_FREE",
+        "packet_sha256": "ccd014a1b1ef4fbcd61fa1a4c849eca5e57cf1dd6699ffa1dfa244d91fd8e70e",
+        "repeated_expensive_surface_audit": false,
+        "source": "committed-M26-exact-post-Boolean-audit"
+      },
+      "full_triangle_interior_cross_boundary_tested": false,
+      "operation": "intersection",
+      "output_face_orientation_counts": {
+        "design:same": 9898,
+        "source:same": 414
+      },
+      "output_face_owner_counts": {
+        "design": 9898,
+        "source": 414
+      },
+      "output_signed_volume": {
+        "binary64": 7638.767584325569,
+        "exact_fraction_sha256": "9b8673b104e9d1fcf22d74f437e214543110c99f48dbcdf18fa99c5e78f83e8a",
+        "positive": true,
+        "zero": false
+      },
+      "output_topology": {
+        "component_face_counts": [
+          10312
+        ],
+        "connected_components": 1,
+        "edges": 15468,
+        "euler_characteristic": 2,
+        "faces": 10312,
+        "vertices": 5158
+      },
+      "production_admitted": false,
+      "ray_direction_retry_counts": {
+        "0": 72184
+      },
+      "side_sample_counts": {
+        "design:centroid:INSIDE": 9898,
+        "design:edge_midpoint:INSIDE": 29278,
+        "design:edge_midpoint:ON_BOUNDARY": 416,
+        "design:vertex:INSIDE": 28653,
+        "design:vertex:ON_BOUNDARY": 1041,
+        "source:centroid:INSIDE": 414,
+        "source:edge_midpoint:INSIDE": 826,
+        "source:edge_midpoint:ON_BOUNDARY": 416,
+        "source:vertex:ON_BOUNDARY": 1242
+      },
+      "unique_operand_point_classifications": 31770
+    },
+    {
+      "all_output_face_orientations_match_boolean_rule": true,
+      "all_output_faces_owned_by_exactly_one_input_triangle": true,
+      "all_vertex_edge_midpoint_centroid_samples_on_expected_side": true,
+      "evaluation": 116,
+      "exact_output_self_intersection_audit": {
+        "archive_sha256": "0c0962173694415b07578bae4375b9702251d0078b5c3a20935836e96d938976",
+        "m26_candidate_pairs": 131392,
+        "m26_certificate_status": "EXACT_POST_BOOLEAN_SELF_INTERSECTION_FREE",
+        "packet_sha256": "bc2dbd7084b0a69826cfed008e30d70753a9636946f02e9d2f95c087b889d125",
+        "repeated_expensive_surface_audit": false,
+        "source": "committed-M26-exact-post-Boolean-audit"
+      },
+      "full_triangle_interior_cross_boundary_tested": false,
+      "operation": "difference",
+      "output_face_orientation_counts": {
+        "design:same": 10858,
+        "source:opposite": 574
+      },
+      "output_face_owner_counts": {
+        "design": 10858,
+        "source": 574
+      },
+      "output_signed_volume": {
+        "binary64": 5809.396912303254,
+        "exact_fraction_sha256": "a59403a81cce6cd166833efd01472883a65de4feb4a8786dea72a974e8527b57",
+        "positive": true,
+        "zero": false
+      },
+      "output_topology": {
+        "component_face_counts": [
+          11432
+        ],
+        "connected_components": 1,
+        "edges": 17148,
+        "euler_characteristic": 2,
+        "faces": 11432,
+        "vertices": 5718
+      },
+      "production_admitted": false,
+      "ray_direction_retry_counts": {
+        "0": 80024
+      },
+      "side_sample_counts": {
+        "design:centroid:OUTSIDE": 10858,
+        "design:edge_midpoint:ON_BOUNDARY": 578,
+        "design:edge_midpoint:OUTSIDE": 31996,
+        "design:vertex:ON_BOUNDARY": 1444,
+        "design:vertex:OUTSIDE": 31130,
+        "source:centroid:INSIDE": 574,
+        "source:edge_midpoint:INSIDE": 1144,
+        "source:edge_midpoint:ON_BOUNDARY": 578,
+        "source:vertex:ON_BOUNDARY": 1722
+      },
+      "unique_operand_point_classifications": 35454
+    },
+    {
+      "all_output_face_orientations_match_boolean_rule": true,
+      "all_output_faces_owned_by_exactly_one_input_triangle": true,
+      "all_vertex_edge_midpoint_centroid_samples_on_expected_side": true,
+      "evaluation": 117,
+      "exact_output_self_intersection_audit": {
+        "archive_sha256": "0c0962173694415b07578bae4375b9702251d0078b5c3a20935836e96d938976",
+        "m26_candidate_pairs": 131720,
+        "m26_certificate_status": "EXACT_POST_BOOLEAN_SELF_INTERSECTION_FREE",
+        "packet_sha256": "e85636e9a8fecc00a84b399b7f6e2dc35a78c14a060f3a97b1b33396dff91b56",
+        "repeated_expensive_surface_audit": false,
+        "source": "committed-M26-exact-post-Boolean-audit"
+      },
+      "full_triangle_interior_cross_boundary_tested": false,
+      "operation": "difference",
+      "output_face_orientation_counts": {
+        "design:same": 10856,
+        "source:opposite": 576
+      },
+      "output_face_owner_counts": {
+        "design": 10856,
+        "source": 576
+      },
+      "output_signed_volume": {
+        "binary64": 5809.272270251298,
+        "exact_fraction_sha256": "6cc521fa2dbe77b854a5ed300d40a46c38f8b55a7b5d6e6f54b633d74a6a3576",
+        "positive": true,
+        "zero": false
+      },
+      "output_topology": {
+        "component_face_counts": [
+          11432
+        ],
+        "connected_components": 1,
+        "edges": 17148,
+        "euler_characteristic": 2,
+        "faces": 11432,
+        "vertices": 5718
+      },
+      "production_admitted": false,
+      "ray_direction_retry_counts": {
+        "0": 80024
+      },
+      "side_sample_counts": {
+        "design:centroid:OUTSIDE": 10856,
+        "design:edge_midpoint:ON_BOUNDARY": 580,
+        "design:edge_midpoint:OUTSIDE": 31988,
+        "design:vertex:ON_BOUNDARY": 1449,
+        "design:vertex:OUTSIDE": 31119,
+        "source:centroid:INSIDE": 576,
+        "source:edge_midpoint:INSIDE": 1148,
+        "source:edge_midpoint:ON_BOUNDARY": 580,
+        "source:vertex:ON_BOUNDARY": 1728
+      },
+      "unique_operand_point_classifications": 35458
+    },
+    {
+      "combined_design_source_boundary_audit": {
+        "fields": {
+          "adjacent_pairs": 162592,
+          "candidate_pairs": 231565,
+          "elapsed_seconds": 5.09613,
+          "exact_pairs_checked": 231565,
+          "faces": 26684,
+          "nonadjacent_pairs": 68973,
+          "vertices": 13344
+        },
+        "returncode": 0,
+        "status": "EXACT_POST_BOOLEAN_SELF_INTERSECTION_FREE",
+        "stderr": ""
+      },
+      "design_boundary_connected_components": 1,
+      "design_boundary_sample_classification_in_source": "INSIDE",
+      "empty_difference_semantics_supported": true,
+      "empty_output_audit": {
+        "archive_sha256": "0c0962173694415b07578bae4375b9702251d0078b5c3a20935836e96d938976",
+        "m26_candidate_pairs": 0,
+        "m26_certificate_status": "STRICT_EMPTY_NO_POSITIVE_MASS",
+        "packet_sha256": "4fa9bce0d2c34c3621e943bb03f2583fbfe15ec6cab1446eea51640c554cfacc",
+        "repeated_expensive_surface_audit": false,
+        "source": "committed-M26-exact-post-Boolean-audit"
+      },
+      "evaluation": 123,
+      "exact_input_boundary_nonintersection": true,
+      "nested_boundary_argument": "The connected design boundary is disjoint from the connected source boundary and one design boundary point is inside the source; therefore the whole design solid is contained in the source solid.",
+      "operation": "difference",
+      "production_admitted": false,
+      "source_boundary_connected_components": 1
+    }
+  ],
+  "production_admitted": false,
+  "production_native_ten_moment_equality": false,
+  "schema": "w1-m28-1-real-saved-boolean-side-audit-v1",
+  "selected_evaluations": [
+    4,
+    116,
+    117,
+    123
+  ],
+  "smooth_neighborhood_certified": false,
+  "status": "COMPLETE_SAVED_BOOLEAN_BOUNDARY_PATCH_AND_SIDE_AUDIT"
+}
