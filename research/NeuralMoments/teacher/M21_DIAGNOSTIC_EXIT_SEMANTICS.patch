@@ -1,0 +1,104 @@
+--- a/m21_native_pilot_flexible.py
++++ b/m21_native_pilot_flexible.py
+@@ -228,19 +228,64 @@
+     except OSError:return None
+ 
+ 
+-def verified_pilot_label(exit_code, record):
+-    """Numeric diagnostic only; does not certify material or derivative scope."""
+-    if exit_code!=0 or not isinstance(record,dict):
++EXPECTED_DIAGNOSTIC_EXCLUSION = 'W0_VERIFIER_AND_INDEPENDENT_SOLID_PROOF_NOT_VERIFIED'
++TEACHER_ORDER = ['m','x','y','z','xx','yy','zz','yz','xz','xy']
++NATIVE_C_ORDER = ['CONST','X','Y','Z','XX','YY','ZZ','YZ','XZ','XY']
++COEFFICIENT_CONVENTION = 'NATIVE_MATRIX_ENTRIES_C10_POLYNOMIAL_Q_EQUALS_BC_V1'
++
++
++def _canonical_digest(value):
++    raw=json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode('utf-8')
++    import hashlib
++    return hashlib.sha256(raw).hexdigest()
++
++
++def verified_pilot_label(exit_code, record, spec):
++    """Accept a numeric diagnostic, while preserving the explicit W0 exclusion.
++
++    run_native_smoke intentionally exits 2 when a valid physical-moment label
++    carries the W0/solid-proof exclusion reason. This is distinct from a
++    numerical failure. The sealed label, request identity, exact ten-moment
++    comparison and expected exclusion string must all agree.
++    """
++    if not isinstance(record,dict) or not isinstance(spec,dict): return False
++    if set(record)!={'payload','payload_sha256','identity'}: return False
++    payload=record.get('payload'); identity=record.get('identity')
++    if not isinstance(payload,dict) or not isinstance(identity,dict): return False
++    try:
++        if _canonical_digest(payload)!=record.get('payload_sha256'): return False
++        expected_q=spec.get('native_c')
++        expected_model=spec.get('expected_model_sha256')
++        expected_module=spec.get('expected_native_module_sha256')
++        if not isinstance(expected_q,list) or len(expected_q)!=10: return False
++        if payload.get('schema')!='w2-cherchi-teacher-v2-pre-w0': return False
++        if payload.get('order')!=TEACHER_ORDER or payload.get('native_c_order')!=NATIVE_C_ORDER: return False
++        if payload.get('coefficient_convention')!=COEFFICIENT_CONVENTION: return False
++        if payload.get('q')!=expected_q or payload.get('native_c')!=expected_q: return False
++        expected_poly=expected_q[:7]+[2.0*float(x) for x in expected_q[7:]]
++        if payload.get('polynomial_q')!=expected_poly: return False
++        if payload.get('model_sha256')!=expected_model or payload.get('native_module_sha256')!=expected_module: return False
++        if identity.get('q_sha256')!=_canonical_digest(expected_q): return False
++        if identity.get('geometry_sha256')!=_canonical_digest(payload.get('geometry')): return False
++        if identity.get('model_sha256')!=expected_model or identity.get('native_module_sha256')!=expected_module: return False
++        for key in ('r_D','r_F'):
++            values=payload.get(key)
++            if not isinstance(values,list) or len(values)!=10: return False
++            if any(type(x) not in (int,float) or not math.isfinite(x) for x in values): return False
++        proof=payload.get('exact_proof')
++        if not isinstance(proof,dict) or proof.get('kind')!='cherchi_same_call_discrete_map': return False
++        audit=proof.get('independent_ten_moment_audit')
++        comparison=audit.get('comparison') if isinstance(audit,dict) else None
++        if (proof.get('native_cherchi') is not True or proof.get('same_call_attachment') is None
++                or not isinstance(comparison,dict) or comparison.get('within_tolerance') is not True): return False
++        if (payload.get('topology_status')!='OBSERVED_DISCRETE_MAP' or payload.get('derivative_status')!='UNKNOWN'
++                or payload.get('derivative_contract') is not None or payload.get('J_D') is not None
++                or payload.get('split')!='excluded'): return False
++        reason=payload.get('failure_reason')
++        if reason is None: return exit_code==0
++        return reason==EXPECTED_DIAGNOSTIC_EXCLUSION and exit_code==2
++    except (TypeError,ValueError,KeyError):
+         return False
+-    payload=record.get('payload',{}) if isinstance(record.get('payload'),dict) else {}
+-    proof=payload.get('exact_proof',{}) if isinstance(payload.get('exact_proof'),dict) else {}
+-    comp=proof.get('independent_ten_moment_audit',{}).get('comparison',{})
+-    return (proof.get('native_cherchi') is True
+-            and isinstance(comp,dict) and comp.get('within_tolerance') is True
+-            and proof.get('same_call_attachment') is not None
+-            and payload.get('J_D') is None
+-            and payload.get('split')=='excluded'
+-            and payload.get('failure_reason') is None)
+ 
+ 
+ def worker(a):
+@@ -255,6 +300,7 @@
+     spec=dest/SPEC_NAME
+     if m16.file_hash(spec)!=prep['spec_sha256']:
+         raise ValueError('PILOT_SPEC_CHANGED_SINCE_PREPARATION')
++    spec_data=m16.strict_json(spec.read_bytes())
+     if (dest/REPORT_NAME).exists() or (dest/LABEL_NAME).exists():
+         raise FileExistsError('REFUSE_OVERWRITE_EXISTING_PILOT_EVIDENCE')
+     cgroup=current_cgroup_root()
+@@ -327,7 +373,7 @@
+         data=m16.strict_json(label.read_bytes())
+         label_summary=summarize_payload(data)
+         label_status=data.get('status') or label_summary.get('topology_status')
+-        if verified_pilot_label(exit_code,data):
++        if verified_pilot_label(exit_code,data,spec_data):
+             status='PILOT_EXACT_TEN_MOMENTS_PASSED_DIAGNOSTIC_ONLY'
+     if timed_out:status='PILOT_TIMEOUT_NO_ADMISSION'
+     if interrupted:status='PILOT_INTERRUPTED_NO_ADMISSION'
+@@ -352,6 +398,7 @@
+         'memory_swap_peak_bytes':read_optional(cgroup,'memory.swap.peak'),
+         'label_status':label_status,
+         'label_summary':label_summary,
++        'diagnostic_interpretation':'NUMERIC_PASS_WITH_EXPLICIT_W0_EXCLUSION' if (label_summary and label_summary.get('failure_reason')==EXPECTED_DIAGNOSTIC_EXCLUSION and status=='PILOT_EXACT_TEN_MOMENTS_PASSED_DIAGNOSTIC_ONLY') else None,
+         'label_sha256':m16.file_hash(label) if label.is_file() else None,
+         'original_historical_workflow_conclusion':'failure',
+         'formal_M16_24GiB_admitted':False,
