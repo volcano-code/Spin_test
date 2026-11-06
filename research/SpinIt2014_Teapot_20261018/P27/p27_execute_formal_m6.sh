@@ -76,7 +76,12 @@ EXEC_REL="$RUN_REL/formal-m6-run-$(date -u +%Y%m%dT%H%M%SZ)"
     git config --global --add safe.directory /work/core/libigl
     test "$(cat /sys/fs/cgroup/memory.max)" = "25769803776"
     test "$(cat /sys/fs/cgroup/memory.swap.max)" = "0"
-    test "$(sha256sum "$OUT/P21_PRERUN_LOCK.json" | awk "{print \$1}")" = "$P27_LOCK_SHA256"
+    /opt/w4-venv/bin/python - <<'PY'
+    import hashlib,os
+    from pathlib import Path
+    p=Path(os.environ["OUT"])/"P21_PRERUN_LOCK.json"
+    assert hashlib.sha256(p.read_bytes()).hexdigest()==os.environ["P27_LOCK_SHA256"]
+    PY
     /opt/w4-venv/bin/python "$P1/p21_m6_replay.py" execute \
       --lock "$OUT/P21_PRERUN_LOCK.json" \
       --lock-sha256 "$P27_LOCK_SHA256" \
