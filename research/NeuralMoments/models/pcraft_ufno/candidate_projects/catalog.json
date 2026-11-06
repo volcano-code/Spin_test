@@ -61,25 +61,29 @@
           "c27c4b667437d20d7a086cfe727c8c00e8df1275"
         ]
       ],
-      "w6_status": "PINO_UFNO_CORE_ADAPTED_IN_SPIN_PINO_V1_CPU_SMOKE_PASSED_LICENSE_CLEARANCE_PENDING",
+      "w6_status": "PINO_PRIMARY_BACKBONE_M5_LOGISTIC_HEAD_WINS_ANALYTIC_P0_TOURNAMENT",
       "role": "Primary W6 backbone: P-CRAFT UFNO3d factorized F-FNO spectral blocks, U-shaped encoder-decoder and PINO-style training principle. The new SpinPINO replaces only the task-specific 9-channel elasticity output head with a ten-moment convex-potential head; other neural operators remain subordinate plug-ins/baselines.",
       "priority": "P0_BASELINE_AUDIT",
       "reuse_rule": "Treat as internal source only; verify repository ownership/permissions before redistribution.",
       "integration_evidence": {
-        "branch": "research/neuralmoments-w6-pcraft-20261019",
         "source_commit": "24eda3e9b3f87ba16251a9025761986d6cfe3079",
-        "source_blob": "5017f50292e43718546ad0457e0869a9eb5ddff0",
-        "w6_commit": "d1ee418a006e7dc41f5260dea19aa02b9f74f1ef",
-        "validation_commit": "3c366be7b0b3476d8f1db7a0e6ab3dbb2ee23ec1",
-        "workflow_run": 42186600269,
-        "conclusion": "success",
-        "tests": "9 passed in 1.44s",
-        "limits": [
-          "not trained on Spin/Cherchi labels",
-          "not admitted to Newton",
-          "internal source reuse pending explicit license/ownership clearance",
-          "not a complete P-CRAFT elasticity checkpoint/weight port"
-        ]
+        "implementation_commit": "0931f2442f50c4572912d27812ffde70c8e38fff",
+        "report_commit": "280de5239be2c92f1f5c0b99a84064e248178bae",
+        "validation_workflow_run": 42195661322,
+        "validation_conclusion": "success",
+        "primary_backbone": "P-CRAFT UFNO3d factorized-Fourier U-shaped trunk",
+        "best_head": "logistic_atom borrowed from W6 M7",
+        "heldout_analytic_p0": {
+          "r_relative_l2": 0.20602047940095267,
+          "J_relative_l2": 0.31465572118759155,
+          "seeds": [
+            131,
+            137,
+            139
+          ]
+        },
+        "scope": "analytic continuum vertical-plane P0 only; no Cherchi labels, Newton admission, arbitrary CAD/quadric certification or real Spin end-to-end result",
+        "license_clearance": "upstream source root LICENSE not found; internal use pending ownership clearance"
       }
     },
     {
@@ -910,9 +914,10 @@
   "p0_addendum": "DensiCrafter source and MIT license audited on 2026-11-06. Complementary density-field design module, not a neural moment operator and not a structural-strength solver.",
   "audit_addendum": "Added PI-CViT, PFEM, HyPINO and TensorPILS on 2026-11-06 after upstream repository/source/license review. PI-CViT/PFEM have no root LICENSE in the audited tree and are method-only pending permission; HyPINO MIT; TensorPILS Apache-2.0. All remain subordinate to P-CRAFT PINO.",
   "pino_primary_backbone": {
-    "status": "FROZEN_AS_PRIMARY",
+    "status": "FROZEN_AS_ONLY_PRIMARY_BACKBONE",
     "upstream_commit": "24eda3e9b3f87ba16251a9025761986d6cfe3079",
-    "w6_model_path": "research/NeuralMoments/models/pcraft_ufno/spin_pino/",
-    "rule": "GINO/Transolver/DoMINO/FIGConvNet/DeepONet are optional adapters or baselines; none replaces the PINO trunk."
+    "trunk": "P-CRAFT UFNO3d factorized F-FNO spectral U-shaped encoder-decoder",
+    "best_current_head": "logistic_atom M7-derived moment/Jacobian head",
+    "rule": "GINO, Transolver, DoMINO, FIGConvNet, DeepONet and M7 are subordinate modules or baselines; none replaces PINO trunk."
   }
 }
