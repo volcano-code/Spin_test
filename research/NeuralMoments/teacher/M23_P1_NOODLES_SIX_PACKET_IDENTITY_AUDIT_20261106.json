@@ -1,0 +1,76 @@
+{
+  "schema": "w2-m23-p1-noodles-six-packet-cross-branch-identity-audit-v1",
+  "status": "SIX_PACKET_IDENTITIES_AND_THREE_EXACT_CHAIN_RECEIPTS_CROSS_MATCH_PACKET_BYTES_STILL_MISSING",
+  "snapshot_sha256": "f7cf4c2efbd32b9c19d33359471f0671aa2efae104d3aa912500157052f39980",
+  "main_head": "8c949de977ef50be337da7aec6c852566e0da565",
+  "source_manifest_sha256": "67364abba55c74ccd377eef6174b8c96ee04e4af1aadbd7e505466bafabd2a3a",
+  "backend_sha256": "d6803f184047f6172b177b9f436b16f22cdb6a949126d1df88a5d084f3dd9df3",
+  "csg_operations": 96,
+  "source_parts": 94,
+  "fixed_source_parts": 93,
+  "packets": {
+    "design": {
+      "sha256": "48e8d3008bba746823eafd9c3704b52d597595b802066450a921ecc0dcb7f611",
+      "faces": 108804,
+      "identity_match": true,
+      "raw_bytes_recovered": false
+    },
+    "envelope": {
+      "sha256": "92f46d68025467961fcc8b2b52353b4a18c2a981a09ad654ad6af3fb128b73fd",
+      "faces": 1280,
+      "identity_match": true,
+      "raw_bytes_recovered": false
+    },
+    "fixed": {
+      "sha256": "71f9df91fca12fde4f4f2c80dc26e2d1229e8209e09db46e680d0de7baee264a",
+      "faces": 114942,
+      "identity_match": true,
+      "raw_bytes_recovered": false
+    },
+    "fixed-inside-envelope": {
+      "sha256": "a944da4e36e5fe386cee3b28e4acf5800fc3942cde4eb35ba54f5de626f55dc7",
+      "faces": 107160,
+      "identity_match": true,
+      "raw_bytes_recovered": false
+    },
+    "fixed-outside-envelope": {
+      "sha256": "8c66f71da99773fbc9a76b4f82fc43c55816df1876b643634ae64768f72ba262",
+      "faces": 35342,
+      "identity_match": true,
+      "raw_bytes_recovered": false
+    },
+    "initial": {
+      "sha256": "640877647134a54152a8e1f63c1f356d752e6c66f7913301580c1e85a356d83b",
+      "faces": 36986,
+      "identity_match": true,
+      "raw_bytes_recovered": false
+    }
+  },
+  "three_exact_chain_relations": {
+    "F_plus_D_equals_A": {
+      "success": true,
+      "nonzero_support_planes": 0,
+      "exact_zero_area_triangles": 0
+    },
+    "K_plus_D_equals_E": {
+      "success": true,
+      "nonzero_support_planes": 0,
+      "exact_zero_area_triangles": 0
+    },
+    "K_plus_R_equals_F": {
+      "success": true,
+      "nonzero_support_planes": 0,
+      "exact_zero_area_triangles": 0
+    }
+  },
+  "chain_proofs_certify_native_solids": false,
+  "author_original_cad": false,
+  "historical_v7_separate_cherchi_warm_restart_converged": true,
+  "w2_admitted_noodles_teacher_sample": false,
+  "new_cgal_calls": 0,
+  "new_cherchi_calls": 0,
+  "J_D": null,
+  "split": "excluded",
+  "training_samples": 0,
+  "next": "recover six raw rational packet bytes by pinned SHA or rerun 96-op CGAL DAG locally; independently certify solids and F/D/A partition before W2 Noodles teacher run"
+}
