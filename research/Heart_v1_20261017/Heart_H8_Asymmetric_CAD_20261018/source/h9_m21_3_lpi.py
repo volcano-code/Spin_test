@@ -122,6 +122,55 @@ def read_motion(worker, row, evidence, core_sha):
     return att['physical_source_velocity_column7']
 
 
+
+PAIR_SEQUENCES = {'left': (0, 4, 1), 'right': (2, 5, 3)}
+PAIR_INTERVALS = (('full', 0, 2), ('first-half', 0, 1), ('second-half', 1, 2))
+
+
+def same_side_interval_residuals(samples):
+    """Candidate-specific LPI position secants vs endpoint-average velocities."""
+    need(len(samples) == len(STEMS), 'LPI_SECANT_SAMPLE_COUNT')
+    indexed = []
+    for sample in samples:
+        rows = {r['label']: r for r in sample['constructions']}
+        need(rows.keys() == CASES.keys(), 'LPI_SECANT_FEATURE_SET_CHANGED')
+        indexed.append(rows)
+    result = []
+    for side, sequence in PAIR_SEQUENCES.items():
+        for interval, left_index, right_index in PAIR_INTERVALS:
+            i, j = sequence[left_index], sequence[right_index]
+            delta = frac(samples[j]['c7']) - frac(samples[i]['c7'])
+            need(delta > 0, 'LPI_SECANT_BAD_C7_ORDER')
+            features = {}
+            for label in CASES:
+                a, b = indexed[i][label], indexed[j][label]
+                pa, pb = vec(a['position']), vec(b['position'])
+                va, vb = vec(a['velocity']), vec(b['velocity'])
+                secant = mul(1/delta, sub(pb, pa))
+                average = mul(frac(1, 2), add(va, vb))
+                residual = sub(secant, average)
+                residual_squared = dot(residual, residual)
+                average_squared = dot(average, average)
+                features[label] = {
+                    'delta_c7': str(delta),
+                    'position_secant': list(map(str, secant)),
+                    'endpoint_average_velocity': list(map(str, average)),
+                    'signed_residual': list(map(str, residual)),
+                    'max_abs_residual': str(max(abs(x) for x in residual)),
+                    'residual_norm_approx': sqrt(float(residual_squared)),
+                    'relative_residual_approx': (
+                        sqrt(float(residual_squared / average_squared))
+                        if average_squared else None
+                    ),
+                }
+            result.append({
+                'side': side, 'interval': interval,
+                'from_stem': samples[i]['stem'], 'to_stem': samples[j]['stem'],
+                'features': features,
+            })
+    return result
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     for name in ('precision-ledger', 'artifact', 'stage17-native-dir', 'm19-run', 'source-run', 'output'):
@@ -143,7 +192,8 @@ def main():
                             attachment_sha256=row['source_motion_attachment_sha256'],
                             c7=str(frac(material['quadric_coefficients'][7])),
                             constructions=selected_rows(material, request, speeds)))
-    dump(args.output, dict(schema='heart-h9-m21-3-selected-lpi-motion-v1', samples=samples,
+    intervals = same_side_interval_residuals(samples)
+    dump(args.output, dict(schema='heart-h9-m21-3-selected-lpi-motion-v1', samples=samples, same_side_interval_lpi_secants=intervals,
                            status='SIX_SAVED_PACKETS_THREE_LPI_DIAGNOSTIC_ONLY',
                            precision_ledger_sha256=LEDGER_SHA, worker_report_sha256=report_sha,
                            native_core_sha256=core_sha, script_sha256=file_hash(__file__),

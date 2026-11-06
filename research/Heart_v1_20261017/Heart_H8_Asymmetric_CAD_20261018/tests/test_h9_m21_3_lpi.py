@@ -103,3 +103,34 @@ class LpiAudit(unittest.TestCase):
             row['source_motion_attachment_sha256'] = audit.file_hash(path)
             with self.assertRaisesRegex(ValueError,'SOURCE_ATTACHMENT'):
                 audit.read_motion(worker,row,ev,'core')
+
+
+    def _pair_samples(self, position_fn, velocity_fn):
+        c7 = [0, 2, 0, 2, 1, 1]
+        samples = []
+        for stem, c in zip(audit.STEMS, c7):
+            constructions = []
+            for label in audit.CASES:
+                constructions.append(dict(
+                    label=label,
+                    position=[str(F(position_fn(c))), '0/1', '0/1'],
+                    velocity=[str(F(velocity_fn(c))), '0/1', '0/1']))
+            samples.append(dict(stem=stem, c7=str(F(c)), constructions=constructions))
+        return samples
+
+    def test_same_side_linear_position_has_zero_secant_residual(self):
+        rows = audit.same_side_interval_residuals(self._pair_samples(lambda c: c, lambda c: 1))
+        self.assertEqual(len(rows), 6)
+        for interval in rows:
+            self.assertEqual(set(interval['features']), set(audit.CASES))
+            for feature in interval['features'].values():
+                self.assertEqual(feature['max_abs_residual'], '0')
+
+    def test_same_side_cubic_position_exposes_signed_interval_residual(self):
+        rows = audit.same_side_interval_residuals(self._pair_samples(lambda c: c**3, lambda c: 3*c*c))
+        self.assertEqual(len(rows), 6)
+        for side in ('left', 'right'):
+            subset = [r for r in rows if r['side'] == side]
+            values = [subset[i]['features']['Repeated']['signed_residual'][0] for i in range(3)]
+            self.assertEqual(values, ['-2', '-1/2', '-1/2'])
+
