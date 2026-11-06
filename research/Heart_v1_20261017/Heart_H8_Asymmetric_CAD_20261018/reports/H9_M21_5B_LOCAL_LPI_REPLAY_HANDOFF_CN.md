@@ -60,21 +60,9 @@ M21.5A 已在云端对上传的 M20 ledger 完成 60/60 精确割线重算。但
     echo "M21_3_LPI_EXIT_CODE=$RC"
     test "$RC" -eq 0 || exit "$RC"
 
-    # 3. 冻结输出哈希并打印关键计数
+    # 3. 冻结输出哈希并打印关键计数（单行 -c，避免 here-doc 缩进问题）
     sha256sum "$OUT/m21-3-lpi.json"
-    "$W3_PY" - "$OUT/m21-3-lpi.json" <<'PY'
-    import json, sys
-    p=json.load(open(sys.argv[1]))
-    print("schema:", p.get("schema"))
-    print("status:", p.get("status"))
-    print("samples:", len(p.get("samples", [])))
-    print("LPI rows:", sum(len(x.get("constructions", [])) for x in p.get("samples", [])))
-    print("same-side intervals:", len(p.get("same_side_interval_lpi_secants", [])))
-    print("new source calls in this diagnostic:", p.get("new_native_source_calls_this_run"))
-    print("root cause determined:", p.get("root_cause_determined"))
-    print("continuous neighborhood certified:", p.get("continuous_neighborhood_certified"))
-    print("Newton admitted:", p.get("newton_admitted"))
-    PY
+    "$W3_PY" -c 'import json,sys; p=json.load(open(sys.argv[1])); print("schema:",p.get("schema")); print("status:",p.get("status")); print("samples:",len(p.get("samples",[]))); print("LPI rows:",sum(len(x.get("constructions",[])) for x in p.get("samples",[]))); print("same-side intervals:",len(p.get("same_side_interval_lpi_secants",[]))); print("new source calls:",p.get("new_native_source_calls_this_run")); print("root cause determined:",p.get("root_cause_determined")); print("continuous neighborhood certified:",p.get("continuous_neighborhood_certified")); print("Newton admitted:",p.get("newton_admitted"))' "$OUT/m21-3-lpi.json"
 
     echo "M21_5B_OUTPUT=$OUT/m21-3-lpi.json"
 
