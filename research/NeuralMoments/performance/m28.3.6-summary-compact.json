@@ -2,7 +2,7 @@
   "schema": "w1-m28-3-6-global-inventory-topology-seam-summary-v1",
   "date": "2026-11-06",
   "archive_sha256": "0c0962173694415b07578bae4375b9702251d0078b5c3a20935836e96d938976",
-  "full_audit_json_sha256": "7c1a",
+  "full_audit_json_sha256": "02e77d87ae0f27deca56253be53562053abc545d83979e336236ab8b4a39a509",
   "input_parent_faces_total": 80564,
   "cut_parent_faces_total": 1555,
   "uncut_parent_faces_total": 79009,
