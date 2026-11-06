@@ -10,6 +10,7 @@ on:
       - research/SpinIt2014_Teapot_20261018/P1/p20_native_factory.py
       - research/SpinIt2014_Teapot_20261018/P1/p20_m6_launch.py
       - research/SpinIt2014_Teapot_20261018/P1/p21_m6_replay.py
+      - research/SpinIt2014_Teapot_20261018/P1/p21_replay_verify.py
       - research/SpinIt2014_Teapot_20261018/P1/test_p20*.py
       - research/SpinIt2014_Teapot_20261018/P1/test_p21*.py
       - research/SpinIt2014_Teapot_20261018/P1/P20_TEST_INVENTORY.json
@@ -76,6 +77,7 @@ jobs:
           factory=p/"p20_native_factory.py"
           launcher=p/"p20_m6_launch.py"
           replay=p/"p21_m6_replay.py"
+          verifier=p/"p21_replay_verify.py"
           assert sha(request)=="a324bbe85c9ee57a67221eb86420c505efc4d065d60d84cf92d66e4d95dac1b9"
           assert sha(factory)=="bebab47452b61da7af3faa9e202f0ca44d3e1e36d18f171c90c50517b83047f4"
           assert sha(launcher)=="ab63fc9b9c87307335d9bbe15f72a1ae62fec664ccfd0de8a5be50f136bcaca2"
@@ -92,6 +94,10 @@ jobs:
           assert 'P20_LAUNCHER_SHA256 = "ab63fc9b9c87307335d9bbe15f72a1ae62fec664ccfd0de8a5be50f136bcaca2"' in replay.read_text()
           assert 'P20_FACTORY_SHA256 = "bebab47452b61da7af3faa9e202f0ca44d3e1e36d18f171c90c50517b83047f4"' in replay.read_text()
           assert 'REQUEST_SHA256 = "a324bbe85c9ee57a67221eb86420c505efc4d065d60d84cf92d66e4d95dac1b9"' in replay.read_text()
+          verifier_text=verifier.read_text()
+          assert "W0_COMMIT = '5bab2eb2616df306906a6887a273f68acfa49320'" in verifier_text
+          assert "P20_REQUEST_SHA = 'a324bbe85c9ee57a67221eb86420c505efc4d065d60d84cf92d66e4d95dac1b9'" in verifier_text
+          assert "P20_LAUNCHER_SHA = 'ab63fc9b9c87307335d9bbe15f72a1ae62fec664ccfd0de8a5be50f136bcaca2'" in verifier_text
           print("P26_FIXED_W0_SOURCE_AND_ALL_77_CORE_PYTHON_BLOBS_VERIFIED")
           PY
 
