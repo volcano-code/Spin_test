@@ -1,0 +1,239 @@
+"""Spin-specific PINO: P-CRAFT UFNO backbone + physics-constrained moment potential."""
+
+from __future__ import annotations
+
+import math
+from typing import Optional
+
+import torch
+from torch import Tensor, nn
+import torch.nn.functional as F
+
+from .pino_backbone import PINOFeatureEncoder
+
+MOMENT_NAMES = ("mass", "x", "y", "z", "xx", "yy", "zz", "yz", "xz", "xy")
+COEFFICIENT_NAMES = ("const", "x", "y", "z", "xx", "yy", "zz", "yz", "xz", "xy")
+NATIVE_B = (1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0)
+
+
+def quadrature_nodes(points_per_axis: int = 4) -> Tensor:
+    if not isinstance(points_per_axis, int) or points_per_axis < 2:
+        raise ValueError("points_per_axis must be an integer >=2")
+    axis = (torch.arange(points_per_axis, dtype=torch.float64) + 0.5) * (
+        2.0 / points_per_axis
+    ) - 1.0
+    xyz = torch.stack(torch.meshgrid(axis, axis, axis, indexing="ij"), dim=-1).reshape(-1, 3)
+    x, y, z = xyz.unbind(-1)
+    return torch.stack(
+        (torch.ones_like(x), x, y, z, x*x, y*y, z*z, y*z, x*z, x*y),
+        dim=-1,
+    ).float()
+
+
+class SpinPINO(nn.Module):
+    """PINO remains the primary backbone; plugins attach only at defined ports.
+
+    The geometry trunk is the P-CRAFT UFNO3d factorized-Fourier U-shaped encoder.
+    A positive geometry-conditioned quadrature head predicts nonnegative node
+    weights. A smooth convex hinge potential then yields ten raw moments and
+    its coefficient Jacobian analytically. No external operator can replace
+    the PINO trunk in this class.
+    """
+
+    def __init__(
+        self,
+        *,
+        width: int = 8,
+        modes: int = 4,
+        n_layers: int = 4,
+        grid_size: int = 16,
+        points_per_axis: int = 4,
+        hidden_dim: int = 96,
+        smoothing: float = 0.04,
+        use_gradient_checkpoint: bool = False,
+    ):
+        super().__init__()
+        if not math.isfinite(smoothing) or not 0.0 < smoothing <= 1.0:
+            raise ValueError("smoothing must be finite and in (0,1]")
+        self.encoder = PINOFeatureEncoder(
+            width=width,
+            modes=modes,
+            n_layers=n_layers,
+            grid_size=grid_size,
+            use_gradient_checkpoint=use_gradient_checkpoint,
+        )
+        self.points_per_axis = points_per_axis
+        self.smoothing = float(smoothing)
+        self.weight_head = nn.Sequential(
+            nn.Linear(self.encoder.feature_dim, hidden_dim),
+            nn.GELU(),
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.GELU(),
+            nn.Linear(hidden_dim, points_per_axis ** 3),
+        )
+        self.register_buffer("monomials", quadrature_nodes(points_per_axis), persistent=True)
+        self.register_buffer("native_B", torch.tensor(NATIVE_B), persistent=True)
+        self.register_buffer(
+            "node_volume",
+            torch.tensor(8.0 / (points_per_axis ** 3), dtype=torch.float32),
+            persistent=True,
+        )
+
+    def encode_geometry(self, geometry: Tensor) -> Tensor:
+        features = self.encoder(geometry)
+        # Positive bounded weights make the learned potential convex in q.
+        return torch.sigmoid(self.weight_head(features)) * self.node_volume.to(features)
+
+    def _validate(self, weights: Tensor, coefficients: Tensor) -> None:
+        if weights.ndim != 2 or weights.shape[1] != self.monomials.shape[0]:
+            raise ValueError("weights must have shape [B, points_per_axis**3]")
+        if coefficients.ndim != 2 or coefficients.shape != (weights.shape[0], 10):
+            raise ValueError("native coefficients must have shape [B,10]")
+        if weights.device != coefficients.device or weights.dtype != coefficients.dtype:
+            raise ValueError("weights and coefficients must share dtype and device")
+        if not weights.is_floating_point() or not coefficients.is_floating_point():
+            raise TypeError("weights and coefficients must be floating-point")
+        if not bool(torch.isfinite(weights).all() and torch.isfinite(coefficients).all()):
+            raise ValueError("weights and coefficients must be finite")
+        if bool((weights < 0).any()):
+            raise ValueError("quadrature weights must be nonnegative")
+        if bool((torch.linalg.vector_norm(coefficients, dim=-1) <= 1e-12).any()):
+            raise ValueError("native coefficient vector must be nonzero")
+
+    def _terms(self, weights: Tensor, coefficients: Tensor):
+        self._validate(weights, coefficients)
+        c = coefficients / torch.linalg.vector_norm(coefficients, dim=-1, keepdim=True)
+        B = self.native_B.to(dtype=c.dtype, device=c.device)
+        q = c * B
+        m = self.monomials.to(dtype=c.dtype, device=c.device)
+        a = torch.einsum("bi,ni->bn", q, m)
+        eps2 = self.smoothing ** 2
+        norm2 = q.square().sum(dim=-1, keepdim=True)
+        s = torch.sqrt(a.square() + eps2 * norm2)
+        n = a.unsqueeze(-1) * m.unsqueeze(0) + eps2 * q.unsqueeze(1)
+        return c, q, B, m, a, s, n, eps2
+
+    def potential_from_weights(self, weights: Tensor, coefficients: Tensor) -> Tensor:
+        _, _, _, _, a, s, _, _ = self._terms(weights, coefficients)
+        return 0.5 * (weights * (a + s)).sum(dim=-1)
+
+    def moment_from_weights(self, weights: Tensor, coefficients: Tensor) -> Tensor:
+        _, _, _, m, _, s, n, _ = self._terms(weights, coefficients)
+        grad_q = 0.5 * (m.unsqueeze(0) + n / s.unsqueeze(-1))
+        return torch.einsum("bn,bni->bi", weights, grad_q)
+
+    def jacobian_from_weights(self, weights: Tensor, coefficients: Tensor) -> Tensor:
+        _, _, B, m, _, s, n, eps2 = self._terms(weights, coefficients)
+        eye = torch.eye(10, dtype=weights.dtype, device=weights.device)
+        mm = m.unsqueeze(-1) * m.unsqueeze(-2)
+        hess = 0.5 * (
+            (mm.unsqueeze(0) + eps2 * eye) / s[..., None, None]
+            - (n.unsqueeze(-1) * n.unsqueeze(-2)) / s[..., None, None] ** 3
+        )
+        Jq = torch.einsum("bn,bnij->bij", weights, hess)
+        # q = B c, so d r / d c = (d r / d q) B.
+        return Jq * B.view(1, 1, 10)
+
+    def forward(self, geometry: Tensor, coefficients: Tensor, *, with_jacobian: bool = False):
+        weights = self.encode_geometry(geometry)
+        moments = self.moment_from_weights(weights, coefficients)
+        if with_jacobian:
+            return moments, self.jacobian_from_weights(weights, coefficients)
+        return moments
+
+    def real_parameter_count(self) -> int:
+        return sum(
+            p.numel() * (2 if p.is_complex() else 1)
+            for p in self.parameters() if p.requires_grad
+        )
+
+
+class SpinPINOLoss(nn.Module):
+    """PINO-style data + moment-physics residual objective.
+
+    The original P-CRAFT PINO equilibrium/constitutive losses describe linear
+    elasticity and are not valid for this Spin integral task. They are replaced
+    with exact identities of the smooth convex moment potential:
+      * complement: r(c)+r(-c) equals the full weighted material moments;
+      * radial: J_c c = 0 from positive projective scale invariance;
+      * symmetry/PSD: J_q is a symmetric positive-semidefinite Hessian;
+      * mass bounds: 0 <= mass(c) <= total represented material mass.
+
+    A target Jacobian is accepted only when the caller explicitly marks its
+    source as derivative-admitted. Diagnostic-only W2 records are not labels.
+    """
+
+    def __init__(
+        self,
+        *,
+        lambda_data: float = 1.0,
+        lambda_physics: float = 0.1,
+        lambda_jacobian: float = 0.0,
+    ):
+        super().__init__()
+        for name, value in (
+            ("lambda_data", lambda_data),
+            ("lambda_physics", lambda_physics),
+            ("lambda_jacobian", lambda_jacobian),
+        ):
+            if not math.isfinite(value) or value < 0:
+                raise ValueError(f"{name} must be finite and nonnegative")
+        self.lambda_data = float(lambda_data)
+        self.lambda_physics = float(lambda_physics)
+        self.lambda_jacobian = float(lambda_jacobian)
+
+    def forward(
+        self,
+        model: SpinPINO,
+        weights: Tensor,
+        coefficients: Tensor,
+        *,
+        target_moments: Optional[Tensor] = None,
+        target_jacobian: Optional[Tensor] = None,
+        derivative_admitted: bool = False,
+    ) -> dict[str, Tensor]:
+        if target_jacobian is not None and not derivative_admitted:
+            raise ValueError("refusing diagnostic/unadmitted Jacobian supervision")
+        r = model.moment_from_weights(weights, coefficients)
+        Jc = model.jacobian_from_weights(weights, coefficients)
+        r_neg = model.moment_from_weights(weights, -coefficients)
+        full = torch.einsum(
+            "bn,ni->bi", weights, model.monomials.to(dtype=weights.dtype, device=weights.device)
+        )
+        B = model.native_B.to(dtype=weights.dtype, device=weights.device)
+        Jq = Jc / B.view(1, 1, 10)
+
+        complement = (r + r_neg - full).square().mean()
+        radial = torch.bmm(Jc, coefficients.unsqueeze(-1)).square().mean()
+        asymmetry = (Jq - Jq.transpose(1, 2)).square().mean()
+        sym = 0.5 * (Jq + Jq.transpose(1, 2))
+        eig = torch.linalg.eigvalsh(sym)
+        psd = F.relu(-eig).square().mean()
+        mass_bounds = (
+            F.relu(-r[:, 0]).square().mean()
+            + F.relu(r[:, 0] - full[:, 0]).square().mean()
+        )
+        physics = complement + radial + asymmetry + psd + mass_bounds
+
+        zero = r.new_zeros(())
+        data = F.mse_loss(r, target_moments) if target_moments is not None else zero
+        jacobian = (
+            F.mse_loss(Jc, target_jacobian)
+            if target_jacobian is not None else zero
+        )
+        total = (
+            self.lambda_data * data
+            + self.lambda_physics * physics
+            + self.lambda_jacobian * jacobian
+        )
+        return {
+            "total": total,
+            "data": data,
+            "physics": physics,
+            "complement": complement,
+            "radial": radial,
+            "jacobian_symmetry": asymmetry,
+            "jacobian_psd": psd,
+            "mass_bounds": mass_bounds,
+            "jacobian_supervision": jacobian,
+        }
