@@ -15,7 +15,7 @@ ENV PATH="/opt/w4-venv/bin:${PATH}" \
     OPENBLAS_NUM_THREADS=1 \
     MKL_NUM_THREADS=1
 
-RUN python -m pip install --no-cache-dir \
+RUN /opt/w4-venv/bin/python -m pip install --no-cache-dir \
     numpy==2.3.5 \
     scipy==1.17.0 \
     trimesh==4.12.2 \
