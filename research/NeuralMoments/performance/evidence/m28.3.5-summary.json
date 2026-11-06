@@ -1,0 +1,19 @@
+{
+  "schema": "w1-m28-3-5-cut-parent-batch-audit-summary-v1",
+  "date": "2026-11-06",
+  "archive_sha256": "0c0962173694415b07578bae4375b9702251d0078b5c3a20935836e96d938976",
+  "total_receipts": 1555,
+  "unique_parent_faces": 1555,
+  "receipt_sha256_valid": true,
+  "all_exact_area_receipts_pass": true,
+  "new_boolean_calls": 0,
+  "new_newton_runs": 0,
+  "global_boolean_completeness_certified": false,
+  "production_admitted": false,
+  "full_solver_speedup": null,
+  "evaluations": {
+    "4": {"operation":"intersection","cut_parent_faces":417,"output_triangles":1039,"arrangement_cells":2700,"all_receipts_pass":true,"all_missing_extra_overlap_exact_zero":true},
+    "116": {"operation":"difference","cut_parent_faces":568,"output_triangles":1432,"arrangement_cells":2984,"all_receipts_pass":true,"all_missing_extra_overlap_exact_zero":true},
+    "117": {"operation":"difference","cut_parent_faces":570,"output_triangles":1437,"arrangement_cells":2994,"all_receipts_pass":true,"all_missing_extra_overlap_exact_zero":true}
+  }
+}
