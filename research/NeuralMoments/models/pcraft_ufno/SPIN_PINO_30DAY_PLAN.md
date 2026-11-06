@@ -221,3 +221,12 @@ M3 showed W6 M7's logistic realizable-atom parameterization has substantially be
 - Run the same-data three-seed tournament against midpoint smooth PINO, Gauss smooth PINO, W6 M7 and W5 DeepONet.
 
 Promotion requires lower held-out J error without unacceptable loss of r accuracy or a false physical-certification claim. The logistic-atom head is not itself a scalar convex potential, and its tangent PSD property does not certify the continuum/CAD Jacobian.
+
+
+## M5 result — logistic realizable-atom head improves PINO Jacobian
+
+- Same-data tournament run 42195661322 completed the PINO CPU test and M3 tournament jobs successfully.
+- The optional logistic-atom head, transplanted from W6 M7 while retaining the P-CRAFT PINO trunk, achieved held-out r relative L2 0.2060 and J relative L2 0.3147 (three-seed mean).
+- This improves on the smooth-hinge midpoint PINO (0.2320 / 0.8912) and the W6 M7 baseline (0.4372 / 0.4931) on the restricted analytic P0 task.
+- Promote logistic-atom as the leading research head candidate, retain smooth-hinge and Gauss as ablations. The logistic head is not a scalar convex potential; use tangent-projected q-space structure constraints.
+- Next: broaden geometry/orientation/event tests and compare inference latency/memory before any Newton or real Spin claim.

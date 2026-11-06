@@ -113,3 +113,8 @@ The M4 three-seed sweep did not improve over the baseline: r/J relative L2 0.232
 ## M5 M7 logistic-head transplant
 
 A new optional `moment_parameterization='logistic_atom'` borrows W6 M7's projective sigmoid-atom moment/Jacobian formula while keeping the P-CRAFT PINO trunk, geometry-conditioned positive weights and density/occupancy support mask. The original `smooth_hinge` potential remains the default. Logistic mode uses tangent-projected q-space Jacobian symmetry/PSD constraints and does not claim to be a scalar convex potential. Tests compare its analytic Jacobian to finite differences.
+
+
+## M5 result — logistic-atom head
+
+The same-data three-seed tournament shows the PINO logistic-atom head achieves held-out r/J relative L2 0.2060/0.3147, beating the smooth-hinge PINO 0.2320/0.8912 and W6 M7 0.4372/0.4931 on the analytic vertical-plane P0 task. The P-CRAFT PINO trunk remains primary. Logistic mode is not a scalar convex potential and is not Newton/Cherchi certified. See `M5_LOGISTIC_HEAD_REPORT.md`.

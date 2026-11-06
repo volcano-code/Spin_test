@@ -109,3 +109,16 @@ PI-CViT/TensorPILS-inspired fit-split diagonal residual preconditioning and PCGr
 ## M5 active development
 
 W6 M7's logistic realizable-atom formula is being transplanted as an optional moment/Jacobian head inside the P-CRAFT PINO trunk. This is a head-level borrowing only: no U-FNO trunk replacement. The smooth-hinge PINO remains the default until same-data tests show a clear benefit. Logistic mode requires tangent-projected q-space symmetry/PSD checks and does not claim full Hessian symmetry or continuum certification.
+
+
+## M5 result update
+
+The optional W6 M7 logistic-atom moment/Jacobian head transplanted into the P-CRAFT PINO trunk achieved held-out r/J relative L2 0.2060/0.3147 on the three-seed analytic P0 tournament, better than smooth-hinge PINO (0.2320/0.8912), W6 M7 (0.4372/0.4931) and W5 DeepONet (0.7511/0.6994). This is a promising head-level transfer; it remains untrained on Cherchi, not Newton-admitted, and not validated on general quadric/CAD/real Spin cases. The logistic head is not a scalar convex potential; tangent-projected q-space structure checks are used.
+
+## Internal comparison baselines (not counted among the 31 external candidates)
+
+| Internal model | Current role | Latest same-data evidence | Gap |
+|---|---|---|---|
+| W6 M7 Realizable U-FNO | Strong derivative/combined baseline and source of logistic-atom head | r/J relative L2 0.4372/0.4931; PINO logistic head now beats it while retaining PINO trunk | Compare at higher resolution and real Cherchi geometry |
+| W6 M13 / M7 U-FNO pipeline | Existing W6 realizable U-FNO baseline | Used as comparator in M3/M5 same-data analytic benchmark | Need separate matched mesh/Cherchi paired evaluation |
+| W5 voxel DeepONet | Source-matched 4-channel DeepONet baseline | r/J relative L2 0.7511/0.6994 | Lower moment generalization on current analytic split |
