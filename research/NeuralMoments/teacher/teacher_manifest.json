@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M22_P4_1_EXACT_ARRANGEMENT_CERTIFICATE_GATE_TESTED_REAL_GLOBAL_PROOF_PENDING",
+  "status": "M22_P4_GLOBAL_BOOLEAN_SET_EQUIVALENCE_CERTIFIED_FROZEN_HEART_POINT000_DIAGNOSTIC_ONLY",
   "native_teacher_runs": 1,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "M22-P4.2 exact arrangement producer for Design x QuadricSource triangle intersections; prove exact cell decomposition, classification and output tiling, then emit and independently verify a real Heart certificate. Continue to preserve the M22-P3 finite-probe status as diagnostic only.",
+  "pending_dependency": "M23 Noodles V7: recover or rebuild the six exact rational F/D/A CSG packets, prove their global Boolean set semantics, then run a fresh native Cherchi teacher. In parallel W0/W3 must certify smooth neighborhoods and the full 10x10 Jacobian before any derivative label or training split is released. Keep the M21 same-call material provenance gap explicit.",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -808,5 +808,72 @@
     "J_D": null,
     "split": "excluded",
     "training_samples": 0
+  },
+  "m22_p4_global_boolean": {
+    "report": "research/NeuralMoments/teacher/M22_P4_GLOBAL_BOOLEAN_EQUIVALENCE_20261106.md",
+    "result": "research/NeuralMoments/teacher/M22_P4_GLOBAL_BOOLEAN_EQUIVALENCE_20261106.json",
+    "verdict": "PASS_EXACT_ARRANGEMENT_CERTIFICATE_REPLAY_GLOBAL_REGULARIZED_BOOLEAN_BOUNDARY_EQUIVALENCE",
+    "run_id": "heart-pilot9-flex-20261105T083338329274558-3159689",
+    "operand_operation": "DESIGN_MINUS_QUADRIC_SOURCE",
+    "evidence": {
+      "h8f_archive_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+      "m21_archive_sha256": "259b9f288b629415bafa42e4e09d6503e4f474e0e2253e6cc9eb1cd775a64dfd",
+      "request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+      "point000_member_sha256": "c372f749bf7b85015e2dcdad4a445aeab4f2f6fbd25d622089ec58d471992973",
+      "m21_boundary_sha256": "48aae36777ed15e705f1ab919edac07756d3a7444100c060ee5baabd310afe20"
+    },
+    "intersections": {
+      "aabb_candidates": 7711,
+      "disjoint": 6927,
+      "exact_segments": 784,
+      "point_only": 0,
+      "coplanar": 0,
+      "exact_recompute_match": true
+    },
+    "arrangement": {
+      "design_cells": 27378,
+      "quadric_source_cells": 1150,
+      "total_cells": 28528,
+      "cell_membership_mismatches": 0,
+      "all_parent_faces_partitioned_exactly": true,
+      "cell_interiors_disjoint": true
+    },
+    "ray_replay": {
+      "samples": 28528,
+      "exact_gmp": true,
+      "ray_candidates": 734777,
+      "ray_hits": 24370,
+      "ambiguous": 0,
+      "mismatches": 0,
+      "byte_identical_rerun": true
+    },
+    "output": {
+      "faces": 16910,
+      "unique_parent_map": true,
+      "design_same_orientation": 16034,
+      "quadric_reversed_orientation": 876,
+      "unmatched": 0,
+      "multiple": 0,
+      "cellwise_exact_coverage": true
+    },
+    "exact_volume_identity": {
+      "design": 1.0998850071299318,
+      "output": 0.4638104336177978,
+      "intersection": 0.636074573512134,
+      "exact_rational_identity": true
+    },
+    "independent_verifier": "research/NeuralMoments/teacher/M22_P4_GLOBAL_BOOLEAN_EQUIVALENCE_20261106.json",
+    "evidence_package_sha256": "bf0326a39c8eeab5d3031f1263038f71cbf0bf92b61ef2c26d06e02bc616bf30",
+    "limitations": {
+      "h8f_author_original_cad": false,
+      "m21_same_call_material_payload_recovered": false,
+      "m21_native_binaries_recovered": false,
+      "h8f_original_81_point_workflow_status": "failure",
+      "derivative_status": "UNKNOWN",
+      "J_D": null,
+      "split": "excluded",
+      "training_samples": 0
+    },
+    "new_cherchi_calls": 0
   }
 }
