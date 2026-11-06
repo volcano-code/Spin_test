@@ -16,7 +16,8 @@ from .equivariance import (
 )
 
 def orbit_average(model, geometry: Tensor, coefficients: Tensor,
-                  rotations: Iterable[Tensor], *, with_jacobian: bool = True):
+                  rotations: Iterable[Tensor], *, with_jacobian: bool = True,
+                  max_relative_mass_drift: Optional[float] = None):
     """Predict in rotated views and average outputs in the original frame."""
     if geometry.ndim != 5 or geometry.shape[1] != 4:
         raise ValueError("geometry must be [B,4,X,Y,Z]")
@@ -29,10 +30,34 @@ def orbit_average(model, geometry: Tensor, coefficients: Tensor,
     eye = torch.eye(3, dtype=dtype, device=device)
     if not any(torch.allclose(r.to(device=device,dtype=dtype), eye, atol=1e-7, rtol=1e-7) for r in views):
         views.insert(0, eye)
+    # M7f: a fail-closed, opt-in *discrete* material mass drift screen.
+    # This does not recover continuum moments or certify arbitrary rotations.
+    reference_mass = None
+    if max_relative_mass_drift is not None:
+        limit = float(max_relative_mass_drift)
+        if not (0.0 <= limit < float("inf")):
+            raise ValueError("max_relative_mass_drift must be finite and nonnegative")
+        reference_mass = (geometry[:, 0] * geometry[:, 1]).sum(dim=(1, 2, 3))
+        if not bool(torch.isfinite(reference_mass).all()) or bool((reference_mass <= 0).any()):
+            raise ValueError("mass drift screen requires positive finite sampled material mass")
+    requested_views = len(views)
+    rejected_views = 0
     moments, jacobians = [], []
     for R in views:
         R = R.to(device=device, dtype=dtype)
         D_R = rotate_geometry_voxels(geometry, R)
+        if reference_mass is not None and not torch.allclose(
+            R, eye, atol=1e-7, rtol=1e-7
+        ):
+            sampled_mass = (D_R[:, 0] * D_R[:, 1]).sum(dim=(1, 2, 3))
+            relative_drift = ((sampled_mass - reference_mass).abs()
+                              / reference_mass.abs().clamp_min(1e-12))
+            # Reject for the entire batch: averaging must use the same views
+            # for all samples, preserving a well-defined batch output.
+            if (not bool(torch.isfinite(relative_drift).all())
+                    or bool((relative_drift > limit).any())):
+                rejected_views += 1
+                continue
         c_R = transform_native_coefficients(coefficients, R)
         z_R = model.encode_geometry(D_R)
         r_R = model.moment_from_weights(z_R, c_R)
@@ -42,7 +67,9 @@ def orbit_average(model, geometry: Tensor, coefficients: Tensor,
             jacobians.append(transform_native_jacobian(J_R, R.T))
     result = {
         "moments": torch.stack(moments, dim=0).mean(dim=0),
-        "views": torch.tensor(len(views), device=device),
+        "views": torch.tensor(len(moments), device=device),
+        "requested_views": torch.tensor(requested_views, device=device),
+        "rejected_views": torch.tensor(rejected_views, device=device),
     }
     if with_jacobian:
         result["jacobian"] = torch.stack(jacobians, dim=0).mean(dim=0)

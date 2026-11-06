@@ -18,7 +18,7 @@ def metrics(pred_r, pred_J, truth_r, truth_J):
       "J_relative_l2":float(dJ.norm()/truth_J.norm().clamp_min(1e-12)),
     }
 
-def run(seeds=(131,137,139), views=(1,2,4), steps=120):
+def run(seeds=(131,137,139), views=(1,2,4), steps=120, gate_mass_drift=0.05):
     torch.set_num_threads(1); rows=[]
     for seed in seeds:
       trained=run_seed(seed=seed,steps=steps,batch_size=8,grid_size=8,
@@ -40,7 +40,8 @@ def run(seeds=(131,137,139), views=(1,2,4), steps=120):
       with torch.no_grad():
         z=model.encode_geometry(D); direct_r=model.moment_from_weights(z,c)
         direct_J=model.jacobian_from_weights(z,c)
-      seed_row={"seed":seed,"interpolation_mass_relative_error":float(interp_rel),"conditions":[]}
+      seed_row={"seed":seed,"interpolation_mass_relative_error":float(interp_rel),
+                "conditions":[],"mass_gated_conditions":[]}
       for k in views:
         rot=make_so3_orbit(k,seed=seed+700001,dtype=D.dtype,device=D.device)
         start=time.perf_counter()
@@ -52,15 +53,40 @@ def run(seeds=(131,137,139), views=(1,2,4), steps=120):
         elapsed=time.perf_counter()-start
         m=metrics(out["moments"],out["jacobian"],r,J)
         seed_row["conditions"].append({"views":k,**m,"inference_seconds":elapsed})
+        if k == 1:
+          gated_out = out
+          gated_elapsed = elapsed
+        else:
+          gated_start = time.perf_counter()
+          with torch.no_grad():
+            gated_out = orbit_average(
+              model,D,c,rot,with_jacobian=True,
+              max_relative_mass_drift=gate_mass_drift)
+          gated_elapsed = time.perf_counter()-gated_start
+        gated_metrics=metrics(gated_out["moments"],gated_out["jacobian"],r,J)
+        seed_row["mass_gated_conditions"].append({
+          "views":k,**gated_metrics,"inference_seconds":gated_elapsed,
+          "accepted_views":int(gated_out.get("views",torch.tensor(1))),
+          "rejected_views":int(gated_out.get("rejected_views",torch.tensor(0)))})
       rows.append(seed_row)
     aggregate=[]
+    mass_gated_aggregate=[]
     for k in views:
       items=[x["conditions"][list(views).index(k)] for x in rows]
       aggregate.append({"views":k,**{
         key:statistics.mean(x[key] for x in items)
         for key in ("r_mae","J_mae","r_relative_l2","J_relative_l2","inference_seconds")
       }})
+      gated=[x["mass_gated_conditions"][list(views).index(k)] for x in rows]
+      mass_gated_aggregate.append({"views":k,**{
+        key:statistics.mean(x[key] for x in gated)
+        for key in ("r_mae","J_mae","r_relative_l2","J_relative_l2",
+                    "inference_seconds","accepted_views","rejected_views")
+      }})
     return {"schema":"SPIN_PINO_M7E_ORBIT_ENSEMBLE_V1",
+      "gate_extension_schema":"SPIN_PINO_M7F_ORBIT_MASS_GATE_V1",
+      "precommitted_mass_gate_threshold":float(gate_mass_drift),
+      "mass_gated_aggregate":mass_gated_aggregate,
       "label_source":"ANALYTIC_CONTINUUM_P0_NOT_W2_CHERCHI",
       "same_rotated_test_cases":True,"seeds":list(seeds),"views":list(views),
       "aggregate":aggregate,"per_seed":rows,
@@ -70,10 +96,12 @@ def run(seeds=(131,137,139), views=(1,2,4), steps=120):
 def main():
  p=argparse.ArgumentParser();p.add_argument("--seeds",default="131,137,139")
  p.add_argument("--views",default="1,2,4");p.add_argument("--steps",type=int,default=120)
+ p.add_argument("--mass-gate",type=float,default=0.05)
  p.add_argument("--output",type=Path,required=True);a=p.parse_args()
  result=run(tuple(int(x) for x in a.seeds.split(",")),
-   tuple(int(x) for x in a.views.split(",")),a.steps)
+   tuple(int(x) for x in a.views.split(",")),a.steps,a.mass_gate)
  a.output.parent.mkdir(parents=True,exist_ok=True)
  a.output.write_text(json.dumps(result,indent=2,sort_keys=True,allow_nan=False)+"\n")
- print(json.dumps(result["aggregate"],indent=2))
+ print(json.dumps({"ungated":result["aggregate"],
+                   "mass_gated":result["mass_gated_aggregate"]},indent=2))
 if __name__=="__main__": main()
