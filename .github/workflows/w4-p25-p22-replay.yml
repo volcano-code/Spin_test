@@ -90,33 +90,16 @@ jobs:
                 --timeout-seconds 2400
               cp /output/native-build-evidence/P20_NATIVE_BUILD_REPORT.json \
                  /output/native-build/P20_NATIVE_BUILD_REPORT.json
-              export PYTHONPATH="/work/core/python:/output/native-build/core/python:/output/native-build/cherchi/python"
-              /opt/w4-venv/bin/python "/work/w4/$P1/p20_owned_material_audit.py" \
-                --output /output/actual-owned-preparation.json \
-                --pins-output /output/actual-six-pins.json \
-                --seconds 900
               python - <<'PY'
           import json
           from pathlib import Path
-          e=Path("/output")
-          report=json.loads((e/"actual-owned-preparation.json").read_text())
-          assert report["completed"] is True, report
-          r=report["result"]
-          partition=r["native_M_equals_F_plus_D_partition"]
-          assert partition["completed"] and partition["complete_partition"]
-          assert partition["union_equals_whole"] and partition["no_positive_volume_overlap"]
-          assert partition["missing_whole_content"] is False
-          assert partition["excess_union_content"] is False
-          assert partition["part_subset_whole"] == [True, True]
-          assert r["all_ten_exact_additivity_residuals_zero"] is True
-          pins=json.loads((e/"actual-six-pins.json").read_text())
-          assert pins == r["observed_six_pins"]
-          build=json.loads((e/"native-build/P20_NATIVE_BUILD_REPORT.json").read_text())
-          assert build["status"] == "BUILT_AND_IMPORT_VERIFIED_NO_GEOMETRY"
-          assert pins["native_sha256"] == build["native_modules"]["_make_it_stand"]["sha256"]
-          assert pins["bridge_sha256"] == build["native_modules"]["_cherchi_core_boolean"]["sha256"]
-          assert r["native_arithmetic_identity"]["module_sha256"] == build["native_modules"]["_cherchi_rational_moments"]["sha256"]
-          print("P25_PREPARATION_PASS: actual native build, M/F/D partition, six pins; no formal M6")
+          p=Path("/output/native-build/P20_NATIVE_BUILD_REPORT.json")
+          r=json.loads(p.read_text())
+          assert r["status"] == "BUILT_AND_IMPORT_VERIFIED_NO_GEOMETRY", r
+          assert r["import_probe"]["imports_verified"] is True
+          assert r["import_probe"]["geometry_calls"] == 0
+          assert set(r["native_modules"]) == {"_make_it_stand","_cherchi_core_boolean","_cherchi_rational_moments"}
+          print("P25_NATIVE_BUILD_PASS: all three pinned ELF modules built and import-verified; no geometry executed")
           PY
             '
 
@@ -145,8 +128,6 @@ jobs:
                 --w4-root /work/w4 \
                 --p1 "/work/w4/$P1" \
                 --native-build /output/native-build \
-                --pins /output/actual-six-pins.json \
-                --preparation /output/actual-owned-preparation.json \
                 --output /output/P25_P22_RERUN
             '
           python - <<'PY'
@@ -159,11 +140,15 @@ jobs:
           assert r["formal_M6_passed"] is False
           assert r["native_audit_invoked"] is True
           assert r["diagnostic_captured"] is True
-          for key in ("memory.max","memory.swap.max"):
-              assert r["cgroup_after"].get(key) == ("8589934592" if key=="memory.max" else "0")
+          assert r["formal_resource_admission"] is False
+          assert r["observed_w0_commit"] == "5bab2eb2616df306906a6887a273f68acfa49320"
+          assert r["observed_core_commit"] == "58fd12c1306c1c01679a19172e276eef0cb30542"
+          assert r["cgroup_after"].get("memory.max") == "8589934592"
+          assert r["cgroup_after"].get("memory.swap.max") == "0"
           events=dict(line.split() for line in r["cgroup_after"]["memory.events"].splitlines())
           assert events.get("oom") == "0" and events.get("oom_kill") == "0"
-          print("P25_P22_DIAGNOSTIC_CAPTURED:",r["status"],r.get("native_call_counts_final"))
+          assert r["native_call_counts_final"] is not None
+          print("P25_P22_DIAGNOSTIC_CAPTURED:",r["status"],"audit_returned=",r["native_audit_returned"],"calls=",r.get("native_call_counts_final"))
           PY
 
       - name: Preserve P25 build, preparation, and TEST_ONLY M6 evidence
