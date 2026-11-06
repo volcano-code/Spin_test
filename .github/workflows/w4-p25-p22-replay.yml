@@ -69,10 +69,15 @@ jobs:
             --mount "type=bind,src=$GITHUB_WORKSPACE/core,dst=/work/core" \
             --mount "type=bind,src=$GITHUB_WORKSPACE/w4,dst=/work/w4,readonly" \
             --mount "type=bind,src=$RUNNER_TEMP/w4-p25,dst=/output" \
+            --user "$(id -u):$(id -g)" \
+            --env HOME=/tmp --env GIT_CONFIG_GLOBAL=/tmp/gitconfig \
+            --env P1="$P1" --env P25="$P25" \
             "w4-p25-p22:github-${GITHUB_RUN_ID}" bash -lc '
               set -euo pipefail
               export PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1
               export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+              git config --global --add safe.directory /work/core
+              git config --global --add safe.directory /work/core/libigl
               printf "memory.max="; cat /sys/fs/cgroup/memory.max
               printf "memory.swap.max="; cat /sys/fs/cgroup/memory.swap.max
               python -c "import sys,numpy,pybind11; print(sys.version); print(numpy.__version__,pybind11.__version__)"
@@ -118,18 +123,22 @@ jobs:
       - name: Rerun unchanged W0 native audit in a separate 8 GiB zero-swap container
         run: |
           set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/w4-p25/P25_P22_RERUN"
           docker run --rm --init --network none \
             --memory=8g --memory-swap=8g --cpus=2 --cgroupns=private \
             --mount "type=bind,src=$GITHUB_WORKSPACE/w0,dst=/work/w0,readonly" \
             --mount "type=bind,src=$GITHUB_WORKSPACE/core,dst=/work/core,readonly" \
             --mount "type=bind,src=$GITHUB_WORKSPACE/w4,dst=/work/w4,readonly" \
             --mount "type=bind,src=$RUNNER_TEMP/w4-p25,dst=/output" \
-            --env P25_W4_COMMIT="$GITHUB_SHA" \
+            --user "$(id -u):$(id -g)" \
+            --env HOME=/tmp --env GIT_CONFIG_GLOBAL=/tmp/gitconfig \
+            --env P1="$P1" --env P25="$P25" --env P25_W4_COMMIT="$GITHUB_SHA" \
             "w4-p25-p22:github-${GITHUB_RUN_ID}" bash -lc '
               set -euo pipefail
               export PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1
               export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+              git config --global --add safe.directory /work/w0
+              git config --global --add safe.directory /work/core
+              git config --global --add safe.directory /work/w4
               python "/work/w4/$P25/p25_rerun_p22.py" \
                 --w0-root /work/w0 \
                 --core-root /work/core \
@@ -141,9 +150,9 @@ jobs:
                 --output /output/P25_P22_RERUN
             '
           python - <<'PY'
-          import json
+          import json, os
           from pathlib import Path
-          p=Path("$RUNNER_TEMP/w4-p25/P25_P22_RERUN/P25_P22_RERUN_RESULT.json")
+          p=Path(os.environ["RUNNER_TEMP"])/"w4-p25/P25_P22_RERUN/P25_P22_RERUN_RESULT.json"
           r=json.loads(p.read_text())
           assert r["test_only"] is True
           assert r["formal_M6_executed"] is False
