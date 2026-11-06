@@ -13,15 +13,41 @@ def load(path,name):
     mod=importlib.util.module_from_spec(spec);sys.modules[name]=mod;spec.loader.exec_module(mod);return mod
 def head(root):
     return subprocess.run(["git","-C",str(root),"rev-parse","HEAD"],check=True,capture_output=True,text=True,timeout=30).stdout.strip()
-def fname(node):
-    return node.id if isinstance(node,ast.Name) else node.attr if isinstance(node,ast.Attribute) else None
 def wrapped(path):
-    tree=ast.parse(path.read_text(encoding="utf-8"))
-    for n in ast.walk(tree):
-        if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute) and n.func.attr=="from_rationals" and isinstance(n.func.value,ast.Name) and n.func.value.id=="MeshSnapshot" and n.args:
-            a=n.args[0]
-            if isinstance(a,ast.Call) and fname(a.func)=="canonical_mesh_rational_rows": return True
+    """Check the retained assignment in the actual audit function only."""
+    audit, source = {
+        "native_teacher_replay.py": ("audit_live_native_once", "proof['exact_vertices']"),
+        "full_partition_m6.py": ("audit_native_full_partition_once", "saved['material_proof']['exact_vertices']"),
+    }[path.name]
+    expected = ast.dump(ast.parse(f"canonical_mesh_rational_rows({source})", mode="eval").body)
+    tree = ast.parse(path.read_text(encoding="utf-8"))
+    fn = next((n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == audit), None)
+    if fn is None:
+        return False
+    for i, statement in enumerate(fn.body):
+        if not isinstance(statement, ast.Assign) or len(statement.targets) != 1:
+            continue
+        target, call = statement.targets[0], statement.value
+        if not (isinstance(target, ast.Name) and target.id == "retained"
+                and isinstance(call, ast.Call) and call.args and
+                ast.unparse(call.func) == "MeshSnapshot.from_rationals"):
+            continue
+        vertices = call.args[0]
+        if ast.dump(vertices) == expected:
+            return True
+        if not isinstance(vertices, ast.Name):
+            return False
+        # Only accept a directly preceding, unconditional definition. Any
+        # intervening use (including mutation), alternate write or alias fails.
+        for prior in reversed(fn.body[:i]):
+            if any(isinstance(n, ast.Name) and n.id == vertices.id for n in ast.walk(prior)):
+                return (isinstance(prior, ast.Assign) and len(prior.targets) == 1
+                        and isinstance(prior.targets[0], ast.Name)
+                        and prior.targets[0].id == vertices.id
+                        and ast.dump(prior.value) == expected)
+        return False
     return False
+
 def adapter(rows,replay,rt):
     if not isinstance(rows,(list,tuple)) or not rows: raise ValueError("EXACT_MESH_VERTICES_REQUIRED")
     out=[]
@@ -66,11 +92,10 @@ class Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.c=CTX;cls.r=CTX["replay"];cls.rt=CTX["rt"]
-        cls.helper=CTX["helper"]
     def convert(self,rows):
         if self.c["fixed"]:
-            self.assertTrue(callable(self.helper),"W0 canonical helper missing")
-            return self.helper(rows)
+            self.assertTrue(callable(self.c["helper"]),"W0 canonical helper missing")
+            return self.c["helper"](rows)
         return adapter(rows,self.r,self.rt)
     def test_replay_parser_accepts_binary_tokens(self):
         self.assertEqual(self.r.frac("0b101101/0b1101"),Fraction(45,13))
@@ -98,12 +123,12 @@ class Tests(unittest.TestCase):
     def test_both_retained_call_sites_use_shared_helper_after_fix(self):
         a,b=wrapped(self.c["replay_path"]),wrapped(self.c["partition_path"])
         if self.c["fixed"]:
-            self.assertTrue(callable(self.helper));self.assertTrue(a);self.assertTrue(b)
+            self.assertTrue(callable(self.c["helper"]));self.assertTrue(a);self.assertTrue(b)
             sample=[["0b101101/0b1101","-0b101/0b11","0/1"]]
-            self.assertEqual(self.helper(sample),(("45/13","-5/3","0/1"),))
-            self.assertEqual(self.c["mesh"](self.helper(sample)),self.helper(sample))
+            self.assertEqual(self.c["helper"](sample),(("45/13","-5/3","0/1"),))
+            self.assertEqual(self.c["mesh"](self.c["helper"](sample)),self.c["helper"](sample))
         else:
-            self.assertIsNone(self.helper);self.assertFalse(a);self.assertFalse(b)
+            self.assertIsNone(self.c["helper"]);self.assertFalse(a);self.assertFalse(b)
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--w0-root",type=Path,required=True);p.add_argument("--core-root",type=Path,required=True)
