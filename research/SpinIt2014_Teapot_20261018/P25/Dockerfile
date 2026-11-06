@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 python3-dev python3-venv \
     && rm -rf /var/lib/apt/lists/*
 
-RUN python3 -m venv /opt/w4-venv
+RUN python3 -m venv --copies /opt/w4-venv
 ENV PATH="/opt/w4-venv/bin:${PATH}" \
     PYTHONNOUSERSITE=1 \
     PYTHONDONTWRITEBYTECODE=1 \
