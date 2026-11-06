@@ -123,23 +123,35 @@ def pcgrad_backward(
         raise ValueError("loss weights must be nonnegative")
     flat_grads = []
     shapes = [p.shape for p in params]
-    sizes = [p.numel() for p in params]
+    complex_flags = [p.is_complex() for p in params]
+    sizes = [p.numel() * (2 if p.is_complex() else 1) for p in params]
     for index, loss in enumerate(loss_terms):
         grads = torch.autograd.grad(
             loss, params,
             retain_graph=(index < len(loss_terms) - 1),
             allow_unused=True,
         )
-        flat = torch.cat([
-            (torch.zeros_like(p) if g is None else g).reshape(-1)
-            for p, g in zip(params, grads)
-        ])
-        flat_grads.append(flat)
+        pieces = []
+        for parameter, grad in zip(params, grads):
+            value = torch.zeros_like(parameter) if grad is None else grad
+            # Map complex Fourier gradients to their real/imaginary coordinates.
+            # This gives PCGrad a real Hilbert-space vector and allows safe
+            # reconstruction into mixed real/complex model parameters.
+            if parameter.is_complex():
+                value = torch.view_as_real(value).reshape(-1)
+            else:
+                value = value.reshape(-1)
+            pieces.append(value)
+        flat_grads.append(torch.cat(pieces))
     projected, stats = project_conflicting_gradients(flat_grads)
     combined = sum(float(w) * g for w, g in zip(weights, projected))
     offset = 0
-    for parameter, size, shape in zip(params, sizes, shapes):
-        grad = combined[offset:offset + size].reshape(shape)
+    for parameter, size, shape, is_complex in zip(params, sizes, shapes, complex_flags):
+        piece = combined[offset:offset + size]
+        if is_complex:
+            grad = torch.view_as_complex(piece.reshape(*shape, 2).contiguous())
+        else:
+            grad = piece.reshape(shape)
         parameter.grad = grad.detach().clone()
         offset += size
     stats["task_gradient_norms"] = [float(g.norm()) for g in flat_grads]

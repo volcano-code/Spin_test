@@ -20,6 +20,22 @@ class PINOLossConditioningTests(unittest.TestCase):
         self.assertTrue(bool((p.jacobian_scale > 0).all()))
         self.assertFalse(p.as_dict()["validation_or_test_used_for_fit"])
 
+    def test_pcgrad_backward_reconstructs_mixed_real_complex_parameter_grads(self):
+        class Mixed(nn.Module):
+            def __init__(self):
+                super().__init__()
+                self.real = nn.Parameter(torch.tensor([1.0, 2.0]))
+                self.complex = nn.Parameter(torch.tensor([1.0+1.0j, 2.0-1.0j], dtype=torch.complex64))
+        model = Mixed()
+        loss_a = model.real[0] + model.complex[0].real
+        loss_b = -model.real[0] + model.complex[0].real
+        stats = pcgrad_backward((loss_a, loss_b), model.parameters(), (1.0, 1.0))
+        self.assertEqual(model.real.grad.dtype, model.real.dtype)
+        self.assertEqual(model.complex.grad.dtype, model.complex.dtype)
+        self.assertTrue(bool(torch.isfinite(model.real.grad).all()))
+        self.assertTrue(bool(torch.isfinite(model.complex.grad).all()))
+        self.assertGreater(stats["projection_count"], 0)
+
     def test_pcgrad_supports_complex_spectral_parameter_gradients(self):
         g1 = torch.tensor([1.0 + 1.0j, 0.0 + 0.0j], dtype=torch.complex64)
         g2 = torch.tensor([-1.0 + 0.0j, 1.0j], dtype=torch.complex64)
