@@ -88,3 +88,8 @@ The support-masked 8^3 input / 6^3 quadrature / smoothing 0.02 configuration is 
 ## M3 same-data tournament
 
 Run [42192701882](https://github.com/volcano-code/Spin_test/actions/runs/42192701882) passed. On the same analytic split, support-masked Spin-PINO 6-node achieved held-out r relative L2 0.2561 / J relative L2 0.8972; W6 M7 Realizable U-FNO achieved 0.4372 / 0.4931; W5 voxel DeepONet achieved 0.7511 / 0.6994. M7 is the strongest combined/J baseline, while PINO remains the primary backbone and has the best r accuracy. See `M3_TOURNAMENT_REPORT.md`.
+
+
+## M3b Gauss-Legendre quadrature borrowing
+
+`SpinPINO(quadrature_rule='gauss')` uses positive tensor-product Gauss-Legendre weights from the W6 M7 design while retaining the P-CRAFT PINO trunk and SpinPINOLoss. `midpoint` remains available for ablation. The support mask is applied at the correct XYZ voxel coordinates. Tests verify positive weights, total volume 8 and asymmetric X-axis support sampling. The next tournament includes both midpoint and Gauss PINO variants.

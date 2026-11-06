@@ -104,6 +104,31 @@ class SpinPINOBackboneTests(unittest.TestCase):
         self.assertTrue(bool((weights <= model.node_volume + 1e-7).all()))
         self.assertGreater(float(weights.sum()), 0.0)
 
+    def test_12_gauss_rule_is_positive_and_volume_exact(self):
+        model = SpinPINO(
+            width=4, modes=2, n_layers=2, grid_size=8,
+            points_per_axis=4, hidden_dim=24, smoothing=0.02,
+            quadrature_rule="gauss",
+        )
+        self.assertTrue(bool((model.node_volume > 0).all()))
+        self.assertAlmostEqual(float(model.node_volume.sum()), 8.0, places=6)
+        self.assertEqual(model.quadrature_xyz.shape, (64, 3))
+
+    def test_13_voxel_sampling_respects_world_xyz_axis_order(self):
+        model = SpinPINO(
+            width=4, modes=2, n_layers=2, grid_size=8,
+            points_per_axis=4, hidden_dim=24, smoothing=0.02,
+            quadrature_rule="gauss",
+        )
+        geometry = torch.zeros((1, 4, 8, 8, 8))
+        # Material occupies only the positive-X half of [X,Y,Z].
+        geometry[:, 0, 4:8, :, :] = 1.0
+        geometry[:, 1, 4:8, :, :] = 1.0
+        weights = model.encode_geometry(geometry)[0]
+        positive_x = model.quadrature_xyz[:, 0] > 0
+        self.assertGreater(float(weights[positive_x].sum()), 0.0)
+        self.assertTrue(torch.equal(weights[~positive_x], torch.zeros_like(weights[~positive_x])))
+
     def test_11_density_scaling_scales_discrete_measure(self):
         model = self.make_model()
         # Hold the learned gate constant so this isolates the explicit

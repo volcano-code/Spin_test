@@ -5,6 +5,7 @@ from __future__ import annotations
 import math
 from typing import Optional
 
+import numpy as np
 import torch
 from torch import Tensor, nn
 import torch.nn.functional as F
@@ -17,18 +18,38 @@ COEFFICIENT_NAMES = ("const", "x", "y", "z", "xx", "yy", "zz", "yz", "xz", "xy")
 NATIVE_B = (1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0)
 
 
-def quadrature_nodes(points_per_axis: int = 4) -> Tensor:
+def quadrature_rule_data(points_per_axis: int = 4, rule: str = "midpoint"):
+    """Return xyz[N,3], raw monomials[N,10], and positive volume weights[N]."""
     if not isinstance(points_per_axis, int) or points_per_axis < 2:
         raise ValueError("points_per_axis must be an integer >=2")
-    axis = (torch.arange(points_per_axis, dtype=torch.float64) + 0.5) * (
-        2.0 / points_per_axis
-    ) - 1.0
-    xyz = torch.stack(torch.meshgrid(axis, axis, axis, indexing="ij"), dim=-1).reshape(-1, 3)
+    if rule == "midpoint":
+        axis = (torch.arange(points_per_axis, dtype=torch.float64) + 0.5) * (
+            2.0 / points_per_axis
+        ) - 1.0
+        xyz = torch.stack(torch.meshgrid(axis, axis, axis, indexing="ij"), dim=-1).reshape(-1, 3)
+        weights = torch.full((xyz.shape[0],), 8.0 / xyz.shape[0], dtype=torch.float64)
+    elif rule == "gauss":
+        nodes, one_d_weights = np.polynomial.legendre.leggauss(points_per_axis)
+        nodes_t = torch.as_tensor(nodes.copy(), dtype=torch.float64)
+        weights_t = torch.as_tensor(one_d_weights.copy(), dtype=torch.float64)
+        xyz = torch.stack(torch.meshgrid(nodes_t, nodes_t, nodes_t, indexing="ij"), dim=-1).reshape(-1, 3)
+        wx, wy, wz = torch.meshgrid(weights_t, weights_t, weights_t, indexing="ij")
+        weights = (wx * wy * wz).reshape(-1)
+    else:
+        raise ValueError("quadrature rule must be 'midpoint' or 'gauss'")
     x, y, z = xyz.unbind(-1)
-    return torch.stack(
+    monomials = torch.stack(
         (torch.ones_like(x), x, y, z, x*x, y*y, z*z, y*z, x*z, x*y),
         dim=-1,
-    ).float()
+    )
+    if not bool((weights > 0).all()) or not math.isclose(float(weights.sum()), 8.0, rel_tol=1e-10):
+        raise RuntimeError("quadrature rule must have positive weights summing to volume 8")
+    return xyz.float(), monomials.float(), weights.float()
+
+
+def quadrature_nodes(points_per_axis: int = 4, rule: str = "midpoint") -> Tensor:
+    """Compatibility helper returning only the ten raw monomials."""
+    return quadrature_rule_data(points_per_axis, rule)[1]
 
 
 class SpinPINO(nn.Module):
@@ -51,6 +72,7 @@ class SpinPINO(nn.Module):
         points_per_axis: int = 4,
         hidden_dim: int = 96,
         smoothing: float = 0.04,
+        quadrature_rule: str = "midpoint",
         use_gradient_checkpoint: bool = False,
     ):
         super().__init__()
@@ -65,6 +87,7 @@ class SpinPINO(nn.Module):
         )
         self.points_per_axis = points_per_axis
         self.smoothing = float(smoothing)
+        self.quadrature_rule = quadrature_rule
         self.weight_head = nn.Sequential(
             nn.Linear(self.encoder.feature_dim, hidden_dim),
             nn.GELU(),
@@ -72,18 +95,19 @@ class SpinPINO(nn.Module):
             nn.GELU(),
             nn.Linear(hidden_dim, points_per_axis ** 3),
         )
-        self.register_buffer("monomials", quadrature_nodes(points_per_axis), persistent=True)
-        axis = (torch.arange(points_per_axis, dtype=torch.float32) + 0.5) * (
-            2.0 / points_per_axis
-        ) - 1.0
-        qxyz = torch.stack(torch.meshgrid(axis, axis, axis, indexing="ij"), dim=-1)
-        self.register_buffer("quadrature_xyz", qxyz.reshape(1, -1, 1, 1, 3), persistent=True)
-        self.register_buffer("native_B", torch.tensor(NATIVE_B), persistent=True)
+        qxyz, monomials, base_weights = quadrature_rule_data(points_per_axis, quadrature_rule)
+        self.register_buffer("monomials", monomials, persistent=True)
+        self.register_buffer("quadrature_xyz", qxyz, persistent=True)
+        # grid_sample input is [B,C,X,Y,Z], so its coordinate order is (z,y,x).
+        # Keep physical xyz separately for monomials and reverse only at this port.
+        sampling_grid = torch.stack((qxyz[:, 2], qxyz[:, 1], qxyz[:, 0]), dim=-1)
         self.register_buffer(
-            "node_volume",
-            torch.tensor(8.0 / (points_per_axis ** 3), dtype=torch.float32),
+            "voxel_sampling_grid",
+            sampling_grid.reshape(1, -1, 1, 1, 3),
             persistent=True,
         )
+        self.register_buffer("native_B", torch.tensor(NATIVE_B), persistent=True)
+        self.register_buffer("node_volume", base_weights, persistent=True)
 
     def encode_geometry(self, geometry: Tensor) -> Tensor:
         canonical = canonical_geometry(geometry)
@@ -94,7 +118,7 @@ class SpinPINO(nn.Module):
         # constraint, not a continuum/CAD certificate.
         rho = canonical[:, 0:1]
         occupancy = canonical[:, 1:2]
-        grid = self.quadrature_xyz.to(device=canonical.device, dtype=canonical.dtype)
+        grid = self.voxel_sampling_grid.to(device=canonical.device, dtype=canonical.dtype)
         grid = grid.expand(canonical.shape[0], -1, -1, -1, -1)
         rho_nodes = F.grid_sample(
             rho, grid, mode="bilinear", padding_mode="zeros", align_corners=True
@@ -104,7 +128,7 @@ class SpinPINO(nn.Module):
         ).flatten(1)
         learned_gate = torch.sigmoid(self.weight_head(features))
         return (
-            self.node_volume.to(features)
+            self.node_volume.to(features).unsqueeze(0)
             * rho_nodes.to(features)
             * occupancy_nodes.to(features)
             * learned_gate

@@ -166,3 +166,12 @@ It does not mean the full long-term Spin research goal is closed if formal Cherc
 - W6 M7 Realizable U-FNO has the best combined score (0.4651), J relative L2 0.4931 and lower parameter count (13,448 vs 21,888). W5 voxel DeepONet has r relative L2 0.7511 and J relative L2 0.6994.
 - PINO remains the primary backbone. M7 is a comparator and source of candidate quadrature design, not a replacement.
 - M3b next: port positive Gauss-Legendre quadrature nodes/weights from M7 into the PINO head as a selectable integration rule, retaining the PINO trunk, support mask and PINO physics loss. Compare against midpoint PINO under the same data protocol.
+
+
+## M3b — borrow M7 Gauss-Legendre quadrature inside the PINO head
+
+- M3 showed M7's best derivative accuracy and combined score. The selected response is to transfer only its positive tensor-product Gauss-Legendre quadrature nodes/weights into the P-CRAFT PINO head.
+- `SpinPINO` now supports `quadrature_rule='midpoint'|'gauss'`. Both rules retain the same PINO U-shaped factorized-Fourier trunk, geometry-conditioned positive gate, sampled density/occupancy support mask, convex moment potential and PINO physics loss.
+- Corrected the `grid_sample` coordinate port for tensors laid out as `[B,C,X,Y,Z]`: physical xyz nodes are converted to grid_sample's `(z,y,x)` coordinate order only at the sampling interface.
+- Added tests for positive Gauss weights summing to volume 8 and for an asymmetric positive-X-only voxel support mask.
+- M3b will compare midpoint-PINO vs Gauss-PINO on the same three-seed analytic split and retain W6 M7/W5 as reference baselines. No other backbone is promoted.
