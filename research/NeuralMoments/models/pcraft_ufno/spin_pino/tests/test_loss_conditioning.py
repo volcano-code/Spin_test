@@ -30,7 +30,7 @@ class PINOLossConditioningTests(unittest.TestCase):
                 self.complex = nn.Parameter(torch.tensor([1.0+1.0j, 2.0-1.0j], dtype=torch.complex64))
         model = Mixed()
         loss_a = model.real[0] + model.complex[0].real
-        loss_b = -model.real[0] + model.complex[0].real
+        loss_b = -model.real[0] - model.complex[0].real
         stats = pcgrad_backward((loss_a, loss_b), model.parameters(), (1.0, 1.0))
         self.assertEqual(model.real.grad.dtype, model.real.dtype)
         self.assertEqual(model.complex.grad.dtype, model.complex.dtype)
