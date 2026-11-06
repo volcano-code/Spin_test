@@ -62,31 +62,10 @@ EXEC_REL="$RUN_REL/formal-m6-run-$(date -u +%Y%m%dT%H%M%SZ)"
   --mount "type=bind,src=$P27_ROOT,dst=/output" \
   --user "$(id -u):$(id -g)" \
   --env HOME=/tmp --env GIT_CONFIG_GLOBAL=/tmp/gitconfig \
-  --env P1="$P1_REL" --env RUN_REL="$RUN_REL" --env OUT="/output/$RUN_REL" --env EXEC_REL="$EXEC_REL" \
+  --env RUN_REL="$RUN_REL" --env OUT="/output/$RUN_REL" --env EXEC_REL="$EXEC_REL" \
   --env P27_LOCK_SHA256="$P27_LOCK_SHA256" \
   --env OMP_NUM_THREADS=1 --env OPENBLAS_NUM_THREADS=1 --env MKL_NUM_THREADS=1 \
-  "$IMAGE" bash -lc '
-    set -euo pipefail
-    P1="/work/w4/$P1"
-    OUT="/output/$RUN_REL"
-    export PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1
-    git config --global --add safe.directory /work/w4
-    git config --global --add safe.directory /work/w0
-    git config --global --add safe.directory /work/core
-    git config --global --add safe.directory /work/core/libigl
-    test "$(cat /sys/fs/cgroup/memory.max)" = "25769803776"
-    test "$(cat /sys/fs/cgroup/memory.swap.max)" = "0"
-    /opt/w4-venv/bin/python - <<'PY'
-    import hashlib,os
-    from pathlib import Path
-    p=Path(os.environ["OUT"])/"P21_PRERUN_LOCK.json"
-    assert hashlib.sha256(p.read_bytes()).hexdigest()==os.environ["P27_LOCK_SHA256"]
-    PY
-    /opt/w4-venv/bin/python "$P1/p21_m6_replay.py" execute \
-      --lock "$OUT/P21_PRERUN_LOCK.json" \
-      --lock-sha256 "$P27_LOCK_SHA256" \
-      --output-directory "/output/$EXEC_REL"
-  '
+  "$IMAGE" /work/w4/research/SpinIt2014_Teapot_20261018/P27/p27_container_execute.sh
 
 echo "Formal M6 execution returned. Preserve and inspect:"
 echo "$P27_ROOT/$EXEC_REL"
