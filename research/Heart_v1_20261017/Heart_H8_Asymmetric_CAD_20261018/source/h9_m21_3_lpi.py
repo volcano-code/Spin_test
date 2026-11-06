@@ -18,6 +18,12 @@ CASES = {
 }
 
 
+def exact_token(value):
+    """Canonical n/d representation accepted by strict saved-rational parser."""
+    q = frac(value)
+    return f'{q.numerator}/{q.denominator}'
+
+
 def decompose(positions, velocities):
     """Canonical line A,B and plane C,E,F. Use differentiated incidence at X."""
     a, b, c, e, f = map(vec, positions)
@@ -53,7 +59,7 @@ def decompose(positions, velocities):
                   t_prime_line_motion=dt_line, incidence_squared=incidence_squared,
                   speed_squared=speed_squared)
     row = {k: str(v) for k, v in values.items()}
-    row.update(position=list(map(str, x)), velocity=list(map(str, xp)),
+    row.update(position=list(map(exact_token, x)), velocity=list(map(exact_token, xp)),
                incidence_approx=sqrt(float(incidence_squared)), speed_approx=sqrt(float(speed_squared)))
     return row, x, xp
 
@@ -190,7 +196,7 @@ def main():
         speeds = read_motion(worker, row, evidence, core_sha)
         samples.append(dict(stem=row['stem'], material_sha256=evidence['material_sha256'],
                             attachment_sha256=row['source_motion_attachment_sha256'],
-                            c7=str(frac(material['quadric_coefficients'][7])),
+                            c7=exact_token(material['quadric_coefficients'][7]),
                             constructions=selected_rows(material, request, speeds)))
     intervals = same_side_interval_residuals(samples)
     dump(args.output, dict(schema='heart-h9-m21-3-selected-lpi-motion-v1', samples=samples, same_side_interval_lpi_secants=intervals,
