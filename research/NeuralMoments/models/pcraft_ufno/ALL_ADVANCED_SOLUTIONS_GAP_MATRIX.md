@@ -48,7 +48,7 @@
 - P-CRAFT PINO 主干：Spin-PINO v1 已实现，基础 CPU 数学测试 9/9 曾通过；M2b 新增材料支持掩码后测试 13/14 通过，1 项密度缩放测试因测试假设未隔离学习门控而失败，正在修正。
 - M1 三种子：analytic continuum P0 数据训练成功，但留出椭球平均 r relative L2=0.4250、J relative L2=1.5802，精度不足。
 - M2 未掩码三配置：8³/4³/0.04 组合分数 1.0026；8³/6³/0.02 为 0.7363（J 改善但 r 变差）；16³/4³/0.02 为 1.4660。说明单纯增加分辨率不等于改善模型。
-- M2b：已加入显式密度/occupancy 掩码，三配置重跑已通过训练任务；结果 artifact 待分析。
+- M2b：显式密度/occupancy 掩码已加入；三配置训练通过，已分析 artifact。最佳 8³/6³/eps=0.02：r relative L2=0.2561、J relative L2=0.8972；尚未达到 Newton 准入。
 - GINO/UQNO/QuadrANN：适配器 CPU smoke 通过；均未完成 Spin 数据训练/校准。
 - Algoim：单位球解析十矩独立验证通过，最大绝对误差 7.50e-11；尚未和 Cherchi 在同一 Spin Boolean 几何上配对。
 - DensiCrafter：源码/许可证审查完成，W6 适配器和联合优化尚未实现。
