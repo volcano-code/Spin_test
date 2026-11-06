@@ -70,7 +70,7 @@ class TestM23P1(unittest.TestCase):
             self.run_audit()
 
     def test_chain_failure_fails(self):
-        s=json.loads(self.snap)
+        s=json.loads(self.snap.read_text())
         c=json.loads(s["frozen-inputs/author-rational/exact-chain-summary.json"])
         c["results"][0]["success"]=False
         s["frozen-inputs/author-rational/exact-chain-summary.json"]=json.dumps(c)
@@ -79,7 +79,7 @@ class TestM23P1(unittest.TestCase):
             self.run_audit()
 
     def test_wrong_backend_fails(self):
-        s=json.loads(self.snap)
+        s=json.loads(self.snap.read_text())
         c=json.loads(s["frozen-inputs/author-rational/construction.json"])
         c["backend_sha"]="0"*64
         s["frozen-inputs/author-rational/construction.json"]=json.dumps(c)
@@ -88,7 +88,7 @@ class TestM23P1(unittest.TestCase):
             self.run_audit()
 
     def test_missing_packet_name_fails(self):
-        s=json.loads(self.snap)
+        s=json.loads(self.snap.read_text())
         c=json.loads(s["frozen-inputs/author-rational/construction.json"])
         del c["outputs"]["initial"]
         s["frozen-inputs/author-rational/construction.json"]=json.dumps(c)
