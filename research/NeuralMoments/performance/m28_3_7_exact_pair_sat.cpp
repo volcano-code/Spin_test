@@ -76,7 +76,7 @@ static bool positive_dim_after_sat(const std::array<V,3>&az,const std::array<V,3
  }
  std::vector<R>hits;rhits(a,na,b,hits);rhits(b,nb,a,hits);std::set<R>unique(hits.begin(),hits.end());return unique.size()>=2;
 }
-int main(){try{
+int main(){auto t0=std::chrono::steady_clock::now();try{
  size_t nvA,nfA,nvB,nfB;unsigned scale;if(!(std::cin>>nvA>>nfA>>nvB>>nfB>>scale))throw std::runtime_error("BAD_HEADER");
  auto readv=[](size_t n){std::vector<V>v(n);for(auto&p:v)for(auto&x:p)if(!(std::cin>>x))throw std::runtime_error("BAD_VERTEX");return v;};
  auto readf=[](size_t n,size_t nv){std::vector<I>f(n);for(auto&t:f)for(auto&x:t)if(!(std::cin>>x)||x<0||size_t(x)>=nv)throw std::runtime_error("BAD_FACE");return f;};
@@ -88,5 +88,6 @@ int main(){try{
  for(size_t i=0;i<nfA;++i)for(size_t j=0;j<nfB;++j)if(box_overlap(ba[i],bb[j])){++aabb;if(tri_intersects_sat(ta[i],tb[j])){++sat;if(positive_dim_after_sat(ta[i],tb[j])){++positive;pairs.emplace_back(int(i),int(j));}}}
  std::cout<<"aabb_candidates "<<aabb<<"\nsat_contact_candidates "<<sat<<"\npositive_dim_cut_pairs "<<positive<<"\n";
  for(auto [i,j]:pairs)std::cout<<i<<" "<<j<<"\n";
+ std::cout<<"elapsed_seconds "<<std::chrono::duration<double>(std::chrono::steady_clock::now()-t0).count()<<"\n";
  return 0;
  }catch(const std::exception&e){std::cerr<<"ERROR "<<e.what()<<"\n";return 2;}}
