@@ -13,7 +13,8 @@ from .train import run_seed
 def run(*, seeds=(131,137,139), steps=120, batch_size=8):
     conditions = (
         {"name": "no_rotation_augmentation", "rotation_augmentation": False},
-        {"name": "cube_rotation_augmentation", "rotation_augmentation": True},
+        {"name": "cube_rotation_augmentation", "rotation_augmentation": True, "mode": "cube"},
+        {"name": "arbitrary_so3_rotation_augmentation", "rotation_augmentation": True, "mode": "so3"},
     )
     rows = []
     for condition in conditions:
@@ -32,6 +33,7 @@ def run(*, seeds=(131,137,139), steps=120, batch_size=8):
                 moment_parameterization="logistic_atom",
                 temperature=0.12,
                 rotation_augmentation=condition["rotation_augmentation"],
+                rotation_augmentation_mode=condition.get("mode", "cube"),
                 device="cpu",
             )
             result.pop("checkpoint_state", None)

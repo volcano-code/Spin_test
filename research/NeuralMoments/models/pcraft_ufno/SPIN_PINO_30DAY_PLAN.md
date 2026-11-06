@@ -242,3 +242,11 @@ Promotion requires lower held-out J error without unacceptable loss of r accurac
 - M6 compares logistic PINO with and without cube-rotation augmentation on the same base splits/seeds/steps. The labels are transformed analytically, not re-evaluated through W2/Cherchi.
 
 Acceptance: moment/quadric/Jacobian transform tests pass; augmentation preserves the geometry/data contract; rotated held-out errors improve without degrading unrotated results materially.
+
+## M7 arbitrary-orientation generalization — started 2026-11-06
+
+- M6 cube augmentation evaluated all 24 proper signed-permutation rotations. Augmentation changed held-out r relative L2 from 0.206012 to 0.205555 and J relative L2 from 0.314603 to 0.314324: a negligible improvement.
+- Added deterministic Haar-SO(3) rotations using seeded unit quaternions, exact transformations of native quadric coefficients, ten raw moments and native Jacobians, plus trilinear voxel resampling on the fixed cube.
+- Added tests for proper rotations, quadric evaluation covariance, moment/J transform shape and deterministic augmentation.
+- The new arbitrary-SO(3) experiment must report voxel interpolation error separately; label transforms are exact, but resampled voxel geometry is not.
+- M7 cloud CPU CI is pending. No arbitrary CAD or Newton certification is implied.

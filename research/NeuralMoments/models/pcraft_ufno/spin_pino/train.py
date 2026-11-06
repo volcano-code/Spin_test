@@ -15,7 +15,7 @@ import torch
 from .dataset import generate_splits
 from .spin_pino import SpinPINO, SpinPINOLoss
 from .loss_conditioning import DiagonalMomentResidualPreconditioner, pcgrad_backward
-from .equivariance import augment_with_cube_rotations
+from .equivariance import augment_with_cube_rotations, augment_with_random_so3
 
 
 def _evaluate(model, data):
@@ -53,6 +53,7 @@ def run_seed(
     moment_parameterization: str = "smooth_hinge",
     temperature: float = 0.12,
     rotation_augmentation: bool = False,
+    rotation_augmentation_mode: str = "cube",
     device: str = "cpu",
 ):
     torch.manual_seed(seed)
@@ -67,8 +68,18 @@ def run_seed(
     )
     fit, validation, test = (splits[k] for k in ("fit", "validation", "test"))
     if rotation_augmentation:
-        fit = augment_with_cube_rotations(fit, seed=seed + 700001)
-    rotated_test = augment_with_cube_rotations(test, seed=seed + 900001)
+        if rotation_augmentation_mode == "cube":
+            fit = augment_with_cube_rotations(fit, seed=seed + 700001)
+        elif rotation_augmentation_mode == "so3":
+            fit = augment_with_random_so3(fit, seed=seed + 700001)
+        else:
+            raise ValueError("rotation_augmentation_mode must be cube or so3")
+    if rotation_augmentation_mode == "cube":
+        rotated_test = augment_with_cube_rotations(test, seed=seed + 900001)
+    elif rotation_augmentation_mode == "so3":
+        rotated_test = augment_with_random_so3(test, seed=seed + 900001)
+    else:
+        raise ValueError("rotation_augmentation_mode must be cube or so3")
     model = SpinPINO(
         width=4 if grid_size <= 8 else 8,
         modes=2 if grid_size <= 8 else 4,
@@ -165,6 +176,7 @@ def run_seed(
             "preconditioner_fit_split_only": True,
             "preconditioner": preconditioner.as_dict() if preconditioner else None,
             "rotation_augmentation": bool(rotation_augmentation),
+            "rotation_augmentation_mode": rotation_augmentation_mode,
             "fit_samples_after_augmentation": int(len(fit[0])),
         },
         "model_config": {"grid_size": grid_size, "points_per_axis": points_per_axis,
@@ -211,6 +223,7 @@ def main():
     parser.add_argument("--moment-parameterization", choices=("smooth_hinge", "logistic_atom"), default="smooth_hinge")
     parser.add_argument("--temperature", type=float, default=0.12)
     parser.add_argument("--rotation-augmentation", action="store_true")
+    parser.add_argument("--rotation-augmentation-mode", choices=("cube", "so3"), default="cube")
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--save-checkpoints", action="store_true")
@@ -232,6 +245,7 @@ def main():
             moment_parameterization=args.moment_parameterization,
             temperature=args.temperature,
             rotation_augmentation=args.rotation_augmentation,
+            rotation_augmentation_mode=args.rotation_augmentation_mode,
             device=args.device,
         )
         state = result.pop("checkpoint_state")

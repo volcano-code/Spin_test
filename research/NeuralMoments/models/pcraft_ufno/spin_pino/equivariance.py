@@ -199,3 +199,59 @@ def augment_with_cube_rotations(data, *, seed: int):
         torch.cat((jacobians, torch.cat(J_aug, dim=0)), dim=0),
         list(metadata) + meta_aug,
     )
+
+
+def random_so3_rotation(seed: int, *, dtype=torch.float64, device=None) -> Tensor:
+    """Deterministic Haar-uniform SO(3) rotation from a seeded unit quaternion."""
+    import numpy as np
+    rng = np.random.default_rng(int(seed))
+    u1, u2, u3 = rng.random(3)
+    x = math.sqrt(1.0-u1) * math.sin(2.0*math.pi*u2)
+    y = math.sqrt(1.0-u1) * math.cos(2.0*math.pi*u2)
+    z = math.sqrt(u1) * math.sin(2.0*math.pi*u3)
+    w = math.sqrt(u1) * math.cos(2.0*math.pi*u3)
+    R = torch.tensor([
+        [1-2*(y*y+z*z), 2*(x*y-z*w), 2*(x*z+y*w)],
+        [2*(x*y+z*w), 1-2*(x*x+z*z), 2*(y*z-x*w)],
+        [2*(x*z-y*w), 2*(y*z+x*w), 1-2*(x*x+y*y)],
+    ], dtype=dtype, device=device)
+    _check_rotation(R)
+    return R
+
+
+def augment_with_random_so3(data, *, seed: int):
+    """Append one arbitrary SO(3) rotation per sample.
+
+    Moment and coefficient labels transform exactly. The voxel field is
+    trilinearly resampled on the fixed bounding cube, so its interpolation
+    error is measured separately; unlike cube rotations this is not an exact
+    permutation of voxel centers.
+    """
+    if len(data) != 5:
+        raise ValueError("expected (D,c,r,J,metadata)")
+    D, coefficients, moments, jacobians, metadata = data
+    if D.ndim != 5 or D.shape[1] != 4:
+        raise ValueError("D must be [N,4,X,Y,Z]")
+    count = D.shape[0]
+    if any(x.shape[0] != count for x in (coefficients, moments, jacobians)) or len(metadata) != count:
+        raise ValueError("all data fields must have matching sample count")
+    D_aug, c_aug, r_aug, J_aug, meta_aug = [], [], [], [], []
+    for i in range(count):
+        R = random_so3_rotation(seed + i, dtype=D.dtype, device=D.device)
+        D_aug.append(rotate_geometry_voxels(D[i:i+1], R))
+        c_aug.append(transform_native_coefficients(coefficients[i:i+1], R))
+        r_aug.append(transform_raw_moments(moments[i:i+1], R))
+        J_aug.append(transform_native_jacobian(jacobians[i:i+1], R))
+        row = copy.deepcopy(metadata[i])
+        row["parent_geometry_id"] = row.get("geometry_id")
+        row["geometry_id"] = f'{row.get("geometry_id", "geometry")}__so3_{seed+i}'
+        row["augmentation"] = "HAAR_SO3_LABEL_EXACT_VOXEL_TRILINEAR"
+        row["rotation_matrix"] = [[float(v) for v in line] for line in R.cpu().tolist()]
+        meta_aug.append(row)
+    return (
+        torch.cat((D, torch.cat(D_aug, dim=0)), dim=0),
+        torch.cat((coefficients, torch.cat(c_aug, dim=0)), dim=0),
+        torch.cat((moments, torch.cat(r_aug, dim=0)), dim=0),
+        torch.cat((jacobians, torch.cat(J_aug, dim=0)), dim=0),
+        list(metadata) + meta_aug,
+    )

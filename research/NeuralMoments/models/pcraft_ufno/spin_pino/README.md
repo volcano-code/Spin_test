@@ -123,3 +123,9 @@ The same-data three-seed tournament shows the PINO logistic-atom head achieves h
 ## M6 rotation covariance
 
 `equivariance.py` implements exact rotation transforms for native coefficients, ten raw moments and Jacobians, plus voxel resampling and the 24 proper cube rotations. `augment_with_cube_rotations` adds exact transformed analytic labels to the fit split only. `rotation_sweep.py` compares logistic PINO with and without rotation augmentation and reports both unrotated and rotated held-out ellipsoid metrics.
+
+## M7 arbitrary SO(3) orientation augmentation
+
+`equivariance.py` now includes seeded Haar-uniform SO(3) rotations generated from unit quaternions. Coefficients, ten raw moments and Jacobians are transformed exactly with the native-coordinate maps; voxel channels are trilinearly resampled on the fixed cube. This is deliberately distinguished from the 24 exact cube-preserving signed-permutation rotations: arbitrary SO(3) introduces voxel interpolation error, which must be measured separately.
+
+The M6 cube-only experiment found almost no change from augmentation (held-out r relative L2 0.206012 to 0.205555; J relative L2 0.314603 to 0.314324). M7 tests whether arbitrary orientations expose a generalization gap that cube rotations cannot.
