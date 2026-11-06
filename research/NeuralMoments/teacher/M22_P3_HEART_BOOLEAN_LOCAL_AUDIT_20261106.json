@@ -124,5 +124,19 @@
     "source": "uploaded M21 raw archive + pinned original H8f Actions artifact + exact rational offline geometry analysis",
     "new_cherchi_calls": 0,
     "cloud_native_reexecution": false
+  },
+  "volumetric_sobol_probe": {
+    "method": "UNSCRAMBLED_3D_SOBOL_IN_DESIGN_AABB_EXACT_RATIONAL_RAY_CLASSIFICATION",
+    "points": 4096,
+    "ambiguous": 0,
+    "mismatches": 0,
+    "expected_and_observed_inside": 968,
+    "classes": {
+      "outside_design_outside_quadric_output_outside": 1491,
+      "outside_design_inside_quadric_output_outside": 320,
+      "inside_design_inside_quadric_output_outside": 1317,
+      "inside_design_outside_quadric_output_inside": 968
+    },
+    "global_continuous_set_equality_proven": false
   }
 }
