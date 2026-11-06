@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M22_P3_HEART_LOCAL_BOOLEAN_BOUNDARY_SEMANTICS_PASS_GLOBAL_SET_EQUIVALENCE_PENDING",
+  "status": "M22_P3_HEART_LOCAL_BOOLEAN_SEMANTICS_AND_4096_VOLUME_PROBES_PASS_GLOBAL_SET_EQUIVALENCE_PENDING",
   "native_teacher_runs": 1,
   "training_samples": 0,
   "order": [
@@ -723,6 +723,14 @@
     "J_D": null,
     "split": "excluded",
     "training_admitted": false,
-    "training_samples": 0
+    "training_samples": 0,
+    "volumetric_sobol_probe": {
+      "points": 4096,
+      "ambiguous": 0,
+      "mismatches": 0,
+      "expected_and_observed_inside": 968,
+      "method": "UNSCRAMBLED_3D_SOBOL_IN_DESIGN_AABB_EXACT_RATIONAL_RAY_CLASSIFICATION",
+      "global_continuous_set_equality_proven": false
+    }
   }
 }
