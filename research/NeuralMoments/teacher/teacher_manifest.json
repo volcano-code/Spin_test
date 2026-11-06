@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M22_P3_HEART_ALL_THREE_SURFACES_EXACT_EMBEDDED_SET_EQUALITY_PENDING",
+  "status": "M22_P4_1_EXACT_ARRANGEMENT_CERTIFICATE_GATE_TESTED_REAL_GLOBAL_PROOF_PENDING",
   "native_teacher_runs": 1,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "M22-P4: prove global exact Boolean set equality with exact arrangement-cell coverage or an independent exact Boolean backend; preserve M21/H8f provenance mismatch as unresolved. Then M23 Noodles six exact F/D/A packets and fresh native teacher; W0/W3 smooth-neighborhood/Jacobian/Newton admission remains pending.",
+  "pending_dependency": "M22-P4.2 exact arrangement producer for Design x QuadricSource triangle intersections; prove exact cell decomposition, classification and output tiling, then emit and independently verify a real Heart certificate. Continue to preserve the M22-P3 finite-probe status as diagnostic only.",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -792,5 +792,21 @@
     },
     "audit_source_git_blob_sha1": "77ba3bc9de0e6fc0a9eec8905eb28f87fc900991",
     "test_source_git_blob_sha1": "ee336c4c17d039e15b06656b3b782b645277948b"
+  },
+  "m22_p4_1": {
+    "report": "research/NeuralMoments/teacher/M22_P4_1_ARRANGEMENT_CERTIFICATE_GATE_20261106.md",
+    "verifier": "research/NeuralMoments/teacher/m22_p4_arrangement_certificate.py",
+    "tests": "research/NeuralMoments/teacher/test_m22_p4_arrangement_certificate.py",
+    "tests_ran": 10,
+    "tests_passed": 10,
+    "tests_failed": 0,
+    "tests_skipped": 0,
+    "execution": "cloud Python runtime, synthetic certificate fixtures",
+    "real_heart_arrangement_generated": false,
+    "global_boolean_set_equality_certified": false,
+    "cherchi_calls": 0,
+    "J_D": null,
+    "split": "excluded",
+    "training_samples": 0
   }
 }
