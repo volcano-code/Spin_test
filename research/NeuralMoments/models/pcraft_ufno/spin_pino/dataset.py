@@ -34,14 +34,21 @@ def _digest(data) -> str:
 def _group_split(data, *, seed: int, validation_fraction: float):
     if not 0.0 < validation_fraction < 0.5:
         raise ValueError("validation_fraction must be in (0,0.5)")
-    geometry_ids = sorted({row["geometry_id"] for row in data[4]})
-    if len(geometry_ids) < 4:
-        raise ValueError("at least four distinct geometries are required for fit/validation")
+    family_ids = {}
+    for row in data[4]:
+        family_ids.setdefault(row["family"], set()).add(row["geometry_id"])
+    if not family_ids or any(len(ids) < 2 for ids in family_ids.values()):
+        raise ValueError("each geometry family needs at least two distinct instances")
     rng = np.random.default_rng(seed)
-    shuffled = list(np.asarray(geometry_ids, dtype=object)[rng.permutation(len(geometry_ids))])
-    n_validation = max(1, int(round(len(shuffled) * validation_fraction)))
-    validation_ids = set(shuffled[:n_validation])
-    fit_ids = set(shuffled[n_validation:])
+    validation_ids = set()
+    fit_ids = set()
+    for family in sorted(family_ids):
+        geometry_ids = sorted(family_ids[family])
+        shuffled = list(np.asarray(geometry_ids, dtype=object)[rng.permutation(len(geometry_ids))])
+        n_validation = max(1, int(round(len(shuffled) * validation_fraction)))
+        n_validation = min(n_validation, len(shuffled) - 1)
+        validation_ids.update(shuffled[:n_validation])
+        fit_ids.update(shuffled[n_validation:])
     fit_indices = [i for i, row in enumerate(data[4]) if row["geometry_id"] in fit_ids]
     validation_indices = [i for i, row in enumerate(data[4]) if row["geometry_id"] in validation_ids]
     fit = _subset(data, fit_indices)
