@@ -1,0 +1,12 @@
+test_all_gates_pass ... ok
+test_h8c_hash_mismatch_fails ... ok
+test_h8e_hash_mismatch_fails ... ok
+test_m13_blocker_propagates ... ok
+test_m19_blocker_propagates ... ok
+test_m23_blocker_propagates ... ok
+test_missing_module_fails ... ok
+test_module_sha_drift_fails ... ok
+test_success_never_means_production_admission ... ok
+
+Ran 9 tests in 0.000s
+OK
