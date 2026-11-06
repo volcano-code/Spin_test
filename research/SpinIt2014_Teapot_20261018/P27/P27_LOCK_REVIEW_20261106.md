@@ -44,6 +44,7 @@ Build report status: `BUILT_AND_IMPORT_VERIFIED_NO_GEOMETRY`.
 - `_cherchi_rational_moments`: `8deaf8b187f12f43ce0f9f955f59c38eeb997c82baf5586e4f05269bf1c87bfa`.
 - Native and Boolean hashes match the six-pin record; the rational-moments module hash is recorded in the native arithmetic identity and locked native search-path snapshot.
 - The P20 preparation's six observed pins equal the separate pins JSON and the P21 lock.
+- The lock explicitly records `source_to_binary_build_attestation = false`: build logs, pinned source/dependency identities, before/after clean-tree checks and binary hashes are present, but this is not a cryptographically attested or independently reproducible source-to-binary build.
 
 ## Material preparation scope
 
