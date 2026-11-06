@@ -1,0 +1,81 @@
+{
+  "schema": "heart-h9-m21-4-signed-cancellation-audit-v1",
+  "source": {
+    "file": "precision-ledger.json",
+    "sha256": "95bf2c6d91862bba488dd56118562a1fad826037966ed3f8f0bf382e5fba0703",
+    "source_schema": "heart-h9-m20-exact-difference-rounding-ledger-v1",
+    "source_status": "SIX_SAVED_SURFACES_REINTEGRATED_DIAGNOSTIC_ONLY",
+    "saved_materials_reintegrated": 6,
+    "new_native_calls_this_run": 0,
+    "stage18_audit_sha256": "68ee61282caac38d160a4226d9e44df42dd7eba",
+    "raw_exactness_scope": "INTEGRALS_OF_SAVED_RATIONAL_POLYHEDRA_ONLY"
+  },
+  "findings": [
+    {
+      "side": "left",
+      "opposite_sign_components": [
+        "Mx",
+        "Mxx",
+        "Mxz",
+        "Myy",
+        "Mz",
+        "Mzz",
+        "mass"
+      ],
+      "opposite_sign_count": 7,
+      "component_count": 10,
+      "all_partition_identities_verified": true,
+      "full_interval_max_exact_surface_scaled_error": 3.875585606873951e-9,
+      "full_interval_worst_component": "Mzz",
+      "worst_half_interval_max_exact_surface_scaled_error": 1.746832064607797e-8,
+      "worst_half_over_full_error_ratio": 4.507272556460939,
+      "strongest_cancellation": {
+        "component": "Mxz",
+        "weighted_cancellation_fraction": 0.07869184831086172,
+        "half_signed_residuals": [
+          2.255532791329538e-9,
+          -1.926445212604593e-9
+        ],
+        "full_residual": 1.6454375938661172e-10
+      }
+    },
+    {
+      "side": "right",
+      "opposite_sign_components": [
+        "Mx",
+        "Mxx",
+        "Mxy",
+        "Mxz",
+        "My",
+        "Myy",
+        "Myz",
+        "Mz",
+        "Mzz",
+        "mass"
+      ],
+      "opposite_sign_count": 10,
+      "component_count": 10,
+      "all_partition_identities_verified": true,
+      "full_interval_max_exact_surface_scaled_error": 6.930856862281341e-9,
+      "full_interval_worst_component": "Mzz",
+      "worst_half_interval_max_exact_surface_scaled_error": 1.5845097155572323e-8,
+      "worst_half_over_full_error_ratio": 2.286167132061763,
+      "strongest_cancellation": {
+        "component": "My",
+        "weighted_cancellation_fraction": 0.14242657584364654,
+        "half_signed_residuals": [
+          2.6701845969955735e-11,
+          -3.5571179797427264e-11
+        ],
+        "full_residual": -4.394740518212683e-12
+      }
+    }
+  ],
+  "interpretation": "The full-interval residual is materially reduced by opposite-sign half-interval residual cancellation. This is a finite six-surface diagnostic, not an asymptotic-order or continuous-neighborhood proof. The audit summarizes the stored ledger and does not independently read the six original native packets or source-motion attachments.",
+  "gates": {
+    "continuous_neighborhood_certified": false,
+    "asymptotic_order_certified": false,
+    "newton_admitted": false,
+    "final_heart_obj_produced": false
+  }
+}
