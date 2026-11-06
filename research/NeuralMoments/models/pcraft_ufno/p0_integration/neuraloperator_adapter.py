@@ -153,8 +153,10 @@ class GINOMomentOperator(nn.Module):
     def jacobian_diagnostic(self, input_geom: Tensor, point_features: Tensor,
                             coefficients: Tensor) -> Tensor:
         geometry_code = self.encode(input_geom, point_features)
+        _unit_positive_coefficients(coefficients)  # validate outside vmap
         def one(code: Tensor, coeff: Tensor) -> Tensor:
-            return self.head(code.unsqueeze(0), coeff.unsqueeze(0)).squeeze(0)
+            unit = coeff / torch.linalg.vector_norm(coeff)
+            return self.head.net(torch.cat((code, unit), dim=-1).unsqueeze(0)).squeeze(0)
         return vmap(jacrev(one, argnums=1))(geometry_code, coefficients)
 
 
