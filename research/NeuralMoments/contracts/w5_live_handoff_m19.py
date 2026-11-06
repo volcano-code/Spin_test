@@ -25,6 +25,12 @@ REVIEWED_M18_BLOB = "4c97aacc1d50366c7cc97876064f4183469d9910"
 M21_MANIFEST_BLOB = "97d1576b3fbfbdcd557bf17c4319c17b1f65f78f"
 M21_RECEIPT_BLOB = "b7938b4d76822079df72b46ef7d9c7b88d66c1d5"
 M21_RECEIPT_PATH = "research/NeuralMoments/teacher/M21_HEART_NATIVE_DIAGNOSTIC_RESULT.json"
+M22_P1_MANIFEST_BLOB = "1d88d8071d1b7c8ad5e17959f697db8972461e3e"
+M22_AUDIT_PATH = "research/NeuralMoments/teacher/M22_M21_HEART_ARCHIVE_AUDIT_20261106.json"
+M22_AUDIT_BLOB = "d92d475641ca46501e5360fa82a72d3b7c8cb20c"
+M22_P2_MANIFEST_BLOB = "973a796b1720ed2b6e0e844a758b0325cd530d65"
+M22_REPLAY_PATH = "research/NeuralMoments/teacher/M22_P2_HEART_BOUNDARY_REPLAY_20261106.json"
+M22_REPLAY_BLOB = "feb06c694345030a2a123b2e2f84b1eaca442453"
 W2_SCHEMA = "w2-cherchi-teacher-v2-pre-w0"
 W0_UNIT_TOLERANCE = 1e-12
 REQUIRED_W2_EXCLUDED = 81
@@ -194,21 +200,31 @@ def inspect(*, w5_source, w5_head, w5_blob, w2_manifest, w2_head, w2_blob,
            "W2_SPLITS_SCHEMA_CHANGED")
     counts = [x.get("count") for x in splits["excluded"] if type(x) is dict]
     runs = w2.get("native_teacher_runs")
+    archive_audited = w2_blob in (M22_P1_MANIFEST_BLOB, M22_P2_MANIFEST_BLOB)
+    boundary_replayed = w2_blob == M22_P2_MANIFEST_BLOB
     demand(counts==[REQUIRED_W2_EXCLUDED] and
            not splits["train"] and not splits["val"] and not splits["test"] and
            type(runs) is int and
            ((runs == 0 and "latest_native_diagnostic" not in w2) or
-            (runs == 1 and w2_blob == M21_MANIFEST_BLOB)) and
+            (runs == 1 and (w2_blob == M21_MANIFEST_BLOB or archive_audited))) and
            type(w2.get("training_samples")) is int and
            w2["training_samples"]==0,
            "W2_NATIVE_RELEASE_CHANGED_REQUIRES_INDEPENDENT_REVIEW")
+    # Every receipt must belong to the same fetched W2 commit as its manifest.
+    required_receipts = []
     if runs == 1:
-        # Use the same fetched commit as the manifest; a changed/missing
-        # receipt fails closed even if teacher_manifest.json is unchanged.
-        receipt = subprocess.run(["git", "rev-parse", "--verify", w2_head + ":" + M21_RECEIPT_PATH],
+        required_receipts.append((M21_RECEIPT_PATH, M21_RECEIPT_BLOB,
+                                  "W2_M21_RECEIPT_REQUIRES_INDEPENDENT_REVIEW"))
+    if archive_audited:
+        required_receipts.append((M22_AUDIT_PATH, M22_AUDIT_BLOB,
+                                  "W2_M22_AUDIT_REQUIRES_INDEPENDENT_REVIEW"))
+    if boundary_replayed:
+        required_receipts.append((M22_REPLAY_PATH, M22_REPLAY_BLOB,
+                                  "W2_M22_REPLAY_REQUIRES_INDEPENDENT_REVIEW"))
+    for path, expected, rejection in required_receipts:
+        receipt = subprocess.run(["git", "rev-parse", "--verify", w2_head + ":" + path],
                                  capture_output=True, text=True)
-        demand(receipt.returncode == 0 and receipt.stdout.strip() == M21_RECEIPT_BLOB,
-               "W2_M21_RECEIPT_REQUIRES_INDEPENDENT_REVIEW")
+        demand(receipt.returncode == 0 and receipt.stdout.strip() == expected, rejection)
     if w5_blob==LEGACY_W5_BLOB:
         status="PENDING_W5_OWNER_ADOPTION"
         smoke={"actual_W5_candidate_runtime_exercised":False}
@@ -226,6 +242,8 @@ def inspect(*, w5_source, w5_head, w5_blob, w2_manifest, w2_head, w2_blob,
                   "schema":w2["schema"],"excluded_h8f_samples":81,
                   "native_teacher_runs":runs,"training_samples":0,
                   "reviewed_excluded_receipt_blob": M21_RECEIPT_BLOB if runs else None,
+                  "reviewed_archive_audit_blob": M22_AUDIT_BLOB if archive_audited else None,
+                  "reviewed_historical_boundary_replay_blob": M22_REPLAY_BLOB if boundary_replayed else None,
                   "raw_diagnostic_archive_verified_by_W0":False},
             "runtime":smoke,
             "scope":"CODE_IDENTITY_AND_STRUCTURAL_COMPATIBILITY_NOT_NATIVE_TRUTH",

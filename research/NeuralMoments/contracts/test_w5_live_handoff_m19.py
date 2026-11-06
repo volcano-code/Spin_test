@@ -181,3 +181,39 @@ def test_m21_excluded_receipt_tracks_the_same_w2_commit(tmp_path, monkeypatch):
         args["w2_blob"] = gate.git_blob(args["w2_manifest"].read_bytes())
         with pytest.raises(gate.HandoffRejected, match="W2_NATIVE_RELEASE_CHANGED"):
             gate.inspect(**args)
+
+
+@pytest.mark.parametrize("version", ["P1", "P2"])
+def test_m22_receipts_are_bound_to_same_commit(tmp_path, monkeypatch, version):
+    args, manifest = write_inputs(tmp_path, monkeypatch)
+    manifest.update(native_teacher_runs=1, latest_native_diagnostic={"split": "excluded"})
+    args["w2_manifest"].write_text(json.dumps(manifest))
+    args["w2_blob"] = gate.git_blob(args["w2_manifest"].read_bytes())
+    monkeypatch.setattr(gate, f"M22_{version}_MANIFEST_BLOB", args["w2_blob"])
+    receipts = {gate.M21_RECEIPT_PATH: gate.M21_RECEIPT_BLOB,
+                gate.M22_AUDIT_PATH: gate.M22_AUDIT_BLOB}
+    if version == "P2":
+        receipts[gate.M22_REPLAY_PATH] = gate.M22_REPLAY_BLOB
+
+    def lookup(command, **kwargs):
+        head, path = command[-1].split(":")
+        assert head == args["w2_head"]
+        return gate.subprocess.CompletedProcess(command, 0 if path in receipts else 128,
+                                                stdout=receipts.get(path, ""))
+
+    monkeypatch.setattr(gate.subprocess, "run", lookup)
+    result = gate.inspect(**args)
+    assert result["W2"]["reviewed_archive_audit_blob"] == gate.M22_AUDIT_BLOB
+    assert result["W2"]["reviewed_historical_boundary_replay_blob"] == receipts.get(gate.M22_REPLAY_PATH)
+    assert result["W2"]["training_samples"] == 0
+    assert not result["training_admitted"] and not result["Newton_accepted"]
+    assert not result["W0_full_scientific_admission_certified"]
+    assert not result["W5_native_teacher_data_released"]
+    for path, expected in receipts.copy().items():
+        receipts[path] = "f" * 40
+        with pytest.raises(gate.HandoffRejected, match="REQUIRES_INDEPENDENT_REVIEW"):
+            gate.inspect(**args)
+        del receipts[path]
+        with pytest.raises(gate.HandoffRejected, match="REQUIRES_INDEPENDENT_REVIEW"):
+            gate.inspect(**args)
+        receipts[path] = expected
