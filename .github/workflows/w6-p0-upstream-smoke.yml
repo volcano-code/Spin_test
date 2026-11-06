@@ -39,5 +39,7 @@ jobs:
         run: cmake -S research/NeuralMoments/models/pcraft_ufno/p0_integration/algoim -B /tmp/w6-algoim-build -DCMAKE_BUILD_TYPE=Release
       - name: Build
         run: cmake --build /tmp/w6-algoim-build --parallel 2
+      - name: Print Algoim ten-moment reference and max error
+        run: /tmp/w6-algoim-build/algoim_moment_smoke
       - name: Verify analytic unit-sphere ten moments
-        run: ctest --test-dir /tmp/w6-algoim-build --output-on-failure
+        run: ctest --test-dir /tmp/w6-algoim-build --output-on-failure --verbose

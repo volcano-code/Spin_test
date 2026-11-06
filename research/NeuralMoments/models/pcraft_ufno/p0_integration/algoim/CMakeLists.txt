@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.18)
 project(w6_algoim_moment_smoke LANGUAGES CXX)
+if(POLICY CMP0169)
+  cmake_policy(SET CMP0169 OLD)
+endif()
 include(FetchContent)
 
 FetchContent_Declare(algoim
