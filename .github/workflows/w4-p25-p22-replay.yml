@@ -135,14 +135,37 @@ jobs:
           assert r["native_audit_invoked"] is True
           assert r["diagnostic_captured"] is True
           assert r["formal_resource_admission"] is False
-          assert r["observed_w0_commit"] == "5bab2eb2616df306906a6887a273f68acfa49320"
-          assert r["observed_core_commit"] == "58fd12c1306c1c01679a19172e276eef0cb30542"
+          assert r["w0_commit"] == "5bab2eb2616df306906a6887a273f68acfa49320"
+          assert r["core_commit"] == "58fd12c1306c1c01679a19172e276eef0cb30542"
+          assert r["native_audit_returned"] is True
+          assert r["native_full_partition_certified_test_only"] is True
+          assert r["native_evidence_status"] == "REAL_EXACT_FULL_PARTITION_VERIFIED_DERIVATIVE_AND_TERMINAL_PENDING"
           assert r["cgroup_after"].get("memory.max") == "8589934592"
           assert r["cgroup_after"].get("memory.swap.max") == "0"
           events=dict(line.split() for line in r["cgroup_after"]["memory.events"].splitlines())
           assert events.get("oom") == "0" and events.get("oom_kill") == "0"
-          assert r["native_call_counts_final"] is not None
-          print("P25_P22_DIAGNOSTIC_CAPTURED:",r["status"],"audit_returned=",r["native_audit_returned"],"calls=",r.get("native_call_counts_final"))
+          calls=r["native_call_counts_final"]
+          assert calls["source"] == 1 and calls["boolean"] == 2
+          assert calls["derivative"] == 1 and calls["integration"] == 2
+          evidence=json.loads((p.parent/"native-evidence.json").read_text())
+          assert evidence["native_full_partition_certified"] is True
+          assert evidence["retained_plus_cavity_equals_design_r10_exact"] is True
+          assert evidence["fixed_plus_retained_density_weighted_moments_verified"] is True
+          assert [x["label"] for x in evidence["exact_partition_predicates"]] == ["fixed_plus_design","design_cut","full_outer"]
+          for item in evidence["exact_partition_predicates"]:
+              facts=item["native_predicate_facts"]
+              assert facts["completed"] and facts["complete_partition"]
+              assert facts["union_equals_whole"] and facts["no_positive_volume_overlap"]
+              assert facts["missing_whole_content"] is False and facts["excess_union_content"] is False
+              assert all(facts["part_subset_whole"])
+          m5=evidence["M5_evidence"]
+          assert m5["w2_exact_math_reference"]["identical_all_ten"] is True
+          assert m5["w2_exact_math_reference"]["complete_material_partition_proof"] is False
+          assert m5["w2_exact_math_reference"]["independent_cherchi_boolean_proof"] is False
+          assert evidence["smooth_derivative_certified"] is False
+          assert evidence["newton_terminal_certified"] is False
+          assert evidence["training_admissible"] is False
+          print("P25_P22_TEST_ONLY_NATIVE_PARTITION_VERIFIED:",r["native_evidence_status"],"calls=",calls)
           PY
 
       - name: Preserve P25 build, preparation, and TEST_ONLY M6 evidence
