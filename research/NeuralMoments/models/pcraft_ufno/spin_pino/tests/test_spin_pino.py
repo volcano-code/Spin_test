@@ -114,6 +114,46 @@ class SpinPINOBackboneTests(unittest.TestCase):
         self.assertAlmostEqual(float(model.node_volume.sum()), 8.0, places=6)
         self.assertEqual(model.quadrature_xyz.shape, (64, 3))
 
+    def test_14_logistic_atom_head_complement_radial_and_tangent_psd(self):
+        model = SpinPINO(
+            width=4, modes=2, n_layers=2, grid_size=8,
+            points_per_axis=4, hidden_dim=24, smoothing=0.02,
+            moment_parameterization="logistic_atom", temperature=0.12,
+        )
+        weights = torch.rand((2, 64), dtype=torch.float64)
+        coeff = torch.randn((2, 10), dtype=torch.float64)
+        r = model.moment_from_weights(weights, coeff)
+        r_neg = model.moment_from_weights(weights, -coeff)
+        full = weights @ model.monomials.to(torch.float64)
+        self.assertTrue(torch.allclose(r + r_neg, full, atol=1e-10, rtol=1e-10))
+        J = model.jacobian_from_weights(weights, coeff)
+        radial = torch.bmm(J, coeff.unsqueeze(-1))
+        self.assertLess(float(radial.abs().max()), 1e-10)
+        gram = model.projected_q_gram(weights, coeff)
+        self.assertTrue(torch.allclose(gram, gram.transpose(1, 2), atol=1e-10, rtol=1e-10))
+        eig = torch.linalg.eigvalsh(0.5 * (gram + gram.transpose(1, 2)))
+        self.assertGreaterEqual(float(eig.min()), -1e-10)
+
+    def test_15_logistic_atom_jacobian_matches_finite_difference(self):
+        model = SpinPINO(
+            width=4, modes=2, n_layers=2, grid_size=8,
+            points_per_axis=4, hidden_dim=24, smoothing=0.02,
+            moment_parameterization="logistic_atom", temperature=0.12,
+        )
+        weights = torch.rand((1, 64), dtype=torch.float64)
+        coeff = torch.randn((1, 10), dtype=torch.float64)
+        analytic = model.jacobian_from_weights(weights, coeff)
+        step = 1e-6
+        columns = []
+        for j in range(10):
+            delta = torch.zeros_like(coeff)
+            delta[:, j] = step
+            plus = model.moment_from_weights(weights, coeff + delta)
+            minus = model.moment_from_weights(weights, coeff - delta)
+            columns.append(((plus - minus) / (2 * step)).squeeze(0))
+        finite_difference = torch.stack(columns, dim=-1).unsqueeze(0)
+        self.assertTrue(torch.allclose(analytic, finite_difference, atol=2e-7, rtol=2e-6))
+
     def test_13_voxel_sampling_respects_world_xyz_axis_order(self):
         model = SpinPINO(
             width=4, modes=2, n_layers=2, grid_size=8,

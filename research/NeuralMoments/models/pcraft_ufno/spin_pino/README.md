@@ -108,3 +108,8 @@ The Gauss-Legendre variant passed implementation tests but did not improve held-
 ## M4 loss-conditioning result
 
 The M4 three-seed sweep did not improve over the baseline: r/J relative L2 0.2320/0.8912 baseline, 0.3101/0.8963 diagonal preconditioning, 0.2898/0.8907 preconditioning+PCGrad. PCGrad increased CPU time. Keep these as optional ablations; do not change default PINO loss. Next investigate a PINO-preserving M7 logistic realizable-atom head transplant for Jacobian accuracy. See `M4_LOSS_CONDITIONING_REPORT.md`.
+
+
+## M5 M7 logistic-head transplant
+
+A new optional `moment_parameterization='logistic_atom'` borrows W6 M7's projective sigmoid-atom moment/Jacobian formula while keeping the P-CRAFT PINO trunk, geometry-conditioned positive weights and density/occupancy support mask. The original `smooth_hinge` potential remains the default. Logistic mode uses tangent-projected q-space Jacobian symmetry/PSD constraints and does not claim to be a scalar convex potential. Tests compare its analytic Jacobian to finite differences.

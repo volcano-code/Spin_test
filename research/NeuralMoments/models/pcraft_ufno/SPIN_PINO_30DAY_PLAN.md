@@ -206,3 +206,18 @@ Acceptance: compare held-out raw r/J metrics, gradient-conflict statistics, trai
 - Gradient diagnostics show the current moment-physics residual gradient is nearly zero (~9.1e-17) because the chosen potential structure already satisfies the tested identities. Thus PCGrad has almost no useful data-vs-physics conflict to resolve.
 - Decision: keep baseline loss as default; retain conditioning/PCGrad as optional ablations, not promoted.
 - Next M5: borrow W6 M7's logistic realizable-atom moment/Jacobian head into the P-CRAFT PINO trunk. This targets the remaining Jacobian gap while keeping PINO primary.
+
+
+## M5 — M7 logistic realizable-atom head transplant into PINO (started 2026-11-06)
+
+M3 showed W6 M7's logistic realizable-atom parameterization has substantially better held-out Jacobian accuracy than the current smooth-hinge PINO head. M4 showed that loss preconditioning and PCGrad do not fix the gap on the present analytic dataset. M5 therefore transfers only the M7 moment/Jacobian formula into the P-CRAFT PINO model head:
+
+- P-CRAFT UFNO3d factorized-Fourier U-shaped trunk remains unchanged and primary.
+- Keep the support-masked positive quadrature weights predicted by the PINO geometry head.
+- Add `moment_parameterization='logistic_atom'` with M7's projective sigmoid atom rule and analytic native-coefficient Jacobian.
+- Preserve the smooth convex-hinge head as the baseline/ablation.
+- For logistic atoms, use tangent-projected q-space Jacobian symmetry/PSD physics residuals, not the full smooth-Hessian constraint.
+- Verify analytic Jacobian by central finite differences, complement identity, radial identity and tangent PSD.
+- Run the same-data three-seed tournament against midpoint smooth PINO, Gauss smooth PINO, W6 M7 and W5 DeepONet.
+
+Promotion requires lower held-out J error without unacceptable loss of r accuracy or a false physical-certification claim. The logistic-atom head is not itself a scalar convex potential, and its tangent PSD property does not certify the continuum/CAD Jacobian.

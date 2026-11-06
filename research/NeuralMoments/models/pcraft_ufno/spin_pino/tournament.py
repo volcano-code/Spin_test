@@ -36,6 +36,10 @@ def _build(kind: str):
         return SpinPINO(width=4, modes=2, n_layers=2, grid_size=8,
                         points_per_axis=6, hidden_dim=48, smoothing=0.02,
                         quadrature_rule="gauss")
+    if kind == "spin_pino_6node_logistic":
+        return SpinPINO(width=4, modes=2, n_layers=2, grid_size=8,
+                        points_per_axis=6, hidden_dim=48, smoothing=0.02,
+                        moment_parameterization="logistic_atom", temperature=0.12)
     if kind == "w6_m7_realizable_ufno":
         return RealizableUFNOMoment(
             rule="gauss", points_per_axis=6, grid_size=8,
@@ -138,6 +142,7 @@ def run(*, seeds=(131,137,139), steps=120, batch_size=8,
         "spin_pino_4node",
         "spin_pino_6node",
         "spin_pino_6node_gauss",
+        "spin_pino_6node_logistic",
         "w6_m7_realizable_ufno",
         "w5_voxel_deeponet",
     )

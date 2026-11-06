@@ -73,11 +73,17 @@ class SpinPINO(nn.Module):
         hidden_dim: int = 96,
         smoothing: float = 0.04,
         quadrature_rule: str = "midpoint",
+        moment_parameterization: str = "smooth_hinge",
+        temperature: float = 0.12,
         use_gradient_checkpoint: bool = False,
     ):
         super().__init__()
         if not math.isfinite(smoothing) or not 0.0 < smoothing <= 1.0:
             raise ValueError("smoothing must be finite and in (0,1]")
+        if moment_parameterization not in ("smooth_hinge", "logistic_atom"):
+            raise ValueError("moment_parameterization must be smooth_hinge or logistic_atom")
+        if not math.isfinite(temperature) or temperature <= 0:
+            raise ValueError("temperature must be finite and positive")
         self.encoder = PINOFeatureEncoder(
             width=width,
             modes=modes,
@@ -88,6 +94,8 @@ class SpinPINO(nn.Module):
         self.points_per_axis = points_per_axis
         self.smoothing = float(smoothing)
         self.quadrature_rule = quadrature_rule
+        self.moment_parameterization = moment_parameterization
+        self.temperature = float(temperature)
         self.weight_head = nn.Sequential(
             nn.Linear(self.encoder.feature_dim, hidden_dim),
             nn.GELU(),
@@ -163,16 +171,39 @@ class SpinPINO(nn.Module):
         n = a.unsqueeze(-1) * m.unsqueeze(0) + eps2 * q.unsqueeze(1)
         return c, q, B, m, a, s, n, eps2
 
+    def _logistic_atom_terms(self, weights: Tensor, coefficients: Tensor):
+        self._validate(weights, coefficients)
+        B = self.native_B.to(dtype=coefficients.dtype, device=coefficients.device)
+        m = self.monomials.to(dtype=coefficients.dtype, device=coefficients.device)
+        norm = torch.linalg.vector_norm(coefficients, dim=-1, keepdim=True)
+        a = torch.einsum("bi,ni->bn", coefficients * B, m)
+        tau = self.temperature * norm
+        alpha = torch.sigmoid(a / tau)
+        grad_argument = (
+            m.unsqueeze(0) * B.view(1, 1, 10)
+            - (a / norm.square()).unsqueeze(-1) * coefficients.unsqueeze(1)
+        )
+        return B, m, norm, a, tau, alpha, grad_argument
+
     def potential_from_weights(self, weights: Tensor, coefficients: Tensor) -> Tensor:
+        if self.moment_parameterization != "smooth_hinge":
+            raise RuntimeError("logistic_atom is a realizable head, not the smooth convex-potential parameterization")
         _, _, _, _, a, s, _, _ = self._terms(weights, coefficients)
         return 0.5 * (weights * (a + s)).sum(dim=-1)
 
     def moment_from_weights(self, weights: Tensor, coefficients: Tensor) -> Tensor:
+        if self.moment_parameterization == "logistic_atom":
+            _, m, _, _, _, alpha, _ = self._logistic_atom_terms(weights, coefficients)
+            return torch.einsum("bn,bn,ni->bi", weights, alpha, m)
         _, _, _, m, _, s, n, _ = self._terms(weights, coefficients)
         grad_q = 0.5 * (m.unsqueeze(0) + n / s.unsqueeze(-1))
         return torch.einsum("bn,bni->bi", weights, grad_q)
 
     def jacobian_from_weights(self, weights: Tensor, coefficients: Tensor) -> Tensor:
+        if self.moment_parameterization == "logistic_atom":
+            _, m, _, _, tau, alpha, grad_argument = self._logistic_atom_terms(weights, coefficients)
+            factor = weights * alpha * (1.0 - alpha) / tau
+            return torch.einsum("bn,ni,bnj->bij", factor, m, grad_argument)
         _, _, B, m, _, s, n, eps2 = self._terms(weights, coefficients)
         eye = torch.eye(10, dtype=weights.dtype, device=weights.device)
         mm = m.unsqueeze(-1) * m.unsqueeze(-2)
@@ -183,6 +214,19 @@ class SpinPINO(nn.Module):
         Jq = torch.einsum("bn,bnij->bij", weights, hess)
         # q = B c, so d r / d c = (d r / d q) B.
         return Jq * B.view(1, 1, 10)
+
+    def projected_q_gram(self, weights: Tensor, coefficients: Tensor) -> Tensor:
+        """Tangent-projected q-space Jacobian; symmetric PSD for logistic atoms."""
+        Jc = self.jacobian_from_weights(weights, coefficients)
+        B = self.native_B.to(dtype=coefficients.dtype, device=coefficients.device)
+        Jq = Jc / B.view(1, 1, 10)
+        normal = coefficients / B
+        projector = (
+            torch.eye(10, dtype=coefficients.dtype, device=coefficients.device).unsqueeze(0)
+            - normal.unsqueeze(-1) * normal.unsqueeze(-2)
+            / normal.square().sum(dim=-1, keepdim=True).unsqueeze(-1)
+        )
+        return projector @ Jq @ projector
 
     def forward(self, geometry: Tensor, coefficients: Tensor, *, with_jacobian: bool = False):
         weights = self.encode_geometry(geometry)
@@ -264,11 +308,15 @@ class SpinPINOLoss(nn.Module):
         )
         B = model.native_B.to(dtype=weights.dtype, device=weights.device)
         Jq = Jc / B.view(1, 1, 10)
+        if model.moment_parameterization == "logistic_atom":
+            Jq_structure = model.projected_q_gram(weights, coefficients)
+        else:
+            Jq_structure = Jq
 
         complement = (r + r_neg - full).square().mean()
         radial = torch.bmm(Jc, coefficients.unsqueeze(-1)).square().mean()
-        asymmetry = (Jq - Jq.transpose(1, 2)).square().mean()
-        sym = 0.5 * (Jq + Jq.transpose(1, 2))
+        asymmetry = (Jq_structure - Jq_structure.transpose(1, 2)).square().mean()
+        sym = 0.5 * (Jq_structure + Jq_structure.transpose(1, 2))
         eig = torch.linalg.eigvalsh(sym)
         psd = F.relu(-eig).square().mean()
         mass_bounds = (

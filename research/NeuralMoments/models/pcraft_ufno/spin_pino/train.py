@@ -49,6 +49,8 @@ def run_seed(
     smoothing: float = 0.04,
     preconditioned_loss: bool = False,
     pcgrad: bool = False,
+    moment_parameterization: str = "smooth_hinge",
+    temperature: float = 0.12,
     device: str = "cpu",
 ):
     torch.manual_seed(seed)
@@ -70,6 +72,8 @@ def run_seed(
         points_per_axis=points_per_axis,
         hidden_dim=48,
         smoothing=smoothing,
+        moment_parameterization=moment_parameterization,
+        temperature=temperature,
     ).to(device)
     preconditioner = (
         DiagonalMomentResidualPreconditioner.fit(fit[2], fit[3]).to(device=device, dtype=fit[2].dtype)
@@ -157,7 +161,8 @@ def run_seed(
             "preconditioner": preconditioner.as_dict() if preconditioner else None,
         },
         "model_config": {"grid_size": grid_size, "points_per_axis": points_per_axis,
-                         "smoothing": smoothing, "width": 4 if grid_size <= 8 else 8,
+                         "smoothing": smoothing, "moment_parameterization": moment_parameterization,
+                         "temperature": temperature, "width": 4 if grid_size <= 8 else 8,
                          "modes": 2 if grid_size <= 8 else 4},
         "training": {
             "steps": steps,
@@ -195,6 +200,8 @@ def main():
     parser.add_argument("--smoothing", type=float, default=0.04)
     parser.add_argument("--preconditioned-loss", action="store_true")
     parser.add_argument("--pcgrad", action="store_true")
+    parser.add_argument("--moment-parameterization", choices=("smooth_hinge", "logistic_atom"), default="smooth_hinge")
+    parser.add_argument("--temperature", type=float, default=0.12)
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--save-checkpoints", action="store_true")
@@ -213,6 +220,8 @@ def main():
             smoothing=args.smoothing,
             preconditioned_loss=args.preconditioned_loss,
             pcgrad=args.pcgrad,
+            moment_parameterization=args.moment_parameterization,
+            temperature=args.temperature,
             device=args.device,
         )
         state = result.pop("checkpoint_state")

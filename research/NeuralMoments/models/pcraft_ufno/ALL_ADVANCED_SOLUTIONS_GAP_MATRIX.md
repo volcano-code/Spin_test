@@ -104,3 +104,8 @@ The Gauss-Legendre node/weight option has been implemented inside the PINO head,
 ## M4 training-method evidence
 
 PI-CViT/TensorPILS-inspired fit-split diagonal residual preconditioning and PCGrad were implemented and compared. Neither improved the held-out combined score over baseline M2b; PCGrad increased runtime. They remain optional methods, not promoted components. The measured physics-loss gradient was nearly zero for the current structurally constrained potential, so the current Jacobian accuracy gap likely needs a better head parameterization rather than more loss balancing.
+
+
+## M5 active development
+
+W6 M7's logistic realizable-atom formula is being transplanted as an optional moment/Jacobian head inside the P-CRAFT PINO trunk. This is a head-level borrowing only: no U-FNO trunk replacement. The smooth-hinge PINO remains the default until same-data tests show a clear benefit. Logistic mode requires tangent-projected q-space symmetry/PSD checks and does not claim full Hessian symmetry or continuum certification.
