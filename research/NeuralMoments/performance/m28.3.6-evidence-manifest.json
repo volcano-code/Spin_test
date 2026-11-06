@@ -14,5 +14,7 @@
     "global Boolean completeness not certified",
     "evaluation 123 containment not re-proved",
     "no production moments/Jacobian/Newton/performance run"
-  ]
+  ],
+  "receipt_file_manifest_sha256": "56ada688cb79bac16629dc1029bcac3317112b0afd31f55084f2de8440679ba1",
+  "full_audit_json_sha256": "02e77d87ae0f27deca56253be53562053abc545d83979e336236ab8b4a39a509"
 }
