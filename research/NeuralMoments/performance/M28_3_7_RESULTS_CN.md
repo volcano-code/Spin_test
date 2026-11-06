@@ -13,7 +13,7 @@ M28.3.5/3.6 已完成切分/未切分父面覆盖和输出拓扑检查，但仍�
 ### 算法与完备性依据
 
 - 冻结的 IEEE-754 binary64 坐标被转换成共同的 2 的幂整数尺度，未进行十进制舍入。
-- 枚举 Design 与 Source 的所有闭 AABB 重叠三角面对。AABB 使用精确缩放整数的单调 double 转换；转换可能增加候选，但不会丢失真实区间重叠。
+- 枚举 Design 与 Source 的所有闭 AABB 重叠三角面对。AABB 的 min/max 和闭区间重叠比较直接使用 GMP 整数，不进行浮点转换。
 - 所有 AABB 候选均使用 GMP 整数 separating-axis predicates：两个三角形平面法向、9 个边叉积轴，以及处理共面情形所需的面内边法向轴。
 - 对 SAT 接触候选，再用 GMP 有理数求交点，区分正维交线/重叠区域与仅点接触。
 - 所有输入三角面均先检查退化；退化输入失败关闭。
@@ -64,3 +64,8 @@ g++ -std=c++17 -O1 -DNDEBUG m28_3_7_exact_pair_sat.cpp -lgmpxx -lgmp -o m28_3_7_
 ## 云端/本地评估与下一步
 
 M28.3.7 使用冻结证据在云端完成，不需要本地操作。下一阶段 M29 是生产数值认证：同输入生产 Cherchi 十矩比较、完整 Jacobian、平滑分支可靠性和真实 Newton 收敛，需要固定的原生 Cherchi 环境；最终 A/B/B/A 端到端性能测试也需要该环境。
+
+
+## Exact-integer AABB hardening
+
+After the initial certification replay, the C++ broad phase was hardened to use GMP integer AABB minima, maxima, and overlap comparisons instead of converting GMP coordinates through `get_d()`. The four frozen evaluations were recompiled and replayed; all 1,574 exact cut pairs still match the frozen index with zero missing or extra pairs. The 9-test suite passes. See `M28_3_7_EXACT_AABB_HARDENING.md` and `evidence/m28.3.7-exact-integer-aabb-rerun.json` for the amendment evidence.
