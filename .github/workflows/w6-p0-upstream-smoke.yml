@@ -217,8 +217,8 @@ jobs:
         run: |
           python -m research.NeuralMoments.models.pcraft_ufno.spin_pino.rotation_sweep \
             --seeds 131,137,139 --steps 120 --batch-size 8 \
-            --output /tmp/spin_pino_m6_rotation_sweep.json
-      - name: Upload M6 rotation-generalization report
+            --output /tmp/spin_pino_m7b_fair_so3_sweep.json
+      - name: Upload M7b fair SO(3) rotation-generalization report
         uses: actions/upload-artifact@v4
         with:
           name: spin-pino-m6-rotation-generalization

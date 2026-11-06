@@ -129,3 +129,14 @@ The same-data three-seed tournament shows the PINO logistic-atom head achieves h
 `equivariance.py` now includes seeded Haar-uniform SO(3) rotations generated from unit quaternions. Coefficients, ten raw moments and Jacobians are transformed exactly with the native-coordinate maps; voxel channels are trilinearly resampled on the fixed cube. This is deliberately distinguished from the 24 exact cube-preserving signed-permutation rotations: arbitrary SO(3) introduces voxel interpolation error, which must be measured separately.
 
 The M6 cube-only experiment found almost no change from augmentation (held-out r relative L2 0.206012 to 0.205555; J relative L2 0.314603 to 0.314324). M7 tests whether arbitrary orientations expose a generalization gap that cube rotations cannot.
+
+## M7b fair arbitrary-SO(3) comparison
+
+The first M7 artifact is exploratory only because training conditions did not share the same rotated test distribution and the rotated metric mixed original and transformed samples. The corrected M7b experiment:
+
+- trains with no augmentation, exact cube augmentation, or arbitrary SO(3) augmentation;
+- evaluates every condition on the same deterministic arbitrary-SO(3) held-out ellipsoid transforms;
+- computes the rotated metric on transformed samples only;
+- reports occupied-voxel-center clipping fraction and soft occupancy mass ratio separately.
+
+See `M7B_PROTOCOL.md`. This remains analytic vertical-plane P0, not Cherchi supervision or Newton admission.

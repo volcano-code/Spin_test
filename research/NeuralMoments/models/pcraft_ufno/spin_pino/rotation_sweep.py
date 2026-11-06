@@ -34,6 +34,7 @@ def run(*, seeds=(131,137,139), steps=120, batch_size=8):
                 temperature=0.12,
                 rotation_augmentation=condition["rotation_augmentation"],
                 rotation_augmentation_mode=condition.get("mode", "cube"),
+                evaluation_rotation_mode="so3",
                 device="cpu",
             )
             result.pop("checkpoint_state", None)
@@ -63,18 +64,30 @@ def run(*, seeds=(131,137,139), steps=120, batch_size=8):
                 "J_relative_l2": avg("J_relative_l2","held_out_rotated_ellipsoid_metrics"),
             },
             "mean_training_seconds": statistics.mean(row["training"]["seconds"] for row in per_seed),
+            "rotation_evaluation_diagnostics": {
+                "mean_clipped_occupied_center_fraction": statistics.mean(
+                    row["rotation_evaluation_diagnostics"]["mean_occupied_centers_clipped_fraction"]
+                    for row in per_seed
+                ),
+                "mean_soft_occupancy_mass_ratio": statistics.mean(
+                    row["rotation_evaluation_diagnostics"]["mean_soft_occupancy_mass_ratio"]
+                    for row in per_seed
+                ),
+                "test_rotation_mode": "so3",
+                "rotated_test_samples_per_seed": per_seed[0]["rotation_evaluation_diagnostics"]["n_rotated_test_samples"],
+            },
             "per_seed": per_seed,
         })
     return {
-        "schema": "SPIN_PINO_M6_CUBE_ROTATION_GENERALIZATION_V1",
+        "schema": "SPIN_PINO_M7B_CONTROLLED_SO3_GENERALIZATION_V1",
         "label_source": "ANALYTIC_CONTINUUM_P0_WITH_EXACT_ROTATION_TRANSFORMS_NOT_W2_CHERCHI",
         "w2_or_cherchi_labels_used": False,
-        "rotation_group": "24 proper signed-permutation cube rotations (SO(3) subgroup)",
+        "rotation_group": "Haar-uniform SO(3) test rotations, identical across all training conditions per seed",
         "same_base_splits_seeds_optimizer_steps": True,
         "models": rows,
         "limits": [
-            "Only the 24 cube-preserving rotations are tested, not arbitrary SO(3).",
-            "Voxel rotation uses exact grid-aligned signed permutations.",
+            "All conditions use the same arbitrary-SO(3) held-out test transforms.",
+            "Voxel rotation uses trilinear interpolation and can incur clipping/interpolation error; diagnostics are reported separately.",
             "The source analytic task remains vertical-plane cuts transformed by exact coordinate rules.",
             "No arbitrary quadric/CAD derivative or Newton certification."
         ],

@@ -54,6 +54,7 @@ def run_seed(
     temperature: float = 0.12,
     rotation_augmentation: bool = False,
     rotation_augmentation_mode: str = "cube",
+    evaluation_rotation_mode: str = "so3",
     device: str = "cpu",
 ):
     torch.manual_seed(seed)
@@ -74,12 +75,18 @@ def run_seed(
             fit = augment_with_random_so3(fit, seed=seed + 700001)
         else:
             raise ValueError("rotation_augmentation_mode must be cube or so3")
-    if rotation_augmentation_mode == "cube":
-        rotated_test = augment_with_cube_rotations(test, seed=seed + 900001)
-    elif rotation_augmentation_mode == "so3":
-        rotated_test = augment_with_random_so3(test, seed=seed + 900001)
+
+    # Every training condition is evaluated on the same arbitrary-SO(3)
+    # transformed held-out geometries. Evaluate only the appended rotated
+    # samples, not the concatenated original+rotated tuple.
+    if evaluation_rotation_mode == "cube":
+        test_augmented = augment_with_cube_rotations(test, seed=seed + 900001)
+    elif evaluation_rotation_mode == "so3":
+        test_augmented = augment_with_random_so3(test, seed=seed + 900001)
     else:
-        raise ValueError("rotation_augmentation_mode must be cube or so3")
+        raise ValueError("evaluation_rotation_mode must be cube or so3")
+    n_test = test[0].shape[0]
+    rotated_test = tuple(x[n_test:] for x in test_augmented[:4]) + (test_augmented[4][n_test:],)
     model = SpinPINO(
         width=4 if grid_size <= 8 else 8,
         modes=2 if grid_size <= 8 else 4,
@@ -177,6 +184,7 @@ def run_seed(
             "preconditioner": preconditioner.as_dict() if preconditioner else None,
             "rotation_augmentation": bool(rotation_augmentation),
             "rotation_augmentation_mode": rotation_augmentation_mode,
+            "evaluation_rotation_mode": evaluation_rotation_mode,
             "fit_samples_after_augmentation": int(len(fit[0])),
         },
         "model_config": {"grid_size": grid_size, "points_per_axis": points_per_axis,
@@ -196,6 +204,18 @@ def run_seed(
         "validation_metrics": validation_metrics,
         "held_out_ellipsoid_metrics": test_metrics,
         "held_out_rotated_ellipsoid_metrics": _evaluate(model, rotated_test),
+        "rotation_evaluation_diagnostics": {
+            "mean_occupied_centers_clipped_fraction": float(np.mean([
+                row.get("source_occupied_voxel_centers_outside_target_cube_fraction", 0.0)
+                for row in rotated_test[4]
+            ])),
+            "mean_soft_occupancy_mass_ratio": float(np.mean([
+                row.get("soft_occupancy_mass_ratio", 1.0)
+                for row in rotated_test[4]
+            ])),
+            "rotation_mode": evaluation_rotation_mode,
+            "n_rotated_test_samples": len(rotated_test[4]),
+        },
         "checkpoint_state": best_state,
         "claims": {
             "trained_spin_model": True,
@@ -224,6 +244,7 @@ def main():
     parser.add_argument("--temperature", type=float, default=0.12)
     parser.add_argument("--rotation-augmentation", action="store_true")
     parser.add_argument("--rotation-augmentation-mode", choices=("cube", "so3"), default="cube")
+    parser.add_argument("--evaluation-rotation-mode", choices=("cube", "so3"), default="so3")
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--save-checkpoints", action="store_true")
@@ -246,6 +267,7 @@ def main():
             temperature=args.temperature,
             rotation_augmentation=args.rotation_augmentation,
             rotation_augmentation_mode=args.rotation_augmentation_mode,
+            evaluation_rotation_mode=args.evaluation_rotation_mode,
             device=args.device,
         )
         state = result.pop("checkpoint_state")

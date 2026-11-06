@@ -85,3 +85,20 @@ Audit date: 2026-11-06. This matrix distinguishes source integration, adapter sm
 5. Local 4090 acceptance: 64³/128³ and native Spin/Heart/Teapot/Noodles timing. 512³ is stretch, not a one-month promise.
 
 All candidate schemes remain visible here even when deliberately deferred. 'Paper transfer', 'adapter smoke', 'trained model' and 'production admission' are distinct statuses.
+
+## M7b correction to orientation evidence — 2026-11-06
+
+The first M7 artifact used different rotated-test distributions across conditions and included original samples in the rotated-test metric. It is exploratory only. Do not use its apparent SO(3) comparison as a conclusion.
+
+M7b fixes both issues: all three training conditions (none / cube / arbitrary SO(3)) are evaluated on the same deterministic Haar-SO(3) held-out ellipsoid transforms, and only rotated samples enter the rotated metric. It also records voxel-center clipping and soft occupancy mass ratio separately. See `spin_pino/M7B_PROTOCOL.md`.
+
+## One-month priority correction
+
+To finish by 2026-12-06, PINO-specific methods receive priority over additional backbone integrations:
+
+1. P-CRAFT PINO remains the primary trunk.
+2. M7b orientation generalization and M8 same-data adapter test (at most one GeoTransolver/Transolver++ feature adapter).
+3. PINO training improvements from PI-CViT, TensorPILS and HyPINO are tested as loss/data/optimization methods, not alternate backbones. M4 already showed the current diagonal preconditioner + PCGrad did not improve the held-out score.
+4. NQR/QuadrANN remain quadrature proposal modules subordinate to PINO.
+5. DensiCrafter/MMDO 16³/32³ CPU integration follows only after M7b/M8.
+6. FEM/PINN stress mechanics, 512³ and full DoMINO/FIGConvNet/GAOT/GINOT imports remain deferred/stretch work within the 30-day window.

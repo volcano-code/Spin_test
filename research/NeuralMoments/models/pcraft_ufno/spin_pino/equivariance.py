@@ -238,7 +238,8 @@ def augment_with_random_so3(data, *, seed: int):
     D_aug, c_aug, r_aug, J_aug, meta_aug = [], [], [], [], []
     for i in range(count):
         R = random_so3_rotation(seed + i, dtype=D.dtype, device=D.device)
-        D_aug.append(rotate_geometry_voxels(D[i:i+1], R))
+        rotated = rotate_geometry_voxels(D[i:i+1], R)
+        D_aug.append(rotated)
         c_aug.append(transform_native_coefficients(coefficients[i:i+1], R))
         r_aug.append(transform_raw_moments(moments[i:i+1], R))
         J_aug.append(transform_native_jacobian(jacobians[i:i+1], R))
@@ -247,6 +248,23 @@ def augment_with_random_so3(data, *, seed: int):
         row["geometry_id"] = f'{row.get("geometry_id", "geometry")}__so3_{seed+i}'
         row["augmentation"] = "HAAR_SO3_LABEL_EXACT_VOXEL_TRILINEAR"
         row["rotation_matrix"] = [[float(v) for v in line] for line in R.cpu().tolist()]
+
+        # Quantify geometric clipping and interpolation perturbation separately.
+        n = D.shape[-1]
+        axes = [torch.linspace(-1.0, 1.0, n, dtype=D.dtype, device=D.device)] * 3
+        xyz = torch.stack(torch.meshgrid(*axes, indexing="ij"), dim=-1)
+        occupied = D[i, 1] > 0.5
+        source_centers = xyz[occupied]
+        if source_centers.numel():
+            target_centers = source_centers @ R.T
+            clipped = (target_centers.abs() > 1.0 + 1e-7).any(dim=-1)
+            clipped_fraction = float(clipped.float().mean())
+        else:
+            clipped_fraction = 0.0
+        before_mass = float(D[i, 1].sum())
+        after_mass = float(rotated[0, 1].sum())
+        row["source_occupied_voxel_centers_outside_target_cube_fraction"] = clipped_fraction
+        row["soft_occupancy_mass_ratio"] = after_mass / max(before_mass, 1e-12)
         meta_aug.append(row)
     return (
         torch.cat((D, torch.cat(D_aug, dim=0)), dim=0),

@@ -250,3 +250,10 @@ Acceptance: moment/quadric/Jacobian transform tests pass; augmentation preserves
 - Added tests for proper rotations, quadric evaluation covariance, moment/J transform shape and deterministic augmentation.
 - The new arbitrary-SO(3) experiment must report voxel interpolation error separately; label transforms are exact, but resampled voxel geometry is not.
 - M7 cloud CPU CI is pending. No arbitrary CAD or Newton certification is implied.
+## M7b — corrected fair arbitrary-SO(3) comparison
+
+- The first M7 experiment is exploratory only: its three conditions did not share the same rotated test distribution, and the rotated metric included original samples.
+- M7b now fixes the evaluation protocol: no augmentation, cube augmentation and arbitrary-SO(3) augmentation all evaluate the same held-out geometries under the same deterministic SO(3) rotations.
+- Only rotated test samples contribute to the rotated metric.
+- Record voxel clipping fraction and soft occupancy mass ratio separately because trilinear resampling is not exact.
+- Cloud CPU CI and three-seed comparison are pending. Do not draw conclusions from the first M7 comparison.
