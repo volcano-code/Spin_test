@@ -42,3 +42,7 @@ python -m research.NeuralMoments.models.pcraft_ufno.spin_pino.train \
 ```
 
 These are synthetic analytic labels, not Cherchi supervision. The held-out family tests geometry generalization only within this restricted P0 vertical-plane task; no arbitrary quadric or native Newton claim is implied.
+
+## M1 three-seed analytic training result
+
+GitHub Actions run [42188044841](https://github.com/volcano-code/Spin_test/actions/runs/42188044841) passed all jobs. The 3-seed CPU run used 52 fit / 12 validation / 16 held-out ellipsoid samples, 8^3 geometry inputs and 120 steps. Mean held-out ellipsoid r MAE was 0.04069 and J MAE 0.03461; relative L2 errors were 0.4250 and 1.5802. This is a functional but preliminary baseline, not yet good enough for Newton use. Full metrics and caveats are in `M1_TRAINING_REPORT.md`; checkpoint/report artifact ID 13488726149.

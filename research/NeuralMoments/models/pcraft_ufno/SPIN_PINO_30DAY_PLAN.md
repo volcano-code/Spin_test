@@ -124,3 +124,10 @@ It does not mean the full long-term Spin research goal is closed if formal Cherc
 - Added `spin_pino/tests/test_dataset.py`: split/provenance smoke and a tiny CPU training smoke.
 - Scope is deliberately restricted to strictly interior vertical-plane cuts, where the existing analytic reference supplies exact r and J. General quadratic cuts and W2 labels are not silently mixed into this first dataset.
 - CI validation for this M1 addition is pending.
+## M1 validation result — 2026-11-06
+
+- Dataset family/identity split tests and tiny training smoke: **11 passed, 0 failed**.
+- Full three-seed analytic CPU training completed in GitHub Actions run 42188044841; all jobs succeeded and checkpoints/report were uploaded as artifact 13488726149.
+- Dataset: 52 fit samples, 12 validation samples, 16 held-out ellipsoid samples; 8^3 geometry input; exact analytic vertical-plane r/J labels only.
+- Mean held-out ellipsoid r MAE 0.04069, J MAE 0.03461; mean relative L2 r 0.4250, J 1.5802. These are preliminary and not yet satisfactory, especially for J.
+- M1 is functionally complete, but M2 must improve resolution/quadrature/smoothing and compare against the frozen W6 M13 U-FNO baseline before claiming useful predictive performance.
