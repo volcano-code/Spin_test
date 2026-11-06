@@ -1,0 +1,84 @@
+{
+  "schema": "w2-m22-p3-heart-operand-embedding-audit-summary-v1",
+  "status": "DESIGN_QUADRIC_AND_OUTPUT_EMBEDDED_SURFACE_CHECKS_PASS_GLOBAL_BOOLEAN_SET_EQUALITY_PENDING",
+  "run_id": "heart-pilot9-flex-20261105T083338329274558-3159689",
+  "source_archives": {
+    "h8f_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+    "m21_sha256": "259b9f288b629415bafa42e4e09d6503e4f474e0e2253e6cc9eb1cd775a64dfd",
+    "prepared_request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+    "point000_member_sha256": "c372f749bf7b85015e2dcdad4a445aeab4f2f6fbd25d622089ec58d471992973",
+    "m21_request_matches_historical_request": true
+  },
+  "checker": {
+    "source_commit": "249db334303b31b8b8c2cfcb415b21a7cc2c9464",
+    "source_sha256": "2536f7783ff6552ac930c294879e69b8430fc8e527873859b3ec1187d39c6ea0",
+    "exact_kernel": "GMP rational predicates",
+    "binary_rebuilt": true
+  },
+  "surfaces": {
+    "design": {
+      "vertices": 13122,
+      "faces": 26244,
+      "candidate_pairs": 218939,
+      "exact_pairs_checked": 218939,
+      "adjacent_pairs": 158167,
+      "nonadjacent_pairs": 60772,
+      "elapsed_seconds": 9.73564,
+      "input_stream_sha256": "eff414f5daaf52f8ae847bb851d3cbb5cfd604bce0f88a5a56f99ed6b1efb9ad",
+      "self_intersection_free": true,
+      "positive_orientation": true,
+      "signed_volume": 1.0998850071299318
+    },
+    "quadric_source": {
+      "vertices": 162,
+      "faces": 320,
+      "candidate_pairs": 1986,
+      "exact_pairs_checked": 1986,
+      "adjacent_pairs": 1890,
+      "nonadjacent_pairs": 96,
+      "elapsed_seconds": 0.0974311,
+      "input_stream_sha256": "f258c9861fd996f0671f64e64f0b5363c7bc9f9381d7203820b05e06bc2e7e31",
+      "self_intersection_free": true,
+      "positive_orientation": true,
+      "signed_volume": 1.3881363252327446
+    },
+    "boolean_output": {
+      "vertices": 8455,
+      "faces": 16910,
+      "candidate_pairs": 161702,
+      "exact_pairs_checked": 161702,
+      "adjacent_pairs": 111975,
+      "nonadjacent_pairs": 49727,
+      "elapsed_seconds": 9.78874,
+      "input_stream_sha256": "bfdc4b063cceddde5e0500ddc56952ecef492f5ca3852c2564f6a8573598f456",
+      "self_intersection_free": true,
+      "positive_orientation": true,
+      "signed_volume": 0.4638104336177978,
+      "exact_volume_fraction_sha256": "a57a86b3791e89327be5c4e7c08e4a7a97f4f0e4adb4d28b7173d6bec6fa3a53",
+      "exact_volume_fraction_characters": 4578
+    }
+  },
+  "volume_accounting": {
+    "design": 1.0998850071299318,
+    "quadric_source": 1.3881363252327446,
+    "boolean_output": 0.4638104336177978,
+    "design_minus_output": 0.636074573512134,
+    "note": "Do not subtract global QuadricSource volume from Design volume; QuadricSource extends outside Design."
+  },
+  "regression_tests": {
+    "ran": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0
+  },
+  "new_cherchi_calls": 0,
+  "global_boolean_set_equality_certified": false,
+  "design_input_embedding_certified": true,
+  "quadric_input_embedding_certified": true,
+  "output_embedding_certified": true,
+  "full_m21_same_call_object_recovered": false,
+  "J_D": null,
+  "split": "excluded",
+  "training_samples": 0,
+  "training_admitted": false
+}
