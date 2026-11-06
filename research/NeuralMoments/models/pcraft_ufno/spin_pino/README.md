@@ -93,3 +93,8 @@ Run [42192701882](https://github.com/volcano-code/Spin_test/actions/runs/4219270
 ## M3b Gauss-Legendre quadrature borrowing
 
 `SpinPINO(quadrature_rule='gauss')` uses positive tensor-product Gauss-Legendre weights from the W6 M7 design while retaining the P-CRAFT PINO trunk and SpinPINOLoss. `midpoint` remains available for ablation. The support mask is applied at the correct XYZ voxel coordinates. Tests verify positive weights, total volume 8 and asymmetric X-axis support sampling. The next tournament includes both midpoint and Gauss PINO variants.
+
+
+## M3b Gauss rule ablation result
+
+The Gauss-Legendre variant passed implementation tests but did not improve held-out accuracy: r/J relative L2 0.4727/1.2022 vs midpoint PINO 0.2320/0.8912. It remains a negative ablation and is not promoted. See `M3B_REPORT.md`.

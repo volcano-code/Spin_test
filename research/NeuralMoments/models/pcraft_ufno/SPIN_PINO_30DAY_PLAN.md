@@ -175,3 +175,11 @@ It does not mean the full long-term Spin research goal is closed if formal Cherc
 - Corrected the `grid_sample` coordinate port for tensors laid out as `[B,C,X,Y,Z]`: physical xyz nodes are converted to grid_sample's `(z,y,x)` coordinate order only at the sampling interface.
 - Added tests for positive Gauss weights summing to volume 8 and for an asymmetric positive-X-only voxel support mask.
 - M3b will compare midpoint-PINO vs Gauss-PINO on the same three-seed analytic split and retain W6 M7/W5 as reference baselines. No other backbone is promoted.
+
+
+## M3b result — Gauss rule retained as a negative ablation
+
+- The M3b same-data tournament passed its model and PINO unit-test jobs.
+- Gauss-Legendre PINO (8³ / 6³ / eps 0.02) obtained held-out r relative L2 0.4727 and J relative L2 1.2022, worse than midpoint PINO (0.2320 / 0.8912).
+- Therefore Gauss nodes are not promoted. M7's positive-measure/support constraint is retained, but its Gauss node distribution is not transferred blindly.
+- M4 next: investigate PINO loss conditioning and gradient conflict, borrowing PI-CViT's PINO training diagnostics and TensorPILS's preconditioned-residual principle. PINO remains the backbone.
