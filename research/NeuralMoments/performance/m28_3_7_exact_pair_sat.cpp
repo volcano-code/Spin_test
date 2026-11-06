@@ -10,7 +10,7 @@
 #include <set>
 #include <cstdint>
 using Z=mpz_class; using Q=mpq_class; using V=std::array<Z,3>; using I=std::array<int,3>;
-using Box=std::array<double,6>;
+using Box=std::array<Z,6>;
 static V sub(const V&a,const V&b){return{a[0]-b[0],a[1]-b[1],a[2]-b[2]};}
 static V cross(const V&a,const V&b){return{a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]};}
 static Z dot(const V&a,const V&b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2];}
@@ -36,8 +36,15 @@ static bool box_overlap(const Box&a,const Box&b){
  for(int k=0;k<3;++k)if(a[k+3]<b[k]||b[k+3]<a[k])return false;
  return true;
 }
-static Box boxof(const std::array<V,3>&t,const std::array<std::array<double,3>,0>&dummy){
- (void)dummy;Box b;for(int k=0;k<3;++k){double lo=std::numeric_limits<double>::infinity(),hi=-lo;for(int i=0;i<3;++i){double x=t[i][k].get_d();lo=std::min(lo,x);hi=std::max(hi,x);}b[k]=lo;b[k+3]=hi;}return b;
+static Box boxof(const std::array<V,3>&t){
+ // Exact integer AABB: do not round GMP coordinates through double.
+ Box b;
+ for(int k=0;k<3;++k){
+  Z lo=std::min({t[0][k],t[1][k],t[2][k]});
+  Z hi=std::max({t[0][k],t[1][k],t[2][k]});
+  b[k]=lo;b[k+3]=hi;
+ }
+ return b;
 }
 using R=std::array<Q,3>; using R2=std::array<Q,2>;
 static R rz(const V&p){return{Q(p[0]),Q(p[1]),Q(p[2])};}
@@ -81,9 +88,9 @@ int main(){auto t0=std::chrono::steady_clock::now();try{
  auto readv=[](size_t n){std::vector<V>v(n);for(auto&p:v)for(auto&x:p)if(!(std::cin>>x))throw std::runtime_error("BAD_VERTEX");return v;};
  auto readf=[](size_t n,size_t nv){std::vector<I>f(n);for(auto&t:f)for(auto&x:t)if(!(std::cin>>x)||x<0||size_t(x)>=nv)throw std::runtime_error("BAD_FACE");return f;};
  auto va=readv(nvA);auto fa=readf(nfA,nvA);auto vb=readv(nvB);auto fb=readf(nfB,nvB);
- std::vector<std::array<V,3>>ta(nfA),tb(nfB);std::vector<Box>ba(nfA),bb(nfB);std::array<std::array<double,3>,0>dummy{};
- for(size_t i=0;i<nfA;++i){for(int k=0;k<3;++k)ta[i][k]=va[fa[i][k]];if(cross(sub(ta[i][1],ta[i][0]),sub(ta[i][2],ta[i][0]))==V{0,0,0})throw std::runtime_error("DEGENERATE_DESIGN_INPUT_FACE");ba[i]=boxof(ta[i],dummy);}
- for(size_t j=0;j<nfB;++j){for(int k=0;k<3;++k)tb[j][k]=vb[fb[j][k]];if(cross(sub(tb[j][1],tb[j][0]),sub(tb[j][2],tb[j][0]))==V{0,0,0})throw std::runtime_error("DEGENERATE_SOURCE_INPUT_FACE");bb[j]=boxof(tb[j],dummy);}
+ std::vector<std::array<V,3>>ta(nfA),tb(nfB);std::vector<Box>ba(nfA),bb(nfB);
+ for(size_t i=0;i<nfA;++i){for(int k=0;k<3;++k)ta[i][k]=va[fa[i][k]];if(cross(sub(ta[i][1],ta[i][0]),sub(ta[i][2],ta[i][0]))==V{0,0,0})throw std::runtime_error("DEGENERATE_DESIGN_INPUT_FACE");ba[i]=boxof(ta[i]);}
+ for(size_t j=0;j<nfB;++j){for(int k=0;k<3;++k)tb[j][k]=vb[fb[j][k]];if(cross(sub(tb[j][1],tb[j][0]),sub(tb[j][2],tb[j][0]))==V{0,0,0})throw std::runtime_error("DEGENERATE_SOURCE_INPUT_FACE");bb[j]=boxof(tb[j]);}
  size_t aabb=0,sat=0,positive=0;std::vector<std::pair<int,int>>pairs;
  for(size_t i=0;i<nfA;++i)for(size_t j=0;j<nfB;++j)if(box_overlap(ba[i],bb[j])){++aabb;if(tri_intersects_sat(ta[i],tb[j])){++sat;if(positive_dim_after_sat(ta[i],tb[j])){++positive;pairs.emplace_back(int(i),int(j));}}}
  std::cout<<"aabb_candidates "<<aabb<<"\nsat_contact_candidates "<<sat<<"\npositive_dim_cut_pairs "<<positive<<"\n";
