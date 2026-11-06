@@ -86,20 +86,25 @@ def project_conflicting_gradients(gradients: Sequence[Tensor], eps: float = 1e-1
     original = [g.detach().clone() for g in gradients]
     projected = [g.detach().clone() for g in gradients]
     cosines = {}
+    # PINO's factorized Fourier layers contain complex parameters. Use the
+    # real Hermitian inner product so PCGrad coefficients remain real scalars.
+    def real_dot(a: Tensor, b: Tensor) -> Tensor:
+        return torch.vdot(a.reshape(-1), b.reshape(-1)).real
+
     for i in range(len(original)):
         for j in range(i + 1, len(original)):
             denom = original[i].norm() * original[j].norm()
-            cosine = torch.dot(original[i], original[j]) / denom.clamp_min(eps)
-            cosines[f"{i}_{j}"] = float(cosine)
+            cosine = real_dot(original[i], original[j]) / denom.clamp_min(eps)
+            cosines[f"{i}_{j}"] = float(cosine.detach().cpu().item())
     projections = 0
     for i in range(len(projected)):
         for j in range(len(original)):
             if i == j:
                 continue
             reference = original[j]
-            dot = torch.dot(projected[i], reference)
-            norm2 = torch.dot(reference, reference)
-            if float(dot) < 0.0 and float(norm2) > eps:
+            dot = real_dot(projected[i], reference)
+            norm2 = real_dot(reference, reference)
+            if float(dot.detach().cpu().item()) < 0.0 and float(norm2.detach().cpu().item()) > eps:
                 projected[i] = projected[i] - (dot / (norm2 + eps)) * reference
                 projections += 1
     return projected, {"raw_pairwise_cosines": cosines, "projection_count": projections}

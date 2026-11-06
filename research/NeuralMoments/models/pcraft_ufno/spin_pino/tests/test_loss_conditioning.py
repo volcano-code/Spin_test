@@ -20,6 +20,15 @@ class PINOLossConditioningTests(unittest.TestCase):
         self.assertTrue(bool((p.jacobian_scale > 0).all()))
         self.assertFalse(p.as_dict()["validation_or_test_used_for_fit"])
 
+    def test_pcgrad_supports_complex_spectral_parameter_gradients(self):
+        g1 = torch.tensor([1.0 + 1.0j, 0.0 + 0.0j], dtype=torch.complex64)
+        g2 = torch.tensor([-1.0 + 0.0j, 1.0j], dtype=torch.complex64)
+        projected, stats = project_conflicting_gradients((g1, g2))
+        self.assertTrue(bool(torch.isfinite(projected[0]).all()))
+        self.assertTrue(bool(torch.isfinite(projected[1]).all()))
+        self.assertGreater(stats["projection_count"], 0)
+        self.assertTrue(all(isinstance(x, float) for x in stats["raw_pairwise_cosines"].values()))
+
     def test_pcgrad_projects_conflicting_task_gradients(self):
         g1 = torch.tensor([1.0, 0.0])
         g2 = torch.tensor([-1.0, 1.0])
