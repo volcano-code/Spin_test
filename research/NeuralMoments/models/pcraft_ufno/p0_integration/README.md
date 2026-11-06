@@ -47,6 +47,13 @@ ctest --test-dir /tmp/w6-algoim-build --output-on-failure
 
 A dedicated GitHub Actions workflow runs the dependency-backed Python smoke and Algoim C++ smoke on pushes to the W6 branch.
 
+## Latest cloud validation
+
+- GitHub Actions run 42168194446: both jobs passed.
+- NeuralOperator + QuadrANN CPU smoke: 8 passed in 2.96 s.
+- Pinned Algoim C++ build and unit-sphere ten-moment test: passed; maximum absolute error 7.5044859215722681e-11 at quadrature order 8.
+- This is adapter-level validation only. The models remain untrained; no W2 labels, J_D admission, native Newton or end-to-end speedup is claimed.
+
 ## Next gate
 
 After CI passes, add matched moment/Jacobian accuracy and cost comparisons on the same synthetic mesh-derived inputs. The QuadrANN model must be trained on the same teacher budget and split as U-FNO/GINO. The UQNO calibration split must be held out. Formal Cherchi supervision remains blocked until W2/W0 admission.

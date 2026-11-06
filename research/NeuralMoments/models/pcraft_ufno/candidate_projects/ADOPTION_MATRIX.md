@@ -10,9 +10,9 @@
 
 | Priority | Candidate | W6 role | Code status | License status | Cloud vs local |
 |---|---|---|---|---|---|
-| P0 | Algoim | Independent implicit-geometry quadrature reference | R4 adapter exists; official source build unverified | Custom BSD-style; preserve full notice | CPU build/test can start in cloud; final native performance should be local |
-| P0 | NeuralOperator GINO/UQNO | Geometry encoder and uncertainty baseline | Not integrated | MIT | CPU smoke and adapter in cloud; large-scale GPU local |
-| P0 | QuadrANN | Learned geometric quadrature baseline | Prior W6 adapter reported; re-audit required | MIT | CPU reproduction in cloud; GPU performance local |
+| P0 | Algoim | Independent implicit-geometry quadrature reference | Pinned official source compiled; unit-sphere ten-moment CPU smoke passed (max abs error 7.50e-11) | Custom BSD-style; preserve full notice | Cloud compile/smoke passed; Spin/Cherchi pairing still requires native validation |
+| P0 | NeuralOperator GINO/UQNO | Geometry encoder and uncertainty baseline | GINO moment adapter + UQNO residual-scale wrapper; CPU smoke passed; no trained weights transferred | MIT | Cloud CPU smoke passed; geometry-generalization training and GPU comparison remain |
+| P0 | QuadrANN | Learned geometric quadrature baseline | Pinned MIT model core safely extracted; 3D adapter and CPU forward smoke passed; still untrained | MIT | Cloud CPU smoke passed; matched training/accuracy benchmark remains |
 | P0 | PhysicsNeMo GeoTransolver | Geometry-aware operator baseline | Not integrated | Apache-2.0 | Small CPU interface tests in cloud; full model local GPU |
 | P1 | Transolver++ | Physical-state attention baseline | Not integrated | MIT | Small CPU ablation in cloud; realistic mesh/GPU local |
 | P1 | PhysicsNeMo DoMINO / FIGConvNet | Multi-scale point-grid geometry encoder | Not integrated | Apache-2.0 | CPU interface work in cloud; high-resolution local GPU |

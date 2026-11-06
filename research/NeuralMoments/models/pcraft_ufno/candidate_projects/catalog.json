@@ -88,10 +88,18 @@
           "bad45b1ecbdead28344981b3b3a40e186e66ad73"
         ]
       ],
-      "w6_status": "NOT_INTEGRATED",
+      "w6_status": "P0_GINO_UQNO_ADAPTER_AND_CPU_SMOKE_PASSED",
       "role": "GINO/FNOGNO are geometry-aware operator baselines; UQNO is the first uncertainty-aware operator candidate. Use the same mesh/voxel inputs and ten-moment output contract.",
       "priority": "P0_DIRECT_REUSE",
-      "reuse_rule": "MIT; retain copyright and license notice. Pin the exact upstream commit."
+      "reuse_rule": "MIT; retain copyright and license notice. Pin the exact upstream commit.",
+      "integration_evidence": {
+        "branch": "research/neuralmoments-w6-pcraft-20261019",
+        "source_commit": "c738df623cb9f39a8f43ea6fae5c3d51cd05f78a",
+        "validation_run": 42168194446,
+        "validation_run_commit": "e222b0457ca27b967b2923636459761edf140689",
+        "conclusion": "success",
+        "limits": "GINO forward, diagnostic Jacobian and UQNO wrapper smoke passed; no trained weights transferred and no Newton admission."
+      }
     },
     {
       "id": "transolver-plus",
@@ -358,10 +366,18 @@
           "c4f9d72ba46360af2fc3c9b5d08cd43badb1e49b"
         ]
       ],
-      "w6_status": "PRIOR_W6_ADAPTER_REPORTED_REQUIRES_REAUDIT",
+      "w6_status": "P0_3D_ADAPTER_AND_CPU_SMOKE_PASSED_UNTRAINED",
       "role": "Geometry-aware permutation-invariant GNN quadrature weights; direct baseline for point-cloud/mesh quadrature and teacher-sample allocation. Adapt to ten moments and derivative accuracy, not only scalar integrals.",
       "priority": "P0_DIRECT_REUSE",
-      "reuse_rule": "MIT; preserve license. Previous W6 adapter/experiment is not evidence of production integration or superiority."
+      "reuse_rule": "MIT; preserve license. Previous W6 adapter/experiment is not evidence of production integration or superiority.",
+      "integration_evidence": {
+        "branch": "research/neuralmoments-w6-pcraft-20261019",
+        "source_commit": "c738df623cb9f39a8f43ea6fae5c3d51cd05f78a",
+        "validation_run": 42168194446,
+        "validation_run_commit": "e222b0457ca27b967b2923636459761edf140689",
+        "conclusion": "success",
+        "limits": "3D model forward and adapter smoke passed; model is untrained, approximate and returns moments only."
+      }
     },
     {
       "id": "nqr",
@@ -416,10 +432,18 @@
           "51e4a7bae13b72e678d8dfd7079b08f794daed44"
         ]
       ],
-      "w6_status": "R4_ADAPTER_EXISTS_OFFICIAL_BUILD_NOT_VERIFIED",
+      "w6_status": "P0_PINNED_UPSTREAM_COMPILED_AND_ANALYTIC_TEN_MOMENT_SMOKE_PASSED",
       "role": "Independent implicit-geometry quadrature reference and possible exact numerical baseline. Keep Cherchi as the authoritative Spin teacher; Algoim is a comparator, not a replacement.",
       "priority": "P0_EXACT_BASELINE",
-      "reuse_rule": "Preserve copyright, conditions and disclaimer; custom license includes an enhancement grant clause. Complete official build and exact paired tests before adoption."
+      "reuse_rule": "Preserve copyright, conditions and disclaimer; custom license includes an enhancement grant clause. Complete official build and exact paired tests before adoption.",
+      "integration_evidence": {
+        "branch": "research/neuralmoments-w6-pcraft-20261019",
+        "source_commit": "c738df623cb9f39a8f43ea6fae5c3d51cd05f78a",
+        "validation_run": 42168194446,
+        "validation_run_commit": "e222b0457ca27b967b2923636459761edf140689",
+        "conclusion": "success",
+        "limits": "Standalone unit-sphere ten-moment reference only; not Cherchi and not the native Spin Boolean pipeline."
+      }
     },
     {
       "id": "fvdb",
@@ -629,5 +653,18 @@
       "priority": "WATCHLIST",
       "reuse_rule": "Do not cite or integrate until the exact official repository is confirmed."
     }
-  ]
+  ],
+  "p0_integration": {
+    "code_commit": "66d98caabbea1c48eab1ec26b027afb24512ac06",
+    "fixes": [
+      "1cb0284ddbedc813113f2782ebf96db3b8cbd5ac",
+      "c738df623cb9f39a8f43ea6fae5c3d51cd05f78a"
+    ],
+    "validation_commit": "e222b0457ca27b967b2923636459761edf140689",
+    "workflow_run": 42168194446,
+    "workflow_conclusion": "success",
+    "python_cpu_smoke": "8 passed in 2.96s",
+    "algoim_max_abs_error": 7.504485921572268e-11,
+    "scope": "adapter and upstream CPU smoke only; no training, W2 teacher admission, Newton admission or end-to-end speedup"
+  }
 }

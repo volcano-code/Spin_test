@@ -1,23 +1,36 @@
 {
   "schema": "W6_P0_INTEGRATION_STATUS_V1",
-  "status": "ADAPTERS_AND_SMOKE_TESTS_ADDED_CI_PENDING",
+  "status": "P0_CPU_ADAPTER_SMOKE_PASSED",
+  "validation": {
+    "workflow_run": 42168194446,
+    "workflow_run_url": "https://github.com/volcano-code/Spin_test/actions/runs/42168194446",
+    "workflow_commit": "e222b0457ca27b967b2923636459761edf140689",
+    "python": "8 passed in 2.96s",
+    "algoim_cpp": "compiled and CTest 1/1 passed",
+    "algoim_unit_sphere_ten_moment_max_abs_error": 7.504485921572268e-11
+  },
   "neuraloperator": {
-    "gino": "adapter_added_runtime_ci_pending",
-    "uqno": "adapter_added_runtime_ci_pending",
     "upstream_commit": "a6648eeeb60fe0837f2d7d021517a945a159a0c8",
-    "weights_transferred": false
+    "gino": "forward and diagnostic-Jacobian CPU smoke passed",
+    "uqno": "residual-scale wrapper CPU smoke passed",
+    "pretrained_weights_transferred": false,
+    "trained_on_spin_data": false,
+    "newton_admission": false
   },
   "quadrann": {
-    "safe_core_extracted": true,
-    "adapter_added": true,
     "upstream_commit": "111dd611aaeac1fb98c76385706b003ea8ef94be",
-    "runtime_ci_pending": true,
+    "safe_core_extracted": true,
+    "three_dimensional_adapter": "CPU forward smoke passed",
+    "trained_on_spin_data": false,
     "jacobian": "WITHHELD"
   },
   "algoim": {
-    "pinned_commit": "da1d81499608e1d499695d255f0233140b8c81e8",
-    "cmake_smoke_added": true,
-    "compile_status": "CI_PENDING"
+    "upstream_commit": "da1d81499608e1d499695d255f0233140b8c81e8",
+    "official_source_fetched_by_cmake": true,
+    "compiled": true,
+    "unit_sphere_ten_moment_test": "PASSED",
+    "max_abs_error": 7.504485921572268e-11,
+    "role": "independent numerical reference only; not Cherchi teacher"
   },
   "w2": {
     "native_teacher_runs": 1,
@@ -27,6 +40,14 @@
   "admission": {
     "newton_jacobian": false,
     "training_labels": false,
-    "end_to_end_speedup_claimed": false
+    "end_to_end_speedup_claimed": false,
+    "gpu_or_512_cube_validation": false
+  },
+  "remaining": {
+    "GINO/UQNO matched training and held-out calibration": true,
+    "QuadrANN training on same teacher budget and geometry split": true,
+    "Algoim versus Cherchi paired Spin-specific reference": true,
+    "general CAD and topology/event derivative certification": true,
+    "local GPU and high-resolution benchmarks": true
   }
 }
