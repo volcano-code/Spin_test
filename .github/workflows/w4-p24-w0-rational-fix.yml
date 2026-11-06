@@ -40,6 +40,7 @@ jobs:
         with:
           ref: 5bab2eb2616df306906a6887a273f68acfa49320
           path: w0
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Checkout frozen native Core
