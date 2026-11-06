@@ -271,3 +271,10 @@ Acceptance: moment/quadric/Jacobian transform tests pass; augmentation preserves
 - For each batch, rotate geometry by deterministic SO(3), transform native coefficients, ten moments and Jacobian exactly, and penalize the mismatch between rotated predictions and transformed original predictions.
 - Four matched conditions are tested: baseline, augmentation only, consistency loss only, and augmentation + consistency loss.
 - The experiment uses the same SO(3) held-out test transforms and the same analytic P0 split. CI and training results pending.
+
+## M7d — lambda sweep started
+
+- Added validation-selected lambda grid {0, 0.05, 0.2, 0.5, 1.0} for the SO(3) covariance consistency loss.
+- Uses 300 steps, seeds 131/137/139, same geometry splits and arbitrary-SO(3) test transforms.
+- Select lambda using mean validation r_mae + 0.25*J_mae only; held-out SO(3) test is confirmatory.
+- Cloud CPU CI pending. This decides whether to retain consistency-loss tuning or move to an intrinsically rotation-aware PINO geometry representation.

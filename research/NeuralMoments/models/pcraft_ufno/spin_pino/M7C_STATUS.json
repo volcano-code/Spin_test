@@ -1,25 +1,44 @@
 {
   "schema": "SPIN_PINO_M7C_STATUS_V1",
-  "status": "SO3_COVARIANCE_CONSISTENCY_IMPLEMENTED_CPU_CI_PENDING",
-  "primary_backbone": "P-CRAFT PINO UFNO3d",
-  "loss": "paired SO(3) covariance consistency on r and J",
-  "equation": "r(RD,S_R c)≈T_R r(D,c); J(RD,S_R c)≈T_R J(D,c) S_R^{-1}",
-  "lambda_equivariance": 0.05,
-  "conditions": [
-    "baseline",
-    "so3_augmentation_only",
-    "equivariance_loss_only",
-    "so3_augmentation_plus_equivariance"
-  ],
-  "seeds": [
-    131,
-    137,
-    139
-  ],
-  "steps": 120,
+  "status": "SO3_COVARIANCE_LOSS_TOURNAMENT_PASSED_SMALL_GAIN_NOT_PROMOTED",
+  "workflow_run": 42213624290,
+  "workflow_conclusion": "success",
+  "artifact_id": 13499623485,
+  "cpu_tests": {
+    "passed": 36,
+    "failed": 0,
+    "seconds": 2.59
+  },
   "label_source": "ANALYTIC_CONTINUUM_P0_NOT_W2_CHERCHI",
+  "results": {
+    "baseline": {
+      "so3_r_rel": 0.3712313473,
+      "so3_J_rel": 0.4495181044,
+      "combined": 0.4103747259,
+      "seconds": 1.549751841
+    },
+    "so3_aug": {
+      "so3_r_rel": 0.3706596692,
+      "so3_J_rel": 0.4489104449,
+      "combined": 0.4097850571,
+      "seconds": 1.511992673
+    },
+    "eq_only": {
+      "so3_r_rel": 0.3704531093,
+      "so3_J_rel": 0.4486977259,
+      "combined": 0.4095754176,
+      "seconds": 4.019961915
+    },
+    "so3_aug_eq": {
+      "so3_r_rel": 0.3706789513,
+      "so3_J_rel": 0.4489146968,
+      "combined": 0.4097968241,
+      "seconds": 4.046757167
+    }
+  },
+  "decision": "KEEP_AS_OPTIONAL_ABLATION; TEST_LAMBDA_SWEEP_AND_LONGER_BUDGET",
   "cherchi_supervised": false,
   "newton_admitted": false,
   "real_spin_end_to_end_validated": false,
-  "next": "run CPU CI and compare rotated/unrotated held-out r/J errors"
+  "next": "M7d lambda sweep 0.1/0.2/0.5/1.0 with longer training"
 }

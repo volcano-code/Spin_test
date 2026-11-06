@@ -152,3 +152,7 @@ The M8 CPU tournament compares PINO-only against PINO + Transolver++ using ident
 ## M7c paired covariance consistency
 
 The new `m7c_sweep.py` compares PINO baseline, SO(3) augmentation, covariance consistency loss, and both together. The covariance residual enforces `r(RD,S_R c) ≈ T_R r(D,c)` and `J(RD,S_R c) ≈ T_R J(D,c) S_R^{-1}`. See `M7C_PROTOCOL.md`. It is a training regularizer, not a derivative certificate.
+
+## M7d lambda sweep
+
+`m7d_sweep.py` tests lambda_equivariance in {0, 0.05, 0.2, 0.5, 1.0} for 300 steps and three seeds. It selects by validation r/J score only; the held-out arbitrary-SO(3) test remains confirmatory. See `M7D_PROTOCOL.md`.

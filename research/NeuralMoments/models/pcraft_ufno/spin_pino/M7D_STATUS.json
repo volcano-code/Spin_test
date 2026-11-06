@@ -1,0 +1,24 @@
+{
+  "schema": "SPIN_PINO_M7D_STATUS_V1",
+  "status": "EQUIVARIANCE_WEIGHT_SWEEP_CODE_READY_CI_PENDING",
+  "lambda_grid": [
+    0,
+    0.05,
+    0.2,
+    0.5,
+    1
+  ],
+  "seeds": [
+    131,
+    137,
+    139
+  ],
+  "steps": 300,
+  "batch_size": 8,
+  "selection": "mean validation r_mae + 0.25*J_mae",
+  "held_out_so3_is_confirmatory": true,
+  "label_source": "ANALYTIC_CONTINUUM_P0_NOT_W2_CHERCHI",
+  "cherchi_supervised": false,
+  "newton_admitted": false,
+  "next": "run CI and decide whether consistency loss is worth keeping"
+}

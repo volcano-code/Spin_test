@@ -112,3 +112,8 @@ To finish by 2026-12-06, PINO-specific methods receive priority over additional 
 ## M7c — active PINO-specific orientation objective
 
 The next active experiment adds paired SO(3)-covariance consistency loss to PINO. This directly constrains the known transformation law of ten moments and Jacobians, unlike augmentation alone. See `spin_pino/M7C_PROTOCOL.md`. M7c CPU tests and three-seed tournament are pending.
+
+
+## M7d active experiment
+
+M7d tests stronger SO(3)-covariance consistency weights {0.05, 0.2, 0.5, 1.0} with 300 steps and validation-only selection. If the stronger loss still does not produce a material rotated-test gain, stop tuning this loss and investigate an intrinsically rotation-aware PINO representation.
