@@ -52,3 +52,13 @@ No candidate is selected just because its paper is recent or its benchmark is st
 | P0/P1 | DensiCrafter | Differentiable density-field design, mass/COM/contact losses, surface-preserving hollowing | Source and MIT license audited; adapter not yet implemented | MIT | Loss port, coordinate generalization and 16³/32³ CPU prototypes can run in cloud; TRELLIS, 64³+ GPU and MuJoCo/Blender reproduction require local GPU/toolchain |
 
 DensiCrafter complements W6; it is not another neural operator and the inspected code does not implement general FEM stress/strain. See DENSICRAFTER_INTEGRATION.md.
+
+
+## Additional 2026 mechanics references (paper-level, not code-integrated)
+
+| Priority | Work | W6/MMDO role | Evidence status | Action |
+|---|---|---|---|---|
+| P0 | Differentiable graph neural fields for manufacturable topology optimization under stress constraints, Computer Structures 330 (Sep 2026), DOI 10.1016/j.compstruc.2026.108360 | Stress-constrained AM topology optimization; FEM-mesh neural field, support filter, compliance/volume/stress constraints | Open-access article; no verified source repository in this audit | Reproduce method from article and seek data/code; keep separate from DensiCrafter |
+| P1 | PI-GINOT, arXiv:2607.23299 (Jul 2026) | Physics-informed hyperelastic mechanics on parametric geometries | Preprint; no verified source/license in this audit | Method reference only; independently reproduce and compare against FEM |
+
+These two entries expand the mechanics branch, but do not count as source-code integration. The reported errors/results are author-reported and must be independently validated.

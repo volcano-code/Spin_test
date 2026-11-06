@@ -22,11 +22,11 @@
     }
   },
   "counts": {
-    "total_entries": 25,
+    "total_entries": 27,
     "license_clear_or_custom_permissive_direct_reuse": 13,
     "root_license_or_permission_hold": 8,
     "copyleft_isolated_benchmark_only": 1,
-    "paper_or_repository_watchlist": 3
+    "paper_or_repository_watchlist": 5
   },
   "rules": [
     "Publicly visible source code is not automatically licensed for copying. No-root-license entries remain method references until permission is verified.",
@@ -704,6 +704,46 @@
           "no FEM stress/strain or general load-case solve is implemented in these inspected files"
         ]
       }
+    },
+    {
+      "id": "stress-constrained-differentiable-gnn-neural-fields-2026",
+      "category": "mechanics_and_manufacturable_topology_optimization",
+      "name": "Differentiable graph neural fields for manufacturable topology optimization under stress constraints",
+      "upstream": "https://doi.org/10.1016/j.compstruc.2026.108360",
+      "commit": null,
+      "license": "OPEN_ACCESS_ARTICLE_CC_LICENSE_CODE_NOT_VERIFIED",
+      "license_blob": null,
+      "source_files": [],
+      "w6_status": "PAPER_REFERENCE_CODE_NOT_VERIFIED",
+      "role": "Mechanics branch reference: graph neural field over FEM mesh, AM support filter, compliance/volume/stress constraints with differentiable von Mises p-norm aggregation. Potential source for a validated stress-constrained MMDO branch.",
+      "priority": "P0_PAPER_REPRODUCTION",
+      "reuse_rule": "No verified source repository in this audit. Reproduce method from article only; do not claim code integration or infer structural strength from DensiCrafter.",
+      "audit_notes": {
+        "publication": "Computer Structures, Volume 330, article 108360, September 2026",
+        "doi": "10.1016/j.compstruc.2026.108360",
+        "data_availability": "Data available on request"
+      }
+    },
+    {
+      "id": "pi-ginot-hyperelasticity-2026",
+      "category": "physics_informed_mechanics_operator",
+      "name": "PI-GINOT: Data-free geometry-informed neural operator learning for finite-strain hyperelasticity on parametric DogBone specimens",
+      "upstream": "https://arxiv.org/abs/2607.23299",
+      "commit": null,
+      "license": "PREPRINT_CODE_LICENSE_NOT_VERIFIED",
+      "license_blob": null,
+      "source_files": [],
+      "w6_status": "PREPRINT_METHOD_REFERENCE",
+      "role": "Physics-informed mechanics branch reference: geometry-conditioned displacement prediction with exact boundary conditions and equilibrium/traction/symmetry constraints; stresses from autodiff and constitutive model.",
+      "priority": "P1_METHOD_REPRODUCTION",
+      "reuse_rule": "Preprint, not yet peer-reviewed in this audit; no verified code/license. Treat reported results as author-reported and independently reproduce before use.",
+      "audit_notes": {
+        "date": "2026-07-25",
+        "reported_test_geometries": 8,
+        "reported_displacement_error": "2.1%-7.1%",
+        "reported_peak_von_mises_error": "0.9%-13.3%",
+        "limitations": "reported errors vary by geometry and local stress components"
+      }
     }
   ],
   "p0_integration": {
@@ -719,5 +759,6 @@
     "algoim_max_abs_error": 7.504485921572268e-11,
     "scope": "adapter and upstream CPU smoke only; no training, W2 teacher admission, Newton admission or end-to-end speedup"
   },
-  "p0_addendum": "DensiCrafter source and MIT license audited on 2026-11-06. Complementary density-field design module, not a neural moment operator and not a structural-strength solver."
+  "p0_addendum": "DensiCrafter source and MIT license audited on 2026-11-06. Complementary density-field design module, not a neural moment operator and not a structural-strength solver.",
+  "audit_addendum": "Added two 2026 mechanics/topology-optimization paper references on 2026-11-06; neither is counted as source-code integration."
 }
