@@ -158,3 +158,11 @@ It does not mean the full long-term Spin research goal is closed if formal Cherc
 - All models use the exact same analytic geometry-family fit/validation/test splits, coefficient inputs, r/J labels, seeds, Adam step budget and four-channel voxel input.
 - The report includes parameter counts, held-out r/J error, per-component error and training time. Parameter counts are reported rather than artificially forced equal.
 - This is a fair architecture comparison on the analytic P0 task; it is not a Cherchi/native Spin result.
+
+## M3 result — same-data tournament completed
+
+- GitHub Actions run 42192701882 passed the same-data tournament.
+- The support-masked 6-node Spin-PINO has the best held-out moment r relative L2 (0.2561) but J relative L2 remains 0.8972.
+- W6 M7 Realizable U-FNO has the best combined score (0.4651), J relative L2 0.4931 and lower parameter count (13,448 vs 21,888). W5 voxel DeepONet has r relative L2 0.7511 and J relative L2 0.6994.
+- PINO remains the primary backbone. M7 is a comparator and source of candidate quadrature design, not a replacement.
+- M3b next: port positive Gauss-Legendre quadrature nodes/weights from M7 into the PINO head as a selectable integration rule, retaining the PINO trunk, support mask and PINO physics loss. Compare against midpoint PINO under the same data protocol.

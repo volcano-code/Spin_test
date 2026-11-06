@@ -49,6 +49,7 @@
 - M1 三种子：analytic continuum P0 数据训练成功，但留出椭球平均 r relative L2=0.4250、J relative L2=1.5802，精度不足。
 - M2 未掩码三配置：8³/4³/0.04 组合分数 1.0026；8³/6³/0.02 为 0.7363（J 改善但 r 变差）；16³/4³/0.02 为 1.4660。说明单纯增加分辨率不等于改善模型。
 - M2b：显式密度/occupancy 掩码已加入；三配置训练通过，已分析 artifact。最佳 8³/6³/eps=0.02：r relative L2=0.2561、J relative L2=0.8972；尚未达到 Newton 准入。
+- M3 同数据架构对照（run 42192701882）：Spin-PINO 6-node r relative L2=0.2561、J=0.8972；W6 M7 Realizable U-FNO r=0.4372、J=0.4931（综合最好）；W5 voxel DeepONet r=0.7511、J=0.6994。PINO 在 r 上最好，M7 在 J/综合分上最好，下一步将 M7 的 Gauss-Legendre 正权重求积借鉴到 PINO head，而不是替换 PINO 主干。
 - GINO/UQNO/QuadrANN：适配器 CPU smoke 通过；均未完成 Spin 数据训练/校准。
 - Algoim：单位球解析十矩独立验证通过，最大绝对误差 7.50e-11；尚未和 Cherchi 在同一 Spin Boolean 几何上配对。
 - DensiCrafter：源码/许可证审查完成，W6 适配器和联合优化尚未实现。
@@ -82,3 +83,8 @@
 ## 一个月结束的验收定义
 
 2026-12-06 前，必须有可重现的 PINO 主干训练、同协议基线对比、训练稳定性消融、不确定性/回退原型、MMDO 小规模耦合结果、4090 本地测试脚本和完整差距报告。其余项目必须明确标为未接入/方法借鉴/授权阻塞，而不能隐去。
+
+
+## M3 architecture tournament evidence
+
+The first same-data tournament passed in GitHub Actions run [42192701882](https://github.com/volcano-code/Spin_test/actions/runs/42192701882). It confirms the gap is not simply 'more projects need to be added': Spin-PINO currently leads moment accuracy, W6 M7 leads derivative accuracy and combined score, and W5 DeepONet is weaker on moment generalization. The next integration should transplant only M7's positive Gauss-Legendre quadrature rule into the P-CRAFT PINO head and rerun the same benchmark. The P-CRAFT PINO trunk remains frozen as primary.

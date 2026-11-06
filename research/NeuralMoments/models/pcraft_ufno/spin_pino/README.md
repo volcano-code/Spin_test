@@ -83,3 +83,8 @@ The support-masked 8^3 input / 6^3 quadrature / smoothing 0.02 configuration is 
 ## M3 same-data tournament
 
 `tournament.py` compares two Spin-PINO configurations with W6 M7 Realizable U-FNO and W5 voxel DeepONet using identical analytic dataset splits, labels, seeds and training steps. It reports capacity differences rather than hiding them.
+
+
+## M3 same-data tournament
+
+Run [42192701882](https://github.com/volcano-code/Spin_test/actions/runs/42192701882) passed. On the same analytic split, support-masked Spin-PINO 6-node achieved held-out r relative L2 0.2561 / J relative L2 0.8972; W6 M7 Realizable U-FNO achieved 0.4372 / 0.4931; W5 voxel DeepONet achieved 0.7511 / 0.6994. M7 is the strongest combined/J baseline, while PINO remains the primary backbone and has the best r accuracy. See `M3_TOURNAMENT_REPORT.md`.
