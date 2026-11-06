@@ -926,7 +926,7 @@
       "conclusion": "failure",
       "cause": "test fixture passed pathlib.Path to json.loads instead of reading text; production auditor's two positive-path tests passed"
     },
-    "regression_workflow_rerun_pending": 42211272055,
+    "regression_workflow_rerun_pending": null,
     "regression_workflow_rerun": {
       "run_id": 42211272055,
       "conclusion": "success",
