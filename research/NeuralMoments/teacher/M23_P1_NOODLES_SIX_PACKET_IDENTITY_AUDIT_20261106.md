@@ -69,3 +69,13 @@ M23-P2 is now narrower:
 Cloud work can continue for digest/receipt auditing, source review and small synthetic tests. Recovering or regenerating the six large exact rational payloads and full solid checks should be done from original experiment storage or a qualified local environment. No new CGAL or Cherchi calls were made by M23-P1.
 
 **Verdict:** M23-P1 recovers and cross-validates all six historical packet identities and three exact chain receipts, but not the six packet bytes or formal solid/teacher admission. Keep `J_D=null`, `split=excluded`, and W2 training samples at zero.
+
+
+## CI verification addendum
+
+The branch-scoped GitHub Actions workflow `.github/workflows/w2-m23-p1-noodles-audit.yml` was run.
+
+- First run `42211036530` exposed a test-fixture bug only: three negative-path tests passed a `Path` object to `json.loads` instead of reading the file text. The two positive-path tests passed.
+- The fixture was corrected in commit `05b090ff4f3802f1592654c09d333c35c0906be6`.
+- Rerun `42211272055`: **5/5 tests passed**, 0 failures, 0 skips.
+- This CI run tests the cross-branch identity auditor against synthetic fixtures. It does not download or rehash the six absent rational packet payloads and does not run CGAL or Cherchi.
