@@ -80,10 +80,10 @@ jobs:
               git config --global --add safe.directory /work/core/libigl
               printf "memory.max="; cat /sys/fs/cgroup/memory.max
               printf "memory.swap.max="; cat /sys/fs/cgroup/memory.swap.max
-              python -c "import sys,numpy,pybind11; print(sys.version); print(numpy.__version__,pybind11.__version__)"
+              /opt/w4-venv/bin/python -c "import sys,numpy,pybind11; print(sys.version); print(numpy.__version__,pybind11.__version__)"
               test "$(pkg-config --modversion gmp)" = "6.3.0"
               test "$(pkg-config --modversion mpfr)" = "4.2.1"
-              python "/work/w4/$P1/p20_build_native_ci.py" \
+              /opt/w4-venv/bin/python "/work/w4/$P1/p20_build_native_ci.py" \
                 --source-checkout /work/core \
                 --build-root /output/native-build \
                 --evidence /output/native-build-evidence \
@@ -91,7 +91,7 @@ jobs:
               cp /output/native-build-evidence/P20_NATIVE_BUILD_REPORT.json \
                  /output/native-build/P20_NATIVE_BUILD_REPORT.json
               export PYTHONPATH="/work/core/python:/output/native-build/core/python:/output/native-build/cherchi/python"
-              python "/work/w4/$P1/p20_owned_material_audit.py" \
+              /opt/w4-venv/bin/python "/work/w4/$P1/p20_owned_material_audit.py" \
                 --output /output/actual-owned-preparation.json \
                 --pins-output /output/actual-six-pins.json \
                 --seconds 900
@@ -139,7 +139,7 @@ jobs:
               git config --global --add safe.directory /work/w0
               git config --global --add safe.directory /work/core
               git config --global --add safe.directory /work/w4
-              python "/work/w4/$P25/p25_rerun_p22.py" \
+              /opt/w4-venv/bin/python "/work/w4/$P25/p25_rerun_p22.py" \
                 --w0-root /work/w0 \
                 --core-root /work/core \
                 --w4-root /work/w4 \
