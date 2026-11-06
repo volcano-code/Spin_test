@@ -22,8 +22,8 @@
     }
   },
   "counts": {
-    "total_entries": 24,
-    "license_clear_or_custom_permissive_direct_reuse": 12,
+    "total_entries": 25,
+    "license_clear_or_custom_permissive_direct_reuse": 13,
     "root_license_or_permission_hold": 8,
     "copyleft_isolated_benchmark_only": 1,
     "paper_or_repository_watchlist": 3
@@ -652,6 +652,58 @@
       "role": "Earlier candidate name retained for follow-up, but the expected repository path could not be resolved in this audit.",
       "priority": "WATCHLIST",
       "reuse_rule": "Do not cite or integrate until the exact official repository is confirmed."
+    },
+    {
+      "id": "densicrafter",
+      "category": "differentiable_density_field_design",
+      "name": "DensiCrafter: Physically-Constrained Generation and Fabrication of Self-Supporting Hollow Structures",
+      "upstream": "https://github.com/idvxlab/DensiCrafter",
+      "commit": "21e6d8dc646129a9b21a38c2d5bee5bef2704d98",
+      "license": "MIT",
+      "license_blob": "0ea86c7eca7f1e23ccd9b103cff4988561a10a35",
+      "source_files": [
+        [
+          "obj.py",
+          "3f667c28e9291ed39f77ef0a2115e1f0fc94cf5b"
+        ],
+        [
+          "loss.py",
+          "7b1ef7185eee504a02b801f9c7718d6cd72876ce"
+        ],
+        [
+          "physical.py",
+          "3c616c1b8870ae41489fe217a18017db9ac6b5bf"
+        ],
+        [
+          "geometry.py",
+          "67b29e6bbd8fd1cf759160c33e28485de6f6c7fb"
+        ],
+        [
+          "main.py",
+          "b0be285b3025804043fea228b01ab4916b14da47"
+        ]
+      ],
+      "w6_status": "SOURCE_AUDITED_ADAPTER_NOT_YET_IMPLEMENTED",
+      "role": "Complementary differentiable density-field design module: self-supporting hollowing, mass regularization, center-of-mass and bottom-contact losses. Connect its optimized density field to W6 material moments and inertia evaluation; not a general FEM/structural-strength solver.",
+      "priority": "P0_P1_CROSS_PROJECT_INTEGRATION",
+      "reuse_rule": "MIT; preserve copyright (c) 2025 Shengqi Dang and license notice. Port only isolated differentiable loss/field logic; do not import TRELLIS/MuJoCo/Blender pipeline into W6 core.",
+      "audit_notes": {
+        "grid_assumption": "hard-coded 64x64x64",
+        "coordinates": "GRID indices are treated as coordinates; z is ground axis and bottom contact is XY plane",
+        "optimization": "Adam over rho_score; optimization_field freezes outer surface and restricts design region",
+        "losses": [
+          "mass_penalty: mean density",
+          "physical_loss: projected COM-to-bottom-contact distance",
+          "negative bottom-contact area",
+          "COM height penalty"
+        ],
+        "caveats": [
+          "geometry.py uses NumPy/SciPy topology operations and fixed 64-cube reshape, so it is not end-to-end differentiable",
+          "contact logic uses torch.roll and needs explicit boundary handling",
+          "loss.py reshapes contact map to 64x64",
+          "no FEM stress/strain or general load-case solve is implemented in these inspected files"
+        ]
+      }
     }
   ],
   "p0_integration": {
@@ -666,5 +718,6 @@
     "python_cpu_smoke": "8 passed in 2.96s",
     "algoim_max_abs_error": 7.504485921572268e-11,
     "scope": "adapter and upstream CPU smoke only; no training, W2 teacher admission, Newton admission or end-to-end speedup"
-  }
+  },
+  "p0_addendum": "DensiCrafter source and MIT license audited on 2026-11-06. Complementary density-field design module, not a neural moment operator and not a structural-strength solver."
 }

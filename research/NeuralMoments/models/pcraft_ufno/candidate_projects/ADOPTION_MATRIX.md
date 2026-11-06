@@ -44,3 +44,11 @@ A candidate must pass all of the following before being called integrated:
 7. A W6 commit and reproducible report are created.
 
 No candidate is selected just because its paper is recent or its benchmark is strong on CFD.
+
+## New candidate: DensiCrafter
+
+| Priority | Candidate | W6 role | Code status | License | Cloud vs local |
+|---|---|---|---|---|---|
+| P0/P1 | DensiCrafter | Differentiable density-field design, mass/COM/contact losses, surface-preserving hollowing | Source and MIT license audited; adapter not yet implemented | MIT | Loss port, coordinate generalization and 16³/32³ CPU prototypes can run in cloud; TRELLIS, 64³+ GPU and MuJoCo/Blender reproduction require local GPU/toolchain |
+
+DensiCrafter complements W6; it is not another neural operator and the inspected code does not implement general FEM stress/strain. See DENSICRAFTER_INTEGRATION.md.
