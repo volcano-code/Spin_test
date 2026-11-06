@@ -1,0 +1,167 @@
+name: W4 P25 TEST_ONLY Cherchi M6 audit after W0 rational fix
+
+on:
+  push:
+    branches:
+      - research/neuralmoments-w4-teapot-p1-20261019
+    paths:
+      - .github/workflows/w4-p25-p22-replay.yml
+      - research/SpinIt2014_Teapot_20261018/P25/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: w4-p25-p22-replay-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  p25-p22-fixed-w0-capacity-rerun:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      P1: research/SpinIt2014_Teapot_20261018/P1
+      P25: research/SpinIt2014_Teapot_20261018/P25
+      P25_W0_COMMIT: 5bab2eb2616df306906a6887a273f68acfa49320
+      P25_CORE_COMMIT: 58fd12c1306c1c01679a19172e276eef0cb30542
+    steps:
+      - name: Checkout exact W4 branch revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: w4
+          persist-credentials: false
+
+      - name: Checkout fixed W0 contract
+        uses: actions/checkout@v4
+        with:
+          ref: 5bab2eb2616df306906a6887a273f68acfa49320
+          path: w0
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Checkout frozen native Core
+        uses: actions/checkout@v4
+        with:
+          ref: 58fd12c1306c1c01679a19172e276eef0cb30542
+          path: core
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Prepare evidence directory and build bounded Ubuntu image
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/w4-p25"
+          docker build --pull \
+            --file "$GITHUB_WORKSPACE/w4/$P25/Dockerfile" \
+            --tag w4-p25-p22:github-${GITHUB_RUN_ID} \
+            "$GITHUB_WORKSPACE/w4/$P25"
+          docker image inspect "w4-p25-p22:github-${GITHUB_RUN_ID}" \
+            --format '{{.Id}}' | tee "$RUNNER_TEMP/w4-p25/image-id.txt"
+
+      - name: Build genuine Cherchi modules and prepare frozen M F D under 8 GiB
+        run: |
+          set -euo pipefail
+          docker run --rm --init \
+            --memory=8g --memory-swap=8g --cpus=2 --cgroupns=private \
+            --mount "type=bind,src=$GITHUB_WORKSPACE/core,dst=/work/core" \
+            --mount "type=bind,src=$GITHUB_WORKSPACE/w4,dst=/work/w4,readonly" \
+            --mount "type=bind,src=$RUNNER_TEMP/w4-p25,dst=/output" \
+            "w4-p25-p22:github-${GITHUB_RUN_ID}" bash -lc '
+              set -euo pipefail
+              export PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1
+              export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+              printf "memory.max="; cat /sys/fs/cgroup/memory.max
+              printf "memory.swap.max="; cat /sys/fs/cgroup/memory.swap.max
+              python -c "import sys,numpy,pybind11; print(sys.version); print(numpy.__version__,pybind11.__version__)"
+              test "$(pkg-config --modversion gmp)" = "6.3.0"
+              test "$(pkg-config --modversion mpfr)" = "4.2.1"
+              python "/work/w4/$P1/p20_build_native_ci.py" \
+                --source-checkout /work/core \
+                --build-root /output/native-build \
+                --evidence /output/native-build-evidence \
+                --timeout-seconds 2400
+              cp /output/native-build-evidence/P20_NATIVE_BUILD_REPORT.json \
+                 /output/native-build/P20_NATIVE_BUILD_REPORT.json
+              export PYTHONPATH="/work/core/python:/output/native-build/core/python:/output/native-build/cherchi/python"
+              python "/work/w4/$P1/p20_owned_material_audit.py" \
+                --output /output/actual-owned-preparation.json \
+                --pins-output /output/actual-six-pins.json \
+                --seconds 900
+              python - <<'PY'
+          import json
+          from pathlib import Path
+          e=Path("/output")
+          report=json.loads((e/"actual-owned-preparation.json").read_text())
+          assert report["completed"] is True, report
+          r=report["result"]
+          partition=r["native_M_equals_F_plus_D_partition"]
+          assert partition["completed"] and partition["complete_partition"]
+          assert partition["union_equals_whole"] and partition["no_positive_volume_overlap"]
+          assert partition["missing_whole_content"] is False
+          assert partition["excess_union_content"] is False
+          assert partition["part_subset_whole"] == [True, True]
+          assert r["all_ten_exact_additivity_residuals_zero"] is True
+          pins=json.loads((e/"actual-six-pins.json").read_text())
+          assert pins == r["observed_six_pins"]
+          build=json.loads((e/"native-build/P20_NATIVE_BUILD_REPORT.json").read_text())
+          assert build["status"] == "BUILT_AND_IMPORT_VERIFIED_NO_GEOMETRY"
+          assert pins["native_sha256"] == build["native_modules"]["_make_it_stand"]["sha256"]
+          assert pins["bridge_sha256"] == build["native_modules"]["_cherchi_core_boolean"]["sha256"]
+          assert r["native_arithmetic_identity"]["module_sha256"] == build["native_modules"]["_cherchi_rational_moments"]["sha256"]
+          print("P25_PREPARATION_PASS: actual native build, M/F/D partition, six pins; no formal M6")
+          PY
+            '
+
+      - name: Rerun unchanged W0 native audit in a separate 8 GiB zero-swap container
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/w4-p25/P25_P22_RERUN"
+          docker run --rm --init --network none \
+            --memory=8g --memory-swap=8g --cpus=2 --cgroupns=private \
+            --mount "type=bind,src=$GITHUB_WORKSPACE/w0,dst=/work/w0,readonly" \
+            --mount "type=bind,src=$GITHUB_WORKSPACE/core,dst=/work/core,readonly" \
+            --mount "type=bind,src=$GITHUB_WORKSPACE/w4,dst=/work/w4,readonly" \
+            --mount "type=bind,src=$RUNNER_TEMP/w4-p25,dst=/output" \
+            --env P25_W4_COMMIT="$GITHUB_SHA" \
+            "w4-p25-p22:github-${GITHUB_RUN_ID}" bash -lc '
+              set -euo pipefail
+              export PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1
+              export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+              python "/work/w4/$P25/p25_rerun_p22.py" \
+                --w0-root /work/w0 \
+                --core-root /work/core \
+                --w4-root /work/w4 \
+                --p1 "/work/w4/$P1" \
+                --native-build /output/native-build \
+                --pins /output/actual-six-pins.json \
+                --preparation /output/actual-owned-preparation.json \
+                --output /output/P25_P22_RERUN
+            '
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("$RUNNER_TEMP/w4-p25/P25_P22_RERUN/P25_P22_RERUN_RESULT.json")
+          r=json.loads(p.read_text())
+          assert r["test_only"] is True
+          assert r["formal_M6_executed"] is False
+          assert r["formal_M6_passed"] is False
+          assert r["native_audit_invoked"] is True
+          assert r["diagnostic_captured"] is True
+          for key in ("memory.max","memory.swap.max"):
+              assert r["cgroup_after"].get(key) == ("8589934592" if key=="memory.max" else "0")
+          events=dict(line.split() for line in r["cgroup_after"]["memory.events"].splitlines())
+          assert events.get("oom") == "0" and events.get("oom_kill") == "0"
+          print("P25_P22_DIAGNOSTIC_CAPTURED:",r["status"],r.get("native_call_counts_final"))
+          PY
+
+      - name: Preserve P25 build, preparation, and TEST_ONLY M6 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-P25-P22-fixed-W0-8GiB-test-only
+          path: ${{ runner.temp }}/w4-p25/**
+          if-no-files-found: warn
+          retention-days: 30
