@@ -1,0 +1,11 @@
+test_coplanar_disjoint_with_overlapping_aabb ... ok
+test_coplanar_positive_area_overlap ... ok
+test_coplanar_shared_edge_contact ... ok
+test_coplanar_single_point_contact_is_not_a_cut_segment ... ok
+test_degenerate_input_triangle_fails_closed ... ok
+test_non_coplanar_disjoint_with_overlapping_aabb ... ok
+test_non_coplanar_point_contact_is_not_a_cut_segment ... ok
+test_non_coplanar_segment_intersection ... ok
+test_seeded_randomized_160_pairs_match_fraction_reference ... ok
+Ran 9 tests in 0.051s
+OK

@@ -1,0 +1,15 @@
+{
+  "evaluation": 116,
+  "operation": "difference",
+  "design_faces": 26244,
+  "source_faces": 632,
+  "aabb_candidates": 77779,
+  "exact_contact_candidates": 578,
+  "positive_dim_cut_pairs": 578,
+  "frozen_pairs": 578,
+  "missing_pairs": 0,
+  "extra_pairs": 0,
+  "pair_sets_equal": true,
+  "elapsed_seconds": 0.371064,
+  "input_sha256": "cbb23ec85dbf42b35a2d5f3943b04d914b18c7ba3c544c72a9aea686b683544f"
+}

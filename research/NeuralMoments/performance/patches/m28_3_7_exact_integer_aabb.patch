@@ -1,0 +1,27 @@
+diff --git a/research/NeuralMoments/performance/m28_3_7_exact_pair_sat.cpp b/research/NeuralMoments/performance/m28_3_7_exact_pair_sat.cpp
+index f0cd1a42270fd64127272bb6a22b050c03477f3a..0000000000000000000000000000000000000000 100644
+--- a/research/NeuralMoments/performance/m28_3_7_exact_pair_sat.cpp
++++ b/research/NeuralMoments/performance/m28_3_7_exact_pair_sat.cpp
+@@
+-using Box=std::array<double,6>;
++using Box=std::array<Z,6>;
+@@
+-static Box boxof(const std::array<V,3>&t,const std::array<std::array<double,3>,0>&dummy){
+- (void)dummy;Box b;for(int k=0;k<3;++k){double lo=std::numeric_limits<double>::infinity(),hi=-lo;for(int i=0;i<3;++i){double x=t[i][k].get_d();lo=std::min(lo,x);hi=std::max(hi,x);}b[k]=lo;b[k+3]=hi;}return b;
++static Box boxof(const std::array<V,3>&t){
++ // Exact integer AABB: do not round GMP coordinates through double.
++ Box b;
++ for(int k=0;k<3;++k){
++  Z lo=std::min({t[0][k],t[1][k],t[2][k]});
++  Z hi=std::max({t[0][k],t[1][k],t[2][k]});
++  b[k]=lo;b[k+3]=hi;
++ }
++ return b;
+ }
+@@
+- std::vector<std::array<V,3>>ta(nfA),tb(nfB);std::vector<Box>ba(nfA),bb(nfB);std::array<std::array<double,3>,0>dummy{};
+- for(size_t i=0;i<nfA;++i){for(int k=0;k<3;++k)ta[i][k]=va[fa[i][k]];if(cross(sub(ta[i][1],ta[i][0]),sub(ta[i][2],ta[i][0]))==V{0,0,0})throw std::runtime_error("DEGENERATE_DESIGN_INPUT_FACE");ba[i]=boxof(ta[i],dummy);}
+- for(size_t j=0;j<nfB;++j){for(int k=0;k<3;++k)tb[j][k]=vb[fb[j][k]];if(cross(sub(tb[j][1],tb[j][0]),sub(tb[j][2],tb[j][0]))==V{0,0,0})throw std::runtime_error("DEGENERATE_SOURCE_INPUT_FACE");bb[j]=boxof(tb[j],dummy);}
++ std::vector<std::array<V,3>>ta(nfA),tb(nfB);std::vector<Box>ba(nfA),bb(nfB);
++ for(size_t i=0;i<nfA;++i){for(int k=0;k<3;++k)ta[i][k]=va[fa[i][k]];if(cross(sub(ta[i][1],ta[i][0]),sub(ta[i][2],ta[i][0]))==V{0,0,0})throw std::runtime_error("DEGENERATE_DESIGN_INPUT_FACE");ba[i]=boxof(ta[i]);}
++ for(size_t j=0;j<nfB;++j){for(int k=0;k<3;++k)tb[j][k]=vb[fb[j][k]];if(cross(sub(tb[j][1],tb[j][0]),sub(tb[j][2],tb[j][0]))==V{0,0,0})throw std::runtime_error("DEGENERATE_SOURCE_INPUT_FACE");bb[j]=boxof(tb[j]);}
