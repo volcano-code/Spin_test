@@ -1,0 +1,52 @@
+name: W4 P27 formal-M6 handoff script validation
+
+on:
+  push:
+    branches:
+      - research/neuralmoments-w4-teapot-p1-20261019
+    paths:
+      - .github/workflows/w4-p27-script-validation.yml
+      - research/SpinIt2014_Teapot_20261018/P27/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  p27-shell-and-policy-validation:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact W4 branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Parse all host and container scripts
+        run: |
+          set -euo pipefail
+          P27=research/SpinIt2014_Teapot_20261018/P27
+          bash -n "$P27/p27_prepare_formal_m6.sh"
+          bash -n "$P27/p27_execute_formal_m6.sh"
+          bash -n "$P27/p27_container_prepare.sh"
+          bash -n "$P27/p27_container_execute.sh"
+          test -x "$P27/p27_prepare_formal_m6.sh"
+          test -x "$P27/p27_execute_formal_m6.sh"
+          test -x "$P27/p27_container_prepare.sh"
+          test -x "$P27/p27_container_execute.sh"
+          echo "P27_ALL_FOUR_SCRIPTS_PARSE_AND_EXECUTABLE"
+
+      - name: Verify formal resource and independent-lock guardrails
+        run: |
+          set -euo pipefail
+          P27=research/SpinIt2014_Teapot_20261018/P27
+          grep -F -- '--memory=24g --memory-swap=24g' "$P27/p27_prepare_formal_m6.sh"
+          grep -F -- '--memory=24g --memory-swap=24g' "$P27/p27_execute_formal_m6.sh"
+          grep -F 'SwapTotal' "$P27/p27_prepare_formal_m6.sh"
+          grep -F 'SwapTotal' "$P27/p27_execute_formal_m6.sh"
+          grep -F 'P27_LOCK_SHA256' "$P27/p27_execute_formal_m6.sh"
+          grep -F 'registration_is_independent_attestation' "$P27/p27_container_prepare.sh"
+          grep -F 'p21_m6_replay.py" execute' "$P27/p27_container_execute.sh"
+          echo "P27_FORMAL_RESOURCE_AND_EXTERNAL_LOCK_GUARDS_PRESENT"
