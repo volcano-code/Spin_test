@@ -46,3 +46,22 @@ These are synthetic analytic labels, not Cherchi supervision. The held-out famil
 ## M1 three-seed analytic training result
 
 GitHub Actions run [42188044841](https://github.com/volcano-code/Spin_test/actions/runs/42188044841) passed all jobs. The 3-seed CPU run used 52 fit / 12 validation / 16 held-out ellipsoid samples, 8^3 geometry inputs and 120 steps. Mean held-out ellipsoid r MAE was 0.04069 and J MAE 0.03461; relative L2 errors were 0.4250 and 1.5802. This is a functional but preliminary baseline, not yet good enough for Newton use. Full metrics and caveats are in `M1_TRAINING_REPORT.md`; checkpoint/report artifact ID 13488726149.
+
+## M2 controlled sweep
+
+`sweep.py` runs three matched configurations on the same geometry-family splits and three seeds:
+
+- baseline: 8^3 input, 4^3 positive nodes, smoothing 0.04;
+- quadrature refinement: 8^3 input, 6^3 positive nodes, smoothing 0.02;
+- resolution refinement: 16^3 input, 4^3 positive nodes, smoothing 0.02.
+
+The selection metric is the mean of held-out ellipsoid r and J relative L2, with no validation/test leakage. Run:
+
+```bash
+OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
+python -m research.NeuralMoments.models.pcraft_ufno.spin_pino.sweep \
+  --seeds 131,137,139 --steps 120 --batch-size 8 --device cpu \
+  --output /tmp/spin_pino_m2_sweep.json
+```
+
+This sweep is designed to identify whether low M1 accuracy is caused by coarse geometry input, insufficient positive quadrature nodes or potential smoothing. It does not by itself prove performance on general quadrics or Cherchi geometry.

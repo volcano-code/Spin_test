@@ -131,3 +131,10 @@ It does not mean the full long-term Spin research goal is closed if formal Cherc
 - Dataset: 52 fit samples, 12 validation samples, 16 held-out ellipsoid samples; 8^3 geometry input; exact analytic vertical-plane r/J labels only.
 - Mean held-out ellipsoid r MAE 0.04069, J MAE 0.03461; mean relative L2 r 0.4250, J 1.5802. These are preliminary and not yet satisfactory, especially for J.
 - M1 is functionally complete, but M2 must improve resolution/quadrature/smoothing and compare against the frozen W6 M13 U-FNO baseline before claiming useful predictive performance.
+## M2 implementation started — controlled PINO refinement
+
+- Parameterized the existing Spin-PINO training loop by grid resolution, positive quadrature node count and convex-potential smoothing.
+- Added `spin_pino/sweep.py` with three matched configurations: baseline 8^3/4^3/0.04; 8^3/6^3/0.02; 16^3/4^3/0.02.
+- Added a three-seed, 120-step cloud CPU sweep job with retained JSON artifact.
+- Added sweep configuration smoke tests. The sweep uses identical seed splits and optimizer budget; selects by held-out r/J relative L2.
+- M2 comparison to frozen W6 M13 U-FNO and W5 DeepONet remains a separate mandatory subtask; no alternative backbone replaces PINO.

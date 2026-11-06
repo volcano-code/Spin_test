@@ -44,6 +44,8 @@ def run_seed(
     steps: int = 120,
     batch_size: int = 8,
     grid_size: int = 8,
+    points_per_axis: int = 4,
+    smoothing: float = 0.04,
     device: str = "cpu",
 ):
     torch.manual_seed(seed)
@@ -62,9 +64,9 @@ def run_seed(
         modes=2 if grid_size <= 8 else 4,
         n_layers=2 if grid_size <= 8 else 4,
         grid_size=grid_size,
-        points_per_axis=4,
+        points_per_axis=points_per_axis,
         hidden_dim=48,
-        smoothing=0.04,
+        smoothing=smoothing,
     ).to(device)
     criterion = SpinPINOLoss(lambda_data=1.0, lambda_physics=0.05, lambda_jacobian=0.25)
     optimizer = torch.optim.Adam(model.parameters(), lr=1.5e-3)
@@ -128,6 +130,9 @@ def run_seed(
         "derivative_scope": splits["metadata"]["derivative_scope"],
         "dataset": splits["metadata"],
         "trainable_parameters": model.real_parameter_count(),
+        "model_config": {"grid_size": grid_size, "points_per_axis": points_per_axis,
+                         "smoothing": smoothing, "width": 4 if grid_size <= 8 else 8,
+                         "modes": 2 if grid_size <= 8 else 4},
         "training": {
             "steps": steps,
             "batch_size": batch_size,
@@ -160,6 +165,8 @@ def main():
     parser.add_argument("--steps", type=int, default=120)
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--grid-size", type=int, default=8)
+    parser.add_argument("--points-per-axis", type=int, default=4)
+    parser.add_argument("--smoothing", type=float, default=0.04)
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--save-checkpoints", action="store_true")
@@ -174,6 +181,8 @@ def main():
             steps=args.steps,
             batch_size=args.batch_size,
             grid_size=args.grid_size,
+            points_per_axis=args.points_per_axis,
+            smoothing=args.smoothing,
             device=args.device,
         )
         state = result.pop("checkpoint_state")
