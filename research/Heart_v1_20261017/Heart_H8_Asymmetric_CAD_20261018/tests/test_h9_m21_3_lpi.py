@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import sys
 from tempfile import TemporaryDirectory
+from fractions import Fraction as F
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'source'))
