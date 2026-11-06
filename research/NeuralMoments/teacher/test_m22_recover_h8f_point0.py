@@ -1,3 +1,4 @@
+from fractions import Fraction
 import gzip
 import json
 from pathlib import Path
@@ -22,6 +23,7 @@ class TestPoint000(unittest.TestCase):
         self.row = {'index': 0, 'geometry_hash': 'g', 'topology_hash': 't',
                     'native_c': self.mat['quadric_coefficients'], 'r_D': self.mat['variable_raw_moments'],
                     'r_F': [1.0]*10, 'split': 'excluded', 'training_admitted': False, 'J_D': None}
+        self.mat['raw_moments'] = [d+f for d, f in zip(self.row['r_D'], self.row['r_F'])]
         self.payload = {k: self.row[k] for k in ('native_c', 'r_D', 'r_F')}
         self.payload.update(density=1.0, exact_proof={
             'geometry_hash': 'g', 'topology_hash': 't', 'independent_ten_moment_audit': ref,
@@ -52,8 +54,7 @@ class TestPoint000(unittest.TestCase):
     def test_small_fraction_discrepancy(self):
         ref = self.payload['exact_proof']['independent_ten_moment_audit']
         ref['reference_raw_moments_exact'][0] = '100000000000000000001/600000000000000000000'
-        self.assertEqual(float(ref['reference_raw_moments_exact'][0].split('/')[0]) /
-                         float(ref['reference_raw_moments_exact'][0].split('/')[1]), self.row['r_D'][0])
+        self.assertEqual(float(Fraction(ref['reference_raw_moments_exact'][0])), self.row['r_D'][0])
         r = compare_material(self.mat, self.row, self.payload)
         self.assertEqual(r['status'], 'REJECTED_BOUNDARY_CONFLICT')
         self.assertEqual(r['exact_moments_matched'], 9)
@@ -63,6 +64,10 @@ class TestPoint000(unittest.TestCase):
             compare_material(dict(self.mat, topology_hash='wrong'), self.row, self.payload)
         with self.assertRaisesRegex(ValueError, 'VALUE_MISMATCH:r_F'):
             compare_material(self.mat, dict(self.row, r_F=[0.0]*10), self.payload)
+
+    def test_reject_double_counted_fixed_mass(self):
+        with self.assertRaisesRegex(ValueError, 'VALUE_MISMATCH:r_total'):
+            compare_material(dict(self.mat, raw_moments=[0.0]*10), self.row, self.payload)
 
     def test_gzip_and_zip_paths_both_bound_to_bytes(self):
         with TemporaryDirectory() as tmp:

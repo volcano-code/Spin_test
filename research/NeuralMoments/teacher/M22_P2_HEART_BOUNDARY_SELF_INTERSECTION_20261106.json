@@ -1,0 +1,32 @@
+{
+  "scope": "historical_H8f_point000_M21_exact_boundary_only",
+  "checker_source_w1_commit": "249db334303b31b8b8c2cfcb415b21a7cc2c9464",
+  "checker_source_sha256": "2536f7783ff6552ac930c294879e69b8430fc8e527873859b3ec1187d39c6ea0",
+  "binary_sha256": "96758af9a4d68b7e1dc63c2af4a9448e1c4bcd4f1bb42f22b738dc2e00875bde",
+  "input_stream_sha256": "bfdc4b063cceddde5e0500ddc56952ecef492f5ca3852c2564f6a8573598f456",
+  "exact_boundary_sha256": "48aae36777ed15e705f1ab919edac07756d3a7444100c060ee5baabd310afe20",
+  "historical_material_sha256": "6be4faf58ef2fc31b6a1e6d67e601417150d0b43dbd37104b61565a2ca6708c1",
+  "m21_attachment_sha256": "b136cbcc09740915cd70615d73fab3ab2aa0b680cdb823cfed12375bed6c20e8",
+  "return_code": 0,
+  "details": {
+    "status": "EXACT_POST_BOOLEAN_SELF_INTERSECTION_FREE",
+    "vertices": "8455",
+    "faces": "16910",
+    "candidate_pairs": "161702",
+    "exact_pairs_checked": "161702",
+    "adjacent_pairs": "111975",
+    "nonadjacent_pairs": "49727",
+    "elapsed_seconds": "4.91091"
+  },
+  "error_output": "",
+  "component_counts": [
+    {
+      "vertices": 8455,
+      "edges": 25365,
+      "faces": 16910,
+      "euler": 0
+    }
+  ],
+  "boolean_domain_set_equivalence_certified": false,
+  "derivative_certified": false
+}

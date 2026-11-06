@@ -47,6 +47,9 @@ def compare_material(material, row, payload):
                 'VALUE_MISMATCH:' + key)
     require(digest(row['r_F']) == digest(payload['r_F']), 'VALUE_MISMATCH:r_F')
 
+    total = [d+f for d, f in zip(payload['r_D'], payload['r_F'])]
+    require(digest(material['raw_moments']) == digest(total), 'VALUE_MISMATCH:r_total')
+
     moments, boundary = integrate_exact_boundary(material['variable_rational_vertices'],
                                                   material['variable_faces'], payload['density'])
     ref = proof['independent_ten_moment_audit']
@@ -67,6 +70,9 @@ def compare_material(material, row, payload):
     return {
         'status': status, 'boundary_matched': boundary_match,
         'full_canonical_material_matched': full_match,
+        'geometry_hash': row['geometry_hash'], 'topology_hash': row['topology_hash'],
+        'native_c_sha256': digest(row['native_c']),
+        'm9_m21_r_D_and_r_F_match': True, 'historical_total_equals_m21_r_D_plus_r_F': True,
         'historical_material_sha256': historical_digest, 'm21_material_sha256': expected_digest,
         'historical_exact_boundary_sha256': boundary['exact_boundary_sha256'],
         'm21_exact_boundary_sha256': ref['exact_boundary_sha256'],
