@@ -68,3 +68,14 @@ Cloud/local execution record: 7/7 regression tests passed. The three real surfac
 5. Newton convergence is not accepted; no training data are released.
 
 **Verdict:** M22-P3 now certifies the embedded-surface property of both input operands and the output boundary. It still does not certify the complete Boolean set operation. Keep `split=excluded`, `J_D=null`, and training samples at zero.
+
+## Re-run / binary identity addendum
+
+The committed reproducer was re-run against all three real surfaces after rebuilding the pinned checker. The rebuilt checker binary SHA-256 was `e7b7cca7f8852922e25ccf2572b84dbccd6b2ced5b8a177a7af462a10f554347`.
+
+Latest direct checker timings:
+- Design: 218,939 exact candidate pairs; 60,772 non-adjacent; 10.5275 s.
+- QuadricSource: 1,986 exact candidate pairs; 96 non-adjacent; 0.105905 s.
+- Boolean output: 161,702 exact candidate pairs; 49,727 non-adjacent; 12.399 s.
+
+All three again returned `EXACT_POST_BOOLEAN_SELF_INTERSECTION_FREE`. The regression suite was rerun: **7/7 passed**, 0 failed, 0 skipped (0.500 s). These are local execution results, not GitHub Actions CI.
