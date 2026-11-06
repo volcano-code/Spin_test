@@ -35,7 +35,7 @@ This review does **not** grant W0 owner/physical approval, W2 teacher/training a
 Build report status: `BUILT_AND_IMPORT_VERIFIED_NO_GEOMETRY`.
 
 - Build report SHA-256: `fef7da88a29ac0ff55e6e7f828a448e9953d5069b6586e9dc3bed3fa080b469b`.
-- Core source: `58fd12c1306c1c01679a19172e2d76eef0cb30542`.
+- Core source: `58fd12c1306c1c01679a19172e276eef0cb30542`.
 - Cherchi source: `7bd6c2697695f555f9a15d7e154e084d841316f0`.
 - GMP: 6.3.0; MPFR: 4.2.1; GCC: 13.3.0; CMake: 3.31.6; Python: 3.12.3.
 - Core, libigl, CGAL, Eigen and Cherchi checkout identities remained unchanged before/after the build; tracked files matched their commits.
