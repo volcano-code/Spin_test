@@ -106,6 +106,11 @@ class SpinPINOBackboneTests(unittest.TestCase):
 
     def test_11_density_scaling_scales_discrete_measure(self):
         model = self.make_model()
+        # Hold the learned gate constant so this isolates the explicit
+        # rho(x_k) factor; the real geometry-conditioned gate may also change
+        # when the density field changes.
+        for parameter in model.weight_head.parameters():
+            torch.nn.init.zeros_(parameter)
         geometry = torch.zeros((1, 4, 8, 8, 8))
         geometry[:, 0, 1:7, 1:7, 1:7] = 1.0
         geometry[:, 1, 1:7, 1:7, 1:7] = 1.0

@@ -22,9 +22,9 @@
     }
   },
   "counts": {
-    "total_entries": 27,
-    "license_clear_or_custom_permissive_direct_reuse": 13,
-    "root_license_or_permission_hold": 8,
+    "total_entries": 31,
+    "license_clear_or_custom_permissive_direct_reuse": 15,
+    "root_license_or_permission_hold": 10,
     "copyleft_isolated_benchmark_only": 1,
     "paper_or_repository_watchlist": 5
   },
@@ -760,6 +760,138 @@
         "reported_peak_von_mises_error": "0.9%-13.3%",
         "limitations": "reported errors vary by geometry and local stress components"
       }
+    },
+    {
+      "id": "pi-cvit-pino-training",
+      "category": "pino_training_strategy",
+      "name": "PI-CViT: On the training of physics-informed neural operators for solving parametric PDEs",
+      "upstream": "https://github.com/NanxiiChen/PI-CViT",
+      "commit": "b91705ddea5fcae268ed957b412a10c09decd005",
+      "license": "NO_ROOT_LICENSE_FOUND",
+      "license_blob": null,
+      "source_files": [
+        [
+          "README.md",
+          "ecb087c619cc93a5eedaeaf7e034672b3cd21979"
+        ],
+        [
+          "burgers/losses.py",
+          "20142ffb3d71fccc749a26ce53cfde09fdd0ebb6"
+        ],
+        [
+          "models/cvit.py",
+          "d66762fb31eab79a1a677c669ffe6959a26b4bbf"
+        ]
+      ],
+      "w6_status": "PAPER_AND_CODE_AUDITED_LICENSE_HOLD_METHOD_ADAPTATION_ONLY",
+      "role": "PINO training strategy reference: physics/data loss balancing, causal weighting, optimizer and collocation-point sampling; CViT backbone is not to replace P-CRAFT PINO.",
+      "priority": "P0_TRAINING_STABILITY_METHOD",
+      "reuse_rule": "No root LICENSE found in audited tree. Do not copy source until permission is confirmed. Reimplement only task-appropriate training strategies; Burgers/Navier-Stokes residuals are not Spin moment physics.",
+      "audit_notes": {
+        "paper": "arXiv:2606.06164 (2026-06-04)",
+        "reported_findings": [
+          "gradient conflicts in PINO objectives",
+          "causal violation",
+          "PINN mitigation methods help PINO training",
+          "collocation sampling and optimizer choice matter"
+        ],
+        "task_transfer": "loss balancing, gradient conflict diagnostics, adaptive collocation/sampling only"
+      }
+    },
+    {
+      "id": "pfem-pino-warmstart",
+      "category": "pino_warm_start_and_mechanics",
+      "name": "PFEM: Pretrain Finite Element Method via Physics-Informed Neural Operators",
+      "upstream": "https://github.com/yizheng-wang/PFEM",
+      "commit": "00a357ddc95ff9ebed1ce3793997d98ab30785ab",
+      "license": "NO_ROOT_LICENSE_FOUND",
+      "license_blob": null,
+      "source_files": [
+        [
+          "README.md",
+          "dd8078d930dfe9e1f73e55d472c3b5b94516c82b"
+        ],
+        [
+          "model/Transolver_Irregular_Mesh.py",
+          "dc948fce878c90499350b91a8c057e5bbd24808e"
+        ],
+        [
+          "model/Physics_Attention.py",
+          "19edfa559ccb3b9c9f7ae04d8adee6d1cafddd5b"
+        ]
+      ],
+      "w6_status": "SOURCE_AUDITED_LICENSE_HOLD_METHOD_TRANSFER_ONLY",
+      "role": "PINO warm-start and solver-coupling reference: physics-only pretraining, explicit FE differentiation and using neural predictions as initial guesses for conventional iterative solvers. For Spin, only transfer warm-start/reliability pattern; PINO remains backbone.",
+      "priority": "P1_NEWTON_WARMSTART_METHOD",
+      "reuse_rule": "No root LICENSE found in audited tree. Do not copy source without permission. PFEM solves displacement PDEs with Transolver; it does not solve Spin's ten-moment integral or replace Cherchi.",
+      "audit_notes": {
+        "paper": "Journal of the Mechanics and Physics of Solids 214 (2026), 106682; DOI 10.1016/j.jmps.2026.106682",
+        "reported": "authors report up to one order of magnitude fewer FEM iterations on their own elasticity/hyperelasticity benchmarks",
+        "task_transfer": "PINO-generated warm start for native Newton/Cherchi candidate, subject to exact acceptance"
+      }
+    },
+    {
+      "id": "hypino-mms",
+      "category": "pino_manufactured_solution_training",
+      "name": "HyPINO: Multi-Physics Neural Operators via HyperPINNs and Method of Manufactured Solutions",
+      "upstream": "https://github.com/rbischof/hypino",
+      "commit": "28d73081ee1498ec4c3353305d3acbe1c1466d75",
+      "license": "MIT",
+      "license_blob": "41e20e5320ead76e2f934c18a54771f64f8a2866",
+      "source_files": [
+        [
+          "src/models/hypino.py",
+          "993afafb73fe4066d4b68c6bb88aa89400d65e0b"
+        ],
+        [
+          "src/models/utils.py",
+          "6b8870717b77035de10cd76c2ebbec20378c0791"
+        ],
+        [
+          "README.md",
+          "d0e4817489e6f1f2f6f839a38e0e1641774de366"
+        ]
+      ],
+      "w6_status": "SOURCE_AUDITED_METHOD_REFERENCE_NOT_INTEGRATED",
+      "role": "MMS and residual-based iterative refinement reference. Potentially useful for generating analytic manufactured moment cases and refining residual errors, but its Swin hypernetwork/PINN generator must not replace the P-CRAFT PINO trunk.",
+      "priority": "P1_SYNTHETIC_DATA_AND_REFINEMENT",
+      "reuse_rule": "MIT; preserve notice. Reuse only small isolated utilities if needed; do not import its Swin hypernetwork as the Spin backbone.",
+      "audit_notes": {
+        "paper": "arXiv:2509.05117",
+        "scope": "zero-shot multi-physics 2D second-order PDE families; linear elliptic/parabolic/hyperbolic",
+        "task_transfer": "manufactured solutions and iterative residual correction, not its full model"
+      }
+    },
+    {
+      "id": "tensorpils-preconditioned-pino",
+      "category": "pino_loss_conditioning",
+      "name": "TensorPILS: Preconditioned Physics-Informed Neural Operator Training",
+      "upstream": "https://github.com/camlab-ethz/TensorPils",
+      "commit": "6bef5ef5e9d78c2274b3d9bdade6e64ee8320665",
+      "license": "Apache-2.0",
+      "license_blob": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "source_files": [
+        [
+          "tensorpils/losses.py",
+          "832910f6a8aaf0bfd4f04c3d13935a0e7ffc043b"
+        ],
+        [
+          "tensorpils/trainer.py",
+          "d2f61675f77f1bb5d831bc7b2dadb77a9f6a88b1"
+        ],
+        [
+          "tensorpils/gaot/model.py",
+          "663462bfe80688eedf4d7c2d18d245b530f0c212"
+        ]
+      ],
+      "w6_status": "SOURCE_AUDITED_METHOD_ADAPTATION_CANDIDATE",
+      "role": "PINO optimization/training improvement: preconditioned least-squares physics residuals, mesh-aware residual scaling and gradient conditioning. Apply only after deriving a valid preconditioner for Spin's moment residuals; do not copy its Poisson/Allen-Cahn/Stokes equations.",
+      "priority": "P0_TRAINING_CONDITIONING",
+      "reuse_rule": "Apache-2.0; preserve notices. Physics residuals and FEM problem classes are task-specific; port the conditioning principle, not their PDE operators.",
+      "audit_notes": {
+        "paper": "Preconditioned Physics-Informed Neural Operator Training",
+        "task_transfer": "preconditioned moment residual norm / output covariance whitening and conditioning diagnostics; validate that it does not distort the exact minimizer"
+      }
     }
   ],
   "p0_integration": {
@@ -776,7 +908,7 @@
     "scope": "adapter and upstream CPU smoke only; no training, W2 teacher admission, Newton admission or end-to-end speedup"
   },
   "p0_addendum": "DensiCrafter source and MIT license audited on 2026-11-06. Complementary density-field design module, not a neural moment operator and not a structural-strength solver.",
-  "audit_addendum": "Added two 2026 mechanics/topology-optimization paper references on 2026-11-06; neither is counted as source-code integration.",
+  "audit_addendum": "Added PI-CViT, PFEM, HyPINO and TensorPILS on 2026-11-06 after upstream repository/source/license review. PI-CViT/PFEM have no root LICENSE in the audited tree and are method-only pending permission; HyPINO MIT; TensorPILS Apache-2.0. All remain subordinate to P-CRAFT PINO.",
   "pino_primary_backbone": {
     "status": "FROZEN_AS_PRIMARY",
     "upstream_commit": "24eda3e9b3f87ba16251a9025761986d6cfe3079",

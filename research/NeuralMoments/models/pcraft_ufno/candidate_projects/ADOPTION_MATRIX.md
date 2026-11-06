@@ -63,3 +63,15 @@ DensiCrafter complements W6; it is not another neural operator and the inspected
 | P1 | PI-GINOT, arXiv:2607.23299 (Jul 2026) | Physics-informed hyperelastic mechanics on parametric geometries | Preprint; no verified source/license in this audit | Method reference only; independently reproduce and compare against FEM |
 
 These two entries expand the mechanics branch, but do not count as source-code integration. The reported errors/results are author-reported and must be independently validated.
+
+
+## Additional PINO-first training and warm-start methods
+
+| Priority | Candidate | W6 role | Current audit | 30-day use |
+|---|---|---|---|---|
+| P0 | PI-CViT (arXiv:2606.06164) | PINO loss balancing, gradient-conflict diagnosis, collocation sampling and causal weighting | Official code inspected; no root LICENSE found | Reimplement task-appropriate training strategy; do not import CViT backbone or copy code pending permission |
+| P0 | TensorPILS | Preconditioned physics residual norm and PINO training conditioning | Apache-2.0 source inspected | Derive a positive-definite preconditioner for Spin moment residuals; do not reuse Poisson/Allen-Cahn/Stokes equations |
+| P1 | PFEM (JMPS 214, 2026, 106682) | PINO warm-start for classical FEM/Newton iterations | Official code inspected; no root LICENSE found | Borrow warm-start acceptance pattern only; keep PINO as backbone and Cherchi/native solver as exact authority |
+| P1 | HyPINO | Method of Manufactured Solutions and residual-based iterative refinement | MIT source inspected | Use MMS/analytic manufactured cases and residual refinement ideas; do not use Swin hypernetwork as Spin backbone |
+
+All four are subordinate to P-CRAFT PINO. Full status, license caveats and acceptance gaps are in `../ALL_ADVANCED_SOLUTIONS_GAP_MATRIX.md`.
