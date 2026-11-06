@@ -138,3 +138,9 @@ It does not mean the full long-term Spin research goal is closed if formal Cherc
 - Added a three-seed, 120-step cloud CPU sweep job with retained JSON artifact.
 - Added sweep configuration smoke tests. The sweep uses identical seed splits and optimizer budget; selects by held-out r/J relative L2.
 - M2 comparison to frozen W6 M13 U-FNO and W5 DeepONet remains a separate mandatory subtask; no alternative backbone replaces PINO.
+## M2 result and M2b correction — 2026-11-06
+
+- M2 cloud CI run 42189280656 passed. On the original unmasked head, 6^3 nodes / 8^3 grid / smoothing 0.02 improved held-out Jacobian relative L2 from 1.580 to 0.961 but worsened moment relative L2 from 0.425 to 0.511. The 16^3 grid configuration worsened the combined score to 1.466.
+- Review found the first Spin-PINO learned quadrature weights were positive but not explicitly multiplied by sampled density/occupancy. This allowed atoms in empty space and weakened the intended discrete material-measure constraint.
+- M2b now masks each PINO quadrature atom by density and occupancy at its spatial location, and adds empty-support and density-scaling tests. The same three-seed sweep is rerun to measure the effect.
+- M2 pre-mask results are retained as an ablation; they are not overwritten or presented as post-mask performance.

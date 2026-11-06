@@ -10,6 +10,7 @@ from torch import Tensor, nn
 import torch.nn.functional as F
 
 from .pino_backbone import PINOFeatureEncoder
+from ..model import canonical_geometry
 
 MOMENT_NAMES = ("mass", "x", "y", "z", "xx", "yy", "zz", "yz", "xz", "xy")
 COEFFICIENT_NAMES = ("const", "x", "y", "z", "xx", "yy", "zz", "yz", "xz", "xy")
@@ -72,6 +73,11 @@ class SpinPINO(nn.Module):
             nn.Linear(hidden_dim, points_per_axis ** 3),
         )
         self.register_buffer("monomials", quadrature_nodes(points_per_axis), persistent=True)
+        axis = (torch.arange(points_per_axis, dtype=torch.float32) + 0.5) * (
+            2.0 / points_per_axis
+        ) - 1.0
+        qxyz = torch.stack(torch.meshgrid(axis, axis, axis, indexing="ij"), dim=-1)
+        self.register_buffer("quadrature_xyz", qxyz.reshape(1, -1, 1, 1, 3), persistent=True)
         self.register_buffer("native_B", torch.tensor(NATIVE_B), persistent=True)
         self.register_buffer(
             "node_volume",
@@ -80,9 +86,29 @@ class SpinPINO(nn.Module):
         )
 
     def encode_geometry(self, geometry: Tensor) -> Tensor:
-        features = self.encoder(geometry)
-        # Positive bounded weights make the learned potential convex in q.
-        return torch.sigmoid(self.weight_head(features)) * self.node_volume.to(features)
+        canonical = canonical_geometry(geometry)
+        features = self.encoder(canonical)
+        # Enforce support and density at every quadrature node. The learned
+        # head may redistribute mass only inside occupied material; it cannot
+        # create atoms in empty space. This is a discrete-measure realizability
+        # constraint, not a continuum/CAD certificate.
+        rho = canonical[:, 0:1]
+        occupancy = canonical[:, 1:2]
+        grid = self.quadrature_xyz.to(device=canonical.device, dtype=canonical.dtype)
+        grid = grid.expand(canonical.shape[0], -1, -1, -1, -1)
+        rho_nodes = F.grid_sample(
+            rho, grid, mode="bilinear", padding_mode="zeros", align_corners=True
+        ).flatten(1)
+        occupancy_nodes = F.grid_sample(
+            occupancy, grid, mode="bilinear", padding_mode="zeros", align_corners=True
+        ).flatten(1)
+        learned_gate = torch.sigmoid(self.weight_head(features))
+        return (
+            self.node_volume.to(features)
+            * rho_nodes.to(features)
+            * occupancy_nodes.to(features)
+            * learned_gate
+        )
 
     def _validate(self, weights: Tensor, coefficients: Tensor) -> None:
         if weights.ndim != 2 or weights.shape[1] != self.monomials.shape[0]:

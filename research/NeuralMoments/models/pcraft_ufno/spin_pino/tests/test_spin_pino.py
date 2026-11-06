@@ -91,6 +91,29 @@ class SpinPINOBackboneTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             loss_fn(model, z, self.coefficients, target_jacobian=J)
 
+    def test_10_quadrature_weights_are_zero_outside_material_support(self):
+        model = self.make_model()
+        empty = torch.zeros((1, 4, 8, 8, 8))
+        weights = model.encode_geometry(empty)
+        self.assertTrue(torch.equal(weights, torch.zeros_like(weights)))
+        material = torch.zeros((1, 4, 8, 8, 8))
+        material[:, 0, 2:6, 2:6, 2:6] = 1.0
+        material[:, 1, 2:6, 2:6, 2:6] = 1.0
+        weights = model.encode_geometry(material)
+        self.assertTrue(bool((weights >= 0).all()))
+        self.assertTrue(bool((weights <= model.node_volume + 1e-7).all()))
+        self.assertGreater(float(weights.sum()), 0.0)
+
+    def test_11_density_scaling_scales_discrete_measure(self):
+        model = self.make_model()
+        geometry = torch.zeros((1, 4, 8, 8, 8))
+        geometry[:, 0, 1:7, 1:7, 1:7] = 1.0
+        geometry[:, 1, 1:7, 1:7, 1:7] = 1.0
+        z1 = model.encode_geometry(geometry)
+        geometry[:, 0] *= 0.25
+        z2 = model.encode_geometry(geometry)
+        self.assertTrue(torch.allclose(z2, 0.25 * z1, atol=1e-7, rtol=1e-6))
+
     def test_09_admitted_jacobian_supervision_is_explicit(self):
         model = self.make_model()
         z = model.encode_geometry(self.geometry)

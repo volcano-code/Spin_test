@@ -65,3 +65,13 @@ python -m research.NeuralMoments.models.pcraft_ufno.spin_pino.sweep \
 ```
 
 This sweep is designed to identify whether low M1 accuracy is caused by coarse geometry input, insufficient positive quadrature nodes or potential smoothing. It does not by itself prove performance on general quadrics or Cherchi geometry.
+
+## M2b: support-masked quadrature measure
+
+The initial M2 sweep showed a trade-off: increasing from 4^3 to 6^3 nodes reduced held-out Jacobian relative L2 from 1.580 to 0.961, but worsened moment relative L2 from 0.425 to 0.511. Increasing the voxel input from 8^3 to 16^3 did not improve the combined score.
+
+Code review identified a missing physical constraint in the first Spin-PINO head: its positive learned quadrature weights were not explicitly masked by the input density/occupancy at the quadrature nodes. M2b fixes this. Each node weight is now
+
+`w_k = (8/N^3) * rho(x_k) * occupancy(x_k) * sigmoid(g_theta(D)_k)`.
+
+This prevents the network from creating discrete material atoms in sampled empty space. It is a discrete sampled-support constraint, not a continuum/CAD certificate. The M2b three-seed sweep reruns the same three configurations and is tracked separately from the pre-mask M2 results.

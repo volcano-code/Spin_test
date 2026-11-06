@@ -75,8 +75,9 @@ def run_sweep(*, seeds=(131, 137, 139), steps=120, batch_size=8,
             row["mean_test_r_relative_l2"] + row["mean_test_J_relative_l2"]
         ) / 2.0
     return {
-        "schema": "SPIN_PINO_M2_CONTROLLED_SWEEP_V1",
+        "schema": "SPIN_PINO_M2B_SUPPORT_MASKED_SWEEP_V1",
         "label_source": "ANALYTIC_CONTINUUM_P0_NOT_W2_CHERCHI",
+        "support_masking": "PINO quadrature atoms are multiplied by sampled density and occupancy; empty-space atoms are forbidden.",
         "w2_or_cherchi_labels_used": False,
         "same_seed_splits_and_optimizer_budget": True,
         "held_out_test_family": ["ellipsoid"],
