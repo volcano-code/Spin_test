@@ -106,6 +106,11 @@ class LpiAudit(unittest.TestCase):
                 audit.read_motion(worker,row,ev,'core')
 
 
+    @staticmethod
+    def _token(value):
+        q = F(value)
+        return f'{q.numerator}/{q.denominator}'
+
     def _pair_samples(self, position_fn, velocity_fn):
         c7 = [0, 2, 0, 2, 1, 1]
         samples = []
@@ -114,10 +119,18 @@ class LpiAudit(unittest.TestCase):
             for label in audit.CASES:
                 constructions.append(dict(
                     label=label,
-                    position=[str(F(position_fn(c))), '0/1', '0/1'],
-                    velocity=[str(F(velocity_fn(c))), '0/1', '0/1']))
-            samples.append(dict(stem=stem, c7=str(F(c)), constructions=constructions))
+                    position=[self._token(position_fn(c)), '0/1', '0/1'],
+                    velocity=[self._token(velocity_fn(c)), '0/1', '0/1']))
+            samples.append(dict(stem=stem, c7=self._token(c), constructions=constructions))
         return samples
+
+    def test_decompose_output_round_trips_through_strict_rational_parser(self):
+        row, point, tangent = audit.decompose(P, V)
+        self.assertEqual(tuple(map(audit.frac, row['position'])), point)
+        self.assertEqual(tuple(map(audit.frac, row['velocity'])), tangent)
+        self.assertTrue(all('/' in x for x in row['position'] + row['velocity']))
+        self.assertEqual([audit.exact_token(x) for x in (F(0), F(2), F(-3, 2))],
+                         ['0/1', '2/1', '-3/2'])
 
     def test_same_side_linear_position_has_zero_secant_residual(self):
         rows = audit.same_side_interval_residuals(self._pair_samples(lambda c: c, lambda c: 1))
