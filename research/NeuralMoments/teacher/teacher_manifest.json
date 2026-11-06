@@ -775,12 +775,22 @@
       "ran": 7,
       "passed": 7,
       "failed": 0,
-      "skipped": 0
+      "skipped": 0,
+      "elapsed_seconds": 0.5,
+      "github_actions_ci": "NOT_RUN"
     },
     "global_boolean_set_equality_certified": false,
     "new_cherchi_calls": 0,
     "J_D": null,
     "split": "excluded",
-    "training_admitted": false
+    "training_admitted": false,
+    "checker_binary_sha256": "e7b7cca7f8852922e25ccf2572b84dbccd6b2ced5b8a177a7af462a10f554347",
+    "latest_direct_rerun_seconds": {
+      "design": 10.5275,
+      "quadric_source": 0.105905,
+      "boolean_output": 12.399
+    },
+    "audit_source_git_blob_sha1": "77ba3bc9de0e6fc0a9eec8905eb28f87fc900991",
+    "test_source_git_blob_sha1": "ee336c4c17d039e15b06656b3b782b645277948b"
   }
 }
