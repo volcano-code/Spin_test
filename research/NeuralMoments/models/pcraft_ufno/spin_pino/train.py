@@ -245,6 +245,7 @@ def run_seed(
             "rotation_augmentation_mode": rotation_augmentation_mode,
             "geometry_adapter": geometry_adapter,
             "evaluation_rotation_mode": evaluation_rotation_mode,
+            "lambda_equivariance": float(lambda_equivariance),
             "fit_samples_after_augmentation": int(len(fit[0])),
         },
         "model_config": {"grid_size": grid_size, "points_per_axis": points_per_axis,
