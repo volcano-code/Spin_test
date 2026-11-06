@@ -77,5 +77,22 @@
   "resource_admission": {
     "formal_gate_satisfied": false,
     "reason": "shared host 15.61 GiB physical RAM and 3 GiB host swap; formal gate remains >=20 GiB physical/effective and host swap zero"
-  }
+  },
+  "p26": {
+    "source_identity_refresh_commit": "4feb91583489bcb6b395aed49c8aef95af29c393",
+    "final_p26_workflow_commit": "abd502c58ff5e1c70d3f8f679b0bc0e337a19da7",
+    "github_actions_run": 42180376807,
+    "status": "SUCCESS",
+    "p20_tests": {
+      "passed": 74,
+      "skipped": 0
+    },
+    "p21_tests": {
+      "passed": 72,
+      "skipped": 0
+    },
+    "exact_w0_blobs_verified": true,
+    "frozen_core_python_blobs_verified": 77
+  },
+  "next_gate": "FORMAL_M6_REQUIRES_HOST_AT_LEAST_20_GIB_PHYSICAL_AND_EFFECTIVE_MEMORY_AND_ZERO_HOST_SWAP"
 }
