@@ -1,0 +1,101 @@
+{
+  "schema": "w2-m22-p4-global-boolean-equivalence-result-v1",
+  "status": "PASS_EXACT_ARRANGEMENT_CERTIFICATE_REPLAY_GLOBAL_REGULARIZED_BOOLEAN_BOUNDARY_EQUIVALENCE",
+  "run_id": "heart-pilot9-flex-20261105T083338329274558-3159689",
+  "operation": "DESIGN_MINUS_QUADRIC_SOURCE",
+  "evidence": {
+    "h8f_archive_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+    "m21_archive_sha256": "259b9f288b629415bafa42e4e09d6503e4f474e0e2253e6cc9eb1cd775a64dfd",
+    "request_sha256": "1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c",
+    "point000_member_sha256": "c372f749bf7b85015e2dcdad4a445aeab4f2f6fbd25d622089ec58d471992973",
+    "m21_spec_sha256": "4d3cb03ee3a1190142638a99cd90e6aaf0a3e7030b956ef813ebabeb0c6898d0",
+    "m21_label_sha256": "747101c819d95959020a39ea54eec5af280fd465b786c3f94312bb7447136729",
+    "m21_result_sha256": "f84b38c326bc4fd79068d5a89f94500bb60306c5a77289a550a278355dd89dc3",
+    "m21_exact_boundary_sha256": "48aae36777ed15e705f1ab919edac07756d3a7444100c060ee5baabd310afe20"
+  },
+  "intersection_replay": {
+    "all_possible_pairs": 8398080,
+    "aabb_candidates": 7711,
+    "exact_recomputed": true,
+    "disjoint": 6927,
+    "segments": 784,
+    "point_only": 0,
+    "coplanar": 0,
+    "stored_segments_match_recomputed": true
+  },
+  "parent_map": {
+    "output_faces": 16910,
+    "unique_parent_per_face": true,
+    "design_same_orientation": 16034,
+    "quadric_reversed_orientation": 876,
+    "unmatched": 0,
+    "multiple": 0
+  },
+  "arrangement_cells": {
+    "design": 27378,
+    "quadric_source": 1150,
+    "total": 28528,
+    "all_parent_faces_partitioned_exactly": true,
+    "cell_interiors_disjoint": true,
+    "all_cell_samples_reclassified": true,
+    "membership_mismatches": 0,
+    "all_output_coverage_replayed": true,
+    "all_intersection_segments_covered": true,
+    "all_output_edges_present": true
+  },
+  "exact_ray": {
+    "engine": "C++ GMP exact rational ray-triangle with exact rational BVH AABB",
+    "samples": 28528,
+    "ray_candidates": 734777,
+    "ray_hits": 24370,
+    "ray_attempts": 28528,
+    "ambiguous": 0,
+    "mismatches": 0,
+    "rerun_log_byte_identical": true,
+    "input_sha256": "cd9a084499e1aa8b4026bb7fda051553e02cecc5c6a96345b1d892342f46fa3c",
+    "source_sha256": "3e93247e64a49065ae0d6c3a05e4ba5714048653582eeccd3de5fed352b0a45a",
+    "binary_sha256": "55e2da00bf972af8eb05a9a874330d8f0a4a5962c2744cd8918bc7bffe603b68",
+    "log_sha256": "30eddb99cdf0a88e79d7a2bd84a6ae46ee7ab082148683d1e08d50ba48192b80"
+  },
+  "exact_volume_identity": {
+    "design": 1.0998850071299318,
+    "quadric_source": 1.3881363252327446,
+    "output": 0.4638104336177978,
+    "intersection": 0.636074573512134,
+    "design_minus_output": 0.636074573512134,
+    "exact_rational_identity": true
+  },
+  "tests": {
+    "ran": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "elapsed_seconds": 0.98
+  },
+  "provenance_limits": {
+    "h8f_author_original_cad": false,
+    "m21_same_call_material_payload_recovered": false,
+    "m21_native_binaries_recovered": false,
+    "h8f_original_81_point_workflow_status": "failure"
+  },
+  "admission": {
+    "new_cherchi_calls": 0,
+    "J_D": null,
+    "derivative_status": "UNKNOWN",
+    "split": "excluded",
+    "training_admitted": false,
+    "training_samples": 0
+  },
+  "producer_rerun": "INCOMPLETE_TIMEOUT_AFTER_300S_NOT_COUNTED_AS_PASS",
+  "independent_verifier_result_sha256": "a42c857fe0900e6ce22bf448f9bc43ddd4c980ce60380a8795f51db97a922675",
+  "independent_verifier_log_sha256": "f8645a75a297d17bb30a84bc135116c88d1334ad5253ea7b8744581ee7bf60ce",
+  "certificate_sha256": {
+    "cell_ledger": "2234bf466c93ad4f977ce57ed450af0f51ab042e85259f36ef03a4700fedb4fa",
+    "intersection_segments": "5b37cbb6715d0a2ebd62be8fd12419fb910a3e020423eebfe9f19d4b28357ebc",
+    "output_parent_map": "fb868e39182407615a4db370024ce87c46ef41e361a79d632533112a586fa617"
+  },
+  "evidence_package": {
+    "name": "M22_P4_HEART_GLOBAL_BOOLEAN_EVIDENCE_20261106.tar.gz",
+    "sha256": "bf0326a39c8eeab5d3031f1263038f71cbf0bf92b61ef2c26d06e02bc616bf30"
+  }
+}
