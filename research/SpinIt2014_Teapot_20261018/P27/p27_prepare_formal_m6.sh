@@ -74,7 +74,17 @@ if [[ -e "$RUN_DIR/P21_PRERUN_LOCK.json" ]]; then
 fi
 printf '%s\n' "$RUN_REL" > "$P27_ROOT/LATEST_RUN_DIR"
 
-"${DOCKER[@]}" build --pull \
+# Reuse the already cached Ubuntu base image. A forced --pull makes
+# an otherwise reproducible local build depend on Docker Hub availability.
+if "${DOCKER[@]}" image inspect ubuntu:24.04 >/dev/null 2>&1; then
+  echo "Using cached base image ubuntu:24.04"
+else
+  echo "ubuntu:24.04 is not cached; attempting one explicit pull." >&2
+  "${DOCKER[@]}" pull ubuntu:24.04
+fi
+"${DOCKER[@]}" image inspect ubuntu:24.04 --format '{{.Id}}' | tee "$RUN_DIR/ubuntu-base-image-id.txt"
+
+"${DOCKER[@]}" build \
   --file "$P25/Dockerfile" \
   --tag "$IMAGE" \
   "$P25"
