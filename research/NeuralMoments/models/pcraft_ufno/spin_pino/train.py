@@ -14,6 +14,7 @@ import torch
 
 from .dataset import generate_splits
 from .spin_pino import SpinPINO, SpinPINOLoss
+from .loss_conditioning import DiagonalMomentResidualPreconditioner, pcgrad_backward
 
 
 def _evaluate(model, data):
@@ -46,6 +47,8 @@ def run_seed(
     grid_size: int = 8,
     points_per_axis: int = 4,
     smoothing: float = 0.04,
+    preconditioned_loss: bool = False,
+    pcgrad: bool = False,
     device: str = "cpu",
 ):
     torch.manual_seed(seed)
@@ -68,7 +71,15 @@ def run_seed(
         hidden_dim=48,
         smoothing=smoothing,
     ).to(device)
-    criterion = SpinPINOLoss(lambda_data=1.0, lambda_physics=0.05, lambda_jacobian=0.25)
+    preconditioner = (
+        DiagonalMomentResidualPreconditioner.fit(fit[2], fit[3]).to(device=device, dtype=fit[2].dtype)
+        if preconditioned_loss else None
+    )
+    criterion = SpinPINOLoss(
+        lambda_data=1.0, lambda_physics=0.05, lambda_jacobian=0.25,
+        moment_scale=preconditioner.moment_scale if preconditioner else None,
+        jacobian_scale=preconditioner.jacobian_scale if preconditioner else None,
+    )
     optimizer = torch.optim.Adam(model.parameters(), lr=1.5e-3)
     generator = torch.Generator().manual_seed(seed + 31337)
     best_score = math.inf
@@ -98,7 +109,15 @@ def run_seed(
         if not bool(torch.isfinite(losses["total"])):
             raise FloatingPointError(f"nonfinite Spin-PINO loss at step {step}")
         optimizer.zero_grad(set_to_none=True)
-        losses["total"].backward()
+        grad_stats = None
+        if pcgrad:
+            grad_stats = pcgrad_backward(
+                (losses["data"], losses["physics"], losses["jacobian_supervision"]),
+                model.parameters(),
+                (criterion.lambda_data, criterion.lambda_physics, criterion.lambda_jacobian),
+            )
+        else:
+            losses["total"].backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
         if step == 1 or step % 10 == 0 or step == steps:
@@ -110,6 +129,7 @@ def run_seed(
                 "train_data": float(losses["data"].detach()),
                 "train_physics": float(losses["physics"].detach()),
                 "train_jacobian": float(losses["jacobian_supervision"].detach()),
+                "gradient_conflict": grad_stats,
                 "validation_score": score,
                 "validation": val,
             })
@@ -130,6 +150,12 @@ def run_seed(
         "derivative_scope": splits["metadata"]["derivative_scope"],
         "dataset": splits["metadata"],
         "trainable_parameters": model.real_parameter_count(),
+        "loss_conditioning": {
+            "diagonal_preconditioner": bool(preconditioned_loss),
+            "pcgrad": bool(pcgrad),
+            "preconditioner_fit_split_only": True,
+            "preconditioner": preconditioner.as_dict() if preconditioner else None,
+        },
         "model_config": {"grid_size": grid_size, "points_per_axis": points_per_axis,
                          "smoothing": smoothing, "width": 4 if grid_size <= 8 else 8,
                          "modes": 2 if grid_size <= 8 else 4},
@@ -167,6 +193,8 @@ def main():
     parser.add_argument("--grid-size", type=int, default=8)
     parser.add_argument("--points-per-axis", type=int, default=4)
     parser.add_argument("--smoothing", type=float, default=0.04)
+    parser.add_argument("--preconditioned-loss", action="store_true")
+    parser.add_argument("--pcgrad", action="store_true")
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--save-checkpoints", action="store_true")
@@ -183,6 +211,8 @@ def main():
             grid_size=args.grid_size,
             points_per_axis=args.points_per_axis,
             smoothing=args.smoothing,
+            preconditioned_loss=args.preconditioned_loss,
+            pcgrad=args.pcgrad,
             device=args.device,
         )
         state = result.pop("checkpoint_state")

@@ -98,3 +98,8 @@ Run [42192701882](https://github.com/volcano-code/Spin_test/actions/runs/4219270
 ## M3b Gauss rule ablation result
 
 The Gauss-Legendre variant passed implementation tests but did not improve held-out accuracy: r/J relative L2 0.4727/1.2022 vs midpoint PINO 0.2320/0.8912. It remains a negative ablation and is not promoted. See `M3B_REPORT.md`.
+
+
+## M4 loss-conditioning ablation
+
+`loss_conditioning.py` provides a fit-split-only diagonal residual preconditioner and deterministic PCGrad-style gradient projection. `conditioning_sweep.py` compares baseline, preconditioned loss, and preconditioned loss + PCGrad using the selected support-masked PINO midpoint 6-node configuration. This adapts PI-CViT/TensorPILS training ideas while preserving P-CRAFT PINO as the backbone and Spin-specific physics losses.

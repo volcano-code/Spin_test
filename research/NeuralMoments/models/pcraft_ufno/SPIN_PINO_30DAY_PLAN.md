@@ -183,3 +183,16 @@ It does not mean the full long-term Spin research goal is closed if formal Cherc
 - Gauss-Legendre PINO (8³ / 6³ / eps 0.02) obtained held-out r relative L2 0.4727 and J relative L2 1.2022, worse than midpoint PINO (0.2320 / 0.8912).
 - Therefore Gauss nodes are not promoted. M7's positive-measure/support constraint is retained, but its Gauss node distribution is not transferred blindly.
 - M4 next: investigate PINO loss conditioning and gradient conflict, borrowing PI-CViT's PINO training diagnostics and TensorPILS's preconditioned-residual principle. PINO remains the backbone.
+
+
+## M4 — PINO training conditioning (started 2026-11-06)
+
+This work package borrows PI-CViT's findings on PINO loss balancing/gradient conflict and TensorPILS's preconditioned-residual conditioning principle, without copying their PDE-specific equations or replacing the P-CRAFT PINO backbone.
+
+- `DiagonalMomentResidualPreconditioner` estimates per-component scales from the fit split only; validation/test data are never used to fit scales.
+- `SpinPINOLoss` can normalize moment and Jacobian residuals by those fixed scales.
+- `pcgrad_backward` measures raw task-gradient cosines and projects conflicting gradients among data, moment-physics and Jacobian-supervision terms.
+- `conditioning_sweep.py` compares baseline M2b, diagonal preconditioning, and diagonal preconditioning + PCGrad using the same M2b configuration, seeds, data split, optimizer and step budget.
+- This is a training-strategy adaptation; TensorPILS's Poisson/Allen-Cahn/Stokes PDE residuals are not imported, and PI-CViT's CViT backbone is not used.
+
+Acceptance: compare held-out raw r/J metrics, gradient-conflict statistics, training time and seed variance. Promote only if it improves held-out errors or stability without worsening physics identities. No Cherchi labels or Newton admission are implied.

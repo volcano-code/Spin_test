@@ -219,6 +219,8 @@ class SpinPINOLoss(nn.Module):
         lambda_data: float = 1.0,
         lambda_physics: float = 0.1,
         lambda_jacobian: float = 0.0,
+        moment_scale: Optional[Tensor] = None,
+        jacobian_scale: Optional[Tensor] = None,
     ):
         super().__init__()
         for name, value in (
@@ -231,6 +233,16 @@ class SpinPINOLoss(nn.Module):
         self.lambda_data = float(lambda_data)
         self.lambda_physics = float(lambda_physics)
         self.lambda_jacobian = float(lambda_jacobian)
+        if moment_scale is not None:
+            moment_scale = torch.as_tensor(moment_scale, dtype=torch.float32)
+            if moment_scale.shape != (10,) or not bool(torch.isfinite(moment_scale).all()) or bool((moment_scale <= 0).any()):
+                raise ValueError("moment_scale must be finite, positive and shape [10]")
+        if jacobian_scale is not None:
+            jacobian_scale = torch.as_tensor(jacobian_scale, dtype=torch.float32)
+            if jacobian_scale.shape != (10, 10) or not bool(torch.isfinite(jacobian_scale).all()) or bool((jacobian_scale <= 0).any()):
+                raise ValueError("jacobian_scale must be finite, positive and shape [10,10]")
+        self.register_buffer("moment_scale", moment_scale, persistent=True)
+        self.register_buffer("jacobian_scale", jacobian_scale, persistent=True)
 
     def forward(
         self,
@@ -266,11 +278,20 @@ class SpinPINOLoss(nn.Module):
         physics = complement + radial + asymmetry + psd + mass_bounds
 
         zero = r.new_zeros(())
-        data = F.mse_loss(r, target_moments) if target_moments is not None else zero
-        jacobian = (
-            F.mse_loss(Jc, target_jacobian)
-            if target_jacobian is not None else zero
-        )
+        if target_moments is not None:
+            residual_r = r - target_moments
+            if self.moment_scale is not None:
+                residual_r = residual_r / self.moment_scale.to(device=r.device, dtype=r.dtype)
+            data = residual_r.square().mean()
+        else:
+            data = zero
+        if target_jacobian is not None:
+            residual_J = Jc - target_jacobian
+            if self.jacobian_scale is not None:
+                residual_J = residual_J / self.jacobian_scale.to(device=Jc.device, dtype=Jc.dtype)
+            jacobian = residual_J.square().mean()
+        else:
+            jacobian = zero
         total = (
             self.lambda_data * data
             + self.lambda_physics * physics

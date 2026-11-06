@@ -93,3 +93,9 @@ The first same-data tournament passed in GitHub Actions run [42192701882](https:
 ## M3b Gauss-Legendre ablation result
 
 The Gauss-Legendre node/weight option has been implemented inside the PINO head, with PINO trunk and support masking unchanged. Same-data run 42193467406 shows Gauss-PINO 6-node r/J relative L2 = 0.4727/1.2022, worse than midpoint-PINO 6-node 0.2320/0.8912. The Gauss rule is therefore retained as a negative ablation and is **not promoted**. M7's discrete positive measure idea remains useful; its Gauss node distribution does not transfer directly to this voxel-mask setting.
+
+
+## M3b and M4 update
+
+- M3b tested M7-style Gauss-Legendre nodes inside the PINO head; the Gauss variant was worse than midpoint PINO on the same analytic split and is retained only as a negative ablation.
+- M4 is now under implementation: PI-CViT-inspired gradient-conflict diagnostics/PCGrad and TensorPILS-inspired fit-split diagonal residual preconditioning are applied to the existing PINO data/physics/J losses. The PDE-specific losses from those projects are not copied.
