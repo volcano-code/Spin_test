@@ -8,22 +8,28 @@ The previously reported local machine had 60 GiB RAM and zero swap. If that rema
 
 ## 1. Prepare checkouts
 
-Use one repository clone plus two detached worktrees:
+Use three independent clones (not Git worktrees). The Core checkout is mounted read-write for its pinned submodule/dependency preparation, while W4 and W0 are mounted read-only inside the container; separate `.git` directories prevent submodule updates from trying to write through the read-only W4 mount.
 
 ```bash
-export P27_ROOT="$HOME/Spin_test-W4-P27"
-mkdir -p "$P27_ROOT"
-git clone https://github.com/volcano-code/Spin_test.git "$P27_ROOT/repo"
-git -C "$P27_ROOT/repo" fetch origin research/neuralmoments-w4-teapot-p1-20261019
-git -C "$P27_ROOT/repo" checkout --detach origin/research/neuralmoments-w4-teapot-p1-20261019
+export P27_BASE="$HOME/Spin_test-W4-P27"
+mkdir -p "$P27_BASE"
 
-git -C "$P27_ROOT/repo" worktree add --detach "$P27_ROOT/w0" 5bab2eb2616df306906a6887a273f68acfa49320
-git -C "$P27_ROOT/repo" worktree add --detach "$P27_ROOT/core" 58fd12c1306c1c01679a19172e276eef0cb30542
+git clone --no-checkout https://github.com/volcano-code/Spin_test.git "$P27_BASE/repo-w4"
+git -C "$P27_BASE/repo-w4" fetch origin research/neuralmoments-w4-teapot-p1-20261019
+git -C "$P27_BASE/repo-w4" checkout --detach origin/research/neuralmoments-w4-teapot-p1-20261019
 
-export W4_ROOT="$P27_ROOT/repo"
-export W0_ROOT="$P27_ROOT/w0"
-export CORE_ROOT="$P27_ROOT/core"
-export P27_ROOT="$P27_ROOT/runs"
+git clone --no-checkout https://github.com/volcano-code/Spin_test.git "$P27_BASE/repo-w0"
+git -C "$P27_BASE/repo-w0" fetch origin 5bab2eb2616df306906a6887a273f68acfa49320
+git -C "$P27_BASE/repo-w0" checkout --detach 5bab2eb2616df306906a6887a273f68acfa49320
+
+git clone --no-checkout https://github.com/volcano-code/Spin_test.git "$P27_BASE/repo-core"
+git -C "$P27_BASE/repo-core" fetch origin 58fd12c1306c1c01679a19172e276eef0cb30542
+git -C "$P27_BASE/repo-core" checkout --detach 58fd12c1306c1c01679a19172e276eef0cb30542
+
+export W4_ROOT="$P27_BASE/repo-w4"
+export W0_ROOT="$P27_BASE/repo-w0"
+export CORE_ROOT="$P27_BASE/repo-core"
+export P27_ROOT="$P27_BASE/runs"
 mkdir -p "$P27_ROOT"
 ```
 
