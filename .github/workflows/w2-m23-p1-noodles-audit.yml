@@ -1,0 +1,27 @@
+name: W2 M23-P1 Noodles packet identity audit tests
+
+on:
+  push:
+    branches:
+      - research/neuralmoments-w2-teacher-20261019
+    paths:
+      - 'research/NeuralMoments/teacher/m23_p1_noodles_six_packet_audit.py'
+      - 'research/NeuralMoments/teacher/test_m23_p1_noodles_six_packet_audit.py'
+      - '.github/workflows/w2-m23-p1-noodles-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  identity-audit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run M23-P1 regression tests
+        working-directory: research/NeuralMoments/teacher
+        run: python -m unittest -v test_m23_p1_noodles_six_packet_audit.py
