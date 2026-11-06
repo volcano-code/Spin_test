@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M21_HEART_NATIVE_NUMERIC_DIAGNOSTIC_PASSED_W0_AND_SOLID_PROOF_PENDING",
+  "status": "M22_P2_HEART_NUMERIC_AND_HISTORICAL_BOUNDARY_REPLAYED_DIAGNOSTIC_ONLY",
   "native_teacher_runs": 1,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "Byte-level audit of M21 raw run archive; Heart solid embedding and W0/W3 smooth-Jacobian certification; six exact Noodles V7 F/D/A packets and set-semantics proof; fresh Noodles Cherchi teacher. Keep J_D null and all data excluded until gates pass.",
+  "pending_dependency": "Full M21 same-call material object and native binaries for original-call provenance; independent solid/Boolean and W0/W3 derivative-neighborhood certification; six exact Noodles V7 F/D/A packets and fresh Noodles native teacher. J_D remains null, and the historical and diagnostic cases stay excluded.",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -630,7 +630,7 @@
     "split": "excluded",
     "training_admitted": false,
     "formal_M16_24GiB_admitted": false,
-    "evidence_origin": "USER_SUPPLIED_TERMINAL_OUTPUT_RAW_ARCHIVE_PENDING"
+    "evidence_origin": "UPLOADED_M21_RAW_LABEL_AUDITED; MATCHING_H8F_BOUNDARY_INDEPENDENTLY_REINTEGRATED"
   },
   "m22_archive_audit": {
     "status": "M22_P1_ARCHIVE_INTEGRITY_PASS_FULL_NATIVE_REPLAY_PARTIAL_BLOCKED",
@@ -653,5 +653,16 @@
     "split": "excluded",
     "training_samples": 0,
     "full_native_replay": "BLOCKED_MISSING_SERIALIZED_MATERIAL_AND_NATIVE_BINARIES"
+  },
+  "m22_boundary_replay": {
+    "report": "research/NeuralMoments/teacher/M22_P2_HEART_BOUNDARY_REPLAY_20261106.json",
+    "result_sha256": "5e302931ebc150fac5803d4c0d56559f6f94b47e9a18379e04aa634a6c9f0aad",
+    "exact_boundary_sha256": "48aae36777ed15e705f1ab919edac07756d3a7444100c060ee5baabd310afe20",
+    "exact_moment_components_matched": 10,
+    "full_same_call_object_matched": false,
+    "new_native_evaluations": 0,
+    "J_D": null,
+    "split": "excluded",
+    "training_admitted": false
   }
 }

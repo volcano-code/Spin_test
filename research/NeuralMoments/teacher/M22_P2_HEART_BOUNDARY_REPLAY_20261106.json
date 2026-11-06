@@ -1,0 +1,64 @@
+{
+  "schema": "w2-m22-p2-frozen-heart-boundary-replay-v1",
+  "run_id": "heart-pilot9-flex-20261105T083338329274558-3159689",
+  "date": "2026-11-06",
+  "uploaded_archives": {
+    "raw_sha256": "259b9f288b629415bafa42e4e09d6503e4f474e0e2253e6cc9eb1cd775a64dfd",
+    "audited_sha256": "318205c39c6f6d3bc1c330172e1193fb6f8629e660738ce77ba128dd9ba4349f",
+    "shared_files_byte_identical": 13,
+    "audit_only_files": 2,
+    "raw_checksums_verified": 12,
+    "audited_checksums_verified": 14,
+    "outer_logs_byte_identical": true
+  },
+  "m21_label_numeric_receipt": {
+    "J_D": null,
+    "label_sha256": "747101c819d95959020a39ea54eec5af280fd465b786c3f94312bb7447136729",
+    "material_reintegrated": false,
+    "maximum_absolute_error": 0.0,
+    "production_postflight_reaudited": false,
+    "reference_components": 10,
+    "result_sha256": "f84b38c326bc4fd79068d5a89f94500bb60306c5a77289a550a278355dd89dc3",
+    "scope": "frozen_heart_label_numeric_replay",
+    "spec_sha256": "4d3cb03ee3a1190142638a99cd90e6aaf0a3e7030b956ef813ebabeb0c6898d0",
+    "split": "excluded",
+    "training_admitted": false
+  },
+  "historical_source": {
+    "workflow_id": 39123384402,
+    "artifact_id": 12135528290,
+    "archive_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+    "member": "artifacts/h8f-all81-points/point-000-material.json.gz",
+    "member_sha256": "c372f749bf7b85015e2dcdad4a445aeab4f2f6fbd25d622089ec58d471992973",
+    "prior_workflow_conclusion": "failure"
+  },
+  "recomputed_boundary": {
+    "geometry_hash_match": true,
+    "topology_hash_match": true,
+    "historical_target_boundary_sha256": "48aae36777ed15e705f1ab919edac07756d3a7444100c060ee5baabd310afe20",
+    "target_boundary_digest_match": true,
+    "m21_material_sha256": "b136cbcc09740915cd70615d73fab3ab2aa0b680cdb823cfed12375bed6c20e8",
+    "historical_material_sha256": "6be4faf58ef2fc31b6a1e6d67e601417150d0b43dbd37104b61565a2ca6708c1",
+    "material_digest_match": false,
+    "evaluation_map_identity_match": false,
+    "number_of_vertices": 8455,
+    "number_of_faces": 16910,
+    "all_ten_exact_fraction_equal": true,
+    "max_binary64_difference": 0.0,
+    "max_abs_exact_minus_reported_binary64_as_float": 2.4071727477604756e-17,
+    "largest_rounding_component": "m"
+  },
+  "interpretation": {
+    "boundary_integrated_from_matching_historical_geometry": true,
+    "m21_full_same_call_object_recovered": false,
+    "native_binaries_rehashed": false,
+    "new_native_evaluations": 0,
+    "solid_embedding_certified": false,
+    "boolean_set_equality_certified": false,
+    "jacobian_neighborhood_certified": false,
+    "newton_admitted": false,
+    "split": "excluded",
+    "J_D": null,
+    "training_samples_added": 0
+  }
+}
