@@ -1,0 +1,633 @@
+{
+  "schema": "W6_UPSTREAM_CANDIDATE_LIBRARY_V0_1",
+  "audit_date": "2026-11-06",
+  "repository": "volcano-code/Spin_test",
+  "branch": "research/neuralmoments-w6-pcraft-20261019",
+  "parent_head": "1365be784e0e0ff04e7b19cbc7c86206d2499f8f",
+  "scope": "Candidate project and source-code registry for the Spin-specific P-CRAFT U-FNO / neural moment operator.",
+  "baseline_snapshot": {
+    "w6_head": "1365be784e0e0ff04e7b19cbc7c86206d2499f8f",
+    "w6_commit": "W6 R4.2: classify quadric events on closed axis-aligned boxes",
+    "r4_2_scope": "Exact-rational event/range classification on one nondegenerate axis-aligned box; derivative J_D and training are withheld at every status.",
+    "r4_2_tests": "9 standard-library tests and 36 seeded analytic comparisons reported in commit message.",
+    "legacy_suite": "302 passed, 1 skipped, 1 failed; the M1 encoder density-gradient smoke failure was also reproduced on untouched parent 057087a, so it is pre-existing rather than an R4.2 regression.",
+    "w0_head": "5bab2eb2616df306906a6887a273f68acfa49320",
+    "w2_head": "ab4388af59da20da6826b0d2e3ebad036aee508e",
+    "w2_teacher_manifest": {
+      "status": "M22_P2_HEART_NUMERIC_AND_HISTORICAL_BOUNDARY_REPLAYED_DIAGNOSTIC_ONLY",
+      "native_teacher_runs": 1,
+      "training_samples": 0,
+      "derivative_status": "J_D remains null; the diagnostic case is excluded from training",
+      "pending": "Full M21 same-call material/provenance, independent solid/Boolean and W0/W3 derivative-neighborhood certification, and six exact Noodles V7 F/D/A packets plus fresh native teacher."
+    }
+  },
+  "counts": {
+    "total_entries": 24,
+    "license_clear_or_custom_permissive_direct_reuse": 12,
+    "root_license_or_permission_hold": 8,
+    "copyleft_isolated_benchmark_only": 1,
+    "paper_or_repository_watchlist": 3
+  },
+  "rules": [
+    "Publicly visible source code is not automatically licensed for copying. No-root-license entries remain method references until permission is verified.",
+    "Every imported source file must be pinned by repository commit and Git blob SHA; preserve upstream notices and third-party dependencies.",
+    "No code or weight from an unlicensed source is copied into W6.",
+    "Cherchi remains the primary Spin teacher. Algoim and learned quadrature projects are independent comparators or accelerators, not replacements for the authoritative teacher.",
+    "W2 diagnostic-only observations are not training labels. Current admitted training_samples=0.",
+    "Fixed material moments remain separate: r_total=r_F+r_D and J_total=J_D.",
+    "No predicted derivative is allowed into Newton without event, neighborhood and physical reliability admission; otherwise fail closed to the exact native path.",
+    "Avoid duplicate architectures: select one representative implementation per family for controlled ablations before expanding the stack."
+  ],
+  "entries": [
+    {
+      "id": "p-craft-source",
+      "category": "base_architecture",
+      "name": "P-CRAFT PINO / U-FNO source",
+      "upstream": "https://github.com/volcano-code/test",
+      "commit": "24eda3e9b3f87ba16251a9025761986d6cfe3079",
+      "license": "NO_ROOT_LICENSE_FOUND_INTERNAL_SOURCE",
+      "license_blob": null,
+      "source_files": [
+        [
+          "structural/models/pino.py",
+          "5017f50292e43718546ad0457e0869a9eb5ddff0"
+        ],
+        [
+          "structural/models/hr_pino.py",
+          "7a04f0f1dcc1acbb76c6d692138d9d456a0460ad"
+        ],
+        [
+          "structural/models/calibrated_pino.py",
+          "c27c4b667437d20d7a086cfe727c8c00e8df1275"
+        ]
+      ],
+      "w6_status": "ADAPTED_REIMPLEMENTATION_NOT_UPSTREAM_PORT",
+      "role": "Reference source for the original P-CRAFT/F-FNO/UFNO topology and training conventions. Current W6 model.py is explicitly an independent adaptation; it does not port FEM weights, the nine-channel field decoder or the original PINO loss.",
+      "priority": "P0_BASELINE_AUDIT",
+      "reuse_rule": "Treat as internal source only; verify repository ownership/permissions before redistribution."
+    },
+    {
+      "id": "neuraloperator",
+      "category": "operator_backbone_and_uq",
+      "name": "NeuralOperator: GINO / FNOGNO / UQNO",
+      "upstream": "https://github.com/neuraloperator/neuraloperator",
+      "commit": "a6648eeeb60fe0837f2d7d021517a945a159a0c8",
+      "license": "MIT",
+      "license_blob": "5637378e3734ad545887a7e782f1cf22e4ced42f",
+      "source_files": [
+        [
+          "neuralop/models/gino.py",
+          "483fada108f26c6e9aad40f508981fdef21e947d"
+        ],
+        [
+          "neuralop/models/fnogno.py",
+          "063921c8190a2a95c2457abeb9d263fea0380b8d"
+        ],
+        [
+          "neuralop/models/uqno.py",
+          "bad45b1ecbdead28344981b3b3a40e186e66ad73"
+        ]
+      ],
+      "w6_status": "NOT_INTEGRATED",
+      "role": "GINO/FNOGNO are geometry-aware operator baselines; UQNO is the first uncertainty-aware operator candidate. Use the same mesh/voxel inputs and ten-moment output contract.",
+      "priority": "P0_DIRECT_REUSE",
+      "reuse_rule": "MIT; retain copyright and license notice. Pin the exact upstream commit."
+    },
+    {
+      "id": "transolver-plus",
+      "category": "operator_backbone",
+      "name": "Transolver++",
+      "upstream": "https://github.com/thuml/Transolver_plus",
+      "commit": "d5a23bc734a0ebac56384cf72049a26af9673452",
+      "license": "MIT",
+      "license_blob": "83787cb894a379be3f9babe7e701d5e7d338ec9f",
+      "source_files": [
+        [
+          "models/Transolver_plus.py",
+          "0fd97ae9a570ee500556929ce47d918f8bef9473"
+        ]
+      ],
+      "w6_status": "NOT_INTEGRATED",
+      "role": "Physics-state attention baseline; test whether learned physical slices improve coefficient-conditioned ten-moment queries over U-FNO/GNO.",
+      "priority": "P0_DIRECT_REUSE",
+      "reuse_rule": "MIT; preserve notices. Do not claim the CFD weights transfer to Spin."
+    },
+    {
+      "id": "neural-solver-library",
+      "category": "operator_baseline_suite",
+      "name": "Neural-Solver-Library",
+      "upstream": "https://github.com/thuml/Neural-Solver-Library",
+      "commit": "db942b72c6b3972bad217300e3cbdb8004a1a80b",
+      "license": "MIT",
+      "license_blob": "ee43be6e2f4082018ca353fc961328c2f3a7a0dc",
+      "source_files": [
+        [
+          "models/Transolver.py",
+          "d3f64dd47b7e8fc4df3c19110de9f899a223e39f"
+        ],
+        [
+          "models/model_factory.py",
+          "ab54790f38ca1a94bc0dbd6221100ee5ff2334d7"
+        ]
+      ],
+      "w6_status": "NOT_INTEGRATED",
+      "role": "A reproducible family of operator baselines (Transolver, UPT, FNO, U-FNO, GNOT and others); use selectively to avoid duplicating the same architecture from separate repositories.",
+      "priority": "P1_COMPARISON_SUITE",
+      "reuse_rule": "MIT; pin individual source files and dependencies before import."
+    },
+    {
+      "id": "physicsnemo",
+      "category": "geometry_operator_and_active_learning",
+      "name": "NVIDIA PhysicsNeMo: GeoTransolver / DoMINO / FIGConvNet / active learning / AeroJEPA",
+      "upstream": "https://github.com/NVIDIA/physicsnemo",
+      "commit": "22bb35ec6e700c2f8d6088ddbf88af12b157e5f2",
+      "license": "Apache-2.0",
+      "license_blob": "82676a5d11201bc4b7dedfa819fb37b2abe81d08",
+      "source_files": [
+        [
+          "physicsnemo/models/geotransolver/geotransolver.py",
+          "b28b240d48cfea5ab390c00395ec9910a9602877"
+        ],
+        [
+          "physicsnemo/models/domino/geometry_rep.py",
+          "a587d9d117c9c411859ba1763d679ddf3a1c7bac"
+        ],
+        [
+          "physicsnemo/models/figconvnet/figconvunet.py",
+          "c19b160f72ea8918f14c1bc69007fc05afd54472"
+        ],
+        [
+          "examples/cfd/external_aerodynamics/active_learning_aero/src/strategies.py",
+          "bae78e014cf54137a86ce74c35350838545bab3d"
+        ],
+        [
+          "examples/cfd/external_aerodynamics/active_learning_aero/src/gp_utils.py",
+          "7c23e0d37ddd9b62c0319606037f76e0dcfb0a0d"
+        ],
+        [
+          "examples/cfd/external_aerodynamics/active_learning_aero/src/data_pool.py",
+          "b6b99ae0e33038a56831b2ad7cc1695aa1019426"
+        ]
+      ],
+      "w6_status": "NOT_INTEGRATED",
+      "role": "GeoTransolver offers geometry-aware latent embeddings/attention; DoMINO and FIGConvNet provide multi-scale point-grid geometry processing; the active-learning example supplies query-selection and GP utilities for expensive teacher calls; AeroJEPA is an optional self-supervised pretraining reference.",
+      "priority": "P0_P1_DIRECT_REUSE",
+      "reuse_rule": "Apache-2.0; preserve notices and check any bundled third-party components. GPU-heavy paths require local validation."
+    },
+    {
+      "id": "gaot",
+      "category": "geometry_operator",
+      "name": "GAOT (NeurIPS 2025)",
+      "upstream": "https://github.com/camlab-ethz/GAOT",
+      "commit": "549c5a5f7113e23ba5e91469f2f8bbb1567fae46",
+      "license": "NO_ROOT_LICENSE_FOUND",
+      "license_blob": null,
+      "source_files": [
+        [
+          "src/model/gaot.py",
+          "3f5b3d51c47b25bd854110f3b6fc0ffc7be8446c"
+        ],
+        [
+          "src/model/layers/magno.py",
+          "8621032c0c49d6cc2499879da6870ab632626903"
+        ],
+        [
+          "src/model/layers/agno.py",
+          "c2e3cc5278b4994944cf0be7ba73ac2d0edbe4f4"
+        ]
+      ],
+      "w6_status": "METHOD_REFERENCE_LICENSE_HOLD",
+      "role": "Multiscale attentional graph neural operator plus geometry embeddings; a useful high-capacity unstructured-mesh comparator.",
+      "priority": "P1_PERMISSION_REQUIRED",
+      "reuse_rule": "Public source is visible but no root LICENSE was found; do not copy or vendor until explicit license/permission is verified."
+    },
+    {
+      "id": "gaot-3d",
+      "category": "large_geometry_operator",
+      "name": "GAOT-3D",
+      "upstream": "https://github.com/Shizheng-Wen/GAOT-3D",
+      "commit": "67886040401687eed9e63fb2a2bda2c1d0784c96",
+      "license": "NO_ROOT_LICENSE_FOUND",
+      "license_blob": null,
+      "source_files": [
+        [
+          "src/model/gaot_3d.py",
+          "95cc06752e11d073576367ebdaad9d5b1eb2793d"
+        ],
+        [
+          "src/model/layers/magno.py",
+          "8097db4d33e9f10b34368c2a70ad0272db3f4d17"
+        ],
+        [
+          "src/model/layers/integral_transform.py",
+          "2398dfc8a06ab4f1884b02864ba42e26e6ac1886"
+        ]
+      ],
+      "w6_status": "METHOD_REFERENCE_LICENSE_HOLD",
+      "role": "Large 3D geometry and multiscale MAGNO/integral-transform code; evaluate for high-resolution mesh encoding after rights review.",
+      "priority": "P1_PERMISSION_REQUIRED",
+      "reuse_rule": "No root LICENSE found; request permission before copying."
+    },
+    {
+      "id": "ginot",
+      "category": "geometry_operator",
+      "name": "GINOT (CMAME 2026)",
+      "upstream": "https://github.com/QibangLiu/GINOT",
+      "commit": "552674f978b3a317bf5bfb50ed81efe3b62ba5a1",
+      "license": "NO_ROOT_LICENSE_FOUND",
+      "license_blob": null,
+      "source_files": [
+        [
+          "models/modules/point_encoding.py",
+          "be6927f8c87ebf2de0b2a7f9d0977cd090613ae0"
+        ],
+        [
+          "models/modules/pointnet2_utils.py",
+          "c23d7c4ceeab832378d5c40081493a36e7772691"
+        ],
+        [
+          "models/modules/transformer.py",
+          "a63913f390891e4adb2532182a4084daf31624ac"
+        ],
+        [
+          "models/JEB_GINOT.py",
+          "d7c3eed5faefc431a559fa7925266b0bbddaf94f"
+        ]
+      ],
+      "w6_status": "METHOD_REFERENCE_LICENSE_HOLD",
+      "role": "Point-cloud sampling/grouping plus geometry-conditioned cross-attention; potentially useful when W6 must encode irregular surface meshes rather than rasterized grids.",
+      "priority": "P1_PERMISSION_REQUIRED",
+      "reuse_rule": "No root LICENSE found. Check all model/data/checkpoint terms before reuse; do not copy weights."
+    },
+    {
+      "id": "physgto",
+      "category": "mesh_operator",
+      "name": "PhysGTO (Communications AI & Computing 2026)",
+      "upstream": "https://github.com/pengwei07/PhysGTO",
+      "commit": "fc2dbc54e6b8205252534afddc20ca1fd61b8b4b",
+      "license": "NO_ROOT_LICENSE_FOUND",
+      "license_blob": null,
+      "source_files": [
+        [
+          "code/task3/src/model/physGTO.py",
+          "e789aaa44e22c15ace5fee368754cdf205deb689"
+        ],
+        [
+          "code/task2/src/model/PhysGTO.py",
+          "93f12dbff948f57c4e53298860fe298c0ca1f251"
+        ],
+        [
+          "code/task3/src/model/atten.py",
+          "2ccbfa0f9aba8b89a3bafe96baed54fb6a4731af"
+        ]
+      ],
+      "w6_status": "METHOD_REFERENCE_LICENSE_HOLD",
+      "role": "Graph-transformer operator with explicit manifold embeddings for unstructured meshes and large 3D geometry; a strong mesh-native baseline candidate.",
+      "priority": "P1_PERMISSION_REQUIRED",
+      "reuse_rule": "No root LICENSE found; request permission before source reuse."
+    },
+    {
+      "id": "eqgino",
+      "category": "equivariant_geometry_operator",
+      "name": "EqGINO (ICML 2026)",
+      "upstream": "https://github.com/sung-won-kim/EqGINO",
+      "commit": "8465697cad54b7875dff4b5b65db5cdb71a332a6",
+      "license": "NO_ROOT_LICENSE_FOUND",
+      "license_blob": null,
+      "source_files": [
+        [
+          "neuralop/models/eqgino.py",
+          "68e3f615a92b13c42f8fe9ccaf4a5d5f1cca0ea9"
+        ],
+        [
+          "neuralop/models/uqno.py",
+          "32dc570f8065c0e7edf8df47e2b50916c0b5b025"
+        ]
+      ],
+      "w6_status": "METHOD_REFERENCE_LICENSE_HOLD",
+      "role": "Equivariant geometry-informed operator; test rotational/translational consistency of ten moments and transformed quadric coefficients.",
+      "priority": "P2_PERMISSION_REQUIRED",
+      "reuse_rule": "No root LICENSE found; repository contains locally modified neuralop files. Audit each file's header and obtain permission before copying."
+    },
+    {
+      "id": "unop",
+      "category": "physics_constrained_operator",
+      "name": "UNOP: Physics-Constrained Unsupervised Neural Operator",
+      "upstream": "https://github.com/chengxinrui/UNOP",
+      "commit": "7e3f4e9b332bc9d6207d74ccd3d52930386b24fc",
+      "license": "MIT_BADGE_ONLY_ROOT_LICENSE_MISSING",
+      "license_blob": null,
+      "source_files": [
+        [
+          "models/unop.py",
+          "1f8a109a6d1699a3475b71822d067d588d4464f"
+        ],
+        [
+          "models/gala/graph_encoder.py",
+          "53172b341ed680535a01059f9f5c4f1ef00939cc"
+        ],
+        [
+          "lipe/spatial_integral.py",
+          "3d02d74ec121dd2a7ce58dfe59bc3a60687105e7"
+        ],
+        [
+          "models/geso/curvature_gate.py",
+          "492bdef933a96fdc8b703b514113161302b23f64"
+        ]
+      ],
+      "w6_status": "METHOD_REFERENCE_LICENSE_HOLD",
+      "role": "LIPE integral constraints, GALA geometry adapter and curvature-gated spectral evolution are relevant ideas for geometry-conditioned unsupervised learning.",
+      "priority": "P2_LICENSE_REVIEW",
+      "reuse_rule": "README advertises an MIT badge, but root LICENSE file was not found; verify license text/permission before copying."
+    },
+    {
+      "id": "quadrann",
+      "category": "learned_quadrature",
+      "name": "QuadrANN (Numerical Algorithms 2026)",
+      "upstream": "https://github.com/kesmarag/QuadrANN",
+      "commit": "111dd611aaeac1fb98c76385706b003ea8ef94be",
+      "license": "MIT",
+      "license_blob": "e3bf69af5a25254481a9ad7a6035d91ae2097e80",
+      "source_files": [
+        [
+          "quadrann-src.py",
+          "3610e881c311d718ccb22943f18a40babede153a"
+        ],
+        [
+          "README.md",
+          "c4f9d72ba46360af2fc3c9b5d08cd43badb1e49b"
+        ]
+      ],
+      "w6_status": "PRIOR_W6_ADAPTER_REPORTED_REQUIRES_REAUDIT",
+      "role": "Geometry-aware permutation-invariant GNN quadrature weights; direct baseline for point-cloud/mesh quadrature and teacher-sample allocation. Adapt to ten moments and derivative accuracy, not only scalar integrals.",
+      "priority": "P0_DIRECT_REUSE",
+      "reuse_rule": "MIT; preserve license. Previous W6 adapter/experiment is not evidence of production integration or superiority."
+    },
+    {
+      "id": "nqr",
+      "category": "neural_quadrature_and_adaptive_sampling",
+      "name": "Neural Quadrature Rule and Autoregressive Adaptive Sampling (SIGGRAPH 2026)",
+      "upstream": "https://github.com/SuikaSibyl/nqr",
+      "commit": "d83832ca6f8449da7556441c872499e94a806f42",
+      "license": "NO_ROOT_LICENSE_FOUND",
+      "license_blob": null,
+      "source_files": [
+        [
+          "example-gwn/codes/inet.py",
+          "51945e0b14364a12af1abbef048b819097653015"
+        ],
+        [
+          "example-gwn/codes/snet.py",
+          "d0178558ada359257ca53f5633531c7897682866"
+        ],
+        [
+          "example-gwn/shaders/compute_winding.slang",
+          "7fe17bde883c8493db7d375ffab0f15685260ceb"
+        ],
+        [
+          "example-udf/codes/inet.py",
+          "fbf63e0841e385170979444ff6af684f1e2b1330"
+        ],
+        [
+          "example-1d/codes/inet.py",
+          "90b8d97dcc9e048141e7ce59bcdaeda2148f8837"
+        ]
+      ],
+      "w6_status": "METHOD_REFERENCE_LICENSE_HOLD",
+      "role": "Especially relevant to geometry-aware neural quadrature, generalized winding-number integration, UDF integration and autoregressive adaptive sampling. Use as a design/benchmark reference; code requires external scenes/checkpoints and some examples require SIByL Engine.",
+      "priority": "P0_METHOD_STUDY_P1_CODE_PERMISSION",
+      "reuse_rule": "No root LICENSE found; do not vendor code/shaders or assets until rights are verified."
+    },
+    {
+      "id": "algoim",
+      "category": "exact_implicit_geometry_quadrature",
+      "name": "Algoim",
+      "upstream": "https://github.com/algoim/algoim",
+      "commit": "da1d81499608e1d499695d255f0233140b8c81e8",
+      "license": "CUSTOM_BSD_STYLE_WITH_ENHANCEMENT_GRANT",
+      "license_blob": "8c2302650552febe4ecaff957db0445ba28b6235",
+      "source_files": [
+        [
+          "algoim/quadrature_general.hpp",
+          "bb3e16de85cad1ba9501c72741753b857430c579"
+        ],
+        [
+          "algoim/quadrature_multipoly.hpp",
+          "51e4a7bae13b72e678d8dfd7079b08f794daed44"
+        ]
+      ],
+      "w6_status": "R4_ADAPTER_EXISTS_OFFICIAL_BUILD_NOT_VERIFIED",
+      "role": "Independent implicit-geometry quadrature reference and possible exact numerical baseline. Keep Cherchi as the authoritative Spin teacher; Algoim is a comparator, not a replacement.",
+      "priority": "P0_EXACT_BASELINE",
+      "reuse_rule": "Preserve copyright, conditions and disclaimer; custom license includes an enhancement grant clause. Complete official build and exact paired tests before adoption."
+    },
+    {
+      "id": "fvdb",
+      "category": "sparse_geometry_backend",
+      "name": "fVDB",
+      "upstream": "https://github.com/openvdb/fvdb-core",
+      "commit": "b263e7d5bcc2fef155d57c4aa14c5f76f8b9356c",
+      "license": "Apache-2.0",
+      "license_blob": "d9a10c0d8e868ebf8da0b3dc95bb0be634c34bfe",
+      "source_files": [
+        [
+          "fvdb/functional/_sdf.py",
+          "cb8051d1a04b4f38800c5efce2a5e95e561468be"
+        ],
+        [
+          "src/fvdb/detail/ops/RayImplicitIntersection.cu",
+          "08c2935e82a83ac05ea1dd32bec25314d30ace32"
+        ],
+        [
+          "src/fvdb/detail/ops/ReinitializeSdf.cu",
+          "e18e0e7fdeec8814f791f6c551fda82ba4b17482"
+        ]
+      ],
+      "w6_status": "NOT_INTEGRATED",
+      "role": "Sparse GPU voxel/SDF representation, mesh-to-grid and implicit ray-intersection kernels; potential replacement for dense high-resolution geometry encoding.",
+      "priority": "P1_LOCAL_GPU",
+      "reuse_rule": "Apache-2.0; native C++/CUDA PyTorch extension. Requires local CUDA validation; cloud CPU only for API/protocol work."
+    },
+    {
+      "id": "kaolin",
+      "category": "mesh_geometry_backend",
+      "name": "NVIDIA Kaolin",
+      "upstream": "https://github.com/NVIDIAGameWorks/kaolin",
+      "commit": "ee8b7eca1e56b1b9fd1509fc406f8d8ccbc9240b",
+      "license": "Apache-2.0",
+      "license_blob": "cbfdef8c5a017e609616abb90cc040b61f99ac00",
+      "source_files": [
+        [
+          "kaolin/csrc/ops/conversions/mesh_to_spc/mesh_to_spc_cuda.cu",
+          "72756bd6b2b9f3dc6695de57f5652df9ef73b9a4"
+        ],
+        [
+          "kaolin/ops/conversions/sdf.py",
+          "a11241af4c56f85590e525a95b04141324ecdf60"
+        ]
+      ],
+      "w6_status": "NOT_INTEGRATED",
+      "role": "Mesh-to-sparse voxel octree conversion and mesh/SDF utilities; compare with fVDB as a preprocessing backend, not as a neural operator.",
+      "priority": "P2_LOCAL_GPU",
+      "reuse_rule": "Apache-2.0; check optional CUDA extension compatibility."
+    },
+    {
+      "id": "pytorch3d",
+      "category": "mesh_geometry_backend",
+      "name": "PyTorch3D",
+      "upstream": "https://github.com/facebookresearch/pytorch3d",
+      "commit": "e4ad6e5687a360ccdc6ebd91348e8dbbac97bf31",
+      "license": "BSD_STYLE",
+      "license_blob": "c55382ff0992d90ae5ecb2cd9ac624ccd20bda4d",
+      "source_files": [
+        [
+          "pytorch3d/ops/sample_points_from_meshes.py",
+          "e545cac3539f0714ce38760395a0203f5a54d69b"
+        ]
+      ],
+      "w6_status": "NOT_INTEGRATED",
+      "role": "Differentiable mesh sampling and mesh operators for surface point-cloud encoders; secondary to exact volume integration.",
+      "priority": "P2_PREPROCESSING",
+      "reuse_rule": "BSD-style; preserve notices and third-party license files."
+    },
+    {
+      "id": "pyg",
+      "category": "graph_learning_substrate",
+      "name": "PyTorch Geometric",
+      "upstream": "https://github.com/pyg-team/pytorch_geometric",
+      "commit": "e5be8234ccda2b86ac3bacda6f03ba0ffc5fe668",
+      "license": "MIT",
+      "license_blob": "1f622cff1ea1df457a7a99aff1e2b875e112604d",
+      "source_files": [
+        [
+          "torch_geometric/nn/conv/message_passing.py",
+          "cafee6c3f69d0fe7663a2dc37cdc22f05708ae72"
+        ],
+        [
+          "torch_geometric/transforms/sample_points.py",
+          "8eb9bbf500e0c2c44674ca13aff082e53eb0728b"
+        ]
+      ],
+      "w6_status": "DEPENDENCY_IN_EXISTING_CANDIDATES_NOT_A_W6_OPERATOR",
+      "role": "Graph message passing substrate for QuadrANN, mesh graph encoders and local geometry features.",
+      "priority": "P1_DEPENDENCY",
+      "reuse_rule": "MIT; prefer declared dependency over vendoring."
+    },
+    {
+      "id": "e3nn",
+      "category": "equivariant_geometry_layers",
+      "name": "e3nn",
+      "upstream": "https://github.com/e3nn/e3nn",
+      "commit": "2aa7f58440a06b15352a2cbce01fa4c26f824969",
+      "license": "MIT",
+      "license_blob": "3a7f6259353b96a5b0da5a4393d0bd2706686123",
+      "source_files": [
+        [
+          "e3nn/o3/_linear.py",
+          "1e256bedf6fcf1b2514047cff4cc407781016098"
+        ],
+        [
+          "e3nn/nn/models/v2106/gate_points_message_passing.py",
+          "cae139ee49bd7e1d12c1644a6cd7c6a0e3eb6955"
+        ]
+      ],
+      "w6_status": "NOT_INTEGRATED",
+      "role": "E(3)-equivariant tensor features; test whether rotation/translation covariance reduces geometry augmentation needs and improves out-of-orientation generalization.",
+      "priority": "P2_ABLATION",
+      "reuse_rule": "MIT; verify numerical conventions and test affine transformations separately from rigid equivariance."
+    },
+    {
+      "id": "torchopt",
+      "category": "differentiable_optimization",
+      "name": "TorchOpt",
+      "upstream": "https://github.com/metaopt/torchopt",
+      "commit": "960fb0aa53f27bad1af0bdf018b5ad4be077949a",
+      "license": "Apache-2.0",
+      "license_blob": "185e0144f4e84f24d2e3750d7647f2a61d278731",
+      "source_files": [
+        [
+          "torchopt/diff/implicit/decorator.py",
+          "11ba01537dce351279f9d234ee9eaf1c6be7e516"
+        ],
+        [
+          "torchopt/diff/implicit/nn/module.py",
+          "6b214cb8efe0776aecdeb6d7b50f65ceb8a7cce7"
+        ]
+      ],
+      "w6_status": "NOT_INTEGRATED",
+      "role": "Implicit differentiation and optimizer layers for meta-learning or differentiable optimization baselines; do not replace the certified native Newton solver.",
+      "priority": "P2_OPTIMIZATION_ABLATION",
+      "reuse_rule": "Apache-2.0; use only after defining a stable differentiable optimization objective."
+    },
+    {
+      "id": "torchquad",
+      "category": "numerical_integration_baseline",
+      "name": "torchquad",
+      "upstream": "https://github.com/esa/torchquad",
+      "commit": "fc6f9cd017624f0ba9210ed294c2b55a676fa7bd",
+      "license": "GPL-3.0",
+      "license_blob": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+      "source_files": [
+        [
+          "torchquad/integration/qmc.py",
+          "9d28229b8b8cf76dca3ddb13ed17cce0071a588b"
+        ],
+        [
+          "torchquad/integration/vegas.py",
+          "9fb61e38b03ddcb438928686d8286b177c030a34"
+        ]
+      ],
+      "w6_status": "EXTERNAL_BASELINE_ONLY",
+      "role": "Differentiable CPU/GPU quadrature baseline for integration error/runtime comparisons; not a core W6 dependency.",
+      "priority": "P3_ISOLATED_BENCHMARK",
+      "reuse_rule": "GPL-3.0; do not copy/link into the proprietary/permissively licensed W6 core. If benchmarked, keep it isolated and review distribution implications."
+    },
+    {
+      "id": "active-operator-learning-2026",
+      "category": "uncertainty_and_active_learning",
+      "name": "Active operator learning with predictive uncertainty quantification (JCP 2026)",
+      "upstream": "https://doi.org/10.1016/j.jcp.2026.114791",
+      "commit": null,
+      "license": "PAPER_ONLY_NO_CODE_REPOSITORY_VERIFIED",
+      "license_blob": null,
+      "source_files": [],
+      "w6_status": "PAPER_REFERENCE",
+      "role": "Predictive uncertainty and active selection of expensive operator labels; directly relevant to reducing Cherchi teacher calls, but no verified code repository was identified in this audit.",
+      "priority": "P0_METHOD_REVIEW",
+      "reuse_rule": "Implement independently from the paper only; do not imply source-code integration."
+    },
+    {
+      "id": "transolver-3",
+      "category": "large_geometry_operator_watchlist",
+      "name": "Transolver-3",
+      "upstream": "https://github.com/thuml/Transolver",
+      "commit": "75e0f67643806a81cd1d3f6adc88dd8c02416fe7",
+      "license": "CODE_REPOSITORY_NOT_VERIFIED",
+      "license_blob": null,
+      "source_files": [
+        [
+          "README.md (announcement only)",
+          "cd520335c3a5eb30f91afd9544619b03dcda32c0"
+        ]
+      ],
+      "w6_status": "ANNOUNCED_NOT_CODE_INTEGRATED",
+      "role": "Transolver README announces a 2026 Transolver-3 family member for very large geometries; expected separate source repository was not verified in this audit.",
+      "priority": "WATCHLIST",
+      "reuse_rule": "Do not invent a repository or claim integration; add source pin only after official code release is located."
+    },
+    {
+      "id": "opt-rno",
+      "category": "optimization_operator_watchlist",
+      "name": "Opt-RNO (previously proposed candidate)",
+      "upstream": "https://github.com/zecheng-ai/Opt_RNO",
+      "commit": null,
+      "license": "REPOSITORY_IDENTITY_NOT_VERIFIED",
+      "license_blob": null,
+      "source_files": [],
+      "w6_status": "UNVERIFIED_WATCHLIST",
+      "role": "Earlier candidate name retained for follow-up, but the expected repository path could not be resolved in this audit.",
+      "priority": "WATCHLIST",
+      "reuse_rule": "Do not cite or integrate until the exact official repository is confirmed."
+    }
+  ]
+}
