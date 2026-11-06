@@ -39,3 +39,13 @@ Report ten-moment r/J MAE and relative L2, parameter count, training time, unrot
 ## Limits
 
 All labels remain analytic continuum P0, not Cherchi. This plugin does not certify Jacobians or enable Newton. No CFD checkpoint or learned PDE weights are transferred; only the original attention mechanism and block structure are reused.
+
+## M8 result — 2026-11-06
+
+The CPU adapter tests and three-seed matched tournament passed in workflow [42212744843](https://github.com/volcano-code/Spin_test/actions/runs/42212744843).
+
+- PINO-only: 21,888 parameters; 1.90 s mean CPU training; SO(3) r/J relative L2 0.37123/0.44952.
+- PINO + Transolver++: 40,731 parameters; 6.78 s; SO(3) r/J relative L2 0.37090/0.44936.
+- Combined SO(3) score improves by only ~0.06%, while parameters rise ~86% and training time ~3.6×.
+
+Decision: retain the MIT adapter as an optional ablation, but do not promote it into default Spin-PINO v1. The P-CRAFT PINO trunk remains primary and the default configuration remains PINO-only.

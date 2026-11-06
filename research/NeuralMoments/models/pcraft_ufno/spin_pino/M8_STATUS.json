@@ -1,15 +1,31 @@
 {
   "schema": "SPIN_PINO_M8_STATUS_V1",
-  "status": "TRANSOLVER_PLUS_AUXILIARY_ADAPTER_IMPLEMENTED_CI_PENDING",
-  "primary_backbone": "P-CRAFT PINO UFNO3d",
-  "plugin": "Transolver++ Physics_Attention_1D_Eidetic",
+  "status": "TRANSOLVER_PLUS_ADAPTER_TESTED_NOT_PROMOTED",
+  "workflow_run": 42212744843,
+  "workflow_conclusion": "success",
+  "artifact_id": 13498934052,
   "upstream_commit": "d5a23bc734a0ebac56384cf72049a26af9673452",
   "license": "MIT",
-  "zero_initialized_residual_gate": true,
-  "replaces_pino": false,
-  "matched_tournament": "PINO-only vs PINO+Transolver++; three seeds; 120 steps; same analytic split and SO3 test transforms",
-  "ci_pending": true,
+  "results": {
+    "pino_only": {
+      "parameters": 21888,
+      "training_seconds": 1.8951005877,
+      "so3_r_relative_l2": 0.3712313473,
+      "so3_J_relative_l2": 0.4495181044,
+      "combined_so3": 0.4103747259
+    },
+    "pino_plus_transolver_plus": {
+      "parameters": 40731,
+      "training_seconds": 6.7843701943,
+      "so3_r_relative_l2": 0.3709011575,
+      "so3_J_relative_l2": 0.4493585726,
+      "combined_so3": 0.410129865,
+      "mean_gate": -0.0182862654
+    }
+  },
+  "decision": "KEEP_AS_OPTIONAL_ABLATION; DO_NOT_PROMOTE_TO_DEFAULT",
   "cherchi_supervised": false,
   "newton_admitted": false,
-  "real_spin_end_to_end_validated": false
+  "real_spin_end_to_end_validated": false,
+  "next": "M7c paired SO3 covariance consistency loss"
 }

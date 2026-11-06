@@ -78,3 +78,5 @@ All four are subordinate to P-CRAFT PINO. Full status, license caveats and accep
 
 
 M8 source pin: `thuml/Transolver_plus@d5a23bc734a0ebac56384cf72049a26af9673452`; MIT license blob `83787cb894a379be3f9babe7e701d5e7d338ec9f`. Current W6 adapter ports the original Physics_Attention_1D_Eidetic and Transolver++ residual block into an auxiliary geometry-token branch.
+
+M8 result: `spin_pino/M8_TRANSOLVER_PLUS_REPORT.md`. Transolver++ is not part of the default Spin-PINO v1 model.

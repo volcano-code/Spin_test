@@ -108,3 +108,7 @@ To finish by 2026-12-06, PINO-specific methods receive priority over additional 
 - Next PINO-specific method: add paired SO(3)-covariance consistency loss; do not simply increase augmentation volume.
 - M8 selects the standalone MIT Transolver++ eidetic physical-state attention as an auxiliary residual geometry-feature adapter. It is subordinate to P-CRAFT PINO; compare PINO-only vs PINO+Transolver++ under same data/splits/seeds. GeoTransolver remains a candidate, but the current PhysicsNeMo main branch requires Python >=3.11 and torch >=2.13, while W6 CI is pinned to Python 3.10/torch 2.5.1. Avoid destabilizing the one-month prototype with that dependency upgrade.
 - Transolver++ source pin: `thuml/Transolver_plus@d5a23bc734a0ebac56384cf72049a26af9673452`; MIT license blob `83787cb894a379be3f9babe7e701d5e7d338ec9f`.
+
+## M7c — active PINO-specific orientation objective
+
+The next active experiment adds paired SO(3)-covariance consistency loss to PINO. This directly constrains the known transformation law of ten moments and Jacobians, unlike augmentation alone. See `spin_pino/M7C_PROTOCOL.md`. M7c CPU tests and three-seed tournament are pending.

@@ -265,3 +265,9 @@ Acceptance: moment/quadric/Jacobian transform tests pass; augmentation preserves
 - Adapter uses the same canonical four-channel voxel input plus xyz tokens and returns a feature vector matching the PINO latent dimension.
 - Added a same-data three-seed CPU tournament job: PINO-only versus PINO + Transolver++ adapter. CI pending.
 - Full PhysicsNeMo GeoTransolver is deferred in this one-month path because current main requires Python >=3.11 / torch >=2.13, incompatible with the pinned W6 CI environment (Python 3.10 / torch 2.5.1).
+## M7c implementation — paired SO(3) covariance consistency
+
+- Added `lambda_equivariance` to the PINO training loop.
+- For each batch, rotate geometry by deterministic SO(3), transform native coefficients, ten moments and Jacobian exactly, and penalize the mismatch between rotated predictions and transformed original predictions.
+- Four matched conditions are tested: baseline, augmentation only, consistency loss only, and augmentation + consistency loss.
+- The experiment uses the same SO(3) held-out test transforms and the same analytic P0 split. CI and training results pending.

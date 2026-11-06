@@ -135,7 +135,7 @@
           "0fd97ae9a570ee500556929ce47d918f8bef9473"
         ]
       ],
-      "w6_status": "PINO_AUXILIARY_ADAPTER_IMPLEMENTED_CPU_CI_PENDING",
+      "w6_status": "PINO_AUXILIARY_ADAPTER_CPU_TESTED_NOT_PROMOTED",
       "role": "Optional residual geometry-token adapter inside P-CRAFT PINO. Reuses Physics_Attention_1D_Eidetic and Transolver_plus_block; outputs pooled geometry features fused through a zero-initialized trainable gate. Never replaces the P-CRAFT UFNO trunk or Spin moment head.",
       "priority": "P0_DIRECT_REUSE",
       "reuse_rule": "MIT; preserve notices. Do not claim the CFD weights transfer to Spin.",
@@ -146,7 +146,9 @@
         "license_blob": "83787cb894a379be3f9babe7e701d5e7d338ec9f",
         "adapter_path": "research/NeuralMoments/models/pcraft_ufno/spin_pino/transolver_plus_adapter.py",
         "model_fusion": "SpinPINO geometry_adapter='transolver_plus'; zero-initialized residual gate",
-        "status": "adapter source added; CPU tests and matched three-seed tournament pending"
+        "status": "CPU adapter tests passed; three-seed matched tournament completed; negligible SO3 gain with ~86% parameter and ~3.6x training-time increase",
+        "workflow_run": 42212744843,
+        "report_path": "research/NeuralMoments/models/pcraft_ufno/spin_pino/M8_TRANSOLVER_PLUS_REPORT.md"
       }
     },
     {

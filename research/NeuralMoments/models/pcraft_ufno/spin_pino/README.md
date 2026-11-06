@@ -148,3 +148,7 @@ See `M7B_PROTOCOL.md`. This remains analytic vertical-plane P0, not Cherchi supe
 Source pin and design details: `TRANSOLVER_PLUS_INTEGRATION.md`.
 
 The M8 CPU tournament compares PINO-only against PINO + Transolver++ using identical analytic splits, three seeds and identical arbitrary-SO(3) test transforms. The plugin is not promoted unless the held-out accuracy/latency trade-off justifies it.
+
+## M7c paired covariance consistency
+
+The new `m7c_sweep.py` compares PINO baseline, SO(3) augmentation, covariance consistency loss, and both together. The covariance residual enforces `r(RD,S_R c) ≈ T_R r(D,c)` and `J(RD,S_R c) ≈ T_R J(D,c) S_R^{-1}`. See `M7C_PROTOCOL.md`. It is a training regularizer, not a derivative certificate.

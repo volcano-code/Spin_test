@@ -15,7 +15,15 @@ import torch
 from .dataset import generate_splits
 from .spin_pino import SpinPINO, SpinPINOLoss
 from .loss_conditioning import DiagonalMomentResidualPreconditioner, pcgrad_backward
-from .equivariance import augment_with_cube_rotations, augment_with_random_so3
+from .equivariance import (
+    augment_with_cube_rotations,
+    augment_with_random_so3,
+    random_so3_rotation,
+    rotate_geometry_voxels,
+    transform_native_coefficients,
+    transform_raw_moments,
+    transform_native_jacobian,
+)
 
 
 def _evaluate(model, data):
@@ -37,6 +45,33 @@ def _evaluate(model, data):
     }
 
 
+
+def _so3_covariance_loss(model, geometry, coefficients, reference_r, reference_J, *, seed):
+    """Paired SO(3) consistency using exact coefficient/moment/J transforms.
+
+    Voxel geometry is trilinearly resampled; its interpolation perturbation is
+    therefore part of the consistency residual and is kept at a small weight.
+    """
+    rotated_D, rotated_c, expected_r, expected_J = [], [], [], []
+    for i in range(geometry.shape[0]):
+        R = random_so3_rotation(seed + i, dtype=geometry.dtype, device=geometry.device)
+        rotated_D.append(rotate_geometry_voxels(geometry[i:i+1], R))
+        rotated_c.append(transform_native_coefficients(coefficients[i:i+1], R))
+        expected_r.append(transform_raw_moments(reference_r[i:i+1], R))
+        expected_J.append(transform_native_jacobian(reference_J[i:i+1], R))
+    D_rot = torch.cat(rotated_D, dim=0)
+    c_rot = torch.cat(rotated_c, dim=0)
+    r_expected = torch.cat(expected_r, dim=0)
+    J_expected = torch.cat(expected_J, dim=0)
+    w_rot = model.encode_geometry(D_rot)
+    r_rot = model.moment_from_weights(w_rot, c_rot)
+    J_rot = model.jacobian_from_weights(w_rot, c_rot)
+    r_scale = r_expected.detach().square().mean().clamp_min(1e-8)
+    J_scale = J_expected.detach().square().mean().clamp_min(1e-8)
+    loss_r = (r_rot - r_expected).square().mean() / r_scale
+    loss_J = (J_rot - J_expected).square().mean() / J_scale
+    return loss_r + 0.25 * loss_J, loss_r.detach(), loss_J.detach()
+
 def run_seed(
     *,
     seed: int,
@@ -53,11 +88,14 @@ def run_seed(
     moment_parameterization: str = "smooth_hinge",
     temperature: float = 0.12,
     geometry_adapter: str = "none",
+    lambda_equivariance: float = 0.0,
     rotation_augmentation: bool = False,
     rotation_augmentation_mode: str = "cube",
     evaluation_rotation_mode: str = "so3",
     device: str = "cpu",
 ):
+    if not math.isfinite(lambda_equivariance) or lambda_equivariance < 0:
+        raise ValueError("lambda_equivariance must be finite and nonnegative")
     torch.manual_seed(seed)
     np.random.seed(seed)
     torch.set_num_threads(1)
@@ -135,18 +173,30 @@ def run_seed(
             target_jacobian=target_J,
             derivative_admitted=True,
         )
-        if not bool(torch.isfinite(losses["total"])):
+        equivariance_loss = losses["total"].new_zeros(())
+        equivariance_r = losses["total"].new_zeros(())
+        equivariance_J = losses["total"].new_zeros(())
+        if lambda_equivariance > 0:
+            reference_r = model.moment_from_weights(weights, c)
+            reference_J = model.jacobian_from_weights(weights, c)
+            equivariance_loss, equivariance_r, equivariance_J = _so3_covariance_loss(
+                model, D, c, reference_r, reference_J,
+                seed=seed * 1000003 + step * 101,
+            )
+        total_loss = losses["total"] + lambda_equivariance * equivariance_loss
+        if not bool(torch.isfinite(total_loss)):
             raise FloatingPointError(f"nonfinite Spin-PINO loss at step {step}")
         optimizer.zero_grad(set_to_none=True)
         grad_stats = None
         if pcgrad:
-            grad_stats = pcgrad_backward(
-                (losses["data"], losses["physics"], losses["jacobian_supervision"]),
-                model.parameters(),
-                (criterion.lambda_data, criterion.lambda_physics, criterion.lambda_jacobian),
-            )
+            terms = (losses["data"], losses["physics"], losses["jacobian_supervision"])
+            scales = (criterion.lambda_data, criterion.lambda_physics, criterion.lambda_jacobian)
+            if lambda_equivariance > 0:
+                terms = terms + (equivariance_loss,)
+                scales = scales + (lambda_equivariance,)
+            grad_stats = pcgrad_backward(terms, model.parameters(), scales)
         else:
-            losses["total"].backward()
+            total_loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
         if step == 1 or step % 10 == 0 or step == steps:
@@ -154,8 +204,11 @@ def run_seed(
             score = val["r_mae"] + 0.25 * val["J_mae"]
             history.append({
                 "step": step,
-                "train_total": float(losses["total"].detach()),
+                "train_total": float(total_loss.detach()),
                 "train_data": float(losses["data"].detach()),
+                "train_equivariance": float(equivariance_loss.detach()),
+                "train_equivariance_r": float(equivariance_r),
+                "train_equivariance_J": float(equivariance_J),
                 "train_physics": float(losses["physics"].detach()),
                 "train_jacobian": float(losses["jacobian_supervision"].detach()),
                 "gradient_conflict": grad_stats,
@@ -197,6 +250,7 @@ def run_seed(
         "model_config": {"grid_size": grid_size, "points_per_axis": points_per_axis,
                          "smoothing": smoothing, "moment_parameterization": moment_parameterization,
                          "temperature": temperature, "geometry_adapter": geometry_adapter,
+                         "lambda_equivariance": float(lambda_equivariance),
                          "width": 4 if grid_size <= 8 else 8,
                          "modes": 2 if grid_size <= 8 else 4},
         "training": {
@@ -251,6 +305,7 @@ def main():
     parser.add_argument("--moment-parameterization", choices=("smooth_hinge", "logistic_atom"), default="smooth_hinge")
     parser.add_argument("--temperature", type=float, default=0.12)
     parser.add_argument("--geometry-adapter", choices=("none", "transolver_plus"), default="none")
+    parser.add_argument("--lambda-equivariance", type=float, default=0.0)
     parser.add_argument("--rotation-augmentation", action="store_true")
     parser.add_argument("--rotation-augmentation-mode", choices=("cube", "so3"), default="cube")
     parser.add_argument("--evaluation-rotation-mode", choices=("cube", "so3"), default="so3")
@@ -275,6 +330,7 @@ def main():
             moment_parameterization=args.moment_parameterization,
             temperature=args.temperature,
             geometry_adapter=args.geometry_adapter,
+            lambda_equivariance=args.lambda_equivariance,
             rotation_augmentation=args.rotation_augmentation,
             rotation_augmentation_mode=args.rotation_augmentation_mode,
             evaluation_rotation_mode=args.evaluation_rotation_mode,
