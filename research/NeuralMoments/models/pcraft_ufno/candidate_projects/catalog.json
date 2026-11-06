@@ -61,10 +61,26 @@
           "c27c4b667437d20d7a086cfe727c8c00e8df1275"
         ]
       ],
-      "w6_status": "ADAPTED_REIMPLEMENTATION_NOT_UPSTREAM_PORT",
-      "role": "Reference source for the original P-CRAFT/F-FNO/UFNO topology and training conventions. Current W6 model.py is explicitly an independent adaptation; it does not port FEM weights, the nine-channel field decoder or the original PINO loss.",
+      "w6_status": "PINO_UFNO_CORE_ADAPTED_IN_SPIN_PINO_V1_CPU_SMOKE_PASSED_LICENSE_CLEARANCE_PENDING",
+      "role": "Primary W6 backbone: P-CRAFT UFNO3d factorized F-FNO spectral blocks, U-shaped encoder-decoder and PINO-style training principle. The new SpinPINO replaces only the task-specific 9-channel elasticity output head with a ten-moment convex-potential head; other neural operators remain subordinate plug-ins/baselines.",
       "priority": "P0_BASELINE_AUDIT",
-      "reuse_rule": "Treat as internal source only; verify repository ownership/permissions before redistribution."
+      "reuse_rule": "Treat as internal source only; verify repository ownership/permissions before redistribution.",
+      "integration_evidence": {
+        "branch": "research/neuralmoments-w6-pcraft-20261019",
+        "source_commit": "24eda3e9b3f87ba16251a9025761986d6cfe3079",
+        "source_blob": "5017f50292e43718546ad0457e0869a9eb5ddff0",
+        "w6_commit": "d1ee418a006e7dc41f5260dea19aa02b9f74f1ef",
+        "validation_commit": "3c366be7b0b3476d8f1db7a0e6ab3dbb2ee23ec1",
+        "workflow_run": 42186600269,
+        "conclusion": "success",
+        "tests": "9 passed in 1.44s",
+        "limits": [
+          "not trained on Spin/Cherchi labels",
+          "not admitted to Newton",
+          "internal source reuse pending explicit license/ownership clearance",
+          "not a complete P-CRAFT elasticity checkpoint/weight port"
+        ]
+      }
     },
     {
       "id": "neuraloperator",
@@ -760,5 +776,11 @@
     "scope": "adapter and upstream CPU smoke only; no training, W2 teacher admission, Newton admission or end-to-end speedup"
   },
   "p0_addendum": "DensiCrafter source and MIT license audited on 2026-11-06. Complementary density-field design module, not a neural moment operator and not a structural-strength solver.",
-  "audit_addendum": "Added two 2026 mechanics/topology-optimization paper references on 2026-11-06; neither is counted as source-code integration."
+  "audit_addendum": "Added two 2026 mechanics/topology-optimization paper references on 2026-11-06; neither is counted as source-code integration.",
+  "pino_primary_backbone": {
+    "status": "FROZEN_AS_PRIMARY",
+    "upstream_commit": "24eda3e9b3f87ba16251a9025761986d6cfe3079",
+    "w6_model_path": "research/NeuralMoments/models/pcraft_ufno/spin_pino/",
+    "rule": "GINO/Transolver/DoMINO/FIGConvNet/DeepONet are optional adapters or baselines; none replaces the PINO trunk."
+  }
 }

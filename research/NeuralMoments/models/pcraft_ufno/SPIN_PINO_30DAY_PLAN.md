@@ -108,3 +108,11 @@ Cloud can finish the code and low-resolution prototype. It cannot certify the us
 Success on Dec 6 means a PINO-centered Spin model can be trained/replayed on deterministic synthetic geometry, passes physics-identity tests, is compared fairly against the selected baselines, has a bounded uncertainty/fallback interface, and has a small MMDO integration prototype with reproducible evidence.
 
 It does not mean the full long-term Spin research goal is closed if formal Cherchi teacher admission, arbitrary CAD/quadric derivative certification or native end-to-end acceptance remains blocked.
+
+## M0 implementation status — 2026-11-06
+
+- P-CRAFT UFNO3d-style factorized-Fourier U-shaped PINO trunk has been added under `spin_pino/`.
+- Spin moment potential head and PINO-style moment physics loss are implemented.
+- GitHub Actions run 42186600269 passed: Spin-PINO 9/9 tests; existing NeuralOperator/QuadrANN 8/8; Algoim C++ 1/1 with maximum absolute error 7.50e-11.
+- This is architecture/identity smoke only; no Spin/Cherchi training or Newton admission yet.
+- M0 status: implementation and CPU smoke passed; source license/ownership clearance and real training remain open.

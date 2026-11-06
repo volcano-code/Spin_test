@@ -10,6 +10,7 @@
 
 | Priority | Candidate | W6 role | Code status | License status | Cloud vs local |
 |---|---|---|---|---|---|
+| **CORE** | **P-CRAFT PINO / UFNO3d** | **Only primary Spin-PINO backbone: factorized F-FNO + U-shaped encoder/decoder + moment-specific PINO physics loss** | **Adapted under `spin_pino/`; CPU identity tests 9/9 passed; not trained yet** | **Internal source; upstream root LICENSE not found; keep internal pending ownership clearance** | **Cloud CPU prototype passed; local 4090 training and native Spin validation remain** |
 | P0 | Algoim | Independent implicit-geometry quadrature reference | Pinned official source compiled; unit-sphere ten-moment CPU smoke passed (max abs error 7.50e-11) | Custom BSD-style; preserve full notice | Cloud compile/smoke passed; Spin/Cherchi pairing still requires native validation |
 | P0 | NeuralOperator GINO/UQNO | Geometry encoder and uncertainty baseline | GINO moment adapter + UQNO residual-scale wrapper; CPU smoke passed; no trained weights transferred | MIT | Cloud CPU smoke passed; geometry-generalization training and GPU comparison remain |
 | P0 | QuadrANN | Learned geometric quadrature baseline | Pinned MIT model core safely extracted; 3D adapter and CPU forward smoke passed; still untrained | MIT | Cloud CPU smoke passed; matched training/accuracy benchmark remains |
