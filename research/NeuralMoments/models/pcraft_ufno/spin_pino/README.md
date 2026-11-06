@@ -103,3 +103,8 @@ The Gauss-Legendre variant passed implementation tests but did not improve held-
 ## M4 loss-conditioning ablation
 
 `loss_conditioning.py` provides a fit-split-only diagonal residual preconditioner and deterministic PCGrad-style gradient projection. `conditioning_sweep.py` compares baseline, preconditioned loss, and preconditioned loss + PCGrad using the selected support-masked PINO midpoint 6-node configuration. This adapts PI-CViT/TensorPILS training ideas while preserving P-CRAFT PINO as the backbone and Spin-specific physics losses.
+
+
+## M4 loss-conditioning result
+
+The M4 three-seed sweep did not improve over the baseline: r/J relative L2 0.2320/0.8912 baseline, 0.3101/0.8963 diagonal preconditioning, 0.2898/0.8907 preconditioning+PCGrad. PCGrad increased CPU time. Keep these as optional ablations; do not change default PINO loss. Next investigate a PINO-preserving M7 logistic realizable-atom head transplant for Jacobian accuracy. See `M4_LOSS_CONDITIONING_REPORT.md`.

@@ -99,3 +99,8 @@ The Gauss-Legendre node/weight option has been implemented inside the PINO head,
 
 - M3b tested M7-style Gauss-Legendre nodes inside the PINO head; the Gauss variant was worse than midpoint PINO on the same analytic split and is retained only as a negative ablation.
 - M4 is now under implementation: PI-CViT-inspired gradient-conflict diagnostics/PCGrad and TensorPILS-inspired fit-split diagonal residual preconditioning are applied to the existing PINO data/physics/J losses. The PDE-specific losses from those projects are not copied.
+
+
+## M4 training-method evidence
+
+PI-CViT/TensorPILS-inspired fit-split diagonal residual preconditioning and PCGrad were implemented and compared. Neither improved the held-out combined score over baseline M2b; PCGrad increased runtime. They remain optional methods, not promoted components. The measured physics-loss gradient was nearly zero for the current structurally constrained potential, so the current Jacobian accuracy gap likely needs a better head parameterization rather than more loss balancing.

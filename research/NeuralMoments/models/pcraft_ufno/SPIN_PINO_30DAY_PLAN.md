@@ -196,3 +196,13 @@ This work package borrows PI-CViT's findings on PINO loss balancing/gradient con
 - This is a training-strategy adaptation; TensorPILS's Poisson/Allen-Cahn/Stokes PDE residuals are not imported, and PI-CViT's CViT backbone is not used.
 
 Acceptance: compare held-out raw r/J metrics, gradient-conflict statistics, training time and seed variance. Promote only if it improves held-out errors or stability without worsening physics identities. No Cherchi labels or Newton admission are implied.
+
+
+## M4 result — loss conditioning not promoted
+
+- M4 workflow 42194697503 completed the three-seed loss-conditioning sweep.
+- Baseline M2b: r/J relative L2 0.2320/0.8912; diagonal fit-split preconditioning: 0.3101/0.8963; preconditioning + PCGrad: 0.2898/0.8907.
+- The diagonal preconditioner and PCGrad did not beat the baseline combined score. PCGrad increased CPU time from 2.53 s to 4.56 s.
+- Gradient diagnostics show the current moment-physics residual gradient is nearly zero (~9.1e-17) because the chosen potential structure already satisfies the tested identities. Thus PCGrad has almost no useful data-vs-physics conflict to resolve.
+- Decision: keep baseline loss as default; retain conditioning/PCGrad as optional ablations, not promoted.
+- Next M5: borrow W6 M7's logistic realizable-atom moment/Jacobian head into the P-CRAFT PINO trunk. This targets the remaining Jacobian gap while keeping PINO primary.
