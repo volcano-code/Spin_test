@@ -1,0 +1,128 @@
+{
+  "schema": "w2-m22-p3-heart-boolean-boundary-local-audit-v1",
+  "run_id": "heart-pilot9-flex-20261105T083338329274558-3159689",
+  "status": "LOCAL_BOUNDARY_SEMANTICS_PASS_GLOBAL_SET_EQUIVALENCE_NOT_CERTIFIED",
+  "m21_archive_sha256": "259b9f288b629415bafa42e4e09d6503e4f474e0e2253e6cc9eb1cd775a64dfd",
+  "h8f_archive_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+  "h8f_point000_member_sha256": "c372f749bf7b85015e2dcdad4a445aeab4f2f6fbd25d622089ec58d471992973",
+  "m21_spec_sha256": "4d3cb03ee3a1190142638a99cd90e6aaf0a3e7030b956ef813ebabeb0c6898d0",
+  "m21_label_sha256": "747101c819d95959020a39ea54eec5af280fd465b786c3f94312bb7447136729",
+  "m21_result_sha256": "f84b38c326bc4fd79068d5a89f94500bb60306c5a77289a550a278355dd89dc3",
+  "m21_same_call_attachment_sha256": "b136cbcc09740915cd70615d73fab3ab2aa0b680cdb823cfed12375bed6c20e8",
+  "historical_material_sha256": "6be4faf58ef2fc31b6a1e6d67e601417150d0b43dbd37104b61565a2ca6708c1",
+  "exact_boundary_sha256": "48aae36777ed15e705f1ab919edac07756d3a7444100c060ee5baabd310afe20",
+  "geometry_hash": "8dc39e92b09f4c3f00f4415ed1a3f9e6673d4e04ae80723330e04b681b2b5ba0",
+  "topology_hash": "efcd3c0975ff434b6a10121da5fd304ca80f00908cb58cb1b0eb15aadffded02",
+  "boolean_operation": "DESIGN_MINUS_QUADRIC_SOURCE",
+  "inputs": {
+    "design": {
+      "vertices": 13122,
+      "faces": 26244,
+      "edges": 39366,
+      "exact_edge_closure_orientation": true,
+      "signed_volume": 1.0998850071299318
+    },
+    "quadric_source": {
+      "vertices": 162,
+      "faces": 320,
+      "edges": 480,
+      "exact_edge_closure_orientation": true,
+      "signed_volume": 1.3881363252327446
+    }
+  },
+  "output": {
+    "vertices": 8455,
+    "faces": 16910
+  },
+  "exact_face_provenance": {
+    "design_parent_faces": 16034,
+    "design_orientation_same": 16034,
+    "quadric_parent_faces": 876,
+    "quadric_orientation_reversed": 876,
+    "unmatched_faces": 0,
+    "multiple_parent_matches": 0
+  },
+  "parent_area_accounting": {
+    "design": {
+      "full": 14900,
+      "partial": 696,
+      "zero": 10648,
+      "overcovered": 0
+    },
+    "quadric_source": {
+      "full": 48,
+      "partial": 85,
+      "zero": 187,
+      "overcovered": 0
+    }
+  },
+  "exact_side_probes": {
+    "output_faces": 16910,
+    "offset_powers": [
+      25,
+      27
+    ],
+    "ray_direction": [
+      "1/1",
+      "1/7",
+      "1/11"
+    ],
+    "membership_classifications": 135280,
+    "ambiguous": 0,
+    "mismatches": 0,
+    "design_parent_exterior": [
+      false,
+      false
+    ],
+    "design_parent_interior": [
+      true,
+      false
+    ],
+    "quadric_parent_exterior": [
+      true,
+      true
+    ],
+    "quadric_parent_interior": [
+      true,
+      false
+    ],
+    "two_scale_classifications_identical": true
+  },
+  "input_face_centroid_coverage": {
+    "design": {
+      "total": 26244,
+      "inside_quadric": 10999,
+      "outside_quadric_selected": 15245,
+      "expected_covered": 15245,
+      "observed_covered": 15245,
+      "mismatches": 0,
+      "ambiguous": 0
+    },
+    "quadric_source": {
+      "total": 320,
+      "inside_design_selected": 99,
+      "outside_design_excluded": 221,
+      "expected_covered": 99,
+      "observed_covered": 99,
+      "mismatches": 0,
+      "ambiguous": 0
+    }
+  },
+  "limits": {
+    "global_exact_boolean_set_equality_certified": false,
+    "design_input_self_intersection_certified": false,
+    "full_m21_same_call_material_recovered": false,
+    "model_is_original_author_cad": false,
+    "jacobian_certified": false,
+    "newton_admitted": false,
+    "training_admitted": false,
+    "training_samples": 0,
+    "split": "excluded",
+    "J_D": null
+  },
+  "execution": {
+    "source": "uploaded M21 raw archive + pinned original H8f Actions artifact + exact rational offline geometry analysis",
+    "new_cherchi_calls": 0,
+    "cloud_native_reexecution": false
+  }
+}
