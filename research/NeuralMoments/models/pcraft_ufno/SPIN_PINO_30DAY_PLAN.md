@@ -144,3 +144,17 @@ It does not mean the full long-term Spin research goal is closed if formal Cherc
 - Review found the first Spin-PINO learned quadrature weights were positive but not explicitly multiplied by sampled density/occupancy. This allowed atoms in empty space and weakened the intended discrete material-measure constraint.
 - M2b now masks each PINO quadrature atom by density and occupancy at its spatial location, and adds empty-support and density-scaling tests. The same three-seed sweep is rerun to measure the effect.
 - M2 pre-mask results are retained as an ablation; they are not overwritten or presented as post-mask performance.
+## M2b result — support-masked quadrature selected
+
+- The PINO quadrature head now multiplies each learned positive gate by sampled density and occupancy at the corresponding quadrature node.
+- M2b three-seed sweep completed in workflow 42191687667. Selected configuration: 8^3 geometry input, 6^3 quadrature nodes, smoothing 0.02, 21,888 parameters.
+- Held-out ellipsoid mean r relative L2 improved from 0.5112 (unmasked 6-node M2) to 0.2561; J relative L2 improved from 0.9614 to 0.8972. Mean r MAE 0.01693, J MAE 0.01891.
+- The 16^3 / 4^3 configuration remains poor for Jacobian (relative L2 3.1908) and is not promoted.
+- The model is still not Newton-ready: J relative L2 0.8972, labels are analytic vertical-plane P0 only, no Cherchi labels or arbitrary quadric certification.
+
+## M3 started — same-data architecture tournament
+
+- Added `spin_pino/tournament.py` to compare support-masked Spin-PINO (4-node parameter-matched and 6-node selected configs), W6 M7 Realizable U-FNO, and W5 voxel DeepONet.
+- All models use the exact same analytic geometry-family fit/validation/test splits, coefficient inputs, r/J labels, seeds, Adam step budget and four-channel voxel input.
+- The report includes parameter counts, held-out r/J error, per-component error and training time. Parameter counts are reported rather than artificially forced equal.
+- This is a fair architecture comparison on the analytic P0 task; it is not a Cherchi/native Spin result.

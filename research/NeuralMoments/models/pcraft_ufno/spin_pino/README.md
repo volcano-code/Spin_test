@@ -75,3 +75,11 @@ Code review identified a missing physical constraint in the first Spin-PINO head
 `w_k = (8/N^3) * rho(x_k) * occupancy(x_k) * sigmoid(g_theta(D)_k)`.
 
 This prevents the network from creating discrete material atoms in sampled empty space. It is a discrete sampled-support constraint, not a continuum/CAD certificate. The M2b three-seed sweep reruns the same three configurations and is tracked separately from the pre-mask M2 results.
+
+## M2b support-masked result
+
+The support-masked 8^3 input / 6^3 quadrature / smoothing 0.02 configuration is the current research setting. Mean held-out ellipsoid r relative L2 = 0.2561 and J relative L2 = 0.8972 across seeds 131/137/139. This improves on the pre-mask 6-node run, but is not Newton-ready. See `M2B_REPORT.md`.
+
+## M3 same-data tournament
+
+`tournament.py` compares two Spin-PINO configurations with W6 M7 Realizable U-FNO and W5 voxel DeepONet using identical analytic dataset splits, labels, seeds and training steps. It reports capacity differences rather than hiding them.
