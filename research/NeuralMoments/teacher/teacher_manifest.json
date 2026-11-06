@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M22_P2_HEART_NUMERIC_AND_HISTORICAL_BOUNDARY_REPLAYED_DIAGNOSTIC_ONLY",
+  "status": "M22_P3_HEART_LOCAL_BOOLEAN_BOUNDARY_SEMANTICS_PASS_GLOBAL_SET_EQUIVALENCE_PENDING",
   "native_teacher_runs": 1,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "Full M21 same-call material object and native binaries for original-call provenance; independent solid/Boolean and W0/W3 derivative-neighborhood certification; six exact Noodles V7 F/D/A packets and fresh Noodles native teacher. J_D remains null, and the historical and diagnostic cases stay excluded.",
+  "pending_dependency": "M22-P4: complete exact arrangement-cell/Boolean set-equality proof for reconstructed Heart operand pair; independently certify Design input embedding; recover full M21 same-call payload and native binaries if available. Then M23 Noodles six exact F/D/A packets and fresh native teacher; W0/W3 smooth-neighborhood/Jacobian/ Newton admission remains pending.",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -664,5 +664,65 @@
     "J_D": null,
     "split": "excluded",
     "training_admitted": false
+  },
+  "m22_p3_heart_boolean_local_audit": {
+    "status": "LOCAL_BOUNDARY_SEMANTICS_PASS_GLOBAL_SET_EQUIVALENCE_NOT_CERTIFIED",
+    "report": "research/NeuralMoments/teacher/M22_P3_HEART_BOOLEAN_LOCAL_AUDIT_20261106.md",
+    "machine_result": "research/NeuralMoments/teacher/M22_P3_HEART_BOOLEAN_LOCAL_AUDIT_20261106.json",
+    "exact_output_faces": 16910,
+    "exact_face_parent_mapping": {
+      "design": 16034,
+      "quadric_source": 876,
+      "unmatched": 0,
+      "multiple_parent_matches": 0
+    },
+    "orientation": {
+      "design_same": 16034,
+      "quadric_reversed": 876
+    },
+    "exact_side_probes": {
+      "offset_powers": [
+        25,
+        27
+      ],
+      "membership_classifications": 135280,
+      "ambiguous": 0,
+      "mismatches": 0,
+      "two_scale_classifications_identical": true
+    },
+    "input_face_centroid_coverage": {
+      "design": {
+        "checked": 26244,
+        "mismatches": 0,
+        "ambiguous": 0
+      },
+      "quadric_source": {
+        "checked": 320,
+        "mismatches": 0,
+        "ambiguous": 0
+      }
+    },
+    "parent_area_accounting": {
+      "design": {
+        "full": 14900,
+        "partial": 696,
+        "zero": 10648,
+        "overcovered": 0
+      },
+      "quadric_source": {
+        "full": 48,
+        "partial": 85,
+        "zero": 187,
+        "overcovered": 0
+      }
+    },
+    "global_exact_boolean_set_equality_certified": false,
+    "design_input_self_intersection_certified": false,
+    "full_m21_same_call_material_recovered": false,
+    "new_native_cherchi_calls": 0,
+    "J_D": null,
+    "split": "excluded",
+    "training_admitted": false,
+    "training_samples": 0
   }
 }
