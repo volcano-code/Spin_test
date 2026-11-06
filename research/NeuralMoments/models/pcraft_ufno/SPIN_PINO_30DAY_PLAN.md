@@ -116,3 +116,11 @@ It does not mean the full long-term Spin research goal is closed if formal Cherc
 - GitHub Actions run 42186600269 passed: Spin-PINO 9/9 tests; existing NeuralOperator/QuadrANN 8/8; Algoim C++ 1/1 with maximum absolute error 7.50e-11.
 - This is architecture/identity smoke only; no Spin/Cherchi training or Newton admission yet.
 - M0 status: implementation and CPU smoke passed; source license/ownership clearance and real training remain open.
+
+## M1 implementation started — 2026-11-06
+
+- Added `spin_pino/dataset.py`: deterministic exact-continuum P0 samples for boxes/spheres/ellipsoids, geometry-ID-disjoint fit/validation split, fully held-out ellipsoid test family, SHA-256 dataset receipts and explicit non-Cherchi label provenance.
+- Added `spin_pino/train.py`: reproducible PINO training loop with data + moment-physics + analytic-Jacobian loss, 3-seed CLI, held-out metrics and optional checkpoints.
+- Added `spin_pino/tests/test_dataset.py`: split/provenance smoke and a tiny CPU training smoke.
+- Scope is deliberately restricted to strictly interior vertical-plane cuts, where the existing analytic reference supplies exact r and J. General quadratic cuts and W2 labels are not silently mixed into this first dataset.
+- CI validation for this M1 addition is pending.

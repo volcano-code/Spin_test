@@ -16,3 +16,29 @@ Current status: first implementation slice added; CI validation pending. Not tra
 ## M0 CPU validation
 
 GitHub Actions run [42186600269](https://github.com/volcano-code/Spin_test/actions/runs/42186600269) passed: Spin-PINO 9/9 tests in 1.44 s; the existing GINO/QuadrANN smoke 8/8; Algoim C++ 1/1 with max absolute error 7.50e-11. This validates the initial architecture and identities only; no Spin/Cherchi training or Newton admission is claimed. See `VALIDATION_REPORT.md`.
+
+## M1 analytic P0 data and training
+
+The dataset builder uses the existing exact continuum vertical-plane references for boxes, spheres and ellipsoids. Fit/validation are split by geometry identity (boxes+spheres); the entire ellipsoid family is held out for testing. Labels are explicitly tagged `ANALYTIC_CONTINUUM_P0_NOT_W2_CHERCHI`; the analytic Jacobian is only valid for strictly interior vertical-plane cuts.
+
+Small CPU smoke:
+
+```bash
+OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
+python -m pytest -q \
+  research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_spin_pino.py \
+  research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_dataset.py
+```
+
+Three-seed training (CPU prototype):
+
+```bash
+OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
+python -m research.NeuralMoments.models.pcraft_ufno.spin_pino.train \
+  --seeds 131,137,139 --train-geometries-per-family 16 \
+  --test-ellipsoid-geometries 8 --queries-per-geometry 2 \
+  --steps 120 --grid-size 8 --device cpu \
+  --output /tmp/spin_pino_m1_three_seed.json --save-checkpoints
+```
+
+These are synthetic analytic labels, not Cherchi supervision. The held-out family tests geometry generalization only within this restricted P0 vertical-plane task; no arbitrary quadric or native Newton claim is implied.
