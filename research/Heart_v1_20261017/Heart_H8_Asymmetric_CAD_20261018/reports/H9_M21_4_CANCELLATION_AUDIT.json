@@ -7,7 +7,7 @@
     "source_status": "SIX_SAVED_SURFACES_REINTEGRATED_DIAGNOSTIC_ONLY",
     "saved_materials_reintegrated": 6,
     "new_native_calls_this_run": 0,
-    "stage18_audit_sha256": "68ee61282caac38d160a4226d9e44df42dd7eba",
+    "stage18_audit_sha256": "68ee61282caac38d160a4226d9e44df694b7723094890fd62cc61ada434e12e2",
     "raw_exactness_scope": "INTEGRALS_OF_SAVED_RATIONAL_POLYHEDRA_ONLY"
   },
   "findings": [
