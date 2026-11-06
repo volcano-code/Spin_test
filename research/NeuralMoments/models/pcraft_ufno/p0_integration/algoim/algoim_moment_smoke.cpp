@@ -19,7 +19,7 @@ struct UnitSphere {
 int main() {
   const UnitSphere phi;
   const auto box = algoim::HyperRectangle<double, 3>(-1.1, 1.1);
-  const auto q = algoim::quadGen<3>(phi, box, -1, -1, 4);
+  const auto q = algoim::quadGen<3>(phi, box, -1, -1, 8);
   const std::array<double, 10> got = {
     q([](const auto& x) { return 1.0; }),
     q([](const auto& x) { return x(0); }),

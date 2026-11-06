@@ -101,7 +101,7 @@ class GINOMomentOperator(nn.Module):
             gno_coord_dim=3,
             in_gno_radius=in_gno_radius,
             out_gno_radius=out_gno_radius,
-            fno_in_channels=hidden_channels,
+            fno_in_channels=4,
             fno_n_modes=(fno_modes, fno_modes, fno_modes),
             fno_hidden_channels=hidden_channels,
             fno_n_layers=fno_layers,
