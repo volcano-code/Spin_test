@@ -89,3 +89,20 @@ This remains diagnostic-only. The M21 full same-call material digest and evaluat
 - The 4 GiB cloud cgroup is not qualified for the M16 24 GiB native protocol. The successful 9 GiB M21 diagnostic profile is not a blanket memory qualification for the larger Noodles CSG workload.
 
 **Overall verdict:** Heart has passed one meaningful physical-moment and point-000 embedded-boundary diagnostic. W2 has not yet delivered the initial dual-model, derivative-certified, Newton-validated, training-ready Cherchi teacher system.
+
+## M22-P4 completion update — 2026-11-06
+
+The frozen Heart point-000 global regularized Boolean set-equivalence certificate has now passed independent replay.
+
+- 7,711 exact AABB operand triangle candidates; 6,927 disjoint; 784 exact intersection segments; 0 point-only/coplanar cases.
+- 28,528 exact arrangement cells (27,378 Design, 1,150 QuadricSource), all exactly partitioned and independently classified; 0 membership mismatches.
+- Independent C++/GMP exact ray replay: 28,528 samples, 734,777 candidate triangle tests, 24,370 hits, 0 ambiguous, 0 mismatches; replay rerun byte-identical.
+- 16,910 output faces uniquely parent-bound; 16,034 Design orientation preserved; 876 QuadricSource orientation reversed.
+- Every selected cell is covered by output faces, excluded cells have no output coverage, all output edges/intersection segments are in the arrangements, and exact area accounting matches.
+- Exact rational volume identity: V(D∩Q) = V(D) − V(O) = 0.6360745735121340 (binary64 display).
+- Independent verifier status: PASS_EXACT_ARRANGEMENT_CERTIFICATE_REPLAY_GLOBAL_REGULARIZED_BOOLEAN_BOUNDARY_EQUIVALENCE.
+- M22-P4 evidence package SHA-256: bf0326a39c8eeab5d3031f1263038f71cbf0bf92b61ef2c26d06e02bc616bf30.
+
+This certifies the frozen reconstructed H8f point-000 operand pair and M21-matched output boundary. The H8f geometry is not author-original CAD; the full M21 same-call serialized material payload and native binaries remain missing. Keep J_D=null, split=excluded, training samples=0. Noodles V7 exact F/D/A, W0/W3 derivative certification and Newton admission remain open.
+
+A fresh Python producer rerun timed out at 300 seconds and is not counted as a pass; the accepted verdict is based on the SHA-pinned certificate plus the completed independent verifier and byte-identical exact C++/GMP ray replay.
