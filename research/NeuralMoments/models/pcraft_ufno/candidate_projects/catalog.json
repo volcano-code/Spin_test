@@ -135,10 +135,19 @@
           "0fd97ae9a570ee500556929ce47d918f8bef9473"
         ]
       ],
-      "w6_status": "NOT_INTEGRATED",
-      "role": "Physics-state attention baseline; test whether learned physical slices improve coefficient-conditioned ten-moment queries over U-FNO/GNO.",
+      "w6_status": "PINO_AUXILIARY_ADAPTER_IMPLEMENTED_CPU_CI_PENDING",
+      "role": "Optional residual geometry-token adapter inside P-CRAFT PINO. Reuses Physics_Attention_1D_Eidetic and Transolver_plus_block; outputs pooled geometry features fused through a zero-initialized trainable gate. Never replaces the P-CRAFT UFNO trunk or Spin moment head.",
       "priority": "P0_DIRECT_REUSE",
-      "reuse_rule": "MIT; preserve notices. Do not claim the CFD weights transfer to Spin."
+      "reuse_rule": "MIT; preserve notices. Do not claim the CFD weights transfer to Spin.",
+      "integration_evidence": {
+        "upstream_commit": "d5a23bc734a0ebac56384cf72049a26af9673452",
+        "source_blob": "0fd97ae9a570ee500556929ce47d918f8bef9473",
+        "license": "MIT",
+        "license_blob": "83787cb894a379be3f9babe7e701d5e7d338ec9f",
+        "adapter_path": "research/NeuralMoments/models/pcraft_ufno/spin_pino/transolver_plus_adapter.py",
+        "model_fusion": "SpinPINO geometry_adapter='transolver_plus'; zero-initialized residual gate",
+        "status": "adapter source added; CPU tests and matched three-seed tournament pending"
+      }
     },
     {
       "id": "neural-solver-library",

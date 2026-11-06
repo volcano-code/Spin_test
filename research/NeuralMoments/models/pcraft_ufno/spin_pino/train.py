@@ -52,6 +52,7 @@ def run_seed(
     pcgrad: bool = False,
     moment_parameterization: str = "smooth_hinge",
     temperature: float = 0.12,
+    geometry_adapter: str = "none",
     rotation_augmentation: bool = False,
     rotation_augmentation_mode: str = "cube",
     evaluation_rotation_mode: str = "so3",
@@ -97,6 +98,7 @@ def run_seed(
         smoothing=smoothing,
         moment_parameterization=moment_parameterization,
         temperature=temperature,
+        geometry_adapter=geometry_adapter,
     ).to(device)
     preconditioner = (
         DiagonalMomentResidualPreconditioner.fit(fit[2], fit[3]).to(device=device, dtype=fit[2].dtype)
@@ -177,6 +179,10 @@ def run_seed(
         "derivative_scope": splits["metadata"]["derivative_scope"],
         "dataset": splits["metadata"],
         "trainable_parameters": model.real_parameter_count(),
+        "adapter_gate": (
+            float(torch.tanh(model.transolver_plus_gate).detach())
+            if model.transolver_plus_gate is not None else 0.0
+        ),
         "loss_conditioning": {
             "diagonal_preconditioner": bool(preconditioned_loss),
             "pcgrad": bool(pcgrad),
@@ -184,12 +190,14 @@ def run_seed(
             "preconditioner": preconditioner.as_dict() if preconditioner else None,
             "rotation_augmentation": bool(rotation_augmentation),
             "rotation_augmentation_mode": rotation_augmentation_mode,
+            "geometry_adapter": geometry_adapter,
             "evaluation_rotation_mode": evaluation_rotation_mode,
             "fit_samples_after_augmentation": int(len(fit[0])),
         },
         "model_config": {"grid_size": grid_size, "points_per_axis": points_per_axis,
                          "smoothing": smoothing, "moment_parameterization": moment_parameterization,
-                         "temperature": temperature, "width": 4 if grid_size <= 8 else 8,
+                         "temperature": temperature, "geometry_adapter": geometry_adapter,
+                         "width": 4 if grid_size <= 8 else 8,
                          "modes": 2 if grid_size <= 8 else 4},
         "training": {
             "steps": steps,
@@ -242,6 +250,7 @@ def main():
     parser.add_argument("--pcgrad", action="store_true")
     parser.add_argument("--moment-parameterization", choices=("smooth_hinge", "logistic_atom"), default="smooth_hinge")
     parser.add_argument("--temperature", type=float, default=0.12)
+    parser.add_argument("--geometry-adapter", choices=("none", "transolver_plus"), default="none")
     parser.add_argument("--rotation-augmentation", action="store_true")
     parser.add_argument("--rotation-augmentation-mode", choices=("cube", "so3"), default="cube")
     parser.add_argument("--evaluation-rotation-mode", choices=("cube", "so3"), default="so3")
@@ -265,6 +274,7 @@ def main():
             pcgrad=args.pcgrad,
             moment_parameterization=args.moment_parameterization,
             temperature=args.temperature,
+            geometry_adapter=args.geometry_adapter,
             rotation_augmentation=args.rotation_augmentation,
             rotation_augmentation_mode=args.rotation_augmentation_mode,
             evaluation_rotation_mode=args.evaluation_rotation_mode,

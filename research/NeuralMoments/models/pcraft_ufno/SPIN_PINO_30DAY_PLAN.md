@@ -257,3 +257,11 @@ Acceptance: moment/quadric/Jacobian transform tests pass; augmentation preserves
 - Only rotated test samples contribute to the rotated metric.
 - Record voxel clipping fraction and soft occupancy mass ratio separately because trilinear resampling is not exact.
 - Cloud CPU CI and three-seed comparison are pending. Do not draw conclusions from the first M7 comparison.
+## M8 — Transolver++ auxiliary geometry adapter started
+
+- Pinned standalone MIT source `thuml/Transolver_plus@d5a23bc734a0ebac56384cf72049a26af9673452`.
+- Ported the original Physics_Attention_1D_Eidetic and Transolver++ residual block into an optional geometry-token adapter.
+- Added a zero-initialized residual gate so the initial SpinPINO function remains exactly PINO-only.
+- Adapter uses the same canonical four-channel voxel input plus xyz tokens and returns a feature vector matching the PINO latent dimension.
+- Added a same-data three-seed CPU tournament job: PINO-only versus PINO + Transolver++ adapter. CI pending.
+- Full PhysicsNeMo GeoTransolver is deferred in this one-month path because current main requires Python >=3.11 / torch >=2.13, incompatible with the pinned W6 CI environment (Python 3.10 / torch 2.5.1).

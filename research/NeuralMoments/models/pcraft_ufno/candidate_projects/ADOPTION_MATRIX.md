@@ -75,3 +75,6 @@ These two entries expand the mechanics branch, but do not count as source-code i
 | P1 | HyPINO | Method of Manufactured Solutions and residual-based iterative refinement | MIT source inspected | Use MMS/analytic manufactured cases and residual refinement ideas; do not use Swin hypernetwork as Spin backbone |
 
 All four are subordinate to P-CRAFT PINO. Full status, license caveats and acceptance gaps are in `../ALL_ADVANCED_SOLUTIONS_GAP_MATRIX.md`.
+
+
+M8 source pin: `thuml/Transolver_plus@d5a23bc734a0ebac56384cf72049a26af9673452`; MIT license blob `83787cb894a379be3f9babe7e701d5e7d338ec9f`. Current W6 adapter ports the original Physics_Attention_1D_Eidetic and Transolver++ residual block into an auxiliary geometry-token branch.

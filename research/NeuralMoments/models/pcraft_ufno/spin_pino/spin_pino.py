@@ -11,6 +11,7 @@ from torch import Tensor, nn
 import torch.nn.functional as F
 
 from .pino_backbone import PINOFeatureEncoder
+from .transolver_plus_adapter import TransolverPlusGeometryAdapter
 from ..model import canonical_geometry
 
 MOMENT_NAMES = ("mass", "x", "y", "z", "xx", "yy", "zz", "yz", "xz", "xy")
@@ -75,6 +76,11 @@ class SpinPINO(nn.Module):
         quadrature_rule: str = "midpoint",
         moment_parameterization: str = "smooth_hinge",
         temperature: float = 0.12,
+        geometry_adapter: str = "none",
+        transolver_hidden_dim: int = 32,
+        transolver_heads: int = 4,
+        transolver_slices: int = 16,
+        transolver_layers: int = 2,
         use_gradient_checkpoint: bool = False,
     ):
         super().__init__()
@@ -96,6 +102,23 @@ class SpinPINO(nn.Module):
         self.quadrature_rule = quadrature_rule
         self.moment_parameterization = moment_parameterization
         self.temperature = float(temperature)
+        if geometry_adapter not in ("none", "transolver_plus"):
+            raise ValueError("geometry_adapter must be none or transolver_plus")
+        self.geometry_adapter_name = geometry_adapter
+        if geometry_adapter == "transolver_plus":
+            self.transolver_plus_adapter = TransolverPlusGeometryAdapter(
+                pino_feature_dim=self.encoder.feature_dim,
+                hidden_dim=transolver_hidden_dim,
+                heads=transolver_heads,
+                slice_num=transolver_slices,
+                n_layers=transolver_layers,
+            )
+            # Zero-initialized residual gate keeps the initial function exactly
+            # equal to PINO-only while allowing gradients to open the plugin.
+            self.transolver_plus_gate = nn.Parameter(torch.zeros(()))
+        else:
+            self.transolver_plus_adapter = None
+            self.register_parameter("transolver_plus_gate", None)
         self.weight_head = nn.Sequential(
             nn.Linear(self.encoder.feature_dim, hidden_dim),
             nn.GELU(),
@@ -120,6 +143,9 @@ class SpinPINO(nn.Module):
     def encode_geometry(self, geometry: Tensor) -> Tensor:
         canonical = canonical_geometry(geometry)
         features = self.encoder(canonical)
+        if self.transolver_plus_adapter is not None:
+            plugin_features = self.transolver_plus_adapter(canonical)
+            features = features + torch.tanh(self.transolver_plus_gate) * plugin_features
         # Enforce support and density at every quadrature node. The learned
         # head may redistribute mass only inside occupied material; it cannot
         # create atoms in empty space. This is a discrete-measure realizability

@@ -1,0 +1,34 @@
+{
+  "schema": "SPIN_PINO_M7B_STATUS_V1",
+  "status": "FAIR_SO3_CI_PASSED_AUGMENTATION_ALONE_INSUFFICIENT",
+  "workflow_run": 42211797282,
+  "workflow_conclusion": "success",
+  "artifact_id": 13498609643,
+  "same_so3_test_transforms": true,
+  "rotated_metric_uses_rotated_samples_only": true,
+  "mean_metrics": {
+    "no_aug": {
+      "r_unrot": 0.2060204595,
+      "J_unrot": 0.3146557013,
+      "r_so3": 0.3712313771,
+      "J_so3": 0.4495180945
+    },
+    "cube_aug": {
+      "r_unrot": 0.2055550665,
+      "J_unrot": 0.3143239617,
+      "r_so3": 0.3707180321,
+      "J_so3": 0.4490042826
+    },
+    "so3_aug": {
+      "r_unrot": 0.2055682093,
+      "J_unrot": 0.3142836293,
+      "r_so3": 0.3706596692,
+      "J_so3": 0.4489104449
+    }
+  },
+  "mean_clipped_occupied_center_fraction": 0,
+  "mean_soft_occupancy_mass_ratio": 0.9994662566,
+  "label_source": "ANALYTIC_CONTINUUM_P0_NOT_W2_CHERCHI",
+  "newton_admitted": false,
+  "next": "M7c paired SO3 covariance consistency loss"
+}

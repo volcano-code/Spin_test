@@ -1,0 +1,15 @@
+{
+  "schema": "SPIN_PINO_M8_STATUS_V1",
+  "status": "TRANSOLVER_PLUS_AUXILIARY_ADAPTER_IMPLEMENTED_CI_PENDING",
+  "primary_backbone": "P-CRAFT PINO UFNO3d",
+  "plugin": "Transolver++ Physics_Attention_1D_Eidetic",
+  "upstream_commit": "d5a23bc734a0ebac56384cf72049a26af9673452",
+  "license": "MIT",
+  "zero_initialized_residual_gate": true,
+  "replaces_pino": false,
+  "matched_tournament": "PINO-only vs PINO+Transolver++; three seeds; 120 steps; same analytic split and SO3 test transforms",
+  "ci_pending": true,
+  "cherchi_supervised": false,
+  "newton_admitted": false,
+  "real_spin_end_to_end_validated": false
+}

@@ -140,3 +140,11 @@ The first M7 artifact is exploratory only because training conditions did not sh
 - reports occupied-voxel-center clipping fraction and soft occupancy mass ratio separately.
 
 See `M7B_PROTOCOL.md`. This remains analytic vertical-plane P0, not Cherchi supervision or Newton admission.
+
+## M8 Transolver++ auxiliary adapter
+
+`transolver_plus_adapter.py` ports the MIT Transolver++ `Physics_Attention_1D_Eidetic` and residual block as an optional geometry-token branch. It is fused with the P-CRAFT PINO latent through a zero-initialized trainable gate. Thus the initial model is exactly PINO-only, and Transolver++ can contribute only a learned residual geometry feature.
+
+Source pin and design details: `TRANSOLVER_PLUS_INTEGRATION.md`.
+
+The M8 CPU tournament compares PINO-only against PINO + Transolver++ using identical analytic splits, three seeds and identical arbitrary-SO(3) test transforms. The plugin is not promoted unless the held-out accuracy/latency trade-off justifies it.

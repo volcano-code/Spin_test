@@ -102,3 +102,9 @@ To finish by 2026-12-06, PINO-specific methods receive priority over additional 
 4. NQR/QuadrANN remain quadrature proposal modules subordinate to PINO.
 5. DensiCrafter/MMDO 16³/32³ CPU integration follows only after M7b/M8.
 6. FEM/PINN stress mechanics, 512³ and full DoMINO/FIGConvNet/GAOT/GINOT imports remain deferred/stretch work within the 30-day window.
+## M7b outcome and M8 Transolver++ plugin selection — 2026-11-06
+
+- M7b fair SO(3) comparison passed CI. Augmentation alone barely changes the rotated held-out error (r/J relative L2 0.37123/0.44952 without augmentation vs 0.37066/0.44891 with SO(3) augmentation). Voxel clipping was 0%; soft occupancy mass ratio 0.999466. The orientation gap is real in this restricted analytic benchmark.
+- Next PINO-specific method: add paired SO(3)-covariance consistency loss; do not simply increase augmentation volume.
+- M8 selects the standalone MIT Transolver++ eidetic physical-state attention as an auxiliary residual geometry-feature adapter. It is subordinate to P-CRAFT PINO; compare PINO-only vs PINO+Transolver++ under same data/splits/seeds. GeoTransolver remains a candidate, but the current PhysicsNeMo main branch requires Python >=3.11 and torch >=2.13, while W6 CI is pinned to Python 3.10/torch 2.5.1. Avoid destabilizing the one-month prototype with that dependency upgrade.
+- Transolver++ source pin: `thuml/Transolver_plus@d5a23bc734a0ebac56384cf72049a26af9673452`; MIT license blob `83787cb894a379be3f9babe7e701d5e7d338ec9f`.
