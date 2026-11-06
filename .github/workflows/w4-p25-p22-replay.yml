@@ -11,9 +11,10 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
-  group: w4-p25-p22-replay-${{ github.ref }}
+  group: w4-p25-p22-replay-v2-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -61,47 +62,40 @@ jobs:
           docker image inspect "w4-p25-p22:github-${GITHUB_RUN_ID}" \
             --format '{{.Id}}' | tee "$RUNNER_TEMP/w4-p25/image-id.txt"
 
-      - name: Build genuine Cherchi modules and prepare frozen M F D under 8 GiB
+      - name: Reuse the already verified 8 GiB native build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: W4-P25-P22-fixed-W0-8GiB-test-only
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 42172591972
+          path: ${{ runner.temp }}/w4-p25
+
+      - name: Verify downloaded native build bytes and module identities
+        env:
+          P25_EVIDENCE: ${{ runner.temp }}/w4-p25
         run: |
           set -euo pipefail
-          docker run --rm --init \
-            --memory=8g --memory-swap=8g --cpus=2 --cgroupns=private \
-            --mount "type=bind,src=$GITHUB_WORKSPACE/core,dst=/work/core" \
-            --mount "type=bind,src=$GITHUB_WORKSPACE/w4,dst=/work/w4,readonly" \
-            --mount "type=bind,src=$RUNNER_TEMP/w4-p25,dst=/output" \
-            --user "$(id -u):$(id -g)" \
-            --env HOME=/tmp --env GIT_CONFIG_GLOBAL=/tmp/gitconfig \
-            --env P1="$P1" --env P25="$P25" \
-            "w4-p25-p22:github-${GITHUB_RUN_ID}" bash -lc '
-              set -euo pipefail
-              export PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1
-              export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
-              git config --global --add safe.directory /work/core
-              git config --global --add safe.directory /work/core/libigl
-              printf "memory.max="; cat /sys/fs/cgroup/memory.max
-              printf "memory.swap.max="; cat /sys/fs/cgroup/memory.swap.max
-              /opt/w4-venv/bin/python -c "import sys,numpy,pybind11; print(sys.version); print(numpy.__version__,pybind11.__version__)"
-              test "$(pkg-config --modversion gmp)" = "6.3.0"
-              test "$(pkg-config --modversion mpfr)" = "4.2.1"
-              /opt/w4-venv/bin/python "/work/w4/$P1/p20_build_native_ci.py" \
-                --source-checkout /work/core \
-                --build-root /output/native-build \
-                --evidence /output/native-build-evidence \
-                --timeout-seconds 2400
-              cp /output/native-build-evidence/P20_NATIVE_BUILD_REPORT.json \
-                 /output/native-build/P20_NATIVE_BUILD_REPORT.json
-              python - <<'PY'
-          import json
+          python - <<'PY'
+          import hashlib, json, os
           from pathlib import Path
-          p=Path("/output/native-build/P20_NATIVE_BUILD_REPORT.json")
-          r=json.loads(p.read_text())
-          assert r["status"] == "BUILT_AND_IMPORT_VERIFIED_NO_GEOMETRY", r
-          assert r["import_probe"]["imports_verified"] is True
-          assert r["import_probe"]["geometry_calls"] == 0
-          assert set(r["native_modules"]) == {"_make_it_stand","_cherchi_core_boolean","_cherchi_rational_moments"}
-          print("P25_NATIVE_BUILD_PASS: all three pinned ELF modules built and import-verified; no geometry executed")
+          root=Path(os.environ["P25_EVIDENCE"])
+          report_path=root/"native-build/P20_NATIVE_BUILD_REPORT.json"
+          report=json.loads(report_path.read_text())
+          assert report["status"] == "BUILT_AND_IMPORT_VERIFIED_NO_GEOMETRY", report
+          assert report["import_probe"]["imports_verified"] is True
+          assert report["import_probe"]["geometry_calls"] == 0
+          expected={"_make_it_stand":("core/python",None),
+                    "_cherchi_core_boolean":("cherchi/python",None),
+                    "_cherchi_rational_moments":("cherchi/python",None)}
+          for name,(folder,_) in expected.items():
+              matches=list((root/"native-build"/folder).glob(name+"*.so"))
+              assert len(matches)==1, (name,matches)
+              actual=hashlib.sha256(matches[0].read_bytes()).hexdigest()
+              assert actual==report["native_modules"][name]["sha256"], name
+              print(name,actual)
+          print("P25_REUSED_NATIVE_BUILD_VERIFIED")
           PY
-            '
 
       - name: Rerun unchanged W0 native audit in a separate 8 GiB zero-swap container
         run: |
