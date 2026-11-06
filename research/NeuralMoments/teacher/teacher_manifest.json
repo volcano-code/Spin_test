@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M22_P4_GLOBAL_BOOLEAN_SET_EQUIVALENCE_CERTIFIED_FROZEN_HEART_POINT000_DIAGNOSTIC_ONLY",
+  "status": "M23_P1_NOODLES_SIX_PACKET_IDENTITIES_AND_THREE_CHAIN_RECEIPTS_CROSS_MATCH_RAW_BYTES_MISSING",
   "native_teacher_runs": 1,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "M23 Noodles V7: recover or rebuild the six exact rational F/D/A CSG packets, prove their global Boolean set semantics, then run a fresh native Cherchi teacher. In parallel W0/W3 must certify smooth neighborhoods and the full 10x10 Jacobian before any derivative label or training split is released. Keep the M21 same-call material provenance gap explicit.",
+  "pending_dependency": "M23-P2: recover six exact rational packet payload bytes by pinned SHA from original experiment storage; if unavailable, rerun the pinned 96-operation CGAL DAG locally with the exact backend and preserve intermediate outputs/receipts. Then certify solid validity and binary64 F/D/A set partition before any W2 Cherchi teacher call. Keep J_D=null and training split excluded.",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -893,5 +893,39 @@
       "output_face_parent_map": "fb868e39182407615a4db370024ce87c46ef41e361a79d632533112a586fa617"
     },
     "evidence_package_size_bytes": 68113226
+  },
+  "m23_p1_noodles": {
+    "report": "research/NeuralMoments/teacher/M23_P1_NOODLES_SIX_PACKET_IDENTITY_AUDIT_20261106.md",
+    "result": "research/NeuralMoments/teacher/M23_P1_NOODLES_SIX_PACKET_IDENTITY_AUDIT_20261106.json",
+    "source": "research/NeuralMoments/teacher/m23_p1_noodles_six_packet_audit.py",
+    "tests": "research/NeuralMoments/teacher/test_m23_p1_noodles_six_packet_audit.py",
+    "workflow": ".github/workflows/w2-m23-p1-noodles-audit.yml",
+    "main_checkpoint_head": "8c949de977ef50be337da7aec6c852566e0da565",
+    "source_snapshot_sha256": "f7cf4c2efbd32b9c19d33359471f0671aa2efae104d3aa912500157052f39980",
+    "source_manifest_sha256": "67364abba55c74ccd377eef6174b8c96ee04e4af1aadbd7e505466bafabd2a3a",
+    "backend_sha256": "d6803f184047f6172b177b9f436b16f22cdb6a949126d1df88a5d084f3dd9df3",
+    "historical_csg_operations": 96,
+    "source_parts": 94,
+    "fixed_parts": 93,
+    "six_packet_identity_cross_matches": 6,
+    "six_packet_raw_payloads_recovered": 0,
+    "exact_chain_relations_passed": 3,
+    "exact_chain_relation_names": [
+      "F_plus_D_equals_A",
+      "K_plus_D_equals_E",
+      "K_plus_R_equals_F"
+    ],
+    "chain_proofs_certify_native_solids": false,
+    "author_original_cad": false,
+    "separate_v7_cherchi_warm_restart_recorded": true,
+    "w2_teacher_sample_admitted": false,
+    "new_cgal_calls": 0,
+    "new_cherchi_calls": 0,
+    "regression_workflow_first_run": {
+      "run_id": 42211036530,
+      "conclusion": "failure",
+      "cause": "test fixture passed pathlib.Path to json.loads instead of reading text; production auditor's two positive-path tests passed"
+    },
+    "regression_workflow_rerun_pending": 42211272055
   }
 }
