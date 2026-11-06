@@ -110,3 +110,20 @@ Historical point-000 `r_D` exactly matches the M21 label's ten binary64 variable
 ## Verdict
 
 **M22-P3 local Boolean boundary semantics: PASS. Global exact set equivalence: NOT YET CERTIFIED.** This is a substantive, source-bound diagnostic improvement. Preserve the M21/H8f historical records unchanged and keep all data excluded.
+## 8. Deterministic volumetric membership cross-check
+
+An additional 4,096-point unscrambled 3D Sobol sequence was mapped into the Design operand's axis-aligned bounding box. Every probe coordinate was interpreted as an exact rational value. Each point was independently classified against the Design input, Quadric source, and output boundary using exact rational ray/triangle predicates.
+
+- Expected membership was computed as `inside(Design) && !inside(QuadricSource)`.
+- Observed membership was computed independently from the output boundary.
+- All 4,096 probes were classified; no ray was ambiguous.
+- **0/4,096 membership mismatches.**
+
+| Inside Design | Inside Quadric | Expected/observed in output | Count |
+|---|---|---|---:|
+| No | No | Outside | 1,491 |
+| No | Yes | Outside | 320 |
+| Yes | Yes | Outside | 1,317 |
+| Yes | No | Inside | 968 |
+
+This is a deterministic volumetric consistency sample, not a proof over the continuum. It strengthens the local face-side and input-centroid checks, but does not replace exact arrangement-cell coverage.
