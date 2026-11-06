@@ -1,0 +1,3 @@
+# CPU smoke dependencies for the pinned NeuralOperator GINO/UQNO adapters.
+torch==2.5.1
+neuraloperator @ git+https://github.com/neuraloperator/neuraloperator.git@a6648eeeb60fe0837f2d7d021517a945a159a0c8

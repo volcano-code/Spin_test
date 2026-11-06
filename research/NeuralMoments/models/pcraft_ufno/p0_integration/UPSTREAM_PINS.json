@@ -1,0 +1,32 @@
+{
+  "schema": "W6_P0_UPSTREAM_PINS_V1",
+  "neuraloperator": {
+    "repository": "https://github.com/neuraloperator/neuraloperator",
+    "commit": "a6648eeeb60fe0837f2d7d021517a945a159a0c8",
+    "license": "MIT",
+    "license_blob": "5637378e3734ad545887a7e782f1cf22e4ced42f",
+    "files": {
+      "gino_py": "483fada108f26c6e9aad40f508981fdef21e947d",
+      "uqno_py": "bad45b1ecbdead28344981b3b3a40e186e66ad73"
+    }
+  },
+  "quadrann": {
+    "repository": "https://github.com/kesmarag/QuadrANN",
+    "commit": "111dd611aaeac1fb98c76385706b003ea8ef94be",
+    "license": "MIT",
+    "license_blob": "e3bf69af5a25254481a9ad7a6035d91ae2097e80",
+    "source_blob": "3610e881c311d718ccb22943f18a40babede153a",
+    "vendored_core_blob": "9e7c06f3438fbaa6664816541b13b964984b263c",
+    "note": "Side-effect-free extraction of positional encoding, density estimator, message-passing layers and QuadrANN model; upstream import-time training/plotting loop excluded."
+  },
+  "algoim": {
+    "repository": "https://github.com/algoim/algoim",
+    "commit": "da1d81499608e1d499695d255f0233140b8c81e8",
+    "license": "custom BSD-style with enhancement grant",
+    "license_blob": "8c2302650552febe4ecaff957db0445ba28b6235",
+    "headers": {
+      "quadrature_general": "bb3e16de85cad1ba9501c72741753b857430c579",
+      "quadrature_multipoly": "51e4a7bae13b72e678d8dfd7079b08f794daed44"
+    }
+  }
+}

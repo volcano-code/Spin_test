@@ -1,0 +1,43 @@
+name: W6 P0 upstream smoke
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/**
+      - .github/workflows/w6-p0-upstream-smoke.yml
+jobs:
+  neuraloperator-and-quadrann-cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install CPU PyTorch
+        run: python -m pip install --upgrade pip && python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+      - name: Install PyG CPU extensions
+        run: python -m pip install torch-scatter torch-cluster -f https://data.pyg.org/whl/torch-2.5.1+cpu.html && python -m pip install torch-geometric==2.6.1
+      - name: Install pinned NeuralOperator
+        run: python -m pip install "git+https://github.com/neuraloperator/neuraloperator.git@a6648eeeb60fe0837f2d7d021517a945a159a0c8"
+      - name: Install test runner
+        run: python -m pip install pytest
+      - name: Run adapter contract and upstream CPU smoke tests
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: python -m pytest -q research/NeuralMoments/models/pcraft_ufno/p0_integration/tests
+  algoim-cpp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure pinned Algoim smoke
+        run: cmake -S research/NeuralMoments/models/pcraft_ufno/p0_integration/algoim -B /tmp/w6-algoim-build -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build /tmp/w6-algoim-build --parallel 2
+      - name: Verify analytic unit-sphere ten moments
+        run: ctest --test-dir /tmp/w6-algoim-build --output-on-failure

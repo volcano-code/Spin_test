@@ -1,0 +1,4 @@
+# CPU smoke dependencies for the pinned QuadrANN 3D point-cloud model.
+torch==2.5.1
+torch-geometric==2.6.1
+# Install matching binary extensions, e.g. torch-scatter and torch-cluster from data.pyg.org.
