@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M22_P3_HEART_LOCAL_BOOLEAN_SEMANTICS_AND_4096_VOLUME_PROBES_PASS_GLOBAL_SET_EQUIVALENCE_PENDING",
+  "status": "M22_P3_HEART_ALL_THREE_SURFACES_EXACT_EMBEDDED_SET_EQUALITY_PENDING",
   "native_teacher_runs": 1,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "M22-P4: complete exact arrangement-cell/Boolean set-equality proof for reconstructed Heart operand pair; independently certify Design input embedding; recover full M21 same-call payload and native binaries if available. Then M23 Noodles six exact F/D/A packets and fresh native teacher; W0/W3 smooth-neighborhood/Jacobian/ Newton admission remains pending.",
+  "pending_dependency": "M22-P4: prove global exact Boolean set equality with exact arrangement-cell coverage or an independent exact Boolean backend; preserve M21/H8f provenance mismatch as unresolved. Then M23 Noodles six exact F/D/A packets and fresh native teacher; W0/W3 smooth-neighborhood/Jacobian/Newton admission remains pending.",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -732,5 +732,55 @@
       "method": "UNSCRAMBLED_3D_SOBOL_IN_DESIGN_AABB_EXACT_RATIONAL_RAY_CLASSIFICATION",
       "global_continuous_set_equality_proven": false
     }
+  },
+  "m22_p3_operand_embedding_audit": {
+    "report": "research/NeuralMoments/teacher/M22_P3_HEART_SURFACE_EMBEDDING_AUDIT_20261106.md",
+    "machine_result": "research/NeuralMoments/teacher/M22_P3_HEART_SURFACE_EMBEDDING_AUDIT_20261106.json",
+    "source": "research/NeuralMoments/teacher/m22_p3_audit_heart_operands.py",
+    "tests": "research/NeuralMoments/teacher/test_m22_p3_audit_heart_operands.py",
+    "checker_source_commit": "249db334303b31b8b8c2cfcb415b21a7cc2c9464",
+    "checker_source_sha256": "2536f7783ff6552ac930c294879e69b8430fc8e527873859b3ec1187d39c6ea0",
+    "h8f_archive_sha256": "99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9",
+    "m21_archive_sha256": "259b9f288b629415bafa42e4e09d6503e4f474e0e2253e6cc9eb1cd775a64dfd",
+    "surfaces": {
+      "design": {
+        "vertices": 13122,
+        "faces": 26244,
+        "exact_pairs_checked": 218939,
+        "nonadjacent_pairs": 60772,
+        "self_intersection_free": true,
+        "positive_orientation": true,
+        "signed_volume": 1.0998850071299318
+      },
+      "quadric_source": {
+        "vertices": 162,
+        "faces": 320,
+        "exact_pairs_checked": 1986,
+        "nonadjacent_pairs": 96,
+        "self_intersection_free": true,
+        "positive_orientation": true,
+        "signed_volume": 1.3881363252327446
+      },
+      "boolean_output": {
+        "vertices": 8455,
+        "faces": 16910,
+        "exact_pairs_checked": 161702,
+        "nonadjacent_pairs": 49727,
+        "self_intersection_free": true,
+        "positive_orientation": true,
+        "signed_volume": 0.4638104336177978
+      }
+    },
+    "regression_tests": {
+      "ran": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    "global_boolean_set_equality_certified": false,
+    "new_cherchi_calls": 0,
+    "J_D": null,
+    "split": "excluded",
+    "training_admitted": false
   }
 }
