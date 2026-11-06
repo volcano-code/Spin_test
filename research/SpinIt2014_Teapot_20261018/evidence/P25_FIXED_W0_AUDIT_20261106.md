@@ -50,9 +50,22 @@ Consequently all of the following remain false:
 
 The M5 record also explicitly leaves the independent W2 material-partition proof and independent Cherchi Boolean proof false, despite exact ten-moment parity. This is not a training or scientific release.
 
+## P26 follow-on — source identity refresh passed
+
+P26 refreshed the formal P20/P21 identity chain to the fixed W0 commit `5bab2eb2616df306906a6887a273f68acfa49320`:
+
+- P20 request SHA-256: `a324bbe85c9ee57a67221eb86420c505efc4d065d60d84cf92d66e4d95dac1b9`
+- P20 factory SHA-256: `bebab47452b61da7af3faa9e202f0ca44d3e1e36d18f171c90c50517b83047f4`
+- P20 launcher SHA-256: `ab63fc9b9c87307335d9bbe15f72a1ae62fec664ccfd0de8a5be50f136bcaca2`
+- P21 replay SHA-256: `ad22805aed5e0a2e4057b9fadc9e96d77c734f37aed99d7efb6ee066fece4310`
+- P21 replay verifier's W0/request/launcher pins were also refreshed.
+
+[ P26 GitHub Actions — 146 regression tests ](https://github.com/volcano-code/Spin_test/actions/runs/42180376807) completed successfully: P20 74/74 and P21 72/72, with no skips. The exact W0 source blobs and all 77 frozen Core Python source blobs also matched.
+
 ## Next work
 
-1. Refresh P20/P21 fixed-W0 source identities to commit `5bab2eb2616df306906a6887a273f68acfa49320` (P26).
-2. Run the refreshed P20/P21 regression suite.
-3. Rebuild and independently register new six-pin identities on a host satisfying the unchanged formal resource gate.
-4. Execute formal M6, then pursue derivative-neighborhood and Newton certification before optimization and MuJoCo comparison.
+1. Obtain a host with at least 20 GiB physical and effective memory and zero host swap; the current standard GitHub runner does not qualify.
+2. Rebuild or verify the actual native modules on that host and independently register a fresh six-pin record. P25 self-observed pins are TEST_ONLY and cannot be promoted.
+3. Run the refreshed P21 preflight/register/execute path and obtain formal M6 evidence.
+4. Obtain W0 owner/physical approval and W2 independent material-partition, Cherchi Boolean and derivative-neighborhood certification.
+5. Only then proceed to Newton optimization, three-objective ablations, physical validation and optimized-before/after MuJoCo comparison.
