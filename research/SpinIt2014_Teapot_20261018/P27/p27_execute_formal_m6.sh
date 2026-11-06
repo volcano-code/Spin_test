@@ -62,7 +62,7 @@ EXEC_REL="$RUN_REL/formal-m6-run-$(date -u +%Y%m%dT%H%M%SZ)"
   --mount "type=bind,src=$P27_ROOT,dst=/output" \
   --user "$(id -u):$(id -g)" \
   --env HOME=/tmp --env GIT_CONFIG_GLOBAL=/tmp/gitconfig \
-  --env P1="$P1_REL" --env RUN_REL="$RUN_REL" --env EXEC_REL="$EXEC_REL" \
+  --env P1="$P1_REL" --env RUN_REL="$RUN_REL" --env OUT="/output/$RUN_REL" --env EXEC_REL="$EXEC_REL" \
   --env P27_LOCK_SHA256="$P27_LOCK_SHA256" \
   --env OMP_NUM_THREADS=1 --env OPENBLAS_NUM_THREADS=1 --env MKL_NUM_THREADS=1 \
   "$IMAGE" bash -lc '
