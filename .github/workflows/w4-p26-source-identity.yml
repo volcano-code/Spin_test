@@ -1,0 +1,147 @@
+name: W4 P26 fixed-W0 source identity and P20/P21 regression
+
+on:
+  push:
+    branches:
+      - research/neuralmoments-w4-teapot-p1-20261019
+    paths:
+      - .github/workflows/w4-p26-source-identity.yml
+      - research/SpinIt2014_Teapot_20261018/P1/P20_native_request.json
+      - research/SpinIt2014_Teapot_20261018/P1/p20_native_factory.py
+      - research/SpinIt2014_Teapot_20261018/P1/p20_m6_launch.py
+      - research/SpinIt2014_Teapot_20261018/P1/p21_m6_replay.py
+      - research/SpinIt2014_Teapot_20261018/P1/test_p20*.py
+      - research/SpinIt2014_Teapot_20261018/P1/test_p21*.py
+      - research/SpinIt2014_Teapot_20261018/P1/P20_TEST_INVENTORY.json
+      - research/SpinIt2014_Teapot_20261018/P1/P21_TEST_INVENTORY.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  p26-source-identity-and-regression:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      P1: research/SpinIt2014_Teapot_20261018/P1
+      W0_COMMIT: 5bab2eb2616df306906a6887a273f68acfa49320
+      CORE_COMMIT: 58fd12c1306c1c01679a19172e276eef0cb30542
+    steps:
+      - name: Checkout W4 P1 contracts
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: w4
+          persist-credentials: false
+
+      - name: Checkout exact fixed W0 source
+        uses: actions/checkout@v4
+        with:
+          ref: 5bab2eb2616df306906a6887a273f68acfa49320
+          path: w0
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Checkout frozen Core source
+        uses: actions/checkout@v4
+        with:
+          ref: 58fd12c1306c1c01679a19172e276eef0cb30542
+          path: core
+          fetch-depth: 1
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pure-Python regression dependency
+        run: python -m pip install --disable-pip-version-check 'numpy==2.3.5'
+
+      - name: Verify refreshed W0, request, factory, launcher and replay pins
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, subprocess
+          from pathlib import Path
+          p=Path("w4")/"${P1}"
+          w0=Path("w0")
+          core=Path("core")
+          def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
+          def blob(root,relative):
+              return subprocess.run(["git","-C",str(root),"rev-parse","HEAD:"+relative],
+                  check=True,capture_output=True,text=True).stdout.strip()
+          request=p/"P20_native_request.json"
+          factory=p/"p20_native_factory.py"
+          launcher=p/"p20_m6_launch.py"
+          replay=p/"p21_m6_replay.py"
+          assert sha(request)=="a324bbe85c9ee57a67221eb86420c505efc4d065d60d84cf92d66e4d95dac1b9"
+          assert sha(factory)=="bebab47452b61da7af3faa9e202f0ca44d3e1e36d18f171c90c50517b83047f4"
+          assert sha(launcher)=="ab63fc9b9c87307335d9bbe15f72a1ae62fec664ccfd0de8a5be50f136bcaca2"
+          assert sha(replay)=="ad22805aed5e0a2e4057b9fadc9e96d77c734f37aed99d7efb6ee066fece4310"
+          config=json.loads(request.read_text())
+          assert config["source_w0_commit"]=="${W0_COMMIT}"
+          assert blob(w0,"research/NeuralMoments/contracts/full_partition_m6.py")=="7f18bafa1094ae38eadc0fa13cde7730c35cfe32"
+          assert blob(w0,"research/NeuralMoments/contracts/native_teacher_replay.py")=="4ddd0250ad4a9803139fdd1948c8d4b4e31abf5f"
+          assert blob(w0,"research/NeuralMoments/contracts/native_m5_bridge.py")=="247c728d3442048a64c2e9c68655cc740365fd88"
+          for relative,expected in config["runtime_python_git_blobs"].items():
+              assert blob(core,relative)==expected,relative
+          assert 'W0_COMMIT = "${W0_COMMIT}"' in launcher.read_text()
+          assert 'P20_LAUNCHER_SHA256 = "ab63fc9b9c87307335d9bbe15f72a1ae62fec664ccfd0de8a5be50f136bcaca2"' in replay.read_text()
+          assert 'P20_FACTORY_SHA256 = "bebab47452b61da7af3faa9e202f0ca44d3e1e36d18f171c90c50517b83047f4"' in replay.read_text()
+          assert 'REQUEST_SHA256 = "a324bbe85c9ee57a67221eb86420c505efc4d065d60d84cf92d66e4d95dac1b9"' in replay.read_text()
+          print("P26_FIXED_W0_SOURCE_AND_ALL_77_CORE_PYTHON_BLOBS_VERIFIED")
+          PY
+
+      - name: Run exact P20 inventory (74 tests, no skips)
+        env:
+          P20_CORE_SOURCE_ROOT: ${{ github.workspace }}/core
+          W4_P20_CORE_SOURCE_ROOT: ${{ github.workspace }}/core
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, sys, unittest
+          from pathlib import Path
+          p=Path("w4")/os.environ["P1"]
+          sys.path.insert(0,str(p))
+          inventory=json.loads((p/"P20_TEST_INVENTORY.json").read_text())
+          suite=unittest.defaultTestLoader.discover(str(p),pattern="test_p20*.py")
+          def ids(s):
+              for item in s:
+                  if isinstance(item,unittest.TestSuite): yield from ids(item)
+                  else: yield item.id()
+          actual=sorted(ids(suite))
+          assert actual==sorted(inventory["test_ids"])
+          assert len(actual)==suite.countTestCases()==74
+          result=unittest.TextTestRunner(verbosity=2).run(suite)
+          assert result.testsRun==74 and result.wasSuccessful()
+          assert not result.skipped and not result.expectedFailures and not result.unexpectedSuccesses
+          print("P26_P20_REGRESSION_PASS_74_NO_SKIPS")
+          PY
+
+      - name: Run exact P21 inventory (72 tests, no skips)
+        env:
+          P20_CORE_SOURCE_ROOT: ${{ github.workspace }}/core
+          W4_P20_CORE_SOURCE_ROOT: ${{ github.workspace }}/core
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, sys, unittest
+          from pathlib import Path
+          p=Path("w4")/os.environ["P1"]
+          sys.path.insert(0,str(p))
+          inventory=json.loads((p/"P21_TEST_INVENTORY.json").read_text())
+          suite=unittest.defaultTestLoader.discover(str(p),pattern="test_p21*.py")
+          def ids(s):
+              for item in s:
+                  if isinstance(item,unittest.TestSuite): yield from ids(item)
+                  else: yield item.id()
+          actual=sorted(ids(suite))
+          assert actual==sorted(inventory["test_ids"])
+          assert len(actual)==suite.countTestCases()==72
+          result=unittest.TextTestRunner(verbosity=2).run(suite)
+          assert result.testsRun==72 and result.wasSuccessful()
+          assert not result.skipped and not result.expectedFailures and not result.unexpectedSuccesses
+          print("P26_P21_REGRESSION_PASS_72_NO_SKIPS")
+          PY

@@ -155,3 +155,27 @@ python "$P21_P1/p21_replay_verify.py" \
 新增 `p21-replay-evidence-contract` 仅执行 72 项控制／捕获／解析算术测试、真实资源观察和真实冻结 M/F/D 精确矩重算，不执行 native build、factory、Boolean 或正式 M6。新 artifact 名明确为 `W4-P21-replay-evidence-control-only-formal-M6-NOT-executed`。原工作流 11 个作业和 85,436-byte 前缀逐字节保留；历史失败不会因本关测试通过而消失。
 
 下一项实算仍是在资源合格的主机执行正式 M6，取得真实一次 source、两次同源 Cherchi Boolean、D=R+C、M=F+R+C 与同次 J 证据。此后仍须分别通过 W0/W2 的外部准入，完成 Figure 9 三目标消融、相同初态的真实优化前后 MuJoCo 对照，以及物理验证。P21 完成的是证据保存与复算实现，没有替代这些研究结果。
+
+
+## P26 — fixed-W0 source identity refresh (2026-11-06)
+
+P24 independently verified the exact rational-boundary repair on W0 commit
+`5bab2eb2616df306906a6887a273f68acfa49320`. The formal P20/P21 source pins have now been refreshed to that fixed
+W0 commit. This supersedes the earlier *prospective* command block above for
+future executions; historical execution records remain unchanged.
+
+- Fixed W0 commit: `5bab2eb2616df306906a6887a273f68acfa49320`
+- W0 `full_partition_m6.py` blob: `7f18bafa1094ae38eadc0fa13cde7730c35cfe32`
+- W0 `native_teacher_replay.py` blob: `4ddd0250ad4a9803139fdd1948c8d4b4e31abf5f`
+- Updated P20 request SHA-256: `a324bbe85c9ee57a67221eb86420c505efc4d065d60d84cf92d66e4d95dac1b9`
+- Updated P20 factory SHA-256: `bebab47452b61da7af3faa9e202f0ca44d3e1e36d18f171c90c50517b83047f4`
+- Updated P20 launcher SHA-256: `ab63fc9b9c87307335d9bbe15f72a1ae62fec664ccfd0de8a5be50f136bcaca2`
+- Updated P21 replay's launcher/factory/request pins to the values above; P21 replay SHA-256: `ad22805aed5e0a2e4057b9fadc9e96d77c734f37aed99d7efb6ee066fece4310`
+
+The prior `P20_NATIVE_SIX_PINS.json` remains a historical identity record
+for its original locally built ELF files. Do not reuse it for a different
+native build. A formal M6 run must rebuild or verify the actual native modules
+on its eligible host, capture a new six-pin record, independently register
+that record before execution, and retain the original >=20 GiB physical and
+effective-memory plus host-swap-zero gate. P25's self-observed pins are
+TEST_ONLY and are not a replacement for that lock.

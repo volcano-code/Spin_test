@@ -1,0 +1,81 @@
+{
+  "schema": "W4_P25_FIXED_W0_AUDIT_EVIDENCE_V1",
+  "status": "TEST_ONLY_NATIVE_AUDIT_RETURNED_NOT_FORMAL",
+  "github_actions_run": 42178859911,
+  "github_artifact_id": 13483998978,
+  "github_artifact_zip_sha256": "7438c73725225a32500ac8ba2a07956c1a3de7fd54d8f9beb59255733d10511f",
+  "w4_commit": "343f5d7e8913efc56c9393ef49f25d7d97064198",
+  "w0_commit": "5bab2eb2616df306906a6887a273f68acfa49320",
+  "core_commit": "58fd12c1306c1c01679a19172e276eef0cb30542",
+  "native_calls": {
+    "cherchi_source": 1,
+    "cherchi_boolean": 2,
+    "derivative": 1,
+    "integration": 2
+  },
+  "native_audit_wall_seconds": 71.21842794699998,
+  "total_wall_seconds": 129.343946853,
+  "cgroup": {
+    "memory_max_bytes": 8589934592,
+    "memory_swap_max_bytes": 0,
+    "memory_peak_bytes": 421068800,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "host": {
+    "physical_memory_bytes": 16760344576,
+    "swap_total_bytes": 3221225472
+  },
+  "partitions": [
+    {
+      "label": "fixed_plus_design",
+      "equation": "M=F+D",
+      "digest": "81ca886b90fbc9d93529374d83fbee5fd672fdc95114d6907a2a5883ca8a5866",
+      "complete": true,
+      "union_equals_whole": true,
+      "no_positive_volume_overlap": true,
+      "missing_whole_content": false,
+      "excess_union_content": false
+    },
+    {
+      "label": "design_cut",
+      "equation": "D=R+C",
+      "digest": "65ade0d9a7e5e7c8f3a1abb7a3333e107c760751927bcd8fa3b035e2cca3c5a4",
+      "complete": true,
+      "union_equals_whole": true,
+      "no_positive_volume_overlap": true,
+      "missing_whole_content": false,
+      "excess_union_content": false
+    },
+    {
+      "label": "full_outer",
+      "equation": "M=F+R+C",
+      "digest": "6fadc907a35a19f6a2f421e1d7df1657d1d580d2e5c208a803ab992c644677a8",
+      "complete": true,
+      "union_equals_whole": true,
+      "no_positive_volume_overlap": true,
+      "missing_whole_content": false,
+      "excess_union_content": false
+    }
+  ],
+  "exact_moment_checks": {
+    "retained_plus_cavity_equals_design_r10": true,
+    "fixed_plus_retained_density_weighted_moments": true,
+    "w2_independent_exact_r10_identical_all_ten": true,
+    "w2_r10_max_absolute_error": 0
+  },
+  "limitations": {
+    "w2_independent_material_partition_proof": false,
+    "w2_independent_cherchi_boolean_proof": false,
+    "smooth_derivative_certified": false,
+    "newton_terminal_certified": false,
+    "training_admissible": false,
+    "formal_m6_executed": false,
+    "formal_m6_passed": false
+  },
+  "checker_scope": "CGAL Nef/GMP is an independent exact represented-set checker; Cherchi executed one source and two Boolean calls.",
+  "resource_admission": {
+    "formal_gate_satisfied": false,
+    "reason": "shared host 15.61 GiB physical RAM and 3 GiB host swap; formal gate remains >=20 GiB physical/effective and host swap zero"
+  }
+}

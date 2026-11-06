@@ -146,3 +146,27 @@ python "$P20_P1/p20_m6_launch.py" \
 提交只新增 W4 P1 文件，并在原工作流末尾追加 P20 job。P19 网格、既有报告和历史失败证据保留；W0、W2 和其他分支未修改。新 CI job 不依赖历史失败 job，也不会把旧的失败记录变成成功。
 
 本地来源记录另有一个需要保留的细节：47 个 factory 同目录文件清单如实包含 7 个既有辅助文件的本地副本，每个副本比对应 Git blob 多一个末尾 LF。这 7 个文件均不在本次实际准备的 33 个冻结源码/测试文件中，P20 的静态和动态加载路径也不引用它们；它们不进入此次提交。实际复用的 P16/P17/P18 源码及执行清单中的全部 25 个既有文件均与基线 Git blob 完全相同。因此本地 47 文件清单是本地字节快照，不能称为整个 P1 的 canonical Git 快照；远端树仍直接保留全部原有 Git blob。
+
+
+## P26 — fixed-W0 source identity refresh (2026-11-06)
+
+P24 independently verified the exact rational-boundary repair on W0 commit
+`5bab2eb2616df306906a6887a273f68acfa49320`. The formal P20/P21 source pins have now been refreshed to that fixed
+W0 commit. This supersedes the earlier *prospective* command block above for
+future executions; historical execution records remain unchanged.
+
+- Fixed W0 commit: `5bab2eb2616df306906a6887a273f68acfa49320`
+- W0 `full_partition_m6.py` blob: `7f18bafa1094ae38eadc0fa13cde7730c35cfe32`
+- W0 `native_teacher_replay.py` blob: `4ddd0250ad4a9803139fdd1948c8d4b4e31abf5f`
+- Updated P20 request SHA-256: `a324bbe85c9ee57a67221eb86420c505efc4d065d60d84cf92d66e4d95dac1b9`
+- Updated P20 factory SHA-256: `bebab47452b61da7af3faa9e202f0ca44d3e1e36d18f171c90c50517b83047f4`
+- Updated P20 launcher SHA-256: `ab63fc9b9c87307335d9bbe15f72a1ae62fec664ccfd0de8a5be50f136bcaca2`
+- Updated P21 replay's launcher/factory/request pins to the values above; P21 replay SHA-256: `ad22805aed5e0a2e4057b9fadc9e96d77c734f37aed99d7efb6ee066fece4310`
+
+The prior `P20_NATIVE_SIX_PINS.json` remains a historical identity record
+for its original locally built ELF files. Do not reuse it for a different
+native build. A formal M6 run must rebuild or verify the actual native modules
+on its eligible host, capture a new six-pin record, independently register
+that record before execution, and retain the original >=20 GiB physical and
+effective-memory plus host-swap-zero gate. P25's self-observed pins are
+TEST_ONLY and are not a replacement for that lock.

@@ -21,7 +21,7 @@ import sys
 import time
 
 
-REQUEST_SHA256 = '74d9cfa64417dd2c82d196ab27094651976954742a4c692667a1b19b1032de62'
+REQUEST_SHA256 = 'a324bbe85c9ee57a67221eb86420c505efc4d065d60d84cf92d66e4d95dac1b9'
 BASE = Path(__file__).resolve().parent
 PIN_KEYS = frozenset(('native_sha256', 'bridge_sha256', 'adapter_sha256',
                       'c_sha256', 'problem_input_digest', 'context_sha256'))

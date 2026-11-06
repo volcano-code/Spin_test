@@ -32,7 +32,7 @@ import time
 import uuid
 
 
-W0_COMMIT = "51cbfd33d08063404d7e0c40e4256dd0e38efa1a"
+W0_COMMIT = "5bab2eb2616df306906a6887a273f68acfa49320"
 W0_BASELINE = "0bcc187b3005478baa586a6d6f450e73811ca342"
 SCHEMA = "W4_P20_M6_RUNTIME_V1"
 WORKER_SCHEMA = "W4_P20_M6_WORKER_V1"
@@ -51,8 +51,8 @@ SOURCE_SUFFIXES = frozenset({".py", ".pyi", ".cpp", ".cc", ".c", ".h",
 # values promoted into expected identities.  All other W0 tracked source files
 # are also byte-verified against the actual immutable commit tree below.
 CRITICAL_BLOBS = {
-    "research/NeuralMoments/contracts/full_partition_m6.py": "a226f61c19a465bd3421ea1ec7e56ce7f381b633",
-    "research/NeuralMoments/contracts/native_teacher_replay.py": "ff53709e38bdba360ad2c7aba499a675ee83dd93",
+    "research/NeuralMoments/contracts/full_partition_m6.py": "7f18bafa1094ae38eadc0fa13cde7730c35cfe32",
+    "research/NeuralMoments/contracts/native_teacher_replay.py": "4ddd0250ad4a9803139fdd1948c8d4b4e31abf5f",
     "research/NeuralMoments/contracts/native_m5_bridge.py": "247c728d3442048a64c2e9c68655cc740365fd88",
     "research/NeuralMoments/contracts/cross_oracle_gate.py": "bcd546f462c793eb8c531885ee9e416eaec9c25a",
     "research/NeuralMoments/contracts/w2_reference_snapshot.py": "d734398292e1fdaf839db3413c537de2474df3e1",

@@ -2,7 +2,7 @@
   "schema": "W4_P20_TEAPOT_NATIVE_REQUEST_V1",
   "purpose": "PREREGISTERED_NONOPTIMIZED_ONE_POINT_MATERIAL_PARTITION_PROBE",
   "source_w4_commit": "58fd12c1306c1c01679a19172e276eef0cb30542",
-  "source_w0_commit": "51cbfd33d08063404d7e0c40e4256dd0e38efa1a",
+  "source_w0_commit": "5bab2eb2616df306906a6887a273f68acfa49320",
   "source_w2_commit": "b52cb2af0260041900fc03560b5dc182cb088750",
   "manifest": {
     "path": "P19_material_case/manifest.json",
