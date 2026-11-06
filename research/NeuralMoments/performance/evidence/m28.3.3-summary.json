@@ -1,0 +1,20 @@
+{
+  "schema": "w1-m28-3-3-exact-cut-segment-extraction-prototype-v1",
+  "date": "2026-11-06",
+  "parent_commit": "249db334303b31b8b8c2cfcb415b21a7cc2c9464",
+  "tests": {
+    "count": 5,
+    "passed": 5,
+    "failed": 0
+  },
+  "scope": "synthetic prototype only",
+  "coplanar_policy": "fail closed",
+  "real_cut_face_batch_replayed": false,
+  "full_pslg": false,
+  "global_boolean_completeness": false,
+  "new_boolean_calls": 0,
+  "new_newton_runs": 0,
+  "production_admitted": false,
+  "full_solver_speedup": null,
+  "local_required": false
+}
