@@ -118,3 +118,8 @@ A new optional `moment_parameterization='logistic_atom'` borrows W6 M7's project
 ## M5 result — logistic-atom head
 
 The same-data three-seed tournament shows the PINO logistic-atom head achieves held-out r/J relative L2 0.2060/0.3147, beating the smooth-hinge PINO 0.2320/0.8912 and W6 M7 0.4372/0.4931 on the analytic vertical-plane P0 task. The P-CRAFT PINO trunk remains primary. Logistic mode is not a scalar convex potential and is not Newton/Cherchi certified. See `M5_LOGISTIC_HEAD_REPORT.md`.
+
+
+## M6 rotation covariance
+
+`equivariance.py` implements exact rotation transforms for native coefficients, ten raw moments and Jacobians, plus voxel resampling and the 24 proper cube rotations. `augment_with_cube_rotations` adds exact transformed analytic labels to the fit split only. `rotation_sweep.py` compares logistic PINO with and without rotation augmentation and reports both unrotated and rotated held-out ellipsoid metrics.

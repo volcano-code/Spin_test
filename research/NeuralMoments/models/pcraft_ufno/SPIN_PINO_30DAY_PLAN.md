@@ -230,3 +230,15 @@ Promotion requires lower held-out J error without unacceptable loss of r accurac
 - This improves on the smooth-hinge midpoint PINO (0.2320 / 0.8912) and the W6 M7 baseline (0.4372 / 0.4931) on the restricted analytic P0 task.
 - Promote logistic-atom as the leading research head candidate, retain smooth-hinge and Gauss as ablations. The logistic head is not a scalar convex potential; use tangent-projected q-space structure constraints.
 - Next: broaden geometry/orientation/event tests and compare inference latency/memory before any Newton or real Spin claim.
+
+
+## M6 — rotation-covariance and exact cube-group augmentation (started 2026-11-06)
+
+- Added exact transforms for Spin's native ten coefficients, ten raw moments and 10x10 Jacobian under rigid rotations.
+- For x'=R x, construct T_R for moments and S_R for native coefficients; transform J as J'=T_R J S_R^{-1}.
+- Added voxel rotation with correct XYZ-to-grid_sample coordinate mapping.
+- Added the 24 proper signed-permutation rotations of the cube (a grid-preserving SO(3) subgroup) so occupancy masks can be rotated without interpolation/cropping ambiguity.
+- Added training-only rotation augmentation and a separate held-out rotated-ellipsoid evaluation. The 30-day scope tests this exact subgroup first; arbitrary SO(3) is not claimed.
+- M6 compares logistic PINO with and without cube-rotation augmentation on the same base splits/seeds/steps. The labels are transformed analytically, not re-evaluated through W2/Cherchi.
+
+Acceptance: moment/quadric/Jacobian transform tests pass; augmentation preserves the geometry/data contract; rotated held-out errors improve without degrading unrotated results materially.

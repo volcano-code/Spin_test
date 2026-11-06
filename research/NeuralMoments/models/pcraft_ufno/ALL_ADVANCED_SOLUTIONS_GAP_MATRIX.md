@@ -122,3 +122,8 @@ The optional W6 M7 logistic-atom moment/Jacobian head transplanted into the P-CR
 | W6 M7 Realizable U-FNO | Strong derivative/combined baseline and source of logistic-atom head | r/J relative L2 0.4372/0.4931; PINO logistic head now beats it while retaining PINO trunk | Compare at higher resolution and real Cherchi geometry |
 | W6 M13 / M7 U-FNO pipeline | Existing W6 realizable U-FNO baseline | Used as comparator in M3/M5 same-data analytic benchmark | Need separate matched mesh/Cherchi paired evaluation |
 | W5 voxel DeepONet | Source-matched 4-channel DeepONet baseline | r/J relative L2 0.7511/0.6994 | Lower moment generalization on current analytic split |
+
+
+## M6 active development
+
+An E(3)-covariance audit/augmentation module is being added using exact transformations of native quadric coefficients, ten raw moments and Jacobians. The first one-month target is the 24 grid-preserving proper cube rotations, not arbitrary SO(3). This is an e3nn/EqGINO-inspired mathematical ablation, not a claim that those libraries have been integrated or that the PINO network is automatically equivariant.

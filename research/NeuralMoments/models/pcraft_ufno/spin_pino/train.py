@@ -15,6 +15,7 @@ import torch
 from .dataset import generate_splits
 from .spin_pino import SpinPINO, SpinPINOLoss
 from .loss_conditioning import DiagonalMomentResidualPreconditioner, pcgrad_backward
+from .equivariance import augment_with_cube_rotations
 
 
 def _evaluate(model, data):
@@ -51,6 +52,7 @@ def run_seed(
     pcgrad: bool = False,
     moment_parameterization: str = "smooth_hinge",
     temperature: float = 0.12,
+    rotation_augmentation: bool = False,
     device: str = "cpu",
 ):
     torch.manual_seed(seed)
@@ -64,6 +66,9 @@ def run_seed(
         grid_size=grid_size,
     )
     fit, validation, test = (splits[k] for k in ("fit", "validation", "test"))
+    if rotation_augmentation:
+        fit = augment_with_cube_rotations(fit, seed=seed + 700001)
+    rotated_test = augment_with_cube_rotations(test, seed=seed + 900001)
     model = SpinPINO(
         width=4 if grid_size <= 8 else 8,
         modes=2 if grid_size <= 8 else 4,
@@ -159,6 +164,8 @@ def run_seed(
             "pcgrad": bool(pcgrad),
             "preconditioner_fit_split_only": True,
             "preconditioner": preconditioner.as_dict() if preconditioner else None,
+            "rotation_augmentation": bool(rotation_augmentation),
+            "fit_samples_after_augmentation": int(len(fit[0])),
         },
         "model_config": {"grid_size": grid_size, "points_per_axis": points_per_axis,
                          "smoothing": smoothing, "moment_parameterization": moment_parameterization,
@@ -176,6 +183,7 @@ def run_seed(
         "fit_metrics": fit_metrics,
         "validation_metrics": validation_metrics,
         "held_out_ellipsoid_metrics": test_metrics,
+        "held_out_rotated_ellipsoid_metrics": _evaluate(model, rotated_test),
         "checkpoint_state": best_state,
         "claims": {
             "trained_spin_model": True,
@@ -202,6 +210,7 @@ def main():
     parser.add_argument("--pcgrad", action="store_true")
     parser.add_argument("--moment-parameterization", choices=("smooth_hinge", "logistic_atom"), default="smooth_hinge")
     parser.add_argument("--temperature", type=float, default=0.12)
+    parser.add_argument("--rotation-augmentation", action="store_true")
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--save-checkpoints", action="store_true")
@@ -222,6 +231,7 @@ def main():
             pcgrad=args.pcgrad,
             moment_parameterization=args.moment_parameterization,
             temperature=args.temperature,
+            rotation_augmentation=args.rotation_augmentation,
             device=args.device,
         )
         state = result.pop("checkpoint_state")
