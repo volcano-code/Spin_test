@@ -156,3 +156,11 @@ The new `m7c_sweep.py` compares PINO baseline, SO(3) augmentation, covariance co
 ## M7d lambda sweep
 
 `m7d_sweep.py` tests lambda_equivariance in {0, 0.05, 0.2, 0.5, 1.0} for 300 steps and three seeds. It selects by validation r/J score only; the held-out arbitrary-SO(3) test remains confirmatory. See `M7D_PROTOCOL.md`.
+
+## M7c/M7d/M8 decisions
+
+SO(3) augmentation and covariance loss produced only marginal held-out improvements. The lambda=0.05 covariance loss increased CPU training time by roughly 3x for a ~0.00079 combined-score gain. The gated Transolver++ adapter also produced a negligible gain while increasing parameters and training time substantially. These remain optional ablations, not defaults. See `M7C_M7D_M8_DECISIONS.md`.
+
+## M7e test-time orbit averaging
+
+`orbit_ensemble.py` predicts on rotated geometry/coefficient views, transforms ten moments and Jacobians back to the canonical frame, then averages. `orbit_sweep.py` compares 1, 2 and 4 views on identical rotated held-out test cases and reports voxel interpolation mass drift. This is an inference ensemble experiment, not exact equivariance or Newton certification.

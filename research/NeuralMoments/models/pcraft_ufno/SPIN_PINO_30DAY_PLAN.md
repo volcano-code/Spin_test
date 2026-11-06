@@ -278,3 +278,11 @@ Acceptance: moment/quadric/Jacobian transform tests pass; augmentation preserves
 - Uses 300 steps, seeds 131/137/139, same geometry splits and arbitrary-SO(3) test transforms.
 - Select lambda using mean validation r_mae + 0.25*J_mae only; held-out SO(3) test is confirmatory.
 - Cloud CPU CI pending. This decides whether to retain consistency-loss tuning or move to an intrinsically rotation-aware PINO geometry representation.
+
+## M7b–M8 evidence decisions — 2026-11-06
+
+- Arbitrary SO(3) augmentation alone only marginally improved held-out rotated r/J relative L2 (0.37123/0.44952 to 0.37066/0.44891).
+- M7c covariance consistency loss at lambda 0.05 marginally improved the combined SO(3) score from 0.41037 to 0.40958, but roughly tripled CPU training time; not promoted.
+- M7d lambda sweep selected 0.05 on validation, but held-out combined improvement was only about 0.00079 while mean CPU training time rose from 6.27 s to 18.82 s; not promoted as default.
+- M8 Transolver++ gated adapter changed combined SO(3) score from 0.410375 to 0.410130, but increased parameters 21,888 to 40,731 and CPU training 1.90 s to 6.78 s; retained as optional ablation only.
+- M7e begins test-time SO(3) orbit averaging (1/2/4 views) to test whether inference-time group averaging is a better trade-off than more training loss/augmentation. Voxel interpolation mass drift is measured separately.

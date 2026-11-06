@@ -1,0 +1,65 @@
+{
+  "schema": "SPIN_PINO_M7C_M7D_M8_DECISIONS_V1",
+  "label_source": "ANALYTIC_CONTINUUM_P0_NOT_W2_CHERCHI",
+  "m7b": {
+    "workflow": 42211797282,
+    "so3_r": [
+      0.3712313771,
+      0.3707180321,
+      0.3706596692
+    ],
+    "so3_J": [
+      0.4495180945,
+      0.4490042826,
+      0.4489104449
+    ],
+    "decision": "augmentation_only_marginal"
+  },
+  "m7c": {
+    "workflow": 42214212548,
+    "baseline": 0.4103747358,
+    "so3_aug": 0.4097850571,
+    "cov_lambda_005": 0.4095754176,
+    "aug_cov_lambda_005": 0.4097968191,
+    "decision": "do_not_promote_default"
+  },
+  "m7d": {
+    "lambda_grid": [
+      0,
+      0.05,
+      0.2,
+      0.5,
+      1
+    ],
+    "selected_lambda": 0.05,
+    "combined_scores": [
+      0.4103482614,
+      0.4095556587,
+      0.4102627883,
+      0.4172443599,
+      0.4222793331
+    ],
+    "training_seconds": [
+      6.265,
+      18.823,
+      18.634,
+      18.737,
+      18.761
+    ],
+    "decision": "marginal_gain_not_worth_3x_cost"
+  },
+  "m8": {
+    "workflow": 42212744843,
+    "pino_combined": 0.4103747259,
+    "transolver_plus_combined": 0.410129865,
+    "pino_seconds": 1.8951,
+    "transolver_seconds": 6.7844,
+    "decision": "keep_optional_not_default"
+  },
+  "next": "M7e test-time SO3 orbit averaging with interpolation drift reporting",
+  "claims": {
+    "cherchi_supervised": false,
+    "newton_admitted": false,
+    "real_spin_end_to_end_validated": false
+  }
+}
