@@ -1,0 +1,83 @@
+{
+  "schema": "heart-h9-m21-5a-m20-ledger-independent-replay-v1",
+  "status": "SAVED_EXACT_INTEGRAL_SECANTS_REPRODUCED_60_OF_60_NO_NEWTON",
+  "input": {
+    "file": "precision-ledger.json",
+    "sha256": "95bf2c6d91862bba488dd56118562a1fad826037966ed3f8f0bf382e5fba0703",
+    "schema": "heart-h9-m20-exact-difference-rounding-ledger-v1",
+    "saved_materials_reintegrated": 6,
+    "stage18_audit_sha256": "68ee61282caac38d160a4226d9e44df694b7723094890fd62cc61ada434e12e2"
+  },
+  "reviewer": {
+    "file": "source/review_w3_m20_ledger.py",
+    "sha256": "b938a41a4bd4eb6c9c59bd59fb569a4eccc017d078d85d3b348a850791488fa1",
+    "output_sha256": "c223a38ca5ad4cd56d819670d8e3c1ed9e698a3cc44460c60a680358fff32750"
+  },
+  "checks": {
+    "exact_surface_secant_binary64_bitwise_matches": 60,
+    "exact_surface_secant_total": 60,
+    "rounded_exact_moment_matches": 60,
+    "exact_residual_decompositions_verified": 60,
+    "observed_moment_rounding_within_half_ulp_bounds": 60,
+    "exact_partition_identities_verified": 20
+  },
+  "intervals": {
+    "left": {
+      "delta_c7_full": 8.999999999999999e-8,
+      "delta_c7_each_half": 4.499999999999999e-8,
+      "max_exact_surface_scaled_error_full": 3.875585606873951e-9,
+      "max_exact_surface_scaled_error_worst_half": 1.746832064607797e-8,
+      "worst_half_over_full_ratio": 4.507272556460939,
+      "worst_component": "Mzz",
+      "opposite_sign_residual_components": 7,
+      "strongest_cancellation_component": "Mxz",
+      "strongest_cancellation_fraction": 0.9213081516891383,
+      "strongest_cancellation_remaining_fraction": 0.07869184831086172,
+      "strongest_cancellation_half_residuals": [
+        2.255532791329538e-9,
+        -1.926445212604593e-9
+      ],
+      "strongest_cancellation_full_residual": 1.6454375938661172e-10,
+      "Mzz_half_residuals": [
+        1.746832064607797e-8,
+        -9.717121158722654e-9
+      ],
+      "Mzz_full_residual": 3.875585606873951e-9,
+      "Mzz_cancellation_fraction": 0.7148768247722005
+    },
+    "right": {
+      "delta_c7_full": 8.999999999999999e-8,
+      "delta_c7_each_half": 4.499999999999999e-8,
+      "max_exact_surface_scaled_error_full": 6.930856862281341e-9,
+      "max_exact_surface_scaled_error_worst_half": 1.5845097155572323e-8,
+      "worst_half_over_full_ratio": 2.286167132061763,
+      "worst_component": "Mzz",
+      "opposite_sign_residual_components": 10,
+      "strongest_cancellation_component": "My",
+      "strongest_cancellation_fraction": 0.8575734241563535,
+      "strongest_cancellation_remaining_fraction": 0.14242657584364654,
+      "strongest_cancellation_half_residuals": [
+        2.6701845969955735e-11,
+        -3.5571179797427264e-11
+      ],
+      "strongest_cancellation_full_residual": -4.394740518212683e-12,
+      "Mzz_half_residuals": [
+        1.5845097155572323e-8,
+        -1.9834108223475355e-9
+      ],
+      "Mzz_full_residual": 6.930856862281341e-9,
+      "Mzz_cancellation_fraction": 0.2224988007750215
+    }
+  },
+  "interpretation": "This is an independent recomputation of secants from the six exact ten-moment vectors already stored in the M20 ledger. It does not reopen or authenticate the six raw Cherchi material archives, source-motion attachments, or source-generation process. The strongest cancellation fractions are 1 - weighted_cancellation_fraction in the original ledger; the original field records the remaining signed residual fraction, not the fraction cancelled.",
+  "gates": {
+    "raw_six_material_archives_reopened": false,
+    "six_source_motion_attachments_replayed": false,
+    "new_native_source_calls": 0,
+    "new_boolean_calls": 0,
+    "continuous_neighborhood_certified": false,
+    "asymptotic_order_certified": false,
+    "newton_admitted": false,
+    "final_heart_obj_produced": false
+  }
+}
