@@ -94,16 +94,28 @@ class SparseMultiscaleDetail(nn.Module):
 
     def forward(self, indices: Tensor, values: Tensor, *,
                 source_resolution: int, batch_size: int,
-                fine_moments: Tensor, coarse_moments: Tensor):
+                fine_moments: Tensor, coarse_moments: Tensor,
+                feature_ablation: str = "full"):
         if values.dtype not in (torch.float32, torch.float64):
             raise TypeError("sparse detail requires float32 or float64 values")
         if not all(source_resolution % level == 0 for level in self.levels):
             raise ValueError("all sparse levels must divide source resolution")
-        per_level = [
-            _relative_cell_features(indices, values, source_resolution, level,
-                                    batch_size, layer)
-            for level, layer in zip(self.levels, self.layers)
-        ]
+        if feature_ablation == "moments_only":
+            # Exact parameter-count-matched control: discard all local
+            # multiscale information, but retain the same 20 moment descriptors
+            # and the same readout/head architecture. This is not identical
+            # active parameter count or computational cost.
+            per_level = [
+                values.new_zeros((batch_size, self.width)) for _ in self.levels
+            ]
+        elif feature_ablation == "full":
+            per_level = [
+                _relative_cell_features(indices, values, source_resolution, level,
+                                        batch_size, layer)
+                for level, layer in zip(self.levels, self.layers)
+            ]
+        else:
+            raise ValueError("unknown feature ablation")
         mass = fine_moments[:, :1].to(dtype=values.dtype).clamp_min(1e-12)
         fine = fine_moments.to(dtype=values.dtype) / mass
         delta = (fine_moments - coarse_moments).to(dtype=values.dtype) / mass
@@ -123,13 +135,17 @@ class SparseDetailSpinPINO(nn.Module):
     """
 
     def __init__(self, pino: nn.Module, *, levels=(16, 32, 64),
-                 width: int = 24, coarse_grid_size: int = 16):
+                 width: int = 24, coarse_grid_size: int = 16,
+                 feature_ablation: str = "full"):
         super().__init__()
         if coarse_grid_size < 4:
             raise ValueError("coarse grid size must be >=4")
         if not hasattr(pino, "monomials") or not hasattr(pino, "encode_geometry"):
             raise TypeError("P-CRAFT SpinPINO-compatible model required")
+        if feature_ablation not in ("full", "moments_only"):
+            raise ValueError("feature_ablation must be full or moments_only")
         self.pino = pino
+        self.feature_ablation = feature_ablation
         self.coarse_grid_size = coarse_grid_size
         self.sparse_detail = SparseMultiscaleDetail(levels=levels, width=width)
         self.delta_head = nn.Linear(width, int(pino.monomials.shape[0]))
@@ -148,6 +164,7 @@ class SparseDetailSpinPINO(nn.Module):
             batch_size=batch_size,
             fine_moments=ledger["fine_ten_moments"],
             coarse_moments=ledger["coarse_ten_moments"],
+            feature_ablation=self.feature_ablation,
         )
         # bounded factor in [exp(-2),exp(2)], init = identity, so existing
         # PINO weights and physics identities remain intact at initialization.
@@ -158,6 +175,7 @@ class SparseDetailSpinPINO(nn.Module):
         diagnostics = dict(ledger)
         diagnostics.update({
             "detail_levels": self.sparse_detail.levels,
+            "feature_ablation": self.feature_ablation,
             "detail_gate_value": float(torch.tanh(self.detail_gate).detach()),
             "pino_primary_trunk": True,
             "full_resolution_spectral_operator": False,
