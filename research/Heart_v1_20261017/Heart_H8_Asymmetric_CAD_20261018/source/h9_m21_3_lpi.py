@@ -153,7 +153,7 @@ def same_side_interval_residuals(samples):
                 pa, pb = vec(a['position']), vec(b['position'])
                 va, vb = vec(a['velocity']), vec(b['velocity'])
                 secant = mul(1/delta, sub(pb, pa))
-                average = mul(frac(1, 2), add(va, vb))
+                average = mul(frac('1/2'), add(va, vb))
                 residual = sub(secant, average)
                 residual_squared = dot(residual, residual)
                 average_squared = dot(average, average)
