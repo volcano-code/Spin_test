@@ -1,0 +1,53 @@
+name: W6 M10b three-arm analytic CPU tournament
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/spin_pino/m10b_train.py
+      - research/NeuralMoments/models/pcraft_ufno/spin_pino/m10_sparse_detail.py
+      - research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_m10b_train.py
+      - research/NeuralMoments/models/pcraft_ufno/spin_pino/M10B_PROTOCOL.md
+      - .github/workflows/w6-m10b-analytic-tournament.yml
+  workflow_dispatch:
+jobs:
+  m10b-analytic-p0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install pinned CPU numerical stack
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install numpy pytest
+      - name: Test dataset lineage, fairness and M10 regression
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q \
+            research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_m10b_train.py \
+            research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_m10_sparse_detail.py
+      - name: Three-seed validation-selected analytic P0 training
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.spin_pino.m10b_train \
+            --seeds 131,137,139 --steps 60 --source-resolution 16 \
+            --geometries-per-family 8 --test-ellipsoids 5 \
+            --output /tmp/w6_m10b_three_arm_analytic_p0.json
+      - name: Upload detailed three-arm metrics and source hashes
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-m10b-three-arm-analytic-p0
+          path: /tmp/w6_m10b_three_arm_analytic_p0.json
+          if-no-files-found: error
+          retention-days: 30
