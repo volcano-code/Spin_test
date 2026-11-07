@@ -1,0 +1,147 @@
+name: W4 P30B owner-locked 12-point Cherchi sampler preflight
+
+on:
+  push:
+    branches:
+      - research/neuralmoments-w4-teapot-p1-20261019
+    paths:
+      - .github/workflows/w4-p30b-native-pilot-gate.yml
+      - research/SpinIt2014_Teapot_20261018/P30/p30b_*.py
+      - research/SpinIt2014_Teapot_20261018/P30/test_p30b_native_sampler.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: w4-p30b-owner-locked-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  p30b-owner-teacher-and-restart-preflight:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      P30: research/SpinIt2014_Teapot_20261018/P30
+      W0_BRANCH: research/neuralmoments-w0-contract-20261019
+      W2_BRANCH: research/neuralmoments-w2-teacher-20261019
+    steps:
+      - name: Read actual W4 source
+        uses: actions/checkout@v4
+        with:
+          path: w4
+          persist-credentials: false
+      - name: Read current W0 authorizer branch without modifying it
+        uses: actions/checkout@v4
+        with:
+          path: w0-owner
+          ref: research/neuralmoments-w0-contract-20261019
+          persist-credentials: false
+      - name: Read current W2 authorizer branch without modifying it
+        uses: actions/checkout@v4
+        with:
+          path: w2-teacher
+          ref: research/neuralmoments-w2-teacher-20261019
+          persist-credentials: false
+      - name: Python standard library only
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify P30B sources compile
+        run: |
+          set -euo pipefail
+          python -m py_compile "w4/$P30/p30b_authority.py" "w4/$P30/p30b_native_sampler.py" \
+            "w4/$P30/test_p30b_native_sampler.py"
+      - name: Run 19 negative and append-only resume controls
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/w4-p30b"
+          python -m unittest discover -v -s "w4/$P30" -p 'test_p30b_native_sampler.py' \
+            2>&1 | tee "$RUNNER_TEMP/w4-p30b/unittest.log"
+          grep -q '^Ran 19 tests' "$RUNNER_TEMP/w4-p30b/unittest.log"
+          grep -q '^OK$' "$RUNNER_TEMP/w4-p30b/unittest.log"
+          ! grep -q 'skipped=' "$RUNNER_TEMP/w4-p30b/unittest.log"
+      - name: Write synthetic-only plan for missing-real-owner-readiness test
+        run: |
+          set -euo pipefail
+          P30_DIR="$P30" python - <<'PY'
+          import json,os,sys
+          from pathlib import Path
+          root=Path("w4")/os.environ["P30_DIR"]
+          sys.path.insert(0,str(root))
+          import p30_neighborhood_preflight as p30
+          c=[0.03640053031737869,-1.4100319353783204e-18,0.0,
+            -0.2886365552481779,0.552377871982299,0.552377871982299,
+            0.552377871982299,0.0,0.0,0.0]
+          assert p30.canonical_hash(c)==p30.C_SHA
+          synthetic=p30.plan({"c":c,"Jc":[[0.]*10 for _ in range(10)],
+            "pins":{"context_sha256":"c"*64},
+            "saved_topology_hash":"b"*64,"saved_geometry_hash":"d"*64})
+          synthetic["ci_only_synthetic_J"]="UNAPPROVED_FOR_REAL_NATIVE"
+          # Remove the CI metadata for actual plan schema comparison.
+          synthetic.pop("ci_only_synthetic_J")
+          output=Path(os.environ["RUNNER_TEMP"])/"w4-p30b/synthetic-NOT-P27-plan.json"
+          output.write_text(json.dumps(synthetic,sort_keys=True,indent=2)+"\n")
+          print("SYNTHETIC_PLAN_CREATED_NOT_REAL_JC_NO_NATIVE")
+          PY
+      - name: Verify W0/W2 current owner branches have not approved P30B
+        run: |
+          set -euo pipefail
+          git -C w0-owner fetch -q origin \
+            "refs/heads/$W0_BRANCH:refs/remotes/origin/$W0_BRANCH"
+          git -C w2-teacher fetch -q origin \
+            "refs/heads/$W2_BRANCH:refs/remotes/origin/$W2_BRANCH"
+          set +e
+          python "w4/$P30/p30b_authority.py" --mode preflight \
+            --w0-review-root w0-owner --w2-review-root w2-teacher \
+            --plan "$RUNNER_TEMP/w4-p30b/synthetic-NOT-P27-plan.json" \
+            --p20-request "w4/research/SpinIt2014_Teapot_20261018/P1/P20_native_request.json" \
+            --output "$RUNNER_TEMP/w4-p30b/READINESS_BLOCKED.json" \
+            2>&1 | tee "$RUNNER_TEMP/w4-p30b/readiness.log"
+          rc=${PIPESTATUS[0]}
+          set -e
+          echo "P30B_PREFLIGHT_EXIT_CODE=$rc"
+          test "$rc" -eq 3
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path(os.environ["RUNNER_TEMP"])/"w4-p30b/READINESS_BLOCKED.json"
+          row=json.loads(p.read_text())
+          assert row["status"]=="BLOCKED_WAITING_INDEPENDENT_W0_W2_APPROVAL",row
+          assert row["missing"]==["w0","w2"]
+          assert row["real_native_pilot_authorized"] is False
+          assert row["new_native_calls"]==0
+          assert row["training_admissible"] is False
+          print("P30B_REAL_W0_W2_OWNER_APPROVAL_MISSING_FAIL_CLOSED_PASS")
+          PY
+      - name: Record CI scope and hardware claims
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          row={"schema":"W4_P30B_CI_OWNER_PILOT_READINESS_V1",
+            "status":"SOFTWARE_CHECK_PASS_NATIVE_PILOT_BLOCKED",
+            "unit_test_count":19,"unit_tests_skipped":0,
+            "physical_W0_owner_receipt_found":False,
+            "W2_separate_Teapot_feature_acceptance_found":False,
+            "unlocked_pilot_native_calls":0,
+            "genuine_Teapot_neighborhood_samples":0,
+            "native_24GiB_runtime_test_executed":False,
+            "sample_resume_covered_by_synthetic_tests":True,
+            "scientific_admission":False,
+            "smooth_neighborhood_certified":False,
+            "Newton_accepted":False,
+            "training_admissible":False}
+          path=Path(os.environ["RUNNER_TEMP"])/"w4-p30b/P30B_CI_STATUS.json"
+          path.write_text(json.dumps(row,sort_keys=True,indent=2)+"\n")
+          print("P30B_CI_SAFE_SOFTWARE_GATE_COMPLETE")
+          PY
+      - name: Preserve reproducible preflight artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-P30B-authorization-blocked-19-regression-evidence
+          path: ${{ runner.temp }}/w4-p30b/**
+          if-no-files-found: warn
+          retention-days: 30
