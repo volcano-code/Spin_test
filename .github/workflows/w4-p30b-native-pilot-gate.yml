@@ -7,6 +7,7 @@ on:
     paths:
       - .github/workflows/w4-p30b-native-pilot-gate.yml
       - research/SpinIt2014_Teapot_20261018/P30/p30b_*.py
+      - research/SpinIt2014_Teapot_20261018/P30/p30b_*.sh
       - research/SpinIt2014_Teapot_20261018/P30/test_p30b_native_sampler.py
   workflow_dispatch:
 
@@ -53,6 +54,15 @@ jobs:
           set -euo pipefail
           python -m py_compile "w4/$P30/p30b_authority.py" "w4/$P30/p30b_native_sampler.py" \
             "w4/$P30/test_p30b_native_sampler.py"
+      - name: Verify local 24GiB diagnostic wrapper never skips owner review
+        run: |
+          set -euo pipefail
+          bash -n "w4/$P30/p30b_run_approved_native_pilot.sh"
+          grep -Fq -- '--memory=24g --memory-swap=24g' "w4/$P30/p30b_run_approved_native_pilot.sh"
+          grep -Fq -- 'P30B_EXTERNAL_LOCK_SHA256' "w4/$P30/p30b_run_approved_native_pilot.sh"
+          grep -Fq -- 'P30_TEAPOT_DIAGNOSTIC_AUTHORIZATION.json' "w4/$P30/p30b_run_approved_native_pilot.sh"
+          grep -Fq -- 'P30_TEAPOT_FEATURE_PILOT_AUTHORIZATION.json' "w4/$P30/p30b_run_approved_native_pilot.sh"
+          echo "P30B_LOCAL_SCRIPT_PARSE_AND_APPROVAL_CHECKS_PASS"
       - name: Run 20 negative and append-only resume controls
         run: |
           set -euo pipefail
