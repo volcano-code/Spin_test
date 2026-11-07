@@ -20,4 +20,4 @@ jobs:
           python-version: '3.11'
       - name: Validate all 31 candidates and immutable PINO/permission gates
         run: |
-          python -m unittest -v research/NeuralMoments/models/pcraft_ufno/candidate_projects/test_functional_shortlist.py
+          python research/NeuralMoments/models/pcraft_ufno/candidate_projects/test_functional_shortlist.py -v
