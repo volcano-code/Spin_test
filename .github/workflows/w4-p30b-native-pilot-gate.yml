@@ -53,13 +53,13 @@ jobs:
           set -euo pipefail
           python -m py_compile "w4/$P30/p30b_authority.py" "w4/$P30/p30b_native_sampler.py" \
             "w4/$P30/test_p30b_native_sampler.py"
-      - name: Run 19 negative and append-only resume controls
+      - name: Run 20 negative and append-only resume controls
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/w4-p30b"
           python -m unittest discover -v -s "w4/$P30" -p 'test_p30b_native_sampler.py' \
             2>&1 | tee "$RUNNER_TEMP/w4-p30b/unittest.log"
-          grep -q '^Ran 19 tests' "$RUNNER_TEMP/w4-p30b/unittest.log"
+          grep -q '^Ran 20 tests' "$RUNNER_TEMP/w4-p30b/unittest.log"
           grep -q '^OK$' "$RUNNER_TEMP/w4-p30b/unittest.log"
           ! grep -q 'skipped=' "$RUNNER_TEMP/w4-p30b/unittest.log"
       - name: Write synthetic-only plan for missing-real-owner-readiness test
@@ -122,7 +122,7 @@ jobs:
           from pathlib import Path
           row={"schema":"W4_P30B_CI_OWNER_PILOT_READINESS_V1",
             "status":"SOFTWARE_CHECK_PASS_NATIVE_PILOT_BLOCKED",
-            "unit_test_count":19,"unit_tests_skipped":0,
+            "unit_test_count":20,"unit_tests_skipped":0,
             "physical_W0_owner_receipt_found":False,
             "W2_separate_Teapot_feature_acceptance_found":False,
             "unlocked_pilot_native_calls":0,
@@ -141,7 +141,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: W4-P30B-authorization-blocked-19-regression-evidence
+          name: W4-P30B-authorization-blocked-20-regression-evidence
           path: ${{ runner.temp }}/w4-p30b/**
           if-no-files-found: warn
           retention-days: 30
