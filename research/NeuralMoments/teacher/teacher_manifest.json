@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M23_P1_NOODLES_SIX_PACKET_IDENTITIES_AND_THREE_CHAIN_RECEIPTS_CROSS_MATCH_RAW_BYTES_MISSING",
+  "status": "M23_P2_LOCAL_DATA_SCAN_ZERO_OF_SIX_V7_PACKET_SHA_MATCHES_EXTENDED_ARCHIVE_RECOVERY_PENDING",
   "native_teacher_runs": 1,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "M23-P2: recover six exact rational packet payload bytes by pinned SHA from original experiment storage; if unavailable, rerun the pinned 96-operation CGAL DAG locally with the exact backend and preserve intermediate outputs/receipts. Then certify solid validity and binary64 F/D/A set partition before any W2 Cherchi teacher call. Keep J_D=null and training split excluded.",
+  "pending_dependency": "M23-P2: execute read-only extended archive/backend inventory under /data; recover original V7 six rational CSG JSON packet bytes by pinned SHA or rebuild a fresh separately identified 96-operation CGAL exact DAG on a qualified local host. Check all six solids and binary64 F/D/A partition before W2 Cherchi teacher; W0/W3 Jacobian and Newton admission remain pending.",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -936,5 +936,39 @@
       "tests_skipped": 0,
       "head_sha": "05b090ff4f3802f1592654c09d333c35c0906be6"
     }
+  },
+  "m23_p2_local_recovery": {
+    "report": "research/NeuralMoments/teacher/M23_P2_LOCAL_RECOVERY_AUDIT_20261107.md",
+    "machine_result": "research/NeuralMoments/teacher/M23_P2_LOCAL_RECOVERY_AUDIT_20261107.json",
+    "auditor": "research/NeuralMoments/teacher/m23_p2_recovery_report_audit.py",
+    "tests": "research/NeuralMoments/teacher/test_m23_p2_recovery_report_audit.py",
+    "extended_scanner": "research/NeuralMoments/teacher/m23_p2_extended_recovery_index.sh",
+    "uploaded_report_sha256": "a250755ccbc428c6581fcd22fbc3d07ae491ef9a52462eb6844902dc1573a4a1",
+    "reported_candidate_files": 2,
+    "historical_sha_matches": 0,
+    "remaining_historical_target_raw_packets": 6,
+    "mismatch_sha256": {
+      "design": "d0aec854f2207f2b8abad99507e915fc86ce0b6055ef07a7a3b0a20c3a1eb7f7",
+      "fixed": "a0e18f72355a0cd9b208c35bbb7aac195ce93401615125ef805a9935393a8953"
+    },
+    "candidate_path_suffix": "noodles-balanced-full-input-job-01/output",
+    "candidate_original_bytes_independently_rehashed": false,
+    "other_four_packet_basenames_not_reported": true,
+    "historical_cgal_backend_reported": false,
+    "historical_archive_matching_narrow_patterns_reported": false,
+    "all_possible_archives_exhaustively_searched": false,
+    "code_ci": {
+      "run_id": 42383241560,
+      "conclusion": "success",
+      "tests_passed": 6,
+      "tests_failed": 0,
+      "shell_syntax_pass": true
+    },
+    "new_CGAL_calls": 0,
+    "new_Cherchi_calls": 0,
+    "J_D": null,
+    "split": "excluded",
+    "training_samples": 0,
+    "training_admitted": false
   }
 }
