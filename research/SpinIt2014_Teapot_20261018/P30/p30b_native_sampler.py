@@ -218,6 +218,23 @@ def verify_receipt(attempt, index, plan, external_sha):
          saved.get("moment_jacobian")==row["Jc_native_capture"] and
          saved.get("geometry_hash")==row["geometry_hash"],
          "PREVIOUS_SAMPLE_MATERIAL_TAMPERED")
+    need(row.get("call_counts")=={"source":1,"boolean":1,"derivative":1,"integration":1}
+         and row.get("scientific_admission") is False
+         and all(row.get(k) is False for k in CLOSED),
+         "PREVIOUS_SAMPLE_NATIVE_COUNTS_OR_RELEASE_FLAGS_CHANGED")
+    final=attempt/"ATTEMPT_RESULT.json"
+    need(final.is_file() and not final.is_symlink(),
+         "SAMPLE_NOT_COMPLETED_SUCCESSFULLY")
+    result=auth.strict_json(final.read_bytes())
+    need(result.get("schema")=="W4_P30B_ATTEMPT_RESULT_V1" and
+         result.get("status")=="SUCCESS_DIAGNOSTIC_ONLY" and
+         result.get("worker_exit_code")==0 and
+         result.get("sample_index")==index and
+         result.get("material_sha256")==row["material_sha256"] and
+         result.get("scientific_admission") is False and
+         result.get("stdout_sha256")==sha(attempt/"stdout.log") and
+         result.get("stderr_sha256")==sha(attempt/"stderr.log"),
+         "SUCCESS_ATTEMPT_EXECUTION_RECEIPT_MISMATCH")
     return row
 
 def next_attempt(point_dir):
@@ -364,12 +381,25 @@ def batch(a,bound):
                      "stdout_sha256":sha(new/"stdout.log"),
                      "stderr_sha256":sha(new/"stderr.log"),"scientific_admission":False}
             if code==0:
-                result=verify_receipt(new,i,bound["plan"],a.external_lock_sha)
+                # Worker produced its material and receipt, but the enclosing
+                # final success receipt is deliberately written last. Failure
+                # before that point remains incomplete and must not be skipped.
+                material=new/"MATERIAL_SAME_CALL.json"
+                receipt=new/"SAMPLE_RECEIPT.json"
+                need(material.is_file() and receipt.is_file(),
+                     "SUCCESS_WORKER_WITH_MISSING_EVIDENCE")
+                row=auth.strict_json(receipt.read_bytes())
+                need(row.get("material_sha256")==sha(material) and
+                     row.get("sample_index")==i and
+                     row.get("registered_lock_sha256")==a.external_lock_sha,
+                     "SUCCESS_WORKER_EVIDENCE_IDENTITY_MISMATCH")
                 outcome["status"]="SUCCESS_DIAGNOSTIC_ONLY"
-                outcome["material_sha256"]=result["material_sha256"]
+                outcome["material_sha256"]=row["material_sha256"]
             else:
                 outcome["status"]="FAILED_OR_TIMED_OUT_PRESERVE_FOR_INDEPENDENT_REVIEW"
             new_json(new/"ATTEMPT_RESULT.json",outcome)
+            if code==0:
+                verify_receipt(new,i,bound["plan"],a.external_lock_sha)
             print(json.dumps({"sample":i,"status":outcome["status"],"exit":code},
                              sort_keys=True),flush=True)
             if code!=0:return 4
