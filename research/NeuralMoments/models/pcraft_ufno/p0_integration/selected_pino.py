@@ -121,7 +121,10 @@ class SelectedPINOCandidates(nn.Module):
         if not bool(torch.isfinite(geometry).all()):
             raise ValueError("geometry must be finite")
         w = self.pino.encode_geometry(geometry)
-        if self.gino_adapter is not None:
+        if (self.gino_adapter is not None and
+                (self.training or bool((self.gino_gate.detach() != 0).item()))):
+            # Bypass a zero-gated upstream model during eval, but never
+            # bypass it during training: the gate must remain learnable.
             codes = []
             for one in geometry.split(1, dim=0):
                 points, features = voxel_geometry_to_point_cloud(
@@ -131,7 +134,8 @@ class SelectedPINOCandidates(nn.Module):
             gino_code = torch.cat(codes, dim=0)
             local = torch.tanh(self.gino_correction(gino_code))
             w = w * torch.exp(2.0 * torch.tanh(self.gino_gate) * local)
-        if self.quadrann_adapter is not None:
+        if (self.quadrann_adapter is not None and
+                (self.training or bool((self.quadrann_gate.detach() != 0).item()))):
             # Original QuadrANN core returns geometry-conditioned weights
             # on the FIXED native-coordinate PINO quadrature nodes.
             # Keep it independent of c to preserve PINO's analytic d r/d c.

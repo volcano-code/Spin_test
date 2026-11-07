@@ -67,6 +67,29 @@ class SelectedAdapterContracts(unittest.TestCase):
         self.assertFalse(o.newton_derivative_admitted)
         self.assertIsNone(o.result.jacobian)
 
+    def test_eval_zero_gate_bypasses_upstream_but_training_keeps_grad_path(self):
+        from unittest.mock import patch
+        model=SelectedPINOCandidates(
+            make_pino(),gino=True,quadrann=True,uqno=False,max_gino_points=48
+        )
+        D,c=geometry(),coefficients()
+        with patch.object(model.gino_adapter,"encode",side_effect=AssertionError("GINO called")), \
+             patch.object(model.quadrann_adapter.model,"forward",
+                          side_effect=AssertionError("QuadrANN called")):
+            with torch.no_grad():
+                # Zero gates and eval mode: upstream encoders are not invoked.
+                out=model.eval()(D,c)
+            self.assertTrue(bool(torch.isfinite(out.result.moments).all()))
+        # In training mode the same zero gate must still receive gradients;
+        # hence original upstream features must be evaluated.
+        model.train()
+        r=model(D,c).result.moments
+        r.sum().backward()
+        self.assertIsNotNone(model.gino_gate.grad)
+        self.assertIsNotNone(model.quadrann_gate.grad)
+        self.assertTrue(bool(torch.isfinite(model.gino_gate.grad) and
+                             torch.isfinite(model.quadrann_gate.grad)))
+
     def test_enabled_gates_still_preserve_pino_physical_moment_structure(self):
         D,c = geometry(),coefficients()
         model=SelectedPINOCandidates(

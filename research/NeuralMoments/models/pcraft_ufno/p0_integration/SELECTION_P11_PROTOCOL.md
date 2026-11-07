@@ -43,3 +43,15 @@ Freeze this experimental port, then train one upstream adapter at a
 time with identical P0 teacher/split/step budgets and predeclared new
 geometry held-out tests. Do not promote if cold/warm time or accuracy
 regresses. The original PINO baseline and exact fallback stay primary.
+
+## P11b inference cost parity repair
+
+In `eval()`, GINO/QuadrANN gates exactly zero bypass the expensive upstream
+feature extraction; the base PINO path remains available with no extra
+upstream compute. When `train()` is set, even a zero gate must run the
+upstream modules so gradients can learn to open it. A dedicated test
+patches their forward paths to raise if accidentally called in eval,
+then confirms gradients in train. The P11 pilot is re-run with unchanged
+seed, original PINO checkpoint budget, and unchanged random gate controls;
+only the cost behavior for zero-gated branches changes. This is a
+software-efficiency fix, not a new trained-model accuracy claim.
