@@ -33,7 +33,7 @@ def source_alias_pair(n: int):
     period=n//8
     z=torch.arange(n)
     wave=torch.where((z%period)<period//2,-.30,.30).float()
-    pattern=wave.view(1,1,1,1,n)
+    pattern=wave.view(1,1,1,n)
     # Modify only complete 8-grid parent bins that avoid the fixed shell.
     edit=torch.zeros((1,1,n,n,n),dtype=torch.bool)
     edit[:,:,period:n-period,period:n-period,period:n-period]=True
