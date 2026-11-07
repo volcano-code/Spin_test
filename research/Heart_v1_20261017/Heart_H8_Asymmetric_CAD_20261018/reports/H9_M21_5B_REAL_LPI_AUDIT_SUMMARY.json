@@ -1,0 +1,176 @@
+{
+  "schema": "heart-h9-m21-5b-six-lpi-derived-independent-audit-summary-v1",
+  "status": "DERIVED_LPI_EXACT_IDENTITIES_RECHECKED_NOT_NATIVE_ATTESTATION",
+  "source_file": {
+    "filename": "m21-3-lpi.json",
+    "size_bytes": 128390,
+    "sha256": "d353486cafb3b81a97c302c51d8a034eedee327fabe92f2497df2c48b49c522e",
+    "schema": "heart-h9-m21-3-selected-lpi-motion-v1",
+    "reported_status": "SIX_SAVED_PACKETS_THREE_LPI_DIAGNOSTIC_ONLY",
+    "reported_script_sha256": "c52eb33d703ac77d26beff44646753d3f16345a5d96d5246c544b847eff03c26",
+    "reported_core_sha256": "d66ce44c42f66a875298ae271dda76c12d5f3660bd3d13a1089d4fdd152063fd",
+    "reported_worker_sha256": "ad35ce135cbf6e85e8c81b5abcb6fadf5fbf0e9d7e97f4d13cfdbc5d34b72c5b"
+  },
+  "ledger": {
+    "filename": "precision-ledger.json",
+    "sha256": "95bf2c6d91862bba488dd56118562a1fad826037966ed3f8f0bf382e5fba0703",
+    "ledger_bytes_reopened": true,
+    "six_material_digest_pairs_match": true,
+    "original_six_native_gz_materials_reopened": false
+  },
+  "counts": {
+    "saved_samples": 6,
+    "selected_lpi_rows": 18,
+    "per_sample_identity_and_quotient_derivative_checks": 18,
+    "exact_interval_feature_secant_checks": 18,
+    "full_half_partition_curvature_identities": 6,
+    "rows_with_zero_fixed_line_motion_and_denominator_motion": 18,
+    "isolated_synthetic_negative_contract_tests_passed": 5
+  },
+  "features": [
+    {
+      "label": "Repeated",
+      "input_design_edge": [
+        3756,
+        3813
+      ],
+      "source_plane": [
+        24,
+        86,
+        87
+      ],
+      "incidence_range": [
+        0.11438005130898299,
+        0.11438005699049582
+      ],
+      "t_range": [
+        0.022658616774710656,
+        0.022714581093232832
+      ],
+      "tprime_range": [
+        279.8199734133576,
+        279.8232126868886
+      ],
+      "anchor_fraction_range": [
+        0.9943965947275919,
+        0.9943966377874859
+      ]
+    },
+    {
+      "label": "Left-full",
+      "input_design_edge": [
+        9992,
+        10119
+      ],
+      "source_plane": [
+        31,
+        105,
+        110
+      ],
+      "incidence_range": [
+        0.1101020700329919,
+        0.11010210476390035
+      ],
+      "t_range": [
+        0.29868585241800755,
+        0.2987410192985527
+      ],
+      "tprime_range": [
+        275.8342567350543,
+        275.834548148339
+      ],
+      "anchor_fraction_range": [
+        0.9880667138075948,
+        0.9880671056328759
+      ]
+    },
+    {
+      "label": "Right-first",
+      "input_design_edge": [
+        3168,
+        3618
+      ],
+      "source_plane": [
+        24,
+        151,
+        152
+      ],
+      "incidence_range": [
+        0.11010395450700103,
+        0.1101039892379199
+      ],
+      "t_range": [
+        0.38283079659849056,
+        0.38295812514553595
+      ],
+      "tprime_range": [
+        636.6412959798454,
+        636.6441758010676
+      ],
+      "anchor_fraction_range": [
+        1.0072443014500168,
+        1.0072446801273522
+      ]
+    }
+  ],
+  "interval_residuals": [
+    {
+      "side": "left",
+      "interval": "full",
+      "delta_c7": 8.999999999999999e-8,
+      "max_residual_norm": 3.177552169734626e-8,
+      "feature": "Left-full"
+    },
+    {
+      "side": "left",
+      "interval": "first-half",
+      "delta_c7": 4.499999999999999e-8,
+      "max_residual_norm": 1.0048639126360164e-7,
+      "feature": "Repeated"
+    },
+    {
+      "side": "left",
+      "interval": "second-half",
+      "delta_c7": 4.499999999999999e-8,
+      "max_residual_norm": 7.381370809955174e-8,
+      "feature": "Repeated"
+    },
+    {
+      "side": "right",
+      "interval": "full",
+      "delta_c7": 8.999999999999999e-8,
+      "max_residual_norm": 3.8978236965210987e-8,
+      "feature": "Right-first"
+    },
+    {
+      "side": "right",
+      "interval": "first-half",
+      "delta_c7": 4.499999999999999e-8,
+      "max_residual_norm": 6.800406107217213e-8,
+      "feature": "Right-first"
+    },
+    {
+      "side": "right",
+      "interval": "second-half",
+      "delta_c7": 4.499999999999999e-8,
+      "max_residual_norm": 3.9267759900097607e-8,
+      "feature": "Repeated"
+    }
+  ],
+  "max_relative_residual": 1.149503828692229e-8,
+  "max_absolute_residual_norm": 1.0048639126360164e-7,
+  "full_half_velocity_curvature_correction_norm_range": [
+    1.042686073220374e-13,
+    2.7335191107167773e-12
+  ],
+  "interpretation": "Six saved sample-derived LPI records are internally consistent, do not exhibit incidence collapse, and show predominantly moving-source-plane anchor motion. The report does not establish exact native source tangents, full 8455-vertex Jacobian correctness, a continuous differentiable Boolean stratum, accepted Newton step or optimized Heart OBJ.",
+  "next_milestone": "M21.6: all retained construction identities and 8455-vertex motion versus same-call J7 audit, using saved six packets, separated EXPLICIT3D/LPI/TPI.",
+  "claims": {
+    "new_boolean_calls_in_this_audit": 0,
+    "new_native_source_calls_in_this_audit": 0,
+    "root_cause_determined": false,
+    "continuous_neighborhood_certified": false,
+    "newton_admitted": false,
+    "final_heart_obj_produced": false
+  }
+}
