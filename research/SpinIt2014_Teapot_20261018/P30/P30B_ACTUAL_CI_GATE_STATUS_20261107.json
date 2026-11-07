@@ -1,0 +1,69 @@
+{
+  "schema": "W4_P30B_OWNER_LOCKED_NATIVE_PILOT_CI_RECEIPT_V1",
+  "actual_ci": {
+    "run_id": 42384028746,
+    "url": "https://github.com/volcano-code/Spin_test/actions/runs/42384028746",
+    "conclusion": "success",
+    "artifact_id": 13578568330,
+    "artifact": "W4-P30B-authorization-blocked-20-regression-evidence",
+    "pure_python_unit_tests": 20,
+    "failed": 0,
+    "skipped": 0,
+    "wrapper_bash_syntax_test": true,
+    "owner_readiness_json_sha256": "be00116b1e87c395646ecce37b214077ce7c078fcc6ff8963ca237239226c187",
+    "ci_scope_json_sha256": "c5d8cc8680fc50600ad7981c531e7475d78f8ec362254e400f0ec2ee08a0d61d",
+    "unittest_log_sha256": "c38e4228af203448b1128531dbfabc3b96c7820f309f07afbf9914039288c044"
+  },
+  "upstreams": {
+    "w0_source_commit": "5bab2eb2616df306906a6887a273f68acfa49320",
+    "w2_teacher_commit": "64f7c491fff8efca6f8dc1d4f12871c677a0ec02",
+    "original_p27_lock_sha256": "451d8b46cd047325b0b3e2d406f9e89dd0252cece677f5f310ca5abe3c8089a4",
+    "formal_m6_manifest_sha256": "3a9b6b21d1d1185e00d1ef25a1bfc625d4696f554c3ab4a7719f5d85ca109773",
+    "real_p30_private_plan_sha256": "fc2d9a1b3c372513cdf3d6ba41e74812a12761e67f6b6fa82c0a66982351bacc"
+  },
+  "actual_result": {
+    "status": "SOFTWARE_CHECK_PASS_NATIVE_PILOT_BLOCKED",
+    "w0_owner_record_found": false,
+    "w2_feature_pilot_record_found": false,
+    "readiness_status": "BLOCKED_WAITING_INDEPENDENT_W0_W2_APPROVAL",
+    "readiness_expected_exit_code": 3,
+    "native_sampler_has_executed_in_24GiB_container": false,
+    "new_real_cherchi_tangent_points": 0,
+    "planned_pilot_points": 12,
+    "planned_full_points": 36,
+    "jacobian_numeric_correctness_certified": false,
+    "continuous_smooth_neighborhood_proven": false,
+    "W0_physical_case_authorized": false,
+    "W2_independent_Teapot_teacher_approved": false,
+    "Newton_accepted": false,
+    "training_admissible": false,
+    "original_P21_offline_verifier_executed_as_part_of_this_CI": false
+  },
+  "implemented": {
+    "approval_paths": [
+      "research/NeuralMoments/contracts/P30_TEAPOT_DIAGNOSTIC_AUTHORIZATION.json",
+      "research/NeuralMoments/teacher/P30_TEAPOT_FEATURE_PILOT_AUTHORIZATION.json"
+    ],
+    "software": [
+      "p30b_authority.py",
+      "p30b_native_sampler.py",
+      "p30b_run_approved_native_pilot.sh",
+      "test_p30b_native_sampler.py",
+      "P30B_NATIVE_PILOT_HANDOFF.md"
+    ],
+    "preserved_point_failure_or_partial_receipts": true,
+    "new_process_per_native_sample": true,
+    "max_pilot_points": 12,
+    "max_single_point_seconds": 900,
+    "max_total_seconds": 3600,
+    "docker_memory_gib": 24,
+    "docker_swap_bytes": 0,
+    "all_results_are_diagnostic_only": true
+  },
+  "owner_handoffs": [
+    "https://github.com/volcano-code/Spin_test/issues/5",
+    "https://github.com/volcano-code/Spin_test/issues/6"
+  ],
+  "next_trigger": "W0_AND_W2_INDEPENDENT_TRACKED_OWNER_REVIEWS_REQUIRED_BEFORE_SEAL_AND_LOCAL_PILOT",
+  "scope": "W4_BRANCH_ONLY_NO_OWNER_APPROVAL_OR_NEW_NATIVE_EXECUTION"
+}
