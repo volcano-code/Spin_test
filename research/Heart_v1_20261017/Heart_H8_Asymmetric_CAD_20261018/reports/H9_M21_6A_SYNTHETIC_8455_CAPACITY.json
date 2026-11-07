@@ -1,0 +1,14 @@
+{
+  "schema": "heart-h9-m21-6a-synthetic-capacity-smoke-v1",
+  "status": "SYNTHETIC_8455_X_6_CAPACITY_PASSED_NO_REAL_FULL_BOUNDARY",
+  "elapsed_seconds": 3.206115189000002,
+  "max_rss_kib": 145548,
+  "fixture_source": "18 real selected LPI derived rows + 8452 generated EXPLICIT3D + 256 generated source vertices per sample",
+  "simulated_material_count": 6,
+  "simulated_boundary_count_per_material": 8455,
+  "simulation_exclusive_notice": "This is NOT six native Cherchi packets or original source attachments. No full-boundary scientific result.",
+  "full_half_exact_partition_identities": 17422,
+  "selected_lpi_residual_crosschecks": 18,
+  "new_boolean_calls": 0,
+  "newton_admitted": false
+}
