@@ -1,0 +1,55 @@
+name: W6 P12 trained GINO QuadrANN and UQNO
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/p12_train.py
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_p12_train.py
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/P12_PROTOCOL.md
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/selected_pino.py
+      - .github/workflows/w6-p12-train.yml
+  workflow_dispatch:
+jobs:
+  p12-three-seed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install pinned original-source CPU stack
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install torch-scatter torch-cluster -f https://data.pyg.org/whl/torch-2.5.1+cpu.html
+          python -m pip install torch-geometric==2.6.1 numpy pytest
+          python -m pip install "git+https://github.com/neuraloperator/neuraloperator.git@a6648eeeb60fe0837f2d7d021517a945a159a0c8"
+      - name: Validate frozen PINO and original source integration
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q \
+            research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_p12_train.py \
+            research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_p12_material_quadrann.py
+      - name: Run three-seed same-label PINO and upstream adapter training
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.p0_integration.p12_train \
+            --seeds 131,137,139 --base-steps 40 --adapter-steps 12 --uq-steps 24 \
+            --train-geometries-per-family 10 --test-ellipsoids 6 \
+            --output /tmp/w6_p12_three_seed_pino_upstream.json
+      - name: Upload per-seed training source and UQNO risk receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p12-three-seed-trained-original-upstream
+          path: /tmp/w6_p12_three_seed_pino_upstream.json
+          if-no-files-found: error
+          retention-days: 30
