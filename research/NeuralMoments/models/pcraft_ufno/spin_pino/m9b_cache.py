@@ -22,7 +22,7 @@ def _raw_tensor_digest(x: Tensor) -> str:
     y = x.detach().contiguous()
     h = sha256()
     h.update(str((tuple(y.shape), str(y.dtype), str(y.device))).encode())
-    h.update(y.view(torch.uint8).cpu().numpy().tobytes())
+    h.update(y.reshape(-1).view(torch.uint8).cpu().numpy().tobytes())
     return h.hexdigest()
 
 
