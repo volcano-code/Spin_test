@@ -1,0 +1,77 @@
+{
+  "claims": {
+    "continuous_neighborhood_certified": false,
+    "native_j7_layer_comparison_done": false,
+    "new_boolean_calls": 0,
+    "new_native_source_calls": 0,
+    "newton_admitted": false,
+    "root_cause_determined": false
+  },
+  "exact_top_witness_norms_verified": 90,
+  "input_sha256": {
+    "m20_ledger": "95bf2c6d91862bba488dd56118562a1fad826037966ed3f8f0bf382e5fba0703",
+    "m21_5b_lpi": "d353486cafb3b81a97c302c51d8a034eedee327fabe92f2497df2c48b49c522e",
+    "m21_6a_boundary": "759b4df5111fa51e0d51f1e62ff36b5c84e02e85f13d6e3fc5edece95dbab793"
+  },
+  "intervals": [
+    {
+      "interval": "full",
+      "max_explicit_residual": 8.211389726876832e-09,
+      "max_lpi_residual": 3.177552169734626e-08,
+      "max_source_residual": 8.211389726876832e-09,
+      "rms_explicit_residual": 3.0661318098850807e-10,
+      "rms_lpi_residual": 4.458402507964662e-09,
+      "side": "left"
+    },
+    {
+      "interval": "first-half",
+      "max_explicit_residual": 1.8779528779519635e-08,
+      "max_lpi_residual": 1.0048639126360164e-07,
+      "max_source_residual": 1.8861674801602106e-08,
+      "rms_explicit_residual": 6.353078734196497e-10,
+      "rms_lpi_residual": 1.4487001435648442e-08,
+      "side": "left"
+    },
+    {
+      "interval": "second-half",
+      "max_explicit_residual": 1.601887745849614e-08,
+      "max_lpi_residual": 7.381370809955174e-08,
+      "max_source_residual": 1.668469956105571e-08,
+      "rms_explicit_residual": 4.721974676215924e-10,
+      "rms_lpi_residual": 9.427714542606355e-09,
+      "side": "left"
+    },
+    {
+      "interval": "full",
+      "max_explicit_residual": 7.574675344904893e-09,
+      "max_lpi_residual": 3.8978236965210987e-08,
+      "max_source_residual": 1.3982257876549016e-08,
+      "rms_explicit_residual": 2.417115671555943e-10,
+      "rms_lpi_residual": 5.515254015821299e-09,
+      "side": "right"
+    },
+    {
+      "interval": "first-half",
+      "max_explicit_residual": 1.1952051647138293e-08,
+      "max_lpi_residual": 6.800406107217213e-08,
+      "max_source_residual": 1.268696558867723e-08,
+      "rms_explicit_residual": 5.888480457328301e-10,
+      "rms_lpi_residual": 1.0047388021243428e-08,
+      "side": "right"
+    },
+    {
+      "interval": "second-half",
+      "max_explicit_residual": 1.1213028888385379e-08,
+      "max_lpi_residual": 3.9267759900097607e-08,
+      "max_source_residual": 1.896595675584041e-08,
+      "rms_explicit_residual": 4.787578177582252e-10,
+      "rms_lpi_residual": 6.186863814268849e-09,
+      "side": "right"
+    }
+  ],
+  "intervals_verified": 6,
+  "next_gate": "SIX_RAW_MATERIALS_AND_SOURCE_MOTION_FOR_TEN_MOMENT_J7_FACE_LAYERS",
+  "samples_verified": 6,
+  "schema": "heart-h9-m21-6b-derived-preview-v1",
+  "status": "M21_6A_DERIVED_MOTION_RECHECKED_J7_LAYERS_NOT_RUN"
+}
