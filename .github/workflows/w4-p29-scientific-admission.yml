@@ -1,0 +1,111 @@
+name: W4 P29 scientific admission fail-closed cross-window audit
+
+on:
+  push:
+    branches:
+      - research/neuralmoments-w4-teapot-p1-20261019
+    paths:
+      - .github/workflows/w4-p29-scientific-admission.yml
+      - research/SpinIt2014_Teapot_20261018/P29/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: w4-p29-scientific-gate-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  p29-w0-w2-readonly-gate:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      P29_W4_ROOT: ${{ github.workspace }}/w4
+      P29_W0_ROOT: ${{ github.workspace }}/w0
+      P29_W2_ROOT: ${{ github.workspace }}/w2
+      P29_DIR: research/SpinIt2014_Teapot_20261018/P29
+    steps:
+      - name: Checkout current W4 only into W4-owned workspace
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: w4
+          persist-credentials: false
+
+      - name: Read pinned W0 owner and derivative contracts
+        uses: actions/checkout@v4
+        with:
+          ref: 5bab2eb2616df306906a6887a273f68acfa49320
+          path: w0
+          persist-credentials: false
+
+      - name: Read pinned W2 teacher manifest and current evidence snapshot
+        uses: actions/checkout@v4
+        with:
+          ref: 64f7c491fff8efca6f8dc1d4f12871c677a0ec02
+          path: w2
+          persist-credentials: false
+
+      - name: Use Python standard library only
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run P29 negative regression suite including real upstream checkout
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/w4-p29"
+          python -m unittest discover \
+            -s "w4/$P29_DIR" \
+            -p 'test_p29*.py' -v \
+            2>&1 | tee "$RUNNER_TEMP/w4-p29/unittest.log"
+          grep -q '^Ran 15 tests' "$RUNNER_TEMP/w4-p29/unittest.log"
+          ! grep -q 'skipped=' "$RUNNER_TEMP/w4-p29/unittest.log"
+
+      - name: Generate genuine BLOCKED inspection report with exact source hashes
+        run: |
+          set -euo pipefail
+          set +e
+          python "w4/$P29_DIR/p29_scientific_admission_gate.py" \
+            --w4-root "$P29_W4_ROOT" \
+            --w0-root "$P29_W0_ROOT" \
+            --w2-root "$P29_W2_ROOT" \
+            --output "$RUNNER_TEMP/w4-p29/P29_SCIENTIFIC_GATE.json" \
+            2>&1 | tee "$RUNNER_TEMP/w4-p29/audit.log"
+          code=${PIPESTATUS[0]}
+          set -e
+          echo "P29_AUDIT_EXIT_CODE=$code"
+          test "$code" -eq 3
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path(os.environ["RUNNER_TEMP"])/"w4-p29/P29_SCIENTIFIC_GATE.json"
+          r=json.loads(p.read_text())
+          assert r["status"] == "P29_BLOCKED_OWNER_PHYSICAL_AND_TEACHER_DERIVATIVE_NEWTON"
+          assert r["formal_m6_geometry_receipt_passed"] is True
+          assert r["independent_exact_arithmetic_replay_passed"] is True
+          assert r["scientific_admission"] is False
+          assert r["training_admissible"] is False
+          assert r["Newton_accepted"] is False
+          assert r["new_native_calls"] == 0
+          assert r["w2_manifest"]["training_samples"] == 0
+          assert r["physical_case"]["physical_parameters_approved_by_W0"] is False
+          assert all(v is False for k,v in r["gates"].items()
+                     if k not in ("P27_formal_native_M6_geometry_receipt",
+                                  "P28_independent_archive_arithmetic"))
+          assert all(r["gates"][k] is True for k in
+                     ("P27_formal_native_M6_geometry_receipt",
+                      "P28_independent_archive_arithmetic"))
+          print("P29_AUTHENTIC_BLOCKED_GATE_PASS; W0/W2 not admitted")
+          PY
+
+      - name: Preserve read-only audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-P29-Teapot-W0-W2-admission-blocked-evidence
+          path: ${{ runner.temp }}/w4-p29/**
+          if-no-files-found: warn
+          retention-days: 30
