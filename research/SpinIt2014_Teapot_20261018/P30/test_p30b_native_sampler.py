@@ -296,7 +296,7 @@ class P30BNativeJournalTest(unittest.TestCase):
             altered=json.loads((parent/"SAMPLE_RECEIPT.json").read_text())
             altered["training_admissible"]=True
             (parent/"SAMPLE_RECEIPT.json").write_text(json.dumps(altered))
-            with self.assertRaisesRegex(native.SampleRejected,"PREVIOUS_SAMPLE_NATIVE_COUNTS_OR_RELEASE_FLAGS_CHANGED"):
+            with self.assertRaisesRegex(native.SampleRejected,"PREVIOUS_SAMPLE_RECEIPT_TAMPERED"):
                 native.existing_verified_success(parent.parent,0,p,"e"*64)
 
     def test_19_zero_native_calls_in_tests(self):
