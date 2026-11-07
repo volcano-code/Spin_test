@@ -24,6 +24,7 @@ import torch
 from ..spin_pino.dataset import generate_splits
 from ..spin_pino.spin_pino import SpinPINO
 from ..spin_pino.train import run_seed
+from ..spin_pino.equivariance import augment_with_cube_rotations
 from .selected_pino import SelectedPINOCandidates, GroupwiseConformalScreen
 
 ARMS = ("pino_head", "gino", "quadrann")
@@ -133,6 +134,7 @@ def _fit_adapter(model, data, *, arm, seed, steps, indices):
         raise AssertionError("no trainable adapter parameters")
     optimizer = torch.optim.Adam(params, lr=.0015)
     best_state = _strict_state_snapshot(model)
+    initial_state = _strict_state_snapshot(model)
     model.eval()
     val0 = _predict_by_geometry(model, data["validation"])
     best = val0["r_mae"] + .25*val0["J_mae"]
@@ -167,6 +169,11 @@ def _fit_adapter(model, data, *, arm, seed, steps, indices):
     model.eval()
     validation=_scalar_metrics(_predict_by_geometry(model,data["validation"]))
     test=_scalar_metrics(_predict_by_geometry(model,data["test"]))
+    # Diagnostic evaluation of the untouched adapter AFTER checkpoint selection.
+    # It is never used for hyperparameters, optimizer updates, or selection.
+    model.load_state_dict(initial_state, strict=True)
+    initial_test=_scalar_metrics(_predict_by_geometry(model,data["test"]))
+    model.load_state_dict(best_state, strict=True)
     return model,{
         "arm":arm, "seed":seed,"updates":steps,
         "selected_step":selected_step,
@@ -176,6 +183,9 @@ def _fit_adapter(model, data, *, arm, seed, steps, indices):
         "trainable_parameters":sum(p.numel() for p in params),
         "total_parameters":sum(p.numel() for p in model.parameters()),
         "validation":validation,"test":test,
+        "initial_untrained_adapter_test":initial_test,
+        "training_vs_initial_r_delta":test["r_relative_l2"]-initial_test["r_relative_l2"],
+        "training_vs_initial_J_delta":test["J_relative_l2"]-initial_test["J_relative_l2"],
         "history":history,"newton_admission":False,
         "GINO_original_learned":arm=="gino",
         "QuadrANN_original_learned":arm=="quadrann",
@@ -268,9 +278,12 @@ def _uq_calibration(frozen_head_model, data, *, seed, train_steps, alpha=.25, to
 
 
 def run(*, seeds=(131,137,139), base_steps=40, adapter_steps=12,
-        uq_steps=24, train_geometries_per_family=10, test_ellipsoids=6):
+        uq_steps=24, train_geometries_per_family=10, test_ellipsoids=6,
+        test_rotation="none"):
     if not seeds or min(base_steps,adapter_steps,uq_steps)<1:
         raise ValueError("positive budgets and nonempty seeds required")
+    if test_rotation not in ("none","cube"):
+        raise ValueError("test_rotation must be none or cube")
     torch.set_num_threads(1)
     rows=[]
     for seed in seeds:
@@ -285,6 +298,17 @@ def run(*, seeds=(131,137,139), base_steps=40, adapter_steps=12,
             train_geometries_per_family=train_geometries_per_family,
             test_ellipsoid_geometries=test_ellipsoids,
             queries_per_geometry=2,grid_size=8)
+        if test_rotation == "cube":
+            # Use ONLY newly rotated held-out test samples; exact native
+            # coefficient, raw moment and analytic P0 J transformations.
+            unrotated=data["test"]
+            rotated=augment_with_cube_rotations(unrotated,seed=seed+990091)
+            n=len(unrotated[0])
+            data=dict(data)
+            data["test"]=tuple(x[n:] for x in rotated[:4])+(rotated[4][n:],)
+            if not all(item.get("augmentation")=="EXACT_CUBE_ROTATION_LABEL_TRANSFORM"
+                       for item in data["test"][4]):
+                raise AssertionError("test rotation provenance not certified cube")
         # Identical pretrained state and same data/observation indices.
         trained_state=baseline["checkpoint_state"]
         obs=torch.randint(
@@ -343,6 +367,7 @@ def run(*, seeds=(131,137,139), base_steps=40, adapter_steps=12,
         "matched_auxiliary_label_and_update_budget":True,
         "parameter_and_flop_budgets_not_matched":True,
         "pretrained_pino_updates":base_steps,
+        "confirmatory_test_rotation":test_rotation,
         "adapter_updates_per_arm":adapter_steps,
         "UQNO_fit_only_updates":uq_steps,
         "trunk_is_primary":"P-CRAFT UFNO3d",
@@ -363,12 +388,13 @@ def main():
     p.add_argument("--uq-steps",type=int,default=24)
     p.add_argument("--train-geometries-per-family",type=int,default=10)
     p.add_argument("--test-ellipsoids",type=int,default=6)
+    p.add_argument("--test-rotation",choices=("none","cube"),default="none")
     p.add_argument("--output",type=Path,required=True)
     a=p.parse_args()
     result=run(seeds=tuple(int(x) for x in a.seeds.split(",")),
                base_steps=a.base_steps,adapter_steps=a.adapter_steps,
                uq_steps=a.uq_steps,train_geometries_per_family=a.train_geometries_per_family,
-               test_ellipsoids=a.test_ellipsoids)
+               test_ellipsoids=a.test_ellipsoids,test_rotation=a.test_rotation)
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(result,indent=2,sort_keys=True,allow_nan=False)+"\n")
     print(json.dumps({"aggregate":result["aggregate"],
