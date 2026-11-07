@@ -1,0 +1,62 @@
+name: W6 P13b real 8-64 Fourier resolution CPU probe
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p13b_operator_grid.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p13b_operator_grid.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/P13B_OPERATOR_GRID.md
+      - .github/workflows/w6-p13b-operator-grids.yml
+  workflow_dispatch:
+jobs:
+  real-fourier-resolution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install pinned CPU torch
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install numpy pytest
+      - name: Prove material aliasing and native Fourier resolution behavior
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q \
+            research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p13b_operator_grid.py
+      - name: Independent process 64 source with each 8 16 32 64 Fourier grid
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          for GRID in 8 16 32 64; do
+            python -m research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p13b_operator_grid \
+              --source 64 --operator "$GRID" \
+              --output "/tmp/w6_p13b_fourier_64source_grid_${GRID}.json"
+          done
+      - name: 128 density input through real 32-cube PINO Fourier grid
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p13b_operator_grid \
+            --source 128 --operator 32 \
+            --output /tmp/w6_p13b_fourier_128source_grid_32.json
+      - name: Retain actual native Fourier-grid CPU profile
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p13b-real-fourier-grid-profiles
+          path: /tmp/w6_p13b_fourier_*.json
+          if-no-files-found: error
+          retention-days: 30
