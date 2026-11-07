@@ -15,11 +15,15 @@ from .equivariance import (
 )
 
 
-def _validate(D: Tensor) -> None:
+def _validate_tensor(D: Tensor) -> None:
     if D.ndim != 5 or D.shape[1] != 4 or min(D.shape[2:]) < 4:
         raise ValueError("expected geometry [B,4,X,Y,Z] with each axis >=4")
     if not D.is_floating_point() or not bool(torch.isfinite(D).all()):
         raise ValueError("geometry must be finite floating point")
+
+
+def _validate(D: Tensor) -> None:
+    _validate_tensor(D)
     rho, occ = D[:, 0], D[:, 1]
     if bool(((rho < 0) | (rho > 1) | (occ < 0) | (occ > 1)).any()):
         raise ValueError("mass transport requires density and occupancy in [0,1]")
@@ -36,7 +40,7 @@ def _grid(nxyz, dtype, device):
 
 def sampled_material_moments(D: Tensor) -> Tensor:
     """Ten uniform NODE-QUADRATURE moments; NOT analytic continuum moments."""
-    _validate(D)
+    _validate_tensor(D)
     coords = _grid(D.shape[-3:], D.dtype, D.device)
     x, y, z = coords.unbind(-1)
     phi = torch.stack((torch.ones_like(x), x, y, z, x*x, y*y, z*z,
