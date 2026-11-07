@@ -30,3 +30,19 @@ jobs:
           python -m pytest -q \
             research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_bridge.py \
             research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_spin_pino.py
+      - name: Measure 8-cube and 16-cube coupled density optimization
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p13a_smoke \
+            --updates 12 --output /tmp/w6_p13a_density_pino.json
+      - name: Retain exact P13a numerical evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p13a-densicrafter-pino
+          path: /tmp/w6_p13a_density_pino.json
+          if-no-files-found: error
+          retention-days: 30

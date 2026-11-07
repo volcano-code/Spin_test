@@ -96,4 +96,13 @@ For actual strength/repair claims, add a validated FEM/PINN stress solver and ma
 
 ## Current status
 
-Source and MIT license inspected and pinned. No DensiCrafter source has yet been copied into W6; no adapter or experiment has yet passed. Current state is SOURCE_AUDITED_ADAPTER_NOT_YET_IMPLEMENTED.
+Source and MIT license pinned at upstream commit `21e6d8d`.
+**P13a incremental update (2026-11-07): integrated**, not merely planned.
+
+- Original MIT `mass_penalty`, `compute_mass_center` and smooth-bottom-contact core extracted under `densicrafter_pino/third_party/`, retaining full license and original commit/blob traceability.
+- Implemented differentiable density logits, protected shell, gravity-axis-aware contact/COM loss and physically parameterized ten full-material moments, feeding canonical four-channel density directly to the original P-CRAFT Spin-PINO encoder and moment/Jacobian heads.
+- Confirmed actual gradient from PINO r back to density design variables, protected-shell invariance, valid arbitrary gravity axes, no periodic wrap, and a descending joint density/moment objective.
+- GitHub Actions P13a run: https://github.com/volcano-code/Spin_test/actions/runs/42383420598 — 21 passed, 0 failed.
+- These are *source-level and gradient* integration achievements; TRELLIS/MuJoCo/Blender, 512³ CUDA, native Cherchi, strength/FEM, printable-model end-to-end and full DensiCrafter paper reproduction remain unverified.
+- Updated current candidate status: `P13A_ORIGINAL_MIT_LOSS_CORE_COUPLED_TO_PINO_CPU_21_TESTS_PASSED_NOT_FULL_REPRODUCTION`.
+

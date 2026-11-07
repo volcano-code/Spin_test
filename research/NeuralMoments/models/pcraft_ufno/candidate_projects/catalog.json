@@ -714,7 +714,7 @@
           "b0be285b3025804043fea228b01ab4916b14da47"
         ]
       ],
-      "w6_status": "SOURCE_AUDITED_ADAPTER_NOT_YET_IMPLEMENTED",
+      "w6_status": "P13A_ORIGINAL_MIT_LOSS_CORE_COUPLED_TO_PINO_CPU_21_TESTS_PASSED_NOT_FULL_REPRODUCTION",
       "role": "Complementary differentiable density-field design module: self-supporting hollowing, mass regularization, center-of-mass and bottom-contact losses. Connect its optimized density field to W6 material moments and inertia evaluation; not a general FEM/structural-strength solver.",
       "priority": "P0_P1_CROSS_PROJECT_INTEGRATION",
       "reuse_rule": "MIT; preserve copyright (c) 2025 Shengqi Dang and license notice. Port only isolated differentiable loss/field logic; do not import TRELLIS/MuJoCo/Blender pipeline into W6 core.",
@@ -734,6 +734,28 @@
           "loss.py reshapes contact map to 64x64",
           "no FEM stress/strain or general load-case solve is implemented in these inspected files"
         ]
+      },
+      "integration_evidence": {
+        "branch": "research/neuralmoments-w6-pcraft-20261019",
+        "source_commit": "690fe36832d74bd53b33856a67dc12d6dfced3f4",
+        "fix_commit": "c43ae81c7169d45612883e31df7f03652ca8a918",
+        "run": 42383420598,
+        "conclusion": "success",
+        "tests": "21 passed, 0 failed",
+        "source_pinned": "21e6d8dc646129a9b21a38c2d5bee5bef2704d98",
+        "reused_original_core": [
+          "mass_penalty",
+          "compute_mass_center",
+          "get_smooth_bottom_contact_region"
+        ],
+        "integrated_module": "research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/",
+        "true_density_to_PINO_gradient_test": true,
+        "protected_shell_fixed": true,
+        "general_64_512_GPU_test": false,
+        "full_original_TRELLIS": false,
+        "formal_Cherchi_teacher": false,
+        "native_Newton_J_admission": false,
+        "mechanical_FEM_strength": false
       }
     },
     {
