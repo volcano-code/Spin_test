@@ -93,3 +93,72 @@ path must be tested before claiming 512³ readiness.
 This is a **useful negative physical-fidelity result and positive
 high-input-density integration test**, not high-resolution end-to-end
 Spin-it Faster success.
+
+## Independent cloud CPU proof: true P-CRAFT internal Fourier grid 16³/32³/64³/128³
+
+This experiment is a NEW capacity gate, independent of the 32/64
+density-optimization run above. It executes one true P-CRAFT
+factorized-U-FNO full forward+backward and material-density
+autograd per independent CPU process, with fixed small model
+configuration: width=4, modes=2, n_layers=2, 4³ quadrature nodes.
+**There is NO trained high-resolution teacher or 512³ network here.**
+
+- Source pin: `4ab7c849f895b1b07743db19dbf0e1afe5a9a2f7`.
+- GitHub Actions 64-input / 8,16,32,64 real Fourier, plus 128-input
+  / 32 Fourier: https://github.com/volcano-code/Spin_test/actions/runs/42391852853
+  **SUCCESS; 2 explicit aliasing and physics contract tests passed.**
+  ZIP SHA256: `d038dd256afc59c7f2cf04e6b29961d701d23fdf6b2bcf5300690e7ae9106095`.
+- Source pin for separate actual 128³ Fourier test:
+  `387ebd2ef441a19f4427c904248f7478991404ce`.
+  https://github.com/volcano-code/Spin_test/actions/runs/42392034359
+  **SUCCESS; native 128³ Fourier/Densi density forward+backward**.
+  ZIP SHA256: `afe7849bfc1bb5f109fd133401563f8a40f43c7835ed81e9f77a5007ff03f4e2`.
+
+| Source density input | PINO internal Fourier grid | One CPU forward+backward | Maximum process RSS | Distinguishes the constructed fine source at preprocess? |
+|---|---|---:|---:|---|
+| 64³ | 8³ | 0.0554 s | 396.6 MiB | No (max diff=0) |
+| 64³ | 16³ | 0.0569 s | 400.5 MiB | Yes (max diff=0.30) |
+| 64³ | 32³ | 0.0785 s | 411.8 MiB | Yes (max diff=0.30) |
+| **64³** | **64³ actual Fourier** | **0.4714 s** | **483.3 MiB** | Yes (max diff=0.30) |
+| 128³ | 32³ | 0.4677 s | 854.0 MiB | Yes (max diff=0.30) |
+| **128³** | **128³ actual Fourier** | **4.4957 s** | **1,313.2 MiB / 1.28 GiB** | Yes (max diff=0.30) |
+
+The independent hard-cut moment difference of the paired density
+inputs is 0.0819168 on 64³, and 0.0789809 on 128³. The pairs have
+identical 8³ pooled density averages but distinct high-frequency
+content, proving loss of information at the *encoder*'s 8³
+preprocessing stage, and retained content for grid>=16.
+This does not prove the entire trained ten-moment model has
+general CAD accuracy at any grid. Even 128³ still uses only 4³
+fixed quadrature nodes.
+
+**New conclusion:** The existing GitHub CPU environment can handle
+an actual one-step 128³ P-CRAFT F-FNO/U-FNO and differentiable
+DensiCrafter density field at the narrowest tested model width.
+It is incorrect to call cloud PINO hard-limited to 8³ or 16³.
+It remains incorrect to claim 128³ multi-epoch training,
+a feasible high-resolution printable solution, or any 512³
+CUDA/float32 VRAM capacity. Physical fidelity and efficient memory
+scale remain blocking tasks.
+
+The same two-cell protected wall has different physical thickness
+across 32³ and 64³ source grids. Their raw mass reductions must
+not be treated as a controlled same-wall-thickness resolution study.
+The independent discrete cut moment is cell-centered, not a
+Cherchi-certified continuous CAD/Boolean integral. The P13b
+feasibility threshold 4.5% is an exploratory test gate, not a
+manufacturing-accuracy or native Newton guarantee.
+
+## Updated cloud vs local recommendation
+
+- **Cloud now:** 32³/64³ multi-objective optimization and narrow
+  128³ original PINO forward/backward have both been demonstrated.
+  Next train/fine-tune PINO on truly independent 32/64/128 source
+  cut labels, implement per-resolution physical wall units, and
+  test mass/CoM/inertia preservation via independent quadrature.
+- **Local GPU:** match official fVDB/CUDA/PyTorch versions in a separate
+  environment and perform 256³/512³ sparse density and PINO feature
+  training, with peak VRAM, throughput, occupancy percentages and
+  cut-moment fidelity; preserve PINO as sole main neural backbone.
+- **Native W0/W2/Cherchi:** only admitted true derivative neighborhoods
+  may authorize Newton and full Heart/Teapot/Noodles Spin speedups.

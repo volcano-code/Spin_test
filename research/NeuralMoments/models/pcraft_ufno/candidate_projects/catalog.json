@@ -714,7 +714,7 @@
           "b0be285b3025804043fea228b01ab4916b14da47"
         ]
       ],
-      "w6_status": "P13A_ORIGINAL_MIT_LOSS_CORE_COUPLED_TO_PINO_CPU_21_TESTS_PASSED_NOT_FULL_REPRODUCTION",
+      "w6_status": "P13B_REAL_DENSI_PINO_COUPLING_32_64_CPU_OPT_128_NATIVE_FOURIER_1PASS_NOT_512_OR_CHERCHI",
       "role": "Complementary differentiable density-field design module: self-supporting hollowing, mass regularization, center-of-mass and bottom-contact losses. Connect its optimized density field to W6 material moments and inertia evaluation; not a general FEM/structural-strength solver.",
       "priority": "P0_P1_CROSS_PROJECT_INTEGRATION",
       "reuse_rule": "MIT; preserve copyright (c) 2025 Shengqi Dang and license notice. Port only isolated differentiable loss/field logic; do not import TRELLIS/MuJoCo/Blender pipeline into W6 core.",
@@ -755,7 +755,32 @@
         "full_original_TRELLIS": false,
         "formal_Cherchi_teacher": false,
         "native_Newton_J_admission": false,
-        "mechanical_FEM_strength": false
+        "mechanical_FEM_strength": false,
+        "p13b": {
+          "resolution32_64_four_arm_run": 42391394923,
+          "resolution32_64_ci": "success, 11 tests",
+          "real_fourier_64_run": 42391852853,
+          "real_fourier_128_run": 42392034359,
+          "source_volume_resolutions": [
+            32,
+            64,
+            128
+          ],
+          "internal_Fourier_resolutions_verified": [
+            8,
+            16,
+            32,
+            64,
+            128
+          ],
+          "actual_native_128_step": true,
+          "full512_trained": false,
+          "mass_and_cut_independently_checked": true,
+          "hard_tolerance_is_exploratory": true,
+          "actual_128_cpu_RSS_KiB": 1344764,
+          "actual_128_CPU_seconds": 4.495717077000009,
+          "warning": "no pretrained high-resolution PINO, formal native CAD/J, GPU/512, physical wall-unit invariant or 3D printing validation"
+        }
       }
     },
     {
