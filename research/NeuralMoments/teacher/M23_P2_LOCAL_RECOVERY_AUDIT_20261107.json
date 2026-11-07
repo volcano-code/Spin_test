@@ -1,0 +1,61 @@
+{
+  "schema": "w2-m23-p2-local-data-recovery-audit-v1",
+  "date": "2026-11-07",
+  "uploaded_report": {
+    "name": "W2_M23_RECOVERY_REPORT.txt",
+    "size_bytes": 928,
+    "sha256": "a250755ccbc428c6581fcd22fbc3d07ae491ef9a52462eb6844902dc1573a4a1",
+    "source": "user_host_find_and_sha256sum_text;not_original_json_bytes"
+  },
+  "status": "NO_MATCH_TO_HISTORICAL_NOODLES_V7_SIX_PACKETS",
+  "scan_scope": "limited_find_patterns_under_/data;archive_names_and_backend_exact_name_only",
+  "match_count": 0,
+  "candidate_count": 2,
+  "not_reported": 4,
+  "candidates": [
+    {
+      "name": "design-rational.json",
+      "reported_sha256": "d0aec854f2207f2b8abad99507e915fc86ce0b6055ef07a7a3b0a20c3a1eb7f7",
+      "expected_sha256": "48e8d3008bba746823eafd9c3704b52d597595b802066450a921ecc0dcb7f611",
+      "path_suffix": "noodles-balanced-full-input-job-01/output/design-rational.json",
+      "status": "DIFFERENT_SHA"
+    },
+    {
+      "name": "fixed-rational.json",
+      "reported_sha256": "a0e18f72355a0cd9b208c35bbb7aac195ce93401615125ef805a9935393a8953",
+      "expected_sha256": "71f9df91fca12fde4f4f2c80dc26e2d1229e8209e09db46e680d0de7baee264a",
+      "path_suffix": "noodles-balanced-full-input-job-01/output/fixed-rational.json",
+      "status": "DIFFERENT_SHA"
+    }
+  ],
+  "missing_names_in_report": [
+    "envelope-rational.json",
+    "fixed-inside-envelope-rational.json",
+    "fixed-outside-envelope-rational.json",
+    "initial-rational.json"
+  ],
+  "backend_candidates_in_report": 0,
+  "archive_candidates_in_report": 0,
+  "local_candidate_bytes_independently_rehashed": false,
+  "archive_scan_exhaustive": false,
+  "scientific_admission": {
+    "new_cgal_calls": 0,
+    "new_cherchi_calls": 0,
+    "J_D": null,
+    "split": "excluded",
+    "training_samples": 0,
+    "training_admitted": false
+  },
+  "audit_code": "research/NeuralMoments/teacher/m23_p2_recovery_report_audit.py",
+  "tests": "research/NeuralMoments/teacher/test_m23_p2_recovery_report_audit.py",
+  "ci": {
+    "first_run_id": 42382957999,
+    "first_run": "failure",
+    "fixed_run_id": 42383006185,
+    "final_status": "success",
+    "tests": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0
+  }
+}
