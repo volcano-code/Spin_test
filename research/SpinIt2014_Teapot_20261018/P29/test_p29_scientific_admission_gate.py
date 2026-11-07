@@ -143,7 +143,7 @@ class P29Gate(unittest.TestCase):
             ("registered_lock_sha256", "a" * 64),
             ("formal_manifest_sha256", "b" * 64),
             ("formal_w0_commit", "c" * 40),
-            ("formal_status", "TEST_ONLY"):
+            ("formal_status", "TEST_ONLY"),
         ):
             self.p20, self.p28, self.w2 = seed()
             self.p28[key] = changed
