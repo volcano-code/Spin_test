@@ -77,6 +77,18 @@ def run(queries=6, source_resolution=512, sparse_records=4096):
         source_resolution=n, pino_grid_size=16,
     )
     sparse_seconds = time.perf_counter()-start
+    # 512^3 coordinate domain -> sparse data -> 16^3 reduced bridge ->
+    # existing 8^3 PINO trunk/head. This is an interface smoke, NOT a
+    # full-resolution spectral-network evaluation or trained prediction.
+    start = time.perf_counter()
+    with torch.no_grad():
+        sparse_z = model.encode_geometry(low)
+        sparse_r = model.moment_from_weights(sparse_z, controls[0])
+        sparse_J = model.jacobian_from_weights(sparse_z, controls[0])
+    sparse_pino_seconds = time.perf_counter()-start
+    if (sparse_r.shape != (1,10) or sparse_J.shape != (1,10,10)
+            or not bool(torch.isfinite(sparse_r).all() and torch.isfinite(sparse_J).all())):
+        raise AssertionError("sparse-to-reduced-PINO head contract failed")
     return {
         "schema": "SPIN_PINO_M9B_CACHE_AND_SPARSE_BRIDGE_V1",
         "benchmark": "fixed 8^3 geometry/R, different coefficients; CPU single-thread, no neural training",
@@ -92,6 +104,9 @@ def run(queries=6, source_resolution=512, sparse_records=4096):
         "sparse_source_resolution": n,
         "sparse_records": sparse_records,
         "sparse_bridge_seconds": sparse_seconds,
+        "sparse_to_reduced_pino_forward_seconds": sparse_pino_seconds,
+        "sparse_reduced_pino_head_contract": True,
+        "model_internal_pino_grid_size": 8,
         "coarse_grid_shape": list(low.shape),
         "coarse_grid_allocated_bytes": low.numel()*low.element_size(),
         "sparse_raw_input_bytes": sparse_indices.numel()*sparse_indices.element_size()+vals.numel()*vals.element_size(),

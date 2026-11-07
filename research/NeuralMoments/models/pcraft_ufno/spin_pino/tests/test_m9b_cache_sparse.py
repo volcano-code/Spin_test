@@ -136,6 +136,29 @@ class SparseBridgeContracts(unittest.TestCase):
         self.assertTrue(torch.allclose(ledger["fine_ten_moments"],
                                        ledger["coarse_ten_moments"], atol=1e-6))
 
+    def test_sparse_512_passes_through_existing_reduced_PCRAFT_PINO_head(self):
+        from research.NeuralMoments.models.pcraft_ufno.spin_pino.spin_pino import SpinPINO
+        n = 512
+        flat = (torch.arange(1024, dtype=torch.long) * 10103 + 901) % n**3
+        coords = torch.stack((flat // (n*n), (flat//n)%n, flat%n), -1)
+        inds = torch.cat((torch.zeros((len(flat),1), dtype=torch.long), coords), -1)
+        vals = torch.tensor([[.8, 1., 0., 0.]]).repeat(len(flat), 1)
+        coarse, ledger = sparse_to_pino_grid(
+            inds, vals, batch_size=1, source_resolution=n, pino_grid_size=16
+        )
+        model = SpinPINO(
+            width=4, modes=2, n_layers=2, grid_size=8, hidden_dim=32,
+            points_per_axis=4, moment_parameterization="logistic_atom"
+        ).eval()
+        with torch.no_grad():
+            r, J = model(coarse, torch.randn((1,10)), with_jacobian=True)
+        self.assertEqual(tuple(r.shape), (1,10))
+        self.assertEqual(tuple(J.shape), (1,10,10))
+        self.assertTrue(bool(torch.isfinite(r).all() and torch.isfinite(J).all()))
+        self.assertLess(ledger["relative_mass_error_max"], 1e-6)
+        # The actual factorized-FNO still runs on the model's 8^3 grid.
+        self.assertEqual(model.encoder.grid_size, 8)
+
     def test_duplicate_oob_and_ambiguous_proxy_fail_closed(self):
         index = torch.tensor([[0, 2, 3, 4]], dtype=torch.long)
         vals = torch.tensor([[0.8, 1., 0., 0.]])

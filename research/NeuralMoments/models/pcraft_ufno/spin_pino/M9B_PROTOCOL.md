@@ -32,6 +32,9 @@ training and inference paths are unchanged; M9b is opt-in and exploratory.
 - Sparse records represent all nonzero material cells and all omitted entries
   are zero material. Ambiguous duplicate voxels, invalid source range,
   missing material and nonzero sparse SDF/boundary values are rejected.
+- Separate smoke runs the existing SpinPINO ten-moment/Jacobian head on the
+  reduced sparse bridge input. It tests shape/finite contract ONLY, with
+  RANDOM weights and the encoder still downsampling to 8^3.
 - No fVDB, CUDA kernel, full-resolution spectral operator, native Cherchi
   teacher, 512^3 GPU training, or native Spin end-to-end acceleration is claimed.
 
