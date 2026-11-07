@@ -312,12 +312,14 @@ class P30BNativeJournalTest(unittest.TestCase):
             d=Path(root)/"point-000"/"attempt-000"
             d.mkdir(parents=True)
             args=type("Args",(),{"p27_run_dir":Path(root),"external_lock_sha":"e"*64})()
-            with patch.object(native,"resource_report",
+            with (
+                patch.object(native,"resource_report",
                               return_value={"physical_memory_bytes":60*1024**3,
                                             "host_swap_bytes":0,
                                             "cgroup":{"memory.max":str(native.ADDRESS_BYTES),
-                                                      "memory.swap.max":"0"}}), \\
-                 patch.object(native,"verify_modules",return_value={}):
+                                                      "memory.swap.max":"0"}}),
+                patch.object(native,"verify_modules",return_value={}),
+            ):
                 with self.assertRaisesRegex(native.SampleRejected,"MISSING_BATCH_RUN_STATE"):
                     native.worker(args,{"plan":plan()},0,d)
 
