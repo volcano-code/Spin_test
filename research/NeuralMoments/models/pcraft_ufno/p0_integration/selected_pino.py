@@ -77,6 +77,9 @@ class SelectedPINOCandidates(nn.Module):
         self, pino: nn.Module, *, gino: bool = False,
         quadrann: bool = False, uqno: bool = False,
         gino_hidden: int = 8, max_gino_points: int = 64,
+        quadrann_condition_on_material: bool = False,
+        quadrann_max_points: int = 64,
+        quadrann_kernel_width: float = 0.45,
     ):
         super().__init__()
         if not (hasattr(pino, "encode_geometry")
@@ -89,6 +92,13 @@ class SelectedPINOCandidates(nn.Module):
             raise ValueError("max_gino_points must be >=8")
         self.pino = pino
         self.max_gino_points = int(max_gino_points)
+        if not isinstance(quadrann_max_points, int) or quadrann_max_points < 8:
+            raise ValueError("quadrann_max_points must be >=8")
+        if not math.isfinite(quadrann_kernel_width) or quadrann_kernel_width <= 0:
+            raise ValueError("quadrann_kernel_width must be finite positive")
+        self.quadrann_condition_on_material = bool(quadrann_condition_on_material)
+        self.quadrann_max_points = quadrann_max_points
+        self.quadrann_kernel_width = float(quadrann_kernel_width)
         n_nodes = int(pino.monomials.shape[0])
         self.gino_adapter = (
             GINOMomentOperator(
@@ -115,6 +125,51 @@ class SelectedPINOCandidates(nn.Module):
             if uqno else None
         )
 
+    def _quadrann_material_proposal(self, geometry: Tensor) -> Tensor:
+        """Original QuadrANN on occupied *material* points; transfer to PINO nodes.
+
+        This is a P12 experimental nearest-material kernel map, not original
+        QuadrANN's physical integration rule and not a Cherchi reference.
+        The proposal is c-independent so PINO's analytic coefficient Jacobian
+        remains internally consistent. Original QuadrANN source is unchanged.
+        """
+        if self.quadrann_adapter is None:
+            raise RuntimeError("QuadrANN source adapter is disabled")
+        pts = self.pino.quadrature_xyz.to(geometry)
+        sigma2 = self.quadrann_kernel_width ** 2
+        proposals = []
+        for one in geometry.split(1, dim=0):
+            material = one[0, 0] * one[0, 1]
+            sites = (material > 1e-10).nonzero(as_tuple=False)
+            if sites.shape[0] < 8:
+                raise ValueError("QuadrANN material proposal requires >=8 positive support cells")
+            if sites.shape[0] > self.quadrann_max_points:
+                select = torch.linspace(
+                    0, sites.shape[0]-1, self.quadrann_max_points,
+                    device=sites.device,
+                ).round().long().unique()
+                sites = sites[select]
+            scale = torch.tensor(
+                [n-1 for n in one.shape[-3:]],
+                device=one.device, dtype=one.dtype,
+            )
+            xyz = 2.0 * sites.to(one.dtype) / scale - 1.0
+            learned = self.quadrann_adapter.model(
+                ((xyz+1.0)/2.0).unsqueeze(0)
+            ).squeeze(0)
+            if learned.shape != (xyz.shape[0],) or not bool(torch.isfinite(learned).all()):
+                raise ValueError("invalid QuadrANN material-site weights")
+            if bool((learned < 0).any()):
+                raise ValueError("QuadrANN negative material-site weights")
+            mass = material[sites[:, 0], sites[:, 1], sites[:, 2]]
+            distance2 = (pts.unsqueeze(1) - xyz.unsqueeze(0)).square().sum(-1)
+            kernel = torch.exp(-distance2 / (2.0 * sigma2))
+            node_weights = kernel @ (learned.to(mass) * mass)
+            if bool((node_weights <= 0).all()) or not bool(torch.isfinite(node_weights).all()):
+                raise ValueError("QuadrANN produced zero/nonfinite mapped quadrature")
+            proposals.append(node_weights)
+        return torch.stack(proposals, dim=0)
+
     def geometry_weights(self, geometry: Tensor) -> Tensor:
         if geometry.ndim != 5 or geometry.shape[1] != 4:
             raise ValueError("geometry must be canonical [B,4,X,Y,Z]")
@@ -139,12 +194,15 @@ class SelectedPINOCandidates(nn.Module):
             # Original QuadrANN core returns geometry-conditioned weights
             # on the FIXED native-coordinate PINO quadrature nodes.
             # Keep it independent of c to preserve PINO's analytic d r/d c.
-            pts = self.pino.quadrature_xyz.to(geometry)
-            normalized = (pts + 1.0) / 2.0
-            q = self.quadrann_adapter.model(
-                normalized.unsqueeze(0)
-            ).to(w)
-            if q.shape != (1, w.shape[1]) or not bool(torch.isfinite(q).all()):
+            if self.quadrann_condition_on_material:
+                q = self._quadrann_material_proposal(geometry).to(w)
+            else:
+                pts = self.pino.quadrature_xyz.to(geometry)
+                normalized = (pts + 1.0) / 2.0
+                q = self.quadrann_adapter.model(
+                    normalized.unsqueeze(0)
+                ).to(w)
+            if q.shape not in ((1, w.shape[1]), (w.shape[0], w.shape[1])) or not bool(torch.isfinite(q).all()):
                 raise ValueError("invalid QuadrANN node weight shape or value")
             if bool((q < 0).any()) or bool((q.sum(dim=-1) <= 0).any()):
                 raise ValueError("QuadrANN must provide nonnegative positive-total proposal")
