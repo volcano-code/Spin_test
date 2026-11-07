@@ -62,6 +62,14 @@ class M9TransportTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             conservative_rotate_geometry(D,rz(.37))
 
+    def test_diagnostic_accepts_roundoff_outside_unit_range_without_authorizing_transport(self):
+        D=ball()
+        D[:,0]=1.0+2e-6
+        moments=sampled_material_moments(D)
+        self.assertTrue(torch.isfinite(moments).all())
+        with self.assertRaises(ValueError):
+            conservative_rotate_geometry(D,rz(.37))
+
     def test_discrete_mass_error_below_pull_interpolation(self):
         D=ball()
         R=rz(.37)
