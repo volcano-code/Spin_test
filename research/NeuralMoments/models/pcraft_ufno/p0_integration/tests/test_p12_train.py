@@ -33,6 +33,19 @@ class P12TrainingContracts(unittest.TestCase):
         self.assertTrue(all(isinstance(v,torch.Tensor) for v in saved.values()))
         model.load_state_dict(saved,strict=True)
 
+    def test_new_seed_exact_cube_holdout_and_training_gain_receipt(self):
+        result=run(seeds=(17,),base_steps=2,adapter_steps=1,uq_steps=2,
+                   train_geometries_per_family=8,test_ellipsoids=2,
+                   test_rotation="cube")
+        self.assertEqual(result["confirmatory_test_rotation"],"cube")
+        self.assertEqual(len(result["aggregate"]),3)
+        self.assertFalse(result["claims"]["native_Newton_J_certified"])
+        for arm in result["per_seed"][0]["arms"]:
+            self.assertIn("initial_untrained_adapter_test",arm)
+            self.assertIn("training_vs_initial_r_delta",arm)
+            self.assertIn("training_vs_initial_J_delta",arm)
+            self.assertEqual(arm["updates"],1)
+
     def test_geometry_id_grouped_eval_preserves_finite_j(self):
         data=generate_splits(seed=131,train_geometries_per_family=4,
                              test_ellipsoid_geometries=2,grid_size=8)
