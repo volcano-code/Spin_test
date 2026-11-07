@@ -1,0 +1,44 @@
+{
+  "schema": "heart-h9-m21-6a-derived-three-lpi-reference-smoke-v1",
+  "status": "18_REAL_DERIVED_LPI_VALUES_MATCH_M21_6A_CORE_NOT_FULL_BOUNDARY",
+  "input_lpi_sha256": "d353486cafb3b81a97c302c51d8a034eedee327fabe92f2497df2c48b49c522e",
+  "sample_count": 6,
+  "selected_exact_velocity_checks": 18,
+  "selected_interval_vector_checks": 18,
+  "full_half_exact_partition_checks": 6,
+  "scope": "Only 3 derived LPI identities per 6 samples; no original native packets or source-motion attachments reopened.",
+  "no_new_native_calls": true,
+  "newton_admitted": false,
+  "interval_recomputed_lpi_max_norms": [
+    {
+      "side": "left",
+      "interval": "full",
+      "max_lpi_residual_norm": 3.177552169734626e-08
+    },
+    {
+      "side": "left",
+      "interval": "first-half",
+      "max_lpi_residual_norm": 1.0048639126360164e-07
+    },
+    {
+      "side": "left",
+      "interval": "second-half",
+      "max_lpi_residual_norm": 7.381370809955174e-08
+    },
+    {
+      "side": "right",
+      "interval": "full",
+      "max_lpi_residual_norm": 3.8978236965210987e-08
+    },
+    {
+      "side": "right",
+      "interval": "first-half",
+      "max_lpi_residual_norm": 6.800406107217213e-08
+    },
+    {
+      "side": "right",
+      "interval": "second-half",
+      "max_lpi_residual_norm": 3.9267759900097607e-08
+    }
+  ]
+}
