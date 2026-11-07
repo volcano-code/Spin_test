@@ -1,0 +1,57 @@
+name: W6 P11 original GINO QuadrANN UQNO selected PINO pilot
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/selected_pino.py
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/selected_pilot.py
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_selected_pino.py
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_selected_pilot.py
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/SELECTION_P11_PROTOCOL.md
+      - .github/workflows/w6-p11-selected-upstream.yml
+  workflow_dispatch:
+jobs:
+  pinned-upstream-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install pinned CPU torch and PyG
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install torch-scatter torch-cluster -f https://data.pyg.org/whl/torch-2.5.1+cpu.html
+          python -m pip install torch-geometric==2.6.1
+      - name: Install exact-source pinned NeuralOperator
+        run: |
+          python -m pip install "git+https://github.com/neuraloperator/neuraloperator.git@a6648eeeb60fe0837f2d7d021517a945a159a0c8"
+          python -m pip install numpy pytest
+      - name: Verify pure PINO, original upstream cores and fail-closed gates
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q \
+            research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_selected_pino.py \
+            research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_contracts.py
+      - name: Execute fitted PINO with random upstream-gate diagnostics
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.p0_integration.selected_pilot \
+            --seed 131 --steps 20 --output /tmp/w6_p11_selected_upstream.json
+      - name: Upload full original-source P0 pilot evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p11-selected-upstream-pilot
+          path: /tmp/w6_p11_selected_upstream.json
+          if-no-files-found: error
+          retention-days: 30
