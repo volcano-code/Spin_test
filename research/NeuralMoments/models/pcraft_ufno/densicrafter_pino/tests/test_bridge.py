@@ -82,9 +82,15 @@ class DensiPINOCoupling(unittest.TestCase):
         model=DensiCrafterSpinPINOBridge(make_pino(),shell,design,smoothing=True)
         with torch.no_grad():
             model.density_logits.fill_(-15.)
+        baseline=model.density().detach().clone()
+        with torch.no_grad():
             model.density_logits[:,:,1,1,1]=15.
         d=model.density()
-        self.assertEqual(float(d[0,0,-2,-2,-2]),0.)
+        # sigmoid(-15) is positive (~3e-7). The correct non-wrapping
+        # property is NO CHANGE at the opposite corner after a local
+        # perturbation, not a mathematically exact zero density.
+        self.assertTrue(torch.equal(d[0,0,-2,-2,-2],baseline[0,0,-2,-2,-2]))
+        self.assertGreater(float(d[0,0,1,1,1]),float(baseline[0,0,1,1,1]))
         self.assertEqual(float(d[0,0,0,0,0]),1.)
         self.assertLess(float(d[0,0,-2,-2,-2]),1e-5)
 
