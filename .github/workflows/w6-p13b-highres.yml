@@ -1,0 +1,62 @@
+name: W6 P13b 32 64 128 CPU DensiCrafter PINO
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p13b_highres.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p13b_highres.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/P13B_PROTOCOL.md
+      - .github/workflows/w6-p13b-highres.yml
+  workflow_dispatch:
+jobs:
+  p13b-four-arm-and-128-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Pin CPU Torch and tests
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install numpy pytest
+      - name: Validate density constraints, aliasing, physics and P13a regression
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q \
+            research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p13b_highres.py \
+            research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_bridge.py
+      - name: Four-arm 32 and 64 cube CPU density-physics ablation
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p13b_highres \
+            --resolutions 32,64 --steps 12 --wall-cells 2 \
+            --output /tmp/w6_p13b_32_64_four_arm.json
+      - name: One 128 cube input density gradient and RAM stress
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p13b_highres \
+            --stress-128 --output /tmp/w6_p13b_128_smoke.json
+      - name: Archive independent high-resolution CPU evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p13b-32-64-ablation-128-smoke
+          path: |
+            /tmp/w6_p13b_32_64_four_arm.json
+            /tmp/w6_p13b_128_smoke.json
+          if-no-files-found: error
+          retention-days: 30
