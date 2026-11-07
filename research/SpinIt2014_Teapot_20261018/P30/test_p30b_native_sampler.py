@@ -249,7 +249,10 @@ class P30BNativeJournalTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             parent=Path(d)/"point-000"/"attempt-000";parent.mkdir(parents=True)
             native.new_json(parent/"ATTEMPT_RESULT.json",
-                            {"status":"FAILED_OR_TIMED_OUT_PRESERVE_FOR_INDEPENDENT_REVIEW"})
+                            {"schema":"W4_P30B_ATTEMPT_RESULT_V1",
+                             "status":"FAILED_OR_TIMED_OUT_PRESERVE_FOR_INDEPENDENT_REVIEW",
+                             "sample_index":0,"worker_exit_code":-9,
+                             "scientific_admission":False})
             self.assertIsNone(native.existing_verified_success(
                 parent.parent,0,plan(),"e"*64))
 
@@ -266,8 +269,12 @@ class P30BNativeJournalTest(unittest.TestCase):
                 "material_sha256":native.sha(parent/"MATERIAL_SAME_CALL.json"),
                 "newton_evaluations":0}
             native.new_json(parent/"SAMPLE_RECEIPT.json",record)
-            with self.assertRaisesRegex(native.SampleRejected,"SAMPLE_NOT_COMPLETED_SUCCESSFULLY"):
-                native.existing_verified_success(parent.parent,0,p,"e"*64)
+            # A lost final record is never treated as completed. A subsequent
+            # --resume preserves this attempt and creates attempt-001.
+            self.assertIsNone(native.existing_verified_success(parent.parent,0,p,"e"*64))
+            later, prior=native.next_attempt(parent.parent)
+            self.assertEqual(later.name,"attempt-001")
+            self.assertEqual(len(prior),1)
 
     def test_18_tampered_sample_receipt_rejected(self):
         with tempfile.TemporaryDirectory() as d:
@@ -299,7 +306,22 @@ class P30BNativeJournalTest(unittest.TestCase):
             with self.assertRaisesRegex(native.SampleRejected,"PREVIOUS_SAMPLE_RECEIPT_TAMPERED"):
                 native.existing_verified_success(parent.parent,0,p,"e"*64)
 
-    def test_19_zero_native_calls_in_tests(self):
+    def test_19_worker_cannot_start_outside_batch_identity(self):
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as root:
+            d=Path(root)/"point-000"/"attempt-000"
+            d.mkdir(parents=True)
+            args=type("Args",(),{"p27_run_dir":Path(root),"external_lock_sha":"e"*64})()
+            with patch.object(native,"resource_report",
+                              return_value={"physical_memory_bytes":60*1024**3,
+                                            "host_swap_bytes":0,
+                                            "cgroup":{"memory.max":str(native.ADDRESS_BYTES),
+                                                      "memory.swap.max":"0"}}), \\
+                 patch.object(native,"verify_modules",return_value={}):
+                with self.assertRaisesRegex(native.SampleRejected,"MISSING_BATCH_RUN_STATE"):
+                    native.worker(args,{"plan":plan()},0,d)
+
+    def test_20_zero_native_calls_in_tests(self):
         self.assertEqual(len(native.MODULES),3)
         self.assertEqual(native.N_PILOT,12)
         self.assertEqual(native.POINT_MAX_SECONDS,900)
