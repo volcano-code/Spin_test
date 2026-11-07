@@ -25,6 +25,14 @@ class P12TrainingContracts(unittest.TestCase):
         self.assertFalse(any(x.requires_grad for x in models[2].pino.parameters()))
         self.assertTrue(models[2].quadrann_condition_on_material)
 
+    def test_strict_snapshot_reloads_gino_tensor_weights(self):
+        from research.NeuralMoments.models.pcraft_ufno.p0_integration.p12_train import _strict_state_snapshot
+        model=_make_arm("gino",_new_pino().state_dict(),137)
+        saved=_strict_state_snapshot(model)
+        self.assertNotIn("_metadata",saved)
+        self.assertTrue(all(isinstance(v,torch.Tensor) for v in saved.values()))
+        model.load_state_dict(saved,strict=True)
+
     def test_geometry_id_grouped_eval_preserves_finite_j(self):
         data=generate_splits(seed=131,train_geometries_per_family=4,
                              test_ellipsoid_geometries=2,grid_size=8)

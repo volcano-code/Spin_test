@@ -63,3 +63,10 @@ OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
  --seeds 131,137,139 --base-steps 40 --adapter-steps 12 --uq-steps 24 \
  --output /tmp/w6_p12_three_seed_pino_upstream.json
 ```
+
+## Verified checkpoint export contract (bugfix)
+The pinned upstream GINO BaseModel exports an extra `_metadata` dict
+entry alongside model tensor buffers, which torch's strict loader rejects.
+P12 records only registered tensor weights/buffers, validates the
+extraneous metadata key and reloads with strict=True; unrelated keys
+or unrecognized metadata are NOT ignored.

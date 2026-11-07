@@ -110,6 +110,20 @@ def _scalar_metrics(pred):
     return {k:v for k,v in pred.items() if not isinstance(v,torch.Tensor)}
 
 
+def _strict_state_snapshot(model):
+    """Tensor-only checkpoint for pinned upstream GINO.
+
+    neuraloperator's BaseModel can include a non-parameter metadata dictionary
+    in state_dict, while torch's strict loader rejects that key. Preserve ALL
+    registered tensor weights/buffers; reject any unknown non-tensor entry.
+    """
+    state = model.state_dict()
+    bad=[k for k,v in state.items() if not isinstance(v,torch.Tensor)]
+    if bad not in ([],["_metadata"]):
+        raise RuntimeError("unexpected non-tensor model state: "+str(bad))
+    return {k:v.detach().clone() for k,v in state.items() if k!="_metadata"}
+
+
 def _fit_adapter(model, data, *, arm, seed, steps, indices):
     D, c, r, J, _ = data["fit"]
     model.train()
@@ -118,7 +132,7 @@ def _fit_adapter(model, data, *, arm, seed, steps, indices):
     if not params:
         raise AssertionError("no trainable adapter parameters")
     optimizer = torch.optim.Adam(params, lr=.0015)
-    best_state = copy.deepcopy(model.state_dict())
+    best_state = _strict_state_snapshot(model)
     model.eval()
     val0 = _predict_by_geometry(model, data["validation"])
     best = val0["r_mae"] + .25*val0["J_mae"]
@@ -147,7 +161,7 @@ def _fit_adapter(model, data, *, arm, seed, steps, indices):
             history.append({"step":step,"validation_score":score,
                             "train_loss":float(loss.detach())})
             if score < best:
-                best,selected_step,best_state=score,step,copy.deepcopy(model.state_dict())
+                best,selected_step,best_state=score,step,_strict_state_snapshot(model)
     elapsed=time.perf_counter()-start
     model.load_state_dict(best_state)
     model.eval()
