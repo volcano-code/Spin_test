@@ -1,0 +1,141 @@
+name: W4 P30 Teapot tangent-neighborhood preflight (no native calls)
+
+on:
+  push:
+    branches:
+      - research/neuralmoments-w4-teapot-p1-20261019
+    paths:
+      - .github/workflows/w4-p30-tangent-preflight.yml
+      - research/SpinIt2014_Teapot_20261018/P30/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: w4-p30-tangent-planning-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  p30-plan-and-w0-numerical-gate:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      P30: research/SpinIt2014_Teapot_20261018/P30
+      W0_SHA: 5bab2eb2616df306906a6887a273f68acfa49320
+    steps:
+      - name: Checkout W4
+        uses: actions/checkout@v4
+        with:
+          path: w4
+          persist-credentials: false
+      - name: Checkout frozen W0 read-only contract
+        uses: actions/checkout@v4
+        with:
+          path: w0
+          ref: 5bab2eb2616df306906a6887a273f68acfa49320
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile and test P30 plan-only source
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/w4-p30"
+          python -m py_compile "w4/$P30/p30_neighborhood_preflight.py"
+          python -m unittest discover -v \
+            -s "w4/$P30" \
+            -p 'test_p30_neighborhood_preflight.py' \
+            2>&1 | tee "$RUNNER_TEMP/w4-p30/unittest.log"
+          grep -q 'Ran 11 tests' "$RUNNER_TEMP/w4-p30/unittest.log"
+          grep -q '^OK$' "$RUNNER_TEMP/w4-p30/unittest.log"
+          ! grep -q 'skipped=' "$RUNNER_TEMP/w4-p30/unittest.log"
+      - name: Install NumPy for independent W0 mathematical contract test
+        run: python -m pip install --disable-pip-version-check 'numpy==2.3.5'
+      - name: Exercise genuine W0 tangent gate with explicitly synthetic data
+        run: |
+          set -euo pipefail
+          python - <<'PY' 2>&1 | tee "$RUNNER_TEMP/w4-p30/w0-tangent-gate.log"
+          import importlib.util, json, math, os, pathlib, sys
+          import numpy as np
+          p30_path=pathlib.Path("w4")/os.environ["P30"]/"p30_neighborhood_preflight.py"
+          spec=importlib.util.spec_from_file_location("w4_p30",p30_path)
+          p30=importlib.util.module_from_spec(spec);spec.loader.exec_module(p30)
+          w0_path=pathlib.Path("w0/research/NeuralMoments/contracts/tangent_neighborhood.py")
+          w0_spec=importlib.util.spec_from_file_location("w0_frozen_tangent",w0_path)
+          w0=importlib.util.module_from_spec(w0_spec);w0_spec.loader.exec_module(w0)
+          c=np.array([0.03640053031737869,-1.4100319353783204e-18,0.0,
+              -0.2886365552481779,0.552377871982299,0.552377871982299,
+              0.552377871982299,0.0,0.0,0.0],dtype=float)
+          assert p30.canonical_hash(c.tolist())==p30.C_SHA
+          directions=p30.gram_schmidt(c.tolist())[:3]
+          basis=np.column_stack(directions)
+          pilot=p30.plan({"c":c.tolist(),"Jc":[[0.]*10 for _ in range(10)],
+              "pins":{"context_sha256":"a"*64},
+              "saved_topology_hash":"b"*64,"saved_geometry_hash":"c"*64})
+          observed=[]
+          for direction in range(3):
+              packet={}
+              for row in pilot["probes"]:
+                  if row["direction_index"]==direction:
+                      # Synthetic control only, never presented as real native r_D.
+                      packet[row["name"]]={"c_native":row["native_c"],
+                          "r_design":[0.]*10,"feature_branch_sha256":"a"*64}
+              observed.append(packet)
+          kwargs=dict(native_c=c,Jc=np.zeros((10,10)),tangent_basis=basis,
+              probes=observed,base_feature_branch_sha256="a"*64,
+              step_radians=0.002,length_ref=1.0,density_ref=1.0,
+              max_normalized_jacobian_error=1e-8)
+          result=w0.audit_tangent_neighborhood(**kwargs)
+          assert result["status"]=="NUMERIC_TANGENT_CHECK_PASS_SMOOTHNESS_NOT_PROVED"
+          assert result["training_admissible"] is False
+          assert result["smooth_neighborhood_certified"] is False
+          observed[0]["plus_h"]["feature_branch_sha256"]="b"*64
+          changed=w0.audit_tangent_neighborhood(**kwargs)
+          assert changed["status"]=="OBSERVED_BRANCH_CHANGE_DERIVATIVE_EXCLUDED"
+          assert changed["training_admissible"] is False
+          print("P30_W0_SYNTHETIC_TANGENT_GATE_PASS_NO_SCIENTIFIC_RELEASE")
+          print(json.dumps({"synthetic_only":True,"real_teapot_probe_count":0,
+              "W0_contract_sha":os.environ["W0_SHA"],
+              "numerical_control":result["status"],
+              "branch_change_control":changed["status"],
+              "smooth_neighborhood_certified":False,
+              "training_admissible":False},sort_keys=True))
+          PY
+      - name: Save source-bound, not-native execution record
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import json, os
+          record={
+              "schema":"W4_P30_TANGENT_PLAN_CI_PREFLIGHT_V1",
+              "status":"P30_SOFTWARE_PLANNING_PASS_NATIVE_SAMPLES_NOT_COLLECTED",
+              "formal_seed_native_c_sha256":"57ac958304df37ebfd36bc1dddeb32c81a113ed5440f65d959f4b45f2a12e6ca",
+              "same_call_Jc_sha256":"26cf3b5dd53d45a4b80f14319b39d28fa9ef7b8d8be3a915189e90ba077a08a5",
+              "manifest_sha256":"3a9b6b21d1d1185e00d1ef25a1bfc625d4696f554c3ab4a7719f5d85ca109773",
+              "planned_pilot_real_native_points":12,
+              "planned_full_real_native_points":36,
+              "actually_completed_real_native_points":0,
+              "predeclared_W0_owner_tolerance":None,
+              "independent_real_feature_branch_certificate":None,
+              "native_derivative_neighborhood_certified":False,
+              "Newton_accepted":False,
+              "W0_owner_admitted":False,
+              "W2_teacher_training_allowed":False,
+              "training_admissible":False
+          }
+          target=Path(os.environ["RUNNER_TEMP"])/"w4-p30/P30_CI_PREFLIGHT.json"
+          target.write_text(json.dumps(record,sort_keys=True,indent=2)+"\n")
+          print("P30_CI_PREFLIGHT_SAVED_NO_NATIVE_GEOMETRY")
+          PY
+      - name: Upload only diagnostic CI outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-P30-tangent-preflight-test-only-no-real-native-probes
+          path: ${{ runner.temp }}/w4-p30/**
+          if-no-files-found: warn
+          retention-days: 30
