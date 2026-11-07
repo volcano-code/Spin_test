@@ -33,6 +33,20 @@ class P12TrainingContracts(unittest.TestCase):
         self.assertTrue(all(isinstance(v,torch.Tensor) for v in saved.values()))
         model.load_state_dict(saved,strict=True)
 
+    def test_groupwise_cube_keeps_queries_of_one_solid_together(self):
+        from research.NeuralMoments.models.pcraft_ufno.p0_integration.p12_train import _cube_rotate_heldout_by_geometry
+        data=generate_splits(seed=211,train_geometries_per_family=4,
+                             test_ellipsoid_geometries=2,grid_size=8)
+        initial=data["test"]
+        rot=_cube_rotate_heldout_by_geometry(initial,seed=211+990091)
+        self.assertEqual(len(set(x["geometry_id"] for x in rot[4])),2)
+        self.assertEqual(rot[4][0]["geometry_id"],rot[4][1]["geometry_id"])
+        self.assertEqual(rot[4][2]["geometry_id"],rot[4][3]["geometry_id"])
+        self.assertNotEqual(rot[4][0]["geometry_id"],rot[4][2]["geometry_id"])
+        self.assertTrue(torch.equal(rot[0][0],rot[0][1]))
+        self.assertTrue(torch.equal(rot[0][2],rot[0][3]))
+        self.assertTrue(torch.isfinite(rot[3]).all())
+
     def test_new_seed_exact_cube_holdout_and_training_gain_receipt(self):
         result=run(seeds=(17,),base_steps=2,adapter_steps=1,uq_steps=2,
                    train_geometries_per_family=8,test_ellipsoids=2,

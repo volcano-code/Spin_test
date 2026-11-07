@@ -37,3 +37,13 @@ a seed selected training step zero, preventing a confident learning claim.
 Promotion beyond experimental adapter requires a larger new held-out
 shape AND cut distribution, matched model capacity and speed, real
 Cherchi teacher admission and end-to-end Newton fallback/latency.
+
+## Groupwise rotation correctness correction
+The existing generic cube-augmentation helper rotates each query row
+independently; this unintentionally splits the same solid across new
+geometry IDs. P12b now uses a separate one-rotation-per-source-geometry
+helper with exact coefficient/r/J coordinate transformation and a
+shared transformed ID for all native c queries of one geometry.
+The earlier pre-fix exploratory job is not used as a formal
+geometry-encoding/caching or calibration comparison; only the corrected
+workflow can count as P12b confirmation.

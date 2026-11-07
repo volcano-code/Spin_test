@@ -21,14 +21,49 @@ from pathlib import Path
 
 import torch
 
-from ..spin_pino.dataset import generate_splits
+from ..spin_pino.dataset import generate_splits, _digest
 from ..spin_pino.spin_pino import SpinPINO
 from ..spin_pino.train import run_seed
-from ..spin_pino.equivariance import augment_with_cube_rotations
+from ..spin_pino.equivariance import (
+    cube_rotation, rotate_geometry_voxels, transform_native_coefficients,
+    transform_raw_moments, transform_native_jacobian,
+)
 from .selected_pino import SelectedPINOCandidates, GroupwiseConformalScreen
 
 ARMS = ("pino_head", "gino", "quadrann")
 SOURCE = "ANALYTIC_CONTINUUM_P0_NOT_W2_CHERCHI"
+
+
+def _cube_rotate_heldout_by_geometry(data, *, seed):
+    """One exact cube rotation PER geometry ID, not per coefficient query.
+
+    Repeated queries of one solid must retain one transformed geometry ID.
+    This avoids inadvertent identity splitting, invalidating cache and
+    groupwise risk/coverage statistics.
+    """
+    D,c,r,J,metadata=data
+    groups={}
+    for i,row in enumerate(metadata):
+        groups.setdefault(row["geometry_id"],[]).append(i)
+    D_new=D.clone();c_new=c.clone();r_new=r.clone();J_new=J.clone()
+    meta_new=[dict(row) for row in metadata]
+    for group_number,(gid,ids) in enumerate(groups.items()):
+        R=cube_rotation(seed+group_number,dtype=D.dtype,device=D.device)
+        D_new[ids]=rotate_geometry_voxels(D[ids],R)
+        c_new[ids]=transform_native_coefficients(c[ids],R)
+        r_new[ids]=transform_raw_moments(r[ids],R)
+        J_new[ids]=transform_native_jacobian(J[ids],R)
+        new_gid=f"{gid}__group_cube_{(seed+group_number)%24:02d}"
+        for i in ids:
+            meta_new[i]["parent_geometry_id"]=gid
+            meta_new[i]["geometry_id"]=new_gid
+            meta_new[i]["augmentation"]="EXACT_GROUPWISE_CUBE_ROTATION_LABEL_TRANSFORM"
+            meta_new[i]["rotation_matrix"]=[
+                [float(a) for a in line] for line in R.cpu().tolist()
+            ]
+    if len({row["geometry_id"] for row in meta_new})!=len(groups):
+        raise AssertionError("groupwise rotation changed unique geometry count")
+    return D_new,c_new,r_new,J_new,meta_new
 
 
 def _new_pino():
@@ -299,16 +334,13 @@ def run(*, seeds=(131,137,139), base_steps=40, adapter_steps=12,
             test_ellipsoid_geometries=test_ellipsoids,
             queries_per_geometry=2,grid_size=8)
         if test_rotation == "cube":
-            # Use ONLY newly rotated held-out test samples; exact native
-            # coefficient, raw moment and analytic P0 J transformations.
-            unrotated=data["test"]
-            rotated=augment_with_cube_rotations(unrotated,seed=seed+990091)
-            n=len(unrotated[0])
             data=dict(data)
-            data["test"]=tuple(x[n:] for x in rotated[:4])+(rotated[4][n:],)
-            if not all(item.get("augmentation")=="EXACT_CUBE_ROTATION_LABEL_TRANSFORM"
+            data["test"]=_cube_rotate_heldout_by_geometry(
+                data["test"],seed=seed+990091,
+            )
+            if not all(item.get("augmentation")=="EXACT_GROUPWISE_CUBE_ROTATION_LABEL_TRANSFORM"
                        for item in data["test"][4]):
-                raise AssertionError("test rotation provenance not certified cube")
+                raise AssertionError("groupwise cube provenance missing")
         # Identical pretrained state and same data/observation indices.
         trained_state=baseline["checkpoint_state"]
         obs=torch.randint(
@@ -333,6 +365,8 @@ def run(*, seeds=(131,137,139), base_steps=40, adapter_steps=12,
             "fit_digest":data["metadata"]["fit_sha256"],
             "validation_digest":data["metadata"]["validation_sha256"],
             "test_digest":data["metadata"]["test_sha256"],
+            "actual_test_digest":_digest(data["test"]),
+            "test_augmentation":"groupwise_exact_cube" if test_rotation=="cube" else "none",
             "fit_geometries":len(set(x["geometry_id"] for x in data["fit"][4])),
             "val_geometries":len(set(x["geometry_id"] for x in data["validation"][4])),
             "test_geometries":len(set(x["geometry_id"] for x in data["test"][4])),
