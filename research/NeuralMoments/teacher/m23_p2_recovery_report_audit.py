@@ -45,7 +45,9 @@ def audit_report(text: str, *, actual_files: bool = False) -> dict:
             continue
 
         if line.startswith("FOUND: "):
-            if section != "materials" or pending is not None:
+            if pending is not None:
+                raise ValueError("FOUND_PATH_MISSING_SHA:" + pending["path"])
+            if section != "materials":
                 raise ValueError("INVALID_FOUND_LINE")
             path = line.removeprefix("FOUND: ").strip()
             name = Path(path).name
