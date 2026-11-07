@@ -1,0 +1,52 @@
+name: W6 M10 PINO sparse detail CPU
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/spin_pino/m10_sparse_detail.py
+      - research/NeuralMoments/models/pcraft_ufno/spin_pino/m10_sparse_detail_benchmark.py
+      - research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_m10_sparse_detail.py
+      - research/NeuralMoments/models/pcraft_ufno/spin_pino/M10_PROTOCOL.md
+      - .github/workflows/w6-m10-sparse-detail.yml
+  workflow_dispatch:
+jobs:
+  m10-cpu-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install CPU dependencies
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install pytest numpy
+      - name: Verify M10 new and original M9b/M9 gates
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q \
+            research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_m10_sparse_detail.py \
+            research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_m9b_cache_sparse.py \
+            research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_m9_mass_transport.py
+      - name: Demonstrate original source detail reaches PINO moment and Jacobian head
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.spin_pino.m10_sparse_detail_benchmark \
+            --output /tmp/w6_m10_sparse_detail.json
+      - name: Upload actual CPU evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-m10-sparse-detail-evidence
+          path: /tmp/w6_m10_sparse_detail.json
+          if-no-files-found: error
+          retention-days: 30
