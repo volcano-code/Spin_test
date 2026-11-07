@@ -74,3 +74,27 @@ R_full = (h1*R_first + h2*R_second)/(h1+h2)
 - 在取得上述全边界证据前，保留 `newton_admitted=false`。
 
 **不可修改** W3 之外的窗口分支、历史 H8f 失败 Actions 或原始 CAD。
+
+## 可复现的独立审计代码（已纳入本分支）
+
+- `source/w3_m21_5b_audit.py`：从 M21.3 派生 JSON 重算精确 LPI 身份、分式导数、区间割线及曲率修正，并可选逐项绑定 M20 ledger 的 SHA 和六份材料哈希；**源码 SHA256 `54f67ae169717ddf057f7ce9c2a30074be50c040d4bea15292d6bb1bce3d9419`**。
+- `tests/test_w3_m21_5b_audit.py`：5 项明确标识的合成与故障注入回归，实际运行 **5/5 PASS**；不涉及 Cherchi 或其他窗口。
+- `reports/H9_M21_5B_INDEPENDENT_RECHECK.json`：独立检查产生的原始机读输出；SHA256 `7fe98887c4377ce937673757cbae27b3544aa9dc9309d3cf481c9d684da4b6ab`。
+- `reports/H9_M21_5B_REAL_LPI_AUDIT_SUMMARY.json`：精简的研究结论摘要。
+- 本轮实际在隔离容器内构建了与仓库相同的 `source/` 与 `tests/` 目录结构，使用同样的 Python 代码执行 5 项单元测试，以及对用户实际上传 `m21-3-lpi.json` 和已上传 M20 ledger 的重放；机器结果与保留的 `INDEPENDENT_RECHECK.json` 逐字段完全一致。没有声称远端 Actions CI 已运行。
+
+在完整 W3 本地 checkout 中，已有六份输出文件时可执行：
+
+```bash
+H9=research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018
+W3_PY="$HOME/.venvs/spin-w3-313/bin/python"
+"$W3_PY" -m unittest discover -s "$H9/tests" -p 'test_w3_m21_5b_audit.py' -v
+# 输入必须是已实际生成并保留的旧 m21-3-lpi.json；
+# 输出改用新的不存在文件，避免覆盖实验。
+"$W3_PY" "$H9/source/w3_m21_5b_audit.py" \
+  --input "/path/to/original/m21-3-lpi.json" \
+  --ledger "/path/to/original/precision-ledger.json" \
+  --output "/path/to/new/output/w3-m21-5b-independent-audit.json"
+```
+
+上述回放依赖原有派生文件和 M20 账本，**不需要本地 Cherchi 重新编译、不执行新的 Boolean、不使用 GPU**。若后续要逐顶点诊断全部边界构造，还必须读取原有六份源材料和六份 source-motion 附件。
