@@ -1,0 +1,23 @@
+name: W6 candidate functional shortlist integrity
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/candidate_projects/functional_shortlist_20261107.json
+      - research/NeuralMoments/models/pcraft_ufno/candidate_projects/FUNCTIONAL_SHORTLIST_20261107.md
+      - research/NeuralMoments/models/pcraft_ufno/candidate_projects/test_functional_shortlist.py
+      - .github/workflows/w6-functional-screening.yml
+  workflow_dispatch:
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate all 31 candidates and immutable PINO/permission gates
+        run: |
+          python -m unittest -v research/NeuralMoments/models/pcraft_ufno/candidate_projects/test_functional_shortlist.py
