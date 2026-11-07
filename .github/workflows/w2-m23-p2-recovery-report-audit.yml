@@ -7,6 +7,7 @@ on:
     paths:
       - 'research/NeuralMoments/teacher/m23_p2_recovery_report_audit.py'
       - 'research/NeuralMoments/teacher/test_m23_p2_recovery_report_audit.py'
+      - 'research/NeuralMoments/teacher/m23_p2_extended_recovery_index.sh'
       - '.github/workflows/w2-m23-p2-recovery-report-audit.yml'
   workflow_dispatch:
 
@@ -22,6 +23,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Check extended /data inventory script syntax
+        run: bash -n research/NeuralMoments/teacher/m23_p2_extended_recovery_index.sh
       - name: Verify read-only report parser and fail-closed SHA gate
         working-directory: research/NeuralMoments/teacher
         run: python -m unittest -v test_m23_p2_recovery_report_audit.py
