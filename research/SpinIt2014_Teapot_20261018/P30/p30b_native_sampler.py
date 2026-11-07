@@ -250,14 +250,48 @@ def existing_verified_success(point_dir,index,plan,external_sha):
     _, attempts=next_attempt(point_dir)
     success=[]
     for attempt in attempts:
-        if (attempt/"SAMPLE_RECEIPT.json").exists():
+        final=attempt/"ATTEMPT_RESULT.json"
+        if not final.is_file():
+            # Power loss may leave BEGIN or even a fully serialized material.
+            # Neither is a successful sample. Preserve; retry in next slot.
+            continue
+        outcome=auth.strict_json(final.read_bytes())
+        need(outcome.get("schema")=="W4_P30B_ATTEMPT_RESULT_V1" and
+             outcome.get("sample_index")==index,
+             "ATTEMPT_RESULT_IDENTITY_DRIFT")
+        if outcome.get("status")=="SUCCESS_DIAGNOSTIC_ONLY":
             success.append(verify_receipt(attempt,index,plan,external_sha))
+        else:
+            need(outcome.get("status")=="FAILED_OR_TIMED_OUT_PRESERVE_FOR_INDEPENDENT_REVIEW" and
+                 type(outcome.get("worker_exit_code")) is int and
+                 outcome["worker_exit_code"]!=0 and
+                 outcome.get("scientific_admission") is False,
+                 "FAILED_ATTEMPT_RECORD_FALSIFIED")
     need(len(success)<=1,"MULTIPLE_ACCEPTED_SUCCESSES_AT_ONE_POINT")
     return success[0] if success else None
 
 def worker(a, bound, index, output_dir):
     require_real_resources(resource_report())
     verify_modules(a.p27_run_dir)
+    output_dir=Path(output_dir).resolve()
+    need(output_dir.name.startswith("attempt-") and
+         output_dir.parent.name==f"point-{index:03d}",
+         "WORKER_MUST_RUN_INSIDE_REGISTERED_ATTEMPT")
+    state_path=output_dir.parent.parent/"RUN_STATE.json"
+    need(state_path.is_file(),"MISSING_BATCH_RUN_STATE")
+    state=auth.strict_json(state_path.read_bytes())
+    need(state.get("schema")==RUN_SCHEMA and
+         state.get("registered_lock_sha256")==a.external_lock_sha and
+         state.get("plan_sha256")==auth.P30_PRIVATE_PLAN_SHA and
+         state.get("pilot_count")==N_PILOT,
+         "BATCH_STATE_CHANGED_OR_UNREGISTERED")
+    begin_path=output_dir/"BEGIN.json"
+    need(begin_path.is_file(),"MISSING_APPEND_ONLY_ATTEMPT_BEGIN")
+    begin=auth.strict_json(begin_path.read_bytes())
+    need(begin.get("index")==index and
+         begin.get("lock_sha256")==a.external_lock_sha and
+         begin.get("native_c_sha256")==bound["plan"]["probes"][index]["native_c_sha256"],
+         "ATTEMPT_BEGIN_OR_C_MISMATCH")
     plan=bound["plan"]
     need(type(index) is int and 0<=index<N_PILOT, "ONLY_12_REGISTERED_PILOT_INDICES_ALLOWED")
     item=plan["probes"][index]
@@ -412,7 +446,12 @@ def batch(a,bound):
              "precommitted_lock_sha256":a.external_lock_sha,
              "accepted":accepted,"observed_real_samples":len(accepted),
              "newton_executed":False,"scientific_admission":False,**CLOSED}
-    new_json(output/"PILOT_COMPLETION.json",summary)
+    completed=output/"PILOT_COMPLETION.json"
+    if completed.exists():
+        need(auth.strict_json(completed.read_bytes())==summary,
+             "EXISTING_PILOT_COMPLETION_DIFFERENT_DO_NOT_OVERWRITE")
+    else:
+        new_json(completed,summary)
     return 0
 
 def main(argv=None):
