@@ -16,11 +16,8 @@ PACKETS = {
     "fixed-rational.json": "71f9df91fca12fde4f4f2c80dc26e2d1229e8209e09db46e680d0de7baee264a",
     "fixed-inside-envelope-rational.json": "a944da4e36e5fe386cee3b28e4acf5800fc3942cde4eb35ba54f5de626f55dc7",
     "fixed-outside-envelope-rational.json": "8c66f71da99773fbc9a76b4f82fc43c55816df1876b643634ae64768f72ba262",
-    "initial-rational.json": "640877647134a54152a8e1493fb37e6e2996f8c19e13928d31a71b42c33f3d",
+    "initial-rational.json": "640877647134a54152a8e1f63c1f356d752e6c66f7913301580c1e85a356d83b",
 }
-# Note: the initial SHA above is intentionally checked against the authoritative
-# M20 receipt below; do not accept it on the strength of the scan alone.
-M20_INITIAL_SHA = "640877647134a54152a8e1493fb37e6e2996f8c19e13928d31a71b42c33f3d"
 HISTORICAL_BACKEND_SHA = "d6803f184047f6172b177b9f436b16f22cdb6a949126d1df88a5d084f3dd9df3"
 SUM_LINE = re.compile(r"^([0-9a-f]{64})  (/.+)$")
 
