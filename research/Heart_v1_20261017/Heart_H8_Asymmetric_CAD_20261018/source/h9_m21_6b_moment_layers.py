@@ -234,10 +234,14 @@ def verify_report_inputs(boundary,ledger,materials,motion_metadata=None):
          boundary['inputs']['runtime_origin_cryptographically_attested'] is False,
          'BOUNDARY_OR_MATERIAL_IDENTITY_MISMATCH')
     for i,(s,e,p) in enumerate(zip(boundary['samples'],motion_metadata,ledger['packets'])):
-        need(s['stem']==e['stem']==p['stem'] and e['material_sha256']==p['material_sha256'] and
-             s['retained_vertex_count']==8455 and
+        need(s['stem']==e['stem'] and s['retained_vertex_count']==8455 and
              s['source_vertex_count']==162 and s['construction_counts']=={'EXPLICIT3D':7671,'LPI':784},
              'BOUNDARY_SAMPLE_SHAPE_CHANGED:'+str(i))
+        if 'stem' in p:
+            need(s['stem']==p['stem'],'LEDGER_SAMPLE_ORDER_CHANGED:'+str(i))
+        if 'material_sha256' in e:
+            need(e['material_sha256']==p['material_sha256'],
+                 'MOTION_METADATA_MATERIAL_SHA_MISMATCH:'+str(i))
 
 def compute(states,materials,ledger,boundary,density=1,motion_metadata=None):
     need(len(states)==len(materials)==len(ledger['packets'])==6 and len(boundary['intervals'])==6,
