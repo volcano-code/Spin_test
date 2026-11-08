@@ -145,10 +145,13 @@ def run_seed(
     use_gradient_checkpoint: bool = False,
     initial_state_dict: dict | None = None,
     initial_state_source: str = "random_initialization",
+    learning_rate: float = 1.5e-3,
     device: str = "cpu",
 ):
     if eval_batch_size is not None and eval_batch_size < 1:
         raise ValueError("eval_batch_size must be positive")
+    if not math.isfinite(learning_rate) or learning_rate <= 0:
+        raise ValueError("learning_rate must be finite and positive")
     if not math.isfinite(lambda_equivariance) or lambda_equivariance < 0:
         raise ValueError("lambda_equivariance must be finite and nonnegative")
     torch.manual_seed(seed)
@@ -212,7 +215,7 @@ def run_seed(
         moment_scale=preconditioner.moment_scale if preconditioner else None,
         jacobian_scale=preconditioner.jacobian_scale if preconditioner else None,
     )
-    optimizer = torch.optim.Adam(model.parameters(), lr=1.5e-3)
+    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
     generator = torch.Generator().manual_seed(seed + 31337)
     best_score = math.inf
     best_step = 0
@@ -319,6 +322,7 @@ def run_seed(
                          "temperature": temperature, "geometry_adapter": geometry_adapter,
                          "use_gradient_checkpoint": bool(use_gradient_checkpoint),
                          "initial_state_source": initial_state_source,
+                         "learning_rate": learning_rate,
                          "lambda_equivariance": float(lambda_equivariance),
                          "width": 4 if grid_size <= 8 else 8,
                          "modes": 2 if grid_size <= 8 else 4},
@@ -327,6 +331,7 @@ def run_seed(
             "batch_size": batch_size,
             "eval_batch_size": eval_batch_size,
             "initial_state_source": initial_state_source,
+            "learning_rate": learning_rate,
             "selected_step": best_step,
             "seconds": training_seconds,
             "optimizer": "Adam",
