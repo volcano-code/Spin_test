@@ -45,6 +45,14 @@ def _fraction(payload, label):
           and d.isdigit() and int(d) > 0, "INVALID_EXACT_FRACTION_TOKENS:" + label)
     return Fraction(int(n), int(d))
 
+def _fraction_or_token(payload, label):
+    if type(payload) is str:
+        parts = payload.split("/")
+        _need(len(parts) == 2 and all(x.lstrip("-").isdigit() for x in parts)
+              and int(parts[1]) > 0, "INVALID_EXACT_FRACTION_TOKEN:" + label)
+        return Fraction(int(parts[0]), int(parts[1]))
+    return _fraction(payload, label)
+
 
 def _identity3(matrix):
     return matrix == [
@@ -130,8 +138,8 @@ def build_p20_moment_frame_contract(request, frame_report):
                              "length_original_per_normalized_exact")
     frame_density = _fraction(frame["density_original_per_normalized_exact"],
                               "density_original_per_normalized_exact")
-    scale = _fraction(units["length_m_per_reference_exact"],
-                      "length_m_per_reference_exact")
+    scale = _fraction_or_token(units["length_m_per_reference_exact"],
+                                "length_m_per_reference_exact")
     physical_density = Fraction(int(units["physical_density_kg_m3"]), 1)
     _need(frame_length == EXPECTED_FRAME_LENGTH, "P20_FRAME_LENGTH_CHANGED")
     _need(frame_density == Fraction(1), "P20_FRAME_DENSITY_SCALE_CHANGED")
