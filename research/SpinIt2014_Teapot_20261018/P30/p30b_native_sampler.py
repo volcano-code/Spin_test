@@ -274,7 +274,8 @@ def next_attempt(point_dir):
              "NONCANONICAL_OR_MISSING_ATTEMPT_SLOT")
     return point_dir/f"attempt-{len(attempts):03d}",attempts
 
-def existing_verified_success(point_dir,index,plan,external_sha):
+def existing_verified_success(point_dir,index,plan,external_sha,
+                             frame_contract,frame_provenance,expected_frame):
     if not point_dir.exists():return None
     _, attempts=next_attempt(point_dir)
     success=[]
@@ -289,7 +290,8 @@ def existing_verified_success(point_dir,index,plan,external_sha):
              outcome.get("sample_index")==index,
              "ATTEMPT_RESULT_IDENTITY_DRIFT")
         if outcome.get("status")=="SUCCESS_DIAGNOSTIC_ONLY":
-            success.append(verify_receipt(attempt,index,plan,external_sha))
+            success.append(verify_receipt(attempt,index,plan,external_sha,
+                                               frame_contract,frame_provenance,expected_frame))
         else:
             need(outcome.get("status")=="FAILED_OR_TIMED_OUT_PRESERVE_FOR_INDEPENDENT_REVIEW" and
                  type(outcome.get("worker_exit_code")) is int and
