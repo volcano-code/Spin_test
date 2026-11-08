@@ -121,8 +121,11 @@ def _fit_calibrate(X, y, split, seed):
         mu = mu*yscale+ymean
         sigma = torch.exp(0.5*logvar)*yscale
         cal_z = ((ylog[cal]-mu[cal]).abs()/sigma[cal].clamp_min(1e-6))
-        q90 = float(torch.quantile(cal_z, .90))
-        q95 = float(torch.quantile(cal_z, .95))
+        def conformal_quantile(scores, alpha):
+            k = min(len(scores), max(1, math.ceil((len(scores)+1)*(1-alpha))))
+            return float(torch.kthvalue(scores, k).values)
+        q90 = conformal_quantile(cal_z, .10)
+        q95 = conformal_quantile(cal_z, .05)
         lower90 = torch.exp(mu[test]-q90*sigma[test])
         upper90 = torch.exp(mu[test]+q90*sigma[test])
         lower95 = torch.exp(mu[test]-q95*sigma[test])
@@ -156,7 +159,7 @@ def _fit_calibrate(X, y, split, seed):
     return model, mean, scale, ymean, yscale, result
 
 
-def run(input_dir):
+def run(input_dir, checkpoint_dir):
     torch.set_num_threads(1)
     root = Path(input_dir)
     reports = []
@@ -205,6 +208,22 @@ def run(input_dir):
     analytic_y = torch.tensor(analytic_y, dtype=torch.float32)
     hard_model, hm, hs, hym, hys, hard_metrics = _fit_calibrate(X, hard_y, splits, 2501)
     analytic_model, am, ass, aym, ays, analytic_metrics = _fit_calibrate(X, analytic_y, splits, 2502)
+    checkpoint_dir = Path(checkpoint_dir)
+    checkpoint_dir.mkdir(parents=True, exist_ok=True)
+    hard_path = checkpoint_dir / "w6_p25_uqno_hardcut.pt"
+    analytic_path = checkpoint_dir / "w6_p25_uqno_analytic_p0.pt"
+    torch.save({
+        "schema": "W6_P25_UQNO_HARDCUT_PREDICTOR_V1",
+        "state_dict": hard_model.state_dict(), "input_mean": hm,
+        "input_scale": hs, "target_log_mean": hym, "target_log_scale": hys,
+        "feature_dim": int(X.shape[1]), "metrics": hard_metrics,
+    }, hard_path)
+    torch.save({
+        "schema": "W6_P25_UQNO_ANALYTIC_P0_PREDICTOR_V1",
+        "state_dict": analytic_model.state_dict(), "input_mean": am,
+        "input_scale": ass, "target_log_mean": aym, "target_log_scale": ays,
+        "feature_dim": int(X.shape[1]), "metrics": analytic_metrics,
+    }, analytic_path)
 
     return {
         "schema": "W6_P25_1_UQNO_PILOT_CALIBRATION_V1",
@@ -214,6 +233,9 @@ def run(input_dir):
         "hardcut_error_predictor": hard_metrics,
         "analytic_p0_error_predictor": analytic_metrics,
         "metadata": metadata,
+        "checkpoints": {
+            "hardcut": str(hard_path), "analytic_p0": str(analytic_path),
+        },
         "decision": "PILOT_ONLY_REQUIRES_EXTERNAL_VALIDATION",
         "claims": {
             "PINO_remains_primary": True,
@@ -229,8 +251,9 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--input-dir", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
+    p.add_argument("--checkpoint-dir", type=Path, required=True)
     a = p.parse_args()
-    result = run(a.input_dir)
+    result = run(a.input_dir, a.checkpoint_dir)
     a.output.parent.mkdir(parents=True, exist_ok=True)
     a.output.write_text(json.dumps(result, indent=2, sort_keys=True, allow_nan=False)+"\n")
     print(json.dumps({
