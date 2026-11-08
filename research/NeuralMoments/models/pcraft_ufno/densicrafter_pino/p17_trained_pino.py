@@ -64,7 +64,7 @@ def _feasibility(model,c,model_ref,cut_ref,normal_ref,tolerances):
 
 
 def _run_arm(pino,shell,design,c,model_ref,cut_ref,norm_ref,arm,
-             steps,lr,tolerances):
+             steps,lr,tolerances,require_feasible=True):
     model=DensiCrafterSpinPINOBridge(
         pino,shell,design,gravity_axis=2,smoothing=False
     )
@@ -122,7 +122,7 @@ def _run_arm(pino,shell,design,c,model_ref,cut_ref,norm_ref,arm,
         com_shift=float((final["com"]-initial["com"]).norm())
         shell_ok=bool((final["density"][shell]==1.).all())
         if not shell_ok: raise AssertionError("protected shell changed")
-        if arm=="feasible_joint" and not good:
+        if arm=="feasible_joint" and not good and require_feasible:
             raise AssertionError("independent hard constraints violated")
         return {
             "arm":arm,"steps":steps if arm!="pino_only" else 0,
