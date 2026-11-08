@@ -155,11 +155,31 @@ def load_contract(request_path, frame_report_path):
     return contract, provenance
 
 
+def _affine_identity_payload(contract, provenance):
+    report = contract.report()
+    return {
+        "schema": "W4_P30B_AFFINE_MOMENT_TRANSFORM_IDENTITY_V1",
+        "source_frame": contract.native_frame,
+        "target_frame": contract.si_frame,
+        "linear": report["target_to_si_linear"],
+        "translation": report["target_to_si_translation"],
+        "native_to_si_density_ratio": contract.native_to_si_density_ratio,
+        "frame_identity_sha256": contract.frame_identity_sha256,
+        "p20_request_sha256": provenance["p20_request_sha256"],
+        "p20_frame_report_sha256": provenance["p20_frame_report_sha256"],
+    }
+
+
 def frame_metadata(contract, provenance, moment_coordinate_frame):
     _need(moment_coordinate_frame in (NATIVE_FRAME, SI_FRAME),
           "UNKNOWN_MOMENT_COORDINATE_FRAME")
     length_ref, density_ref = normalization_for_frame(contract, moment_coordinate_frame)
     validate_normalization(contract, moment_coordinate_frame, length_ref, density_ref)
+    _need(sha256_bytes(canonical_bytes(contract.report())) ==
+          provenance["frame_contract_sha256"], "FRAME_CONTRACT_OBJECT_CHANGED")
+    _need(sha256_bytes(canonical_bytes(_affine_identity_payload(contract, provenance))) ==
+          provenance["affine_transform_identity_sha256"],
+          "AFFINE_TRANSFORM_IDENTITY_CHANGED")
     return {
         "moment_coordinate_frame": moment_coordinate_frame,
         "normalization_L": float(length_ref),
