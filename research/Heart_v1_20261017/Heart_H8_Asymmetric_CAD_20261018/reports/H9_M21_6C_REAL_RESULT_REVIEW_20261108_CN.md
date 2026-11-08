@@ -119,3 +119,29 @@ GitHub 源码分支当前有 18 项单元测试，但用户本轮只上传了 JS
 5. 先检查现有 Cherchi/原生接口是否可复用；若需新 Boolean、source 调用或编译，单独报告后再执行。
 
 在 quarter-point 证据完成前，不进行 Newton 准入。M21.6C 已证明混合面细分的离散精确守恒成立，但尚未解决连续邻域光滑性与 J7 根因。
+
+
+## 9. 本地 18 项单元测试补充验收（2026-11-08）
+
+用户在 W3 本地 Python 3.13 环境执行：
+
+```bash
+PYTHONINTMAXSTRDIGITS=100000 "$PY" -m unittest discover \
+  -s "$H9/tests" \
+  -p 'test_h9_m21_6b_moment_layers.py' \
+  -v
+```
+
+终端输出明确记录全部 18 项测试逐项 `ok`，最终：
+
+- `Ran 18 tests in 0.016s`
+- `OK`
+- `TEST_EXIT_CODE=0`
+
+通过的 18 项包括：精确有理数 token、超长整数解析、Dual arithmetic、四面体精确体积矩、1-LPI/2-LPI 混合面分类、矩/J7 子组守恒、区间残差精确求和、十个 Dual 导数插值验证、后续点 J7、仿射平移零切线、原生/独立分层恒等式、面类别变化拒绝、语义面片篡改拒绝、缺失运动拒绝、输入 SHA 篡改拒绝、重复 JSON 键拒绝、未知组标签拒绝、冻结边界拒绝 Newton 声明。
+
+**验收判定：M21.6C 的 18 项离线单元测试通过。** 该结果验证代码合同和纯数学测试，不增加新的 Cherchi Boolean 或 native source 调用，也不改变 Newton 禁止状态。
+
+附件说明：用户本轮另附的 `run.log` 只有 4 行，记录 `M21_6B_STATUS`、6 samples、6 intervals、`M21_6B_NEWTON False`；它不是上述 unittest 输出。18 项测试的证据来自用户粘贴的完整终端输出。后续归档可另存本次生成的 `unittest.log`。
+
+本次测试通过后，M21.6C 可以关闭；下一项工作为 M21.6D 的真实 quarter-point 采样准备。
