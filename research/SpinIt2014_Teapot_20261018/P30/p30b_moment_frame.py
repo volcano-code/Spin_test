@@ -73,7 +73,7 @@ def sha256_bytes(raw):
 
 
 def git_blob_sha1(raw):
-    return hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\\0" + raw).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\0" + raw).hexdigest()
 
 
 def strict_json(raw, label):
