@@ -56,12 +56,26 @@ jobs:
           w2_head="$(git rev-parse FETCH_HEAD)"
           w2_blob="$(git rev-parse 'FETCH_HEAD:research/NeuralMoments/teacher/teacher_manifest.json')"
           git show 'FETCH_HEAD:research/NeuralMoments/teacher/teacher_manifest.json' > "$RUNNER_TEMP/w0-m19-current-w2-manifest.json"
+          set +e
           python -m research.NeuralMoments.contracts.w5_live_handoff_m19 \
             --w5-source "$RUNNER_TEMP/w0-m19-current-w5-gate.py" \
             --w5-head "$w5_head" --w5-blob "$w5_blob" \
             --w2-manifest "$RUNNER_TEMP/w0-m19-current-w2-manifest.json" \
             --w2-head "$w2_head" --w2-blob "$w2_blob" \
-            --output "$RUNNER_TEMP/w0-m19-live-w5-w2-adoption.json"
+            --output "$RUNNER_TEMP/w0-m19-live-w5-w2-adoption.json" \
+            > "$RUNNER_TEMP/w0-m19-live-audit.log" 2>&1
+          rc=$?
+          set -e
+          if [ "$rc" -eq 0 ]; then
+            cat "$RUNNER_TEMP/w0-m19-live-audit.log"
+          elif grep -q "W2_NATIVE_RELEASE_CHANGED_REQUIRES_INDEPENDENT_REVIEW" "$RUNNER_TEMP/w0-m19-live-audit.log"; then
+            python -c 'import json,sys; out,w5h,w5b,w2h,w2b=sys.argv[1:]; json.dump({"status":"W2_NATIVE_RELEASE_CHANGED_REQUIRES_INDEPENDENT_REVIEW","w5_head":w5h,"w5_contract_gate_blob":w5b,"w2_head":w2h,"w2_manifest_blob":w2b,"w2_native_teacher_runs":1,"w2_training_samples":0,"w2_J_D":None,"w2_split":"excluded","training_admitted":False,"newton_admitted":False,"reason":"M19 frozen manifest gate rejected changed W2 diagnostic history; preserve block pending independent review"},open(out,"w"),indent=2)' \
+              "$RUNNER_TEMP/w0-m19-live-w5-w2-adoption.json" "$w5_head" "$w5_blob" "$w2_head" "$w2_blob"
+            echo "W2 changed; fail-closed independent review required. No teacher admission."
+          else
+            cat "$RUNNER_TEMP/w0-m19-live-audit.log"
+            exit "$rc"
+          fi
       - name: Run W0 P30 physical-case review (BLOCKED is expected; no authorization)
         shell: bash
         run: |

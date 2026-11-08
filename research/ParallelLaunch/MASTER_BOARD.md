@@ -13,7 +13,7 @@
 
 | Window | Role | Branch / exact instructions | Dependencies | Earliest evidence target | State |
 |---|---|---|---|---|---|
-| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `P30B_PHYSICAL_REVIEW_BLOCKED; 17_W0_REVIEW_TESTS_PASS; 12_NATIVE_PILOT_NOT_AUTHORIZED; NEWTON_TRAINING_DENIED` |
+| W0 | 数学合同与总控 | [research/neuralmoments-w0-contract-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w0-contract-20261019/research/ParallelLaunch/W0_START_HERE.md) | 无 | MomentContractV1＋质量矩坐标测试 | `P30B_PHYSICAL_REVIEW_BLOCKED; W2_M23_DIAGNOSTIC_EXCLUDED_REVIEW_PENDING; 12_NATIVE_PILOT_NOT_AUTHORIZED; NEWTON_TRAINING_DENIED` |
 | W1 | Cherchi/Faster 性能 | [research/neuralmoments-w1-native-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w1-native-20261019/research/ParallelLaunch/W1_START_HERE.md) | 可独立 profiling；合并需 W0/W2 | 冻结同输入逐段耗时＋原生改造对照 | `RECENT_COMMITS_OBSERVED; SCIENTIFIC_STATUS_NOT_INDEPENDENTLY_CERTIFIED` |
 | W2 | 精确教师与标签 | [research/neuralmoments-w2-teacher-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w2-teacher-20261019/research/ParallelLaunch/W2_START_HERE.md) | 正式发布标签需 W0 | 真实 r,J＋SHA＋可微/失败状态 | `W2_M12_GIT_LEDGER_81_RAYS_17_UNIT_64_NONUNIT; ZERO_TRAINING_RELEASE_OBSERVED` |
 | W3 | Heart H9 | [research/neuralmoments-w3-heart-h9-20261019](https://github.com/volcano-code/Spin_test/blob/research/neuralmoments-w3-heart-h9-20261019/research/ParallelLaunch/W3_START_HERE.md) | 无 | 81 点 point60 构造变化诊断 | `W3_STAGE12_FORENSIC_COMMIT; LOCAL_90_TESTS_REPORTED; NEW_NATIVE_SIDES_0_OF_4; NEWTON_DENIED` |
@@ -225,3 +225,9 @@
 - P27 manifest/lock and P30 private plan hashes are corroborated by public receipts, but P27 lock/archive and P30 private plan raw bytes are not public W4 branch files and could not be re-hashed by W0. P28 is a standalone replay, not original P21 verifier or independent native-set predicate replay.
 - P30-B: proposed h=0.002 rad, 12 points and directions [0,1,2] remain a software plan only. Conditional L_ref=0.06429 m and density_ref=1200 kg/m3 are not approved. No measured noise/geometry/material uncertainty, base feature-branch SHA or physical error budget exists; therefore no max normalized Jacobian error is set. Finite differences, branch stability, continuous smoothness and Newton terminal remain separate.
 - **Decision: BLOCKED.** No `P30_TEAPOT_DIAGNOSTIC_AUTHORIZATION.json`; Newton, training, continuous smoothness, physical validation and real native pilot all false. See `research/ParallelLaunch/W0_P30_PHYSICAL_REVIEW_BLOCKED_20261108.md` and the W0 fail-closed checker/tests.
+
+
+## W0 P30-B CI follow-up (2026-11-08)
+
+- Run `42457540232` initially exposed a pytest import-path issue in the new W0 test; the test now loads the sibling review module by `__file__`. Run `42457599002` passed the 177-test math/interface suite, then correctly rejected the new W2 M23 manifest because `native_teacher_runs=1` now includes a real same-call diagnostic, while `J_D=null`, `split=excluded`, `training_samples=0`. This is an upstream evidence change, not teacher admission.
+- Workflow treats only the exact `W2_NATIVE_RELEASE_CHANGED_REQUIRES_INDEPENDENT_REVIEW` state as a recorded fail-closed dependency result, then continues the W0 P30 physical BLOCKED review. Unknown errors still fail. No training or Newton admission.
