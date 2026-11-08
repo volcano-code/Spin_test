@@ -16,6 +16,11 @@ neural operator replaces the PINO trunk.
 - Enable non-reentrant activation checkpointing for PINO blocks during
   density-input backpropagation. InstanceNorm has no running stats in
   this architecture, so train/eval mode does not alter normalization.
+- DensiCrafter bottom-contact exponential decay is measured in equivalent
+  64-grid voxels: exactly the original DensiCrafter weighting at 64³,
+  while 128³ uses half the per-index exponent so the same physical height
+  receives the same contact weight. This avoids a resolution-induced empty
+  support region when the original index-based 4^-k decay is used unchanged.
 - One analytic P0 sphere at 128³, one cut query.
 - Four-cell shell at 128³ approximates the two-cell shell scale at 64³
   (same normalized voxel count scale); it is not a millimeter wall.
