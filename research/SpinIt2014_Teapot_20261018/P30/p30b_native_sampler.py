@@ -110,9 +110,17 @@ def read_auth_and_bind(a):
     need(digest(request)==auth.EXPECTED_REQUEST_SHA,
          "P20_REQUEST_SHA_CHANGED")
     approvals=auth.read_authorities(a.w0_review_root,a.w2_review_root)
-    readiness=auth.evaluate(plan,approvals,request,plan_raw)
+    frame_report_path=a.w4_root/P20_REL/"P20_EXACT_FRAME_AND_PHYSICS_REPORT.json"
+    frame_contract,frame_provenance=moment_frame.load_contract(a.p20_request,frame_report_path)
+    readiness=auth.evaluate(plan,approvals,request,plan_raw,frame_contract,frame_provenance)
     need(readiness["status"]=="DIAGNOSTIC_PILOT_APPROVALS_PRESENT_NOT_EXECUTED",
          "INDEPENDENT_OWNER_TEACHER_PILOT_APPROVALS_MISSING")
+    need(a.moment_coordinate_frame==readiness["moment_frame_binding"]["moment_coordinate_frame"],
+         "REQUESTED_FRAME_DIFFERS_FROM_INDEPENDENT_W0_W2_APPROVALS")
+    frame_meta=moment_frame.frame_metadata(frame_contract,frame_provenance,a.moment_coordinate_frame)
+    for key,value in frame_meta.items():
+        need(readiness["moment_frame_binding"].get(key)==value,
+             "OWNER_LOCK_FRAME_BINDING_MISMATCH:"+key)
     registered_lock=a.registered_lock.read_bytes()
     need(digest(registered_lock)==a.external_lock_sha,
          "EXTERNAL_P30B_LOCK_SHA_MISMATCH")
@@ -137,7 +145,8 @@ def read_auth_and_bind(a):
          "W4_P20_REQUEST_NO_LONGER_IDENTICAL")
     return {"plan":plan,"archive":archive,"approvals":approvals,
             "readiness":readiness,"expected_lock":expected,"pins":saved_pins,
-            "external_lock_sha":a.external_lock_sha}
+            "frame_contract":frame_contract,"frame_provenance":frame_provenance,
+            "frame_metadata":frame_meta,"external_lock_sha":a.external_lock_sha}
 
 def resolved_native_module_paths(p27_root):
     return {
