@@ -6,7 +6,7 @@ fine-tunes all PINO weights at native 128^3 with full SpinPINOLoss.
 This is not a Cherchi-trained model.
 """
 from __future__ import annotations
-import argparse,json,resource,time
+import argparse,json,resource,time,hashlib
 from pathlib import Path
 import torch
 
@@ -36,6 +36,7 @@ def run(*,checkpoint_dir,seed=271,steps=8,learning_rate=2e-4):
     if package.get("seed")!=seed or package.get("grid_size")!=64:
         raise ValueError("P14 checkpoint seed/grid provenance mismatch")
     state=package["state_dict"]
+    checkpoint_sha256=hashlib.sha256(checkpoint_path.read_bytes()).hexdigest()
 
     common=dict(train_geometries_per_family=8,
         test_ellipsoid_geometries=6,queries_per_geometry=2)
@@ -81,13 +82,13 @@ def run(*,checkpoint_dir,seed=271,steps=8,learning_rate=2e-4):
             pred_J.append(model.jacobian_from_weights(w,c[i:i+1]))
             voxel_r.append(exact_discrete_cut_moments(D[i:i+1,0:1],c[i:i+1]))
     pred_r=torch.cat(pred_r);pred_J=torch.cat(pred_J);voxel_r=torch.cat(voxel_r)
-    out=Path(f"/tmp/w6_p16_128_transfer_seed{seed}.pt")
+    out=Path(f"/tmp/w6_p16_grid128_seed{seed}.pt")
     torch.save({"state_dict":trained_state,"seed":seed,"grid_size":128,
         "initialized_from":"P14_native64","source":"ANALYTIC_CONTINUUM_P0_NOT_W2_CHERCHI"},out)
     return {
         "schema":"W6_P16_NATIVE_128_WARMSTART_FROM_TRAINED_64_V1",
         "seed":seed,"source_checkpoint":str(checkpoint_path),
-        "source_checkpoint_sha256":package.get("sha256"),
+        "source_checkpoint_sha256":checkpoint_sha256,
         "source_resolution":64,"target_input_and_Fourier_grid":128,
         "strict_full_state_transfer":True,"state_dict_key_count":len(state),
         "model":"P-CRAFT SpinPINO factorized F-FNO/U-FNO",
