@@ -48,6 +48,32 @@ class P19Native128Contracts(unittest.TestCase):
         self.assertGreater(float(density.grad.abs().sum()),0.)
         self.assertTrue(all(p.grad is None for p in model.parameters()))
 
+
+    def test_resolution_aware_contact_matches_original_at_64(self):
+        from research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.bridge import (
+            resolution_aware_bottom_contact_region,
+        )
+        from research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.third_party.densicrafter_core import (
+            get_smooth_bottom_contact_region,
+        )
+        torch.manual_seed(7)
+        rho=torch.rand((1,9,11,64))
+        actual=resolution_aware_bottom_contact_region(rho,exp=4.,reference_resolution=64)
+        original=get_smooth_bottom_contact_region(rho,0,exp=4.)
+        self.assertTrue(torch.equal(actual,original))
+
+    def test_same_physical_height_has_same_contact_weight_at_64_and_128(self):
+        from research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.bridge import (
+            resolution_aware_bottom_contact_region,
+        )
+        rho64=torch.zeros((1,2,2,64))
+        rho128=torch.zeros((1,2,2,128))
+        rho64[:,:,:,-1-16]=1.0
+        rho128[:,:,:,-1-32]=1.0
+        c64=resolution_aware_bottom_contact_region(rho64,exp=4.,reference_resolution=64)
+        c128=resolution_aware_bottom_contact_region(rho128,exp=4.,reference_resolution=64)
+        self.assertTrue(torch.allclose(c64,c128,rtol=1e-6,atol=0.0))
+
     def test_128_grid_four_cell_shell_matches_64_grid_two_cell_scale(self):
         n=32
         x=torch.linspace(-1,1,n)

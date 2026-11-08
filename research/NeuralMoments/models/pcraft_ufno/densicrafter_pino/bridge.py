@@ -44,6 +44,29 @@ def material_moments(density: Tensor) -> Tensor:
     return torch.einsum("bxyz,xyzi->bi",density[:,0],basis)*volume
 
 
+
+
+def resolution_aware_bottom_contact_region(rho: Tensor, *, exp: float = 4.0,
+                                           reference_resolution: int = 64) -> Tensor:
+    """DensiCrafter bottom-contact weighting invariant to voxel resolution.
+
+    At the reference resolution this is exactly the original DensiCrafter
+    exponential depth weighting. At another resolution, depth is measured
+    in equivalent reference-grid voxels, so the same physical height above
+    the floor receives the same weight.
+    """
+    if rho.ndim != 4 or min(rho.shape[1:]) < 1:
+        raise ValueError("rho must be [B,X,Y,Z] with nonempty spatial axes")
+    if not isinstance(reference_resolution, int) or reference_resolution < 1:
+        raise ValueError("reference_resolution must be a positive integer")
+    if not torch.isfinite(torch.tensor(float(exp))) or exp <= 1.0:
+        raise ValueError("exp must be finite and >1")
+    depth_cells = rho.shape[-1]
+    depth = torch.arange(depth_cells, device=rho.device, dtype=rho.dtype)
+    equivalent_reference_cells = depth * (float(reference_resolution) / depth_cells)
+    weights = torch.pow(rho.new_tensor(float(exp)), -equivalent_reference_cells)
+    return (rho * weights.reshape(1, 1, 1, -1)).max(dim=-1).values
+
 def _contact_loss(density: Tensor, *, gravity_axis: int, grid: Tensor):
     """DensiCrafter bottom-contact idea in physical [-1,1] coordinates.
 
@@ -61,7 +84,7 @@ def _contact_loss(density: Tensor, *, gravity_axis: int, grid: Tensor):
     else:
         reordered=b
         plane_coords=grid[...,0,:]
-    contact=get_smooth_bottom_contact_region(reordered,0,exp=4.0)
+    contact=resolution_aware_bottom_contact_region(reordered,exp=4.0,reference_resolution=64)
     support_mass=contact.sum(dim=(1,2))
     if bool((support_mass<=1e-8).any()) or not bool(torch.isfinite(support_mass).all()):
         raise ValueError("empty/nonfinite bottom contact region")
