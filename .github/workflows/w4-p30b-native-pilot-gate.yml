@@ -138,8 +138,19 @@ jobs:
       - name: Record CI scope and hardware claims
         run: |
           python - <<'PY'
-          import json,os
+          import json,os,sys
           from pathlib import Path
+          p30=Path("w4")/os.environ["P30"]
+          sys.path.insert(0,str(p30))
+          import p30b_moment_frame as moment_frame
+          p1=p30.parent/"P1"
+          contract,provenance=moment_frame.load_contract(
+              p1/"P20_native_request.json",
+              p1/"P20_EXACT_FRAME_AND_PHYSICS_REPORT.json")
+          native_meta=moment_frame.frame_metadata(
+              contract,provenance,moment_frame.NATIVE_FRAME)
+          si_meta=moment_frame.frame_metadata(
+              contract,provenance,moment_frame.SI_FRAME)
           row={"schema":"W4_P30B_CI_OWNER_PILOT_READINESS_V1",
             "status":"SOFTWARE_CHECK_PASS_NATIVE_PILOT_BLOCKED",
             "unit_test_count":37,"unit_tests_skipped":0,
@@ -151,6 +162,16 @@ jobs:
             "sample_resume_covered_by_synthetic_tests":True,
             "M21_native_SI_frame_binding_tested":True,
             "W0_M21_runtime_branch_import":False,
+            "W0_M21_source_commit":provenance["w0_m21_source_commit"],
+            "W0_M21_tested_commit":provenance["w0_m21_tested_commit"],
+            "W0_M21_source_files":provenance["source_files"],
+            "W0_M21_source_bundle_sha256":provenance["source_bundle_sha256"],
+            "P20_request_sha256":provenance["p20_request_sha256"],
+            "P20_frame_report_sha256":provenance["p20_frame_report_sha256"],
+            "frame_contract_sha256":provenance["frame_contract_sha256"],
+            "affine_transform_identity_sha256":provenance["affine_transform_identity_sha256"],
+            "native_frame_contract":native_meta,
+            "conditional_si_frame_contract":si_meta,
             "scientific_admission":False,
             "smooth_neighborhood_certified":False,
             "Newton_accepted":False,
