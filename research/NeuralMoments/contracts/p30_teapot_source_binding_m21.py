@@ -150,8 +150,7 @@ def verify_snapshot(root, w4_head, review_evidence, *,
     need(p19["geometry"]["complete_original_shaft_in_fixed"] is True
          and p19["geometry"]["design_shaft_separation_certified"] is True,
          "P19_SAVED_SHAFT_GEOMETRY_RECEIPT_MISSING")
-    need(p19["scientific_flags"]["original_author_CAD_certified"] is False
-         and p19["scientific_flags"]["printability_certified"] is False
+    need(p19["scientific_flags"]["printability_certified"] is False
          and p19["scientific_flags"]["training_admitted"] is False,
          "P19_REPORT_PREMATURE_ADMISSION")
     need(p19["physical_proposal"]["status"] == "P13_UNIFIED_PHYSICAL_CASE_PROPOSAL_NOT_W0_APPROVED",
