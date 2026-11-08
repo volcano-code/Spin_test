@@ -21,6 +21,7 @@ from ..analytic_cut import sample_dataset
 from ..spin_pino.spin_pino import SpinPINO
 from ..p0_integration.selected_pino import SelectedPINOCandidates
 from .p17_trained_pino import _surface_masks
+from .p13b_highres import exact_discrete_cut_moments
 
 SEEDS = {271: 883, 277: 887, 281: 991}
 QUADRANN_PIN = "111dd611aaeac1fb98c76385706b003ea8ef94be"
@@ -111,6 +112,7 @@ def _run_case(seed, resolution, family, pino_dir, quadrann_dir):
         base_J = pino.jacobian_from_weights(base_weights, c)
         quad_r = pino.moment_from_weights(active_weights, c)
         quad_J = pino.jacobian_from_weights(active_weights, c)
+        exact_cut = exact_discrete_cut_moments(density, c)
     qn = q_proposal / q_proposal.sum(dim=-1, keepdim=True).clamp_min(1e-12)
     ess = 1.0 / qn.square().sum(dim=-1)
     component_delta = (quad_r-truth_r).abs() - (base_r-truth_r).abs()
@@ -137,14 +139,20 @@ def _run_case(seed, resolution, family, pino_dir, quadrann_dir):
         },
         "baseline_pino": {
             "r_relative_l2_to_analytic_p0": _rel(base_r, truth_r),
+            "r_relative_l2_to_independent_hard_cut": _rel(base_r, exact_cut),
             "J_relative_l2_to_analytic_p0": _rel(base_J, truth_J),
             "r": _finite_list(base_r), "J": _finite_list(base_J),
         },
         "quadrann_pino": {
             "r_relative_l2_to_analytic_p0": _rel(quad_r, truth_r),
+            "r_relative_l2_to_independent_hard_cut": _rel(quad_r, exact_cut),
             "J_relative_l2_to_analytic_p0": _rel(quad_J, truth_J),
             "r": _finite_list(quad_r), "J": _finite_list(quad_J),
         },
+        "independent_hard_cut_reference": _finite_list(exact_cut),
+        "quadrann_hard_cut_error_delta": (
+            _rel(quad_r, exact_cut)-_rel(base_r, exact_cut)
+        ),
         "analytic_truth": {"r": _finite_list(truth_r), "J": _finite_list(truth_J)},
         "componentwise_abs_error_delta_r": _finite_list(component_delta),
         "componentwise_abs_error_delta_J": _finite_list(jac_component_delta),
@@ -189,6 +197,8 @@ def main():
         "resolution": c["resolution"], "family": c["family"],
         "base_r": c["baseline_pino"]["r_relative_l2_to_analytic_p0"],
         "quad_r": c["quadrann_pino"]["r_relative_l2_to_analytic_p0"],
+        "base_hardcut": c["baseline_pino"]["r_relative_l2_to_independent_hard_cut"],
+        "quad_hardcut": c["quadrann_pino"]["r_relative_l2_to_independent_hard_cut"],
         "base_J": c["baseline_pino"]["J_relative_l2_to_analytic_p0"],
         "quad_J": c["quadrann_pino"]["J_relative_l2_to_analytic_p0"],
         "proposal_ess": c["quadrann_proposal"]["effective_sample_size"],
