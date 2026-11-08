@@ -19,6 +19,7 @@ import subprocess
 import sys
 
 import p30_neighborhood_preflight as seed
+import p30b_moment_frame as moment_frame
 
 SCHEMA = "W4_P30B_OWNER_TEACHER_DIAGNOSTIC_READINESS_V1"
 LOCK_SCHEMA = "W4_P30B_TANGENT_PILOT_PRERUN_LOCK_V1"
@@ -191,7 +192,7 @@ def validate_teacher(w2, plan, w0_sha):
          "W2_PREMATURE_DERIVATIVE_OR_NEWTON_RELEASE")
     return {"base_feature_branch_sha256": w2["base_feature_branch_sha256"]}
 
-def evaluate(plan, approvals, request, plan_raw):
+def evaluate(plan, approvals, request, plan_raw, frame_contract=None, frame_provenance=None):
     if approvals["w0"]["state"] != "AVAILABLE" or approvals["w2"]["state"] != "AVAILABLE":
         missing = [name for name in ("w0","w2") if approvals[name]["state"] != "AVAILABLE"]
         return {"schema":SCHEMA, "status":"BLOCKED_WAITING_INDEPENDENT_"+("_".join(missing)).upper()+"_APPROVAL",
@@ -202,10 +203,17 @@ def evaluate(plan, approvals, request, plan_raw):
     plan=validate_plan(plan)
     owner=validate_owner(approvals["w0"]["doc"],plan,request)
     teacher=validate_teacher(approvals["w2"]["doc"],plan,approvals["w0"]["sha256"])
+    need(frame_contract is not None and frame_provenance is not None,
+         "PINNED_W0_M21_FRAME_CONTRACT_REQUIRED")
+    frame_binding=moment_frame.validate_owner_teacher_frame(
+        approvals["w0"]["doc"],approvals["w2"]["doc"],frame_contract,frame_provenance)
+    need(owner["length_ref"] == frame_binding["normalization_L"] and
+         owner["density_ref"] == frame_binding["normalization_R"],
+         "W0_OWNER_LEGACY_NORMALIZATION_DIFFERS_FROM_FRAME_BINDING")
     return {"schema":SCHEMA, "status":"DIAGNOSTIC_PILOT_APPROVALS_PRESENT_NOT_EXECUTED",
             "real_native_pilot_authorized":True,
             "evidence":{"p27_manifest_sha256":seed.MANIFEST_SHA,"P30_plan_sha256":digest(plan_raw)},
-            "owner":owner,"teacher":teacher,
+            "owner":owner,"teacher":teacher,"moment_frame_binding":frame_binding,
             "approvals":{k:{f:v[f] for f in ("branch","head","path","git_blob","sha256")}
                          for k,v in approvals.items()},
             "new_native_calls":0, **CLOSED}
@@ -246,8 +254,10 @@ def main(argv=None):
         approvals=read_authorities(a.w0_review_root,a.w2_review_root)
         raw=a.plan.read_bytes()
         request=a.p20_request.read_bytes()
+        frame_path=a.p20_request.with_name("P20_EXACT_FRAME_AND_PHYSICS_REPORT.json")
+        frame_contract,frame_provenance=moment_frame.load_contract(a.p20_request,frame_path)
         plan=validate_plan(strict_json(raw))
-        result=evaluate(plan,approvals,request,raw)
+        result=evaluate(plan,approvals,request,raw,frame_contract,frame_provenance)
         if a.mode=="seal":
             result=make_lock(result)
         write_new(a.output,result)
