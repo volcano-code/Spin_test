@@ -153,8 +153,22 @@ def branch_status_is_valid(side, left_status, right_status):
     return False
 
 
+def _normalise_signature(value):
+    if hasattr(value, 'tolist'):
+        return _normalise_signature(value.tolist())
+    if isinstance(value, dict):
+        return {str(key): _normalise_signature(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_normalise_signature(item) for item in value]
+    if hasattr(value, 'item'):
+        return _normalise_signature(value.item())
+    return value
+
+
 def source_signature_matches(new_signature, from_signature, to_signature):
-    return new_signature == from_signature == to_signature
+    return (_normalise_signature(new_signature) ==
+            _normalise_signature(from_signature) ==
+            _normalise_signature(to_signature))
 
 
 def _exclusive_file(folder, name, payload):
