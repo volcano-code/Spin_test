@@ -143,6 +143,8 @@ def run_seed(
     rotation_augmentation_mode: str = "cube",
     evaluation_rotation_mode: str = "so3",
     use_gradient_checkpoint: bool = False,
+    initial_state_dict: dict | None = None,
+    initial_state_source: str = "random_initialization",
     device: str = "cpu",
 ):
     if eval_batch_size is not None and eval_batch_size < 1:
@@ -194,6 +196,13 @@ def run_seed(
         geometry_adapter=geometry_adapter,
         use_gradient_checkpoint=use_gradient_checkpoint,
     ).to(device)
+    if initial_state_dict is not None:
+        # Strict shape/key match: 64^3 -> 128^3 transfer is valid only
+        # because spectral weights and the Spin quadrature head are grid-size
+        # independent. Never silently drop missing/unexpected parameters.
+        model.load_state_dict(initial_state_dict, strict=True)
+    elif initial_state_source != "random_initialization":
+        raise ValueError("initial_state_source requires initial_state_dict")
     preconditioner = (
         DiagonalMomentResidualPreconditioner.fit(fit[2], fit[3]).to(device=device, dtype=fit[2].dtype)
         if preconditioned_loss else None
@@ -278,7 +287,7 @@ def run_seed(
     training_seconds = time.perf_counter() - started
     model.load_state_dict(best_state)
     fit_metrics = _evaluate(model, fit, batch_size=eval_batch_size)
-    validation_metrics = _evaluate(model, validation)
+    validation_metrics = _evaluate(model, validation, batch_size=eval_batch_size)
     test_metrics = _evaluate(model, test, batch_size=eval_batch_size)
     return {
         "schema": "SPIN_PINO_ANALYTIC_P0_TRAINING_V1",
@@ -309,6 +318,7 @@ def run_seed(
                          "smoothing": smoothing, "moment_parameterization": moment_parameterization,
                          "temperature": temperature, "geometry_adapter": geometry_adapter,
                          "use_gradient_checkpoint": bool(use_gradient_checkpoint),
+                         "initial_state_source": initial_state_source,
                          "lambda_equivariance": float(lambda_equivariance),
                          "width": 4 if grid_size <= 8 else 8,
                          "modes": 2 if grid_size <= 8 else 4},
@@ -316,6 +326,7 @@ def run_seed(
             "steps": steps,
             "batch_size": batch_size,
             "eval_batch_size": eval_batch_size,
+            "initial_state_source": initial_state_source,
             "selected_step": best_step,
             "seconds": training_seconds,
             "optimizer": "Adam",
