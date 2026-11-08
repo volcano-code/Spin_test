@@ -108,7 +108,7 @@
           "bad45b1ecbdead28344981b3b3a40e186e66ad73"
         ]
       ],
-      "w6_status": "P22_TRAINED_GINO_OPTIONAL_PINO_RESIDUAL_SINGLE_SEED_HELDOUT_R_2P79_J_1P13_IMPROVEMENT_NOT_PROMOTED",
+      "w6_status": "P22_SINGLE_SEED_TRAINED_GINO_HELDOUT_R_2P79_J_1P13_GAIN_OPTIONAL_NOT_PROMOTED",
       "role": "GINO/FNOGNO are geometry-aware operator baselines; UQNO is the first uncertainty-aware operator candidate. Use the same mesh/voxel inputs and ten-moment output contract.",
       "priority": "P0_DIRECT_REUSE",
       "reuse_rule": "MIT; retain copyright and license notice. Pin the exact upstream commit.",
@@ -425,7 +425,7 @@
           "c4f9d72ba46360af2fc3c9b5d08cd43badb1e49b"
         ]
       ],
-      "w6_status": "P21_TRAINED_MIT_QUADRANN_OPTIONAL_PINO_RESIDUAL_SINGLE_SEED_HELDOUT_R_28P95_J_15P76_IMPROVEMENT_PENDING_MULTI_SEED",
+      "w6_status": "P21_SINGLE_SEED_TRAINED_MIT_QUADRANN_HELDOUT_R_28P95_J_15P76_GAIN_P23_MULTI_SEED_PENDING",
       "role": "Geometry-aware permutation-invariant GNN quadrature weights; direct baseline for point-cloud/mesh quadrature and teacher-sample allocation. Adapt to ten moments and derivative accuracy, not only scalar integrals.",
       "priority": "P0_DIRECT_REUSE",
       "reuse_rule": "MIT; preserve license. Previous W6 adapter/experiment is not evidence of production integration or superiority.",
@@ -769,7 +769,7 @@
           "b0be285b3025804043fea228b01ab4916b14da47"
         ]
       ],
-      "w6_status": "P20_NATIVE128_THREE_SEED_ALL_DESIGN_JOBS_SUCCESS_AGGREGATE_RECOVERY",
+      "w6_status": "P20_NATIVE128_THREE_SEED_CONFIRMATION_COMPLETE_ALL_18_STEPS_FEASIBLE",
       "role": "Complementary differentiable density-field design module: self-supporting hollowing, mass regularization, center-of-mass and bottom-contact losses. Connect its optimized density field to W6 material moments and inertia evaluation; not a general FEM/structural-strength solver.",
       "priority": "P0_P1_CROSS_PROJECT_INTEGRATION",
       "reuse_rule": "MIT; preserve copyright (c) 2025 Shengqi Dang and license notice. Port only isolated differentiable loss/field logic; do not import TRELLIS/MuJoCo/Blender pipeline into W6 core.",
@@ -922,7 +922,22 @@
             13608614765,
             13608564978
           ],
-          "limits": "analytic P0 spheres, cell-centered hard-cut; not Cherchi/FEM/mm wall"
+          "limits": "analytic P0 spheres, cell-centered hard-cut; not Cherchi/FEM/mm wall",
+          "aggregate_recovery": {
+            "run_id": 42461359386,
+            "conclusion": "success",
+            "artifact_id": 13609238721,
+            "aggregate_zip_sha256": "67dff51406fdfc3b25387902ac3f731c17458e0965d661a01f71ed2d13c0fb67",
+            "mean_mass_reduction_fraction": 0.00204235594736187,
+            "std_mass_reduction_fraction": 0.00022786456400389368,
+            "mean_model_cut_moment_relative_error": 0.00032965548113376525,
+            "mean_independent_hard_cut_relative_error": 0.002375228718544046,
+            "mean_normalized_material_9moment_l2": 0.00011301693545343976,
+            "accepted_steps_total": 18,
+            "rejected_steps_total": 0,
+            "all_seeds_feasible": true,
+            "all_shells_preserved": true
+          }
         }
       }
     },

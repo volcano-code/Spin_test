@@ -73,3 +73,8 @@ job failed only because the aggregation job lacked torch and imported
 the package using `python -m`. The recovery workflow downloads the
 same immutable artifacts and runs `p20_aggregate.py` directly, avoiding
 package initialization and requiring no PyTorch installation.
+
+
+## Aggregate recovery completed
+
+The three seed design jobs were all successful. The original aggregate job failed only because it invoked the package with `python -m` without installing torch. Recovery run https://github.com/volcano-code/Spin_test/actions/runs/42461359386 completed successfully by invoking the standard-library-only aggregation script directly. Recovered aggregate artifact ID: 13609238721; ZIP SHA256: `67dff51406fdfc3b25387902ac3f731c17458e0965d661a01f71ed2d13c0fb67`. Aggregate reports all three seeds feasible, all 18/18 accepted updates, and zero rejected updates.
