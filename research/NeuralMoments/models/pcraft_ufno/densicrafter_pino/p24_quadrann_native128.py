@@ -164,7 +164,7 @@ def run(*, pino_checkpoint_dir: Path, quadrann_checkpoint_dir: Path,
     )
     quadrann_row = _run_arm(
         proxy, shell, design, coefficients, model_ref, cut_ref, norm_ref,
-        "feasible_joint", steps, lr, tolerances,
+        "feasible_joint", steps, lr, tolerances, require_feasible=False,
     )
     saved = {}
     for name, row in (("pino_only", baseline_row), ("pino_quadrann", quadrann_row)):
