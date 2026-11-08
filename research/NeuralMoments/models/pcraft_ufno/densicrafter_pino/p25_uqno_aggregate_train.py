@@ -86,12 +86,15 @@ class _UQNO(nn.Module):
         return mu, logvar
 
 
-def _fit_calibrate(X, y, split, seed):
+def _fit_calibrate(X, y, split, geometry_ids, seed):
     train = torch.tensor([s == "train" for s in split])
     cal = torch.tensor([s == "calibration" for s in split])
     test = torch.tensor([s == "test" for s in split])
-    if min(int(train.sum()), int(cal.sum()), int(test.sum())) < 8:
-        raise ValueError("insufficient geometry-disjoint rows per split")
+    train_gids = sorted({geometry_ids[i] for i, flag in enumerate(train.tolist()) if flag})
+    cal_gids = sorted({geometry_ids[i] for i, flag in enumerate(cal.tolist()) if flag})
+    test_gids = sorted({geometry_ids[i] for i, flag in enumerate(test.tolist()) if flag})
+    if min(len(train_gids), len(cal_gids), len(test_gids)) < 8:
+        raise ValueError("insufficient unique geometries per split")
     mean = X[train].mean(0)
     scale = X[train].std(0, unbiased=False).clamp_min(1e-5)
     Xn = ((X-mean)/scale).clamp(-10, 10)
@@ -121,17 +124,30 @@ def _fit_calibrate(X, y, split, seed):
         mu = mu*yscale+ymean
         sigma = torch.exp(0.5*logvar)*yscale
         cal_z = ((ylog[cal]-mu[cal]).abs()/sigma[cal].clamp_min(1e-6))
+        # Geometry-level simultaneous calibration: all coefficient queries
+        # and both resolutions for a geometry contribute to one max score.
+        cal_group_scores = []
+        for gid in cal_gids:
+            mask = torch.tensor([g == gid for g in geometry_ids], dtype=torch.bool) & cal
+            cal_group_scores.append(cal_z[mask].max())
+        cal_group_scores = torch.stack(cal_group_scores)
         def conformal_quantile(scores, alpha):
             k = min(len(scores), max(1, math.ceil((len(scores)+1)*(1-alpha))))
             return float(torch.kthvalue(scores, k).values)
-        q90 = conformal_quantile(cal_z, .10)
-        q95 = conformal_quantile(cal_z, .05)
+        q90 = conformal_quantile(cal_group_scores, .10)
+        q95 = conformal_quantile(cal_group_scores, .05)
         lower90 = torch.exp(mu[test]-q90*sigma[test])
         upper90 = torch.exp(mu[test]+q90*sigma[test])
         lower95 = torch.exp(mu[test]-q95*sigma[test])
         upper95 = torch.exp(mu[test]+q95*sigma[test])
         coverage90 = float(((y[test] >= lower90) & (y[test] <= upper90)).float().mean())
         coverage95 = float(((y[test] >= lower95) & (y[test] <= upper95)).float().mean())
+        geometry_coverage90 = []
+        geometry_coverage95 = []
+        for gid in test_gids:
+            mask = torch.tensor([g == gid for g in geometry_ids], dtype=torch.bool) & test
+            geometry_coverage90.append(bool(((y[mask] >= lower90[mask]) & (y[mask] <= upper90[mask])).all()))
+            geometry_coverage95.append(bool(((y[mask] >= lower95[mask]) & (y[mask] <= upper95[mask])).all()))
         pred_median = torch.exp(mu[test])
         mae_log = float((mu[test]-ylog[test]).abs().mean())
         # Risk-coverage: sort by predicted 90% upper bound, accept lowest risk first.
@@ -145,6 +161,13 @@ def _fit_calibrate(X, y, split, seed):
         result = {
             "train_rows": int(train.sum()), "calibration_rows": int(cal.sum()),
             "test_rows": int(test.sum()), "feature_dim": int(X.shape[1]),
+            "train_unique_geometries": len(train_gids),
+            "calibration_unique_geometries": len(cal_gids),
+            "test_unique_geometries": len(test_gids),
+            "calibration_unit": "maximum standardized residual per geometry across all queries and resolutions",
+            "calibration_geometry_scores": len(cal_group_scores),
+            "test_geometry_simultaneous_coverage_90": sum(geometry_coverage90)/len(geometry_coverage90),
+            "test_geometry_simultaneous_coverage_95": sum(geometry_coverage95)/len(geometry_coverage95),
             "epochs": 400, "training_history": history,
             "calibration_standardized_residual_q90": q90,
             "calibration_standardized_residual_q95": q95,
@@ -180,7 +203,7 @@ def run(input_dir, checkpoint_dir):
     if len(grouped) != 288:
         raise ValueError(f"expected 288 geometry-query-resolution groups, got {len(grouped)}")
 
-    X, hard_y, analytic_y, splits, metadata = [], [], [], [], []
+    X, hard_y, analytic_y, splits, geometry_ids, metadata = [], [], [], [], [], []
     for (gid, query, resolution), group in sorted(grouped.items()):
         if len(group["rows"]) != 3 or {r["seed"] for r in group["rows"]} != set(SEEDS):
             raise ValueError("ensemble seed coverage mismatch")
@@ -193,6 +216,7 @@ def run(input_dir, checkpoint_dir):
         analytic_y.append(max(_rel(pred_r.tolist(), truth_r.tolist()), 1e-6))
         split = _split(gid)
         splits.append(split)
+        geometry_ids.append(gid)
         metadata.append({
             "geometry_id": gid, "query_index": query,
             "resolution": resolution, "family": rows[0]["family"],
@@ -206,8 +230,8 @@ def run(input_dir, checkpoint_dir):
     X = torch.stack(X)
     hard_y = torch.tensor(hard_y, dtype=torch.float32)
     analytic_y = torch.tensor(analytic_y, dtype=torch.float32)
-    hard_model, hm, hs, hym, hys, hard_metrics = _fit_calibrate(X, hard_y, splits, 2501)
-    analytic_model, am, ass, aym, ays, analytic_metrics = _fit_calibrate(X, analytic_y, splits, 2502)
+    hard_model, hm, hs, hym, hys, hard_metrics = _fit_calibrate(X, hard_y, splits, geometry_ids, 2501)
+    analytic_model, am, ass, aym, ays, analytic_metrics = _fit_calibrate(X, analytic_y, splits, geometry_ids, 2502)
     checkpoint_dir = Path(checkpoint_dir)
     checkpoint_dir.mkdir(parents=True, exist_ok=True)
     hard_path = checkpoint_dir / "w6_p25_uqno_hardcut.pt"
