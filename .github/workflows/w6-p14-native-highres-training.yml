@@ -1,0 +1,57 @@
+name: W6 P14 native high-resolution trained Spin-PINO
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/p14_highres_train.py
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_p14_highres.py
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/P14_PROTOCOL.md
+      - .github/workflows/w6-p14-native-highres-training.yml
+  workflow_dispatch:
+jobs:
+  native-highres-training:
+    name: "PINO native grid ${{ matrix.grid }} cubed"
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        grid: [16, 32, 64]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install pinned CPU PyTorch
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install numpy pytest
+      - name: Validate actual native-grid PINO and complete training path
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_p14_highres.py
+      - name: Train all P-CRAFT PINO weights at native resolution
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.p0_integration.p14_highres_train \
+            --grid-size ${{ matrix.grid }} --seeds 271,277,281 \
+            --steps 40 --batch-size 2 --points-per-axis 8 \
+            --output "/tmp/w6_p14_native_grid_${{ matrix.grid }}.json"
+      - name: Archive trained models, per-seed metrics and physical receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p14-native-PINO-grid-${{ matrix.grid }}
+          path: |
+            /tmp/w6_p14_native_grid_${{ matrix.grid }}.json
+            /tmp/w6_p14_grid${{ matrix.grid }}_seed*.pt
+          if-no-files-found: error
+          retention-days: 30
