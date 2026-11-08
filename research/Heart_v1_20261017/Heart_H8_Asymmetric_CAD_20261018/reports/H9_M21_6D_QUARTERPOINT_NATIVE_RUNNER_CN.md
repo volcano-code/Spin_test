@@ -29,7 +29,7 @@
 
 ## 当前状态
 
-代码与 14 项纯合同测试已提交；尚未在用户本地执行新 Cherchi Boolean 或 source-motion。四个点必须串行执行。建议先运行 index 0，审查完整证据后再继续 index 1、2、3。
+代码与 15 项纯合同测试已提交；尚未在用户本地执行新 Cherchi Boolean 或 source-motion。四个点必须串行执行。建议先运行 index 0，审查完整证据后再继续 index 1、2、3。
 
 ## 本地前置文件
 
@@ -76,7 +76,7 @@ env -u CONDA_PREFIX -u LD_LIBRARY_PATH -u LIBRARY_PATH -u CMAKE_PREFIX_PATH \
 
 ## 单点执行命令（先 index 0）
 
-同步最新分支并运行 14 项测试后，必须在当前 HEAD 生成新的 build evidence。确认二进制 SHA 与计划完全一致后，先执行 index 0；不要并行运行四个点。
+同步最新分支并运行 15 项测试后，必须在当前 HEAD 生成新的 build evidence。确认二进制 SHA 与计划完全一致后，先执行 index 0；不要并行运行四个点。
 
 ```bash
 cd /data/xvxinyao1/Spin_test-W3
