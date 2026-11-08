@@ -109,6 +109,14 @@ def verify_snapshot(root, w4_head, review_evidence, *,
     p19 = strict_json(raw[P19_REPORT], P19_REPORT)
     p20 = strict_json(raw[P20_FRAME_REPORT], P20_FRAME_REPORT)
 
+    _same(request["source_w0_commit"], "5bab2eb2616df306906a6887a273f68acfa49320",
+          "P20_request.source_w0_commit")
+    _same(p20["actual_core_sources"]["commit"], request["source_w4_commit"],
+          "P20_request_and_frame_report_core_commit")
+    need(p20["actual_core_sources"]["native_core_executed"] is False
+         and p20["actual_core_sources"]["whole_commit_tree_verified"] is False,
+         "P20_FRAME_REPORT_SCOPE_CHANGED")
+
     # P20 request must identify the exact P19 files that were actually hashed.
     _same(request["manifest"]["path"], P19_MANIFEST, "request.manifest.path")
     _same(request["manifest"]["sha256"], hashes[P19_MANIFEST], "request.manifest.sha256")
@@ -195,6 +203,9 @@ def verify_snapshot(root, w4_head, review_evidence, *,
          "P20_SHAFT_DOUBLE_COUNT_POLICY_CHANGED")
     need(p20["physical_replay"]["source_report_sha256"] == hashes[P19_REPORT],
          "P20_REPLAY_NOT_BOUND_TO_P19_REPORT")
+    need(p20["physical_replay"]["source_meshes_reintegrated"] is False
+         and p20["physical_replay"]["P19_geometric_proofs_reexecuted"] is False,
+         "P20_PHYSICAL_REPLAY_SCOPE_OVERSTATED")
     need(p20["physical_replay"]["source_manifest_sha256"] == hashes[P19_MANIFEST],
          "P20_REPLAY_NOT_BOUND_TO_P19_MANIFEST")
     need(p20["physical_replay"]["source_material_sha256"] ==
@@ -242,6 +253,8 @@ def verify_snapshot(root, w4_head, review_evidence, *,
         "native_implicit_region_equality_proved":
             p20["scientific_flags"]["native_implicit_identity_certified"],
     }
+    _same(review_evidence.get("w0_baseline"), request["source_w0_commit"],
+          "W0_review_evidence.w0_baseline")
     for key, value in derived.items():
         _same(review_evidence.get(key), value, "W0_review_evidence." + key)
 
