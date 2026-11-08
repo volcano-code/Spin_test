@@ -257,12 +257,13 @@ class P30BNativeJournalTest(unittest.TestCase):
     def test_16_failed_attempt_never_counts_as_accepted(self):
         with tempfile.TemporaryDirectory() as d:
             parent=Path(d)/"point-000"/"attempt-000";parent.mkdir(parents=True)
+            contract,provenance,mode=pinned_frame()
+            meta=frame.frame_metadata(contract,provenance,mode)
             native.new_json(parent/"ATTEMPT_RESULT.json",
-                            {"schema":"W4_P30B_ATTEMPT_RESULT_V1",
+                            {"schema":"W4_P30B_ATTEMPT_RESULT_V2",
                              "status":"FAILED_OR_TIMED_OUT_PRESERVE_FOR_INDEPENDENT_REVIEW",
                              "sample_index":0,"worker_exit_code":-9,
-                             "scientific_admission":False})
-            contract,provenance,mode=pinned_frame()
+                             **meta,"scientific_admission":False})
             self.assertIsNone(native.existing_verified_success(
                 parent.parent,0,plan(),"e"*64,contract,provenance,mode))
 
@@ -315,9 +316,10 @@ class P30BNativeJournalTest(unittest.TestCase):
                 "newton_evaluations":0}
             native.new_json(parent/"SAMPLE_RECEIPT.json",record)
             native.new_json(parent/"ATTEMPT_RESULT.json",
-                            {"schema":"W4_P30B_ATTEMPT_RESULT_V1",
+                            {"schema":"W4_P30B_ATTEMPT_RESULT_V2",
                              "status":"SUCCESS_DIAGNOSTIC_ONLY",
                              "worker_exit_code":0,"sample_index":0,
+                             **meta,
                              "material_sha256":record["material_sha256"],
                              "moment_frame_view_sha256":record["moment_frame_view_sha256"],
                              "scientific_admission":False,
