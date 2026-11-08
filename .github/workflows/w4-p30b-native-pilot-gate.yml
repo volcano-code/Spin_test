@@ -46,7 +46,7 @@ jobs:
           path: w2-teacher
           ref: research/neuralmoments-w2-teacher-20261019
           persist-credentials: false
-      - name: Python standard library only
+      - name: Python 3.12 with pinned NumPy for exact moment transforms
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -69,7 +69,7 @@ jobs:
           grep -Fq -- 'P30_TEAPOT_DIAGNOSTIC_AUTHORIZATION.json' "w4/$P30/p30b_run_approved_native_pilot.sh"
           grep -Fq -- 'P30_TEAPOT_FEATURE_PILOT_AUTHORIZATION.json' "w4/$P30/p30b_run_approved_native_pilot.sh"
           echo "P30B_LOCAL_SCRIPT_PARSE_AND_APPROVAL_CHECKS_PASS"
-      - name: Run 20 negative and append-only resume controls
+      - name: Run 37 native/SI frame and append-only resume controls
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/w4-p30b"
@@ -159,7 +159,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: W4-P30B-authorization-blocked-20-regression-evidence
+          name: W4-P30B-M22-native-SI-frame-37-regression-evidence
           path: ${{ runner.temp }}/w4-p30b/**
           if-no-files-found: warn
           retention-days: 30
