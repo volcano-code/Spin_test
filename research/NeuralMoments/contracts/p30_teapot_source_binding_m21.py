@@ -223,7 +223,7 @@ def verify_snapshot(root, w4_head, review_evidence, *,
     derived = {
         "p20_request_sha256": hashes[P20_REQUEST],
         "p19_manifest_sha256": hashes[P19_MANIFEST],
-        "obj_sha256": {name: hashes["P19_material_case/" + material_paths[name]]
+        "obj_sha256": {name: hashes[material_paths[name]]
                        for name in MATERIAL_KEYS},
         "scale_m_per_reference": units["length_m_per_reference_binary64"],
         "density_kg_m3": units["physical_density_kg_m3"],
