@@ -12,7 +12,7 @@ from pathlib import Path
 import torch
 import torch.nn.functional as F
 
-from ..spin_pino.analytic_cut import sample_dataset
+from ..analytic_cut import sample_dataset
 from ..spin_pino.spin_pino import SpinPINO
 from ..densicrafter_pino.bridge import (
     DensiCrafterSpinPINOBridge,material_moments,
