@@ -290,7 +290,7 @@ def existing_verified_success(point_dir,index,plan,external_sha,
             # Neither is a successful sample. Preserve; retry in next slot.
             continue
         outcome=auth.strict_json(final.read_bytes())
-        need(outcome.get("schema")=="W4_P30B_ATTEMPT_RESULT_V1" and
+        need(outcome.get("schema")=="W4_P30B_ATTEMPT_RESULT_V2" and
              outcome.get("sample_index")==index,
              "ATTEMPT_RESULT_IDENTITY_DRIFT")
         if outcome.get("status")=="SUCCESS_DIAGNOSTIC_ONLY":
