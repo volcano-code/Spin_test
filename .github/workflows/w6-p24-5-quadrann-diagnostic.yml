@@ -1,0 +1,113 @@
+name: W6 P24.5 QuadrANN domain and resolution diagnostic
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p24_5_diagnostic.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p24_5_aggregate.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p24_5_diagnostic.py
+      - .github/workflows/w6-p24-5-quadrann-diagnostic.yml
+  workflow_dispatch:
+jobs:
+  diagnose:
+    name: "P24.5 seed \${{ matrix.seed }}"
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      actions: read
+      contents: read
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - seed: 271
+            p23_artifact: w6-p23-quadrann-seed-271
+          - seed: 277
+            p23_artifact: w6-p23-quadrann-seed-277
+          - seed: 281
+            p23_artifact: w6-p23-quadrann-seed-281
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Download matching P14 PINO checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: w6-p14-native-PINO-grid-64
+          repository: \${{ github.repository }}
+          run-id: 42450889982
+          github-token: \${{ github.token }}
+          path: /tmp/w6_p14_64
+      - name: Download matching P23 QuadrANN checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: \${{ matrix.p23_artifact }}
+          repository: \${{ github.repository }}
+          run-id: 42461634570
+          github-token: \${{ github.token }}
+          path: /tmp/w6_p23_seed
+      - name: Install pinned CPU numerical stack
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install torch-scatter torch-cluster -f https://data.pyg.org/whl/torch-2.5.1+cpu.html
+          python -m pip install torch-geometric==2.6.1 numpy pytest
+      - name: Validate diagnostic protocol
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p24_5_diagnostic.py
+      - name: Run matched 64/128 sphere/ellipsoid diagnosis
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p24_5_diagnostic \
+            --pino-checkpoint-dir /tmp/w6_p14_64 \
+            --quadrann-checkpoint-dir /tmp/w6_p23_seed \
+            --seed \${{ matrix.seed }} \
+            --output /tmp/w6_p24_5_seed\${{ matrix.seed }}.json
+      - name: Archive diagnostic receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p24-5-diagnostic-seed-\${{ matrix.seed }}
+          path: /tmp/w6_p24_5_seed\${{ matrix.seed }}.json
+          if-no-files-found: error
+          retention-days: 30
+  aggregate:
+    needs: diagnose
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Download all diagnostic receipts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: w6-p24-5-diagnostic-seed-*
+          merge-multiple: true
+          path: /tmp/w6_p24_5_all
+      - name: Aggregate domain/resolution diagnosis
+        run: |
+          python research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p24_5_aggregate.py \
+            --input-dir /tmp/w6_p24_5_all \
+            --output /tmp/w6_p24_5_aggregate.json
+      - name: Archive P24.5 aggregate report
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p24-5-domain-resolution-aggregate
+          path: /tmp/w6_p24_5_aggregate.json
+          if-no-files-found: error
+          retention-days: 30
