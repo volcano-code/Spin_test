@@ -18,12 +18,53 @@ from .loss_conditioning import DiagonalMomentResidualPreconditioner, pcgrad_back
 from .equivariance import (
     augment_with_cube_rotations,
     augment_with_random_so3,
+    cube_rotation,
     random_so3_rotation,
     rotate_geometry_voxels,
     transform_native_coefficients,
     transform_raw_moments,
     transform_native_jacobian,
 )
+
+
+
+
+def _augment_with_groupwise_cube_rotations(data, *, seed: int):
+    """Append one exact cube rotation per geometry ID, shared by all queries."""
+    if len(data) != 5:
+        raise ValueError("expected (D,c,r,J,metadata)")
+    D, coefficients, moments, jacobians, metadata = data
+    if D.ndim != 5 or D.shape[1] != 4:
+        raise ValueError("D must be [N,4,X,Y,Z]")
+    n = D.shape[0]
+    if any(x.shape[0] != n for x in (coefficients, moments, jacobians)) or len(metadata) != n:
+        raise ValueError("sample count mismatch")
+    groups = {}
+    for i, row in enumerate(metadata):
+        groups.setdefault(row.get("geometry_id", f"sample-{i}"), []).append(i)
+    rotated_D, rotated_c, rotated_r, rotated_J, rotated_meta = [], [], [], [], []
+    for group_index, (geometry_id, indices) in enumerate(groups.items()):
+        idx = torch.as_tensor(indices, dtype=torch.long, device=D.device)
+        R = cube_rotation(seed + group_index, dtype=D.dtype, device=D.device)
+        rotated_D.append(rotate_geometry_voxels(D.index_select(0, idx), R))
+        rotated_c.append(transform_native_coefficients(coefficients.index_select(0, idx), R))
+        rotated_r.append(transform_raw_moments(moments.index_select(0, idx), R))
+        rotated_J.append(transform_native_jacobian(jacobians.index_select(0, idx), R))
+        new_id = f"{geometry_id}__group_cube_{(seed + group_index) % 24:02d}"
+        for index in indices:
+            row = copy.deepcopy(metadata[index])
+            row["parent_geometry_id"] = geometry_id
+            row["geometry_id"] = new_id
+            row["augmentation"] = "EXACT_GROUPWISE_CUBE_ROTATION_LABEL_TRANSFORM"
+            row["rotation_matrix"] = [[float(v) for v in line] for line in R.cpu().tolist()]
+            rotated_meta.append(row)
+    return (
+        torch.cat((D, torch.cat(rotated_D, dim=0)), dim=0),
+        torch.cat((coefficients, torch.cat(rotated_c, dim=0)), dim=0),
+        torch.cat((moments, torch.cat(rotated_r, dim=0)), dim=0),
+        torch.cat((jacobians, torch.cat(rotated_J, dim=0)), dim=0),
+        list(metadata) + rotated_meta,
+    )
 
 
 def _evaluate(model, data):
@@ -92,6 +133,7 @@ def run_seed(
     rotation_augmentation: bool = False,
     rotation_augmentation_mode: str = "cube",
     evaluation_rotation_mode: str = "so3",
+    use_gradient_checkpoint: bool = False,
     device: str = "cpu",
 ):
     if not math.isfinite(lambda_equivariance) or lambda_equivariance < 0:
@@ -110,10 +152,12 @@ def run_seed(
     if rotation_augmentation:
         if rotation_augmentation_mode == "cube":
             fit = augment_with_cube_rotations(fit, seed=seed + 700001)
+        elif rotation_augmentation_mode == "cube_group":
+            fit = _augment_with_groupwise_cube_rotations(fit, seed=seed + 700001)
         elif rotation_augmentation_mode == "so3":
             fit = augment_with_random_so3(fit, seed=seed + 700001)
         else:
-            raise ValueError("rotation_augmentation_mode must be cube or so3")
+            raise ValueError("rotation_augmentation_mode must be cube, cube_group or so3")
 
     # Every training condition is evaluated on the same arbitrary-SO(3)
     # transformed held-out geometries. Evaluate only the appended rotated
@@ -137,6 +181,7 @@ def run_seed(
         moment_parameterization=moment_parameterization,
         temperature=temperature,
         geometry_adapter=geometry_adapter,
+        use_gradient_checkpoint=use_gradient_checkpoint,
     ).to(device)
     preconditioner = (
         DiagonalMomentResidualPreconditioner.fit(fit[2], fit[3]).to(device=device, dtype=fit[2].dtype)
@@ -245,12 +290,14 @@ def run_seed(
             "rotation_augmentation_mode": rotation_augmentation_mode,
             "geometry_adapter": geometry_adapter,
             "evaluation_rotation_mode": evaluation_rotation_mode,
+            "use_gradient_checkpoint": bool(use_gradient_checkpoint),
             "lambda_equivariance": float(lambda_equivariance),
             "fit_samples_after_augmentation": int(len(fit[0])),
         },
         "model_config": {"grid_size": grid_size, "points_per_axis": points_per_axis,
                          "smoothing": smoothing, "moment_parameterization": moment_parameterization,
                          "temperature": temperature, "geometry_adapter": geometry_adapter,
+                         "use_gradient_checkpoint": bool(use_gradient_checkpoint),
                          "lambda_equivariance": float(lambda_equivariance),
                          "width": 4 if grid_size <= 8 else 8,
                          "modes": 2 if grid_size <= 8 else 4},
@@ -308,7 +355,8 @@ def main():
     parser.add_argument("--geometry-adapter", choices=("none", "transolver_plus"), default="none")
     parser.add_argument("--lambda-equivariance", type=float, default=0.0)
     parser.add_argument("--rotation-augmentation", action="store_true")
-    parser.add_argument("--rotation-augmentation-mode", choices=("cube", "so3"), default="cube")
+    parser.add_argument("--rotation-augmentation-mode", choices=("cube", "cube_group", "so3"), default="cube")
+    parser.add_argument("--use-gradient-checkpoint", action="store_true")
     parser.add_argument("--evaluation-rotation-mode", choices=("cube", "so3"), default="so3")
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--output", type=Path, required=True)
@@ -335,6 +383,7 @@ def main():
             rotation_augmentation=args.rotation_augmentation,
             rotation_augmentation_mode=args.rotation_augmentation_mode,
             evaluation_rotation_mode=args.evaluation_rotation_mode,
+            use_gradient_checkpoint=args.use_gradient_checkpoint,
             device=args.device,
         )
         state = result.pop("checkpoint_state")
