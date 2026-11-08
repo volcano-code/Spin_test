@@ -2,7 +2,17 @@ import copy
 import json
 import unittest
 from pathlib import Path
-from p30_teapot_physical_review_m20 import audit_case, ReviewRejected
+import importlib.util
+from pathlib import Path
+_spec = importlib.util.spec_from_file_location(
+    "w0_p30_review_under_test",
+    Path(__file__).with_name("p30_teapot_physical_review_m20.py"))
+if _spec is None or _spec.loader is None:
+    raise RuntimeError("cannot load W0 P30 review module")
+_review = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_review)
+audit_case = _review.audit_case
+ReviewRejected = _review.ReviewRejected
 
 BASE={
  "w0_baseline":"5bab2eb2616df306906a6887a273f68acfa49320",
