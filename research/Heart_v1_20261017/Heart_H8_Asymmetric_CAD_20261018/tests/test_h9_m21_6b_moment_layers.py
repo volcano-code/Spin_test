@@ -158,7 +158,10 @@ class LayerMath(unittest.TestCase):
                           'full_raw_six_packet_bytes_read':True,
                           'all_source_only_motion_attestations_replayed_and_hash_bound':True,
                           'runtime_origin_cryptographically_attested':False}}
-        b.verify_report_inputs(report,ledger,meta)
+        # The native run passes raw materials separately from attachment metadata.
+        # This is the regression for the previous KeyError: material packets do
+        # not own attachment_sha256; the source-motion manifest does.
+        b.verify_report_inputs(report,ledger,[{} for _ in range(6)],meta)
         report['claims']['newton_admitted']=True
         with self.assertRaisesRegex(b.Refused,'BOUNDARY_OR_MATERIAL_IDENTITY_MISMATCH'):
             b.verify_report_inputs(report,ledger,meta)
