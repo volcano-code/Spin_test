@@ -1,0 +1,63 @@
+name: W6 P16 warm-start trained 64 to native 128 PINO
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/p16_128_transfer.py
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_p16_transfer.py
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/P16_PROTOCOL.md
+      - research/NeuralMoments/models/pcraft_ufno/spin_pino/train.py
+      - .github/workflows/w6-p16-64-to-128-transfer.yml
+  workflow_dispatch:
+jobs:
+  warm-start-128-pino:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Download actual P14 trained 64-cube PINO checkpoint artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: w6-p14-native-PINO-grid-64
+          repository: ${{ github.repository }}
+          run-id: 42450889982
+          github-token: ${{ github.token }}
+          path: /tmp/w6_p14_64
+      - name: Install pinned CPU PyTorch
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install numpy pytest
+      - name: Validate strict cross-resolution state transfer
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_p16_transfer.py
+      - name: Fine-tune actual P14 64 model at native 128 Fourier grid
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.p0_integration.p16_128_transfer \
+            --checkpoint-dir /tmp/w6_p14_64 --seed 271 --steps 8 \
+            --output /tmp/w6_p16_128_transfer_seed271.json
+      - name: Archive 128-cube transfer checkpoint and source receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p16-native-128-warmstart-from-64
+          path: |
+            /tmp/w6_p16_128_transfer_seed271.json
+            /tmp/w6_p16_grid128_seed271.pt
+          if-no-files-found: error
+          retention-days: 30
