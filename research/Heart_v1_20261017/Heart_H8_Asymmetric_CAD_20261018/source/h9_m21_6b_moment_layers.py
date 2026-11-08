@@ -43,10 +43,10 @@ def _parse_decimal_integer(text):
     denominators. Parse in <=1000-digit chunks so the interpreter's default
     int_max_str_digits security limit remains unchanged.
     """
-    need(type(text) is str and text and text.lstrip('-').isascii() and
-         text.lstrip('-').isdigit(),'INVALID_INTEGER_TOKEN')
+    need(type(text) is str and text,'INVALID_INTEGER_TOKEN')
     negative=text.startswith('-')
     digits=text[1:] if negative else text
+    need(digits.isascii() and digits.isdigit(),'INVALID_INTEGER_TOKEN')
     value=0
     for start in range(0,len(digits),1000):
         chunk=digits[start:start+1000]
