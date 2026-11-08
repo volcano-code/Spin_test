@@ -73,6 +73,39 @@ class LayerMath(unittest.TestCase):
         self.assertEqual(groups['EXPLICIT_ONLY']['faces'],1)
         self.assertEqual(groups['TPI_TOUCHING']['faces'],0)
 
+    def test_support_group_splits_mixed_by_lpi_vertex_count(self):
+        lpi_b=('LPI',((2,22),(2,23)),((1,3),(1,4),(1,5)))
+        self.assertEqual(b.support_group([key(0),key(1),key(3)]),
+                         'MIXED_1_LPI_2_EXPLICIT')
+        self.assertEqual(b.support_group([key(0),key(3),lpi_b]),
+                         'MIXED_2_LPI_1_EXPLICIT')
+        self.assertEqual(b.support_group([key(0),key(1),key(2)]),'EXPLICIT_ONLY')
+        self.assertEqual(b.support_group([key(3),lpi_b,('LPI',((3,22),(3,23)),((1,6),(1,7),(1,8))) ]),'LPI_ONLY')
+
+    def test_support_group_partition_preserves_total_moments_and_j7(self):
+        groups,total,support=b.grouped_faces(tetra(F(0)),include_support=True)
+        self.assertEqual(support['MIXED_1_LPI_2_EXPLICIT']['faces'],3)
+        self.assertEqual(support['MIXED_2_LPI_1_EXPLICIT']['faces'],0)
+        self.assertEqual(support['EXPLICIT_ONLY']['faces'],1)
+        self.assertEqual(sum(x['faces'] for x in support.values()),total['faces'])
+        for field in ('moments','j7'):
+            combined=[sum((support[g][field][k] for g in b.SUPPORT_GROUPS),F(0))
+                      for k in range(10)]
+            self.assertEqual(combined,total[field])
+
+    def test_support_group_interval_residuals_sum_exactly(self):
+        rows=[]
+        for t in (F(0),F(1)):
+            groups,total,support=b.grouped_faces(tetra(t),include_support=True)
+            rows.append({'c7':float(t),'stem':str(t),'groups':groups,
+                         'support_groups':support,'total':total,
+                         'exact':total['moments'],'native':list(total['j7']),
+                         'face_counts':{k:v['faces'] for k,v in groups.items()}})
+        row=b.layer_interval(*rows,side='left',interval='full')
+        for diag in row['component_diagnostics'].values():
+            values=[b.q(x) for x in diag['support_group_residuals_exact'].values()]
+            self.assertEqual(sum(values,F(0)),b.q(diag['replayed_j7_residual_exact']))
+
     def test_all_ten_dual_moment_derivatives_against_exact_polynomial_interpolation(self):
         # A moving tetrahedron has moment degree <=5 in t. The seven-point
         # central derivative stencil differentiates every degree<=6 polynomial
