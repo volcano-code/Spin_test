@@ -87,11 +87,25 @@ jobs:
           git fetch --no-tags --depth=1 origin "refs/heads/$W4_BRANCH"
           w4_head="$(git rev-parse FETCH_HEAD)"
           test "$w4_head" = "$W4_REVIEWED_HEAD"
-          mkdir -p "$RUNNER_TEMP/w0-m21-w4"
+          mkdir -p "$RUNNER_TEMP/w0-m21-w4" "$RUNNER_TEMP/w0-m21-core"
           git archive "$w4_head" research/SpinIt2014_Teapot_20261018/P1 | tar -x -C "$RUNNER_TEMP/w0-m21-w4"
+          CORE_COMMIT="58fd12c1306c1c01679a19172e276eef0cb30542"
+          git fetch --no-tags --depth=1 origin "$CORE_COMMIT"
+          git archive "$CORE_COMMIT" \
+            bindings/pybind_module.cpp \
+            include/physics/RawMassMoments10.h \
+            include/spin/QuadricCoefficients.h \
+            python/make_it_stand/spin.py \
+            python/make_it_stand/verification/cherchi_inprocess.py \
+            python/make_it_stand/verification/faster_material.py \
+            python/make_it_stand/verification/spin_common.py \
+            python/make_it_stand/verification/spin_problem.py \
+            src/spin/DualMonomialCoordinates.cpp \
+            src/spin/QuadricCoefficients.cpp | tar -x -C "$RUNNER_TEMP/w0-m21-core"
           P1="$RUNNER_TEMP/w0-m21-w4/research/SpinIt2014_Teapot_20261018/P1"
           python -m research.NeuralMoments.contracts.p30_teapot_source_binding_m21 \
             --w4-root "$P1" --w4-head "$w4_head" \
+            --core-root "$RUNNER_TEMP/w0-m21-core" --core-commit "$CORE_COMMIT" \
             --review-evidence research/NeuralMoments/contracts/p30_teapot_review_evidence_m20.json \
             --output "$RUNNER_TEMP/w0-m21-source-binding.json"
           python -m research.NeuralMoments.contracts.teapot_moment_frame_m21 \
