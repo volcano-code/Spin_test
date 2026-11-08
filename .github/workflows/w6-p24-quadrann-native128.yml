@@ -5,6 +5,7 @@ on:
       - research/neuralmoments-w6-pcraft-20261019
     paths:
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p24_quadrann_native128.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p17_trained_pino.py
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p24_aggregate.py
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p24_quadrann_native128.py
       - .github/workflows/w6-p24-quadrann-native128.yml
