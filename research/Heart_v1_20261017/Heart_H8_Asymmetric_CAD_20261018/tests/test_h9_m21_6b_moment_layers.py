@@ -47,6 +47,11 @@ class LayerMath(unittest.TestCase):
         # the same 5,844-digit token scale found in the frozen M20 ledger.
         self.assertEqual(b.q(digits+'/'+digits),F(1))
         self.assertEqual(b.q('-'+digits+'/'+digits),F(-1))
+        self.assertEqual(b.token(b.q(digits+'/1')),digits+'/1')
+        self.assertEqual(b.token(b.q('1/'+digits)),'1/'+digits)
+        for malformed in ('--1/2','+1/2','1/-2'):
+            with self.subTest(malformed=malformed),self.assertRaises(b.Refused):
+                b.q(malformed)
         # The interpreter-wide security setting is not disabled or modified.
         import sys
         self.assertGreaterEqual(sys.get_int_max_str_digits(),4300)
