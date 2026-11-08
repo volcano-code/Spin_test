@@ -276,3 +276,46 @@ def audit_tangent_neighborhood_in_frame(*, contract, moment_coordinate_frame,
     result["smooth_neighborhood_certified"] = False
     result["training_admissible"] = False
     return result
+
+
+def main(argv=None):
+    import argparse
+    import json
+    import sys
+    from pathlib import Path
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--request",type=Path,required=True)
+    parser.add_argument("--frame-report",type=Path,required=True)
+    parser.add_argument("--output",type=Path,required=True)
+    args=parser.parse_args(argv)
+    try:
+        def load(path):
+            def pairs(rows):
+                result={}
+                for key,value in rows:
+                    _need(key not in result,"DUPLICATE_JSON_KEY:"+key)
+                    result[key]=value
+                return result
+            return json.loads(path.read_text(encoding="utf-8"),object_pairs_hook=pairs,
+                              parse_constant=lambda token: (_ for _ in ()).throw(
+                                  MomentFrameRejected("NONFINITE_JSON:"+token)))
+        contract=build_p20_moment_frame_contract(load(args.request),load(args.frame_report))
+        if args.output.exists() or args.output.is_symlink():
+            raise MomentFrameRejected("REFUSE_OVERWRITE")
+        args.output.parent.mkdir(parents=True,exist_ok=True)
+        args.output.write_text(json.dumps(contract.report(),sort_keys=True,indent=2,
+                                          allow_nan=False)+"\\n",encoding="utf-8")
+        print(json.dumps({"status":"FRAME_MAPPING_VERIFIED_NO_PHYSICAL_OR_SCIENTIFIC_ADMISSION",
+                          "native_normalization":[contract.native_length_ref,contract.native_density_ref],
+                          "si_normalization":[contract.si_length_ref,contract.si_density_ref],
+                          "physical_parameters_approved":False},sort_keys=True))
+        return 0
+    except (MomentFrameRejected,OSError,KeyError,TypeError,ValueError,
+            json.JSONDecodeError) as exc:
+        print(json.dumps({"status":"W0_M21_FRAME_CONTRACT_REJECTED","reason":str(exc),
+                          "physical_parameters_approved":False},sort_keys=True),file=sys.stderr)
+        return 4
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
