@@ -1,0 +1,63 @@
+name: W6 P19 native 128 PINO plus DensiCrafter material design
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p19_native128_design.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p19_native128.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/P19_PROTOCOL.md
+      - .github/workflows/w6-p19-native128-densicrafter.yml
+  workflow_dispatch:
+jobs:
+  native-128-trained-pino-design:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Download trained P14 64 cube P-CRAFT PINO checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: w6-p14-native-PINO-grid-64
+          repository: ${{ github.repository }}
+          run-id: 42450889982
+          github-token: ${{ github.token }}
+          path: /tmp/w6_p14_64
+      - name: Install pinned CPU PyTorch
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install numpy pytest
+      - name: Test native 128 grid, strict checkpoint transfer and input gradients
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p19_native128.py
+      - name: Run native 128 trained-PINO and DensiCrafter design
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p19_native128_design \
+            --checkpoint-dir /tmp/w6_p14_64 --seed 271 --steps 3 \
+            --lr 0.03 --wall-cells 4 \
+            --output /tmp/w6_p19_native128_trained_pino_densicrafter.json
+      - name: Archive native 128 design fields and physical receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p19-native128-trained-PINO-DensiCrafter
+          path: |
+            /tmp/w6_p19_native128_trained_pino_densicrafter.json
+            /tmp/w6_p19_native128_seed271.pt
+          if-no-files-found: error
+          retention-days: 30
