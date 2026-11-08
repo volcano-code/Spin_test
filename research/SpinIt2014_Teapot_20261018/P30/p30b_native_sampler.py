@@ -396,6 +396,8 @@ def batch(a,bound):
     verify_modules(a.p27_run_dir)
     output=Path(a.output_dir).resolve()
     state={"schema":RUN_SCHEMA,"status":"IN_PROGRESS_DIAGNOSTIC_ONLY",
+           "moment_coordinate_frame":a.moment_coordinate_frame,
+           **bound["frame_metadata"],
            "registered_lock_sha256":a.external_lock_sha,
            "plan_sha256":auth.P30_PRIVATE_PLAN_SHA,
            "p27_run":seed.RUN,
@@ -418,7 +420,9 @@ def batch(a,bound):
         deadline=time.monotonic()+P30_MAX_SECONDS
         for i in range(N_PILOT):
             point=output/f"point-{i:03d}"
-            verified=existing_verified_success(point,i,bound["plan"],a.external_lock_sha)
+            verified=existing_verified_success(
+                point,i,bound["plan"],a.external_lock_sha,bound["frame_contract"],
+                bound["frame_provenance"],a.moment_coordinate_frame)
             if verified is not None:
                 print(json.dumps({"status":"SKIP_ALREADY_VERIFIED","sample":i},sort_keys=True),flush=True)
                 continue
@@ -443,7 +447,8 @@ def batch(a,bound):
                 "--w2-review-root",str(a.w2_review_root),
                 "--w0-source-root",str(a.w0_source_root),
                 "--core-root",str(a.core_root),"--w4-root",str(a.w4_root),
-                "--index",str(i),"--output-dir",str(new)]
+                "--index",str(i),"--output-dir",str(new),
+                "--moment-coordinate-frame",a.moment_coordinate_frame]
             environ=dict(os.environ, PYTHONNOUSERSITE="1",PYTHONDONTWRITEBYTECODE="1",
                          OMP_NUM_THREADS="1",OPENBLAS_NUM_THREADS="1",MKL_NUM_THREADS="1")
             with (new/"stdout.log").open("xb") as stdout, (new/"stderr.log").open("xb") as stderr:
@@ -463,7 +468,8 @@ def batch(a,bound):
                 # before that point remains incomplete and must not be skipped.
                 material=new/"MATERIAL_SAME_CALL.json"
                 receipt=new/"SAMPLE_RECEIPT.json"
-                need(material.is_file() and receipt.is_file(),
+                view_path=new/"MOMENT_FRAME_VIEW.json"
+                need(material.is_file() and receipt.is_file() and view_path.is_file(),
                      "SUCCESS_WORKER_WITH_MISSING_EVIDENCE")
                 row=auth.strict_json(receipt.read_bytes())
                 need(row.get("material_sha256")==sha(material) and
@@ -472,20 +478,28 @@ def batch(a,bound):
                      "SUCCESS_WORKER_EVIDENCE_IDENTITY_MISMATCH")
                 outcome["status"]="SUCCESS_DIAGNOSTIC_ONLY"
                 outcome["material_sha256"]=row["material_sha256"]
+                outcome["moment_frame_view_sha256"]=row["moment_frame_view_sha256"]
             else:
                 outcome["status"]="FAILED_OR_TIMED_OUT_PRESERVE_FOR_INDEPENDENT_REVIEW"
             new_json(new/"ATTEMPT_RESULT.json",outcome)
             if code==0:
-                verify_receipt(new,i,bound["plan"],a.external_lock_sha)
+                verify_receipt(new,i,bound["plan"],a.external_lock_sha,
+                               bound["frame_contract"],bound["frame_provenance"],
+                               a.moment_coordinate_frame)
             print(json.dumps({"sample":i,"status":outcome["status"],"exit":code},
                              sort_keys=True),flush=True)
             if code!=0:return 4
     accepted=[]
     for i in range(N_PILOT):
-        item=existing_verified_success(output/f"point-{i:03d}",i,bound["plan"],a.external_lock_sha)
+        item=existing_verified_success(
+            output/f"point-{i:03d}",i,bound["plan"],a.external_lock_sha,
+            bound["frame_contract"],bound["frame_provenance"],a.moment_coordinate_frame)
         need(item is not None,"PILOT_COMPLETION_MISSING_REAL_SAMPLE")
         accepted.append({"sample_index":i,"receipt":item})
     summary={"schema":PILOT_SCHEMA,"status":"TWELVE_GENUINE_DIAGNOSTIC_POINTS_COLLECTED_NOT_CERTIFIED",
+             "moment_coordinate_frame":a.moment_coordinate_frame,
+             **bound["frame_metadata"],
+             "moment_frame_views_transformed":N_PILOT if a.moment_coordinate_frame==moment_frame.SI_FRAME else 0,
              "precommitted_lock_sha256":a.external_lock_sha,
              "accepted":accepted,"observed_real_samples":len(accepted),
              "newton_executed":False,"scientific_admission":False,**CLOSED}
