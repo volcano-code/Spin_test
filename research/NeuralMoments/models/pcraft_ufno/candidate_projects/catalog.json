@@ -714,7 +714,7 @@
           "b0be285b3025804043fea228b01ab4916b14da47"
         ]
       ],
-      "w6_status": "P13B_REAL_DENSI_PINO_COUPLING_32_64_CPU_OPT_128_NATIVE_FOURIER_1PASS_NOT_512_OR_CHERCHI",
+      "w6_status": "P17_TRAINED_NATIVE64_PINO_DENSICRAFTER_JOINT_DESIGN_VERIFIED_0_90PCT_MASS_SAVING_2PCT_PHYSICAL_SCREEN_NOT_CHERCHI",
       "role": "Complementary differentiable density-field design module: self-supporting hollowing, mass regularization, center-of-mass and bottom-contact losses. Connect its optimized density field to W6 material moments and inertia evaluation; not a general FEM/structural-strength solver.",
       "priority": "P0_P1_CROSS_PROJECT_INTEGRATION",
       "reuse_rule": "MIT; preserve copyright (c) 2025 Shengqi Dang and license notice. Port only isolated differentiable loss/field logic; do not import TRELLIS/MuJoCo/Blender pipeline into W6 core.",
@@ -780,6 +780,26 @@
           "actual_128_cpu_RSS_KiB": 1344764,
           "actual_128_CPU_seconds": 4.495717077000009,
           "warning": "no pretrained high-resolution PINO, formal native CAD/J, GPU/512, physical wall-unit invariant or 3D printing validation"
+        },
+        "p17": {
+          "run_id": 42454394508,
+          "conclusion": "success",
+          "tests": "2 passed",
+          "trained_pino_checkpoint": "P14 seed 271 native 64^3",
+          "native_fourier_grid": 64,
+          "geometry": "analytic P0 sphere",
+          "protected_wall_cells": 2,
+          "optimizer_updates": 12,
+          "feasible_joint_mass_reduction_fraction": 0.008962748893386219,
+          "model_cut_r_relative_error": 0.0007468405528925359,
+          "independent_hard_cut_relative_error": 0.009522339329123497,
+          "normalized_full_material_9moment_l2": 0.0003140838525723666,
+          "feasible_steps_accepted": 12,
+          "feasible_steps_rejected": 0,
+          "native_Cherchi": false,
+          "FEM_strength": false,
+          "millimeter_wall_certified": false,
+          "512_cube": false
         }
       }
     },
