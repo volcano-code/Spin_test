@@ -15,7 +15,7 @@ import torch
 from ..spin_pino.dataset import generate_splits
 from ..spin_pino.spin_pino import SpinPINO, SpinPINOLoss
 from ..spin_pino.train import run_seed
-from .p13b_highres import exact_discrete_cut_moments
+from ..densicrafter_pino.p13b_highres import exact_discrete_cut_moments
 
 
 def _model(grid, points):
