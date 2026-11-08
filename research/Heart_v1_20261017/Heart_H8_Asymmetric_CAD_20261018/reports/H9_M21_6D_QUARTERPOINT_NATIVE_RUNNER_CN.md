@@ -34,7 +34,7 @@
 ## 本地前置文件
 
 - quarterpoint plan：M21.6D-P0 输出的 `quarterpoint-plan.json`
-- build evidence：既有 M19 `build/build_evidence.json`
+- build evidence：必须在**当前最新 W3 HEAD** 上重新生成；不能复用旧 M19 的 build evidence，因为其 HEAD/source-contract 指纹已过期。可复用已编译缓存，但需要新鲜证据文件。
 - 其余输入路径沿用 M21.6D-P0 已验证的 M20/M18/Stage17/M19/M21 source 目录。
 
 ## 单点成功条件
@@ -52,3 +52,23 @@
 - exact retained-chain J7 与同调用 native J7 对照通过。
 
 四点全部完成后，才开展 quarter-point 分层残差汇总；不能在单点结果上宣称 Newton 已准入。
+
+## 当前 HEAD 的本地 build evidence
+
+先同步本分支，再在当前 HEAD 上生成一次新的 pinned build evidence。M19 的旧 build evidence 绑定的是旧 HEAD，`verify_build_evidence` 会拒绝旧 HEAD；即使二进制缓存可复用，也必须重新生成当前 HEAD 的 evidence：
+
+```bash
+QPT_BUILD="$HOME/Research/W3_H9_Results/m21-6d-native-build-$(date -u +%Y%m%dT%H%M%SZ)-$$"
+mkdir -p "$(dirname "$QPT_BUILD")"
+
+env -u CONDA_PREFIX -u LD_LIBRARY_PATH -u LIBRARY_PATH -u CMAKE_PREFIX_PATH \
+  -u PYTHONPATH -u PYTHONHOME -u BOOST_ROOT -u Boost_ROOT -u Boost_DIR \
+  -u PKG_CONFIG_PATH \
+  PATH="$HOME/.venvs/spin-w3-313/bin:/usr/local/bin:/usr/bin:/bin" \
+  LD_PRELOAD="$W3_STDCXX" \
+  "$PY" -u "$H9/source/prepare_h9_pinned_native.py" \
+  --phase build --repo "$PWD" --output "$QPT_BUILD"
+```
+
+验收要求：生成 `$QPT_BUILD/build_evidence.json`，其 core/Boolean/GMP 三个模块 SHA 必须与 M19 计划中的 `native_binary_sha256` 完全相同。若不同，执行器会在 Boolean 前阻断，不得绕过。
+
