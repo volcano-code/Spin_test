@@ -22,6 +22,8 @@ from pathlib import Path
 NAMES = ('mass','Mx','My','Mz','Mxx','Myy','Mzz','Myz','Mxz','Mxy')
 PAIRS = ((0,0),(1,1),(2,2),(1,2),(0,2),(0,1))
 GROUPS = ('EXPLICIT_ONLY', 'LPI_ONLY', 'MIXED_EXPLICIT_LPI', 'TPI_TOUCHING')
+SUPPORT_GROUPS = ('EXPLICIT_ONLY', 'LPI_ONLY', 'MIXED_1_LPI_2_EXPLICIT',
+                  'MIXED_2_LPI_1_EXPLICIT', 'TPI_TOUCHING')
 STEMS = ('side-00-left-coarse','side-01-left-near','side-02-right-near',
          'side-03-right-coarse','m19-mid-00-left-mid','m19-mid-01-right-mid')
 SIDES = {'left': (0,4,1), 'right': (2,5,3)}
@@ -170,8 +172,21 @@ def kind_group(keys):
     if kinds=={'LPI'}:return 'LPI_ONLY'
     return 'MIXED_EXPLICIT_LPI'
 
-def grouped_faces(state,density=1):
-    """Streaming exact sums; no per-face evidence or slot-correspondence guesses."""
+def support_group(keys):
+    """Refine mixed faces by the exact number of LPI construction vertices."""
+    kinds={k[0] for k in keys}
+    need(kinds <= {'EXPLICIT3D','LPI','TPI'} and len(keys)==3,'UNKNOWN_FACE_KIND')
+    if 'TPI' in kinds:return 'TPI_TOUCHING'
+    if kinds=={'EXPLICIT3D'}:return 'EXPLICIT_ONLY'
+    if kinds=={'LPI'}:return 'LPI_ONLY'
+    need(kinds=={'EXPLICIT3D','LPI'},'UNKNOWN_FACE_SUPPORT')
+    lpi_count=sum(k[0]=='LPI' for k in keys)
+    need(lpi_count in (1,2),'MIXED_LPI_VERTEX_COUNT')
+    return 'MIXED_1_LPI_2_EXPLICIT' if lpi_count==1 else 'MIXED_2_LPI_1_EXPLICIT'
+
+
+def grouped_faces(state,density=1,include_support=False):
+    """Streaming exact sums; optionally refine mixed support without slot pairing."""
     p,v=state['positions'],state['motion']
     need(isinstance(p,dict) and isinstance(v,dict) and p.keys()==v.keys(),
          'MISSING_EXACT_BOUNDARY_MOTION')
@@ -179,6 +194,9 @@ def grouped_faces(state,density=1):
     require_semantics=Counter()
     acc={group:[[BinSum(),BinSum()] for _ in NAMES] for group in GROUPS}
     counts=Counter()
+    support_acc=({group:[[BinSum(),BinSum()] for _ in NAMES] for group in SUPPORT_GROUPS}
+                 if include_support else None)
+    support_counts=Counter()
     for face in faces:
         need(type(face) is list and len(face)==3 and len(set(face))==3 and
              all(type(i) is int and 0<=i<len(slots) for i in face),'BAD_FACE')
@@ -188,9 +206,15 @@ def grouped_faces(state,density=1):
         require_semantics[semantic]+=1
         group=kind_group(keys)
         counts[group]+=1
-        for n,(val,der) in enumerate(face_ten([p[k] for k in keys],[v[k] for k in keys],density)):
+        subgroup=support_group(keys) if include_support else None
+        if include_support:support_counts[subgroup]+=1
+        values=face_ten([p[k] for k in keys],[v[k] for k in keys],density)
+        for n,(val,der) in enumerate(values):
             acc[group][n][0].add(val)
             acc[group][n][1].add(der)
+            if include_support:
+                support_acc[subgroup][n][0].add(val)
+                support_acc[subgroup][n][1].add(der)
     need(require_semantics==state['semantic_triangles'],'SEMANTIC_TRIANGLES_MISMATCH')
     grouped={g:{'faces':counts[g],'moments':[a.result() for a,b in acc[g]],
                 'j7':[b.result() for a,b in acc[g]]} for g in GROUPS}
@@ -198,7 +222,17 @@ def grouped_faces(state,density=1):
            'j7':[sum((grouped[g]['j7'][k] for g in GROUPS),F(0)) for k in range(10)],
            'faces':len(faces)}
     need(sum(counts.values())==total['faces'],'FACE_GROUP_COVERAGE_FAILURE')
-    return grouped,total
+    if not include_support:return grouped,total
+    support_grouped={g:{'faces':support_counts[g],
+                        'moments':[a.result() for a,b in support_acc[g]],
+                        'j7':[b.result() for a,b in support_acc[g]]}
+                     for g in SUPPORT_GROUPS}
+    need(sum(support_counts.values())==total['faces'],'SUPPORT_GROUP_FACE_COVERAGE_FAILURE')
+    for field in ('moments','j7'):
+        combined=[sum((support_grouped[g][field][k] for g in SUPPORT_GROUPS),F(0))
+                  for k in range(10)]
+        need(combined==total[field],'SUPPORT_GROUP_TOTAL_MISMATCH:'+field)
+    return grouped,total,support_grouped
 
 def numeric_vector(xs):return [float(x) for x in xs]
 
@@ -214,6 +248,16 @@ def layer_interval(a,b,*,side,interval,ledger_side=None):
         x,y=a['groups'][g],b['groups'][g]
         group_residual[g]=[(y['moments'][k]-x['moments'][k])/h-(x['j7'][k]+y['j7'][k])/2
                            for k in range(10)]
+    has_support=('support_groups' in a or 'support_groups' in b)
+    need(('support_groups' in a)==('support_groups' in b),'SUPPORT_GROUP_PRESENCE_MISMATCH')
+    support_residual={}
+    if has_support:
+        need(tuple(a['support_groups'])==SUPPORT_GROUPS and
+             tuple(b['support_groups'])==SUPPORT_GROUPS,'SUPPORT_GROUP_KEYS_MISMATCH')
+        for g in SUPPORT_GROUPS:
+            x,y=a['support_groups'][g],b['support_groups'][g]
+            support_residual[g]=[(y['moments'][k]-x['moments'][k])/h-(x['j7'][k]+y['j7'][k])/2
+                                 for k in range(10)]
     for k in range(10):
         sec=(b['exact'][k]-a['exact'][k])/h
         avg_native=(a['native'][k]+b['native'][k])/2
@@ -224,6 +268,9 @@ def layer_interval(a,b,*,side,interval,ledger_side=None):
         need(native[-1] == independent[-1]+delta[-1], 'TOTAL_MOMENT_ERROR_SPLIT_FAILED')
         need(independent[-1]==sum((group_residual[g][k] for g in GROUPS),F(0)),
              'FACE_CLASS_SUM_NOT_TOTAL')
+        if has_support:
+            need(independent[-1]==sum((support_residual[g][k] for g in SUPPORT_GROUPS),F(0)),
+                 'SUPPORT_FACE_CLASS_SUM_NOT_TOTAL')
     scale=[max(F(1),abs((a['native'][k]+b['native'][k])/2)) for k in range(10)]
     if ledger_side is not None:
         need(ledger_side['side']==side,'LEDGER_SIDE_MISMATCH')
@@ -233,14 +280,19 @@ def layer_interval(a,b,*,side,interval,ledger_side=None):
             need(float(native[k])==row['components'][name]['exact_surface_signed_residual'],
                  'M20_SAVED_NATIVE_RESIDUAL_MISMATCH:'+name)
     priority=sorted(range(10),key=lambda k:float(abs(native[k])/scale[k]),reverse=True)
-    rows={name:{'native_j7_residual_exact':token(native[k]),
-                'replayed_j7_residual_exact':token(independent[k]),
-                'replayed_minus_native_endpoint_j7_exact':token(delta[k]),
-                'group_residuals_exact':{g:token(group_residual[g][k]) for g in GROUPS},
-                'scaled_native_residual':float(abs(native[k])/scale[k]),
-                'scaled_replayed_residual':float(abs(independent[k])/scale[k]),
-                'scaled_j7_disagreement':float(abs(delta[k])/scale[k])}
-          for k,name in enumerate(NAMES)}
+    rows={}
+    for k,name in enumerate(NAMES):
+        row={'native_j7_residual_exact':token(native[k]),
+             'replayed_j7_residual_exact':token(independent[k]),
+             'replayed_minus_native_endpoint_j7_exact':token(delta[k]),
+             'group_residuals_exact':{g:token(group_residual[g][k]) for g in GROUPS},
+             'scaled_native_residual':float(abs(native[k])/scale[k]),
+             'scaled_replayed_residual':float(abs(independent[k])/scale[k]),
+             'scaled_j7_disagreement':float(abs(delta[k])/scale[k])}
+        if has_support:
+            row['support_group_residuals_exact']={g:token(support_residual[g][k])
+                                                  for g in SUPPORT_GROUPS}
+        rows[name]=row
     return {'side':side,'interval':interval,'from_stem':a['stem'],'to_stem':b['stem'],
             'delta_c7_exact':token(h),'component_diagnostics':rows,
             'worst_native_component':NAMES[priority[0]],
@@ -299,7 +351,7 @@ def compute(states,materials,ledger,boundary,density=1,motion_metadata=None):
         need(state['motion'] is not None and len(state['positions'])==8455 and
              len(state['source'])==162 and state['kinds']=={'EXPLICIT3D':7671,'LPI':784},
              'UNEXPECTED_FULL_BOUNDARY_STATE')
-        groups,total=grouped_faces(state,density)
+        groups,total,support_groups=grouped_faces(state,density,include_support=True)
         exact=[q(x) for x in packet['exact_ten_moments']]
         need(total['moments']==exact,'LEDGER_TEN_MOMENTS_MISMATCH:'+str(i))
         native=[q(row[7]) for row in mat['moment_jacobian']]
@@ -308,7 +360,8 @@ def compute(states,materials,ledger,boundary,density=1,motion_metadata=None):
         from h9_m21_motion_math import moment_tangent
         previous,active=moment_tangent(state,density)
         need(total['j7']==previous,'DUAL_AD_VS_RETAINED_TANGENT_MISMATCH')
-        prepared.append({'stem':STEMS[i],'c7':state['c7'],'groups':groups,'total':total,
+        prepared.append({'stem':STEMS[i],'c7':state['c7'],'groups':groups,
+                         'support_groups':support_groups,'total':total,
                          'face_counts':{g:groups[g]['faces'] for g in GROUPS},
                          'exact':exact,'native':native,'active_faces':active})
     intervals=[]
@@ -332,6 +385,10 @@ def compute(states,materials,ledger,boundary,density=1,motion_metadata=None):
                         'face_group_moment_j7_summary':{g:{'face_count':state['groups'][g]['faces'],
                             'j7_contributions_exact':exact_vector(state['groups'][g]['j7'])}
                             for g in GROUPS},
+                        'face_support_subgroup_moment_j7_summary':{
+                            g:{'face_count':state['support_groups'][g]['faces'],
+                               'j7_contributions_exact':exact_vector(state['support_groups'][g]['j7'])}
+                            for g in SUPPORT_GROUPS},
                         'exact_moment_ledger_reintegration_match':True,
                         'dual_vs_existing_retained_tangent_exact_match':True})
     return {'schema':'heart-h9-m21-6b-moment-layer-audit-v1',
@@ -340,6 +397,7 @@ def compute(states,materials,ledger,boundary,density=1,motion_metadata=None):
             'input_sha256':{'m20_ledger':LEDGER_SHA,'m21_6a_full_boundary':BOUNDARY_SHA,
                             'native_core':BINARY_SHA,'m21_5b_lpi':LPI_SHA},
             'face_group_keys':list(GROUPS),
+            'face_support_subgroup_keys':list(SUPPORT_GROUPS),
             'total_component_split_checks':60,
             'scientific_limits':{'root_cause_determined':False,
                                  'continuous_neighborhood_certified':False,
