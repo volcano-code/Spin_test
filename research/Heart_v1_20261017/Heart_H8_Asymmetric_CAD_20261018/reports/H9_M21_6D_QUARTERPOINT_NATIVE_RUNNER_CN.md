@@ -29,7 +29,7 @@
 
 ## 当前状态
 
-代码与 13 项纯合同测试已提交；尚未在用户本地执行新 Cherchi Boolean 或 source-motion。四个点必须串行执行。建议先运行 index 0，审查完整证据后再继续 index 1、2、3。
+代码与 14 项纯合同测试已提交；尚未在用户本地执行新 Cherchi Boolean 或 source-motion。四个点必须串行执行。建议先运行 index 0，审查完整证据后再继续 index 1、2、3。
 
 ## 本地前置文件
 
@@ -72,3 +72,84 @@ env -u CONDA_PREFIX -u LD_LIBRARY_PATH -u LIBRARY_PATH -u CMAKE_PREFIX_PATH \
 
 验收要求：生成 `$QPT_BUILD/build_evidence.json`，其 core/Boolean/GMP 三个模块 SHA 必须与 M19 计划中的 `native_binary_sha256` 完全相同。若不同，执行器会在 Boolean 前阻断，不得绕过。
 
+
+
+## 单点执行命令（先 index 0）
+
+同步最新分支并运行 14 项测试后，必须在当前 HEAD 生成新的 build evidence。确认二进制 SHA 与计划完全一致后，先执行 index 0；不要并行运行四个点。
+
+```bash
+cd /data/xvxinyao1/Spin_test-W3
+export H9=research/Heart_v1_20261017/Heart_H8_Asymmetric_CAD_20261018
+export PY="$HOME/.venvs/spin-w3-313/bin/python"
+export W3_STDCXX="$(readlink -f /usr/lib/x86_64-linux-gnu/libstdc++.so.6)"
+
+export M20="$HOME/Research/W3_H9_Results/m20-bigint-20261104-134610-284358250-2185128/precision-ledger.json"
+export ART="$HOME/Research/W3_H9_Evidence/h8f-original-12135528290.zip"
+export S17="$HOME/Research/W3_H9_Results/20261026_172959-2185128/native-4side-s17/serial-native/native"
+export M19="$HOME/Research/W3_H9_Results/m19-20261103-195004-2185128"
+export SOURCE="$HOME/Research/W3_H9_Results/m21-source-20261104-221452-033013175-1861607"
+export M18_AUDIT="$HOME/Research/W3_H9_Results/stage18-audit-20261102_170733/independent-audit.json"
+export CERT="$PWD/$H9/reports/H9_INTERIOR_EDGE_CROSSING_CERTIFICATE.json"
+export PLAN="$HOME/Research/W3_H9_Results/m21-6d-plan-20261108T110852Z-3084537/quarterpoint-plan.json"
+
+# 重新定位 SHA 固定的 M21.6A / M21.6C 文件
+BOUNDARY_SHA=759b4df5111fa51e0d51f1e62ff36b5c84e02e85f13d6e3fc5edece95dbab793
+M21_6C_SHA=62c69598747623121314cdf88055315dc7617726c3bfc0b8a9e7c3fd57ae3915
+BOUNDARY=""
+MOMENT_LAYERS=""
+
+for f in "$HOME"/Research/W3_H9_Results/m21-6a-*/full-boundary.json; do
+  [[ -f "$f" ]] || continue
+  [[ "$(sha256sum "$f" | awk '{print $1}')" == "$BOUNDARY_SHA" ]] && { BOUNDARY="$f"; break; }
+done
+
+while IFS= read -r -d '' f; do
+  [[ "$(sha256sum "$f" | awk '{print $1}')" == "$M21_6C_SHA" ]] && { MOMENT_LAYERS="$f"; break; }
+done < <(find "$HOME/Research/W3_H9_Results" -type f -name 'moment-layers*.json' -print0)
+
+test -s "$BOUNDARY"
+test -s "$MOMENT_LAYERS"
+test -s "$PLAN"
+
+# 1. 单元测试
+PYTHONINTMAXSTRDIGITS=100000 "$PY" -m unittest discover \
+  -s "$H9/tests" -p 'test_h9_m21_6d_quarterpoints.py' -v
+
+# 2. 当前 HEAD 的 build evidence（不可复用旧 M19 build_evidence.json）
+QPT_BUILD="$HOME/Research/W3_H9_Results/m21-6d-native-build-$(date -u +%Y%m%dT%H%M%SZ)-$$"
+env -u CONDA_PREFIX -u LD_LIBRARY_PATH -u LIBRARY_PATH -u CMAKE_PREFIX_PATH \
+  -u PYTHONPATH -u PYTHONHOME -u BOOST_ROOT -u Boost_ROOT -u Boost_DIR \
+  -u PKG_CONFIG_PATH \
+  PATH="$HOME/.venvs/spin-w3-313/bin:/usr/local/bin:/usr/bin:/bin" \
+  LD_PRELOAD="$W3_STDCXX" \
+  "$PY" -u "$H9/source/prepare_h9_pinned_native.py" \
+  --phase build --repo "$PWD" --output "$QPT_BUILD"
+
+test -s "$QPT_BUILD/build_evidence.json"
+
+# 3. 先运行左侧第一个 quarter-point（单个 Boolean + 单个 source-motion）
+RUN_ROOT="$HOME/Research/W3_H9_Results/m21-6d-qpt-$(date -u +%Y%m%dT%H%M%SZ)-$$"
+mkdir -p "$RUN_ROOT"
+
+env -u CONDA_PREFIX -u LD_LIBRARY_PATH -u LIBRARY_PATH -u CMAKE_PREFIX_PATH \
+  -u PYTHONPATH -u PYTHONHOME -u BOOST_ROOT -u Boost_ROOT -u Boost_DIR \
+  -u PKG_CONFIG_PATH \
+  PATH="$HOME/.venvs/spin-w3-313/bin:/usr/local/bin:/usr/bin:/bin" \
+  LD_PRELOAD="$W3_STDCXX" \
+  "$PY" -u "$H9/source/h9_m21_6d_quarterpoints.py" \
+  --phase run --index 0 \
+  --repo "$PWD" \
+  --precision-ledger "$M20" --artifact "$ART" \
+  --stage17-native-dir "$S17" --m19-run "$M19" \
+  --source-run "$SOURCE" --boundary-report "$BOUNDARY" \
+  --moment-layers "$MOMENT_LAYERS" --certificate "$CERT" \
+  --stage18-audit "$M18_AUDIT" --plan "$PLAN" \
+  --build-evidence "$QPT_BUILD/build_evidence.json" \
+  --output "$RUN_ROOT/point-00"
+
+echo "QPT_BUILD=$QPT_BUILD"
+echo "QPT_RUN=$RUN_ROOT/point-00"
+```
+
+index 0 的 `launch_result.json` 必须显示 `ONE_QUARTERPOINT_INDEPENDENTLY_VERIFIED_NO_NEWTON`，且 `independent-audit.json` 中 Boolean/source-motion 调用计数分别为 1。只有通过后才继续 index 1、2、3。
