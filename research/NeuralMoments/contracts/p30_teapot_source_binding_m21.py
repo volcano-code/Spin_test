@@ -32,8 +32,8 @@ EXPECTED_FILES = {
     "P19_material_case/source/shaft-reference.obj": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
 }
 MATERIAL_KEYS = ("M", "F", "D", "S")
-SHA = re.compile(r"[0-9a-f]{64}\\Z")
-HEX40 = re.compile(r"[0-9a-f]{40}\\Z")
+SHA = re.compile(r"[0-9a-f]{64}\Z")
+HEX40 = re.compile(r"[0-9a-f]{40}\Z")
 
 
 class SourceBindingRejected(ValueError):
