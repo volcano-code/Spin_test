@@ -67,13 +67,21 @@ def _augment_with_groupwise_cube_rotations(data, *, seed: int):
     )
 
 
-def _evaluate(model, data):
+def _evaluate(model, data, *, batch_size=None):
     D, c, target_r, target_J, _ = data
     model.eval()
+    chunk = len(D) if batch_size is None else int(batch_size)
+    if chunk < 1:
+        raise ValueError("evaluation batch_size must be positive")
+    pred_r_parts, pred_J_parts = [], []
     with torch.no_grad():
-        z = model.encode_geometry(D)
-        pred_r = model.moment_from_weights(z, c)
-        pred_J = model.jacobian_from_weights(z, c)
+        for start in range(0, len(D), chunk):
+            end = min(start + chunk, len(D))
+            z = model.encode_geometry(D[start:end])
+            pred_r_parts.append(model.moment_from_weights(z, c[start:end]))
+            pred_J_parts.append(model.jacobian_from_weights(z, c[start:end]))
+    pred_r = torch.cat(pred_r_parts, dim=0)
+    pred_J = torch.cat(pred_J_parts, dim=0)
     r_abs = (pred_r - target_r).abs()
     J_abs = (pred_J - target_J).abs()
     return {
@@ -121,6 +129,7 @@ def run_seed(
     queries_per_geometry: int = 2,
     steps: int = 120,
     batch_size: int = 8,
+    eval_batch_size: int | None = None,
     grid_size: int = 8,
     points_per_axis: int = 4,
     smoothing: float = 0.04,
@@ -136,6 +145,8 @@ def run_seed(
     use_gradient_checkpoint: bool = False,
     device: str = "cpu",
 ):
+    if eval_batch_size is not None and eval_batch_size < 1:
+        raise ValueError("eval_batch_size must be positive")
     if not math.isfinite(lambda_equivariance) or lambda_equivariance < 0:
         raise ValueError("lambda_equivariance must be finite and nonnegative")
     torch.manual_seed(seed)
@@ -245,7 +256,7 @@ def run_seed(
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
         if step == 1 or step % 10 == 0 or step == steps:
-            val = _evaluate(model, validation)
+            val = _evaluate(model, validation, batch_size=eval_batch_size)
             score = val["r_mae"] + 0.25 * val["J_mae"]
             history.append({
                 "step": step,
@@ -266,9 +277,9 @@ def run_seed(
                 best_state = copy.deepcopy(model.state_dict())
     training_seconds = time.perf_counter() - started
     model.load_state_dict(best_state)
-    fit_metrics = _evaluate(model, fit)
+    fit_metrics = _evaluate(model, fit, batch_size=eval_batch_size)
     validation_metrics = _evaluate(model, validation)
-    test_metrics = _evaluate(model, test)
+    test_metrics = _evaluate(model, test, batch_size=eval_batch_size)
     return {
         "schema": "SPIN_PINO_ANALYTIC_P0_TRAINING_V1",
         "seed": seed,
@@ -304,6 +315,7 @@ def run_seed(
         "training": {
             "steps": steps,
             "batch_size": batch_size,
+            "eval_batch_size": eval_batch_size,
             "selected_step": best_step,
             "seconds": training_seconds,
             "optimizer": "Adam",
@@ -313,7 +325,7 @@ def run_seed(
         "fit_metrics": fit_metrics,
         "validation_metrics": validation_metrics,
         "held_out_ellipsoid_metrics": test_metrics,
-        "held_out_rotated_ellipsoid_metrics": _evaluate(model, rotated_test),
+        "held_out_rotated_ellipsoid_metrics": _evaluate(model, rotated_test, batch_size=eval_batch_size),
         "rotation_evaluation_diagnostics": {
             "mean_occupied_centers_clipped_fraction": float(np.mean([
                 row.get("source_occupied_voxel_centers_outside_target_cube_fraction", 0.0)
@@ -345,6 +357,7 @@ def main():
     parser.add_argument("--queries-per-geometry", type=int, default=2)
     parser.add_argument("--steps", type=int, default=120)
     parser.add_argument("--batch-size", type=int, default=8)
+    parser.add_argument("--eval-batch-size", type=int, default=None)
     parser.add_argument("--grid-size", type=int, default=8)
     parser.add_argument("--points-per-axis", type=int, default=4)
     parser.add_argument("--smoothing", type=float, default=0.04)
@@ -371,6 +384,7 @@ def main():
             queries_per_geometry=args.queries_per_geometry,
             steps=args.steps,
             batch_size=args.batch_size,
+            eval_batch_size=args.eval_batch_size,
             grid_size=args.grid_size,
             points_per_axis=args.points_per_axis,
             smoothing=args.smoothing,
