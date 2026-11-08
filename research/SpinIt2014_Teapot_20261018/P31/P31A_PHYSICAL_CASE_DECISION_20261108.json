@@ -1,0 +1,68 @@
+{
+  "schema": "W4_P31A_PHYSICAL_CASE_DECISION_V1",
+  "date": "2026-11-08",
+  "project": "Spin_test",
+  "window": "W4",
+  "decision": {
+    "case": "B",
+    "description": "New Utah-Teapot-inspired spinning-top test article",
+    "historical_claim": "NOT_CLAIMED_AS_ORIGINAL_MELITTA_OR_AUTHOR_AUTHENTIC_CAD",
+    "geometry_policy": "DESIGN_A_NEW_PHYSICAL_SOLID_WHILE_PRESERVING_RECOGNIZABLE_UTAH_TEAPOT_APPEARANCE"
+  },
+  "provisional_physical_parameters": {
+    "length_m_per_reference": 0.025,
+    "density_kg_m3": 1200,
+    "status": "PROVISIONAL_UNVALIDATED_NOT_OWNER_APPROVED",
+    "may_be_used_for": [
+      "conditional_unit_conversion",
+      "sensitivity_analysis",
+      "non-authoritative_diagnostic_visualization"
+    ],
+    "may_not_be_used_for": [
+      "physical_truth_claim",
+      "W0_physical_approval",
+      "printability_or_strength_claim",
+      "native_pilot_authorization",
+      "final_MuJoCo_validation"
+    ]
+  },
+  "design_requirements_to_freeze": {
+    "coordinate_frame": "P19_REFERENCE_ALREADY_Z_UP",
+    "spin_axis": [0, 0, 1],
+    "tip": [0, 0, 0],
+    "support_contact_geometry": "MUST_BE_EXPLICITLY_DESIGNED_AND_REVIEWED",
+    "support_points_in_current_P20": [],
+    "shaft": "PROTECTED_MATERIAL_ALREADY_INCLUDED_IN_F",
+    "fixed_region_F": "MUST_BE_FROZEN_AND_GEOMETRICALLY_VERIFIED",
+    "design_region_D": "MUST_BE_FROZEN_AND_GEOMETRICALLY_VERIFIED",
+    "global_wall_strength": "NOT_ESTABLISHED_BY_LOCAL_1_OVER_32_CARVE_RULE"
+  },
+  "immutable_inputs": {
+    "p20_request_blob_sha1": "f3bca7bef1f207cb5b857848c9588543fb7e5a9c",
+    "p20_frame_report_blob_sha1": "16a4b4cdf7c1dc6a2de314f22ebbee95364b9c04",
+    "p20_frame_identity_sha256": "699a2137d6eebde69792e0e52fd624d642cec70f0ead3b6a54fbd7673c25b3a7",
+    "p20_status": "P20_EXACT_MATHEMATICAL_PHYSICAL_CONTRACT_READY_NOT_NATIVE_ADMISSION"
+  },
+  "required_owner_reviews": {
+    "W0": {
+      "branch": "research/neuralmoments-w0-contract-20261019",
+      "required_path": "research/NeuralMoments/contracts/P30_TEAPOT_DIAGNOSTIC_AUTHORIZATION.json",
+      "decision_required": "Review and explicitly approve or reject this new engineered test article for a diagnostic-only 12-point native pilot; specify physical dimensions, material, support/contact, load envelope and F/D geometry proof.",
+      "optimization_newton_training_printability_authority": false
+    },
+    "W2": {
+      "branch": "research/neuralmoments-w2-teacher-20261019",
+      "required_path": "research/NeuralMoments/teacher/P30_TEAPOT_FEATURE_PILOT_AUTHORIZATION.json",
+      "decision_required": "Independently review the exact W4 feature branch and same-call Cherchi r/J provenance, bind to the W0 receipt SHA and all frozen P20/P27/P30 identities, and issue a Teapot-specific diagnostic-only receipt.",
+      "optimization_newton_training_authority": false
+    }
+  },
+  "execution_gate": {
+    "P30B_native_calls_allowed_now": false,
+    "reason": "W0_AND_W2_TRACKED_TEAPOT_RECEIPTS_MISSING",
+    "new_native_calls": 0,
+    "training_admissible": false,
+    "newton_accepted": false,
+    "MuJoCo_optimized_before_after_executed": false
+  }
+}
