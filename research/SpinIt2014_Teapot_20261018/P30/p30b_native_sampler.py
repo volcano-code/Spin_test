@@ -314,8 +314,11 @@ def worker(a, bound, index, output_dir):
     need(state.get("schema")==RUN_SCHEMA and
          state.get("registered_lock_sha256")==a.external_lock_sha and
          state.get("plan_sha256")==auth.P30_PRIVATE_PLAN_SHA and
-         state.get("pilot_count")==N_PILOT,
+         state.get("pilot_count")==N_PILOT and
+         state.get("moment_coordinate_frame")==a.moment_coordinate_frame,
          "BATCH_STATE_CHANGED_OR_UNREGISTERED")
+    for key,value in bound["frame_metadata"].items():
+        need(state.get(key)==value,"BATCH_STATE_FRAME_BINDING_CHANGED:"+key)
     begin_path=output_dir/"BEGIN.json"
     need(begin_path.is_file(),"MISSING_APPEND_ONLY_ATTEMPT_BEGIN")
     begin=auth.strict_json(begin_path.read_bytes())
@@ -521,6 +524,9 @@ def main(argv=None):
     p.add_argument("--index",type=int)
     p.add_argument("--output-dir",type=Path,required=True)
     p.add_argument("--resume",action="store_true")
+    p.add_argument("--moment-coordinate-frame",
+                   choices=(moment_frame.NATIVE_FRAME,moment_frame.SI_FRAME),
+                   default=moment_frame.NATIVE_FRAME)
     a=p.parse_args(argv)
     try:
         need(bool(auth.HEX64.fullmatch(a.external_lock_sha)),"INVALID_EXTERNAL_LOCK_SHA")
