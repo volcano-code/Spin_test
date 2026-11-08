@@ -108,7 +108,7 @@
           "bad45b1ecbdead28344981b3b3a40e186e66ad73"
         ]
       ],
-      "w6_status": "P0_GINO_UQNO_ADAPTER_AND_CPU_SMOKE_PASSED",
+      "w6_status": "P22_TRAINED_GINO_OPTIONAL_PINO_RESIDUAL_SINGLE_SEED_HELDOUT_R_2P79_J_1P13_IMPROVEMENT_NOT_PROMOTED",
       "role": "GINO/FNOGNO are geometry-aware operator baselines; UQNO is the first uncertainty-aware operator candidate. Use the same mesh/voxel inputs and ten-moment output contract.",
       "priority": "P0_DIRECT_REUSE",
       "reuse_rule": "MIT; retain copyright and license notice. Pin the exact upstream commit.",
@@ -118,7 +118,35 @@
         "validation_run": 42168194446,
         "validation_run_commit": "e222b0457ca27b967b2923636459761edf140689",
         "conclusion": "success",
-        "limits": "GINO forward, diagnostic Jacobian and UQNO wrapper smoke passed; no trained weights transferred and no Newton admission."
+        "limits": "GINO forward, diagnostic Jacobian and UQNO wrapper smoke passed; no trained weights transferred and no Newton admission.",
+        "p22": {
+          "run_id": 42460854472,
+          "artifact_id": 13610010674,
+          "conclusion": "success",
+          "upstream_commit": "a6648eeeb60fe0837f2d7d021517a945a159a0c8",
+          "license": "MIT",
+          "pino_source_seed": 271,
+          "pino_checkpoint_sha256": "6e6662a00bde1f3686f9f86629b8b98646d079e72296591c116cc783628ce531",
+          "training_seed": 887,
+          "grid_size": 64,
+          "steps": 40,
+          "batch_size": 2,
+          "learning_rate": 0.0005,
+          "trainable_gino_parameters": 11873,
+          "best_validation_step": 40,
+          "heldout_baseline_r_relative_l2": 0.1075204387307167,
+          "heldout_gino_r_relative_l2": 0.10451789200305939,
+          "heldout_r_relative_improvement": 0.027925357849191357,
+          "heldout_baseline_J_relative_l2": 0.20924483239650726,
+          "heldout_gino_J_relative_l2": 0.20688486099243164,
+          "heldout_J_relative_improvement": 0.01127851702260254,
+          "gate_selected": -0.005503018852323294,
+          "training_seconds": 72.816647008,
+          "PINO_primary": true,
+          "Newton_admitted": false,
+          "multi_seed_confirmed": false,
+          "production_default": false
+        }
       }
     },
     {
@@ -741,7 +769,7 @@
           "b0be285b3025804043fea228b01ab4916b14da47"
         ]
       ],
-      "w6_status": "P19_NATIVE128_TRAINED64_PINO_DENSICRAFTER_SUCCESS_3_STEPS_SMALL_MASS_GAIN_P20_THREE_SEED_IN_PROGRESS",
+      "w6_status": "P20_NATIVE128_THREE_SEED_ALL_DESIGN_JOBS_SUCCESS_AGGREGATE_RECOVERY",
       "role": "Complementary differentiable density-field design module: self-supporting hollowing, mass regularization, center-of-mass and bottom-contact losses. Connect its optimized density field to W6 material moments and inertia evaluation; not a general FEM/structural-strength solver.",
       "priority": "P0_P1_CROSS_PROJECT_INTEGRATION",
       "reuse_rule": "MIT; preserve copyright (c) 2025 Shengqi Dang and license notice. Port only isolated differentiable loss/field logic; do not import TRELLIS/MuJoCo/Blender pipeline into W6 core.",
@@ -868,6 +896,33 @@
           "rejected_steps": 0,
           "peak_process_ru_maxrss_kib": 2404324,
           "limits": "small pilot; analytic P0 sphere, not Cherchi/FEM/physical wall"
+        },
+        "p20": {
+          "run_id": 42459811708,
+          "conclusion": "all three seed design jobs success; original aggregate step failed due missing torch in aggregation-only job",
+          "seeds": [
+            271,
+            277,
+            281
+          ],
+          "target_grid": 128,
+          "steps_per_active_arm": 6,
+          "learning_rate": 0.06,
+          "mean_mass_reduction_fraction": 0.00204235594736187,
+          "std_mass_reduction_fraction": 0.00022786456400389368,
+          "mean_model_cut_moment_relative_error": 0.00032965548113376525,
+          "mean_independent_hard_cut_relative_error": 0.002375228718544046,
+          "mean_normalized_material_9moment_l2": 0.00011301693545343976,
+          "accepted_steps": 18,
+          "rejected_steps": 0,
+          "all_feasible": true,
+          "all_shells_preserved": true,
+          "artifact_ids": [
+            13609457779,
+            13608614765,
+            13608564978
+          ],
+          "limits": "analytic P0 spheres, cell-centered hard-cut; not Cherchi/FEM/mm wall"
         }
       }
     },

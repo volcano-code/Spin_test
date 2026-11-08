@@ -1,0 +1,40 @@
+name: W6 P20 recovery aggregation for archived native-128 seed runs
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - .github/workflows/w6-p20-aggregate-recovery.yml
+  workflow_dispatch:
+jobs:
+  aggregate-archived-seeds:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Download the three immutable P20 seed artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: w6-p20-native128-seed-*
+          repository: ${{ github.repository }}
+          run-id: 42459811708
+          github-token: ${{ github.token }}
+          merge-multiple: true
+          path: /tmp/w6_p20_all
+      - name: Aggregate JSON receipts without importing the torch package
+        run: |
+          python research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p20_aggregate.py \
+            --input-dir /tmp/w6_p20_all --output /tmp/w6_p20_native128_aggregate.json
+      - name: Archive three-seed aggregate
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p20-native128-three-seed-aggregate-recovered
+          path: /tmp/w6_p20_native128_aggregate.json
+          if-no-files-found: error
+          retention-days: 30
