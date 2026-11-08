@@ -36,6 +36,24 @@ class Refused(ValueError):
 def need(ok, message):
     if not ok: raise Refused(message)
 
+def _parse_decimal_integer(text):
+    """Parse bounded ASCII decimal integers without Python's global digit-limit bypass.
+
+    The frozen W3 M20 ledger contains exact rational tokens with 5,844-digit
+    denominators. Parse in <=1000-digit chunks so the interpreter's default
+    int_max_str_digits security limit remains unchanged.
+    """
+    need(type(text) is str and text and text.lstrip('-').isascii() and
+         text.lstrip('-').isdigit(),'INVALID_INTEGER_TOKEN')
+    negative=text.startswith('-')
+    digits=text[1:] if negative else text
+    value=0
+    for start in range(0,len(digits),1000):
+        chunk=digits[start:start+1000]
+        value=value*(10**len(chunk))+int(chunk)
+    return -value if negative else value
+
+
 def q(x):
     if isinstance(x,F): return x
     if type(x) is int: return F(x)
@@ -47,8 +65,11 @@ def q(x):
     bits=x.split('/')
     need(len(bits)==2 and bits[0].lstrip('-').isascii() and
          bits[0].lstrip('-').isdigit() and bits[1].isascii() and
-         bits[1].isdigit() and int(bits[1])>0,'INVALID_RATIONAL_TOKEN')
-    return F(int(bits[0]),int(bits[1]))
+         bits[1].isdigit(),'INVALID_RATIONAL_TOKEN')
+    numerator=_parse_decimal_integer(bits[0])
+    denominator=_parse_decimal_integer(bits[1])
+    need(denominator>0,'INVALID_RATIONAL_TOKEN')
+    return F(numerator,denominator)
 
 def token(x):
     x=q(x);return f'{x.numerator}/{x.denominator}'
