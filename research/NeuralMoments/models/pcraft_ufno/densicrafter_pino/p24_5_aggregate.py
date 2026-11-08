@@ -35,17 +35,10 @@ def aggregate(input_dir):
 
     rows = [x for d in reports for x in d["cases"]]
 
-    def mean_case(family, resolution, key):
-        vals = [_f(x[key], key) for x in rows
-                if x["family"] == family and x["resolution"] == resolution]
-        return statistics.mean(vals)
-
     summary = {}
     for family in ("sphere", "ellipsoid"):
         summary[family] = {}
         for resolution in (64, 128):
-            base_r = mean_case(family, resolution,
-                               "baseline_pino") if False else None
             selected = [x for x in rows if x["family"] == family and x["resolution"] == resolution]
             br = [_f(x["baseline_pino"]["r_relative_l2_to_analytic_p0"], "base_r") for x in selected]
             qr = [_f(x["quadrann_pino"]["r_relative_l2_to_analytic_p0"], "quad_r") for x in selected]
