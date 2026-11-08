@@ -69,14 +69,19 @@ jobs:
           grep -Fq -- 'P30_TEAPOT_DIAGNOSTIC_AUTHORIZATION.json' "w4/$P30/p30b_run_approved_native_pilot.sh"
           grep -Fq -- 'P30_TEAPOT_FEATURE_PILOT_AUTHORIZATION.json' "w4/$P30/p30b_run_approved_native_pilot.sh"
           echo "P30B_LOCAL_SCRIPT_PARSE_AND_APPROVAL_CHECKS_PASS"
-      - name: Run 37 native/SI frame and append-only resume controls
+      - name: Run 20 native sampler unittest regressions and 17 M21 frame pytest regressions
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/w4-p30b"
           python -m unittest discover -v -s "w4/$P30" -p 'test_p30b_native_sampler.py' \
             2>&1 | tee "$RUNNER_TEMP/w4-p30b/unittest.log"
           grep -q '^Ran 20 tests' "$RUNNER_TEMP/w4-p30b/unittest.log"
-          grep -q '^OK
+          grep -q '^OK$' "$RUNNER_TEMP/w4-p30b/unittest.log"
+          ! grep -q 'skipped=' "$RUNNER_TEMP/w4-p30b/unittest.log"
+          python -m pytest -q "w4/$P30/test_p30b_moment_frame.py" \
+            2>&1 | tee "$RUNNER_TEMP/w4-p30b/pytest-frame.log"
+          grep -q '17 passed' "$RUNNER_TEMP/w4-p30b/pytest-frame.log"
+          ! grep -q 'skipped' "$RUNNER_TEMP/w4-p30b/pytest-frame.log"
       - name: Write synthetic-only plan for missing-real-owner-readiness test
         run: |
           set -euo pipefail
