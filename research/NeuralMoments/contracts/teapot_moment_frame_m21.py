@@ -304,7 +304,7 @@ def main(argv=None):
             raise MomentFrameRejected("REFUSE_OVERWRITE")
         args.output.parent.mkdir(parents=True,exist_ok=True)
         args.output.write_text(json.dumps(contract.report(),sort_keys=True,indent=2,
-                                          allow_nan=False)+"\\n",encoding="utf-8")
+                                          allow_nan=False)+"\n",encoding="utf-8")
         print(json.dumps({"status":"FRAME_MAPPING_VERIFIED_NO_PHYSICAL_OR_SCIENTIFIC_ADMISSION",
                           "native_normalization":[contract.native_length_ref,contract.native_density_ref],
                           "si_normalization":[contract.si_length_ref,contract.si_density_ref],
