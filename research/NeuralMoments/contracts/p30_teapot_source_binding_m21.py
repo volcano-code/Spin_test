@@ -331,7 +331,7 @@ def main(argv=None):
             raise SourceBindingRejected("REFUSE_OVERWRITE")
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(result, indent=2, sort_keys=True,
-                                          allow_nan=False) + "\\n", encoding="utf-8")
+                                          allow_nan=False) + "\n", encoding="utf-8")
         print(json.dumps({"status": result["status"], "w4_head": result["w4_head"],
                           "hashed_files": len(result["source_sha256"]),
                           "physical_case_approved": False,
