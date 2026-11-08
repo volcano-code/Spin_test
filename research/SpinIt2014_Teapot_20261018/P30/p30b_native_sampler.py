@@ -353,6 +353,9 @@ def worker(a, bound, index, output_dir):
     counts=dict(evaluator.call_counts)
     digest_result=validate_native_output(material,q,pins,counts,
                     bound["readiness"]["teacher"]["base_feature_branch_sha256"])
+    view=moment_frame.make_moment_view(
+        material["variable_raw_moments"],material["moment_jacobian"],
+        bound["frame_contract"],bound["frame_provenance"],a.moment_coordinate_frame)
     need(result["geometry_hash"]==material["geometry_hash"] and
          result["topology_hash"]==material["topology_hash"],
          "NATIVE_RETURNED_MATERIAL_DIFFERS_FROM_SAVED_SAME_CALL")
@@ -362,10 +365,19 @@ def worker(a, bound, index, output_dir):
     need(not (Path(output_dir)/"MATERIAL_SAME_CALL.json").exists(),
          "MATERIAL_OUTPUT_ALREADY_EXISTS")
     new_json(Path(output_dir)/"MATERIAL_SAME_CALL.json",material)
-    receipt={**digest_result,"sample_index":index,
+    view_path=Path(output_dir)/"MOMENT_FRAME_VIEW.json"
+    new_json(view_path,view)
+    frame_meta=moment_frame.frame_metadata(
+        bound["frame_contract"],bound["frame_provenance"],a.moment_coordinate_frame)
+    receipt={**digest_result,**frame_meta,"sample_index":index,
              "native_c_sha256":item["native_c_sha256"],
              "registered_lock_sha256":a.external_lock_sha,
              "material_sha256":sha(Path(output_dir)/"MATERIAL_SAME_CALL.json"),
+             "moment_frame_view_sha256":sha(view_path),
+             "r_design_in_frame_sha256":moment_frame.sha256_bytes(
+                 moment_frame.canonical_bytes(view["r_design_in_frame"])),
+             "Jc_in_frame_sha256":moment_frame.sha256_bytes(
+                 moment_frame.canonical_bytes(view["Jc_in_frame"])),
              "source_formal_M6_manifest_sha256":seed.MANIFEST_SHA,
              "reference_context_sha256":pins["context_sha256"],
              "native_module_shas":dict(MODULES),
