@@ -123,7 +123,8 @@ PYTHONPATH="/work/w0:/work/core/python:/work/w4/$P1:/output/$P27_RUN_REL/native-
   --registered-lock "/output/$LOCK_REL" \
   --external-lock-sha "$P30B_EXTERNAL_LOCK_SHA256" \
   --p27-run-dir "/output/$P27_RUN_REL" \
-  --output-dir "/output/$OUT_REL" "${RESUME[@]}"
+  --output-dir "/output/$OUT_REL" \
+  --moment-coordinate-frame "${P30B_MOMENT_COORDINATE_FRAME:-INPUT_NORMALIZED_TARGET_V1}" "${RESUME[@]}"
 
 echo "P30B_PILOT_WRAPPER_RETURNED. Preserve every attempt, including failures."
 echo "Evidence: $OUTPUT"
