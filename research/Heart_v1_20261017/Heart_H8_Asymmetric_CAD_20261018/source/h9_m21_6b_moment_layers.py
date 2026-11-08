@@ -1,4 +1,4 @@
-"""W3 H9 M21.6B: diagnostic ten-moment / J7 layer decomposition, no native calls.
+"""W3 H9 M21.6B/C: exact ten-moment / J7 layer and mixed-face support audit, no native calls.
 
 Inputs: frozen six Cherchi material packets, source-only motion attachments, M20
 exact-ten-moment ledger and M21.6A full-boundary report. Every known byte
@@ -391,14 +391,15 @@ def compute(states,materials,ledger,boundary,density=1,motion_metadata=None):
                             for g in SUPPORT_GROUPS},
                         'exact_moment_ledger_reintegration_match':True,
                         'dual_vs_existing_retained_tangent_exact_match':True})
-    return {'schema':'heart-h9-m21-6b-moment-layer-audit-v1',
-            'status':'SIX_SAVED_SURFACES_FACE_GROUP_TEN_MOMENT_J7_DIAGNOSTIC_ONLY',
+    return {'schema':'heart-h9-m21-6c-support-subgroup-audit-v1',
+            'status':'SIX_SAVED_SURFACES_FACE_SUPPORT_SUBGROUP_TEN_MOMENT_J7_DIAGNOSTIC_ONLY',
             'sample_count':6,'samples':results,'intervals':intervals,
             'input_sha256':{'m20_ledger':LEDGER_SHA,'m21_6a_full_boundary':BOUNDARY_SHA,
                             'native_core':BINARY_SHA,'m21_5b_lpi':LPI_SHA},
             'face_group_keys':list(GROUPS),
             'face_support_subgroup_keys':list(SUPPORT_GROUPS),
             'total_component_split_checks':60,
+            'total_support_subgroup_split_checks':60,
             'scientific_limits':{'root_cause_determined':False,
                                  'continuous_neighborhood_certified':False,
                                  'asymptotic_order_certified':False,
@@ -408,6 +409,7 @@ def compute(states,materials,ledger,boundary,density=1,motion_metadata=None):
                                  'new_native_source_calls_this_run':0,
                                  'native_runtime_origin_cryptographically_attested':False,
                                  'per_group_native_jacobian_available':False,
+                                 'per_support_subgroup_native_jacobian_available':False,
                                  'face_group_residual_is_not_unique_causal_attribution':True}}
 
 def preview_derived(boundary_path, ledger_path, lpi_path):
