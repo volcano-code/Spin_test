@@ -75,17 +75,49 @@ def historic_h8c_anchor(archive, *, expected_q=None):
 
 
 def model_to_target_identity_ten(m,origin,axes):
-    """Specialization valid ONLY for H8's original, exactly identity axes."""
-    if (axes != [[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]]
-            or len(origin)!=3 or len(m)!=10
-            or any(type(x) not in (int,float) or not math.isfinite(x) for x in origin)):
+    """Transform raw ten moments from model/world coordinates to target axes.
+
+    cherchi_inprocess uses target_column = axes.T @ (model_column-origin),
+    equivalently its row-vector expression (vertices-origin) @ axes.
+    """
+    if (len(origin)!=3 or len(m)!=10 or len(axes)!=3
+            or any(not isinstance(row,(list,tuple)) or len(row)!=3 for row in axes)
+            or any(type(x) not in (int,float) or not math.isfinite(x)
+                   for x in list(origin)+list(m)+[v for row in axes for v in row])):
         raise ValueError('M9_UNSUPPORTED_OR_MALFORMED_H8_FRAME')
-    x,y,z=origin
-    M,Lx,Ly,Lz,xx,yy,zz,yz,xz,xy=m
-    return [M, Lx-x*M, Ly-y*M, Lz-z*M,
-            xx-2*x*Lx+x*x*M,yy-2*y*Ly+y*y*M,zz-2*z*Lz+z*z*M,
-            yz-y*Lz-z*Ly+y*z*M,xz-x*Lz-z*Lx+x*z*M,
-            xy-x*Ly-y*Lx+x*y*M]
+
+    # Match InProcessCherchiEvaluator's rotation=axes.T and require SO(3).
+    for i in range(3):
+        for j in range(3):
+            dot=sum(float(axes[k][i])*float(axes[k][j]) for k in range(3))
+            if abs(dot-(1.0 if i==j else 0.0))>1e-12:
+                raise ValueError('M9_TARGET_AXES_NOT_ORTHONORMAL')
+    a,b,c=[[float(v) for v in row] for row in axes]
+    det=(a[0]*(b[1]*c[2]-b[2]*c[1])
+         -a[1]*(b[0]*c[2]-b[2]*c[0])
+         +a[2]*(b[0]*c[1]-b[1]*c[0]))
+    if abs(det-1.0)>1e-12:
+        raise ValueError('M9_TARGET_AXES_NOT_PROPER_ROTATION')
+
+    M,Lx,Ly,Lz,xx,yy,zz,yz,xz,xy=[float(v) for v in m]
+    ox,oy,oz=[float(v) for v in origin]
+    first=[Lx-ox*M,Ly-oy*M,Lz-oz*M]
+    second=[
+        [xx-2*ox*Lx+ox*ox*M, xy-ox*Ly-oy*Lx+ox*oy*M,
+         xz-ox*Lz-oz*Lx+ox*oz*M],
+        [xy-ox*Ly-oy*Lx+ox*oy*M, yy-2*oy*Ly+oy*oy*M,
+         yz-oy*Lz-oz*Ly+oy*oz*M],
+        [xz-ox*Lz-oz*Lx+ox*oz*M, yz-oy*Lz-oz*Ly+oy*oz*M,
+         zz-2*oz*Lz+oz*oz*M],
+    ]
+    target_first=[sum(float(axes[k][i])*first[k] for k in range(3))
+                  for i in range(3)]
+    target_second=[[sum(float(axes[k][i])*second[k][l]*float(axes[l][j])
+                        for k in range(3) for l in range(3))
+                    for j in range(3)] for i in range(3)]
+    return [M,*target_first,
+            target_second[0][0],target_second[1][1],target_second[2][2],
+            target_second[1][2],target_second[0][2],target_second[0][1]]
 
 
 def certify_abba(rows):
