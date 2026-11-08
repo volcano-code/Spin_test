@@ -104,6 +104,11 @@ class QuarterpointNativeRunnerContractTests(unittest.TestCase):
         self.assertTrue(source_signature_matches(sig, sig, sig))
         self.assertFalse(source_signature_matches(sig, sig, {'surface_type': 'B'}))
 
+    def test_source_signature_normalizes_native_tuples_to_json_lists(self):
+        native = {'surface_type': 1, 'source_normal_edges': ((1, 2), (3, 4))}
+        saved = {'surface_type': 1, 'source_normal_edges': [[1, 2], [3, 4]]}
+        self.assertTrue(source_signature_matches(native, saved, saved))
+
     def test_all_plan_rows_keep_newton_denied(self):
         plan = plan_fixture()
         self.assertFalse(plan['newton_admitted'])
