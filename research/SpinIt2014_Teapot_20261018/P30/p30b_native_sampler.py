@@ -255,11 +255,15 @@ def verify_receipt(attempt, index, plan, external_sha, frame_contract,
     need(final.is_file() and not final.is_symlink(),
          "SAMPLE_NOT_COMPLETED_SUCCESSFULLY")
     result=auth.strict_json(final.read_bytes())
-    need(result.get("schema")=="W4_P30B_ATTEMPT_RESULT_V1" and
+    need(result.get("schema")=="W4_P30B_ATTEMPT_RESULT_V2" and
          result.get("status")=="SUCCESS_DIAGNOSTIC_ONLY" and
          result.get("worker_exit_code")==0 and
          result.get("sample_index")==index and
          result.get("material_sha256")==row["material_sha256"] and
+         result.get("moment_frame_view_sha256")==row["moment_frame_view_sha256"] and
+         result.get("moment_coordinate_frame")==expected_frame and
+         result.get("frame_contract_sha256")==row["frame_contract_sha256"] and
+         result.get("affine_transform_identity_sha256")==row["affine_transform_identity_sha256"] and
          result.get("scientific_admission") is False and
          result.get("stdout_sha256")==sha(attempt/"stdout.log") and
          result.get("stderr_sha256")==sha(attempt/"stderr.log"),
@@ -322,10 +326,14 @@ def worker(a, bound, index, output_dir):
     begin_path=output_dir/"BEGIN.json"
     need(begin_path.is_file(),"MISSING_APPEND_ONLY_ATTEMPT_BEGIN")
     begin=auth.strict_json(begin_path.read_bytes())
-    need(begin.get("index")==index and
+    need(begin.get("schema")=="W4_P30B_ATTEMPT_BEGIN_V2" and
+         begin.get("index")==index and
          begin.get("lock_sha256")==a.external_lock_sha and
-         begin.get("native_c_sha256")==bound["plan"]["probes"][index]["native_c_sha256"],
-         "ATTEMPT_BEGIN_OR_C_MISMATCH")
+         begin.get("native_c_sha256")==bound["plan"]["probes"][index]["native_c_sha256"] and
+         begin.get("moment_coordinate_frame")==a.moment_coordinate_frame and
+         begin.get("frame_contract_sha256")==bound["frame_metadata"]["frame_contract_sha256"] and
+         begin.get("affine_transform_identity_sha256")==bound["frame_metadata"]["affine_transform_identity_sha256"],
+         "ATTEMPT_BEGIN_OR_C_OR_FRAME_MISMATCH")
     plan=bound["plan"]
     need(type(index) is int and 0<=index<N_PILOT, "ONLY_12_REGISTERED_PILOT_INDICES_ALLOWED")
     item=plan["probes"][index]
@@ -433,9 +441,13 @@ def batch(a,bound):
             new.mkdir(parents=True,exist_ok=False)
             # All attempts are preserved even if the subprocess dies before
             # writing its formal status. Resume never rewrites them.
-            new_json(new/"BEGIN.json",{"index":i,"attempt":len(prior),
+            new_json(new/"BEGIN.json",{"schema":"W4_P30B_ATTEMPT_BEGIN_V2",
+                    "index":i,"attempt":len(prior),
                     "native_c_sha256":bound["plan"]["probes"][i]["native_c_sha256"],
                     "lock_sha256":a.external_lock_sha,
+                    "moment_coordinate_frame":a.moment_coordinate_frame,
+                    "frame_contract_sha256":bound["frame_metadata"]["frame_contract_sha256"],
+                    "affine_transform_identity_sha256":bound["frame_metadata"]["affine_transform_identity_sha256"],
                     "scope":"DIAGNOSTIC_NOT_NEWTON_OR_TRAINING"})
             remaining=int(deadline-time.monotonic())
             need(remaining>0,"PILOT_TOTAL_3600_S_LIMIT_EXHAUSTED")
@@ -461,8 +473,10 @@ def batch(a,bound):
                 except subprocess.TimeoutExpired:
                     os.killpg(child.pid,signal.SIGKILL)
                     code=child.wait()
-            outcome={"schema":"W4_P30B_ATTEMPT_RESULT_V1","sample_index":i,
+            outcome={"schema":"W4_P30B_ATTEMPT_RESULT_V2","sample_index":i,
                      "attempt":len(prior),"worker_exit_code":code,
+                     "moment_coordinate_frame":a.moment_coordinate_frame,
+                     **bound["frame_metadata"],
                      "stdout_sha256":sha(new/"stdout.log"),
                      "stderr_sha256":sha(new/"stderr.log"),"scientific_admission":False}
             if code==0:
