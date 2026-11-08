@@ -1,0 +1,118 @@
+{
+  "schema": "W0_M21_TEAPOT_EVIDENCE_AND_FRAME_REPORT_V1",
+  "status": "SOURCE_BINDING_AND_FRAME_CONTRACT_PASS_PHYSICAL_CASE_STILL_BLOCKED",
+  "tested_w0_commit": "e1b765c46bfce0ece47e0f691d8131f1b50c9b1d",
+  "baseline_w0_commit": "5bab2eb2616df306906a6887a273f68acfa49320",
+  "w4": {
+    "branch": "research/neuralmoments-w4-teapot-p1-20261019",
+    "reviewed_head": "aca53abf0d31329264fe1f028b2aff2175165ba3"
+  },
+  "core": {
+    "commit": "58fd12c1306c1c01679a19172e276eef0cb30542",
+    "files_rehashed": 10
+  },
+  "w2": {
+    "branch": "research/neuralmoments-w2-teacher-20261019",
+    "observed_head": "b1b19dbaccd355465fff9cd56414a49e0b24a8c2",
+    "training_samples": 0,
+    "native_teacher_runs": 1,
+    "latest_native_diagnostic_object": "Heart",
+    "teapot_p30b_approval": false
+  },
+  "ci": {
+    "run_id": 42463041196,
+    "url": "https://github.com/volcano-code/Spin_test/actions/runs/42463041196",
+    "conclusion": "success",
+    "pytest_passed": 203,
+    "parameterized_subtests_passed": 7,
+    "failed": 0,
+    "workflow_steps_all_success": true,
+    "artifact_id": 13610418234,
+    "artifact_name": "w0-m17-ci-nonnative-interface-evidence",
+    "artifact_sha256": "e051e78aff235a8983b921393e45b138821198a4922275a4c2d902995d30688e"
+  },
+  "direct_w4_sha256": {
+    "P20_native_request.json": "a324bbe85c9ee57a67221eb86420c505efc4d065d60d84cf92d66e4d95dac1b9",
+    "P19_material_case/manifest.json": "c6bd67f872f344da46c1f774f8b68c28a2ecfa4c5a5c000d9e6bf5229e3412d6",
+    "P19_CANONICAL_SOURCE_COMPLETE_REPORT.json": "f30fabc8ce348b9b8f42ff20649e683557349582ef31baf6c05d35e17b448601",
+    "P20_EXACT_FRAME_AND_PHYSICS_REPORT.json": "eaba6b60753fcb2141be425081897a8e891821349c166f5daff143d3ce9ea5fc",
+    "P19_material_case/material/M_native.obj": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
+    "P19_material_case/material/F_native.obj": "5c5db73792bd8d6566a954e6d0eef6d22e248a7ad2f8a7a8d8e6d4f2ad9d86a8",
+    "P19_material_case/material/D_native.obj": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
+    "P19_material_case/source/shaft-reference.obj": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0",
+    "p20_native_factory.py": "bebab47452b61da7af3faa9e202f0ca44d3e1e36d18f171c90c50517b83047f4",
+    "p20_physical_contract.py": "6f71e5d7ce1a2fcb14579beb5f6680ea3b847193ad4d6ba48cfcc962ce008391"
+  },
+  "core_source_sha256": {
+    "bindings/pybind_module.cpp": "48018801aaa22fb41e32181994d2f9713c9d328908e4546ca718ce24671428a5",
+    "include/physics/RawMassMoments10.h": "43c734ed351be7df01c1c4f? ",
+    "include/spin/QuadricCoefficients.h": "d08fb7d20a86501b637ee38c80e0f50a30d9193b01dcba2cb4e8e30581af7c3b",
+    "python/make_it_stand/spin.py": "c4aa751027617d3e7a95631c27c2bd2105ab25917b94f848dc6da42ff633913f",
+    "python/make_it_stand/verification/cherchi_inprocess.py": "6cdd03ad9bd1c55f2c40c72ac77c5cd3bc822bd8fb609bdd92cf2cf45162fa37",
+    "python/make_it_stand/verification/faster_material.py": "b048434b1c4812c21d61844b68b9710fff71c105a9a86cb27a765f771d185c86",
+    "python/make_it_stand/verification/spin_common.py": "37c7ad42f70da68a5cea25da46f143371bfa3d078e8279103479dc64186b5cb9",
+    "python/make_it_stand/verification/spin_problem.py": "adcd25778d21b82285cba9e6596a523ccffa41ffc6f84f159e5b98bbd9b0d022",
+    "src/spin/DualMonomialCoordinates.cpp": "8af08a341bfc24cecdd94218fdafe4d31fec7d64672c3b03de53f2c719739ae7",
+    "src/spin/QuadricCoefficients.cpp": "d3ea749a0207e0c53ffd770e2f0cb8d051538efd8b66608236dbd2c752ae1365"
+  },
+  "moment_frame": {
+    "native_frame": "INPUT_NORMALIZED_TARGET_V1",
+    "native_normalization": {
+      "length_ref": 1,
+      "density_ref": 1
+    },
+    "native_material_density": 1,
+    "original_per_native_length": 2.5716,
+    "original_per_native_density": 1,
+    "conditional_si_frame": "P19_PROPOSED_SI_Z_UP",
+    "conditional_si_normalization": {
+      "length_ref_m": 0.06429,
+      "density_ref_kg_m3": 1200
+    },
+    "target_to_si_linear_m": [
+      [
+        0.06429,
+        0,
+        0
+      ],
+      [
+        0,
+        0.06429,
+        0
+      ],
+      [
+        0,
+        0,
+        0.06429
+      ]
+    ],
+    "target_to_si_translation_m": [
+      -8.205519964092365e-20,
+      0,
+      1.0129829261402906e-18
+    ],
+    "native_to_si_density_ratio": 1200,
+    "rule": "Transform every raw10 probe and every Jc output column with the same affine pushforward; do not pair native r/J with SI normalization.",
+    "physical_scale_and_density_approved": false
+  },
+  "scientific_admission": {
+    "W0_physical_case_approved": false,
+    "P30B_diagnostic_authorized": false,
+    "real_native_tangent_samples": 0,
+    "W2_Teapot_teacher_approved": false,
+    "derivative_neighborhood_certified": false,
+    "continuous_smooth_neighborhood_certified": false,
+    "Newton_accepted": false,
+    "training_admissible": false,
+    "physical_strength_printability_certified": false
+  },
+  "remaining_w0_work": [
+    "Obtain authoritative Teapot CAD or explicitly define P19 as a new owner-designed Spinning Top; do not call reconstructed mesh author CAD.",
+    "Obtain owner-approved measured dimensions, material density/fill model, real tip/contact/bearing/support geometry, shaft/load path and D strength/printability requirements.",
+    "Obtain the original private P27 formal archive/lock and P30 full private plan for direct raw-byte SHA-256 rehash; public receipt hashes alone remain corroboration.",
+    "Require W2's independent same-Teapot source/Boolean/feature-branch and Jc review; Heart or Noodles diagnostics cannot substitute.",
+    "After physical and W2 approvals, predeclare case-specific noise/error budgets, review the 12 real native pilot samples, then separately address continuous smoothness and Newton terminal certification.",
+    "Keep live W4 source pin review current; if the W4 source head or any P19/P20 input changes, rerun the source-binding audit and re-review before use."
+  ],
+  "scope": "W0_M21_SOFTWARE_AND_SOURCE_INTEGRITY_ONLY_NO_NATIVE_CHERCHI_CALLS_NO_PHYSICAL_APPROVAL"
+}
