@@ -49,10 +49,14 @@ class P24QuadrANNNative128Contracts(unittest.TestCase):
 
     def test_density_gradient_flows_through_frozen_quadrann_and_pino(self):
         pino, selected, proxy = self._stack()
-        D, c, _, _, _ = sample_dataset(
-            ("sphere",), per_family=1, seed=1702,
-            grid_size=16, queries_per_geometry=1,
-        )
+        # A bottom-supported block is required by the DensiCrafter contact
+        # term; centered analytic spheres do not necessarily touch the floor
+        # at this tiny 16^3 contract-test resolution.
+        D = torch.zeros(1, 4, 16, 16, 16)
+        D[:, 0, 3:13, 3:13, 0:12] = 1.0
+        D[:, 1, 3:13, 3:13, 0:12] = 1.0
+        c = torch.zeros(1, 10)
+        c[:, 3] = 1.0
         shell, design = _surface_masks(D[:, 1:2] > 0, wall_cells=1)
         model = DensiCrafterSpinPINOBridge(
             proxy, shell, design, gravity_axis=2, smoothing=False,
