@@ -293,6 +293,9 @@ def existing_verified_success(point_dir,index,plan,external_sha,
         need(outcome.get("schema")=="W4_P30B_ATTEMPT_RESULT_V2" and
              outcome.get("sample_index")==index,
              "ATTEMPT_RESULT_IDENTITY_DRIFT")
+        attempt_meta=moment_frame.frame_metadata(frame_contract,frame_provenance,expected_frame)
+        for key,value in attempt_meta.items():
+            need(outcome.get(key)==value,"ATTEMPT_RESULT_FRAME_BINDING_DRIFT:"+key)
         if outcome.get("status")=="SUCCESS_DIAGNOSTIC_ONLY":
             success.append(verify_receipt(attempt,index,plan,external_sha,
                                                frame_contract,frame_provenance,expected_frame))
