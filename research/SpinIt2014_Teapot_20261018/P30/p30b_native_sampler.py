@@ -206,7 +206,8 @@ def validate_native_output(material, coefficients, pins, counts, expected_base_f
         **CLOSED,
     }
 
-def verify_receipt(attempt, index, plan, external_sha):
+def verify_receipt(attempt, index, plan, external_sha, frame_contract,
+                   frame_provenance, expected_frame):
     attempt=Path(attempt)
     receipt=attempt/"SAMPLE_RECEIPT.json"
     material=attempt/"MATERIAL_SAME_CALL.json"
@@ -220,7 +221,9 @@ def verify_receipt(attempt, index, plan, external_sha):
          row.get("native_c_sha256")==plan["probes"][index]["native_c_sha256"] and
          row.get("registered_lock_sha256")==external_sha and
          row.get("material_sha256")==sha(material) and
-         row.get("newton_evaluations")==0 and row.get("training_admissible") is False,
+         row.get("newton_evaluations")==0 and row.get("training_admissible") is False and
+         row.get("moment_coordinate_frame")==expected_frame and
+         row.get("coordinate_transform_applied")== (expected_frame==moment_frame.SI_FRAME),
          "PREVIOUS_SAMPLE_RECEIPT_TAMPERED")
     saved=auth.strict_json(material.read_bytes())
     need(saved.get("topology_hash")==row["branch_identity"] and
@@ -228,6 +231,22 @@ def verify_receipt(attempt, index, plan, external_sha):
          saved.get("moment_jacobian")==row["Jc_native_capture"] and
          saved.get("geometry_hash")==row["geometry_hash"],
          "PREVIOUS_SAMPLE_MATERIAL_TAMPERED")
+    view_path=attempt/"MOMENT_FRAME_VIEW.json"
+    need(view_path.is_file() and not view_path.is_symlink() and
+         row.get("moment_frame_view_sha256")==sha(view_path),
+         "PREVIOUS_SAMPLE_MOMENT_FRAME_VIEW_MISSING_OR_TAMPERED")
+    view=auth.strict_json(view_path.read_bytes())
+    verified_view=moment_frame.validate_moment_view(
+        view,saved["variable_raw_moments"],saved["moment_jacobian"],
+        frame_contract,frame_provenance,expected_frame)
+    meta=moment_frame.frame_metadata(frame_contract,frame_provenance,expected_frame)
+    for key,value in meta.items():
+        need(row.get(key)==value,"PREVIOUS_SAMPLE_FRAME_METADATA_TAMPERED:"+key)
+    need(row.get("r_design_in_frame_sha256")==moment_frame.sha256_bytes(
+             moment_frame.canonical_bytes(verified_view["r_design_in_frame"])) and
+         row.get("Jc_in_frame_sha256")==moment_frame.sha256_bytes(
+             moment_frame.canonical_bytes(verified_view["Jc_in_frame"])),
+         "PREVIOUS_SAMPLE_FRAME_ARRAY_HASH_MISMATCH")
     need(row.get("call_counts")=={"source":1,"boolean":1,"derivative":1,"integration":1}
          and row.get("scientific_admission") is False
          and all(row.get(k) is False for k in CLOSED),
