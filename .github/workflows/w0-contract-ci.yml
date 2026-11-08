@@ -35,7 +35,9 @@ jobs:
             research/NeuralMoments/contracts/test_consumer_v2_preview_m17.py \
             research/NeuralMoments/contracts/test_w5_contract_gate_v2_m18.py \
             research/NeuralMoments/contracts/test_w5_live_handoff_m19.py \
-            research/NeuralMoments/contracts/test_p30_teapot_physical_review_m20.py
+            research/NeuralMoments/contracts/test_p30_teapot_physical_review_m20.py \
+            research/NeuralMoments/contracts/test_teapot_moment_frame_m21.py \
+            research/NeuralMoments/contracts/test_p30_teapot_source_binding_m21.py
       - name: Independently audit frozen W2 W5 W6 source interface
         run: |
           python -m research.NeuralMoments.contracts.cross_window_interface_m16 \
@@ -76,6 +78,27 @@ jobs:
             cat "$RUNNER_TEMP/w0-m19-live-audit.log"
             exit "$rc"
           fi
+      - name: Fetch pinned W4 P19/P20 sources and recompute SHA-256 from actual bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          W4_BRANCH="research/neuralmoments-w4-teapot-p1-20261019"
+          W4_REVIEWED_HEAD="aca53abf0d31329264fe1f028b2aff2175165ba3"
+          git fetch --no-tags --depth=1 origin "refs/heads/$W4_BRANCH"
+          w4_head="$(git rev-parse FETCH_HEAD)"
+          test "$w4_head" = "$W4_REVIEWED_HEAD"
+          mkdir -p "$RUNNER_TEMP/w0-m21-w4"
+          git archive "$w4_head" research/SpinIt2014_Teapot_20261018/P1 | tar -x -C "$RUNNER_TEMP/w0-m21-w4"
+          P1="$RUNNER_TEMP/w0-m21-w4/research/SpinIt2014_Teapot_20261018/P1"
+          python -m research.NeuralMoments.contracts.p30_teapot_source_binding_m21 \
+            --w4-root "$P1" --w4-head "$w4_head" \
+            --review-evidence research/NeuralMoments/contracts/p30_teapot_review_evidence_m20.json \
+            --output "$RUNNER_TEMP/w0-m21-source-binding.json"
+          python -m research.NeuralMoments.contracts.teapot_moment_frame_m21 \
+            --request "$P1/P20_native_request.json" \
+            --frame-report "$P1/P20_EXACT_FRAME_AND_PHYSICS_REPORT.json" \
+            --output "$RUNNER_TEMP/w0-m21-moment-frame-contract.json"
+          echo "W0_M21_DIRECT_W4_BYTES_AND_NATIVE_SI_FRAME_CONTRACT_PASS"
       - name: Run W0 P30 physical-case review (BLOCKED is expected; no authorization)
         shell: bash
         run: |
@@ -96,5 +119,7 @@ jobs:
             ${{ runner.temp }}/w0-m16-interface-audit.json
             ${{ runner.temp }}/w0-m17-w5-v2-migration-block.json
             ${{ runner.temp }}/w0-m19-live-w5-w2-adoption.json
+            ${{ runner.temp }}/w0-m21-source-binding.json
+            ${{ runner.temp }}/w0-m21-moment-frame-contract.json
             ${{ runner.temp }}/P30_TEAPOT_PHYSICAL_REVIEW_BLOCKED_20261108.json
           if-no-files-found: warn
