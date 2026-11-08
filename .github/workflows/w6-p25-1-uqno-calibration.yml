@@ -1,0 +1,122 @@
+name: W6 P25.1 geometry-disjoint UQNO calibration pilot
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_collect.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_aggregate_train.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p25_uqno.py
+      - .github/workflows/w6-p25-1-uqno-calibration.yml
+  workflow_dispatch:
+jobs:
+  collect:
+    name: "P25.1 collect matched seed \${{ matrix.seed }}"
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      actions: read
+      contents: read
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - seed: 271
+            p23_artifact: w6-p23-quadrann-seed-271
+          - seed: 277
+            p23_artifact: w6-p23-quadrann-seed-277
+          - seed: 281
+            p23_artifact: w6-p23-quadrann-seed-281
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Download matched P14 PINO checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: w6-p14-native-PINO-grid-64
+          repository: \${{ github.repository }}
+          run-id: 42450889982
+          github-token: \${{ github.token }}
+          path: /tmp/w6_p14_64
+      - name: Download matched P23 QuadrANN checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: \${{ matrix.p23_artifact }}
+          repository: \${{ github.repository }}
+          run-id: 42461634570
+          github-token: \${{ github.token }}
+          path: /tmp/w6_p23_seed
+      - name: Install pinned CPU numerical stack
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install torch-scatter torch-cluster -f https://data.pyg.org/whl/torch-2.5.1+cpu.html
+          python -m pip install torch-geometric==2.6.1 numpy pytest
+      - name: Validate P25.1 data and split contracts
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p25_uqno.py
+      - name: Collect matched 3-family 64/128 uncertainty signals
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p25_uqno_collect \
+            --pino-checkpoint-dir /tmp/w6_p14_64 \
+            --quadrann-checkpoint-dir /tmp/w6_p23_seed \
+            --seed \${{ matrix.seed }} \
+            --output /tmp/w6_p25_1_seed\${{ matrix.seed }}.json
+      - name: Archive per-seed UQNO signals
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p25-1-uqno-signals-seed-\${{ matrix.seed }}
+          path: /tmp/w6_p25_1_seed\${{ matrix.seed }}.json
+          if-no-files-found: error
+          retention-days: 30
+  train-calibrate:
+    needs: collect
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install pinned CPU PyTorch
+        run: python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+      - name: Download all matched seed signals
+        uses: actions/download-artifact@v4
+        with:
+          pattern: w6-p25-1-uqno-signals-seed-*
+          merge-multiple: true
+          path: /tmp/w6_p25_1_all
+      - name: Train, geometry-disjoint calibrate and test UQNO
+        env:
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_aggregate_train.py \
+            --input-dir /tmp/w6_p25_1_all \
+            --checkpoint-dir /tmp/w6_p25_1_checkpoints \
+            --output /tmp/w6_p25_1_uqno_report.json
+      - name: Archive UQNO pilot report and checkpoints
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p25-1-uqno-calibration-pilot
+          path: |
+            /tmp/w6_p25_1_uqno_report.json
+            /tmp/w6_p25_1_checkpoints/*.pt
+          if-no-files-found: error
+          retention-days: 30
