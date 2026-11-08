@@ -1,0 +1,106 @@
+name: W6 P24.6 native-128 QuadrANN physical-gate confirmation
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p24_6_physical_gate.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p24_6_aggregate.py
+      - .github/workflows/w6-p24-6-physical-gate.yml
+  workflow_dispatch:
+jobs:
+  physical-gate:
+    name: "P24.6 seed \${{ matrix.seed }}"
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      actions: read
+      contents: read
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - seed: 271
+            p23_artifact: w6-p23-quadrann-seed-271
+          - seed: 277
+            p23_artifact: w6-p23-quadrann-seed-277
+          - seed: 281
+            p23_artifact: w6-p23-quadrann-seed-281
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Download matching P14 PINO checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: w6-p14-native-PINO-grid-64
+          repository: \${{ github.repository }}
+          run-id: 42450889982
+          github-token: \${{ github.token }}
+          path: /tmp/w6_p14_64
+      - name: Download matching P23 QuadrANN checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: \${{ matrix.p23_artifact }}
+          repository: \${{ github.repository }}
+          run-id: 42461634570
+          github-token: \${{ github.token }}
+          path: /tmp/w6_p23_seed
+      - name: Install pinned CPU numerical stack
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install torch-scatter torch-cluster -f https://data.pyg.org/whl/torch-2.5.1+cpu.html
+          python -m pip install torch-geometric==2.6.1 numpy pytest
+      - name: Run truth-based 128-cube physical gate comparison
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p24_6_physical_gate \
+            --pino-checkpoint-dir /tmp/w6_p14_64 \
+            --quadrann-checkpoint-dir /tmp/w6_p23_seed \
+            --seed \${{ matrix.seed }} --steps 6 --lr 0.06 --wall-cells 4 \
+            --output /tmp/w6_p24_6_native128_seed\${{ matrix.seed }}.json
+      - name: Archive per-seed designs and receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p24-6-native128-seed-\${{ matrix.seed }}
+          path: |
+            /tmp/w6_p24_6_native128_seed\${{ matrix.seed }}.json
+            /tmp/w6_p24_6_native128_seed\${{ matrix.seed }}.pt
+          if-no-files-found: error
+          retention-days: 30
+  aggregate:
+    needs: physical-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Download all P24.6 seed receipts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: w6-p24-6-native128-seed-*
+          merge-multiple: true
+          path: /tmp/w6_p24_6_all
+      - name: Aggregate physical-gate comparison
+        run: |
+          python research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p24_6_aggregate.py \
+            --input-dir /tmp/w6_p24_6_all \
+            --output /tmp/w6_p24_6_aggregate.json
+      - name: Archive P24.6 aggregate report
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p24-6-native128-physical-gate-aggregate
+          path: /tmp/w6_p24_6_aggregate.json
+          if-no-files-found: error
+          retention-days: 30
