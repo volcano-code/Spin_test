@@ -132,7 +132,7 @@ class PINOFeatureEncoder(nn.Module):
 
         self.lifting = nn.Conv3d(in_channels + 3, w, kernel_size=1)
         self.enc1 = nn.ModuleList([
-            PINOFNOBlock3d(w, modes, use_checkpoint=False) for _ in range(n_enc)
+            PINOFNOBlock3d(w, modes, use_checkpoint=use_gradient_checkpoint) for _ in range(n_enc)
         ])
         self.down1 = nn.Conv3d(w, 2 * w, kernel_size=2, stride=2)
         self.enc2 = nn.ModuleList([
@@ -153,7 +153,7 @@ class PINOFeatureEncoder(nn.Module):
         self.up1 = nn.ConvTranspose3d(2 * w, w, kernel_size=2, stride=2)
         self.dec1_proj = nn.Conv3d(2 * w, w, kernel_size=1)
         self.dec1 = nn.ModuleList([
-            PINOFNOBlock3d(w, modes, use_checkpoint=False) for _ in range(n_dec)
+            PINOFNOBlock3d(w, modes, use_checkpoint=use_gradient_checkpoint) for _ in range(n_dec)
         ])
 
         coords = torch.linspace(0.0, 1.0, grid_size)
