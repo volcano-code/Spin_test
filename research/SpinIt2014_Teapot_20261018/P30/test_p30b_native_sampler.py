@@ -15,6 +15,7 @@ import unittest
 import p30_neighborhood_preflight as p30
 import p30b_authority as authority
 import p30b_native_sampler as native
+import p30b_moment_frame as frame
 
 NATIVE_C=[0.03640053031737869,-1.4100319353783204e-18,0.0,
           -0.2886365552481779,0.552377871982299,0.552377871982299,
@@ -71,6 +72,14 @@ def teacher(plan):
         "training_authorized":False,
         "Newton_authorized":False,
     }
+
+def pinned_frame():
+    p1=Path(__file__).resolve().parent.parent/"P1"
+    contract,provenance=frame.load_contract(
+        p1/"P20_native_request.json",
+        p1/"P20_EXACT_FRAME_AND_PHYSICS_REPORT.json")
+    return contract,provenance,frame.NATIVE_FRAME
+
 
 def successful_sample_material(plan):
     coeff=plan["probes"][0]["native_c"]
@@ -253,8 +262,9 @@ class P30BNativeJournalTest(unittest.TestCase):
                              "status":"FAILED_OR_TIMED_OUT_PRESERVE_FOR_INDEPENDENT_REVIEW",
                              "sample_index":0,"worker_exit_code":-9,
                              "scientific_admission":False})
+            contract,provenance,mode=pinned_frame()
             self.assertIsNone(native.existing_verified_success(
-                parent.parent,0,plan(),"e"*64))
+                parent.parent,0,plan(),"e"*64,contract,provenance,mode))
 
     def test_17_no_success_without_final_zero_exit_receipt(self):
         with tempfile.TemporaryDirectory() as d:
@@ -271,7 +281,9 @@ class P30BNativeJournalTest(unittest.TestCase):
             native.new_json(parent/"SAMPLE_RECEIPT.json",record)
             # A lost final record is never treated as completed. A subsequent
             # --resume preserves this attempt and creates attempt-001.
-            self.assertIsNone(native.existing_verified_success(parent.parent,0,p,"e"*64))
+            contract,provenance,mode=pinned_frame()
+            self.assertIsNone(native.existing_verified_success(
+                parent.parent,0,p,"e"*64,contract,provenance,mode))
             later, prior=native.next_attempt(parent.parent)
             self.assertEqual(later.name,"attempt-001")
             self.assertEqual(len(prior),1)
@@ -283,12 +295,23 @@ class P30BNativeJournalTest(unittest.TestCase):
             native.new_json(parent/"MATERIAL_SAME_CALL.json",mat)
             (parent/"stdout.log").write_bytes(b"")
             (parent/"stderr.log").write_bytes(b"")
+            contract,provenance,mode=pinned_frame()
+            view=frame.make_moment_view(mat["variable_raw_moments"],mat["moment_jacobian"],
+                                        contract,provenance,mode)
+            native.new_json(parent/"MOMENT_FRAME_VIEW.json",view)
+            meta=frame.frame_metadata(contract,provenance,mode)
             record={**native.validate_native_output(
                 mat,p["probes"][0]["native_c"],{"context_sha256":"c"*64},
                 {"source":1,"boolean":1,"derivative":1,"integration":1},FEATURE),
+                **meta,
                 "sample_index":0,"native_c_sha256":p["probes"][0]["native_c_sha256"],
                 "registered_lock_sha256":"e"*64,
                 "material_sha256":native.sha(parent/"MATERIAL_SAME_CALL.json"),
+                "moment_frame_view_sha256":native.sha(parent/"MOMENT_FRAME_VIEW.json"),
+                "r_design_in_frame_sha256":frame.sha256_bytes(
+                    frame.canonical_bytes(view["r_design_in_frame"])),
+                "Jc_in_frame_sha256":frame.sha256_bytes(
+                    frame.canonical_bytes(view["Jc_in_frame"])),
                 "newton_evaluations":0}
             native.new_json(parent/"SAMPLE_RECEIPT.json",record)
             native.new_json(parent/"ATTEMPT_RESULT.json",
@@ -296,15 +319,17 @@ class P30BNativeJournalTest(unittest.TestCase):
                              "status":"SUCCESS_DIAGNOSTIC_ONLY",
                              "worker_exit_code":0,"sample_index":0,
                              "material_sha256":record["material_sha256"],
+                             "moment_frame_view_sha256":record["moment_frame_view_sha256"],
                              "scientific_admission":False,
                              "stdout_sha256":native.sha(parent/"stdout.log"),
                              "stderr_sha256":native.sha(parent/"stderr.log")})
-            self.assertIsNotNone(native.existing_verified_success(parent.parent,0,p,"e"*64))
+            self.assertIsNotNone(native.existing_verified_success(
+                parent.parent,0,p,"e"*64,contract,provenance,mode))
             altered=json.loads((parent/"SAMPLE_RECEIPT.json").read_text())
             altered["training_admissible"]=True
             (parent/"SAMPLE_RECEIPT.json").write_text(json.dumps(altered))
             with self.assertRaisesRegex(native.SampleRejected,"PREVIOUS_SAMPLE_RECEIPT_TAMPERED"):
-                native.existing_verified_success(parent.parent,0,p,"e"*64)
+                native.existing_verified_success(parent.parent,0,p,"e"*64,contract,provenance,mode)
 
     def test_19_worker_cannot_start_outside_batch_identity(self):
         from unittest.mock import patch
