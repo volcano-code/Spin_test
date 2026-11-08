@@ -1,0 +1,63 @@
+name: W6 P18 three-seed trained PINO DensiCrafter confirmation
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p18_confirm.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p18_confirm.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/P18_PROTOCOL.md
+      - .github/workflows/w6-p18-three-seed-densicrafter.yml
+  workflow_dispatch:
+jobs:
+  three-seed-trained-pino-design:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Download all three trained P14 64 cube PINO checkpoints
+        uses: actions/download-artifact@v4
+        with:
+          name: w6-p14-native-PINO-grid-64
+          repository: ${{ github.repository }}
+          run-id: 42450889982
+          github-token: ${{ github.token }}
+          path: /tmp/w6_p14_64
+      - name: Install pinned CPU PyTorch
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install numpy pytest
+      - name: Test two-cell wall and independent geometry contracts
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p18_confirm.py
+      - name: Run three independent trained-PINO density-design seeds
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p18_confirm \
+            --checkpoint-dir /tmp/w6_p14_64 --seeds 271,277,281 \
+            --steps 12 --lr 0.06 --wall-cells 2 \
+            --output /tmp/w6_p18_three_seed_trained64_densicrafter.json
+      - name: Archive all seed-specific optimized density designs
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p18-three-seed-trained64-PINO-DensiCrafter
+          path: |
+            /tmp/w6_p18_three_seed_trained64_densicrafter.json
+            /tmp/w6_p17_densicrafter_pino64_seed*.pt
+          if-no-files-found: error
+          retention-days: 30
