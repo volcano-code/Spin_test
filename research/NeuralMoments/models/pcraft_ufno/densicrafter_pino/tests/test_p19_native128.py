@@ -39,6 +39,7 @@ class P19Native128Contracts(unittest.TestCase):
         zeros=torch.zeros_like(density)
         geometry=torch.cat((density,occupancy,zeros,zeros),1)
         c=torch.zeros((1,10))
+        c[:,0]=1.0
         weights=model.encode_geometry(geometry)
         moments=model.moment_from_weights(weights,c)
         moments.square().sum().backward()
