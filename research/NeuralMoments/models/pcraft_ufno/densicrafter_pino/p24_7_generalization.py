@@ -176,7 +176,7 @@ def main():
             "quad_r": sum(x["quad_r_analytic_rel"] for x in c["geometries"])/len(c["geometries"]),
             "base_J": sum(x["base_J_analytic_rel"] for x in c["geometries"])/len(c["geometries"]),
             "quad_J": sum(x["quad_J_analytic_rel"] for x in c["geometries"])/len(c["geometries"]),
-        } for c in result["cases"]
+        } for c in result["cases"]]
     }, indent=2))
 
 
