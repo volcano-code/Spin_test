@@ -397,7 +397,7 @@
           "c4f9d72ba46360af2fc3c9b5d08cd43badb1e49b"
         ]
       ],
-      "w6_status": "P0_3D_ADAPTER_AND_CPU_SMOKE_PASSED_UNTRAINED",
+      "w6_status": "P21_TRAINED_MIT_QUADRANN_OPTIONAL_PINO_RESIDUAL_SINGLE_SEED_HELDOUT_R_28P95_J_15P76_IMPROVEMENT_PENDING_MULTI_SEED",
       "role": "Geometry-aware permutation-invariant GNN quadrature weights; direct baseline for point-cloud/mesh quadrature and teacher-sample allocation. Adapt to ten moments and derivative accuracy, not only scalar integrals.",
       "priority": "P0_DIRECT_REUSE",
       "reuse_rule": "MIT; preserve license. Previous W6 adapter/experiment is not evidence of production integration or superiority.",
@@ -407,7 +407,34 @@
         "validation_run": 42168194446,
         "validation_run_commit": "e222b0457ca27b967b2923636459761edf140689",
         "conclusion": "success",
-        "limits": "3D model forward and adapter smoke passed; model is untrained, approximate and returns moments only."
+        "limits": "3D model forward and adapter smoke passed; model is untrained, approximate and returns moments only.",
+        "p21": {
+          "run_id": 42460223133,
+          "artifact_id": 13609353468,
+          "conclusion": "success",
+          "source_commit": "111dd611aaeac1fb98c76385706b003ea8ef94be",
+          "license": "MIT",
+          "original_core_unchanged": true,
+          "pino_source_seed": 271,
+          "pino_checkpoint_sha256": "6e6662a00bde1f3686f9f86629b8b98646d079e72296591c116cc783628ce531",
+          "quadrann_training_seed": 883,
+          "pino_grid": 64,
+          "quadrann_trainable_parameters": 4066,
+          "steps": 60,
+          "batch_size": 4,
+          "learning_rate": 0.001,
+          "best_validation_step": 60,
+          "heldout_baseline_r_relative_l2": 0.10861017554998398,
+          "heldout_quadrann_r_relative_l2": 0.0771622434258461,
+          "heldout_r_relative_improvement": 0.28954867225737135,
+          "heldout_baseline_J_relative_l2": 0.20541200041770935,
+          "heldout_quadrann_J_relative_l2": 0.17303790152072906,
+          "heldout_J_relative_improvement": 0.1576056843375602,
+          "gate_selected": 0.0328168049454689,
+          "pino_primary": true,
+          "newton_admitted": false,
+          "multi_seed_confirmed": false
+        }
       }
     },
     {
