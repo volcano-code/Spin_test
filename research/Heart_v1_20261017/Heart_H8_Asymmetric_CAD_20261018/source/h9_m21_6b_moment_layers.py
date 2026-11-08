@@ -71,8 +71,25 @@ def q(x):
     need(denominator>0,'INVALID_RATIONAL_TOKEN')
     return F(numerator,denominator)
 
+def _format_decimal_integer(value):
+    """Format arbitrarily large integers without changing Python's digit limit."""
+    negative=value<0
+    value=abs(value)
+    if value==0:return '0'
+    base=10**1000
+    chunks=[]
+    while value:
+        value,part=divmod(value,base)
+        chunks.append(part)
+    result=str(chunks.pop())
+    while chunks:
+        result+=f'{chunks.pop():01000d}'
+    return '-'+result if negative else result
+
+
 def token(x):
-    x=q(x);return f'{x.numerator}/{x.denominator}'
+    x=q(x)
+    return _format_decimal_integer(x.numerator)+'/'+_format_decimal_integer(x.denominator)
 
 def v3(xs):
     need(isinstance(xs,(list,tuple)) and len(xs)==3,'BAD_VECTOR3')
