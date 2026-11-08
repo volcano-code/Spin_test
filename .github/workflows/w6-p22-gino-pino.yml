@@ -1,0 +1,63 @@
+name: W6 P22 train original NeuralOperator GINO proposal around P-CRAFT PINO
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/p22_train_gino.py
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_p22_gino.py
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/P22_PROTOCOL.md
+      - .github/workflows/w6-p22-gino-pino.yml
+  workflow_dispatch:
+jobs:
+  train-gino:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Download trained P14 64-cube P-CRAFT PINO checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: w6-p14-native-PINO-grid-64
+          repository: ${{ github.repository }}
+          run-id: 42450889982
+          github-token: ${{ github.token }}
+          path: /tmp/w6_p14_64
+      - name: Install pinned PyTorch and NeuralOperator
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r research/NeuralMoments/models/pcraft_ufno/p0_integration/requirements-neuraloperator.txt
+          python -m pip install numpy pytest
+      - name: Validate GINO zero-gate parity, positive residual and Jacobian consistency
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_neuraloperator_smoke.py research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_p22_gino.py
+      - name: Train optional GINO geometry residual on analytic P0 labels
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.p0_integration.p22_train_gino \
+            --checkpoint-dir /tmp/w6_p14_64 --seed 887 --steps 40 --batch-size 2 --lr 0.0005 \
+            --output /tmp/w6_p22_gino_seed887.json
+      - name: Archive trained GINO adapter and held-out comparison
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p22-trained-gino-around-pino
+          path: |
+            /tmp/w6_p22_gino_seed887.json
+            /tmp/w6_p22_gino_seed887.pt
+          if-no-files-found: error
+          retention-days: 30
