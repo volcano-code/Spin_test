@@ -714,7 +714,7 @@
           "b0be285b3025804043fea228b01ab4916b14da47"
         ]
       ],
-      "w6_status": "P18_THREE_SEED_TRAINED64_PINO_DENSICRAFTER_CONFIRMED_0P9225PCT_MASS_SAVING_2PCT_INDEPENDENT_SCREEN_NOT_CHERCHI",
+      "w6_status": "P19_NATIVE128_TRAINED64_PINO_DENSICRAFTER_SUCCESS_3_STEPS_SMALL_MASS_GAIN_P20_THREE_SEED_IN_PROGRESS",
       "role": "Complementary differentiable density-field design module: self-supporting hollowing, mass regularization, center-of-mass and bottom-contact losses. Connect its optimized density field to W6 material moments and inertia evaluation; not a general FEM/structural-strength solver.",
       "priority": "P0_P1_CROSS_PROJECT_INTEGRATION",
       "reuse_rule": "MIT; preserve copyright (c) 2025 Shengqi Dang and license notice. Port only isolated differentiable loss/field logic; do not import TRELLIS/MuJoCo/Blender pipeline into W6 core.",
@@ -824,6 +824,23 @@
           "millimeter_wall": false,
           "native_Newton": false,
           "512_cube": false
+        },
+        "p19": {
+          "run_id": 42456853635,
+          "artifact_id": 13607729820,
+          "seed": 271,
+          "target_grid": 128,
+          "source_pino": "P14 trained 64^3 seed271 strict transfer",
+          "steps_per_active_arm": 3,
+          "learning_rate": 0.03,
+          "mass_reduction_fraction": 0.00011161620347643897,
+          "model_cut_moment_relative_error": 0.00013962022785563022,
+          "independent_hard_cut_relative_error": 0.00015087195788510144,
+          "normalized_material_9moment_l2": 0.000035727087379200384,
+          "accepted_steps": 3,
+          "rejected_steps": 0,
+          "peak_process_ru_maxrss_kib": 2404324,
+          "limits": "small pilot; analytic P0 sphere, not Cherchi/FEM/physical wall"
         }
       }
     },
