@@ -10,7 +10,7 @@ from .teapot_moment_frame_m21 import (
 from .test_tangent_neighborhood import _data
 
 
-def f(n,d=1): return {"numerator":str(n),"denominator":str(d)}
+def frac(n,d=1): return {"numerator":str(n),"denominator":str(d)}
 
 def fixture():
     request={"units":{"fixed_density":1,"design_density":1,
@@ -20,13 +20,13 @@ def fixture():
         "target":{"mode":"SPINNING_TOP","axis":[0,0,1],"origin":[0,0,0],"support_points":[]},
         "admission":{"W0_owner_admitted":False,"original_author_CAD":False}}
     frame={"actual_frame":{"coefficient_frame":NATIVE_FRAME,
-        "actual_target_axes_exact":[[f(1),f(0),f(0)],[f(0),f(1),f(0)],[f(0),f(0),f(1)]],
-        "length_original_per_normalized_exact":f(723841050109123,281474976710656),
-        "density_original_per_normalized_exact":f(1),
+        "actual_target_axes_exact":[[frac(1),frac(0),frac(0)],[frac(0),frac(1),frac(0)],[frac(0),frac(0),frac(1)]],
+        "length_original_per_normalized_exact":frac(723841050109123,281474976710656),
+        "density_original_per_normalized_exact":frac(1),
         "native_length_scale_is_bbox_L_not_SI_0025":True,
         "represented_tip_reference_exact":[
-            f(-66571086769065,20282409603651670423947251286016),f(0),
-            f(102728673147415,2535301200456458802993406410752)],
+            frac(-66571086769065,20282409603651670423947251286016),frac(0),
+            frac(102728673147415,2535301200456458802993406410752)],
         "represented_tip_is_exact_requested_tip":False,"frame_identity_sha256":"a"*64},
         "physical_replay":{"density_reference":1.0}}
     return request,frame
@@ -75,12 +75,12 @@ def test_si_frame_rejects_native_normalization():
         validate_normalization(c,SI_FRAME,1.,1.)
 
 @pytest.mark.parametrize("mutator,error",[
-    (lambda q,f:q["units"].update(physical_parameters_approved=True),"P20_PHYSICAL_ADMISSION_STATE_CHANGED"),
-    (lambda q,f:f["actual_frame"].update(length_original_per_normalized_exact=f(3)),"P20_FRAME_LENGTH_CHANGED"),
-    (lambda q,f:f["actual_frame"].update(density_original_per_normalized_exact=f(2)),"P20_FRAME_DENSITY_SCALE_CHANGED"),
-    (lambda q,f:q["units"].update(length_m_per_reference_exact="1/10"),"P20_REFERENCE_TO_SI_SCALE_CHANGED"),
-    (lambda q,f:q["units"].update(design_density=2),"P20_REQUEST_DENSITIES_NOT_ONE"),
-    (lambda q,f:f["actual_frame"]["actual_target_axes_exact"][0].__setitem__(1,f(1)),"P20_FRAME_AXES_NOT_EXACT_IDENTITY"),
+    (lambda q,fr:q["units"].update(physical_parameters_approved=True),"P20_PHYSICAL_ADMISSION_STATE_CHANGED"),
+    (lambda q,fr:fr["actual_frame"].update(length_original_per_normalized_exact=frac(3)),"P20_FRAME_LENGTH_CHANGED"),
+    (lambda q,fr:fr["actual_frame"].update(density_original_per_normalized_exact=frac(2)),"P20_FRAME_DENSITY_SCALE_CHANGED"),
+    (lambda q,fr:q["units"].update(length_m_per_reference_exact="1/10"),"P20_REFERENCE_TO_SI_SCALE_CHANGED"),
+    (lambda q,fr:q["units"].update(design_density=2),"P20_REQUEST_DENSITIES_NOT_ONE"),
+    (lambda q,fr:fr["actual_frame"]["actual_target_axes_exact"][0].__setitem__(1,frac(1)),"P20_FRAME_AXES_NOT_EXACT_IDENTITY"),
 ])
 def test_bad_source_frame_rejected(mutator,error):
     q,fr=fixture();mutator(q,fr)
