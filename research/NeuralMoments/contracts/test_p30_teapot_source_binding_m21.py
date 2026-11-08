@@ -8,7 +8,7 @@ from fractions import Fraction
 import pytest
 
 from .p30_teapot_source_binding_m21 import (
-    SourceBindingRejected, verify_snapshot, strict_json)
+    SourceBindingRejected, verify_snapshot, strict_json, verify_core_source_tree)
 
 
 def b(n,d=1): return {"numerator":str(n),"denominator":str(d)}
@@ -105,11 +105,17 @@ def fixture(tmp_path):
       "p19_complete_shaft_in_fixed":True,"p19_design_shaft_separation":True,
       "global_printability_or_strength_proved":False,
       "native_implicit_region_equality_proved":False}
+    factory_raw=b"p20 factory source\\n"
+    physical_raw=b"p20 physical contract source\\n"
+    (root/"p20_native_factory.py").write_bytes(factory_raw)
+    (root/"p20_physical_contract.py").write_bytes(physical_raw)
     expected={
       "P20_native_request.json":sha(request_raw),
       "P19_material_case/manifest.json":sha(manifest_raw),
       "P19_CANONICAL_SOURCE_COMPLETE_REPORT.json":sha(report_raw),
       "P20_EXACT_FRAME_AND_PHYSICS_REPORT.json":sha(frame_raw),
+      "p20_native_factory.py":sha(factory_raw),
+      "p20_physical_contract.py":sha(physical_raw),
       **{paths[k]:objsha[k] for k in paths}}
     return root,review,expected
 
@@ -182,3 +188,18 @@ def test_symlink_source_rejected(tmp_path):
 def test_duplicate_json_keys_rejected():
     with pytest.raises(SourceBindingRejected,match="DUPLICATE_JSON_KEY"):
         strict_json(b'{"a":1,"a":2}',"test")
+
+
+def test_pinned_core_source_tree_hashes_are_recomputed(tmp_path):
+    expected={}
+    for i in range(10):
+        rel=f"src/module_{i}.py"
+        target=tmp_path/rel
+        target.parent.mkdir(parents=True,exist_ok=True)
+        target.write_bytes(f"core-source-{i}\\n".encode())
+        expected[rel]=sha(target.read_bytes())
+    observed=verify_core_source_tree(tmp_path,"5"*40,expected)
+    assert observed==expected
+    (tmp_path/"src/module_3.py").write_bytes(b"tampered")
+    with pytest.raises(SourceBindingRejected,match="P20_CORE_SOURCE_SHA256_MISMATCH"):
+        verify_core_source_tree(tmp_path,"5"*40,expected)
