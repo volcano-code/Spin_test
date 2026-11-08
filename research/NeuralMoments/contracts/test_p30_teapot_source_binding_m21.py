@@ -146,7 +146,17 @@ def test_manifest_material_path_mismatch_rejected(tmp_path):
     path=root/"P19_material_case/manifest.json"
     data=json.loads(path.read_text());data["material_files"]["M"]="material/other.obj"
     dump(path,data)
-    expected["P19_material_case/manifest.json"]=sha(path.read_bytes())
+    manifest_sha=sha(path.read_bytes())
+    expected["P19_material_case/manifest.json"]=manifest_sha
+    req_path=root/"P20_native_request.json"
+    req=json.loads(req_path.read_text());req["manifest"]["sha256"]=manifest_sha
+    dump(req_path,req)
+    expected["P20_native_request.json"]=sha(req_path.read_bytes())
+    frame_path=root/"P20_EXACT_FRAME_AND_PHYSICS_REPORT.json"
+    frame=json.loads(frame_path.read_text())
+    frame["physical_replay"]["source_manifest_sha256"]=manifest_sha
+    dump(frame_path,frame)
+    expected["P20_EXACT_FRAME_AND_PHYSICS_REPORT.json"]=sha(frame_path.read_bytes())
     with pytest.raises(SourceBindingRejected,match="manifest.material_files.M"):
         verify_snapshot(root,"a"*40,review,expected_head="a"*40,expected_files=expected)
 
