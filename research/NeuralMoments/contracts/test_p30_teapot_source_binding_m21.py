@@ -124,7 +124,7 @@ def test_real_source_binding_fixture_passes(tmp_path):
     root,review,expected=fixture(tmp_path)
     result=verify_snapshot(root,"a"*40,review,expected_head="a"*40,expected_files=expected)
     assert result["status"]=="SOURCE_BYTES_AND_CROSS_REPORT_BINDINGS_VERIFIED_NOT_PHYSICAL_APPROVAL"
-    assert len(result["source_sha256"])==8
+    assert len(result["source_sha256"])==10
     assert result["admission"]["P30B_diagnostic_authorized"] is False
 
 
