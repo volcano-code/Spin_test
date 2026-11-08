@@ -41,6 +41,16 @@ class LayerMath(unittest.TestCase):
         for value in ('3','0.125','1/0','0/-2','a/2',float('inf')):
             with self.subTest(value=value),self.assertRaises(b.Refused):b.q(value)
 
+    def test_large_exact_rational_tokens_exceed_python_default_digit_limit(self):
+        digits='9'*5844
+        # Equal large numerator/denominator reduces exactly to one. This tests
+        # the same 5,844-digit token scale found in the frozen M20 ledger.
+        self.assertEqual(b.q(digits+'/'+digits),F(1))
+        self.assertEqual(b.q('-'+digits+'/'+digits),F(-1))
+        # The interpreter-wide security setting is not disabled or modified.
+        import sys
+        self.assertGreaterEqual(sys.get_int_max_str_digits(),4300)
+
     def test_dual_arithmetic_exact(self):
         x=b.Dual(F(2),F(1));y=b.Dual(F(3),F(-1))
         z=(x*y+x)/2
