@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 jobs:
   physical-gate:
-    name: "P24.6 seed \${{ matrix.seed }}"
+    name: "P24.6 seed ${{ matrix.seed }}"
     runs-on: ubuntu-latest
     timeout-minutes: 60
     permissions:
@@ -36,17 +36,17 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: w6-p14-native-PINO-grid-64
-          repository: \${{ github.repository }}
+          repository: ${{ github.repository }}
           run-id: 42450889982
-          github-token: \${{ github.token }}
+          github-token: ${{ github.token }}
           path: /tmp/w6_p14_64
       - name: Download matching P23 QuadrANN checkpoint
         uses: actions/download-artifact@v4
         with:
-          name: \${{ matrix.p23_artifact }}
-          repository: \${{ github.repository }}
+          name: ${{ matrix.p23_artifact }}
+          repository: ${{ github.repository }}
           run-id: 42461634570
-          github-token: \${{ github.token }}
+          github-token: ${{ github.token }}
           path: /tmp/w6_p23_seed
       - name: Install pinned CPU numerical stack
         run: |
@@ -63,15 +63,15 @@ jobs:
           python -m research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p24_6_physical_gate \
             --pino-checkpoint-dir /tmp/w6_p14_64 \
             --quadrann-checkpoint-dir /tmp/w6_p23_seed \
-            --seed \${{ matrix.seed }} --steps 6 --lr 0.06 --wall-cells 4 \
-            --output /tmp/w6_p24_6_native128_seed\${{ matrix.seed }}.json
+            --seed ${{ matrix.seed }} --steps 6 --lr 0.06 --wall-cells 4 \
+            --output /tmp/w6_p24_6_native128_seed${{ matrix.seed }}.json
       - name: Archive per-seed designs and receipts
         uses: actions/upload-artifact@v4
         with:
-          name: w6-p24-6-native128-seed-\${{ matrix.seed }}
+          name: w6-p24-6-native128-seed-${{ matrix.seed }}
           path: |
-            /tmp/w6_p24_6_native128_seed\${{ matrix.seed }}.json
-            /tmp/w6_p24_6_native128_seed\${{ matrix.seed }}.pt
+            /tmp/w6_p24_6_native128_seed${{ matrix.seed }}.json
+            /tmp/w6_p24_6_native128_seed${{ matrix.seed }}.pt
           if-no-files-found: error
           retention-days: 30
   aggregate:
