@@ -70,14 +70,15 @@ def _pino_metrics(pino,data,batch_size=2):
     }
 
 
-def run(*,checkpoint_dir,seed=883,steps=60,batch_size=4,lr=1e-3,
+def run(*,checkpoint_dir,seed=883,pino_seed=271,steps=60,batch_size=4,lr=1e-3,
         train_geometries_per_family=16,test_ellipsoid_geometries=8,
         queries_per_geometry=4,grid_size=64):
     torch.set_num_threads(1)
-    source=Path(checkpoint_dir)/"w6_p14_grid64_seed271.pt"
+    torch.manual_seed(seed)
+    source=Path(checkpoint_dir)/f"w6_p14_grid64_seed{pino_seed}.pt"
     if not source.is_file(): raise FileNotFoundError(source)
     pkg=torch.load(source,map_location="cpu",weights_only=False)
-    if pkg.get("seed")!=271 or pkg.get("grid_size")!=64:
+    if pkg.get("seed")!=pino_seed or pkg.get("grid_size")!=64:
         raise ValueError("P14 source checkpoint identity mismatch")
     source_sha=hashlib.sha256(source.read_bytes()).hexdigest()
     pino=_model(grid_size)
@@ -158,11 +159,11 @@ def run(*,checkpoint_dir,seed=883,steps=60,batch_size=4,lr=1e-3,
     best_test=_metrics(selected,test,batch_size=2)
     final_val=_pino_metrics(pino,validation)
     final_test=_pino_metrics(pino,test)
-    checkpoint=Path("/tmp/w6_p21_quadrann_seed883.pt")
+    checkpoint=Path(f"/tmp/w6_p21_quadrann_pino{pino_seed}_seed{seed}.pt")
     torch.save({
         "quadrann_state_dict":best_q,"quadrann_final_state_dict":final_q,
         "quadrann_gate":float(best_gate),"quadrann_final_gate":final_gate,
-        "pino_source_checkpoint_sha256":source_sha,"pino_seed":271,
+        "pino_source_checkpoint_sha256":source_sha,"pino_seed":pino_seed,
         "quadrann_upstream":"kesmarag/QuadrANN@111dd611aaeac1fb98c76385706b003ea8ef94be",
         "quadrann_license":"MIT","quadrann_condition_on_material":True,
         "quadrann_max_points":128,"quadrann_kernel_width":.45,
@@ -170,7 +171,7 @@ def run(*,checkpoint_dir,seed=883,steps=60,batch_size=4,lr=1e-3,
     },checkpoint)
     return {
         "schema":"W6_P21_TRAINED_QUADRANN_OPTIONAL_PINO_RESIDUAL_V1",
-        "training_seed":seed,"pino_source_seed":271,
+        "training_seed":seed,"pino_source_seed":pino_seed,
         "pino_source_checkpoint_sha256":source_sha,
         "quadrann_upstream_commit":"111dd611aaeac1fb98c76385706b003ea8ef94be",
         "quadrann_license":"MIT","original_core_unchanged":True,
@@ -209,12 +210,13 @@ def main():
     p=argparse.ArgumentParser()
     p.add_argument("--checkpoint-dir",type=Path,required=True)
     p.add_argument("--seed",type=int,default=883)
+    p.add_argument("--pino-seed",type=int,default=271,choices=(271,277,281))
     p.add_argument("--steps",type=int,default=60)
     p.add_argument("--batch-size",type=int,default=4)
     p.add_argument("--lr",type=float,default=1e-3)
     p.add_argument("--output",type=Path,required=True)
     a=p.parse_args()
-    r=run(checkpoint_dir=a.checkpoint_dir,seed=a.seed,steps=a.steps,
+    r=run(checkpoint_dir=a.checkpoint_dir,seed=a.seed,pino_seed=a.pino_seed,steps=a.steps,
           batch_size=a.batch_size,lr=a.lr)
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(r,indent=2,sort_keys=True,allow_nan=False)+"\n")
