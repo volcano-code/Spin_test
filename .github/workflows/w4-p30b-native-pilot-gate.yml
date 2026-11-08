@@ -8,7 +8,8 @@ on:
       - .github/workflows/w4-p30b-native-pilot-gate.yml
       - research/SpinIt2014_Teapot_20261018/P30/p30b_*.py
       - research/SpinIt2014_Teapot_20261018/P30/p30b_*.sh
-      - research/SpinIt2014_Teapot_20261018/P30/test_p30b_native_sampler.py
+      - research/SpinIt2014_Teapot_20261018/P30/test_p30b*.py
+      - research/SpinIt2014_Teapot_20261018/P30/w0_m21_reference/**
   workflow_dispatch:
 
 permissions:
@@ -52,8 +53,13 @@ jobs:
       - name: Verify P30B sources compile
         run: |
           set -euo pipefail
-          python -m py_compile "w4/$P30/p30b_authority.py" "w4/$P30/p30b_native_sampler.py" \
-            "w4/$P30/test_p30b_native_sampler.py"
+          python -m pip install --disable-pip-version-check 'numpy==2.3.5'
+          python -m py_compile "w4/$P30/p30b_authority.py" \
+            "w4/$P30/p30b_moment_frame.py" "w4/$P30/p30b_native_sampler.py" \
+            "w4/$P30/test_p30b_native_sampler.py" "w4/$P30/test_p30b_moment_frame.py" \
+            "w4/$P30/w0_m21_reference/teapot_moment_frame_m21.py" \
+            "w4/$P30/w0_m21_reference/moment_coordinates.py" \
+            "w4/$P30/w0_m21_reference/tangent_neighborhood.py"
       - name: Verify local 24GiB diagnostic wrapper never skips owner review
         run: |
           set -euo pipefail
@@ -67,9 +73,9 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/w4-p30b"
-          python -m unittest discover -v -s "w4/$P30" -p 'test_p30b_native_sampler.py' \
+          python -m unittest discover -v -s "w4/$P30" -p 'test_p30b*.py' \
             2>&1 | tee "$RUNNER_TEMP/w4-p30b/unittest.log"
-          grep -q '^Ran 20 tests' "$RUNNER_TEMP/w4-p30b/unittest.log"
+          grep -q '^Ran 37 tests' "$RUNNER_TEMP/w4-p30b/unittest.log"
           grep -q '^OK$' "$RUNNER_TEMP/w4-p30b/unittest.log"
           ! grep -q 'skipped=' "$RUNNER_TEMP/w4-p30b/unittest.log"
       - name: Write synthetic-only plan for missing-real-owner-readiness test
@@ -132,13 +138,15 @@ jobs:
           from pathlib import Path
           row={"schema":"W4_P30B_CI_OWNER_PILOT_READINESS_V1",
             "status":"SOFTWARE_CHECK_PASS_NATIVE_PILOT_BLOCKED",
-            "unit_test_count":20,"unit_tests_skipped":0,
+            "unit_test_count":37,"unit_tests_skipped":0,
             "physical_W0_owner_receipt_found":False,
             "W2_separate_Teapot_feature_acceptance_found":False,
             "unlocked_pilot_native_calls":0,
             "genuine_Teapot_neighborhood_samples":0,
             "native_24GiB_runtime_test_executed":False,
             "sample_resume_covered_by_synthetic_tests":True,
+            "M21_native_SI_frame_binding_tested":True,
+            "W0_M21_runtime_branch_import":False,
             "scientific_admission":False,
             "smooth_neighborhood_certified":False,
             "Newton_accepted":False,
