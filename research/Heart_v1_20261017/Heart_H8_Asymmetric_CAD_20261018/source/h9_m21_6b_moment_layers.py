@@ -214,7 +214,10 @@ def layer_interval(a,b,*,side,interval,ledger_side=None):
             'interpretation':'Finite saved surfaces and replayed source tangents only; no continuous branch certificate',
             'newton_admitted':False}
 
-def verify_report_inputs(boundary,ledger,materials):
+def verify_report_inputs(boundary,ledger,materials,motion_metadata=None):
+    if motion_metadata is None:
+        motion_metadata=materials
+    need(len(motion_metadata)==6,'SIX_MOTION_METADATA_REQUIRED')
     need(boundary['schema']=='heart-h9-m21-6a-all-retained-boundary-motion-v1' and
          boundary['status']=='SIX_SAVED_PACKETS_FULL_BOUNDARY_DISCRETE_MOTION_DIAGNOSTIC_ONLY' and
          boundary['sample_count']==6 and len(boundary['intervals'])==6 and
@@ -225,21 +228,22 @@ def verify_report_inputs(boundary,ledger,materials):
          boundary['inputs']['native_source_core_sha256']==BINARY_SHA and
          boundary['inputs']['m21_5b_lpi_sha256']==LPI_SHA and
          boundary['inputs']['six_material_sha256']==[x['material_sha256'] for x in ledger['packets']] and
-         boundary['inputs']['six_motion_sha256']==[x['attachment_sha256'] for x in materials] and
+         boundary['inputs']['six_motion_sha256']==[x['attachment_sha256'] for x in motion_metadata] and
          boundary['inputs']['full_raw_six_packet_bytes_read'] is True and
          boundary['inputs']['all_source_only_motion_attestations_replayed_and_hash_bound'] is True and
          boundary['inputs']['runtime_origin_cryptographically_attested'] is False,
          'BOUNDARY_OR_MATERIAL_IDENTITY_MISMATCH')
-    for i,(s,e) in enumerate(zip(boundary['samples'],materials)):
-        need(s['stem']==e['stem'] and s['retained_vertex_count']==8455 and
+    for i,(s,e,p) in enumerate(zip(boundary['samples'],motion_metadata,ledger['packets'])):
+        need(s['stem']==e['stem']==p['stem'] and e['material_sha256']==p['material_sha256'] and
+             s['retained_vertex_count']==8455 and
              s['source_vertex_count']==162 and s['construction_counts']=={'EXPLICIT3D':7671,'LPI':784},
              'BOUNDARY_SAMPLE_SHAPE_CHANGED:'+str(i))
 
-def compute(states,materials,ledger,boundary,density=1):
+def compute(states,materials,ledger,boundary,density=1,motion_metadata=None):
     need(len(states)==len(materials)==len(ledger['packets'])==6 and len(boundary['intervals'])==6,
          'SIX_SAVED_PACKETS_REQUIRED')
     need(q(density)==1,'DENSITY_CONTRACT_CHANGED')
-    verify_report_inputs(boundary,ledger,materials)
+    verify_report_inputs(boundary,ledger,materials,motion_metadata)
     for side,sequence in SIDES.items():
         baseline=states[sequence[0]]
         for index in sequence[1:]:
@@ -322,8 +326,8 @@ def preview_derived(boundary_path, ledger_path, lpi_path):
          lpi['status']=='SIX_SAVED_PACKETS_THREE_LPI_DIAGNOSTIC_ONLY' and
          len(lpi['samples'])==6 and lpi['newton_admitted'] is False,
          'UNQUALIFIED_M21_5B_LPI')
-    meta=[{'stem':sample['stem'],'attachment_sha256':sample['attachment_sha256']}
-          for sample in lpi['samples']]
+    meta=[{'stem':sample['stem'],'material_sha256':sample['material_sha256'],
+           'attachment_sha256':sample['attachment_sha256']} for sample in lpi['samples']]
     verify_report_inputs(boundary,ledger,meta)
     need(len(boundary['full_half_exact_partition_checks'])==2,
          'INCOMPLETE_PARTITION_CHECKS')
@@ -404,7 +408,7 @@ def run(args):
         states.append(material_state(material,request,speed))
         metadata.append({'stem':ev['stem'],'material_sha256':ev['material_sha256'],
                          'attachment_sha256':row['source_motion_attachment_sha256']})
-    output=compute(states,[m for m,_,_ in raw],ledger,boundary,request['material_density'])
+    output=compute(states,[m for m,_,_ in raw],ledger,boundary,request['material_density'],metadata)
     return output
 
 def main(argv=None):
