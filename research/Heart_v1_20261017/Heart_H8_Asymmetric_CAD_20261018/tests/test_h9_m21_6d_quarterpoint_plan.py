@@ -1,4 +1,8 @@
+import sys
 import unittest
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'source'))
 
 from h9_m21_6d_quarterpoint_plan import (
     EXPECTED_STEMS, PlanRejected, make_quarterpoint_plan,
