@@ -121,12 +121,16 @@ def verify_snapshot(root, w4_head, review_evidence, *,
         ref = request["material_inputs"][name]
         path = ref["path"]
         material_paths[name] = path
-        _same(path, manifest["material_files"][name], "manifest.material_files." + name)
-        _same(ref["sha256"], hashes["P19_material_case/" + path],
+        _need_prefix = "P19_material_case/"
+        need(path.startswith(_need_prefix), "REQUEST_MATERIAL_PATH_OUTSIDE_P19_CASE:" + name)
+        manifest_path = path[len(_need_prefix):]
+        _same(manifest_path, manifest["material_files"][name],
+              "manifest.material_files." + name)
+        _same(ref["sha256"], hashes[path],
               "request.material_inputs." + name + ".sha256")
-        _same(manifest["files_sha256"][path], hashes["P19_material_case/" + path],
-              "manifest.files_sha256." + path)
-        _same(manifest["files_sha256"][path], ref["sha256"],
+        _same(manifest["files_sha256"][manifest_path], hashes[path],
+              "manifest.files_sha256." + manifest_path)
+        _same(manifest["files_sha256"][manifest_path], ref["sha256"],
               "P20_and_P19_material_sha_disagree:" + name)
 
     need(manifest["scientific_flags"]["W0_physical_tip_or_FD_approved"] is False
@@ -194,7 +198,7 @@ def verify_snapshot(root, w4_head, review_evidence, *,
     need(p20["physical_replay"]["source_manifest_sha256"] == hashes[P19_MANIFEST],
          "P20_REPLAY_NOT_BOUND_TO_P19_MANIFEST")
     need(p20["physical_replay"]["source_material_sha256"] ==
-         {name: hashes["P19_material_case/" + material_paths[name]] for name in MATERIAL_KEYS},
+         {name: hashes[material_paths[name]] for name in MATERIAL_KEYS},
          "P20_REPLAY_MATERIAL_SHA_BINDING_CHANGED")
     need(p20["scientific_flags"]["physical_material_validated"] is False
          and p20["scientific_flags"]["native_M6_material_partition_certified"] is False
