@@ -42,6 +42,8 @@ def aggregate(input_dir):
             selected = [x for x in rows if x["family"] == family and x["resolution"] == resolution]
             br = [_f(x["baseline_pino"]["r_relative_l2_to_analytic_p0"], "base_r") for x in selected]
             qr = [_f(x["quadrann_pino"]["r_relative_l2_to_analytic_p0"], "quad_r") for x in selected]
+            hard_base = [_f(x["baseline_pino"]["r_relative_l2_to_independent_hard_cut"], "base_hardcut") for x in selected]
+            hard_quad = [_f(x["quadrann_pino"]["r_relative_l2_to_independent_hard_cut"], "quad_hardcut") for x in selected]
             bj = [_f(x["baseline_pino"]["J_relative_l2_to_analytic_p0"], "base_J") for x in selected]
             qj = [_f(x["quadrann_pino"]["J_relative_l2_to_analytic_p0"], "quad_J") for x in selected]
             ess = [_f(x["quadrann_proposal"]["effective_sample_size"], "ESS") for x in selected]
@@ -50,6 +52,9 @@ def aggregate(input_dir):
                 "baseline_r_mean": statistics.mean(br),
                 "quadrann_r_mean": statistics.mean(qr),
                 "r_error_delta_mean": statistics.mean(qr)-statistics.mean(br),
+                "baseline_hard_cut_error_mean": statistics.mean(hard_base),
+                "quadrann_hard_cut_error_mean": statistics.mean(hard_quad),
+                "hard_cut_error_delta_mean": statistics.mean(hard_quad)-statistics.mean(hard_base),
                 "baseline_J_mean": statistics.mean(bj),
                 "quadrann_J_mean": statistics.mean(qj),
                 "J_error_delta_mean": statistics.mean(qj)-statistics.mean(bj),
