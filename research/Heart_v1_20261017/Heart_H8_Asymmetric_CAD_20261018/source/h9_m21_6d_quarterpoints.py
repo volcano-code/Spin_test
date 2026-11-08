@@ -366,13 +366,17 @@ def _binary_manifest(native, boolean, arithmetic):
 
 
 def _make_settings(args, request_from_frozen):
-    with tempfile.TemporaryDirectory(prefix='h9-m21-6d-request-') as temporary:
+    temporary = tempfile.TemporaryDirectory(prefix='h9-m21-6d-request-')
+    try:
         with zipfile.ZipFile(args.artifact) as archive:
             raw = archive.read('artifacts/h8-request/prepared-request.json')
-        path = Path(temporary) / 'prepared-request.json'
+        path = Path(temporary.name) / 'prepared-request.json'
         path.write_bytes(raw)
         prepared_request, settings, _ = request_from_frozen(path)
-    return prepared_request, settings
+        return prepared_request, settings, temporary
+    except Exception:
+        temporary.cleanup()
+        raise
 
 
 def work_one(args):
@@ -391,6 +395,7 @@ def work_one(args):
         'final_heart_obj_produced': False,
     }
     stage = 'REVERIFY_PLAN_AND_SIX_FROZEN_INPUTS'
+    request_temporary = None
     try:
         context = _load_context(args)
         plan = context['plan']
@@ -413,7 +418,7 @@ def work_one(args):
              (Path(args.repo).resolve() / 'build/h9-w3-core/python').resolve(),
              'QPT_NATIVE_CORE_MODULE_FROM_WRONG_BUILD')
 
-        prepared_request, settings = _make_settings(args, request_from_frozen)
+        prepared_request, settings, request_temporary = _make_settings(args, request_from_frozen)
         engine = Engine(
             prepared_request, settings,
             normalization={'origin': [0., 0., 0.], 'L': 1.},
@@ -428,10 +433,7 @@ def work_one(args):
         q = np.asarray(point['q'], dtype=np.float64)
         base_q = np.asarray(context['old_report']['target_q'], dtype=np.float64)
         need(q.shape == base_q.shape == (10,) and np.isfinite(q).all()
-             and all(same_binary64_coefficients(
-                 [float(q[k]) for k in range(10)],
-                 [float(base_q[k]) if k != 7 else float(q[7]) for k in range(10)]
-             ) for _ in (0,)),
+             and same_binary64_coefficients(point['q'], q.tolist()),
              'QPT_COEFFICIENT_VECTOR_INVALID')
         need(all(float(q[k]) == float(base_q[k]) for k in range(10) if k != 7),
              'QPT_NON_C7_COEFFICIENT_CHANGED')
@@ -442,6 +444,8 @@ def work_one(args):
         value = engine(q)
         material = engine.material(q)
         engine.validate_same_call_material(material, q, prepared_request)
+        need(value.get('boolean_backend_identity') == engine.backend_identity,
+             'QPT_VALUE_ENGINE_BACKEND_IDENTITY_MISMATCH')
         report['new_boolean_calls_completed'] = 1
 
         stage = 'PRESERVE_UNVERIFIED_SAME_CALL_MATERIAL'
@@ -474,8 +478,10 @@ def work_one(args):
         independent_float = np.asarray([float(x) for x in exact_moments], dtype=np.float64)
         reported_moments = np.asarray(value['variable_raw_moments'], dtype=np.float64)
         jacobian = np.asarray(value['moment_jacobian'], dtype=np.float64)
+        material_jacobian = np.asarray(material.get('moment_jacobian'), dtype=np.float64)
         need(independent_float.shape == reported_moments.shape == (10,)
-             and jacobian.shape == (10, 10)
+             and jacobian.shape == material_jacobian.shape == (10, 10)
+             and np.array_equal(jacobian, material_jacobian)
              and np.isfinite(independent_float).all()
              and np.isfinite(reported_moments).all()
              and np.isfinite(jacobian).all(),
@@ -641,6 +647,9 @@ def work_one(args):
             (json.dumps(report, sort_keys=True, indent=2, allow_nan=False) + '\n').encode('utf8'),
         )
         raise
+    finally:
+        if request_temporary is not None:
+            request_temporary.cleanup()
 
 
 def audit_one(args):
@@ -662,6 +671,7 @@ def audit_one(args):
     metadata_path = worker_dir / ('quarterpoint-' + stem + '.json')
     metadata = strict_json(metadata_path, worker_report['metadata_sha256'])
     need(file_hash(archive_path) == metadata.get('material_sha256')
+         == metadata.get('capture_archive_sha256')
          == worker_report.get('final_archive_sha256'),
          'QPT_PROMOTED_MATERIAL_SHA_MISMATCH')
     raw_bytes = archive_path.read_bytes()
@@ -766,6 +776,9 @@ def audit_one(args):
          and all(type(row) is list and len(row) == 10 for row in native_jacobian),
          'QPT_AUDIT_NATIVE_JACOBIAN_INVALID')
     native_j7 = [row[7] for row in native_jacobian]
+    need(same_binary64_coefficients(
+        metadata['native_moment_jacobian_column7'], native_j7),
+        'QPT_AUDIT_NATIVE_J7_METADATA_MISMATCH')
     comparison = compare_vectors(independent_j7, native_j7)
     need(comparison['max_scaled_difference'] <= 1e-10
          and comparison['max_scaled_difference'] == metadata['independent_chain_vs_native_j7_max_scaled']
