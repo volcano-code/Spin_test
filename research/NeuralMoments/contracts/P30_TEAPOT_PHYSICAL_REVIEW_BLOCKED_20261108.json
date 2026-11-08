@@ -1,0 +1,204 @@
+{
+  "schema": "W0_TEAPOT_P30_PHYSICAL_REVIEW_V1",
+  "decision": "BLOCKED_PHYSICAL_CASE_NOT_OWNER_APPROVED",
+  "w0_review_start_head": "5bab2eb2616df306906a6887a273f68acfa49320",
+  "w4_head_observed": "aca53abf0d31329264fe1f028b2aff2175165ba3",
+  "issue5_comments_read": 2,
+  "direct_sha256_rehashed": {
+    "P20_request": "a324bbe85c9ee57a67221eb86420c505efc4d065d60d84cf92d66e4d95dac1b9",
+    "P19_manifest": "c6bd67f872f344da46c1f774f8b68c28a2ecfa4c5a5c000d9e6bf5229e3412d6",
+    "M": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
+    "F": "5c5db73792bd8d6566a954e6d0eef6d22e248a7ad2f8a7a8d8e6d4f2ad9d86a8",
+    "D": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
+    "S": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+  },
+  "corroborated_by_public_receipts_not_raw_rehashed": {
+    "P27_manifest": "3a9b6b21d1d1185e00d1ef25a1bfc625d4696f554c3ab4a7719f5d85ca109773",
+    "P27_lock": "451d8b46cd047325b0b3e2d406f9e89dd0252cece677f5f310ca5abe3c8089a4",
+    "P30_private_plan": "fc2d9a1b3c372513cdf3d6ba41e74812a12761e67f6b6fa82c0a66982351bacc",
+    "base_native_c": "57ac958304df37ebfd36bc1dddeb32c81a113ed5440f65d959f4b45f2a12e6ca",
+    "same_call_Jc": "26cf3b5dd53d45a4b80f14319b39d28fa9ef7b8d8be3a915189e90ba077a08a5"
+  },
+  "P28": {
+    "status": "ARCHIVE_AND_SAME_CALL_ARITHMETIC_REPLAY_CONSISTENT",
+    "files_verified": 37,
+    "files_failed": 0,
+    "official_p21_replay_verify_executed": false,
+    "independent_native_set_predicates_reexecuted": false,
+    "independent_runtime_attestation": false,
+    "scientific_admission": false
+  },
+  "physical_case": {
+    "scale_m_per_reference_proposed": 0.025,
+    "density_kg_m3_proposed": 1200,
+    "density_model": "ASSUMED_UNIFORM_SOLID_NOT_PRINTED_MATERIAL_CERTIFICATE",
+    "bbox_mm": [
+      64.29,
+      40,
+      42.75
+    ],
+    "conditional_length_ref_m": 0.06429,
+    "conditional_density_ref_kg_m3": 1200,
+    "physical_units_approved": false,
+    "mass_kg": {
+      "M": 0.031118997336943656,
+      "F": 0.030623879229415785,
+      "D": 0.0004951181075278711,
+      "S": 0.00034522876294318855
+    },
+    "M_equals_F_plus_D": true,
+    "S_already_in_F": true,
+    "S_separately_added": false,
+    "center_of_mass_m": {
+      "M": [
+        0.00020909987752647146,
+        3.289597355222163e-8,
+        0.016317786546683703
+      ],
+      "F": [
+        0.00021248054445209633,
+        3.3427826229945706e-8,
+        0.01631079864337299
+      ],
+      "D": [
+        -1.711702442325252e-20,
+        -1.3743671140548967e-21,
+        0.01675
+      ],
+      "S": [
+        -3.4344921238481775e-20,
+        1.200157052966431e-20,
+        0.02225685012784948
+      ]
+    },
+    "full_inertia_com_kg_m2": {
+      "M": [
+        [
+          0.000003885498172690457,
+          -2.5588491967436944e-11,
+          -5.387647354106609e-9
+        ],
+        [
+          -2.5588491967436944e-11,
+          0.000004398518998111973,
+          -2.221494630622323e-12
+        ],
+        [
+          -5.387647354106609e-9,
+          -2.221494630622323e-12,
+          0.000005458550461413813
+        ]
+      ],
+      "F": [
+        [
+          0.000003880413266512508,
+          -2.558349495841274e-11,
+          -5.4331174909324105e-9
+        ],
+        [
+          -2.558349495841274e-11,
+          0.000004393412127153277,
+          -2.228648075359519e-12
+        ],
+        [
+          -5.4331174909324105e-9,
+          -2.228648075359519e-12,
+          0.000005452774958403695
+        ]
+      ],
+      "D": [
+        [
+          4.990918533352237e-9,
+          -1.5362550681184515e-15,
+          -1.3937853903056407e-26
+        ],
+        [
+          -1.5362550681184515e-15,
+          4.990885387534517e-9,
+          1.2436366283654635e-26
+        ],
+        [
+          -1.3937853903056407e-26,
+          1.2436366283654635e-26,
+          5.753505082465374e-9
+        ]
+      ],
+      "S": [
+        [
+          4.863130801577518e-8,
+          -1.8069096482697272e-27,
+          1.8185087685803964e-27
+        ],
+        [
+          -1.8069096482697272e-27,
+          4.863130801577518e-8,
+          -9.740921051163033e-29
+        ],
+        [
+          1.8185087685803964e-27,
+          -9.740921051163033e-29,
+          3.805802570293026e-10
+        ]
+      ]
+    },
+    "radial_envelope_scale": "9/8",
+    "xy_rotation_degrees": 7,
+    "original_shaft_bytes_preserved": true,
+    "original_author_CAD": false,
+    "tip_requested": [
+      0,
+      0,
+      0
+    ],
+    "axis": [
+      0,
+      0,
+      1
+    ],
+    "support_points": [],
+    "represented_tip_exactly_equals_requested": false,
+    "tip_residual_reference": [
+      -3.282207985636946e-18,
+      0,
+      4.051931704561162e-17
+    ],
+    "tip_residual_norm_reference": 4.0652034919592544e-17,
+    "tip_residual_m_conditional": 1.0163008729898136e-18,
+    "global_minimum_wall_certified": false,
+    "structural_strength_certified": false,
+    "printability_certified": false
+  },
+  "P30B": {
+    "pilot_directions": [
+      0,
+      1,
+      2
+    ],
+    "maximum_real_native_points": 12,
+    "proposed_h_radians": 0.002,
+    "h_approved": false,
+    "length_ref": null,
+    "density_ref": null,
+    "max_normalized_jacobian_error": null,
+    "base_feature_branch_sha256": null,
+    "real_native_samples": 0
+  },
+  "blockers": [
+    "NO_AUTHORITATIVE_ORIGINAL_TEAPOT_CAD_OR_DIMENSIONED_DRAWING",
+    "0.025_M_PER_REFERENCE_UNIT_NOT_OWNER_APPROVED",
+    "1200_KG_M3_UNIFORM_SOLID_DENSITY_NOT_MATERIAL_CERTIFIED",
+    "NO_AUTHENTIC_TIP_CONTACT_PATCH",
+    "SUPPORT_POINTS_EMPTY_NO_SUPPORT_OR_REACTION_CONSTRAINTS",
+    "NO_OWNER_APPROVED_SPIN_AXIS_BEARING_OR_LOAD_PATH",
+    "9/8_AND_7_DEG_ARE_RECONSTRUCTION_RULES_NOT_AUTHOR_CAD",
+    "NO_GLOBAL_MINIMUM_WALL_OR_STRUCTURAL_STRENGTH_CERTIFICATE",
+    "P27_LOCK_ARCHIVE_AND_P30_PRIVATE_PLAN_RAW_BYTES_NOT_AVAILABLE_FOR_W0_REHASH",
+    "NO_MEASURED_NOISE_OR_CASE_SPECIFIC_JACOBIAN_ERROR_BUDGET",
+    "NO_AUTHENTIC_BASE_FEATURE_BRANCH_SHA"
+  ],
+  "P30B_diagnostic_authorized": false,
+  "newton_authorized": false,
+  "training_authorized": false,
+  "continuous_smooth_neighborhood_certified": false,
+  "physical_validation_authorized": false
+}

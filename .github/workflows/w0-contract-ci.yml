@@ -34,7 +34,8 @@ jobs:
             research/NeuralMoments/contracts/test_cross_window_interface_m16.py \
             research/NeuralMoments/contracts/test_consumer_v2_preview_m17.py \
             research/NeuralMoments/contracts/test_w5_contract_gate_v2_m18.py \
-            research/NeuralMoments/contracts/test_w5_live_handoff_m19.py
+            research/NeuralMoments/contracts/test_w5_live_handoff_m19.py \
+            research/NeuralMoments/contracts/test_p30_teapot_physical_review_m20.py
       - name: Independently audit frozen W2 W5 W6 source interface
         run: |
           python -m research.NeuralMoments.contracts.cross_window_interface_m16 \
@@ -61,6 +62,17 @@ jobs:
             --w2-manifest "$RUNNER_TEMP/w0-m19-current-w2-manifest.json" \
             --w2-head "$w2_head" --w2-blob "$w2_blob" \
             --output "$RUNNER_TEMP/w0-m19-live-w5-w2-adoption.json"
+      - name: Run W0 P30 physical-case review (BLOCKED is expected; no authorization)
+        shell: bash
+        run: |
+          set +e
+          python -m research.NeuralMoments.contracts.p30_teapot_physical_review_m20 \
+            --evidence research/NeuralMoments/contracts/p30_teapot_review_evidence_m20.json \
+            --output "$RUNNER_TEMP/P30_TEAPOT_PHYSICAL_REVIEW_BLOCKED_20261108.json"
+          rc=$?
+          set -e
+          test "$rc" -eq 3
+          python -c 'import json,sys; d=json.load(open(sys.argv[1])); assert d["decision"] == "BLOCKED_PHYSICAL_CASE_NOT_OWNER_APPROVED"; assert d["newton_authorized"] is False and d["training_authorized"] is False' "$RUNNER_TEMP/P30_TEAPOT_PHYSICAL_REVIEW_BLOCKED_20261108.json"
       - name: Upload CI interface denial evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -70,4 +82,5 @@ jobs:
             ${{ runner.temp }}/w0-m16-interface-audit.json
             ${{ runner.temp }}/w0-m17-w5-v2-migration-block.json
             ${{ runner.temp }}/w0-m19-live-w5-w2-adoption.json
+            ${{ runner.temp }}/P30_TEAPOT_PHYSICAL_REVIEW_BLOCKED_20261108.json
           if-no-files-found: warn

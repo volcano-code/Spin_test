@@ -1,0 +1,163 @@
+{
+  "w0_baseline": "5bab2eb2616df306906a6887a273f68acfa49320",
+  "p20_request_sha256": "a324bbe85c9ee57a67221eb86420c505efc4d065d60d84cf92d66e4d95dac1b9",
+  "p19_manifest_sha256": "c6bd67f872f344da46c1f774f8b68c28a2ecfa4c5a5c000d9e6bf5229e3412d6",
+  "p27_manifest_sha256": "3a9b6b21d1d1185e00d1ef25a1bfc625d4696f554c3ab4a7719f5d85ca109773",
+  "p27_lock_sha256": "451d8b46cd047325b0b3e2d406f9e89dd0252cece677f5f310ca5abe3c8089a4",
+  "p30_private_plan_sha256": "fc2d9a1b3c372513cdf3d6ba41e74812a12761e67f6b6fa82c0a66982351bacc",
+  "base_native_c_sha256": "57ac958304df37ebfd36bc1dddeb32c81a113ed5440f65d959f4b45f2a12e6ca",
+  "same_call_jacobian_sha256": "26cf3b5dd53d45a4b80f14319b39d28fa9ef7b8d8be3a915189e90ba077a08a5",
+  "obj_sha256": {
+    "M": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
+    "F": "5c5db73792bd8d6566a954e6d0eef6d22e248a7ad2f8a7a8d8e6d4f2ad9d86a8",
+    "D": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
+    "S": "65d794715d580ebab231716669e25d79fea7f353da35c96d4a54f1779dc7e9f0"
+  },
+  "scale_m_per_reference": 0.025,
+  "density_kg_m3": 1200,
+  "density_model": "ASSUMED_UNIFORM_SOLID_NOT_PRINTED_MATERIAL_CERTIFICATE",
+  "bounds_m": [
+    [
+      -0.029950000000000004,
+      -0.020000000000000004,
+      0
+    ],
+    [
+      0.03434,
+      0.020000000000000004,
+      0.04275
+    ]
+  ],
+  "length_original_per_normalized": 2.5716,
+  "frame_length_is_bbox_L": true,
+  "mass_kg": {
+    "M": 0.031118997336943656,
+    "F": 0.030623879229415785,
+    "D": 0.0004951181075278711,
+    "S": 0.00034522876294318855
+  },
+  "center_of_mass_m": {
+    "M": [
+      0.00020909987752647146,
+      3.289597355222163e-8,
+      0.016317786546683703
+    ],
+    "F": [
+      0.00021248054445209633,
+      3.3427826229945706e-8,
+      0.01631079864337299
+    ],
+    "D": [
+      -1.711702442325252e-20,
+      -1.3743671140548967e-21,
+      0.01675
+    ],
+    "S": [
+      -3.4344921238481775e-20,
+      1.200157052966431e-20,
+      0.02225685012784948
+    ]
+  },
+  "full_inertia_com_kg_m2": {
+    "M": [
+      [
+        0.000003885498172690457,
+        -2.5588491967436944e-11,
+        -5.387647354106609e-9
+      ],
+      [
+        -2.5588491967436944e-11,
+        0.000004398518998111973,
+        -2.221494630622323e-12
+      ],
+      [
+        -5.387647354106609e-9,
+        -2.221494630622323e-12,
+        0.000005458550461413813
+      ]
+    ],
+    "F": [
+      [
+        0.000003880413266512508,
+        -2.558349495841274e-11,
+        -5.4331174909324105e-9
+      ],
+      [
+        -2.558349495841274e-11,
+        0.000004393412127153277,
+        -2.228648075359519e-12
+      ],
+      [
+        -5.4331174909324105e-9,
+        -2.228648075359519e-12,
+        0.000005452774958403695
+      ]
+    ],
+    "D": [
+      [
+        4.990918533352237e-9,
+        -1.5362550681184515e-15,
+        -1.3937853903056407e-26
+      ],
+      [
+        -1.5362550681184515e-15,
+        4.990885387534517e-9,
+        1.2436366283654635e-26
+      ],
+      [
+        -1.3937853903056407e-26,
+        1.2436366283654635e-26,
+        5.753505082465374e-9
+      ]
+    ],
+    "S": [
+      [
+        4.863130801577518e-8,
+        -1.8069096482697272e-27,
+        1.8185087685803964e-27
+      ],
+      [
+        -1.8069096482697272e-27,
+        4.863130801577518e-8,
+        -9.740921051163033e-29
+      ],
+      [
+        1.8185087685803964e-27,
+        -9.740921051163033e-29,
+        3.805802570293026e-10
+      ]
+    ]
+  },
+  "shaft_included_in_fixed": true,
+  "shaft_added_separately_to_total": false,
+  "radial_envelope_scale": "9/8",
+  "xy_rotation_degrees": 7,
+  "original_shaft_bytes_preserved": true,
+  "original_author_cad": false,
+  "physical_parameters_approved": false,
+  "support_points": [],
+  "target_tip_reference": [
+    0,
+    0,
+    0
+  ],
+  "represented_tip_exactly_equals_requested": false,
+  "represented_tip_minus_requested_exact": [
+    {
+      "denominator": "20282409603651670423947251286016",
+      "numerator": "-66571086769065"
+    },
+    {
+      "denominator": "1",
+      "numerator": "0"
+    },
+    {
+      "denominator": "2535301200456458802993406410752",
+      "numerator": "102728673147415"
+    }
+  ],
+  "p19_complete_shaft_in_fixed": true,
+  "p19_design_shaft_separation": true,
+  "global_printability_or_strength_proved": false,
+  "native_implicit_region_equality_proved": false
+}
