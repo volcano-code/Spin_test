@@ -68,8 +68,8 @@ class P19Native128Contracts(unittest.TestCase):
         )
         rho64=torch.zeros((1,2,2,64))
         rho128=torch.zeros((1,2,2,128))
-        rho64[:,:,:,-1-16]=1.0
-        rho128[:,:,:,-1-32]=1.0
+        rho64[:,:,:,16]=1.0
+        rho128[:,:,:,32]=1.0
         c64=resolution_aware_bottom_contact_region(rho64,exp=4.,reference_resolution=64)
         c128=resolution_aware_bottom_contact_region(rho128,exp=4.,reference_resolution=64)
         self.assertTrue(torch.allclose(c64,c128,rtol=1e-6,atol=0.0))
