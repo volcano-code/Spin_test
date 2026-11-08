@@ -18,7 +18,7 @@ class GeneralFrameMomentTests(unittest.TestCase):
         M,Lx,Ly,Lz,xx,yy,zz,yz,xz,xy=m
         exp=[M,Lx-x*M,Ly-y*M,Lz-z*M,xx-2*x*Lx+x*x*M,
              yy-2*y*Ly+y*y*M,zz-2*z*Lz+z*z*M,
-             yz-y*Lz-z*Ly+y*z,xz-x*Lz-z*Lx+x*z,xy-x*Ly-y*Lx+x*y]
+             yz-y*Lz-z*Ly+y*z*M,xz-x*Lz-z*Lx+x*z*M,xy-x*Ly-y*Lx+x*y*M]
         for a,b in zip(got,exp):self.assertAlmostEqual(a,b,places=12)
     def test_90_degree_z_rotation(self):
         m=[1.,2.,3.,4.,5.,6.,7.,8.,9.,10.]
