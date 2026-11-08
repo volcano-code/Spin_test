@@ -16,6 +16,8 @@ It does not replace PINO and does not copy any model from GINO.
 - Record zero-shot 64-trained model performance when evaluated at 128³.
 - Fine-tune ALL PINO weights at 128³ for 8 updates, batch=1, chunked
   eval=1, activation checkpointing enabled and full SpinPINOLoss.
+- Use conservative learning rate 2e-4 for warm-start; the first P16
+  run at default 1.5e-3 is retained as a high-LR exploratory comparison.
 - Groupwise exact cube fit augmentation; separate SO(3) rotated test.
 - Report validation-selected final model, independent voxel hard cut
   comparison and peak CPU RSS.

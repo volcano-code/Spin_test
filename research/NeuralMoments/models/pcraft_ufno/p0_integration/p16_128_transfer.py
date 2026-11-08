@@ -27,7 +27,7 @@ def _rel(a,b):
     return float((a-b).norm()/b.norm().clamp_min(1e-12))
 
 
-def run(*,checkpoint_dir,seed=271,steps=8):
+def run(*,checkpoint_dir,seed=271,steps=8,learning_rate=2e-4):
     torch.set_num_threads(1)
     checkpoint_path=Path(checkpoint_dir)/f"w6_p14_grid64_seed{seed}.pt"
     if not checkpoint_path.is_file():
@@ -64,6 +64,7 @@ def run(*,checkpoint_dir,seed=271,steps=8):
         evaluation_rotation_mode="so3",use_gradient_checkpoint=True,
         initial_state_dict=state,
         initial_state_source=f"P14_native64_seed{seed}",
+        learning_rate=learning_rate,
         device="cpu",
     )
     wall=time.perf_counter()-started
@@ -102,7 +103,7 @@ def run(*,checkpoint_dir,seed=271,steps=8):
             "test":split128["metadata"]["test_sha256"]},
         "zero_shot_64_checkpoint_at_128":{
             "validation":zero_shot_val,"heldout":zero_shot},
-        "fine_tuning":{"steps":steps,"selected_step":result["training"]["selected_step"],
+        "fine_tuning":{"steps":steps,"learning_rate":learning_rate,"selected_step":result["training"]["selected_step"],
             "seconds":result["training"]["seconds"],"wall_seconds":wall,
             "history":result["training"]["history"],
             "initial_state_source":result["model_config"]["initial_state_source"]},
@@ -126,9 +127,10 @@ def main():
     p.add_argument("--checkpoint-dir",type=Path,required=True)
     p.add_argument("--seed",type=int,default=271)
     p.add_argument("--steps",type=int,default=8)
+    p.add_argument("--learning-rate",type=float,default=2e-4)
     p.add_argument("--output",type=Path,required=True)
     a=p.parse_args()
-    r=run(checkpoint_dir=a.checkpoint_dir,seed=a.seed,steps=a.steps)
+    r=run(checkpoint_dir=a.checkpoint_dir,seed=a.seed,steps=a.steps,learning_rate=a.learning_rate)
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(r,indent=2,sort_keys=True,allow_nan=False)+"\n")
     print(json.dumps({"zero_shot":r["zero_shot_64_checkpoint_at_128"]["heldout"],
