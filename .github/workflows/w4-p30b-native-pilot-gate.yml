@@ -53,7 +53,7 @@ jobs:
       - name: Verify P30B sources compile
         run: |
           set -euo pipefail
-          python -m pip install --disable-pip-version-check 'numpy==2.3.5'
+          python -m pip install --disable-pip-version-check 'numpy==2.3.5' 'pytest==8.3.5'
           python -m py_compile "w4/$P30/p30b_authority.py" \
             "w4/$P30/p30b_moment_frame.py" "w4/$P30/p30b_native_sampler.py" \
             "w4/$P30/test_p30b_native_sampler.py" "w4/$P30/test_p30b_moment_frame.py" \
