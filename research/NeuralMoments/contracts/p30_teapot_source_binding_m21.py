@@ -21,11 +21,15 @@ P20_REQUEST = "P20_native_request.json"
 P19_MANIFEST = "P19_material_case/manifest.json"
 P19_REPORT = "P19_CANONICAL_SOURCE_COMPLETE_REPORT.json"
 P20_FRAME_REPORT = "P20_EXACT_FRAME_AND_PHYSICS_REPORT.json"
+P20_FACTORY = "p20_native_factory.py"
+P20_PHYSICAL_CONTRACT = "p20_physical_contract.py"
 EXPECTED_FILES = {
     P20_REQUEST: "a324bbe85c9ee57a67221eb86420c505efc4d065d60d84cf92d66e4d95dac1b9",
     P19_MANIFEST: "c6bd67f872f344da46c1f774f8b68c28a2ecfa4c5a5c000d9e6bf5229e3412d6",
     P19_REPORT: "f30fabc8ce348b9b8f42ff20649e683557349582ef31baf6c05d35e17b448601",
     P20_FRAME_REPORT: "eaba6b60753fcb2141be425081897a8e891821349c166f5daff143d3ce9ea5fc",
+    P20_FACTORY: "bebab47452b61da7af3faa9e202f0ca44d3e1e36d18f171c90c50517b83047f4",
+    P20_PHYSICAL_CONTRACT: "6f71e5d7ce1a2fcb14579beb5f6680ea3b847193ad4d6ba48cfcc962ce008391",
     "P19_material_case/material/M_native.obj": "0b59fd6f41079ab507af3e31673f94472b0d6f849df981b52c1ea667994ad704",
     "P19_material_case/material/F_native.obj": "5c5db73792bd8d6566a954e6d0eef6d22e248a7ad2f8a7a8d8e6d4f2ad9d86a8",
     "P19_material_case/material/D_native.obj": "d64a3163c886cb06ade6f366e8ff5e475934816343a5be429b55c5832951b073",
@@ -87,9 +91,27 @@ def _same(actual, expected, label):
     need(actual == expected, "REVIEW_EVIDENCE_DOES_NOT_MATCH_SOURCE:" + label)
 
 
+def verify_core_source_tree(core_root, core_commit, source_sha256):
+    root = Path(core_root).resolve(strict=True)
+    need(type(core_commit) is str and HEX40.fullmatch(core_commit),
+         "INVALID_CORE_SOURCE_COMMIT")
+    need(type(source_sha256) is dict and len(source_sha256) == 10,
+         "P20_CORE_SOURCE_INVENTORY_NOT_COMPLETE")
+    observed = {}
+    for relative, expected in sorted(source_sha256.items()):
+        need(type(expected) is str and SHA.fullmatch(expected),
+             "P20_CORE_SOURCE_SHA_INVALID:" + relative)
+        data = _safe_bytes(root, relative)
+        actual = hashlib.sha256(data).hexdigest()
+        need(actual == expected, "P20_CORE_SOURCE_SHA256_MISMATCH:" + relative)
+        observed[relative] = actual
+    return observed
+
+
 def verify_snapshot(root, w4_head, review_evidence, *,
                     expected_head=W4_REVIEWED_COMMIT,
-                    expected_files=EXPECTED_FILES):
+                    expected_files=EXPECTED_FILES,
+                    core_root=None, core_commit=None):
     root = Path(root).resolve(strict=True)
     need(type(w4_head) is str and HEX40.fullmatch(w4_head), "INVALID_W4_HEAD")
     need(w4_head == expected_head, "UNREVIEWED_W4_HEAD:" + w4_head)
@@ -113,6 +135,11 @@ def verify_snapshot(root, w4_head, review_evidence, *,
           "P20_request.source_w0_commit")
     _same(p20["actual_core_sources"]["commit"], request["source_w4_commit"],
           "P20_request_and_frame_report_core_commit")
+    core_source_sha256 = None
+    if core_root is not None:
+        _same(core_commit, request["source_w4_commit"], "W0_M21_core_source_commit")
+        core_source_sha256 = verify_core_source_tree(
+            core_root, core_commit, p20["actual_core_sources"]["source_sha256"])
     need(p20["actual_core_sources"]["native_core_executed"] is False
          and p20["actual_core_sources"]["whole_commit_tree_verified"] is False,
          "P20_FRAME_REPORT_SCOPE_CHANGED")
@@ -262,6 +289,8 @@ def verify_snapshot(root, w4_head, review_evidence, *,
         "status": "SOURCE_BYTES_AND_CROSS_REPORT_BINDINGS_VERIFIED_NOT_PHYSICAL_APPROVAL",
         "w4_head": w4_head,
         "source_sha256": hashes,
+        "core_source_commit": core_commit,
+        "core_source_sha256": core_source_sha256,
         "derived_review_facts": derived,
         "native_coordinate_frame": {
             "frame": frame["coefficient_frame"],
@@ -289,12 +318,15 @@ def main(argv=None):
     parser.add_argument("--w4-root", type=Path, required=True,
                         help="P1 directory from the W4 branch archive")
     parser.add_argument("--w4-head", required=True)
+    parser.add_argument("--core-root", type=Path, required=True)
+    parser.add_argument("--core-commit", required=True)
     parser.add_argument("--review-evidence", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
     try:
         evidence = strict_json(args.review_evidence.read_bytes(), "W0 review evidence")
-        result = verify_snapshot(args.w4_root, args.w4_head, evidence)
+        result = verify_snapshot(args.w4_root, args.w4_head, evidence,
+                                  core_root=args.core_root, core_commit=args.core_commit)
         if args.output.exists() or args.output.is_symlink():
             raise SourceBindingRejected("REFUSE_OVERWRITE")
         args.output.parent.mkdir(parents=True, exist_ok=True)
