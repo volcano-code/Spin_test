@@ -1,0 +1,106 @@
+name: W6 P23 three-seed QuadrANN confirmation around P-CRAFT PINO
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/p21_train_quadrann.py
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/p23_aggregate.py
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_p23_aggregate.py
+      - research/NeuralMoments/models/pcraft_ufno/p0_integration/P23_PROTOCOL.md
+      - .github/workflows/w6-p23-quadrann-three-seed.yml
+  workflow_dispatch:
+jobs:
+  quadrann-three-seeds:
+    name: "QuadrANN PINO ${{ matrix.pino_seed }} / train ${{ matrix.train_seed }}"
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      actions: read
+      contents: read
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - pino_seed: 271
+            train_seed: 883
+          - pino_seed: 277
+            train_seed: 887
+          - pino_seed: 281
+            train_seed: 991
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Download trained P14 64-cube PINO checkpoints
+        uses: actions/download-artifact@v4
+        with:
+          name: w6-p14-native-PINO-grid-64
+          repository: ${{ github.repository }}
+          run-id: 42450889982
+          github-token: ${{ github.token }}
+          path: /tmp/w6_p14_64
+      - name: Install pinned PyTorch and original QuadrANN dependencies
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install torch-scatter torch-cluster -f https://data.pyg.org/whl/torch-2.5.1+cpu.html
+          python -m pip install torch-geometric==2.6.1 numpy pytest
+      - name: Validate QuadrANN zero-gate and Jacobian contracts
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_p21_quadrann.py research/NeuralMoments/models/pcraft_ufno/p0_integration/tests/test_p12_material_quadrann.py
+      - name: Train original QuadrANN around matching trained PINO checkpoint
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.p0_integration.p21_train_quadrann \
+            --checkpoint-dir /tmp/w6_p14_64 --pino-seed ${{ matrix.pino_seed }} --seed ${{ matrix.train_seed }} \
+            --steps 60 --batch-size 4 --lr 0.001 \
+            --output /tmp/w6_p23_quadrann_pino${{ matrix.pino_seed }}_seed${{ matrix.train_seed }}.json
+      - name: Archive seed-specific QuadrANN model and comparison
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p23-quadrann-seed-${{ matrix.pino_seed }}
+          path: |
+            /tmp/w6_p23_quadrann_pino${{ matrix.pino_seed }}_seed${{ matrix.train_seed }}.json
+            /tmp/w6_p21_quadrann_pino${{ matrix.pino_seed }}_seed${{ matrix.train_seed }}.pt
+          if-no-files-found: error
+          retention-days: 30
+  aggregate:
+    needs: quadrann-three-seeds
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Download all independent QuadrANN results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: w6-p23-quadrann-seed-*
+          merge-multiple: true
+          path: /tmp/w6_p23_all
+      - name: Aggregate using standard-library-only script
+        run: |
+          python research/NeuralMoments/models/pcraft_ufno/p0_integration/p23_aggregate.py \
+            --input-dir /tmp/w6_p23_all --output /tmp/w6_p23_quadrann_aggregate.json
+      - name: Archive multi-seed decision
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p23-quadrann-three-seed-aggregate
+          path: /tmp/w6_p23_quadrann_aggregate.json
+          if-no-files-found: error
+          retention-days: 30
