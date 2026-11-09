@@ -245,6 +245,12 @@ def run(input_dir, checkpoint_dir):
     analytic_y = torch.tensor(analytic_y, dtype=torch.float32)
     hard_model, hm, hs, hym, hys, hard_metrics = _fit_calibrate(X, hard_y, splits, geometry_ids, 2501)
     analytic_model, am, ass, aym, ays, analytic_metrics = _fit_calibrate(X, analytic_y, splits, geometry_ids, 2502)
+    test_cases = [{
+        **metadata[i],
+        "features": [float(v) for v in X[i].tolist()],
+        "hardcut_error": float(hard_y[i]),
+        "analytic_p0_error": float(analytic_y[i]),
+    } for i in range(len(metadata)) if splits[i] == "test"]
     checkpoint_dir = Path(checkpoint_dir)
     checkpoint_dir.mkdir(parents=True, exist_ok=True)
     hard_path = checkpoint_dir / "w6_p25_uqno_hardcut.pt"
@@ -270,6 +276,7 @@ def run(input_dir, checkpoint_dir):
         "hardcut_error_predictor": hard_metrics,
         "analytic_p0_error_predictor": analytic_metrics,
         "metadata": metadata,
+        "test_cases": test_cases,
         "checkpoints": {
             "hardcut": str(hard_path), "analytic_p0": str(analytic_path),
         },
