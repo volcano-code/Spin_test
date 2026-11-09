@@ -26,6 +26,8 @@ class FIGConvNetPointEncoder(nn.Module):
         num_points: int = 4096,
         figconv_out_channels: int,
         output_dim: int,
+        aabb_min: tuple[float, float, float] = (0.0, 0.0, 0.0),
+        aabb_max: tuple[float, float, float] = (1.0, 1.0, 1.0),
     ):
         super().__init__()
         if not isinstance(figconv_model, nn.Module):
@@ -38,6 +40,10 @@ class FIGConvNetPointEncoder(nn.Module):
         self.num_points = int(num_points)
         self.figconv_out_channels = int(figconv_out_channels)
         self.output_dim = int(output_dim)
+        self.register_buffer("aabb_min", torch.tensor(aabb_min, dtype=torch.float32))
+        self.register_buffer("aabb_max", torch.tensor(aabb_max, dtype=torch.float32))
+        if not bool(torch.isfinite(self.aabb_min).all() and torch.isfinite(self.aabb_max).all()) or bool((self.aabb_max <= self.aabb_min).any()):
+            raise ValueError("FIGConvNet AABB bounds must be finite and strictly ordered")
         self.projection = nn.Sequential(
             nn.Linear(2 * figconv_out_channels, output_dim),
             nn.GELU(),
@@ -64,7 +70,10 @@ class FIGConvNetPointEncoder(nn.Module):
             geometry.shape[1:], device=geometry.device, dtype=geometry.dtype
         )
         denom = (spatial - 1).clamp_min(1)
-        vertices = 2.0 * coords.to(geometry.dtype) / denom - 1.0
+        unit_coords = coords.to(geometry.dtype) / denom
+        aabb_min = self.aabb_min.to(device=geometry.device, dtype=geometry.dtype)
+        aabb_max = self.aabb_max.to(device=geometry.device, dtype=geometry.dtype)
+        vertices = aabb_min + unit_coords * (aabb_max-aabb_min)
         ix, iy, iz = coords.unbind(-1)
         features = geometry[:, ix, iy, iz].transpose(0, 1).contiguous()
         return vertices.contiguous(), features
