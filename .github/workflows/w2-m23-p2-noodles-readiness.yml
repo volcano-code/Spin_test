@@ -7,6 +7,8 @@ on:
     paths:
       - 'research/NeuralMoments/teacher/m23_p2_noodles_rebuild_readiness.py'
       - 'research/NeuralMoments/teacher/test_m23_p2_noodles_rebuild_readiness.py'
+      - 'research/NeuralMoments/teacher/v7_exact_planar_patches.py'
+      - 'research/NeuralMoments/teacher/test_v7_exact_planar_patches.py'
       - '.github/workflows/w2-m23-p2-noodles-readiness.yml'
   workflow_dispatch:
 
@@ -22,6 +24,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Run readiness gate tests
+      - name: Run readiness and exact planar dependency tests
         working-directory: research/NeuralMoments/teacher
-        run: python -m unittest -v test_m23_p2_noodles_rebuild_readiness.py
+        run: |
+          python -m unittest -v test_m23_p2_noodles_rebuild_readiness.py
+          python -m unittest -v test_v7_exact_planar_patches.py
