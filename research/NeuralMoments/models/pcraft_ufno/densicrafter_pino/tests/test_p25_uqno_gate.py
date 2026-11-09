@@ -29,6 +29,8 @@ class P25UQNOGateContracts(unittest.TestCase):
             "metrics": {
                 "calibration_standardized_residual_q90": 1.64,
                 "calibration_standardized_residual_q95": 1.96,
+                "training_feature_q01": [-1.0]*5,
+                "training_feature_q99": [1.0]*5,
             },
         }, path)
 
@@ -70,13 +72,29 @@ class P25UQNOGateContracts(unittest.TestCase):
             with self.assertRaises(ValueError):
                 CalibratedUQNO(p, target="hardcut")
 
-    def test_nonfinite_features_fail_closed(self):
+    def test_nonfinite_features_trigger_exact_fallback(self):
         with tempfile.TemporaryDirectory() as d:
             p = Path(d)/"uq.pt"
             self._checkpoint(p)
             uq = CalibratedUQNO(p, target="hardcut")
-            with self.assertRaises(ValueError):
-                uq.predict_interval([float("nan")]*5)
+            result = uq.predict_or_fallback(
+                [float("nan")]*5, "pino", lambda: "hardcut",
+                error_tolerance=.1,
+            )
+            self.assertTrue(result["fallback_used"])
+            self.assertEqual(result["value"], "hardcut")
+
+    def test_out_of_distribution_features_trigger_exact_fallback(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d)/"uq.pt"
+            self._checkpoint(p)
+            uq = CalibratedUQNO(p, target="hardcut")
+            result = uq.predict_or_fallback(
+                [2.0]*5, "pino", lambda: "hardcut",
+                error_tolerance=.1,
+            )
+            self.assertTrue(result["fallback_used"])
+            self.assertEqual(result["decision"]["reason"], "FEATURE_OUTSIDE_TRAINING_01_99_ENVELOPE")
 
 
 if __name__ == "__main__":
