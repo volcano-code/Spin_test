@@ -174,6 +174,8 @@ def _fit_calibrate(X, y, split, geometry_ids, seed):
         result = {
             "train_rows": int(train.sum()), "calibration_rows": int(cal.sum()),
             "test_rows": int(test.sum()), "feature_dim": int(X.shape[1]),
+            "training_feature_q01": [float(v) for v in torch.quantile(X[train], .01, dim=0)],
+            "training_feature_q99": [float(v) for v in torch.quantile(X[train], .99, dim=0)],
             "train_unique_geometries": len(train_gids),
             "calibration_unique_geometries": len(cal_gids),
             "test_unique_geometries": len(test_gids),
