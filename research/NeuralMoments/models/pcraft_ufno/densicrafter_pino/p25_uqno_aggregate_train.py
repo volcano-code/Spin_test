@@ -86,6 +86,21 @@ class _UQNO(nn.Module):
         return mu, logvar
 
 
+def _group_max_scores(scores, selected_mask, geometry_ids):
+    """Max score per geometry; scores are already subset to selected_mask."""
+    selected_indices = torch.nonzero(selected_mask, as_tuple=False).reshape(-1).tolist()
+    selected_geometry_ids = [geometry_ids[i] for i in selected_indices]
+    if len(scores) != len(selected_geometry_ids):
+        raise ValueError("score/selected geometry count mismatch")
+    grouped = []
+    for gid in sorted(set(selected_geometry_ids)):
+        local = torch.tensor([g == gid for g in selected_geometry_ids], dtype=torch.bool)
+        grouped.append(scores[local].max())
+    if not grouped:
+        raise ValueError("empty geometry group calibration set")
+    return torch.stack(grouped)
+
+
 def _fit_calibrate(X, y, split, geometry_ids, seed):
     train = torch.tensor([s == "train" for s in split])
     cal = torch.tensor([s == "calibration" for s in split])
@@ -126,11 +141,7 @@ def _fit_calibrate(X, y, split, geometry_ids, seed):
         cal_z = ((ylog[cal]-mu[cal]).abs()/sigma[cal].clamp_min(1e-6))
         # Geometry-level simultaneous calibration: all coefficient queries
         # and both resolutions for a geometry contribute to one max score.
-        cal_group_scores = []
-        for gid in cal_gids:
-            mask = torch.tensor([g == gid for g in geometry_ids], dtype=torch.bool) & cal
-            cal_group_scores.append(cal_z[mask].max())
-        cal_group_scores = torch.stack(cal_group_scores)
+        cal_group_scores = _group_max_scores(cal_z, cal, geometry_ids)
         def conformal_quantile(scores, alpha):
             k = min(len(scores), max(1, math.ceil((len(scores)+1)*(1-alpha))))
             return float(torch.kthvalue(scores, k).values)
@@ -142,12 +153,14 @@ def _fit_calibrate(X, y, split, geometry_ids, seed):
         upper95 = torch.exp(mu[test]+q95*sigma[test])
         coverage90 = float(((y[test] >= lower90) & (y[test] <= upper90)).float().mean())
         coverage95 = float(((y[test] >= lower95) & (y[test] <= upper95)).float().mean())
+        test_indices = torch.nonzero(test, as_tuple=False).reshape(-1).tolist()
+        test_geometry_ids = [geometry_ids[i] for i in test_indices]
         geometry_coverage90 = []
         geometry_coverage95 = []
         for gid in test_gids:
-            mask = torch.tensor([g == gid for g in geometry_ids], dtype=torch.bool) & test
-            geometry_coverage90.append(bool(((y[mask] >= lower90[mask]) & (y[mask] <= upper90[mask])).all()))
-            geometry_coverage95.append(bool(((y[mask] >= lower95[mask]) & (y[mask] <= upper95[mask])).all()))
+            local = torch.tensor([g == gid for g in test_geometry_ids], dtype=torch.bool)
+            geometry_coverage90.append(bool(((y[test][local] >= lower90[local]) & (y[test][local] <= upper90[local])).all()))
+            geometry_coverage95.append(bool(((y[test][local] >= lower95[local]) & (y[test][local] <= upper95[local])).all()))
         pred_median = torch.exp(mu[test])
         mae_log = float((mu[test]-ylog[test]).abs().mean())
         # Risk-coverage: sort by predicted 90% upper bound, accept lowest risk first.
