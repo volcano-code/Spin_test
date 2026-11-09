@@ -1,0 +1,32 @@
+name: W6 P25.3 geometry-conditional QuadrANN policy contracts
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_3_quadrann_policy.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p25_3_quadrann_policy.py
+      - .github/workflows/w6-p25-3-quadrann-conditional-policy.yml
+  workflow_dispatch:
+jobs:
+  policy-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install pinned CPU PyTorch and pytest
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install pytest
+      - name: Test conditional QuadrANN policy contracts
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p25_3_quadrann_policy.py
