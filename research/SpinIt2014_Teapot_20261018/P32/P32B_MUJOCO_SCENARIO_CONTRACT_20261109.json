@@ -1,0 +1,144 @@
+{
+  "schema": "W4_P32B_MUJOCO_SCENARIO_CONTRACT_V1",
+  "date": "2026-11-09",
+  "project": "Spin_test",
+  "window": "W4",
+  "status": "SCENARIO_CONTRACT_DRAFT_NOT_PHYSICAL_ADMISSION",
+  "design_identity": {
+    "case": "B_NEW_UTAH_TEAPOT_INSPIRED_SPINNING_TOP",
+    "historical_original_cad_claim": false,
+    "source_meshes_frozen": true,
+    "M_git_blob_sha1": "e2651b8a2efcc89fee3e69f9ebb78ddffb8f942e",
+    "F_git_blob_sha1": "180c3ade7c939008b90fa1aaabe82653047b2e6c",
+    "D_git_blob_sha1": "9820f3d73d15a4cdd0c504a0264f934aefd40df1",
+    "S_git_blob_sha1": "9fe9f78257c7a90970095f6bb54c5148198a33d1"
+  },
+  "provisional_si_mapping": {
+    "length_m_per_reference": 0.025,
+    "density_kg_m3": 1200,
+    "status": "USER_SELECTED_PROVISIONAL_NOT_W0_APPROVED"
+  },
+  "body_mass_properties_candidate": {
+    "source": "P20_EXACT_FRAME_AND_PHYSICS_REPORT.json physical_replay.materials.F",
+    "geometry": "F_RETAINED_MATERIAL_ONLY",
+    "mass_kg": 0.030623879229415785,
+    "center_of_mass_m": [
+      0.00021248054445209633,
+      3.3427826229945706e-8,
+      0.01631079864337299
+    ],
+    "inertia_about_com_kg_m2": [
+      [0.000003880413266512508, -2.558349495841274e-11, -5.4331174909324105e-9],
+      [-2.558349495841274e-11, 0.000004393412127153277, -2.228648075359519e-12],
+      [-5.4331174909324105e-9, -2.228648075359519e-12, 0.000005452774958403695]
+    ],
+    "status": "CONDITIONAL_ALGEBRAIC_REPLAY_NOT_NATIVE_PHYSICAL_APPROVAL",
+    "must_not_be_used_as": [
+      "validated_printed_part_mass",
+      "certified_native_inertia",
+      "W0_physical_admission"
+    ]
+  },
+  "mujoco_scene_contract": {
+    "world_frame": "P19_REFERENCE_ALREADY_Z_UP_MAPPED_TO_SI",
+    "gravity_m_s2": [0, 0, -9.80665],
+    "ground": {
+      "type": "plane",
+      "normal": [0, 0, 1],
+      "height_m": 0,
+      "status": "SCENE_CONVENTION_ONLY"
+    },
+    "spinning_body": {
+      "free_joint": true,
+      "visual_mesh": "F_OR_APPROVED_FINAL_BODY_MESH",
+      "collision_mesh": "DO_NOT_USE_RAW_CONCAVE_VISUAL_MESH_AS_UNREVIEWED_CONTACT_PROXY",
+      "initial_pose": "TIP_CONTACT_CONFIGURATION_TO_BE_FROZEN_BY_W0",
+      "initial_angular_velocity_rad_s": "W0_MUST_DEFINE_APPROVED_TEST_SWEEP",
+      "initial_linear_velocity_m_s": "W0_MUST_DEFINE"
+    },
+    "tip_contact": {
+      "status": "UNRESOLVED_OWNER_CHOICE",
+      "candidate_modes": [
+        {
+          "id": "IDEAL_POINT_TIP_DIAGNOSTIC",
+          "description": "idealized point-like tip; diagnostic only; requires regularized contact model and convergence study",
+          "contact_patch_radius_m": null,
+          "physical_printability_claim": false
+        },
+        {
+          "id": "FINITE_RADIUS_OR_FLAT_PAD",
+          "description": "explicitly redesigned finite contact pad; requires a new frozen geometry, new hashes, and updated P20 preregistration",
+          "contact_patch_radius_m": null,
+          "physical_printability_claim": false
+        }
+      ],
+      "friction_coefficient": null,
+      "normal_contact_stiffness": null,
+      "normal_contact_damping": null,
+      "tangential_contact_parameters": null,
+      "all_contact_parameters_require_W0_approval": true
+    },
+    "material": {
+      "density_kg_m3": 1200,
+      "elastic_modulus_pa": null,
+      "poisson_ratio": null,
+      "yield_strength_pa": null,
+      "anisotropy_model": null,
+      "print_process": null,
+      "infill_fraction": null,
+      "shell_count_or_wall_settings": null,
+      "status": "DENSITY_ONLY_PROVISIONAL_NO_STRUCTURAL_MATERIAL_MODEL"
+    }
+  },
+  "experiment_protocol": {
+    "baseline": "FROZEN_UNOPTIMIZED_APPROVED_GEOMETRY",
+    "optimized": "NEW_GEOMETRY_WITH_NEW_HASHES_AFTER_OPTIMIZATION_ADMISSION",
+    "paired_conditions": [
+      "same_total_mass_or_report_mass_change",
+      "same_initial_pose",
+      "same_angular_velocity",
+      "same_contact_model",
+      "same_integrator_and_timestep",
+      "same_solver_tolerances"
+    ],
+    "required_metrics": [
+      "upright_or_fall_time",
+      "tilt_angle_time_series",
+      "spin_rate_decay",
+      "angular_momentum_time_series",
+      "contact_impulse_and_peak_force",
+      "center_of_mass_height",
+      "energy_drift_and_solver_residual",
+      "simulation_wall_clock"
+    ],
+    "required_sensitivity": [
+      "timestep_refinement",
+      "contact_stiffness_damping_sweep",
+      "friction_sweep",
+      "initial_spin_sweep",
+      "small_initial_tilt_perturbations"
+    ],
+    "no_claim_without": [
+      "W0_approved_physical_case",
+      "frozen_contact_and_load_contract",
+      "robust_geometry_and_material_partition_certificate",
+      "W2_Teapot_specific_teacher_receipt",
+      "approved_native_moment_evidence",
+      "paired_baseline_optimized_runs",
+      "numerical_convergence_and_sensitivity_report"
+    ]
+  },
+  "gates": {
+    "W0_physical_approval": false,
+    "W2_Teapot_teacher_approval": false,
+    "robust_self_intersection_and_containment_certificate": false,
+    "contact_geometry_frozen": false,
+    "material_structural_properties_approved": false,
+    "P30B_native_calls_allowed": false,
+    "optimization_admitted": false,
+    "Newton_accepted": false,
+    "training_admissible": false,
+    "MuJoCo_optimized_before_after_executed": false,
+    "printability_certified": false
+  }
+}
