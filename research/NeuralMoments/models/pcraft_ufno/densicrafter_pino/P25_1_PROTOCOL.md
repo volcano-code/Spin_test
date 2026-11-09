@@ -19,10 +19,10 @@ voxelized approximation are not identical.
 - Matched seed pairs: (271,883), (277,887), (281,991).
 - Shared deterministic dataset seed: 20261108.
 - Families: box, sphere, ellipsoid.
-- 24 unique geometries per family; 2 coefficient queries per geometry.
+- 80 unique geometries per family; 2 coefficient queries per geometry.
 - Resolutions: 64^3 and 128^3.
-- Total unique geometries: 72.
-- Total geometry/query/resolution groups: 288.
+- Total unique geometries: 240.
+- Total geometry/query/resolution groups: 960.
 - Every model pair evaluates the same geometry IDs and query coefficients.
 - Geometry ID, not individual query or resolution row, determines the
   train/calibration/test split.
@@ -73,3 +73,13 @@ collect more calibration geometries; do not tune on the test split.
 - Jacobians are features/diagnostics only and are not Newton-admitted.
 - No FEM/FEA, printability, millimeter-wall or 512^3 claim.
 - UQNO estimates model error; it does not itself compute exact moments.
+
+
+## P25.1b sample-size expansion
+
+The initial 72-geometry pilot yielded only 17 calibration geometries, causing
+both 90% and 95% conformal quantiles to equal the maximum calibration score.
+P25.1b expands to 80 geometries per family (240 unique geometries total),
+providing a larger geometry-disjoint calibration and test set. This is a
+new data collection run; the original pilot remains archived and must not
+be overwritten.
