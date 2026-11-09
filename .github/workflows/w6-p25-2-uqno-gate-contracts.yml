@@ -1,4 +1,8 @@
 name: W6 P25.2 UQNO calibrated fallback contracts
+concurrency:
+  group: w6-p25-2-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches:
