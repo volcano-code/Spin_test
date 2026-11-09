@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M23_P2_REBUILD_READINESS_GATE_IMPLEMENTED_CI_PASS_LOCAL_PREREQUISITES_PENDING",
+  "status": "M23_P2_2_EXACT_PLANAR_CHAIN_DEPENDENCY_RECOVERED_CI_PASS_BUILDER_COMMON_PY_STILL_MISSING",
   "native_teacher_runs": 1,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "Recover the original V7 common.py (ExactBuilder, packet and serialization APIs) and pinned exact_planar_patches.py from local C4/V7 project history. Then execute the new readiness gate on the local host, requiring all 94 source model/SI hashes, source audit PASS, exact historical CGAL binary SHA, shared libraries, and >=24 GiB disk headroom. Only then start a new separately identified resumable 96-op CGAL rebuild.",
+  "pending_dependency": "M23-P2.3: recover the original V7 common.py/ExactBuilder implementation and its backend/serializer contract. Then package a self-contained build runner and validate it with synthetic Boolean operations before any 96-operation local run. Do not start CGAL until exact source manifest, all 94 model/SI hashes, 94-part audit, pinned backend SHA/shared libraries and >=24 GiB free disk are confirmed.",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -998,6 +998,57 @@
     "local_readiness_audit_run": false,
     "new_CGAL_calls": 0,
     "new_Cherchi_calls": 0,
+    "J_D": null,
+    "split": "excluded",
+    "training_samples": 0
+  },
+  "m23_p2_source_recovery": {
+    "exact_planar_dependency": {
+      "recovered": true,
+      "original_repository": "volcano-code/Spin",
+      "original_path": "experiments/faster_core_repair_20261012/exact_planar_patches.py",
+      "original_blob_sha1": "7d6b1f8f20c1834e441fd622bb71e0339d77feb5",
+      "vendored_path": "research/NeuralMoments/teacher/v7_exact_planar_patches.py",
+      "tests_path": "research/NeuralMoments/teacher/test_v7_exact_planar_patches.py",
+      "upstream_test_blob_sha1": "22a104a6a1ce7d64b4be5b606af7fb38eb14cd38",
+      "scope": "exact coplanar oriented boundary-chain signatures and patch boundary grouping; explicitly not solid admission"
+    },
+    "csg_builder_common_py": {
+      "recovered": false,
+      "required_by": "research/Noodles_v7_20261017/source/build_exact_v7.py",
+      "required_symbols": [
+        "ExactBuilder",
+        "obj_packet",
+        "packet_arrays",
+        "write_json",
+        "load_json",
+        "export_obj"
+      ],
+      "searches_performed": [
+        "Spin_test main tree",
+        "Spin_test W0-W6 trees",
+        "Spin main tree"
+      ],
+      "next": "recover from local /data project history or old experiment source; do not synthesize without matching original API/backend receipts"
+    },
+    "chain_dependency": {
+      "vendored": true,
+      "dependency_path": "research/NeuralMoments/teacher/v7_exact_planar_patches.py",
+      "replaces_original_absolute_import": "/mnt/data/Noodles_v6_C4_work/code/exact_planar_patches.py",
+      "caveat": "only the exact planar chain helper recovered; builder common.py remains absent"
+    },
+    "ci": {
+      "run_id": 42574289921,
+      "conclusion": "success",
+      "readiness_tests": 4,
+      "planar_patch_tests": 4,
+      "total_tests": 8,
+      "failed": 0,
+      "skipped": 0
+    },
+    "new_CGAL_calls": 0,
+    "new_Cherchi_calls": 0,
+    "local_builder_ready": false,
     "J_D": null,
     "split": "excluded",
     "training_samples": 0
