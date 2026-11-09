@@ -1,0 +1,40 @@
+name: W4 P32 frozen P19 triangle screen
+on:
+  push:
+    branches:
+      - research/neuralmoments-w4-teapot-p1-20261019
+    paths:
+      - .github/workflows/w4-p32-triangle-screen.yml
+      - research/SpinIt2014_Teapot_20261018/P32/p32_*.py
+      - research/SpinIt2014_Teapot_20261018/P32/test_p32*.py
+      - research/SpinIt2014_Teapot_20261018/P1/P19_material_case/material/M_native.obj
+      - research/SpinIt2014_Teapot_20261018/P1/P19_material_case/material/D_native.obj
+      - research/SpinIt2014_Teapot_20261018/P1/P19_material_case/source/shaft-reference.obj
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: w4-p32-triangle-screen
+  cancel-in-progress: false
+jobs:
+  deterministic-screen:
+    if: github.ref == 'refs/heads/research/neuralmoments-w4-teapot-p1-20261019'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run reproducible P32 screen
+        run: |
+          set -euo pipefail
+          python -m py_compile research/SpinIt2014_Teapot_20261018/P32/p32_triangle_screen.py research/SpinIt2014_Teapot_20261018/P32/test_p32_triangle_screen.py
+          python -m unittest discover -v -s research/SpinIt2014_Teapot_20261018/P32 -p 'test_p32_triangle_screen.py'
+      - name: Emit diagnostic JSON
+        run: |
+          set -euo pipefail
+          python research/SpinIt2014_Teapot_20261018/P32/p32_triangle_screen.py --repo . --output "$RUNNER_TEMP/P32_TRIANGLE_SCREEN.json"
+          test -s "$RUNNER_TEMP/P32_TRIANGLE_SCREEN.json"
