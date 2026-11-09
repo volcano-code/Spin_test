@@ -4,7 +4,9 @@ import torch
 from torch import nn
 
 from research.NeuralMoments.models.pcraft_ufno.analytic_cut import sample_dataset
-from research.NeuralMoments.models.pcraft_ufno.spin_pino.figconvnet_adapter import FIGConvNetPointEncoder
+from research.NeuralMoments.models.pcraft_ufno.spin_pino.figconvnet_adapter import (
+    FIGConvNetPointEncoder, build_physicsnemo_figconvunet,
+)
 from research.NeuralMoments.models.pcraft_ufno.spin_pino.spin_pino import SpinPINO
 
 
@@ -30,6 +32,10 @@ class FIGConvNetAdapterTests(unittest.TestCase):
             grid_size=16, queries_per_geometry=1,
         )
         return D, c
+
+    def test_official_builder_rejects_invalid_config_before_import(self):
+        with self.assertRaises(ValueError):
+            build_physicsnemo_figconvunet(hidden_channels=(16, 32), num_levels=3)
 
     def test_adapter_returns_fixed_finite_features(self):
         D, _ = self._geometry()
