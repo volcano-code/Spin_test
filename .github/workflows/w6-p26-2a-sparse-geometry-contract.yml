@@ -1,0 +1,33 @@
+name: W6 P26.2a sparse geometry interchange contracts
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - research/NeuralMoments/models/pcraft_ufno/spin_pino/sparse_geometry.py
+      - research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_sparse_geometry.py
+      - .github/workflows/w6-p26-2a-sparse-geometry-contract.yml
+  workflow_dispatch:
+jobs:
+  sparse-geometry-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install pinned CPU PyTorch and pytest
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install numpy pytest
+      - name: Test sparse geometry interchange contracts
+        env:
+          PYTHONPATH: .
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python -m pytest -q research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_sparse_geometry.py
