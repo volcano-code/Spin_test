@@ -114,7 +114,7 @@ jobs:
             --output /tmp/w6_p25_1_uqno_report.json
       - name: Evaluate fail-closed gate on untouched test geometries
         run: |
-          python research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_gate_eval.py \
+          PYTHONPATH=. python -m research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p25_uqno_gate_eval \
             --report /tmp/w6_p25_1_uqno_report.json \
             --checkpoint-dir /tmp/w6_p25_1_checkpoints \
             --output /tmp/w6_p25_1_gate_eval.json
