@@ -123,6 +123,10 @@ def build_physicsnemo_figconvunet(
     The function deliberately does not install dependencies or silently
     substitute a local approximation when PhysicsNeMo/Warp is unavailable.
     """
+    if len(hidden_channels) != num_levels + 1:
+        raise ValueError("hidden_channels must have num_levels + 1 entries")
+    if out_channels < 1 or kernel_size < 1 or num_levels < 1:
+        raise ValueError("FIGConvUNet dimensions must be positive")
     try:
         from physicsnemo.models.figconvnet.figconvunet import FIGConvUNet
     except ImportError as exc:
@@ -130,8 +134,6 @@ def build_physicsnemo_figconvunet(
             "Pinned PhysicsNeMo FIGConvUNet is unavailable; install and validate "
             "it in an isolated compatible environment before constructing this adapter"
         ) from exc
-    if len(hidden_channels) != num_levels + 1:
-        raise ValueError("hidden_channels must have num_levels + 1 entries")
     return FIGConvUNet(
         in_channels=4,
         out_channels=out_channels,
