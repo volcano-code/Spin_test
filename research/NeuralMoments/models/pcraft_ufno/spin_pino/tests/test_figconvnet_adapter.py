@@ -51,7 +51,17 @@ class FIGConvNetAdapterTests(unittest.TestCase):
         v2, f2 = adapter._sample_one(D[0])
         self.assertTrue(torch.equal(v1, v2))
         self.assertTrue(torch.equal(f1, f2))
-        self.assertTrue(bool((v1 >= -1).all() and (v1 <= 1).all()))
+        self.assertTrue(bool((v1 >= 0).all() and (v1 <= 1).all()))
+
+    def test_custom_figconvnet_aabb_is_respected(self):
+        D, _ = self._geometry()
+        adapter = FIGConvNetPointEncoder(
+            DummyFIGConvUNet(out_channels=8), num_points=128,
+            figconv_out_channels=8, output_dim=12,
+            aabb_min=(-1.0, -1.0, -1.0), aabb_max=(1.0, 1.0, 1.0),
+        )
+        vertices, _ = adapter._sample_one(D[0])
+        self.assertTrue(bool((vertices >= -1).all() and (vertices <= 1).all()))
 
     def test_empty_geometry_is_rejected(self):
         empty = torch.zeros(1, 4, 16, 16, 16)
