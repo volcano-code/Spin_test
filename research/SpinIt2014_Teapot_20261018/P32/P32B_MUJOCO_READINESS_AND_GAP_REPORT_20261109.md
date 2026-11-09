@@ -18,8 +18,8 @@ The pinned P20 report's exact-affine algebraic replay provides the following F-o
 - mass: 0.030623879229415785 kg;
 - COM: [0.00021248054445209633, 3.3427826229945706e-8, 0.01631079864337299] m;
 - inertia about COM (kg m^2):
-  `[[3.880413495?e-6, -2.558349495841274e-11, -5.4331174909324105e-9], [-2.558349495841274e-11, 4.393412127153277e-6, -2.228648075359519e-12], [-5.4331174909324105e-9, -2.228648075359519e-12, 5.452774958403695e-6]]`.
-The first diagonal entry is preserved exactly from the P20 report in the JSON contract (3.880413266512508e-6). The displayed values are candidate algebraic values, not an observed native Cherchi result or measured printed-part inertia. They are not sufficient to launch a scientifically valid physical simulation without owner-approved geometry/contact/material inputs.
+  `[[3.880413266512508e-6, -2.558349495841274e-11, -5.4331174909324105e-9], [-2.558349495841274e-11, 4.393412127153277e-6, -2.228648075359519e-12], [-5.4331174909324105e-9, -2.228648075359519e-12, 5.452774958403695e-6]]`.
+All displayed values are preserved exactly from the P20 report's floating-point projection. They are candidate algebraic values, not an observed native Cherchi result or measured printed-part inertia. They are not sufficient to launch a scientifically valid physical simulation without owner-approved geometry/contact/material inputs.
 
 ## MuJoCo protocol now specified
 - Z-up world and gravity -9.80665 m/s² as a scene convention.
