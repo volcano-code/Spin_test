@@ -46,13 +46,13 @@ class CalibratedUQNO:
         self.model = _UQNO(int(package["feature_dim"]))
         self.model.load_state_dict(package["state_dict"], strict=True)
         self.model.eval()
+        metrics = package["metrics"]
         self.input_mean = torch.as_tensor(package["input_mean"], dtype=torch.float32)
         self.input_scale = torch.as_tensor(package["input_scale"], dtype=torch.float32)
         self.input_min = torch.as_tensor(metrics["training_feature_q01"], dtype=torch.float32)
         self.input_max = torch.as_tensor(metrics["training_feature_q99"], dtype=torch.float32)
         self.target_log_mean = torch.as_tensor(package["target_log_mean"], dtype=torch.float32)
         self.target_log_scale = torch.as_tensor(package["target_log_scale"], dtype=torch.float32)
-        metrics = package["metrics"]
         self.q90 = float(metrics["calibration_standardized_residual_q90"])
         self.q95 = float(metrics["calibration_standardized_residual_q95"])
         if not (torch.isfinite(self.input_mean).all() and
