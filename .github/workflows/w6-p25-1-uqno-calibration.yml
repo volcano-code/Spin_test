@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
 jobs:
   collect:
-    name: "P25.1 collect matched seed ${{ matrix.seed }}"
+    name: "P25.1 ${{ matrix.family }} seed ${{ matrix.seed }}"
     runs-on: ubuntu-latest
     timeout-minutes: 90
     permissions:
@@ -28,10 +28,31 @@ jobs:
       matrix:
         include:
           - seed: 271
+            family: box
+            p23_artifact: w6-p23-quadrann-seed-271
+          - seed: 271
+            family: sphere
+            p23_artifact: w6-p23-quadrann-seed-271
+          - seed: 271
+            family: ellipsoid
             p23_artifact: w6-p23-quadrann-seed-271
           - seed: 277
+            family: box
+            p23_artifact: w6-p23-quadrann-seed-277
+          - seed: 277
+            family: sphere
+            p23_artifact: w6-p23-quadrann-seed-277
+          - seed: 277
+            family: ellipsoid
             p23_artifact: w6-p23-quadrann-seed-277
           - seed: 281
+            family: box
+            p23_artifact: w6-p23-quadrann-seed-281
+          - seed: 281
+            family: sphere
+            p23_artifact: w6-p23-quadrann-seed-281
+          - seed: 281
+            family: ellipsoid
             p23_artifact: w6-p23-quadrann-seed-281
     steps:
       - uses: actions/checkout@v4
@@ -67,7 +88,7 @@ jobs:
           OPENBLAS_NUM_THREADS: '1'
         run: |
           python -m pytest -q research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p25_uqno.py
-      - name: Collect matched 3-family 64/128 uncertainty signals
+      - name: Collect one geometry-family 64/128 uncertainty shard
         env:
           PYTHONPATH: .
           OMP_NUM_THREADS: '1'
@@ -78,12 +99,13 @@ jobs:
             --pino-checkpoint-dir /tmp/w6_p14_64 \
             --quadrann-checkpoint-dir /tmp/w6_p23_seed \
             --seed ${{ matrix.seed }} \
-            --output /tmp/w6_p25_1_seed${{ matrix.seed }}.json
+            --family ${{ matrix.family }} \
+            --output /tmp/w6_p25_1_seed${{ matrix.seed }}_${{ matrix.family }}.json
       - name: Archive per-seed UQNO signals
         uses: actions/upload-artifact@v4
         with:
-          name: w6-p25-1-uqno-signals-seed-${{ matrix.seed }}
-          path: /tmp/w6_p25_1_seed${{ matrix.seed }}.json
+          name: w6-p25-1-uqno-signals-seed-${{ matrix.seed }}-${{ matrix.family }}
+          path: /tmp/w6_p25_1_seed${{ matrix.seed }}_${{ matrix.family }}.json
           if-no-files-found: error
           retention-days: 30
   train-calibrate:
