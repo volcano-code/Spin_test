@@ -1,6 +1,6 @@
 import unittest
 
-from research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p25_uqno_aggregate_train import _split
+from research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p25_uqno_aggregate_train import _split, _group_max_scores
 from research.NeuralMoments.models.pcraft_ufno.analytic_cut import sample_dataset
 
 
@@ -13,6 +13,14 @@ class P25UQNOContracts(unittest.TestCase):
             for query in (0, 1):
                 assignments[(resolution, query)] = _split(gid)
         self.assertEqual(len(set(assignments.values())), 1)
+
+    def test_geometry_group_max_scores_use_subset_indices(self):
+        import torch
+        scores = torch.tensor([0.2, 0.7, 0.4, 0.9])
+        selected = torch.tensor([False, True, True, True])
+        geometry_ids = ["A", "A", "B", "B"]
+        result = _group_max_scores(scores[selected], selected, geometry_ids)
+        self.assertEqual(result.tolist(), [0.7, 0.9])
 
     def test_shared_collection_geometry_ids_match_across_resolution(self):
         for family in ("box", "sphere", "ellipsoid"):
