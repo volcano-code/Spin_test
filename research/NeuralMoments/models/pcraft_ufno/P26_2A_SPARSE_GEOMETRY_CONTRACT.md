@@ -51,3 +51,14 @@ existing W6 environment to force an installation.
 
 This contract is not an fVDB build, GPU benchmark, sparse spectral PINO,
 512^3 result, Cherchi integration, or end-to-end speed result.
+
+
+## P26.2a CI result
+
+The sparse interchange contract workflow completed successfully with 5 tests
+passing (dense/sparse round-trip, empty batch member, duplicate coordinates,
+out-of-bounds coordinates, invalid channel count):
+https://github.com/volcano-code/Spin_test/actions/runs/42627685849
+
+This confirms the backend-neutral data contract only. It does not validate
+fVDB APIs or GPU behavior.
