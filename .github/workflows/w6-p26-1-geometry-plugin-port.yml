@@ -6,6 +6,8 @@ on:
     paths:
       - research/NeuralMoments/models/pcraft_ufno/spin_pino/spin_pino.py
       - research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_geometry_plugin_port.py
+      - research/NeuralMoments/models/pcraft_ufno/spin_pino/figconvnet_adapter.py
+      - research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_figconvnet_adapter.py
       - .github/workflows/w6-p26-1-geometry-plugin-port.yml
   workflow_dispatch:
 jobs:
@@ -30,4 +32,6 @@ jobs:
           MKL_NUM_THREADS: '1'
           OPENBLAS_NUM_THREADS: '1'
         run: |
-          python -m pytest -q research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_geometry_plugin_port.py
+          python -m pytest -q \
+            research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_geometry_plugin_port.py \
+            research/NeuralMoments/models/pcraft_ufno/spin_pino/tests/test_figconvnet_adapter.py
