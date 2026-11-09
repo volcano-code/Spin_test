@@ -20,7 +20,8 @@ class P25UQNOContracts(unittest.TestCase):
         selected = torch.tensor([False, True, True, True])
         geometry_ids = ["A", "A", "B", "B"]
         result = _group_max_scores(scores[selected], selected, geometry_ids)
-        self.assertEqual(result.tolist(), [0.7, 0.9])
+        self.assertAlmostEqual(float(result[0]), 0.7, places=6)
+        self.assertAlmostEqual(float(result[1]), 0.9, places=6)
 
     def test_shared_collection_geometry_ids_match_across_resolution(self):
         for family in ("box", "sphere", "ellipsoid"):
