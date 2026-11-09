@@ -23,7 +23,7 @@ from .p24_5_diagnostic import SEEDS, _load
 DATA_SEED = 20261108
 FAMILIES = ("box", "sphere", "ellipsoid")
 RESOLUTIONS = (64, 128)
-GEOMETRIES_PER_FAMILY = 24
+GEOMETRIES_PER_FAMILY = 80
 QUERIES_PER_GEOMETRY = 2
 
 
