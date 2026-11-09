@@ -47,14 +47,14 @@ def _stats(w):
     }
 
 
-def _evaluate_seed(seed, resolution, pino_dir, quad_dir):
+def _evaluate_seed(seed, resolution, pino_dir, quad_dir, families=FAMILIES):
     pino, selected, gate, pino_sha, quad_sha = _load(
         seed, pino_dir, quad_dir, resolution
     )
     pino.eval()
     selected.eval()
     data = sample_dataset(
-        FAMILIES, per_family=GEOMETRIES_PER_FAMILY,
+        families, per_family=GEOMETRIES_PER_FAMILY,
         seed=DATA_SEED, grid_size=resolution,
         queries_per_geometry=QUERIES_PER_GEOMETRY,
     )
@@ -114,21 +114,24 @@ def _evaluate_seed(seed, resolution, pino_dir, quad_dir):
     return rows
 
 
-def run(seed, pino_dir, quad_dir):
+def run(seed, pino_dir, quad_dir, families=FAMILIES):
     torch.set_num_threads(1)
     if seed not in SEEDS:
         raise ValueError("unsupported P25 matched seed")
+    families = tuple(families)
+    if not families or any(f not in FAMILIES for f in families):
+        raise ValueError("families must be a nonempty subset of the registered families")
     rows = []
     for resolution in RESOLUTIONS:
-        rows.extend(_evaluate_seed(seed, resolution, pino_dir, quad_dir))
-    expected = (len(FAMILIES)*GEOMETRIES_PER_FAMILY*
+        rows.extend(_evaluate_seed(seed, resolution, pino_dir, quad_dir, families))
+    expected = (len(families)*GEOMETRIES_PER_FAMILY*
                 QUERIES_PER_GEOMETRY*len(RESOLUTIONS))
     if len(rows) != expected:
         raise AssertionError(f"expected {expected} rows, got {len(rows)}")
     return {
         "schema": "W6_P25_1_UQNO_SIGNAL_COLLECTION_V1",
         "seed": seed, "data_seed": DATA_SEED,
-        "families": list(FAMILIES), "resolutions": list(RESOLUTIONS),
+        "families": list(families), "resolutions": list(RESOLUTIONS),
         "geometries_per_family": GEOMETRIES_PER_FAMILY,
         "queries_per_geometry": QUERIES_PER_GEOMETRY,
         "rows": rows,
@@ -154,9 +157,11 @@ def main():
     p.add_argument("--pino-checkpoint-dir", type=Path, required=True)
     p.add_argument("--quadrann-checkpoint-dir", type=Path, required=True)
     p.add_argument("--seed", type=int, required=True, choices=(271,277,281))
+    p.add_argument("--family", action="append", choices=FAMILIES)
     p.add_argument("--output", type=Path, required=True)
     a = p.parse_args()
-    result = run(a.seed, a.pino_checkpoint_dir, a.quadrann_checkpoint_dir)
+    result = run(a.seed, a.pino_checkpoint_dir, a.quadrann_checkpoint_dir,
+                 families=tuple(a.family) if a.family else FAMILIES)
     a.output.parent.mkdir(parents=True, exist_ok=True)
     a.output.write_text(json.dumps(result, indent=2, sort_keys=True, allow_nan=False)+"\n")
     print(json.dumps({
