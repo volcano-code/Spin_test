@@ -1,7 +1,7 @@
 """Catch treating a noncoplanar edge flip as harmless retriangulation."""
 import unittest
 from fractions import Fraction as F
-from exact_planar_patches import patch_boundary_signature
+from v7_exact_planar_patches import patch_boundary_signature
 
 
 class PlanarPatchTests(unittest.TestCase):
