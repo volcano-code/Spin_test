@@ -1,7 +1,7 @@
 name: W6 P25.1 geometry-disjoint UQNO calibration pilot
 concurrency:
   group: w6-p25-1-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 on:
   push:
