@@ -1,0 +1,27 @@
+name: W2 M23-P2 Noodles rebuild readiness tests
+
+on:
+  push:
+    branches:
+      - research/neuralmoments-w2-teacher-20261019
+    paths:
+      - 'research/NeuralMoments/teacher/m23_p2_noodles_rebuild_readiness.py'
+      - 'research/NeuralMoments/teacher/test_m23_p2_noodles_rebuild_readiness.py'
+      - '.github/workflows/w2-m23-p2-noodles-readiness.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  readiness-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run readiness gate tests
+        working-directory: research/NeuralMoments/teacher
+        run: python -m unittest -v test_m23_p2_noodles_rebuild_readiness.py
