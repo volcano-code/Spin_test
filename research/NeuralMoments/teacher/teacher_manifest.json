@@ -1,6 +1,6 @@
 {
   "schema": "w2-cherchi-teacher-v2-pre-w0",
-  "status": "M23_P2_LOCAL_DATA_SCAN_ZERO_OF_SIX_V7_PACKET_SHA_MATCHES_EXTENDED_ARCHIVE_RECOVERY_PENDING",
+  "status": "M23_P2_REBUILD_READINESS_GATE_IMPLEMENTED_CI_PASS_LOCAL_PREREQUISITES_PENDING",
   "native_teacher_runs": 1,
   "training_samples": 0,
   "order": [
@@ -30,7 +30,7 @@
       }
     ]
   },
-  "pending_dependency": "M23-P2: execute read-only extended archive/backend inventory under /data; recover original V7 six rational CSG JSON packet bytes by pinned SHA or rebuild a fresh separately identified 96-operation CGAL exact DAG on a qualified local host. Check all six solids and binary64 F/D/A partition before W2 Cherchi teacher; W0/W3 Jacobian and Newton admission remain pending.",
+  "pending_dependency": "Recover the original V7 common.py (ExactBuilder, packet and serialization APIs) and pinned exact_planar_patches.py from local C4/V7 project history. Then execute the new readiness gate on the local host, requiring all 94 source model/SI hashes, source audit PASS, exact historical CGAL binary SHA, shared libraries, and >=24 GiB disk headroom. Only then start a new separately identified resumable 96-op CGAL rebuild.",
   "independent_reference": {
     "schema": "w2-independent-tetra-integral-v1",
     "module": "independent_reference.py",
@@ -970,5 +970,36 @@
     "split": "excluded",
     "training_samples": 0,
     "training_admitted": false
+  },
+  "m23_p2_rebuild_readiness": {
+    "report": "research/NeuralMoments/teacher/M23_P2_NOODLES_REBUILD_READINESS_20261109.md",
+    "source": "research/NeuralMoments/teacher/m23_p2_noodles_rebuild_readiness.py",
+    "tests": "research/NeuralMoments/teacher/test_m23_p2_noodles_rebuild_readiness.py",
+    "workflow": ".github/workflows/w2-m23-p2-noodles-readiness.yml",
+    "ci": {
+      "run_id": 42568573797,
+      "conclusion": "success",
+      "tests_passed": 4,
+      "tests_failed": 0,
+      "tests_skipped": 0
+    },
+    "historical_builder_dependency_gap": {
+      "build_script": "research/Noodles_v7_20261017/source/build_exact_v7.py",
+      "missing_common_py": true,
+      "chain_verifier_external_dependency": "/mnt/data/Noodles_v6_C4_work/code/exact_planar_patches.py",
+      "missing_from_checkpoint": true
+    },
+    "source_manifest_sha256": "67364abba55c74ccd377eef6174b8c96ee04e4af1aadbd7e505466bafabd2a3a",
+    "expected_backend_sha256": "d6803f184047f6172b177b9f436b16f22cdb6a949126d1df88a5d084f3dd9df3",
+    "expected_source_parts": 94,
+    "expected_fixed_parts": 93,
+    "expected_csg_operations": 96,
+    "six_historical_packet_bytes_recovered": 0,
+    "local_readiness_audit_run": false,
+    "new_CGAL_calls": 0,
+    "new_Cherchi_calls": 0,
+    "J_D": null,
+    "split": "excluded",
+    "training_samples": 0
   }
 }
