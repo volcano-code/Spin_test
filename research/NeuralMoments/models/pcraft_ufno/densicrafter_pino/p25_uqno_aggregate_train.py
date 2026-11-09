@@ -202,12 +202,26 @@ def run(input_dir, checkpoint_dir):
     root = Path(input_dir)
     reports = []
     for seed in SEEDS:
-        p = root/f"w6_p25_1_seed{seed}.json"
-        if not p.is_file():
-            raise FileNotFoundError(p)
-        d = json.loads(p.read_text())
+        full = root/f"w6_p25_1_seed{seed}.json"
+        if full.is_file():
+            d = json.loads(full.read_text())
+        else:
+            shards = []
+            for family in FAMILIES:
+                shard_path = root/f"w6_p25_1_seed{seed}_{family}.json"
+                if not shard_path.is_file():
+                    raise FileNotFoundError(shard_path)
+                shard = json.loads(shard_path.read_text())
+                if shard.get("seed") != seed or shard.get("families") != [family]:
+                    raise ValueError(f"invalid P25.1 shard: {shard_path}")
+                if len(shard.get("rows", [])) != 320:
+                    raise ValueError(f"expected 320 rows in {shard_path}")
+                shards.append(shard)
+            d = dict(shards[0])
+            d["families"] = list(FAMILIES)
+            d["rows"] = [row for shard in shards for row in shard["rows"]]
         if d.get("seed") != seed or len(d.get("rows", [])) != 960:
-            raise ValueError(f"invalid P25.1 collection: {p}")
+            raise ValueError(f"invalid P25.1 collection for seed {seed}")
         reports.append(d)
 
     grouped = {}
