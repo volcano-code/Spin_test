@@ -11,7 +11,7 @@ SPEC.loader.exec_module(MODULE)
 class P32TriangleScreenTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.result = MODULE.run(HERE.parents[3])
+        cls.result = MODULE.run(HERE.parents[2])
 
     def test_schema_and_fail_closed_flags(self):
         self.assertEqual(self.result["schema"], "W4_P32_FLOATING_POINT_TRIANGLE_SCREEN_V1")
