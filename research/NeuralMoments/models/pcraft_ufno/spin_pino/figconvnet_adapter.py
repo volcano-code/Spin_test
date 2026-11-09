@@ -104,3 +104,43 @@ class FIGConvNetPointEncoder(nn.Module):
         if not bool(torch.isfinite(result).all()):
             raise ValueError("FIGConvNet adapter produced nonfinite features")
         return result
+
+
+def build_physicsnemo_figconvunet(
+    *,
+    out_channels: int = 32,
+    hidden_channels: tuple[int, ...] = (32, 64, 128, 256),
+    kernel_size: int = 3,
+    num_levels: int = 3,
+    aabb_min: tuple[float, float, float] = (0.0, 0.0, 0.0),
+    aabb_max: tuple[float, float, float] = (1.0, 1.0, 1.0),
+    to_point_sample_method: str = "interp",
+) -> nn.Module:
+    """Lazily construct the pinned official PhysicsNeMo FIGConvUNet.
+
+    Requires an independently installed PhysicsNeMo environment at audited
+    source pin NVIDIA/physicsnemo@22bb35ec6e700c2f8d6088ddbf88af12b157e5f2.
+    The function deliberately does not install dependencies or silently
+    substitute a local approximation when PhysicsNeMo/Warp is unavailable.
+    """
+    try:
+        from physicsnemo.models.figconvnet.figconvunet import FIGConvUNet
+    except ImportError as exc:
+        raise RuntimeError(
+            "Pinned PhysicsNeMo FIGConvUNet is unavailable; install and validate "
+            "it in an isolated compatible environment before constructing this adapter"
+        ) from exc
+    if len(hidden_channels) != num_levels + 1:
+        raise ValueError("hidden_channels must have num_levels + 1 entries")
+    return FIGConvUNet(
+        in_channels=4,
+        out_channels=out_channels,
+        kernel_size=kernel_size,
+        hidden_channels=list(hidden_channels),
+        num_levels=num_levels,
+        aabb_min=aabb_min,
+        aabb_max=aabb_max,
+        use_scalar_output=False,
+        has_input_features=True,
+        to_point_sample_method=to_point_sample_method,
+    )
