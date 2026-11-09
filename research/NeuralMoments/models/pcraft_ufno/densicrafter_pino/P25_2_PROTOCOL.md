@@ -50,3 +50,12 @@ against W0/W2 before it is called Cherchi-certified.
 P25.2 unit tests cover target/schema separation, finite ordered intervals,
 low-risk approximate pass-through, high-risk fallback, and rejection of
 nonfinite features.
+
+
+## Distribution-shift abstention
+
+The checkpoint stores train-only 1st/99th percentile feature bounds. At runtime,
+any feature outside this envelope triggers exact fallback before approximate
+prediction is returned. Malformed or nonfinite features also fail closed.
+This envelope is a conservative pilot OOD check, not a formal guarantee of
+coverage under arbitrary distribution shift.
