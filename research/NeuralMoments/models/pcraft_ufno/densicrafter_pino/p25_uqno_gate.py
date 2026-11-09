@@ -48,6 +48,8 @@ class CalibratedUQNO:
         self.model.eval()
         self.input_mean = torch.as_tensor(package["input_mean"], dtype=torch.float32)
         self.input_scale = torch.as_tensor(package["input_scale"], dtype=torch.float32)
+        self.input_min = torch.as_tensor(metrics["training_feature_q01"], dtype=torch.float32)
+        self.input_max = torch.as_tensor(metrics["training_feature_q99"], dtype=torch.float32)
         self.target_log_mean = torch.as_tensor(package["target_log_mean"], dtype=torch.float32)
         self.target_log_scale = torch.as_tensor(package["target_log_scale"], dtype=torch.float32)
         metrics = package["metrics"]
@@ -55,10 +57,12 @@ class CalibratedUQNO:
         self.q95 = float(metrics["calibration_standardized_residual_q95"])
         if not (torch.isfinite(self.input_mean).all() and
                 torch.isfinite(self.input_scale).all() and
+                torch.isfinite(self.input_min).all() and
+                torch.isfinite(self.input_max).all() and
                 torch.isfinite(self.target_log_mean).all() and
                 torch.isfinite(self.target_log_scale).all()):
             raise ValueError("nonfinite UQNO normalization parameters")
-        if bool((self.input_scale <= 0).any()) or float(self.target_log_scale) <= 0:
+        if bool((self.input_scale <= 0).any()) or bool((self.input_max <= self.input_min).any()) or float(self.target_log_scale) <= 0:
             raise ValueError("invalid UQNO normalization scale")
         if not (0 < self.q90 < 100 and 0 < self.q95 < 100):
             raise ValueError("invalid conformal residual quantiles")
@@ -96,15 +100,34 @@ class CalibratedUQNO:
                         confidence: float = .95):
         if error_tolerance <= 0 or not torch.isfinite(torch.tensor(error_tolerance)):
             raise ValueError("error_tolerance must be finite and positive")
-        interval = self.predict_interval(features, confidence=confidence)
-        return {
-            "fallback": bool((interval["upper"] > error_tolerance).any()),
-            "interval": interval,
-            "error_tolerance": float(error_tolerance),
-            "reason": "UQNO_UPPER_BOUND_EXCEEDS_TOLERANCE"
-                      if bool((interval["upper"] > error_tolerance).any())
-                      else "UQNO_UPPER_BOUND_WITHIN_TOLERANCE",
-        }
+        try:
+            raw = torch.as_tensor(features, dtype=torch.float32)
+            if raw.ndim == 1:
+                raw = raw.unsqueeze(0)
+            if raw.ndim != 2 or raw.shape[1] != self.input_mean.numel() or not bool(torch.isfinite(raw).all()):
+                raise ValueError("invalid feature shape or nonfinite values")
+            ood = ((raw < self.input_min) | (raw > self.input_max)).any(dim=1)
+            if bool(ood.any()):
+                return {
+                    "fallback": True, "interval": None,
+                    "error_tolerance": float(error_tolerance),
+                    "reason": "FEATURE_OUTSIDE_TRAINING_01_99_ENVELOPE",
+                }
+            interval = self.predict_interval(raw, confidence=confidence)
+            fallback = bool((interval["upper"] > error_tolerance).any())
+            return {
+                "fallback": fallback,
+                "interval": interval,
+                "error_tolerance": float(error_tolerance),
+                "reason": "UQNO_UPPER_BOUND_EXCEEDS_TOLERANCE"
+                          if fallback else "UQNO_UPPER_BOUND_WITHIN_TOLERANCE",
+            }
+        except (ValueError, RuntimeError, KeyError):
+            return {
+                "fallback": True, "interval": None,
+                "error_tolerance": float(error_tolerance),
+                "reason": "INVALID_OR_UNCALIBRATED_FEATURES",
+            }
 
     def predict_or_fallback(self, features, approximate_result: Any,
                             exact_fallback: Callable[[], Any], *,
