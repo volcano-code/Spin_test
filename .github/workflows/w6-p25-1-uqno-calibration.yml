@@ -18,7 +18,7 @@ jobs:
   collect:
     name: "P25.1 ${{ matrix.family }} seed ${{ matrix.seed }}"
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 60
     permissions:
       actions: read
       contents: read
