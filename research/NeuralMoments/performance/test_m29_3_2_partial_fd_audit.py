@@ -10,7 +10,7 @@ class PartialFDAuditTests(unittest.TestCase):
             B=np.zeros((10,9));B[1:,:]=np.eye(9)
             J=np.ones((10,9))
             summary={"schema":"w1-m29-3-2-fresh-native-tangent-fd-v1",
-              "expected_function_evaluations":4,"steps":[1e-3,1e-4],
+              "expected_function_evaluations":36,"steps":[1e-3,1e-4],
               "tangent_basis":B.tolist(),"analytic_tangent_jacobian":J.tolist(),
               "base_m9_topology_hash":"base"}
             (root/"summary.json").write_text(json.dumps(summary))
