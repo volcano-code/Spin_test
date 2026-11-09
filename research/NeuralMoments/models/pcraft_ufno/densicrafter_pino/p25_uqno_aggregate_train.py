@@ -204,7 +204,7 @@ def run(input_dir, checkpoint_dir):
         if not p.is_file():
             raise FileNotFoundError(p)
         d = json.loads(p.read_text())
-        if d.get("seed") != seed or len(d.get("rows", [])) != 288:
+        if d.get("seed") != seed or len(d.get("rows", [])) != 960:
             raise ValueError(f"invalid P25.1 collection: {p}")
         reports.append(d)
 
@@ -213,8 +213,8 @@ def run(input_dir, checkpoint_dir):
         for row in report["rows"]:
             key = (row["geometry_id"], row["query_index"], row["resolution"])
             grouped.setdefault(key, {"rows": []})["rows"].append(row)
-    if len(grouped) != 288:
-        raise ValueError(f"expected 288 geometry-query-resolution groups, got {len(grouped)}")
+    if len(grouped) != 960:
+        raise ValueError(f"expected 960 geometry-query-resolution groups, got {len(grouped)}")
 
     X, hard_y, analytic_y, splits, geometry_ids, metadata = [], [], [], [], [], []
     for (gid, query, resolution), group in sorted(grouped.items()):
