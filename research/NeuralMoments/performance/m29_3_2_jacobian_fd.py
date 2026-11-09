@@ -141,9 +141,6 @@ def run(root,archive,m9_run,output,steps=STEPS_DEFAULT,mode="candidate",max_seco
         historic_h8c_anchor,model_to_target_identity_ten)
     frozen=preflight(archive,root)
     limits=resource_guard()
-    import _make_it_stand as native
-    import _cherchi_core_boolean as boolean
-    import _cherchi_rational_moments as arithmetic
     from make_it_stand.verification.cherchi_inprocess import (
         InProcessCherchiEvaluator,_json_value)
     source_path=Path(root/"python/make_it_stand/verification/cherchi_inprocess.py")
@@ -156,6 +153,19 @@ def run(root,archive,m9_run,output,steps=STEPS_DEFAULT,mode="candidate",max_seco
     baseline=json.loads(baseline_path.read_text())
     if baseline.get("schema")!="w1-m9-native-h8c-abba-v1":
         raise ValueError("M29_3_2_M9_BASELINE_SCHEMA_MISMATCH")
+    # Refuse to compare against a Jacobian produced by different native ELF
+    # binaries, even if the filenames and Python ABI still match.
+    import _make_it_stand as native
+    import _cherchi_core_boolean as boolean
+    import _cherchi_rational_moments as arithmetic
+    expected_modules=baseline.get("module_binary_sha256",{})
+    actual_modules={
+        "native_sha256":_sha_file(native.__file__),
+        "cherchi_sha256":_sha_file(boolean.__file__),
+        "gmp_sha256":_sha_file(arithmetic.__file__),
+    }
+    if any(expected_modules.get(k)!=v for k,v in actual_modules.items()):
+        raise ValueError("M29_3_2_NATIVE_MODULE_SHA_DIFFERS_FROM_M9_BASELINE")
     if not baseline.get("parity_and_timing",{}).get("pass_all_four_material_and_jacobian_parity"):
         raise ValueError("M29_3_2_M9_ABBA_NOT_ADMITTED")
     measurements=baseline.get("measurements",[])
