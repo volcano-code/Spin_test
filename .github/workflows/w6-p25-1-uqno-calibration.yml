@@ -6,6 +6,7 @@ on:
     paths:
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_collect.py
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_aggregate_train.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_gate_eval.py
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p25_uqno.py
       - .github/workflows/w6-p25-1-uqno-calibration.yml
   workflow_dispatch:
@@ -111,12 +112,19 @@ jobs:
             --input-dir /tmp/w6_p25_1_all \
             --checkpoint-dir /tmp/w6_p25_1_checkpoints \
             --output /tmp/w6_p25_1_uqno_report.json
-      - name: Archive UQNO pilot report and checkpoints
+      - name: Evaluate fail-closed gate on untouched test geometries
+        run: |
+          python research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_gate_eval.py \
+            --report /tmp/w6_p25_1_uqno_report.json \
+            --checkpoint-dir /tmp/w6_p25_1_checkpoints \
+            --output /tmp/w6_p25_1_gate_eval.json
+      - name: Archive UQNO pilot report, gate evaluation and checkpoints
         uses: actions/upload-artifact@v4
         with:
           name: w6-p25-1-uqno-calibration-pilot
           path: |
             /tmp/w6_p25_1_uqno_report.json
+            /tmp/w6_p25_1_gate_eval.json
             /tmp/w6_p25_1_checkpoints/*.pt
           if-no-files-found: error
           retention-days: 30
