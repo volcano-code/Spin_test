@@ -119,6 +119,12 @@ class SpinPINO(nn.Module):
         else:
             self.transolver_plus_adapter = None
             self.register_parameter("transolver_plus_gate", None)
+        # Optional external geometry encoder port (e.g. FIGConvNet). It is a
+        # residual feature plugin only; the P-CRAFT PINO trunk stays primary.
+        self.geometry_plugin = None
+        self.geometry_plugin_projection = None
+        self.geometry_plugin_input_dim = None
+        self.register_parameter("geometry_plugin_gate", None)
         self.weight_head = nn.Sequential(
             nn.Linear(self.encoder.feature_dim, hidden_dim),
             nn.GELU(),
@@ -140,12 +146,44 @@ class SpinPINO(nn.Module):
         self.register_buffer("native_B", torch.tensor(NATIVE_B), persistent=True)
         self.register_buffer("node_volume", base_weights, persistent=True)
 
+    def attach_geometry_plugin(self, plugin: nn.Module, *, input_dim: int) -> None:
+        """Attach an optional [B,input_dim] geometry feature plugin.
+
+        The plugin receives canonical [B,4,X,Y,Z] geometry and returns one
+        global feature vector per item. A zero-initialized residual gate makes
+        the initial SpinPINO function exactly unchanged. This is an adapter
+        port, not an implementation or endorsement of FIGConvNet itself.
+        """
+        if self.geometry_plugin is not None:
+            raise RuntimeError("a geometry plugin is already attached")
+        if not isinstance(plugin, nn.Module) or not isinstance(input_dim, int) or input_dim < 1:
+            raise ValueError("plugin must be nn.Module and input_dim a positive integer")
+        self.geometry_plugin = plugin
+        self.geometry_plugin_input_dim = input_dim
+        self.geometry_plugin_projection = nn.Linear(
+            input_dim, self.encoder.feature_dim, bias=False
+        )
+        self.geometry_plugin_gate = nn.Parameter(
+            torch.zeros((), dtype=self.encoder.lifting.weight.dtype,
+                        device=self.encoder.lifting.weight.device)
+        )
+
     def encode_geometry(self, geometry: Tensor) -> Tensor:
         canonical = canonical_geometry(geometry)
         features = self.encoder(canonical)
         if self.transolver_plus_adapter is not None:
             plugin_features = self.transolver_plus_adapter(canonical)
             features = features + torch.tanh(self.transolver_plus_gate) * plugin_features
+        if self.geometry_plugin is not None:
+            external = self.geometry_plugin(canonical)
+            expected = (canonical.shape[0], self.geometry_plugin_input_dim)
+            if not isinstance(external, Tensor) or tuple(external.shape) != expected:
+                raise ValueError(f"geometry plugin must return shape {expected}")
+            if not bool(torch.isfinite(external).all()):
+                raise ValueError("geometry plugin returned nonfinite features")
+            external = external.to(device=features.device, dtype=features.dtype)
+            residual = self.geometry_plugin_projection(external)
+            features = features + torch.tanh(self.geometry_plugin_gate) * residual
         # Enforce support and density at every quadrature node. The learned
         # head may redistribute mass only inside occupied material; it cannot
         # create atoms in empty space. This is a discrete-measure realizability
