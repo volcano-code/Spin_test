@@ -33,7 +33,8 @@ def _evaluate_target(report, checkpoint, target):
         accepted_errors = []
         unsafe_accepted = []
         ood_count = 0
-        family_counts = defaultdict(lambda: {"queries": 0, "fallback": 0, "accepted": 0, "unsafe": 0})
+        upper_covered = []
+        family_counts = defaultdict(lambda: {"queries": 0, "fallback": 0, "accepted": 0, "unsafe": 0, "in_domain": 0, "upper_covered": 0})
         geometry_any_fallback = []
         for row in rows:
             decision = gate.should_fallback(
@@ -47,6 +48,11 @@ def _evaluate_target(report, checkpoint, target):
             family["fallback"] += int(fallback)
             if decision.get("reason") == "FEATURE_OUTSIDE_GEOMETRY_CALIBRATED_OOD_ENVELOPE":
                 ood_count += 1
+            if decision.get("interval") is not None:
+                covered = actual <= float(decision["interval"]["upper"].reshape(-1)[0])
+                upper_covered.append(covered)
+                family["in_domain"] += 1
+                family["upper_covered"] += int(covered)
             if not fallback:
                 accepted_errors.append(actual)
                 unsafe = actual > tolerance
@@ -74,6 +80,10 @@ def _evaluate_target(report, checkpoint, target):
             "unsafe_accepted_query_count": sum(unsafe_accepted),
             "unsafe_acceptance_fraction": sum(unsafe_accepted) / accepted if accepted else None,
             "ood_query_count": ood_count,
+            "in_domain_query_count": len(upper_covered),
+            "empirical_upper_bound_coverage_in_domain": (
+                sum(upper_covered) / len(upper_covered) if upper_covered else None
+            ),
             "geometry_count": len(groups),
             "geometry_any_fallback_count": sum(geometry_any_fallback),
             "geometry_any_fallback_fraction": sum(geometry_any_fallback) / len(groups),
@@ -83,6 +93,8 @@ def _evaluate_target(report, checkpoint, target):
                     "fallback_fraction": values["fallback"] / values["queries"],
                     "unsafe_acceptance_fraction": (
                         values["unsafe"] / values["accepted"] if values["accepted"] else None
+                    ),                    "empirical_upper_bound_coverage": (
+                        values["upper_covered"] / values["in_domain"] if values["in_domain"] else None
                     ),
                 }
                 for family, values in sorted(family_counts.items())
