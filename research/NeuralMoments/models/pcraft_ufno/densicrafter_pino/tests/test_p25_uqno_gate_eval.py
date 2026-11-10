@@ -6,11 +6,25 @@ import torch
 
 from research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p25_uqno_gate import _UQNO
 from research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p25_uqno_gate_eval import (
-    _evaluate_target,
+    _cluster_bootstrap_ratio_ci, _evaluate_target,
 )
 
 
 class P25MarginalQueryGateEvaluationTests(unittest.TestCase):
+    def test_geometry_cluster_bootstrap_is_deterministic(self):
+        clusters = [
+            {"fallback": 1, "queries": 2},
+            {"fallback": 0, "queries": 2},
+            {"fallback": 1, "queries": 2},
+            {"fallback": 0, "queries": 2},
+        ]
+        first = _cluster_bootstrap_ratio_ci(clusters, "fallback", "queries", replicates=500, seed=19)
+        second = _cluster_bootstrap_ratio_ci(clusters, "fallback", "queries", replicates=500, seed=19)
+        self.assertEqual(first, second)
+        self.assertAlmostEqual(first["estimate"], 0.5)
+        self.assertLessEqual(first["lower_95"], first["estimate"])
+        self.assertGreaterEqual(first["upper_95"], first["estimate"])
+
     def _checkpoint(self, path, target):
         torch.manual_seed(7)
         model = _UQNO(5)
