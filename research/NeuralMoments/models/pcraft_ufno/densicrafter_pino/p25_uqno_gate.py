@@ -56,6 +56,8 @@ class CalibratedUQNO:
         self.q90 = float(metrics["calibration_standardized_residual_q90"])
         self.q95 = float(metrics["calibration_standardized_residual_q95"])
         self.feature_ood_threshold = float(metrics["feature_ood_standardized_max_q95"])
+        self.query_q90 = float(metrics["calibration_query_upper_residual_q90"])
+        self.query_q95 = float(metrics["calibration_query_upper_residual_q95"])
         if not (torch.isfinite(self.input_mean).all() and
                 torch.isfinite(self.input_scale).all() and
                 torch.isfinite(self.input_min).all() and
@@ -99,6 +101,33 @@ class CalibratedUQNO:
         }
 
     @torch.no_grad()
+    def predict_query_upper_bound(self, features, *, confidence: float = .95):
+        """Marginal one-query upper bound; not simultaneous geometry coverage."""
+        if confidence not in (.90, .95):
+            raise ValueError("only calibrated 90% or 95% query bounds are available")
+        x = torch.as_tensor(features, dtype=torch.float32)
+        if x.ndim == 1:
+            x = x.unsqueeze(0)
+        if x.ndim != 2 or x.shape[1] != self.input_mean.numel():
+            raise ValueError("feature shape mismatch")
+        if not bool(torch.isfinite(x).all()):
+            raise ValueError("features must be finite")
+        x = ((x-self.input_mean)/self.input_scale).clamp(-10, 10)
+        mu, _ = self.model(x)
+        log_mu = mu*self.target_log_scale+self.target_log_mean
+        q = self.query_q90 if confidence == .90 else self.query_q95
+        median = torch.exp(log_mu)
+        upper = torch.exp(log_mu+q)
+        return {
+            "target": self.target,
+            "confidence": confidence,
+            "calibration_unit": "marginal_query",
+            "median": median,
+            "upper": upper,
+            "log_residual_quantile": q,
+        }
+
+    @torch.no_grad()
     def should_fallback(self, features, *, error_tolerance: float,
                         confidence: float = .95):
         if error_tolerance <= 0 or not torch.isfinite(torch.tensor(error_tolerance)):
@@ -118,14 +147,14 @@ class CalibratedUQNO:
                     "error_tolerance": float(error_tolerance),
                     "reason": "FEATURE_OUTSIDE_GEOMETRY_CALIBRATED_OOD_ENVELOPE",
                 }
-            interval = self.predict_interval(raw, confidence=confidence)
+            interval = self.predict_query_upper_bound(raw, confidence=confidence)
             fallback = bool((interval["upper"] > error_tolerance).any())
             return {
                 "fallback": fallback,
                 "interval": interval,
                 "error_tolerance": float(error_tolerance),
-                "reason": "UQNO_UPPER_BOUND_EXCEEDS_TOLERANCE"
-                          if fallback else "UQNO_UPPER_BOUND_WITHIN_TOLERANCE",
+                "reason": "UQNO_QUERY_UPPER_BOUND_EXCEEDS_TOLERANCE"
+                          if fallback else "UQNO_QUERY_UPPER_BOUND_WITHIN_TOLERANCE",
             }
         except (ValueError, RuntimeError, KeyError):
             return {
