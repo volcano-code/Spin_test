@@ -1,75 +1,92 @@
-"""P25.2: evaluate UQNO abstention on untouched geometry-disjoint test cases.
+"""P25.5: evaluate marginal-query UQNO abstention on geometry-held-out cases.
 
-No threshold is selected from this report. We sweep declared candidate error
-tolerances and report geometry-level fallback rate and unsafe acceptance.
+The calibration split is geometry-disjoint. The reported query coverage is
+marginal over one query at a time; it is NOT simultaneous coverage of every
+query/resolution belonging to a complete geometry. Geometry-any-fallback is
+reported separately as an operational diagnostic.
 """
 from __future__ import annotations
 
 import argparse
 import json
-import math
 from collections import defaultdict
 from pathlib import Path
 
 from .p25_uqno_gate import CalibratedUQNO
 
-TOLERANCES = (0.05, 0.10, 0.20, 0.30)
+TOLERANCES = (0.05, 0.10, 0.20, 0.30, 0.50, 1.00)
 
 
 def _evaluate_target(report, checkpoint, target):
     gate = CalibratedUQNO(checkpoint, target=target)
     label_key = "hardcut_error" if target == "hardcut" else "analytic_p0_error"
+    rows = report["test_cases"]
     groups = defaultdict(list)
-    for row in report["test_cases"]:
+    for row in rows:
         groups[row["geometry_id"]].append(row)
-    if len(groups) < 8:
-        raise ValueError("insufficient held-out geometries for gate evaluation")
+    if len(groups) < 8 or len(rows) < 16:
+        raise ValueError("insufficient held-out geometries or query rows")
+
     output = {}
     for tolerance in TOLERANCES:
-        fallback = []
+        query_fallback = []
         accepted_errors = []
-        accepted_unsafe = []
-        per_geometry = []
-        for gid, rows in sorted(groups.items()):
-            uppers = []
-            actuals = []
-            for row in rows:
-                decision = gate.should_fallback(
+        unsafe_accepted = []
+        ood_count = 0
+        family_counts = defaultdict(lambda: {"queries": 0, "fallback": 0, "accepted": 0, "unsafe": 0})
+        geometry_any_fallback = []
+        for row in rows:
+            decision = gate.should_fallback(
+                row["features"], error_tolerance=tolerance, confidence=.95
+            )
+            fallback = bool(decision["fallback"])
+            actual = float(row[label_key])
+            query_fallback.append(fallback)
+            family = family_counts[row["family"]]
+            family["queries"] += 1
+            family["fallback"] += int(fallback)
+            if decision.get("reason") == "FEATURE_OUTSIDE_GEOMETRY_CALIBRATED_OOD_ENVELOPE":
+                ood_count += 1
+            if not fallback:
+                accepted_errors.append(actual)
+                unsafe = actual > tolerance
+                unsafe_accepted.append(unsafe)
+                family["accepted"] += 1
+                family["unsafe"] += int(unsafe)
+
+        for gid, geometry_rows in sorted(groups.items()):
+            decisions = [
+                gate.should_fallback(
                     row["features"], error_tolerance=tolerance, confidence=.95
-                )
-                if decision["interval"] is None:
-                    uppers.append(1e30)
-                else:
-                    uppers.append(float(decision["interval"]["upper"].reshape(-1)[0]))
-                actuals.append(float(row[label_key]))
-            predicted_upper = max(uppers)
-            actual_max = max(actuals)
-            use_fallback = predicted_upper > tolerance
-            fallback.append(use_fallback)
-            if not use_fallback:
-                accepted_errors.append(actual_max)
-                accepted_unsafe.append(actual_max > tolerance)
-            per_geometry.append({
-                "geometry_id": gid,
-                "family": rows[0]["family"],
-                "predicted_upper_max": predicted_upper,
-                "actual_error_max": actual_max,
-                "fallback": use_fallback,
-            })
+                )["fallback"]
+                for row in geometry_rows
+            ]
+            geometry_any_fallback.append(any(decisions))
+
         accepted = len(accepted_errors)
         output[str(tolerance)] = {
+            "calibration_unit": "marginal_query",
+            "query_count": len(rows),
+            "fallback_query_count": sum(query_fallback),
+            "fallback_query_fraction": sum(query_fallback) / len(query_fallback),
+            "accepted_query_count": accepted,
+            "accepted_actual_error_mean": sum(accepted_errors) / accepted if accepted else None,
+            "unsafe_accepted_query_count": sum(unsafe_accepted),
+            "unsafe_acceptance_fraction": sum(unsafe_accepted) / accepted if accepted else None,
+            "ood_query_count": ood_count,
             "geometry_count": len(groups),
-            "fallback_geometry_count": sum(fallback),
-            "fallback_fraction": sum(fallback)/len(fallback),
-            "accepted_geometry_count": accepted,
-            "accepted_actual_error_mean": (
-                sum(accepted_errors)/accepted if accepted else None
-            ),
-            "unsafe_accepted_geometry_count": sum(accepted_unsafe),
-            "unsafe_acceptance_fraction": (
-                sum(accepted_unsafe)/accepted if accepted else None
-            ),
-            "per_geometry": per_geometry,
+            "geometry_any_fallback_count": sum(geometry_any_fallback),
+            "geometry_any_fallback_fraction": sum(geometry_any_fallback) / len(groups),
+            "by_geometry_family": {
+                family: {
+                    **values,
+                    "fallback_fraction": values["fallback"] / values["queries"],
+                    "unsafe_acceptance_fraction": (
+                        values["unsafe"] / values["accepted"] if values["accepted"] else None
+                    ),
+                }
+                for family, values in sorted(family_counts.items())
+            },
         }
     return output
 
@@ -78,18 +95,19 @@ def run(report_path, checkpoint_dir):
     report = json.loads(Path(report_path).read_text())
     checkpoint_dir = Path(checkpoint_dir)
     hard = _evaluate_target(
-        report, checkpoint_dir/"w6_p25_uqno_hardcut.pt", "hardcut"
+        report, checkpoint_dir / "w6_p25_uqno_hardcut.pt", "hardcut"
     )
     analytic = _evaluate_target(
-        report, checkpoint_dir/"w6_p25_uqno_analytic_p0.pt", "analytic_p0"
+        report, checkpoint_dir / "w6_p25_uqno_analytic_p0.pt", "analytic_p0"
     )
     return {
-        "schema": "W6_P25_2_UQNO_HELDOUT_GATE_EVALUATION_V1",
-        "unique_test_geometries": len({
-            x["geometry_id"] for x in report["test_cases"]
-        }),
+        "schema": "W6_P25_5_MARGINAL_QUERY_GATE_EVALUATION_V1",
+        "unique_test_geometries": len({x["geometry_id"] for x in report["test_cases"]}),
+        "test_query_count": len(report["test_cases"]),
         "declared_error_tolerances": list(TOLERANCES),
         "confidence": .95,
+        "calibration_unit": "marginal_query_with_geometry_disjoint_train_calibration_test",
+        "simultaneous_geometry_coverage_claim": False,
         "hardcut_error_gate": hard,
         "analytic_p0_error_gate": analytic,
         "decision": "PILOT_ONLY_NO_PRODUCTION_GATE",
@@ -104,14 +122,14 @@ def run(report_path, checkpoint_dir):
 
 
 def main():
-    p = argparse.ArgumentParser()
-    p.add_argument("--report", type=Path, required=True)
-    p.add_argument("--checkpoint-dir", type=Path, required=True)
-    p.add_argument("--output", type=Path, required=True)
-    a = p.parse_args()
-    result = run(a.report, a.checkpoint_dir)
-    a.output.parent.mkdir(parents=True, exist_ok=True)
-    a.output.write_text(json.dumps(result, indent=2, sort_keys=True, allow_nan=False)+"\n")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--report", type=Path, required=True)
+    parser.add_argument("--checkpoint-dir", type=Path, required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    result = run(args.report, args.checkpoint_dir)
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(result, indent=2, sort_keys=True, allow_nan=False) + "\\n")
     print(json.dumps({
         "hardcut": result["hardcut_error_gate"],
         "analytic": result["analytic_p0_error_gate"],
