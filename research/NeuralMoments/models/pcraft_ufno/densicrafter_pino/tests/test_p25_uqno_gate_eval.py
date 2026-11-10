@@ -43,7 +43,7 @@ class P25MarginalQueryGateEvaluationTests(unittest.TestCase):
             checkpoint = Path(d) / "hardcut.pt"
             self._checkpoint(checkpoint, "hardcut")
             rows = []
-            for i in range(8):
+            for i in range(16):
                 rows.append({
                     "geometry_id": f"g{i}",
                     "family": ("box", "sphere", "ellipsoid")[i % 3],
@@ -53,9 +53,9 @@ class P25MarginalQueryGateEvaluationTests(unittest.TestCase):
             result = _evaluate_target({"test_cases": rows}, checkpoint, "hardcut")
             item = result["1.0"]
             self.assertEqual(item["calibration_unit"], "marginal_query")
-            self.assertEqual(item["query_count"], 8)
-            self.assertEqual(item["geometry_count"], 8)
-            self.assertEqual(item["accepted_query_count"], 8)
+            self.assertEqual(item["query_count"], 16)
+            self.assertEqual(item["geometry_count"], 16)
+            self.assertEqual(item["accepted_query_count"], 16)
             self.assertEqual(item["fallback_query_count"], 0)
             self.assertEqual(item["geometry_any_fallback_fraction"], 0.0)
 
