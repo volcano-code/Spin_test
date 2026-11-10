@@ -76,6 +76,17 @@ def _metrics(y, median_prediction, risk_score):
     }
 
 
+def _geometry_fallback_fraction(gate, rows, *, tolerance):
+    from collections import defaultdict
+    groups = defaultdict(list)
+    for row in rows:
+        groups[row["geometry_id"]].append(row["features"])
+    decisions = [
+        gate.should_fallback(torch.tensor(features), error_tolerance=tolerance, confidence=.95)
+        for features in groups.values()
+    ]
+    return sum(bool(d["fallback"]) for d in decisions) / max(1, len(decisions))
+
 def _evaluate_target(report, checkpoint_dir, target):
     label = TARGETS[target]
     cases = report.get("all_cases")
@@ -118,18 +129,19 @@ def _evaluate_target(report, checkpoint_dir, target):
         "models": {
             "constant_train_median": _metrics(y_test.double(), constant, constant),
             "ridge_log_error": _metrics(y_test.double(), ridge_median, ridge_median),
-            "uqno_calibrated_95_upper": {
-                **_metrics(y_test.double(), uqno_median, uqno_upper),
+            "uqno_median_risk_with_95_interval": {
+                **_metrics(y_test.double(), uqno_median, uqno_median),
                 "mean_95_upper_bound": float(uqno_upper.mean()),
                 "median_95_upper_bound": float(uqno_upper.median()),
-                "fallback_fraction": float((uqno_upper > 0.10).double().mean()),
+                "raw_upper_exceedance_fraction_at_0_10": float((uqno_upper > 0.10).double().mean()),
+                "geometry_level_fallback_fraction_at_0_10": _geometry_fallback_fraction(gate, test, tolerance=0.10),
             },
         },
         "by_geometry_family": {
             family: _metrics(
                 y_test.double()[torch.tensor([row["family"] == family for row in test])],
                 uqno_median[torch.tensor([row["family"] == family for row in test])],
-                uqno_upper[torch.tensor([row["family"] == family for row in test])],
+                uqno_median[torch.tensor([row["family"] == family for row in test])],
             )
             for family in sorted({row["family"] for row in test})
         },
