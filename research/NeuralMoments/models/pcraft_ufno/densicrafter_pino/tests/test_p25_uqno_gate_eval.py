@@ -13,10 +13,10 @@ from research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p25_uqno_gate_e
 class P25MarginalQueryGateEvaluationTests(unittest.TestCase):
     def test_geometry_cluster_bootstrap_is_deterministic(self):
         clusters = [
-            {"fallback": 1, "queries": 2},
-            {"fallback": 0, "queries": 2},
-            {"fallback": 1, "queries": 2},
-            {"fallback": 0, "queries": 2},
+            {"fallback": 1, "queries": 1},
+            {"fallback": 0, "queries": 1},
+            {"fallback": 1, "queries": 1},
+            {"fallback": 0, "queries": 1},
         ]
         first = _cluster_bootstrap_ratio_ci(clusters, "fallback", "queries", replicates=500, seed=19)
         second = _cluster_bootstrap_ratio_ci(clusters, "fallback", "queries", replicates=500, seed=19)
