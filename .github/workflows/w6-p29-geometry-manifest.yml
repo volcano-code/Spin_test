@@ -8,6 +8,9 @@ on:
       - .github/workflows/w6-p29-geometry-manifest.yml
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p29_geometry_manifest.py
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p29_geometry_manifest.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p29_validate_generation_tasks.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p29_1_generation_tasks.json
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p29_generation_tasks.py
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/P29_TRELLIS_GEOMETRY_EXPANSION_PLAN.md
   workflow_dispatch:
 
@@ -26,6 +29,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+      - name: Run P29.1 generation manifest tests
+        run: |
+          python -m unittest discover -s research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests -p "test_p29_generation_tasks.py" -v
+          python research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p29_validate_generation_tasks.py --input research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p29_1_generation_tasks.json --output /tmp/p29_task_manifest_validation.json
       - name: Run P29 CPU-only geometry manifest tests
         run: |
           python -m unittest discover \
