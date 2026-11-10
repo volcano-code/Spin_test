@@ -43,7 +43,7 @@ jobs:
       - name: Test P25.4 train-only baseline evaluator
         env:
           PYTHONPATH: .
-        run: python -m unittest research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.tests.test_p25_uqno_baseline -v
+        run: python -m unittest discover -s research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests -p 'test_p25_uqno_baseline.py' -v
       - name: Download frozen nine P25.1 signal shards
         uses: actions/download-artifact@v4
         with:
