@@ -292,6 +292,12 @@ def run(input_dir, checkpoint_dir):
         "hardcut_error_predictor": hard_metrics,
         "analytic_p0_error_predictor": analytic_metrics,
         "metadata": metadata,
+        "all_cases": [{
+            **metadata[i],
+            "features": [float(v) for v in X[i].tolist()],
+            "hardcut_error": float(hard_y[i]),
+            "analytic_p0_error": float(analytic_y[i]),
+        } for i in range(len(metadata))],
         "test_cases": test_cases,
         "checkpoints": {
             "hardcut": str(hard_path), "analytic_p0": str(analytic_path),
