@@ -155,6 +155,13 @@ def _fit_calibrate(X, y, split, geometry_ids, seed):
             return float(torch.kthvalue(scores, k).values)
         q90 = conformal_quantile(cal_group_scores, .10)
         q95 = conformal_quantile(cal_group_scores, .05)
+        # Query-marginal one-sided conformal residuals. Geometry IDs remain
+        # disjoint across train/calibration/test; unlike group-max scores,
+        # these intervals target one inference query, not simultaneous
+        # coverage of every query/resolution for an entire geometry.
+        cal_query_upper = (ylog[cal] - mu[cal]).clamp_min(0.0)
+        q_query90 = conformal_quantile(cal_query_upper, .90)
+        q_query95 = conformal_quantile(cal_query_upper, .95)
         lower90 = torch.exp(mu[test]-q90*sigma[test])
         upper90 = torch.exp(mu[test]+q90*sigma[test])
         lower95 = torch.exp(mu[test]-q95*sigma[test])
@@ -196,6 +203,9 @@ def _fit_calibrate(X, y, split, geometry_ids, seed):
             "epochs": 400, "training_history": history,
             "calibration_standardized_residual_q90": q90,
             "calibration_standardized_residual_q95": q95,
+            "calibration_query_upper_residual_q90": q_query90,
+            "calibration_query_upper_residual_q95": q_query95,
+            "query_calibration_unit": "one-sided log-error residual per query; geometry-disjoint split; marginal query coverage only",
             "test_coverage_90_interval": coverage90,
             "test_coverage_95_interval": coverage95,
             "test_log_error_mae": mae_log,
