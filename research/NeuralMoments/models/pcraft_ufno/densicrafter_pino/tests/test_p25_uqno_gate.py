@@ -31,6 +31,7 @@ class P25UQNOGateContracts(unittest.TestCase):
                 "calibration_standardized_residual_q95": 1.96,
                 "calibration_query_upper_residual_q90": 0.5,
                 "calibration_query_upper_residual_q95": 0.8,
+                "family_query_upper_residual_quantiles": {"box": {"q90": 0.9, "q95": 1.1, "source": "family_conditional_marginal_query"}},
                 "feature_ood_standardized_max_q95": 5.5,
                 "training_feature_q01": [-1.0]*4 + ([0.0] if constant_last_feature else [-1.0]),
                 "training_feature_q99": [1.0]*4 + ([0.0] if constant_last_feature else [1.0]),
@@ -47,6 +48,12 @@ class P25UQNOGateContracts(unittest.TestCase):
             self.assertTrue(torch.isfinite(out["upper"]).all())
             self.assertTrue(torch.all(out["upper"] >= out["median"]))
             self.assertAlmostEqual(out["log_residual_quantile"], 0.8)
+            box = uq.predict_query_upper_bound(torch.zeros(5), confidence=.95, family="box")
+            self.assertAlmostEqual(box["log_residual_quantile"], 1.1)
+            self.assertEqual(box["calibration_source"], "family_conditional_marginal_query")
+            unknown = uq.predict_query_upper_bound(torch.zeros(5), confidence=.95, family="unknown")
+            self.assertAlmostEqual(unknown["log_residual_quantile"], 0.8)
+            self.assertEqual(unknown["calibration_source"], "global_marginal_query_fallback")
 
     def test_predict_interval_is_finite_and_ordered(self):
         with tempfile.TemporaryDirectory() as d:
