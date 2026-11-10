@@ -8,6 +8,8 @@ on:
       - .github/workflows/w6-p25-3-uqno-aggregate.yml
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_aggregate_train.py
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_gate_eval.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_baseline_eval.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p25_uqno_baseline.py
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_gate.py
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p25_uqno_gate.py
   workflow_dispatch:
@@ -38,6 +40,10 @@ jobs:
       - name: Test calibrated UQNO gate contracts
         run: |
           python -m unittest discover -s research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests -p 'test_p25_uqno_gate.py' -v
+      - name: Test P25.4 train-only baseline evaluator
+        env:
+          PYTHONPATH: .
+        run: python -m unittest research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.tests.test_p25_uqno_baseline -v
       - name: Download frozen nine P25.1 signal shards
         uses: actions/download-artifact@v4
         with:
@@ -90,6 +96,14 @@ jobs:
             --report /tmp/w6_p25_3_uqno_report.json \
             --checkpoint-dir /tmp/w6_p25_3_checkpoints \
             --output /tmp/w6_p25_3_gate_eval.json
+      - name: Compare UQNO with train-only constant and ridge baselines
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p25_uqno_baseline_eval \
+            --report /tmp/w6_p25_3_uqno_report.json \
+            --checkpoint-dir /tmp/w6_p25_3_checkpoints \
+            --output /tmp/w6_p25_4_baseline_report.json
       - name: Archive calibration report, gate report and checkpoints
         uses: actions/upload-artifact@v4
         with:
@@ -97,6 +111,7 @@ jobs:
           path: |
             /tmp/w6_p25_3_uqno_report.json
             /tmp/w6_p25_3_gate_eval.json
+            /tmp/w6_p25_4_baseline_report.json
             /tmp/w6_p25_3_checkpoints/*.pt
           if-no-files-found: error
           retention-days: 90
