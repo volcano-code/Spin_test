@@ -105,7 +105,7 @@ class P25UQNOGateContracts(unittest.TestCase):
                 error_tolerance=.1,
             )
             self.assertTrue(result["fallback_used"])
-            self.assertEqual(result["decision"]["reason"], "FEATURE_OUTSIDE_TRAINING_01_99_ENVELOPE")
+            self.assertEqual(result["decision"]["reason"], "FEATURE_OUTSIDE_GEOMETRY_CALIBRATED_OOD_ENVELOPE")
 
 
 if __name__ == "__main__":
