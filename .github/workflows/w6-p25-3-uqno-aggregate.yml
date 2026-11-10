@@ -1,0 +1,93 @@
+name: W6 P25.3 aggregate and calibrate UQNO from frozen P25.1 shards
+
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - .github/workflows/w6-p25-3-uqno-aggregate.yml
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_aggregate_train.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_gate_eval.py
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: w6-p25-3-uqno-aggregate
+  cancel-in-progress: false
+
+jobs:
+  aggregate-calibrate-evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install pinned CPU PyTorch
+        run: python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+      - name: Download frozen nine P25.1 signal shards
+        uses: actions/download-artifact@v4
+        with:
+          pattern: w6-p25-1-uqno-signals-seed-*
+          repository: ${{ github.repository }}
+          run-id: 42661880377
+          github-token: ${{ github.token }}
+          merge-multiple: true
+          path: /tmp/w6_p25_1_all
+      - name: Verify exact shard coverage
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("/tmp/w6_p25_1_all")
+          expected = {
+              f"w6_p25_1_seed{s}_{f}.json"
+              for s in (271, 277, 281)
+              for f in ("box", "sphere", "ellipsoid")
+          }
+          actual = {p.name for p in root.glob("*.json")}
+          if actual != expected:
+              raise SystemExit(f"shard mismatch: missing={sorted(expected-actual)}, extra={sorted(actual-expected)}")
+          rows = 0
+          for p in sorted(root.glob("*.json")):
+              d = json.loads(p.read_text())
+              if len(d.get("rows", [])) != 320:
+                  raise SystemExit(f"bad row count: {p.name}")
+              rows += len(d["rows"])
+          if rows != 2880:
+              raise SystemExit(f"expected 2880 rows, got {rows}")
+          print({"shards": len(actual), "rows": rows})
+          PY
+      - name: Train geometry-disjoint UQNO and calibrate two error targets
+        env:
+          OMP_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_aggregate_train.py \
+            --input-dir /tmp/w6_p25_1_all \
+            --checkpoint-dir /tmp/w6_p25_3_checkpoints \
+            --output /tmp/w6_p25_3_uqno_report.json
+      - name: Evaluate fail-closed gate on untouched test geometries
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p25_uqno_gate_eval \
+            --report /tmp/w6_p25_3_uqno_report.json \
+            --checkpoint-dir /tmp/w6_p25_3_checkpoints \
+            --output /tmp/w6_p25_3_gate_eval.json
+      - name: Archive calibration report, gate report and checkpoints
+        uses: actions/upload-artifact@v4
+        with:
+          name: w6-p25-3-uqno-calibration-results
+          path: |
+            /tmp/w6_p25_3_uqno_report.json
+            /tmp/w6_p25_3_gate_eval.json
+            /tmp/w6_p25_3_checkpoints/*.pt
+          if-no-files-found: error
+          retention-days: 90
