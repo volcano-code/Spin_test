@@ -85,7 +85,8 @@ def _evaluate_target(report, checkpoint, target):
             }
             for row in geometry_rows:
                 decision = gate.should_fallback(
-                    row["features"], error_tolerance=tolerance, confidence=.95
+                    row["features"], error_tolerance=tolerance, confidence=.95,
+                    family=row["family"]
                 )
                 actual = float(row[label_key])
                 record["queries"] += 1
