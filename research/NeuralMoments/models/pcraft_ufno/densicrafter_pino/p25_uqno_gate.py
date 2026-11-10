@@ -9,6 +9,7 @@ independent voxel hard-cut integral only; it must not be labelled Cherchi.
 from __future__ import annotations
 
 from pathlib import Path
+import math
 from typing import Callable, Any
 
 import torch
@@ -71,6 +72,9 @@ class CalibratedUQNO:
             raise ValueError("invalid conformal residual quantiles")
         if not (0 < self.feature_ood_threshold < 100):
             raise ValueError("invalid geometry-calibrated OOD threshold")
+        if not (math.isfinite(self.query_q90) and math.isfinite(self.query_q95)
+                and 0 <= self.query_q90 < 100 and 0 <= self.query_q95 < 100):
+            raise ValueError("invalid query-marginal conformal residual quantiles")
         self.target = target
 
     @torch.no_grad()
