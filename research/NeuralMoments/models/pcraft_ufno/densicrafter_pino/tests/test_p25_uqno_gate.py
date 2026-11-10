@@ -44,7 +44,7 @@ class P25UQNOGateContracts(unittest.TestCase):
             self._checkpoint(p)
             uq = CalibratedUQNO(p, target="hardcut")
             out = uq.predict_query_upper_bound(torch.zeros(5), confidence=.95)
-            self.assertEqual(out["calibration_unit"], "marginal_query")
+            self.assertEqual(out["calibration_unit"], "global_marginal_query_fallback")
             self.assertTrue(torch.isfinite(out["upper"]).all())
             self.assertTrue(torch.all(out["upper"] >= out["median"]))
             self.assertAlmostEqual(out["log_residual_quantile"], 0.8)
