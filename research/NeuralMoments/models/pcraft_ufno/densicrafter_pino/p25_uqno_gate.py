@@ -76,6 +76,14 @@ class CalibratedUQNO:
         if not (math.isfinite(self.query_q90) and math.isfinite(self.query_q95)
                 and 0 <= self.query_q90 < 100 and 0 <= self.query_q95 < 100):
             raise ValueError("invalid query-marginal conformal residual quantiles")
+        for family_name, family_values in self.family_query_quantiles.items():
+            q90 = float(family_values["q90"])
+            q95 = float(family_values["q95"])
+            if not (math.isfinite(q90) and math.isfinite(q95)
+                    and 0 <= q90 < 100 and 0 <= q95 < 100):
+                raise ValueError(f"invalid family calibration quantiles: {family_name}")
+            if int(family_values.get("calibration_geometries", 0)) < 8:
+                raise ValueError(f"insufficient family calibration geometries: {family_name}")
         self.target = target
 
     @torch.no_grad()
