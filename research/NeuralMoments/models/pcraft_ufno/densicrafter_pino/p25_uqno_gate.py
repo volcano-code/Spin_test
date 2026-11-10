@@ -130,11 +130,15 @@ class CalibratedUQNO:
         mu, _ = self.model(x)
         log_mu = mu*self.target_log_scale+self.target_log_mean
         family_info = self.family_query_quantiles.get(family) if family is not None else None
+        global_q = self.query_q90 if confidence == .90 else self.query_q95
         if family_info is not None:
-            q = float(family_info["q90"] if confidence == .90 else family_info["q95"])
-            calibration_source = family_info.get("source", "family_conditional_marginal_query")
+            family_q = float(family_info["q90"] if confidence == .90 else family_info["q95"])
+            # Conservative shrinkage guard: a family-specific estimate may
+            # widen the global interval, but cannot make it narrower.
+            q = max(global_q, family_q)
+            calibration_source = "family_conditional_max_with_global_floor"
         else:
-            q = self.query_q90 if confidence == .90 else self.query_q95
+            q = global_q
             calibration_source = "global_marginal_query_fallback"
         median = torch.exp(log_mu)
         upper = torch.exp(log_mu+q)
