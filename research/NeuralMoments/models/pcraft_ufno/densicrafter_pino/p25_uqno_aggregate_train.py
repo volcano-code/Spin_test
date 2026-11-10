@@ -102,7 +102,7 @@ def _group_max_scores(scores, selected_mask, geometry_ids):
     return torch.stack(grouped)
 
 
-def _fit_calibrate(X, y, split, geometry_ids, seed):
+def _fit_calibrate(X, y, split, geometry_ids, families, seed):
     train = torch.tensor([s == "train" for s in split])
     cal = torch.tensor([s == "calibration" for s in split])
     test = torch.tensor([s == "test" for s in split])
@@ -163,6 +163,27 @@ def _fit_calibrate(X, y, split, geometry_ids, seed):
         cal_query_upper = (ylog[cal] - mu[cal]).clamp_min(0.0)
         q_query90 = conformal_quantile(cal_query_upper, .10)
         q_query95 = conformal_quantile(cal_query_upper, .05)
+        family_query_quantiles = {}
+        for family in sorted(set(families)):
+            family_mask = torch.tensor([value == family for value in families])
+            family_cal = cal & family_mask
+            family_scores = (ylog[family_cal] - mu[family_cal]).clamp_min(0.0)
+            family_gids = {geometry_ids[i] for i, flag in enumerate(family_cal.tolist()) if flag}
+            if len(family_gids) < 8:
+                family_query_quantiles[family] = {
+                    "q90": q_query90, "q95": q_query95,
+                    "calibration_rows": int(family_cal.sum()),
+                    "calibration_geometries": len(family_gids),
+                    "source": "global_fallback_insufficient_family_geometries",
+                }
+            else:
+                family_query_quantiles[family] = {
+                    "q90": conformal_quantile(family_scores, .10),
+                    "q95": conformal_quantile(family_scores, .05),
+                    "calibration_rows": int(family_cal.sum()),
+                    "calibration_geometries": len(family_gids),
+                    "source": "family_conditional_marginal_query",
+                }
         lower90 = torch.exp(mu[test]-q90*sigma[test])
         upper90 = torch.exp(mu[test]+q90*sigma[test])
         lower95 = torch.exp(mu[test]-q95*sigma[test])
@@ -206,6 +227,7 @@ def _fit_calibrate(X, y, split, geometry_ids, seed):
             "calibration_standardized_residual_q95": q95,
             "calibration_query_upper_residual_q90": q_query90,
             "calibration_query_upper_residual_q95": q_query95,
+            "family_query_upper_residual_quantiles": family_query_quantiles,
             "query_calibration_unit": "one-sided log-error residual per query; geometry-disjoint split; marginal query coverage only",
             "test_coverage_90_interval": coverage90,
             "test_coverage_95_interval": coverage95,
@@ -253,7 +275,7 @@ def run(input_dir, checkpoint_dir, *, split_salt=0, seed_offset=0):
     if len(grouped) != 960:
         raise ValueError(f"expected 960 geometry-query-resolution groups, got {len(grouped)}")
 
-    X, hard_y, analytic_y, splits, geometry_ids, metadata = [], [], [], [], [], []
+    X, hard_y, analytic_y, splits, geometry_ids, families, metadata = [], [], [], [], [], [], []
     for (gid, query, resolution), group in sorted(grouped.items()):
         if len(group["rows"]) != 3 or {r["seed"] for r in group["rows"]} != set(SEEDS):
             raise ValueError("ensemble seed coverage mismatch")
@@ -267,6 +289,7 @@ def run(input_dir, checkpoint_dir, *, split_salt=0, seed_offset=0):
         split = _split(gid, salt=split_salt)
         splits.append(split)
         geometry_ids.append(gid)
+        families.append(rows[0]["family"])
         metadata.append({
             "geometry_id": gid, "query_index": query,
             "resolution": resolution, "family": rows[0]["family"],
@@ -280,8 +303,8 @@ def run(input_dir, checkpoint_dir, *, split_salt=0, seed_offset=0):
     X = torch.stack(X)
     hard_y = torch.tensor(hard_y, dtype=torch.float32)
     analytic_y = torch.tensor(analytic_y, dtype=torch.float32)
-    hard_model, hm, hs, hym, hys, hard_metrics = _fit_calibrate(X, hard_y, splits, geometry_ids, 2501 + seed_offset)
-    analytic_model, am, ass, aym, ays, analytic_metrics = _fit_calibrate(X, analytic_y, splits, geometry_ids, 2502 + seed_offset)
+    hard_model, hm, hs, hym, hys, hard_metrics = _fit_calibrate(X, hard_y, splits, geometry_ids, families, 2501 + seed_offset)
+    analytic_model, am, ass, aym, ays, analytic_metrics = _fit_calibrate(X, analytic_y, splits, geometry_ids, families, 2502 + seed_offset)
     test_cases = [{
         **metadata[i],
         "features": [float(v) for v in X[i].tolist()],
