@@ -22,7 +22,7 @@ class P25UQNOGateContracts(unittest.TestCase):
             "schema": schema,
             "state_dict": model.state_dict(),
             "input_mean": torch.zeros(5),
-            "input_scale": torch.ones(5),
+            "input_scale": torch.tensor([1.0]*4 + ([1e-5] if constant_last_feature else [1.0])),
             "target_log_mean": torch.tensor(-3.0),
             "target_log_scale": torch.tensor(.5),
             "feature_dim": 5,
