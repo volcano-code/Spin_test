@@ -1,5 +1,8 @@
+import sys
 import unittest
-from research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p26_runtime_cost_audit import audit
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from p26_runtime_cost_audit import audit
 
 class P26RuntimeCostAuditTests(unittest.TestCase):
     def test_paired_exact_baseline_and_hybrid_cost(self):
