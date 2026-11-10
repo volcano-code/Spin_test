@@ -62,7 +62,7 @@ class CalibratedUQNO:
                 torch.isfinite(self.target_log_mean).all() and
                 torch.isfinite(self.target_log_scale).all()):
             raise ValueError("nonfinite UQNO normalization parameters")
-        if bool((self.input_scale <= 0).any()) or bool((self.input_max <= self.input_min).any()) or float(self.target_log_scale) <= 0:
+        if bool((self.input_scale <= 0).any()) or bool((self.input_max < self.input_min).any()) or float(self.target_log_scale) <= 0:
             raise ValueError("invalid UQNO normalization scale")
         if not (0 < self.q90 < 100 and 0 < self.q95 < 100):
             raise ValueError("invalid conformal residual quantiles")
