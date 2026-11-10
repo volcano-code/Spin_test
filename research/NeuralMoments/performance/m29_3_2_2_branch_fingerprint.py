@@ -44,6 +44,9 @@ def fingerprint_components(operation,faces,source_faces,surface_type,cap_count,s
     for face in faces:
         if len(face)!=3 or any(int(i)<0 or int(i)>=len(keys) for i in face):
             raise ValueError("M29_3_2_2_INVALID_FEATURE_FACE")
+        # Validate non-degeneracy as well as index range. The production
+        # branch identity rejects repeated vertex indices in every triangle.
+        _cyclic_min(tuple(int(i) for i in face))
         tri=tuple(keys[int(i)] for i in face)
         triangles.append(min(tri,tri[1:]+tri[:1],tri[2:]+tri[:2]))
     oriented_source=[_cyclic_min(face) for face in source_faces]
