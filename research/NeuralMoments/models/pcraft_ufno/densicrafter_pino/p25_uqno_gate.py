@@ -55,6 +55,7 @@ class CalibratedUQNO:
         self.target_log_scale = torch.as_tensor(package["target_log_scale"], dtype=torch.float32)
         self.q90 = float(metrics["calibration_standardized_residual_q90"])
         self.q95 = float(metrics["calibration_standardized_residual_q95"])
+        self.feature_ood_threshold = float(metrics["feature_ood_standardized_max_q95"])
         if not (torch.isfinite(self.input_mean).all() and
                 torch.isfinite(self.input_scale).all() and
                 torch.isfinite(self.input_min).all() and
@@ -66,6 +67,8 @@ class CalibratedUQNO:
             raise ValueError("invalid UQNO normalization scale")
         if not (0 < self.q90 < 100 and 0 < self.q95 < 100):
             raise ValueError("invalid conformal residual quantiles")
+        if not (0 < self.feature_ood_threshold < 100):
+            raise ValueError("invalid geometry-calibrated OOD threshold")
         self.target = target
 
     @torch.no_grad()
@@ -106,12 +109,14 @@ class CalibratedUQNO:
                 raw = raw.unsqueeze(0)
             if raw.ndim != 2 or raw.shape[1] != self.input_mean.numel() or not bool(torch.isfinite(raw).all()):
                 raise ValueError("invalid feature shape or nonfinite values")
-            ood = ((raw < self.input_min) | (raw > self.input_max)).any(dim=1)
-            if bool(ood.any()):
+            # Per-feature 1-99% checks create multiple-comparison false positives
+            # for 349-dimensional inputs. Use a geometry-calibrated max score.
+            standardized_max = ((raw-self.input_mean)/self.input_scale).abs().amax(dim=1)
+            if bool((standardized_max > self.feature_ood_threshold).any()):
                 return {
                     "fallback": True, "interval": None,
                     "error_tolerance": float(error_tolerance),
-                    "reason": "FEATURE_OUTSIDE_TRAINING_01_99_ENVELOPE",
+                    "reason": "FEATURE_OUTSIDE_GEOMETRY_CALIBRATED_OOD_ENVELOPE",
                 }
             interval = self.predict_interval(raw, confidence=confidence)
             fallback = bool((interval["upper"] > error_tolerance).any())
