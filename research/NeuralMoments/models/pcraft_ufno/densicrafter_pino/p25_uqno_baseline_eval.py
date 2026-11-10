@@ -109,9 +109,9 @@ def _evaluate_target(report, checkpoint_dir, target):
         else "w6_p25_uqno_analytic_p0.pt"
     )
     gate = CalibratedUQNO(checkpoint, target=target)
-    intervals = gate.predict_interval(x_test, confidence=.95)
-    uqno_median = intervals["median"].reshape(-1).double()
-    uqno_upper = intervals["upper"].reshape(-1).double()
+    query_bounds = gate.predict_query_upper_bound(x_test, confidence=.95)
+    uqno_median = query_bounds["median"].reshape(-1).double()
+    uqno_upper = query_bounds["upper"].reshape(-1).double()
 
     # A constant median and ridge regression are train-only reference models.
     constant = torch.full_like(y_test, float(torch.median(y_train))).double()
@@ -135,6 +135,10 @@ def _evaluate_target(report, checkpoint_dir, target):
                 "median_95_upper_bound": float(uqno_upper.median()),
                 "raw_upper_exceedance_fraction_at_0_10": float((uqno_upper > 0.10).double().mean()),
                 "geometry_level_fallback_fraction_at_0_10": _geometry_fallback_fraction(gate, test, tolerance=0.10),
+                "query_level_fallback_fraction_at_0_10": float(sum(
+                    gate.should_fallback(row["features"], error_tolerance=0.10, confidence=.95)["fallback"]
+                    for row in test
+                ) / len(test)),
             },
         },
         "by_geometry_family": {
