@@ -59,6 +59,7 @@ class CalibratedUQNO:
         self.feature_ood_threshold = float(metrics["feature_ood_standardized_max_q95"])
         self.query_q90 = float(metrics["calibration_query_upper_residual_q90"])
         self.query_q95 = float(metrics["calibration_query_upper_residual_q95"])
+        self.family_query_quantiles = metrics.get("family_query_upper_residual_quantiles", {})
         if not (torch.isfinite(self.input_mean).all() and
                 torch.isfinite(self.input_scale).all() and
                 torch.isfinite(self.input_min).all() and
@@ -105,7 +106,7 @@ class CalibratedUQNO:
         }
 
     @torch.no_grad()
-    def predict_query_upper_bound(self, features, *, confidence: float = .95):
+    def predict_query_upper_bound(self, features, *, confidence: float = .95, family: str | None = None):
         """Marginal one-query upper bound; not simultaneous geometry coverage."""
         if confidence not in (.90, .95):
             raise ValueError("only calibrated 90% or 95% query bounds are available")
@@ -119,13 +120,21 @@ class CalibratedUQNO:
         x = ((x-self.input_mean)/self.input_scale).clamp(-10, 10)
         mu, _ = self.model(x)
         log_mu = mu*self.target_log_scale+self.target_log_mean
-        q = self.query_q90 if confidence == .90 else self.query_q95
+        family_info = self.family_query_quantiles.get(family) if family is not None else None
+        if family_info is not None:
+            q = float(family_info["q90"] if confidence == .90 else family_info["q95"])
+            calibration_source = family_info.get("source", "family_conditional_marginal_query")
+        else:
+            q = self.query_q90 if confidence == .90 else self.query_q95
+            calibration_source = "global_marginal_query_fallback"
         median = torch.exp(log_mu)
         upper = torch.exp(log_mu+q)
         return {
             "target": self.target,
             "confidence": confidence,
-            "calibration_unit": "marginal_query",
+            "calibration_unit": "family_conditional_marginal_query" if family_info is not None else "global_marginal_query_fallback",
+            "family": family,
+            "calibration_source": calibration_source,
             "median": median,
             "upper": upper,
             "log_residual_quantile": q,
@@ -133,7 +142,7 @@ class CalibratedUQNO:
 
     @torch.no_grad()
     def should_fallback(self, features, *, error_tolerance: float,
-                        confidence: float = .95):
+                        confidence: float = .95, family: str | None = None):
         if error_tolerance <= 0 or not torch.isfinite(torch.tensor(error_tolerance)):
             raise ValueError("error_tolerance must be finite and positive")
         try:
@@ -151,7 +160,7 @@ class CalibratedUQNO:
                     "error_tolerance": float(error_tolerance),
                     "reason": "FEATURE_OUTSIDE_GEOMETRY_CALIBRATED_OOD_ENVELOPE",
                 }
-            interval = self.predict_query_upper_bound(raw, confidence=confidence)
+            interval = self.predict_query_upper_bound(raw, confidence=confidence, family=family)
             fallback = bool((interval["upper"] > error_tolerance).any())
             return {
                 "fallback": fallback,
@@ -169,7 +178,8 @@ class CalibratedUQNO:
 
     def predict_or_fallback(self, features, approximate_result: Any,
                             exact_fallback: Callable[[], Any], *,
-                            error_tolerance: float, confidence: float = .95):
+                            error_tolerance: float, confidence: float = .95,
+                            family: str | None = None):
         """Fail closed: exact_fallback is called on uncertainty or invalid features.
 
         The callback must compute the exact reference for the current task.
@@ -177,7 +187,8 @@ class CalibratedUQNO:
         discrete voxel hard-cut integral; callers must record its provenance.
         """
         decision = self.should_fallback(
-            features, error_tolerance=error_tolerance, confidence=confidence
+            features, error_tolerance=error_tolerance, confidence=confidence,
+            family=family,
         )
         if decision["fallback"]:
             return {
