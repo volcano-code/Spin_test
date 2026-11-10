@@ -1,0 +1,3022 @@
+{
+  "schema": "W6_P29_1_GENERATION_TASKS_V1",
+  "created_utc": "2026-11-10",
+  "status": "planned_not_generated",
+  "total_candidates": 100,
+  "source_targets": {
+    "trellis_v1": 30,
+    "trellis2": 20,
+    "procedural_cad": 20,
+    "public_cad": 20,
+    "adversarial_topology": 10
+  },
+  "policy": {
+    "variants_share_lineage": true,
+    "texture_is_not_density": true,
+    "raw_assets_are_immutable": true,
+    "trellis_outputs_are_not_physical_truth": true,
+    "solid_track_requires_geometry_audit": true
+  },
+  "tasks": [
+    {
+      "task_id": "TV1-001",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-001-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "mechanical_bracket",
+      "geometry_focus": "through_holes_ribs_fillet",
+      "generation_brief": "A single watertight industrial mounting bracket with two through-holes, triangular reinforcing ribs, generous fillets and asymmetric load-bearing arms. Solid CAD-like object, no text or detached pieces.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261110
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-001.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-002",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-002-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "gear_housing",
+      "geometry_focus": "internal_cavity_bosses",
+      "generation_brief": "A compact gearbox housing with an outer shell, multiple mounting bosses and a clearly enclosed internal cavity; solid manifold body, no gears required.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261111
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-002.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-003",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-003-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "impeller",
+      "geometry_focus": "curved_blades_hub",
+      "generation_brief": "A centrifugal impeller with a central hub and 6 to 9 curved blades, smoothly joined to front and rear shrouds; one closed solid.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261112
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-003.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-004",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-004-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "pipe_connector",
+      "geometry_focus": "branched_channels",
+      "generation_brief": "A Y-shaped industrial pipe connector with three openings and thick walls; represent a valid solid with open flow passages and watertight exterior boundary.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261113
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-004.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-005",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-005-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "organic_support",
+      "geometry_focus": "branching_solid",
+      "generation_brief": "A stylized solid branching support inspired by bone trabeculae, with thick smooth branches merging into a single robust closed body.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261114
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-005.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-006",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-006-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "consumer_housing",
+      "geometry_focus": "asymmetric_shell",
+      "generation_brief": "An ergonomic handheld-device enclosure as a single solid with rounded edges, recessed panels and several mounting posts; no labels or thin decorative sheets.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261115
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-006.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-007",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-007-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "mechanical_bracket",
+      "geometry_focus": "through_holes_ribs_fillet",
+      "generation_brief": "A single watertight industrial mounting bracket with two through-holes, triangular reinforcing ribs, generous fillets and asymmetric load-bearing arms. Solid CAD-like object, no text or detached pieces.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261116
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-007.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-008",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-008-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "gear_housing",
+      "geometry_focus": "internal_cavity_bosses",
+      "generation_brief": "A compact gearbox housing with an outer shell, multiple mounting bosses and a clearly enclosed internal cavity; solid manifold body, no gears required.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261117
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-008.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-009",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-009-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "impeller",
+      "geometry_focus": "curved_blades_hub",
+      "generation_brief": "A centrifugal impeller with a central hub and 6 to 9 curved blades, smoothly joined to front and rear shrouds; one closed solid.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261118
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-009.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-010",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-010-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "pipe_connector",
+      "geometry_focus": "branched_channels",
+      "generation_brief": "A Y-shaped industrial pipe connector with three openings and thick walls; represent a valid solid with open flow passages and watertight exterior boundary.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261119
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-010.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-011",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-011-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "organic_support",
+      "geometry_focus": "branching_solid",
+      "generation_brief": "A stylized solid branching support inspired by bone trabeculae, with thick smooth branches merging into a single robust closed body.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261120
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-011.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-012",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-012-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "consumer_housing",
+      "geometry_focus": "asymmetric_shell",
+      "generation_brief": "An ergonomic handheld-device enclosure as a single solid with rounded edges, recessed panels and several mounting posts; no labels or thin decorative sheets.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261121
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-012.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-013",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-013-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "mechanical_bracket",
+      "geometry_focus": "through_holes_ribs_fillet",
+      "generation_brief": "A single watertight industrial mounting bracket with two through-holes, triangular reinforcing ribs, generous fillets and asymmetric load-bearing arms. Solid CAD-like object, no text or detached pieces.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261122
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-013.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-014",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-014-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "gear_housing",
+      "geometry_focus": "internal_cavity_bosses",
+      "generation_brief": "A compact gearbox housing with an outer shell, multiple mounting bosses and a clearly enclosed internal cavity; solid manifold body, no gears required.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261123
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-014.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-015",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-015-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "impeller",
+      "geometry_focus": "curved_blades_hub",
+      "generation_brief": "A centrifugal impeller with a central hub and 6 to 9 curved blades, smoothly joined to front and rear shrouds; one closed solid.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261124
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-015.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-016",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-016-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "pipe_connector",
+      "geometry_focus": "branched_channels",
+      "generation_brief": "A Y-shaped industrial pipe connector with three openings and thick walls; represent a valid solid with open flow passages and watertight exterior boundary.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261125
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-016.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-017",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-017-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "organic_support",
+      "geometry_focus": "branching_solid",
+      "generation_brief": "A stylized solid branching support inspired by bone trabeculae, with thick smooth branches merging into a single robust closed body.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261126
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-017.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-018",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-018-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "consumer_housing",
+      "geometry_focus": "asymmetric_shell",
+      "generation_brief": "An ergonomic handheld-device enclosure as a single solid with rounded edges, recessed panels and several mounting posts; no labels or thin decorative sheets.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261127
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-018.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-019",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-019-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "mechanical_bracket",
+      "geometry_focus": "through_holes_ribs_fillet",
+      "generation_brief": "A single watertight industrial mounting bracket with two through-holes, triangular reinforcing ribs, generous fillets and asymmetric load-bearing arms. Solid CAD-like object, no text or detached pieces.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261128
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-019.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-020",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-020-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "gear_housing",
+      "geometry_focus": "internal_cavity_bosses",
+      "generation_brief": "A compact gearbox housing with an outer shell, multiple mounting bosses and a clearly enclosed internal cavity; solid manifold body, no gears required.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261129
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-020.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-021",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-021-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "impeller",
+      "geometry_focus": "curved_blades_hub",
+      "generation_brief": "A centrifugal impeller with a central hub and 6 to 9 curved blades, smoothly joined to front and rear shrouds; one closed solid.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261130
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-021.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-022",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-022-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "pipe_connector",
+      "geometry_focus": "branched_channels",
+      "generation_brief": "A Y-shaped industrial pipe connector with three openings and thick walls; represent a valid solid with open flow passages and watertight exterior boundary.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261131
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-022.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-023",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-023-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "organic_support",
+      "geometry_focus": "branching_solid",
+      "generation_brief": "A stylized solid branching support inspired by bone trabeculae, with thick smooth branches merging into a single robust closed body.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261132
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-023.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-024",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-024-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "consumer_housing",
+      "geometry_focus": "asymmetric_shell",
+      "generation_brief": "An ergonomic handheld-device enclosure as a single solid with rounded edges, recessed panels and several mounting posts; no labels or thin decorative sheets.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261133
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-024.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-025",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-025-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "mechanical_bracket",
+      "geometry_focus": "through_holes_ribs_fillet",
+      "generation_brief": "A single watertight industrial mounting bracket with two through-holes, triangular reinforcing ribs, generous fillets and asymmetric load-bearing arms. Solid CAD-like object, no text or detached pieces.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261134
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-025.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-026",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-026-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "gear_housing",
+      "geometry_focus": "internal_cavity_bosses",
+      "generation_brief": "A compact gearbox housing with an outer shell, multiple mounting bosses and a clearly enclosed internal cavity; solid manifold body, no gears required.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261135
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-026.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-027",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-027-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "impeller",
+      "geometry_focus": "curved_blades_hub",
+      "generation_brief": "A centrifugal impeller with a central hub and 6 to 9 curved blades, smoothly joined to front and rear shrouds; one closed solid.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261136
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-027.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-028",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-028-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "pipe_connector",
+      "geometry_focus": "branched_channels",
+      "generation_brief": "A Y-shaped industrial pipe connector with three openings and thick walls; represent a valid solid with open flow passages and watertight exterior boundary.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261137
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-028.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-029",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-029-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "organic_support",
+      "geometry_focus": "branching_solid",
+      "generation_brief": "A stylized solid branching support inspired by bone trabeculae, with thick smooth branches merging into a single robust closed body.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261138
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-029.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "TV1-030",
+      "source_type": "trellis_v1",
+      "lineage_id": "TV1-030-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "consumer_housing",
+      "geometry_focus": "asymmetric_shell",
+      "generation_brief": "An ergonomic handheld-device enclosure as a single solid with rounded edges, recessed panels and several mounting posts; no labels or thin decorative sheets.",
+      "generator": {
+        "name": "microsoft/TRELLIS",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261139
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis_v1/TV1-030.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-001",
+      "source_type": "trellis2",
+      "lineage_id": "T2-001-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "multi_cavity_housing",
+      "geometry_focus": "nested_internal_cavities",
+      "generation_brief": "A complex solid housing with two enclosed internal cavities, connecting ribs and variable wall thickness; preserve a closed manifold outer solid.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261110
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-001.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-002",
+      "source_type": "trellis2",
+      "lineage_id": "T2-002-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "thin_wall_shell",
+      "geometry_focus": "thin_walls_and_ribs",
+      "generation_brief": "A mechanically plausible thin-wall enclosure with multiple reinforcing ribs and openings, with minimum wall thickness clearly above zero.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261111
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-002.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-003",
+      "source_type": "trellis2",
+      "lineage_id": "T2-003-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "lattice_solid",
+      "geometry_focus": "internal_lattice",
+      "generation_brief": "A single connected solid with a regular but spatially varying internal lattice and a continuous external shell; avoid disconnected floating struts.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261112
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-003.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-004",
+      "source_type": "trellis2",
+      "lineage_id": "T2-004-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "multi_component",
+      "geometry_focus": "separate_closed_components",
+      "generation_brief": "A mechanical assembly consisting of three separate closed solid components with small clear gaps; preserve component identity and do not fuse them.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261113
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "multi_component_closed",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-004.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-005",
+      "source_type": "trellis2",
+      "lineage_id": "T2-005-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "multi_cavity_housing",
+      "geometry_focus": "nested_internal_cavities",
+      "generation_brief": "A complex solid housing with two enclosed internal cavities, connecting ribs and variable wall thickness; preserve a closed manifold outer solid.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261114
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-005.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-006",
+      "source_type": "trellis2",
+      "lineage_id": "T2-006-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "thin_wall_shell",
+      "geometry_focus": "thin_walls_and_ribs",
+      "generation_brief": "A mechanically plausible thin-wall enclosure with multiple reinforcing ribs and openings, with minimum wall thickness clearly above zero.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261115
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-006.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-007",
+      "source_type": "trellis2",
+      "lineage_id": "T2-007-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "lattice_solid",
+      "geometry_focus": "internal_lattice",
+      "generation_brief": "A single connected solid with a regular but spatially varying internal lattice and a continuous external shell; avoid disconnected floating struts.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261116
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-007.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-008",
+      "source_type": "trellis2",
+      "lineage_id": "T2-008-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "multi_component",
+      "geometry_focus": "separate_closed_components",
+      "generation_brief": "A mechanical assembly consisting of three separate closed solid components with small clear gaps; preserve component identity and do not fuse them.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261117
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "multi_component_closed",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-008.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-009",
+      "source_type": "trellis2",
+      "lineage_id": "T2-009-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "multi_cavity_housing",
+      "geometry_focus": "nested_internal_cavities",
+      "generation_brief": "A complex solid housing with two enclosed internal cavities, connecting ribs and variable wall thickness; preserve a closed manifold outer solid.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261118
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-009.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-010",
+      "source_type": "trellis2",
+      "lineage_id": "T2-010-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "thin_wall_shell",
+      "geometry_focus": "thin_walls_and_ribs",
+      "generation_brief": "A mechanically plausible thin-wall enclosure with multiple reinforcing ribs and openings, with minimum wall thickness clearly above zero.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261119
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-010.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-011",
+      "source_type": "trellis2",
+      "lineage_id": "T2-011-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "lattice_solid",
+      "geometry_focus": "internal_lattice",
+      "generation_brief": "A single connected solid with a regular but spatially varying internal lattice and a continuous external shell; avoid disconnected floating struts.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261120
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-011.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-012",
+      "source_type": "trellis2",
+      "lineage_id": "T2-012-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "multi_component",
+      "geometry_focus": "separate_closed_components",
+      "generation_brief": "A mechanical assembly consisting of three separate closed solid components with small clear gaps; preserve component identity and do not fuse them.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261121
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "multi_component_closed",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-012.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-013",
+      "source_type": "trellis2",
+      "lineage_id": "T2-013-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "multi_cavity_housing",
+      "geometry_focus": "nested_internal_cavities",
+      "generation_brief": "A complex solid housing with two enclosed internal cavities, connecting ribs and variable wall thickness; preserve a closed manifold outer solid.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261122
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-013.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-014",
+      "source_type": "trellis2",
+      "lineage_id": "T2-014-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "thin_wall_shell",
+      "geometry_focus": "thin_walls_and_ribs",
+      "generation_brief": "A mechanically plausible thin-wall enclosure with multiple reinforcing ribs and openings, with minimum wall thickness clearly above zero.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261123
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-014.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-015",
+      "source_type": "trellis2",
+      "lineage_id": "T2-015-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "lattice_solid",
+      "geometry_focus": "internal_lattice",
+      "generation_brief": "A single connected solid with a regular but spatially varying internal lattice and a continuous external shell; avoid disconnected floating struts.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261124
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-015.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-016",
+      "source_type": "trellis2",
+      "lineage_id": "T2-016-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "multi_component",
+      "geometry_focus": "separate_closed_components",
+      "generation_brief": "A mechanical assembly consisting of three separate closed solid components with small clear gaps; preserve component identity and do not fuse them.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261125
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "multi_component_closed",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-016.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-017",
+      "source_type": "trellis2",
+      "lineage_id": "T2-017-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "multi_cavity_housing",
+      "geometry_focus": "nested_internal_cavities",
+      "generation_brief": "A complex solid housing with two enclosed internal cavities, connecting ribs and variable wall thickness; preserve a closed manifold outer solid.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261126
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-017.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-018",
+      "source_type": "trellis2",
+      "lineage_id": "T2-018-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "thin_wall_shell",
+      "geometry_focus": "thin_walls_and_ribs",
+      "generation_brief": "A mechanically plausible thin-wall enclosure with multiple reinforcing ribs and openings, with minimum wall thickness clearly above zero.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261127
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-018.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-019",
+      "source_type": "trellis2",
+      "lineage_id": "T2-019-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "lattice_solid",
+      "geometry_focus": "internal_lattice",
+      "generation_brief": "A single connected solid with a regular but spatially varying internal lattice and a continuous external shell; avoid disconnected floating struts.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261128
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-019.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "T2-020",
+      "source_type": "trellis2",
+      "lineage_id": "T2-020-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "multi_component",
+      "geometry_focus": "separate_closed_components",
+      "generation_brief": "A mechanical assembly consisting of three separate closed solid components with small clear gaps; preserve component identity and do not fuse them.",
+      "generator": {
+        "name": "microsoft/TRELLIS.2",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261129
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "multi_component_closed",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/trellis2/T2-020.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-001",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-001-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "through_hole_plate",
+      "geometry_focus": "hole_count_and_spacing",
+      "generation_brief": "Parametric plate with 2-8 cylindrical through-holes, controlled spacing, rounded corners and constant thickness.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261110
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-001.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-002",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-002-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "ribbed_bracket",
+      "geometry_focus": "rib_thickness_and_angle",
+      "generation_brief": "Parametric L-bracket with 2-5 ribs; vary rib thickness, angle and fillet radius.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261111
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-002.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-003",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-003-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "thin_wall_box",
+      "geometry_focus": "wall_thickness",
+      "generation_brief": "Hollow box with explicitly specified wall thickness, rounded corners and optional internal partitions.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261112
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-003.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-004",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-004-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "branching_channel",
+      "geometry_focus": "branch_count_and_diameter",
+      "generation_brief": "Solid manifold body containing 2-4 branching internal channels with controlled channel diameter and junction radii.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261113
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-004.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-005",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-005-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "porous_lattice",
+      "geometry_focus": "cell_size_and_porosity",
+      "generation_brief": "Single connected porous lattice solid with controlled cell size, strut radius and porosity, clipped by a smooth bounding envelope.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261114
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-005.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-006",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-006-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "through_hole_plate",
+      "geometry_focus": "hole_count_and_spacing",
+      "generation_brief": "Parametric plate with 2-8 cylindrical through-holes, controlled spacing, rounded corners and constant thickness.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261115
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-006.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-007",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-007-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "ribbed_bracket",
+      "geometry_focus": "rib_thickness_and_angle",
+      "generation_brief": "Parametric L-bracket with 2-5 ribs; vary rib thickness, angle and fillet radius.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261116
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-007.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-008",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-008-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "thin_wall_box",
+      "geometry_focus": "wall_thickness",
+      "generation_brief": "Hollow box with explicitly specified wall thickness, rounded corners and optional internal partitions.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261117
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-008.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-009",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-009-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "branching_channel",
+      "geometry_focus": "branch_count_and_diameter",
+      "generation_brief": "Solid manifold body containing 2-4 branching internal channels with controlled channel diameter and junction radii.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261118
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-009.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-010",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-010-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "porous_lattice",
+      "geometry_focus": "cell_size_and_porosity",
+      "generation_brief": "Single connected porous lattice solid with controlled cell size, strut radius and porosity, clipped by a smooth bounding envelope.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261119
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-010.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-011",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-011-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "through_hole_plate",
+      "geometry_focus": "hole_count_and_spacing",
+      "generation_brief": "Parametric plate with 2-8 cylindrical through-holes, controlled spacing, rounded corners and constant thickness.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261120
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-011.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-012",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-012-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "ribbed_bracket",
+      "geometry_focus": "rib_thickness_and_angle",
+      "generation_brief": "Parametric L-bracket with 2-5 ribs; vary rib thickness, angle and fillet radius.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261121
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-012.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-013",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-013-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "thin_wall_box",
+      "geometry_focus": "wall_thickness",
+      "generation_brief": "Hollow box with explicitly specified wall thickness, rounded corners and optional internal partitions.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261122
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-013.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-014",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-014-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "branching_channel",
+      "geometry_focus": "branch_count_and_diameter",
+      "generation_brief": "Solid manifold body containing 2-4 branching internal channels with controlled channel diameter and junction radii.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261123
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-014.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-015",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-015-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "porous_lattice",
+      "geometry_focus": "cell_size_and_porosity",
+      "generation_brief": "Single connected porous lattice solid with controlled cell size, strut radius and porosity, clipped by a smooth bounding envelope.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261124
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-015.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-016",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-016-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "through_hole_plate",
+      "geometry_focus": "hole_count_and_spacing",
+      "generation_brief": "Parametric plate with 2-8 cylindrical through-holes, controlled spacing, rounded corners and constant thickness.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261125
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-016.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-017",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-017-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "ribbed_bracket",
+      "geometry_focus": "rib_thickness_and_angle",
+      "generation_brief": "Parametric L-bracket with 2-5 ribs; vary rib thickness, angle and fillet radius.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261126
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-017.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-018",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-018-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "thin_wall_box",
+      "geometry_focus": "wall_thickness",
+      "generation_brief": "Hollow box with explicitly specified wall thickness, rounded corners and optional internal partitions.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261127
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-018.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-019",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-019-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "branching_channel",
+      "geometry_focus": "branch_count_and_diameter",
+      "generation_brief": "Solid manifold body containing 2-4 branching internal channels with controlled channel diameter and junction radii.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261128
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-019.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "PROC-020",
+      "source_type": "procedural_cad",
+      "lineage_id": "PROC-020-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "porous_lattice",
+      "geometry_focus": "cell_size_and_porosity",
+      "generation_brief": "Single connected porous lattice solid with controlled cell size, strut radius and porosity, clipped by a smooth bounding envelope.",
+      "generator": {
+        "name": "procedural_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261129
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/procedural_cad/PROC-020.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-001",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-001-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_bracket",
+      "geometry_focus": "load_bearing_joint",
+      "generation_brief": "Find a redistributable mechanical bracket CAD asset with explicit license and a closed solid; record original source URL and asset ID.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261110
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-001.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-002",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-002-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_housing",
+      "geometry_focus": "cavity_and_bosses",
+      "generation_brief": "Find a redistributable gearbox or electronics housing CAD asset with internal cavities and mounting bosses; record license.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261111
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-002.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-003",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-003-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_impeller",
+      "geometry_focus": "curved_blade_geometry",
+      "generation_brief": "Find a redistributable pump or turbine impeller CAD asset; record license and units.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261112
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-003.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-004",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-004-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_connector",
+      "geometry_focus": "multi_branch_geometry",
+      "generation_brief": "Find a redistributable pipe manifold or multi-port connector CAD asset with explicit license.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261113
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-004.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-005",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-005-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_bracket",
+      "geometry_focus": "load_bearing_joint",
+      "generation_brief": "Find a redistributable mechanical bracket CAD asset with explicit license and a closed solid; record original source URL and asset ID.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261114
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-005.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-006",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-006-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_housing",
+      "geometry_focus": "cavity_and_bosses",
+      "generation_brief": "Find a redistributable gearbox or electronics housing CAD asset with internal cavities and mounting bosses; record license.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261115
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-006.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-007",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-007-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_impeller",
+      "geometry_focus": "curved_blade_geometry",
+      "generation_brief": "Find a redistributable pump or turbine impeller CAD asset; record license and units.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261116
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-007.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-008",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-008-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_connector",
+      "geometry_focus": "multi_branch_geometry",
+      "generation_brief": "Find a redistributable pipe manifold or multi-port connector CAD asset with explicit license.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261117
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-008.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-009",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-009-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_bracket",
+      "geometry_focus": "load_bearing_joint",
+      "generation_brief": "Find a redistributable mechanical bracket CAD asset with explicit license and a closed solid; record original source URL and asset ID.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261118
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-009.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-010",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-010-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_housing",
+      "geometry_focus": "cavity_and_bosses",
+      "generation_brief": "Find a redistributable gearbox or electronics housing CAD asset with internal cavities and mounting bosses; record license.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261119
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-010.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-011",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-011-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_impeller",
+      "geometry_focus": "curved_blade_geometry",
+      "generation_brief": "Find a redistributable pump or turbine impeller CAD asset; record license and units.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261120
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-011.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-012",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-012-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_connector",
+      "geometry_focus": "multi_branch_geometry",
+      "generation_brief": "Find a redistributable pipe manifold or multi-port connector CAD asset with explicit license.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261121
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-012.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-013",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-013-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_bracket",
+      "geometry_focus": "load_bearing_joint",
+      "generation_brief": "Find a redistributable mechanical bracket CAD asset with explicit license and a closed solid; record original source URL and asset ID.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261122
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-013.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-014",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-014-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_housing",
+      "geometry_focus": "cavity_and_bosses",
+      "generation_brief": "Find a redistributable gearbox or electronics housing CAD asset with internal cavities and mounting bosses; record license.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261123
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-014.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-015",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-015-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_impeller",
+      "geometry_focus": "curved_blade_geometry",
+      "generation_brief": "Find a redistributable pump or turbine impeller CAD asset; record license and units.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261124
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-015.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-016",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-016-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_connector",
+      "geometry_focus": "multi_branch_geometry",
+      "generation_brief": "Find a redistributable pipe manifold or multi-port connector CAD asset with explicit license.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261125
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-016.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-017",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-017-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_bracket",
+      "geometry_focus": "load_bearing_joint",
+      "generation_brief": "Find a redistributable mechanical bracket CAD asset with explicit license and a closed solid; record original source URL and asset ID.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261126
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-017.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-018",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-018-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_housing",
+      "geometry_focus": "cavity_and_bosses",
+      "generation_brief": "Find a redistributable gearbox or electronics housing CAD asset with internal cavities and mounting bosses; record license.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261127
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-018.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-019",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-019-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_impeller",
+      "geometry_focus": "curved_blade_geometry",
+      "generation_brief": "Find a redistributable pump or turbine impeller CAD asset; record license and units.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261128
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-019.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "CAD-020",
+      "source_type": "public_cad",
+      "lineage_id": "CAD-020-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "public_cad_connector",
+      "geometry_focus": "multi_branch_geometry",
+      "generation_brief": "Find a redistributable pipe manifold or multi-port connector CAD asset with explicit license.",
+      "generator": {
+        "name": "public_cad",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261129
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "closed_manifold",
+      "intended_track": "supervised_solid",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/public_cad/CAD-020.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "OOD-001",
+      "source_type": "adversarial_topology",
+      "lineage_id": "OOD-001-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "open_surface",
+      "geometry_focus": "open_boundary",
+      "generation_brief": "Adversarial OOD case: open mechanical shell with a deliberately missing surface patch; retain as open surface, do not cap automatically.",
+      "generator": {
+        "name": "adversarial_topology",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261110
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "open_surface",
+      "intended_track": "robustness_ood",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/adversarial_topology/OOD-001.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "OOD-002",
+      "source_type": "adversarial_topology",
+      "lineage_id": "OOD-002-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "non_manifold",
+      "geometry_focus": "non_manifold_edge",
+      "generation_brief": "Adversarial OOD case: mesh with a deliberately non-manifold shared edge; preserve raw topology for parser and OOD testing.",
+      "generator": {
+        "name": "adversarial_topology",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261111
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "non_manifold",
+      "intended_track": "robustness_ood",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/adversarial_topology/OOD-002.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "OOD-003",
+      "source_type": "adversarial_topology",
+      "lineage_id": "OOD-003-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "near_zero_thickness",
+      "geometry_focus": "thin_feature_limit",
+      "generation_brief": "Adversarial OOD case: solid with one region approaching zero thickness; record local thickness diagnostics and do not promote to supervised solid.",
+      "generator": {
+        "name": "adversarial_topology",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261112
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "near_zero_thickness",
+      "intended_track": "robustness_ood",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/adversarial_topology/OOD-003.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "OOD-004",
+      "source_type": "adversarial_topology",
+      "lineage_id": "OOD-004-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "self_intersecting",
+      "geometry_focus": "self_intersection",
+      "generation_brief": "Adversarial OOD case: intentionally self-intersecting surface; preserve original mesh and record self-intersection locations.",
+      "generator": {
+        "name": "adversarial_topology",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261113
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "self_intersecting",
+      "intended_track": "robustness_ood",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/adversarial_topology/OOD-004.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "OOD-005",
+      "source_type": "adversarial_topology",
+      "lineage_id": "OOD-005-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "disconnected_fragments",
+      "geometry_focus": "component_count",
+      "generation_brief": "Adversarial OOD case: multiple disconnected fragments with mixed component scales; retain as OOD robustness sample.",
+      "generator": {
+        "name": "adversarial_topology",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261114
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "multi_component_closed",
+      "intended_track": "robustness_ood",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/adversarial_topology/OOD-005.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "OOD-006",
+      "source_type": "adversarial_topology",
+      "lineage_id": "OOD-006-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "open_surface",
+      "geometry_focus": "open_boundary",
+      "generation_brief": "Adversarial OOD case: open mechanical shell with a deliberately missing surface patch; retain as open surface, do not cap automatically.",
+      "generator": {
+        "name": "adversarial_topology",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261115
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "open_surface",
+      "intended_track": "robustness_ood",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/adversarial_topology/OOD-006.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "OOD-007",
+      "source_type": "adversarial_topology",
+      "lineage_id": "OOD-007-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "non_manifold",
+      "geometry_focus": "non_manifold_edge",
+      "generation_brief": "Adversarial OOD case: mesh with a deliberately non-manifold shared edge; preserve raw topology for parser and OOD testing.",
+      "generator": {
+        "name": "adversarial_topology",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261116
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "non_manifold",
+      "intended_track": "robustness_ood",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/adversarial_topology/OOD-007.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "OOD-008",
+      "source_type": "adversarial_topology",
+      "lineage_id": "OOD-008-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "near_zero_thickness",
+      "geometry_focus": "thin_feature_limit",
+      "generation_brief": "Adversarial OOD case: solid with one region approaching zero thickness; record local thickness diagnostics and do not promote to supervised solid.",
+      "generator": {
+        "name": "adversarial_topology",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261117
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "near_zero_thickness",
+      "intended_track": "robustness_ood",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/adversarial_topology/OOD-008.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "OOD-009",
+      "source_type": "adversarial_topology",
+      "lineage_id": "OOD-009-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "self_intersecting",
+      "geometry_focus": "self_intersection",
+      "generation_brief": "Adversarial OOD case: intentionally self-intersecting surface; preserve original mesh and record self-intersection locations.",
+      "generator": {
+        "name": "adversarial_topology",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261118
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "self_intersecting",
+      "intended_track": "robustness_ood",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/adversarial_topology/OOD-009.glb",
+        "raw_asset_sha256": null
+      }
+    },
+    {
+      "task_id": "OOD-010",
+      "source_type": "adversarial_topology",
+      "lineage_id": "OOD-010-lineage",
+      "variation_index": 0,
+      "status": "planned",
+      "candidate_class": "disconnected_fragments",
+      "geometry_focus": "component_count",
+      "generation_brief": "Adversarial OOD case: multiple disconnected fragments with mixed component scales; retain as OOD robustness sample.",
+      "generator": {
+        "name": "adversarial_topology",
+        "version": null,
+        "checkpoint_id": null,
+        "seed": 20261119
+      },
+      "reference": {
+        "image_path": null,
+        "image_sha256": null,
+        "license_or_rights": "must be recorded before generation"
+      },
+      "expected_topology": "multi_component_closed",
+      "intended_track": "robustness_ood",
+      "physical_label_status": "pending",
+      "units": "mm",
+      "density_kg_m3": null,
+      "output": {
+        "raw_asset_path": "raw/adversarial_topology/OOD-010.glb",
+        "raw_asset_sha256": null
+      }
+    }
+  ]
+}
