@@ -12,6 +12,7 @@ on:
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p25_uqno_baseline.py
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p25_uqno_gate.py
       - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p25_uqno_gate.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p25_uqno_gate_eval.py
   workflow_dispatch:
 
 permissions:
@@ -44,6 +45,10 @@ jobs:
         env:
           PYTHONPATH: .
         run: python -m unittest discover -s research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests -p 'test_p25_uqno_baseline.py' -v
+      - name: Test marginal-query gate evaluation
+        env:
+          PYTHONPATH: .
+        run: python -m unittest discover -s research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests -p "test_p25_uqno_gate_eval.py" -v
       - name: Download frozen nine P25.1 signal shards
         uses: actions/download-artifact@v4
         with:
