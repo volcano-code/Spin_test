@@ -10,7 +10,7 @@ from research.NeuralMoments.models.pcraft_ufno.densicrafter_pino.p25_uqno_gate i
 
 
 class P25UQNOGateContracts(unittest.TestCase):
-    def _checkpoint(self, path, target="hardcut"):
+    def _checkpoint(self, path, target="hardcut", constant_last_feature=False):
         torch.manual_seed(7)
         model = _UQNO(5)
         schema = (
@@ -29,8 +29,8 @@ class P25UQNOGateContracts(unittest.TestCase):
             "metrics": {
                 "calibration_standardized_residual_q90": 1.64,
                 "calibration_standardized_residual_q95": 1.96,
-                "training_feature_q01": [-1.0]*5,
-                "training_feature_q99": [1.0]*5,
+                "training_feature_q01": [-1.0]*4 + ([0.0] if constant_last_feature else [-1.0]),
+                "training_feature_q99": [1.0]*4 + ([0.0] if constant_last_feature else [1.0]),
             },
         }, path)
 
@@ -65,6 +65,16 @@ class P25UQNOGateContracts(unittest.TestCase):
             self.assertEqual(high["value"], "hardcut")
             self.assertEqual(calls, ["called"])
 
+    def test_constant_training_feature_is_valid_but_deviation_abstains(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d)/"uq.pt"
+            self._checkpoint(p, constant_last_feature=True)
+            uq = CalibratedUQNO(p, target="hardcut")
+            accepted = uq.should_fallback([0.0]*5, error_tolerance=100.0)
+            self.assertFalse(accepted["fallback"])
+            shifted = uq.should_fallback([0.0, 0.0, 0.0, 0.0, 0.01], error_tolerance=100.0)
+            self.assertTrue(shifted["fallback"])
+            self.assertEqual(shifted["reason"], "FEATURE_OUTSIDE_TRAINING_01_99_ENVELOPE")
     def test_wrong_target_checkpoint_is_rejected(self):
         with tempfile.TemporaryDirectory() as d:
             p = Path(d)/"uq.pt"
