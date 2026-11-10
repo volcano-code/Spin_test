@@ -28,8 +28,9 @@ def _rel(a, b):
     return float((aa-bb).norm()/bb.norm().clamp_min(1e-12))
 
 
-def _split(geometry_id):
-    h = int(hashlib.sha256(geometry_id.encode()).hexdigest()[:8], 16) % 10
+def _split(geometry_id, salt=0):
+    key = geometry_id if salt == 0 else f"{salt}|{geometry_id}"
+    h = int(hashlib.sha256(key.encode()).hexdigest()[:8], 16) % 10
     return "train" if h < 6 else ("calibration" if h < 8 else "test")
 
 
@@ -217,7 +218,7 @@ def _fit_calibrate(X, y, split, geometry_ids, seed):
     return model, mean, scale, ymean, yscale, result
 
 
-def run(input_dir, checkpoint_dir):
+def run(input_dir, checkpoint_dir, *, split_salt=0, seed_offset=0):
     torch.set_num_threads(1)
     root = Path(input_dir)
     reports = []
@@ -263,7 +264,7 @@ def run(input_dir, checkpoint_dir):
         X.append(features)
         hard_y.append(max(_rel(pred_r.tolist(), hardcut_r.tolist()), 1e-6))
         analytic_y.append(max(_rel(pred_r.tolist(), truth_r.tolist()), 1e-6))
-        split = _split(gid)
+        split = _split(gid, salt=split_salt)
         splits.append(split)
         geometry_ids.append(gid)
         metadata.append({
@@ -279,8 +280,8 @@ def run(input_dir, checkpoint_dir):
     X = torch.stack(X)
     hard_y = torch.tensor(hard_y, dtype=torch.float32)
     analytic_y = torch.tensor(analytic_y, dtype=torch.float32)
-    hard_model, hm, hs, hym, hys, hard_metrics = _fit_calibrate(X, hard_y, splits, geometry_ids, 2501)
-    analytic_model, am, ass, aym, ays, analytic_metrics = _fit_calibrate(X, analytic_y, splits, geometry_ids, 2502)
+    hard_model, hm, hs, hym, hys, hard_metrics = _fit_calibrate(X, hard_y, splits, geometry_ids, 2501 + seed_offset)
+    analytic_model, am, ass, aym, ays, analytic_metrics = _fit_calibrate(X, analytic_y, splits, geometry_ids, 2502 + seed_offset)
     test_cases = [{
         **metadata[i],
         "features": [float(v) for v in X[i].tolist()],
@@ -306,7 +307,9 @@ def run(input_dir, checkpoint_dir):
 
     return {
         "schema": "W6_P25_1_UQNO_PILOT_CALIBRATION_V1",
-        "geometry_split": "sha256(geometry_id) mod 10; train<6, calibration<8, test>=8",
+        "geometry_split": "sha256(geometry_id) mod 10; train<6, calibration<8, test>=8" if split_salt == 0 else f"sha256({split_salt}|geometry_id) mod 10; train<6, calibration<8, test>=8",
+        "split_salt": split_salt,
+        "seed_offset": seed_offset,
         "unique_geometry_count": len({m["geometry_id"] for m in metadata}),
         "rows": len(metadata), "feature_dim": int(X.shape[1]),
         "hardcut_error_predictor": hard_metrics,
@@ -338,8 +341,10 @@ def main():
     p.add_argument("--input-dir", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--checkpoint-dir", type=Path, required=True)
+    p.add_argument("--split-salt", type=int, default=0)
+    p.add_argument("--seed-offset", type=int, default=0)
     a = p.parse_args()
-    result = run(a.input_dir, a.checkpoint_dir)
+    result = run(a.input_dir, a.checkpoint_dir, split_salt=a.split_salt, seed_offset=a.seed_offset)
     a.output.parent.mkdir(parents=True, exist_ok=True)
     a.output.write_text(json.dumps(result, indent=2, sort_keys=True, allow_nan=False)+"\n")
     print(json.dumps({
