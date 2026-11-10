@@ -82,7 +82,7 @@ def _geometry_fallback_fraction(gate, rows, *, tolerance):
     for row in rows:
         groups[row["geometry_id"]].append(row["features"])
     decisions = [
-        gate.should_fallback(torch.tensor(features), error_tolerance=tolerance, confidence=.95)
+        gate.should_fallback(torch.tensor(features), error_tolerance=tolerance, confidence=.95, family=rows[0]["family"])
         for features in groups.values()
     ]
     return sum(bool(d["fallback"]) for d in decisions) / max(1, len(decisions))
@@ -109,9 +109,12 @@ def _evaluate_target(report, checkpoint_dir, target):
         else "w6_p25_uqno_analytic_p0.pt"
     )
     gate = CalibratedUQNO(checkpoint, target=target)
-    query_bounds = gate.predict_query_upper_bound(x_test, confidence=.95)
-    uqno_median = query_bounds["median"].reshape(-1).double()
-    uqno_upper = query_bounds["upper"].reshape(-1).double()
+    query_bounds = [
+        gate.predict_query_upper_bound(row["features"], confidence=.95, family=row["family"])
+        for row in test
+    ]
+    uqno_median = torch.cat([item["median"].reshape(-1) for item in query_bounds]).double()
+    uqno_upper = torch.cat([item["upper"].reshape(-1) for item in query_bounds]).double()
 
     # A constant median and ridge regression are train-only reference models.
     constant = torch.full_like(y_test, float(torch.median(y_train))).double()
@@ -136,7 +139,7 @@ def _evaluate_target(report, checkpoint_dir, target):
                 "raw_upper_exceedance_fraction_at_0_10": float((uqno_upper > 0.10).double().mean()),
                 "geometry_level_fallback_fraction_at_0_10": _geometry_fallback_fraction(gate, test, tolerance=0.10),
                 "query_level_fallback_fraction_at_0_10": float(sum(
-                    gate.should_fallback(row["features"], error_tolerance=0.10, confidence=.95)["fallback"]
+                    gate.should_fallback(row["features"], error_tolerance=0.10, confidence=.95, family=row["family"])["fallback"]
                     for row in test
                 ) / len(test)),
             },
