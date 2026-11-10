@@ -29,11 +29,24 @@ class P25UQNOGateContracts(unittest.TestCase):
             "metrics": {
                 "calibration_standardized_residual_q90": 1.64,
                 "calibration_standardized_residual_q95": 1.96,
+                "calibration_query_upper_residual_q90": 0.5,
+                "calibration_query_upper_residual_q95": 0.8,
                 "feature_ood_standardized_max_q95": 5.5,
                 "training_feature_q01": [-1.0]*4 + ([0.0] if constant_last_feature else [-1.0]),
                 "training_feature_q99": [1.0]*4 + ([0.0] if constant_last_feature else [1.0]),
             },
         }, path)
+
+    def test_query_upper_bound_is_finite_and_uses_one_sided_calibration(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d)/"uq.pt"
+            self._checkpoint(p)
+            uq = CalibratedUQNO(p, target="hardcut")
+            out = uq.predict_query_upper_bound(torch.zeros(5), confidence=.95)
+            self.assertEqual(out["calibration_unit"], "marginal_query")
+            self.assertTrue(torch.isfinite(out["upper"]).all())
+            self.assertTrue(torch.all(out["upper"] >= out["median"]))
+            self.assertAlmostEqual(out["log_residual_quantile"], 0.8)
 
     def test_predict_interval_is_finite_and_ordered(self):
         with tempfile.TemporaryDirectory() as d:
