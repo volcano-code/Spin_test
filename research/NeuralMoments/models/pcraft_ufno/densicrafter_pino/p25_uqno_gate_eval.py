@@ -129,7 +129,7 @@ def main():
     args = parser.parse_args()
     result = run(args.report, args.checkpoint_dir)
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(result, indent=2, sort_keys=True, allow_nan=False) + "\\n")
+    args.output.write_text(json.dumps(result, indent=2, sort_keys=True, allow_nan=False) + "\n")
     print(json.dumps({
         "hardcut": result["hardcut_error_gate"],
         "analytic": result["analytic_p0_error_gate"],
