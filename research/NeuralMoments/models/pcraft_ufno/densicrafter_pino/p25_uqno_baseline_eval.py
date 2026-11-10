@@ -125,7 +125,14 @@ def _evaluate_target(report, checkpoint_dir, target):
                 "fallback_fraction": float((uqno_upper > 0.10).double().mean()),
             },
         },
-        "by_geometry_family": {},
+        "by_geometry_family": {
+            family: _metrics(
+                y_test.double()[torch.tensor([row["family"] == family for row in test])],
+                uqno_median[torch.tensor([row["family"] == family for row in test])],
+                uqno_upper[torch.tensor([row["family"] == family for row in test])],
+            )
+            for family in sorted({row["family"] for row in test})
+        },
     }
 
 
