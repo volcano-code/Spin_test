@@ -31,7 +31,7 @@ class P25UQNOGateContracts(unittest.TestCase):
                 "calibration_standardized_residual_q95": 1.96,
                 "calibration_query_upper_residual_q90": 0.5,
                 "calibration_query_upper_residual_q95": 0.8,
-                "family_query_upper_residual_quantiles": {"box": {"q90": 0.9, "q95": 1.1, "source": "family_conditional_marginal_query"}},
+                "family_query_upper_residual_quantiles": {"box": {"q90": 0.9, "q95": 1.1, "source": "family_conditional_marginal_query", "calibration_geometries": 12}},
                 "feature_ood_standardized_max_q95": 5.5,
                 "training_feature_q01": [-1.0]*4 + ([0.0] if constant_last_feature else [-1.0]),
                 "training_feature_q99": [1.0]*4 + ([0.0] if constant_last_feature else [1.0]),
