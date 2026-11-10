@@ -69,9 +69,14 @@ def audit(root: Path = ROOT):
     w0 = quoted_constant(authority, "W0_REL")
     w2 = quoted_constant(authority, "W2_REL")
     need(w0 in wrapper and w2 in wrapper, "OWNER_RECEIPT_PATH_NOT_ENFORCED")
-    need(quoted_constant(authority, "W0_BRANCH") in authority and
-         quoted_constant(authority, "W2_BRANCH") in authority,
-         "OWNER_BRANCH_IDENTITY_MISSING")
+    w0_branch = quoted_constant(authority, "W0_BRANCH")
+    w2_branch = quoted_constant(authority, "W2_BRANCH")
+    need(w0_branch == "research/neuralmoments-w0-contract-20261019" and
+         w2_branch == "research/neuralmoments-w2-teacher-20261019",
+         "OWNER_BRANCH_IDENTITY_MISMATCH")
+    need("resolve_authority(w0_review_root, W0_BRANCH, W0_REL)" in authority and
+         "resolve_authority(w2_review_root, W2_BRANCH, W2_REL)" in authority,
+         "OWNER_BRANCH_HEAD_AND_RECEIPT_PROVENANCE_CHECK_MISSING")
 
     # Resource and runtime gates must be consistent across host and child.
     need("--memory=24g --memory-swap=24g" in wrapper,
@@ -89,8 +94,9 @@ def audit(root: Path = ROOT):
          f'/output/$P27_RUN_REL/native-build/cherchi/python' in wrapper,
          "HOST_PYTHONPATH_DOES_NOT_MATCH_PINNED_P27_RUN")
     need("p27_run_dir / LOCK_NAME" in sampler and
-         "p27_run_dir / PINS_NAME" in sampler,
-         "P27_LOCK_OR_SIX_PINS_NOT_REVALIDATED")
+         "p27_run_dir / PINS_NAME" in sampler and
+         "seed.LOCK_SHA" in sampler and "seed.MANIFEST_SHA" in sampler,
+         "P27_LOCK_MANIFEST_OR_SIX_PINS_NOT_REVALIDATED")
     need("seed.verify_archive(a.archive)" in sampler and
          "seed.plan(archive,step=plan[\"step_radians\"])" in sampler,
          "P27_ARCHIVE_AND_PLAN_NOT_RECONCILED")
