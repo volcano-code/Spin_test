@@ -30,7 +30,7 @@ jobs:
         with:
           python-version: '3.10'
       - name: Install pinned CPU PyTorch
-        run: python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+        run: python -m pip install torch==2.5.1 numpy==1.26.4 --index-url https://download.pytorch.org/whl/cpu
       - name: Test calibrated UQNO gate contracts
         run: |
           python -m unittest discover -s research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests -p 'test_p25_uqno_gate.py' -v
