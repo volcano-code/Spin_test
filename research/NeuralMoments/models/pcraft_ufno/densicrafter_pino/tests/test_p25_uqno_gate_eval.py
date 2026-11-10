@@ -57,6 +57,8 @@ class P25MarginalQueryGateEvaluationTests(unittest.TestCase):
             self.assertEqual(item["geometry_count"], 16)
             self.assertEqual(item["accepted_query_count"], 16)
             self.assertEqual(item["fallback_query_count"], 0)
+            self.assertEqual(item["in_domain_query_count"], 16)
+            self.assertEqual(item["empirical_upper_bound_coverage_in_domain"], 1.0)
             self.assertEqual(item["geometry_any_fallback_fraction"], 0.0)
 
 
