@@ -160,8 +160,8 @@ def _fit_calibrate(X, y, split, geometry_ids, seed):
         # these intervals target one inference query, not simultaneous
         # coverage of every query/resolution for an entire geometry.
         cal_query_upper = (ylog[cal] - mu[cal]).clamp_min(0.0)
-        q_query90 = conformal_quantile(cal_query_upper, .90)
-        q_query95 = conformal_quantile(cal_query_upper, .95)
+        q_query90 = conformal_quantile(cal_query_upper, .10)
+        q_query95 = conformal_quantile(cal_query_upper, .05)
         lower90 = torch.exp(mu[test]-q90*sigma[test])
         upper90 = torch.exp(mu[test]+q90*sigma[test])
         lower95 = torch.exp(mu[test]-q95*sigma[test])
