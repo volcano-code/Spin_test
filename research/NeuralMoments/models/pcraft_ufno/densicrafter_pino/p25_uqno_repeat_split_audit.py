@@ -110,7 +110,7 @@ def main():
     args = parser.parse_args()
     result = run(args.input_dir, args.output_dir)
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(result, indent=2, sort_keys=True, allow_nan=False) + "\\n")
+    args.output.write_text(json.dumps(result, indent=2, sort_keys=True, allow_nan=False) + "\n")
     print(json.dumps({
         "same_configuration_reproducibility": result["same_configuration_reproducibility"],
         "runs": {
