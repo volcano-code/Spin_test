@@ -1,5 +1,7 @@
 import importlib.util
 from pathlib import Path
+import shutil
+import tempfile
 import unittest
 
 HERE = Path(__file__).resolve().parent
@@ -60,6 +62,22 @@ class P32TriangleScreenTests(unittest.TestCase):
             with self.subTest(triangle=triangle):
                 self.assertEqual(MODULE.triangles_sat_intersect(a, triangle), expected)
 
+
+
+    def test_screen_is_deterministic(self):
+        self.assertEqual(self.result, MODULE.run(HERE.parents[2]))
+
+    def test_modified_source_blob_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for rel in MODULE.FILES.values():
+                target = root / rel
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(HERE.parents[2] / rel, target)
+            target = root / MODULE.FILES["M"]
+            target.write_text(target.read_text(encoding="utf-8") + "\\n# tampered\\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "source Git blob SHA1 mismatch"):
+                MODULE.run(root)
 
 
 if __name__ == "__main__":
