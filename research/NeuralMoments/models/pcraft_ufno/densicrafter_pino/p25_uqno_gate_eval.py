@@ -38,7 +38,7 @@ def _evaluate_target(report, checkpoint, target):
                     row["features"], error_tolerance=tolerance, confidence=.95
                 )
                 if decision["interval"] is None:
-                    uppers.append(float("inf"))
+                    uppers.append(1e30)
                 else:
                     uppers.append(float(decision["interval"]["upper"].reshape(-1)[0]))
                 actuals.append(float(row[label_key]))
