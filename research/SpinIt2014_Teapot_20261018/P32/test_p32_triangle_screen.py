@@ -46,5 +46,21 @@ class P32TriangleScreenTests(unittest.TestCase):
         })
 
 
+    def test_sat_synthetic_intersection_and_separation_cases(self):
+        a = ((0.0, 0.0, 0.0), (1.0, 0.0, 0.0), (0.0, 1.0, 0.0))
+        cases = (
+            (((2.0, 2.0, 0.0), (3.0, 2.0, 0.0), (2.0, 3.0, 0.0)), False),
+            (((0.2, 0.2, 0.0), (0.8, 0.2, 0.0), (0.2, 0.8, 0.0)), True),
+            (((0.0, 0.0, 0.0), (0.0, -1.0, 0.0), (1.0, 0.0, 0.0)), True),
+            (((0.0, 0.0, 1.0), (1.0, 0.0, 1.0), (0.0, 1.0, 1.0)), False),
+            (((0.2, 0.2, -1.0), (0.2, 0.2, 1.0), (0.8, 0.2, 0.0)), True),
+            (((0.0, 0.0, 0.0), (-1.0, 0.0, 0.0), (0.0, -1.0, 0.0)), True),
+        )
+        for triangle, expected in cases:
+            with self.subTest(triangle=triangle):
+                self.assertEqual(MODULE.triangles_sat_intersect(a, triangle), expected)
+
+
+
 if __name__ == "__main__":
     unittest.main()
