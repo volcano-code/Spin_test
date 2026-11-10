@@ -82,7 +82,8 @@ class CalibratedUQNO:
             if not (math.isfinite(q90) and math.isfinite(q95)
                     and 0 <= q90 < 100 and 0 <= q95 < 100):
                 raise ValueError(f"invalid family calibration quantiles: {family_name}")
-            if int(family_values.get("calibration_geometries", 0)) < 8:
+            if (family_values.get("source") == "family_conditional_marginal_query"
+                    and int(family_values.get("calibration_geometries", 0)) < 8):
                 raise ValueError(f"insufficient family calibration geometries: {family_name}")
         self.target = target
 
