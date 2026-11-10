@@ -29,6 +29,7 @@ class P25UQNOGateContracts(unittest.TestCase):
             "metrics": {
                 "calibration_standardized_residual_q90": 1.64,
                 "calibration_standardized_residual_q95": 1.96,
+                "feature_ood_standardized_max_q95": 5.5,
                 "training_feature_q01": [-1.0]*4 + ([0.0] if constant_last_feature else [-1.0]),
                 "training_feature_q99": [1.0]*4 + ([0.0] if constant_last_feature else [1.0]),
             },
@@ -74,7 +75,7 @@ class P25UQNOGateContracts(unittest.TestCase):
             self.assertFalse(accepted["fallback"])
             shifted = uq.should_fallback([0.0, 0.0, 0.0, 0.0, 0.01], error_tolerance=100.0)
             self.assertTrue(shifted["fallback"])
-            self.assertEqual(shifted["reason"], "FEATURE_OUTSIDE_TRAINING_01_99_ENVELOPE")
+            self.assertEqual(shifted["reason"], "FEATURE_OUTSIDE_GEOMETRY_CALIBRATED_OOD_ENVELOPE")
     def test_wrong_target_checkpoint_is_rejected(self):
         with tempfile.TemporaryDirectory() as d:
             p = Path(d)/"uq.pt"
@@ -100,7 +101,7 @@ class P25UQNOGateContracts(unittest.TestCase):
             self._checkpoint(p)
             uq = CalibratedUQNO(p, target="hardcut")
             result = uq.predict_or_fallback(
-                [2.0]*5, "pino", lambda: "hardcut",
+                [10.0]*5, "pino", lambda: "hardcut",
                 error_tolerance=.1,
             )
             self.assertTrue(result["fallback_used"])
