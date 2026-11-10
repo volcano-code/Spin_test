@@ -7,6 +7,12 @@ on:
       - .github/workflows/w4-p32-triangle-screen.yml
       - research/SpinIt2014_Teapot_20261018/P32/p32_*.py
       - research/SpinIt2014_Teapot_20261018/P32/test_p32*.py
+      - research/SpinIt2014_Teapot_20261018/P33/p33d_*.py
+      - research/SpinIt2014_Teapot_20261018/P33/test_p33*.py
+      - research/SpinIt2014_Teapot_20261018/P30/p30b_run_approved_native_pilot.sh
+      - research/SpinIt2014_Teapot_20261018/P30/p30b_authority.py
+      - research/SpinIt2014_Teapot_20261018/P30/p30b_native_sampler.py
+      - research/SpinIt2014_Teapot_20261018/P30/p30_neighborhood_preflight.py
       - research/SpinIt2014_Teapot_20261018/P1/P19_material_case/material/M_native.obj
       - research/SpinIt2014_Teapot_20261018/P1/P19_material_case/material/D_native.obj
       - research/SpinIt2014_Teapot_20261018/P1/P19_material_case/source/shaft-reference.obj
@@ -31,8 +37,10 @@ jobs:
       - name: Run reproducible P32 screen
         run: |
           set -euo pipefail
-          python -m py_compile research/SpinIt2014_Teapot_20261018/P32/p32_triangle_screen.py research/SpinIt2014_Teapot_20261018/P32/test_p32_triangle_screen.py
+          python -m py_compile research/SpinIt2014_Teapot_20261018/P32/p32_triangle_screen.py research/SpinIt2014_Teapot_20261018/P32/test_p32_triangle_screen.py research/SpinIt2014_Teapot_20261018/P33/p33d_static_chain_audit.py research/SpinIt2014_Teapot_20261018/P33/test_p33d_static_chain_audit.py
           python -m unittest discover -v -s research/SpinIt2014_Teapot_20261018/P32 -p 'test_p32_triangle_screen.py'
+          python -m unittest discover -v -s research/SpinIt2014_Teapot_20261018/P33 -p 'test_p33d_static_chain_audit.py'
+          python research/SpinIt2014_Teapot_20261018/P33/p33d_static_chain_audit.py
       - name: Emit diagnostic JSON
         run: |
           set -euo pipefail
