@@ -33,6 +33,8 @@ jobs:
         run: |
           python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
           python -m pip install numpy==1.26.4
+      - name: Verify numerical runtime versions
+        run: python -c "import torch, numpy; print('torch', torch.__version__, 'numpy', numpy.__version__)"
       - name: Test calibrated UQNO gate contracts
         run: |
           python -m unittest discover -s research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests -p 'test_p25_uqno_gate.py' -v
