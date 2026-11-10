@@ -1,0 +1,31 @@
+name: W6 P26.0 measured runtime cost audit contracts
+
+on:
+  push:
+    branches:
+      - research/neuralmoments-w6-pcraft-20261019
+    paths:
+      - .github/workflows/w6-p26-runtime-cost-audit.yml
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/p26_runtime_cost_audit.py
+      - research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests/test_p26_runtime_cost_audit.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: w6-p26-runtime-cost-audit
+  cancel-in-progress: false
+
+jobs:
+  cost-audit-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Run measured cost audit contract tests
+        env:
+          PYTHONPATH: .
+        run: python -m unittest discover -s research/NeuralMoments/models/pcraft_ufno/densicrafter_pino/tests -p "test_p26_runtime_cost_audit.py" -v
