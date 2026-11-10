@@ -50,7 +50,7 @@ class P25UQNOGateContracts(unittest.TestCase):
             self.assertAlmostEqual(out["log_residual_quantile"], 0.8)
             box = uq.predict_query_upper_bound(torch.zeros(5), confidence=.95, family="box")
             self.assertAlmostEqual(box["log_residual_quantile"], 1.1)
-            self.assertEqual(box["calibration_source"], "family_conditional_marginal_query")
+            self.assertEqual(box["calibration_source"], "family_conditional_max_with_global_floor")
             unknown = uq.predict_query_upper_bound(torch.zeros(5), confidence=.95, family="unknown")
             self.assertAlmostEqual(unknown["log_residual_quantile"], 0.8)
             self.assertEqual(unknown["calibration_source"], "global_marginal_query_fallback")
