@@ -142,6 +142,14 @@ def _fit_calibrate(X, y, split, geometry_ids, seed):
         # Geometry-level simultaneous calibration: all coefficient queries
         # and both resolutions for a geometry contribute to one max score.
         cal_group_scores = _group_max_scores(cal_z, cal, geometry_ids)
+        # Multivariate OOD score: max standardized feature deviation per
+        # geometry across every query and resolution. Per-feature 1-99%
+        # envelopes are too strict in 349 dimensions (multiple-comparison
+        # effect), so calibrate one geometry-level max score instead.
+        feature_scores = Xn.abs().amax(dim=1)
+        cal_feature_group_scores = _group_max_scores(
+            feature_scores[cal], cal, geometry_ids
+        )
         def conformal_quantile(scores, alpha):
             k = min(len(scores), max(1, math.ceil((len(scores)+1)*(1-alpha))))
             return float(torch.kthvalue(scores, k).values)
@@ -181,6 +189,8 @@ def _fit_calibrate(X, y, split, geometry_ids, seed):
             "test_unique_geometries": len(test_gids),
             "calibration_unit": "maximum standardized residual per geometry across all queries and resolutions",
             "calibration_geometry_scores": len(cal_group_scores),
+            "feature_ood_standardized_max_q95": conformal_quantile(cal_feature_group_scores, .05),
+            "feature_ood_calibration_geometry_scores": len(cal_feature_group_scores),
             "test_geometry_simultaneous_coverage_90": sum(geometry_coverage90)/len(geometry_coverage90),
             "test_geometry_simultaneous_coverage_95": sum(geometry_coverage95)/len(geometry_coverage95),
             "epochs": 400, "training_history": history,
