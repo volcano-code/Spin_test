@@ -38,3 +38,11 @@ jobs:
           set -euo pipefail
           python research/SpinIt2014_Teapot_20261018/P32/p32_triangle_screen.py --repo . --output "$RUNNER_TEMP/P32_TRIANGLE_SCREEN.json"
           test -s "$RUNNER_TEMP/P32_TRIANGLE_SCREEN.json"
+          cat "$RUNNER_TEMP/P32_TRIANGLE_SCREEN.json" >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload immutable diagnostic result
+        uses: actions/upload-artifact@v4
+        with:
+          name: W4-P32-triangle-screen-${{ github.sha }}
+          path: ${{ runner.temp }}/P32_TRIANGLE_SCREEN.json
+          if-no-files-found: error
+          retention-days: 30
