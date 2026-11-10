@@ -121,6 +121,7 @@ def run(root,archive,m9_run,output,steps=(1e-5,1e-6),directions=(6,7,8),max_seco
     try:
         with tempfile.TemporaryDirectory(prefix="w1-m29-3-2-2-") as td:
             req_path=Path(td)/"request.json";req_path.write_bytes(frozen)
+            sys.path.insert(0,str(root/H8/"source"))
             from probe_h8_native_cherchi import initial_ellipsoid_q,request_from_frozen
             from verify_h8_exact_moments import independent_ten_raw_moments
             request,settings,evidence=request_from_frozen(req_path)
