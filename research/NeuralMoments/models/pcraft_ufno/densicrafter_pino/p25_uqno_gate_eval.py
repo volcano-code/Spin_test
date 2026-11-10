@@ -34,8 +34,13 @@ def _evaluate_target(report, checkpoint, target):
             uppers = []
             actuals = []
             for row in rows:
-                interval = gate.predict_interval(row["features"], confidence=.95)
-                uppers.append(float(interval["upper"].reshape(-1)[0]))
+                decision = gate.should_fallback(
+                    row["features"], error_tolerance=tolerance, confidence=.95
+                )
+                if decision["interval"] is None:
+                    uppers.append(float("inf"))
+                else:
+                    uppers.append(float(decision["interval"]["upper"].reshape(-1)[0]))
                 actuals.append(float(row[label_key]))
             predicted_upper = max(uppers)
             actual_max = max(actuals)
