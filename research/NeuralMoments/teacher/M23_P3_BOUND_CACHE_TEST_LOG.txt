@@ -1,0 +1,27 @@
+test_admission_claim_rejected (test_m23_p3_bound_cache.BoundCacheTests.test_admission_claim_rejected) ... ok
+test_backend_change_rejected (test_m23_p3_bound_cache.BoundCacheTests.test_backend_change_rejected) ... ok
+test_boolean_length_is_not_an_integer_count (test_m23_p3_bound_cache.BoundCacheTests.test_boolean_length_is_not_an_integer_count) ... ok
+test_copy_node_also_requires_receipt (test_m23_p3_bound_cache.BoundCacheTests.test_copy_node_also_requires_receipt) ... ok
+test_corrupt_context_digest_rejected (test_m23_p3_bound_cache.BoundCacheTests.test_corrupt_context_digest_rejected) ... ok
+test_duplicate_json_keys_rejected (test_m23_p3_bound_cache.BoundCacheTests.test_duplicate_json_keys_rejected) ... ok
+test_each_source_and_policy_change_rejected (test_m23_p3_bound_cache.BoundCacheTests.test_each_source_and_policy_change_rejected) ... ok
+test_experiment_namespace_isolated (test_m23_p3_bound_cache.BoundCacheTests.test_experiment_namespace_isolated) ... ok
+test_invalid_operation_arity (test_m23_p3_bound_cache.BoundCacheTests.test_invalid_operation_arity) ... ok
+test_missing_node_is_not_a_hit (test_m23_p3_bound_cache.BoundCacheTests.test_missing_node_is_not_a_hit) ... ok
+test_missing_payload_rejected (test_m23_p3_bound_cache.BoundCacheTests.test_missing_payload_rejected) ... ok
+test_missing_receipt_rejected (test_m23_p3_bound_cache.BoundCacheTests.test_missing_receipt_rejected) ... ok
+test_modified_payload_rejected (test_m23_p3_bound_cache.BoundCacheTests.test_modified_payload_rejected) ... ok
+test_native_context_still_never_admits_training (test_m23_p3_bound_cache.BoundCacheTests.test_native_context_still_never_admits_training) ... ok
+test_no_overwrite (test_m23_p3_bound_cache.BoundCacheTests.test_no_overwrite) ... ok
+test_operand_content_change_rejected (test_m23_p3_bound_cache.BoundCacheTests.test_operand_content_change_rejected) ... ok
+test_operation_change_rejected (test_m23_p3_bound_cache.BoundCacheTests.test_operation_change_rejected) ... ok
+test_ordered_operands_swap_rejected (test_m23_p3_bound_cache.BoundCacheTests.test_ordered_operands_swap_rejected) ... ok
+test_partial_directory_not_repaired (test_m23_p3_bound_cache.BoundCacheTests.test_partial_directory_not_repaired) ... ok
+test_path_traversal_rejected (test_m23_p3_bound_cache.BoundCacheTests.test_path_traversal_rejected) ... ok
+test_roundtrip_and_unadmitted (test_m23_p3_bound_cache.BoundCacheTests.test_roundtrip_and_unadmitted) ... ok
+test_symlink_output_rejected (test_m23_p3_bound_cache.BoundCacheTests.test_symlink_output_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.072s
+
+OK

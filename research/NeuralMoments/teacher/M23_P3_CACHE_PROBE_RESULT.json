@@ -1,0 +1,118 @@
+{
+  "J_D": null,
+  "archive_scan_report": {
+    "decode_failures_count": "NOT_REPORTED",
+    "evidence_level": "USER_HOST_STDOUT_ONLY",
+    "filename": "\u7c98\u8d34\u7684\u6587\u672c (1)(10).txt",
+    "raw_zip_bytes_audited_here": false,
+    "reported_keyword_matches": [
+      0,
+      0,
+      0
+    ],
+    "reported_zip_entries": [
+      26,
+      165,
+      165
+    ],
+    "scan_finished_marker_present": true,
+    "sha256": "5cae1bdd5ecab4806cbc38448404f1c13577893e9c6eb17269930f657abc1846",
+    "three_archives_reported_crc_pass": true,
+    "v6_archives_byte_equality": "NOT_TESTED"
+  },
+  "build_script_git_blob_sha1": "0c02cd8f4e7554ab6f3cbde497877253ce5bddec",
+  "build_script_sha256": "389af4973071e0f2f27b91a3321a347b3a3a061377652f2b46852d15630cbcad",
+  "cases": {
+    "altered_all_six_final_outputs": {
+      "altered_bytes_reused_unchanged": true,
+      "current_synthetic_backend_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "error": null,
+      "operation_counts": {},
+      "script_completed": true,
+      "stdout_sha256": "e1d1393d5c37b0d051c8f396c1bb241bb773c6e44cbeffb4d2067a22f091ed45",
+      "synthetic_boolean_calls": 0
+    },
+    "changed_cached_receipt_backend": {
+      "current_synthetic_backend_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "error": null,
+      "operation_counts": {},
+      "script_completed": true,
+      "stdout_sha256": "e1d1393d5c37b0d051c8f396c1bb241bb773c6e44cbeffb4d2067a22f091ed45",
+      "synthetic_boolean_calls": 0
+    },
+    "changed_current_backend": {
+      "current_synthetic_backend_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "error": null,
+      "operation_counts": {},
+      "script_completed": true,
+      "stdout_sha256": "0d02a5bc7baa02ef0ddd01251c31fd2906ed0e0945666115d4964821be8ded5a",
+      "synthetic_boolean_calls": 0
+    },
+    "changed_source_with_consistent_synthetic_manifest": {
+      "current_synthetic_backend_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "error": null,
+      "operation_counts": {},
+      "script_completed": true,
+      "stdout_sha256": "e1d1393d5c37b0d051c8f396c1bb241bb773c6e44cbeffb4d2067a22f091ed45",
+      "synthetic_boolean_calls": 0
+    },
+    "fresh": {
+      "current_synthetic_backend_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "error": null,
+      "operation_counts": {
+        "difference": 2,
+        "intersection": 1,
+        "union": 93
+      },
+      "script_completed": true,
+      "stdout_sha256": "c023ef1575a87d91907ad19b1ef4749924782b0b7c4be83d479091457bb3965c",
+      "synthetic_boolean_calls": 96
+    },
+    "negative_control_union_result_sha_mismatch": {
+      "current_synthetic_backend_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "error": "ValueError: cached union identity mismatch fixed-union-level00-pair000.json",
+      "operation_counts": {},
+      "script_completed": false,
+      "stdout_sha256": "b8d5f399b782736ad52e8956f27f6b007fa0f6d249d414be9ac72970a6877f06",
+      "synthetic_boolean_calls": 0
+    },
+    "unchanged_resume": {
+      "current_synthetic_backend_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "error": null,
+      "operation_counts": {},
+      "script_completed": true,
+      "stdout_sha256": "e1d1393d5c37b0d051c8f396c1bb241bb773c6e44cbeffb4d2067a22f091ed45",
+      "synthetic_boolean_calls": 0
+    }
+  },
+  "external_readiness_gate_executed": false,
+  "fixtures": "94 SYNTHETIC INPUTS; common SHIM; NO NATIVE GEOMETRY",
+  "frozen_manifest_sha256": "67364abba55c74ccd377eef6174b8c96ee04e4af1aadbd7e505466bafabd2a3a",
+  "historical_common_recovered": false,
+  "implementation": {
+    "files": {
+      "m23_p3_bound_cache.py": "1e428848b4d8908bf74396ee1c04bb241f8628e29be736e48135eba63456d218",
+      "m23_p3_historical_cache_probe.py": "bd8f7c978df1b1d2b552f9c58d53900d6b9051dbbfb578332c7a72530352a1e7",
+      "test_m23_p3_bound_cache.py": "cc0f595dfb541ad8ce3f6d4d8ded405d9c33e601556d3ea8fe4dfed6dc36e3b1"
+    },
+    "historical_common_recovered": false,
+    "new_bound_cache_integrated_into_native_builder": false
+  },
+  "native_calls": 0,
+  "original_script_modified": false,
+  "schema": "W2_HISTORICAL_CACHE_CONTROL_FLOW_PROBE_V1",
+  "snapshot_sha256": "f7cf4c2efbd32b9c19d33359471f0671aa2efae104d3aa912500157052f39980",
+  "status": "LEGACY_CACHE_GAPS_REPRODUCED_SYNTHETIC_ONLY",
+  "training_admitted": false,
+  "training_samples": 0,
+  "unit_tests": {
+    "failed": 0,
+    "github_actions": "NOT_RUN",
+    "log_sha256": "01f902a295629a8e4962d73c250c6fb5195a95e11b9773f840ccf62f6d6eb064",
+    "passed": 22,
+    "python": "3.13.5",
+    "ran": 22,
+    "runtime": "current conversation Linux Python container",
+    "skipped": 0
+  }
+}
