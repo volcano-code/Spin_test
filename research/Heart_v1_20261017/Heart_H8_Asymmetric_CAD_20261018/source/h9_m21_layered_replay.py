@@ -26,6 +26,10 @@ from h9_m20_precision_replay import read_json, file_hash, ten, b64_equal
 from h9_m21_motion_math import (need, vec, frac, material_state, moment_tangent,
     motion_pair, compare_vectors, NAMES, ZERO)
 
+# Export the already-frozen M21.6 core pin for the quarterpoint runner.
+# This is a compatibility export, not native-runtime attestation.
+BINARY_SHA='d66ce44c42f66a875298ae271dda76c12d5f3660bd3d13a1089d4fdd152063fd'
+
 LEDGER_SHA='95bf2c6d91862bba488dd56118562a1fad826037966ed3f8f0bf382e5fba0703'
 ARTIFACT_SHA='99a050f4604109e0323c0110a029aa5d7601d729d755e6956ad48ed8c77ccda9'
 REQUEST_SHA='1d2b06063c5b2c7010fcb2764518c05c9707f013d6914bc4e20298f8516e061c'
