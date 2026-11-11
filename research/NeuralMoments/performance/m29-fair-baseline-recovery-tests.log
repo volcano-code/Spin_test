@@ -1,0 +1,33 @@
+test_archive_listed_but_not_opened (test_m29_locate_m9_baseline.BaselineRecoveryTests.test_archive_listed_but_not_opened) ... ok
+test_directory_limit_is_visible (test_m29_locate_m9_baseline.BaselineRecoveryTests.test_directory_limit_is_visible) ... ok
+test_m5_and_fd_summaries_rejected (test_m29_locate_m9_baseline.BaselineRecoveryTests.test_m5_and_fd_summaries_rejected) ... ok
+test_missing_or_nonfinite_jacobian_rejected (test_m29_locate_m9_baseline.BaselineRecoveryTests.test_missing_or_nonfinite_jacobian_rejected) ... ok
+test_missing_root_and_bounded_search_are_reported (test_m29_locate_m9_baseline.BaselineRecoveryTests.test_missing_root_and_bounded_search_are_reported) ... ok
+test_moved_report_found_without_mutation (test_m29_locate_m9_baseline.BaselineRecoveryTests.test_moved_report_found_without_mutation) ... ok
+test_multiple_matches_are_all_reported_not_selected (test_m29_locate_m9_baseline.BaselineRecoveryTests.test_multiple_matches_are_all_reported_not_selected) ... ok
+test_renamed_report_requires_filename_recovery (test_m29_locate_m9_baseline.BaselineRecoveryTests.test_renamed_report_requires_filename_recovery) ... ok
+test_valid_fixture_identity (test_m29_locate_m9_baseline.BaselineRecoveryTests.test_valid_fixture_identity) ... ok
+test_wrong_material_rejected (test_m29_locate_m9_baseline.BaselineRecoveryTests.test_wrong_material_rejected) ... ok
+test_wrong_native_module_rejected (test_m29_locate_m9_baseline.BaselineRecoveryTests.test_wrong_native_module_rejected) ... ok
+test_breadth_first_does_not_sink_into_library_before_sibling (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_breadth_first_does_not_sink_into_library_before_sibling) ... ok
+test_depth_limit_visible (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_depth_limit_visible) ... ok
+test_duplicate_roots_visible_and_reports_deduplicated (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_duplicate_roots_visible_and_reports_deduplicated) ... ok
+test_entry_limit_is_reported (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_entry_limit_is_reported) ... ok
+test_explicit_symlink_root_is_resolved_without_recursive_links (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_explicit_symlink_root_is_resolved_without_recursive_links) ... ok
+test_fifo_report_is_not_opened (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_fifo_report_is_not_opened) ... ok
+test_global_quota_regression_old_starves_later_root_new_finds_it (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_global_quota_regression_old_starves_later_root_new_finds_it) ... ok
+test_invalid_search_budget_fails (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_invalid_search_budget_fails) ... ok
+test_known_run_prioritized_within_same_depth (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_known_run_prioritized_within_same_depth) ... ok
+test_missing_root_does_not_stop_later_root (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_missing_root_does_not_stop_later_root) ... ok
+test_original_path_status_does_not_create_missing_path (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_original_path_status_does_not_create_missing_path) ... ok
+test_pruned_directory_is_reported_and_not_read (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_pruned_directory_is_reported_and_not_read) ... ok
+test_symlink_cycle_and_broken_link_are_leads_not_followed (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_symlink_cycle_and_broken_link_are_leads_not_followed) ... ok
+test_time_budget_is_restarted_for_every_root (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_time_budget_is_restarted_for_every_root) ... ok
+test_unicode_backup_and_report_digest_read_only (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_unicode_backup_and_report_digest_read_only) ... ok
+test_w1_archive_name_is_lead_but_not_extracted (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_w1_archive_name_is_lead_but_not_extracted) ... ok
+test_wrong_schema_still_rejected (test_m29_locate_m9_baseline_fair.FairRecoveryTests.test_wrong_schema_still_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.031s
+
+OK
