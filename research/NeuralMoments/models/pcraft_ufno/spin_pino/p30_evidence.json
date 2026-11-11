@@ -1,0 +1,213 @@
+{
+  "schema": "W6_P30_CORE_REFACTOR_EVIDENCE_V1",
+  "environment": {
+    "python": "3.13.5",
+    "torch": "2.10.0+cpu",
+    "numpy": "2.3.5",
+    "device": "cpu",
+    "threads": 1
+  },
+  "base_commit": "49655d19bc0471b38b1c3764b822ecdd38894ffd",
+  "protocol": {
+    "model": {
+      "width": 4,
+      "modes": 2,
+      "n_layers": 2,
+      "grid_size": 8,
+      "points_per_axis": 8,
+      "hidden_dim": 24,
+      "temperature": 0.12,
+      "moment_parameterization": "logistic_atom"
+    },
+    "seeds": [
+      301,
+      307,
+      311
+    ],
+    "steps": 60,
+    "batch_geometries": 6,
+    "queries_per_geometry": 4,
+    "input_grid": 16,
+    "train_geometries": 24,
+    "test_geometries": 12,
+    "ood_geometries": 4,
+    "optimizer": "AdamW",
+    "lr": 0.002,
+    "weight_decay": 0.0001,
+    "loss": "train-RMS scaled r MSE + 0.1*train-RMS scaled J MSE",
+    "checkpoint_selection": "last fixed step; no test selection",
+    "reference": "independent dense cell-centered logistic soft-cut integral",
+    "reference_temperature": 0.12,
+    "native_teacher": false
+  },
+  "protocol_sha256": "76bdc8da84eb37cf2c11def218aecc42002be7554df5e211c803be13ac149654",
+  "tests": {
+    "passed": 19,
+    "failed": 0,
+    "scope": "local CPU mechanism and logistic model-internal derivative tests; not full repository CI"
+  },
+  "source": {
+    "base_commit": "49655d19bc0471b38b1c3764b822ecdd38894ffd",
+    "verified_git_blobs": {
+      "model.py": "994aad8d6094e0a1343b2b3c9c1bf91be8da4bdf",
+      "__init__.py": "62ea9b33d964c1fd80b820ed035d6ccb5626586b",
+      "adaptation.py": "9f07b7a3955c68cfb7ac4c7cd70e1340e20ce333",
+      "spin_pino/__init__.py": "dcf08df5419e84e8add28a53aac4a82f44807bfb",
+      "spin_pino/spin_pino.py": "f61331204f550a4cbcb82b8acab237cd8a20f6ed",
+      "spin_pino/pino_backbone.py": "887a23547643495e6b7ec17810a388842ae9489f",
+      "spin_pino/transolver_plus_adapter.py": "d1387ea02e91dc1f6882d8cc95a6fa33dded9e5b"
+    }
+  },
+  "repeated_state_hash_match_count": 9,
+  "repeat_metrics_equal": true,
+  "runs": [
+    {
+      "seed": 301,
+      "arm": "baseline",
+      "real_parameters": 21752,
+      "training_seconds": 0.9823995529999365,
+      "state_sha256": "8c89042f2d2b97a1b9ed65e259a2807f9f437e7f1d75d1ccf5d89f5219036632",
+      "test_r": 0.08010587096214294,
+      "test_J": 0.10230058431625366,
+      "ood_r": 0.21176686882972717,
+      "ood_J": 0.2489653378725052
+    },
+    {
+      "seed": 301,
+      "arm": "uniform_internal",
+      "real_parameters": 24257,
+      "training_seconds": 1.847349437000048,
+      "state_sha256": "3ff4fcddd232302a704d4338a073a7450187e7f6150ba0e9319dfb68c86823b4",
+      "test_r": 0.08025548607110977,
+      "test_J": 0.10246206074953079,
+      "ood_r": 0.21342341601848602,
+      "ood_J": 0.2504817843437195
+    },
+    {
+      "seed": 301,
+      "arm": "material_internal",
+      "real_parameters": 24257,
+      "training_seconds": 1.8029929419999462,
+      "state_sha256": "79c64b928cc2584090c34db427424bf154e59a7453f939ba1742e92ae4549f77",
+      "test_r": 0.07993150502443314,
+      "test_J": 0.10214076191186905,
+      "ood_r": 0.2113131582736969,
+      "ood_J": 0.24854964017868042
+    },
+    {
+      "seed": 307,
+      "arm": "baseline",
+      "real_parameters": 21752,
+      "training_seconds": 0.9211225660000082,
+      "state_sha256": "63b5859b94bb06910dbdc00af7096e0632e36199bbe19c9861cf89f7d078bea9",
+      "test_r": 0.06981027871370316,
+      "test_J": 0.09500905126333237,
+      "ood_r": 0.18738172948360443,
+      "ood_J": 0.23099902272224426
+    },
+    {
+      "seed": 307,
+      "arm": "uniform_internal",
+      "real_parameters": 24257,
+      "training_seconds": 1.813426980000031,
+      "state_sha256": "fb6fc4b6f86adba7dcd582a58f85fed21c56d5f11b9b1cf11b50c1b3b40e7797",
+      "test_r": 0.07309623807668686,
+      "test_J": 0.09852233529090881,
+      "ood_r": 0.19427289068698883,
+      "ood_J": 0.23727229237556458
+    },
+    {
+      "seed": 307,
+      "arm": "material_internal",
+      "real_parameters": 24257,
+      "training_seconds": 1.8621744119999448,
+      "state_sha256": "c8408c716f1c0016ffb87c3997d1e27bd76ad18c68856bd936ca262fe64c5ff2",
+      "test_r": 0.07012804597616196,
+      "test_J": 0.09539836645126343,
+      "ood_r": 0.18768268823623657,
+      "ood_J": 0.23126545548439026
+    },
+    {
+      "seed": 311,
+      "arm": "baseline",
+      "real_parameters": 21752,
+      "training_seconds": 0.9771510509999644,
+      "state_sha256": "fec4b0ada13cecf2233ccee48ab5f631f5fce64aef3630c83e1a5157fbc3661a",
+      "test_r": 0.06684613972902298,
+      "test_J": 0.09138605743646622,
+      "ood_r": 0.2100263386964798,
+      "ood_J": 0.24937240779399872
+    },
+    {
+      "seed": 311,
+      "arm": "uniform_internal",
+      "real_parameters": 24257,
+      "training_seconds": 1.7347272539999494,
+      "state_sha256": "b732474421938bc7245218be877edafcd051539010041b42c45c09602658f9fe",
+      "test_r": 0.06675221771001816,
+      "test_J": 0.09133100509643555,
+      "ood_r": 0.20989038050174713,
+      "ood_J": 0.249249666929245
+    },
+    {
+      "seed": 311,
+      "arm": "material_internal",
+      "real_parameters": 24257,
+      "training_seconds": 2.011109638999983,
+      "state_sha256": "eca3ce31609fce9c0660b087ff0e151497abf560a3c3d0ab095317daa56eccfb",
+      "test_r": 0.06687745451927185,
+      "test_J": 0.09141409397125244,
+      "ood_r": 0.20991277694702148,
+      "ood_J": 0.24926699697971344
+    }
+  ],
+  "summary": {
+    "baseline": {
+      "real_parameters": 21752,
+      "training_seconds": 0.9602243899999697,
+      "test_r": 0.07225409646828969,
+      "test_J": 0.09623189767201741,
+      "ood_r": 0.2030583123366038,
+      "ood_J": 0.24311225612958273
+    },
+    "uniform_internal": {
+      "real_parameters": 24257,
+      "training_seconds": 1.7985012236666762,
+      "test_r": 0.07336798061927159,
+      "test_J": 0.09743846704562505,
+      "ood_r": 0.205862229069074,
+      "ood_J": 0.24566791454950967
+    },
+    "material_internal": {
+      "real_parameters": 24257,
+      "training_seconds": 1.892092330999958,
+      "test_r": 0.07231233517328899,
+      "test_J": 0.09631774077812831,
+      "ood_r": 0.20296954115231833,
+      "ood_J": 0.24302736421426138
+    }
+  },
+  "fixed_node_blindspot": {
+    "input_grid": 32,
+    "points_per_axis": 8,
+    "material_voxel": [
+      3,
+      3,
+      3
+    ],
+    "reference_soft_mass": 0.00024408196622971445,
+    "baseline_mass": 0.0,
+    "material_core_mass": 0.0,
+    "interpretation": "Fixed-node point-sampling can miss material; an explicit limitation, not a passing accuracy result."
+  },
+  "decision": "DO_NOT_PROMOTE_DEFAULT_NO_GAIN_OVER_BASELINE",
+  "nonclaims": [
+    "Cherchi teacher",
+    "native Jacobian certification",
+    "TRELLIS data training",
+    "512-cubed",
+    "GPU performance",
+    "statistical superiority",
+    "upstream official Transolver++ reproduction"
+  ]
+}
